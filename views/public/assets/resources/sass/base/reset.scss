@@ -35,14 +35,15 @@ select,
 textarea {
     background-color: transparent;
     outline: none;
-    color: $text-color;
+    color: $neutral70;
 }
 
 html {
     font-size: 62.5%;
-    font-family: $main-font;
     box-sizing: border-box;
-    // color-scheme: light dark;
+    // font-family: 'mainFont', sans-serif;
+    font-family: 'Quicksand', sans-serif;
+    // font-family: 'Space Mono', monospace;
 }
 
 button {
