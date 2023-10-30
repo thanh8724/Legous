@@ -13,6 +13,8 @@
     @import 'components/footer.scss';
     @import 'components/generalProduct.scss';
     @import 'components/button.scss';
+    @import 'components/input.scss';
+    @import 'components/searchProduct.scss';
     // import theme
     
     // import layout
@@ -392,6 +394,9 @@
 
 
     // || common block styles classes start
+    .width-full {
+        width: 100%;
+    }
     .cp {
         cursor: pointer;
     }
@@ -413,6 +418,12 @@
     .ma {
         margin: auto;
     }
+    .mia {
+        margin-inline: auto;
+    }
+    .mba {
+        margin-block: auto;
+    }
     // || common block styles classes end
     
 
@@ -423,6 +434,9 @@
     }
     .poa {
         position: absolute;
+    }
+    .pof {
+        position: fixed;
     }
     // || position classes end
 

@@ -227,4 +227,5 @@ $light-secondary-container: #E8DEF8;
 $trans-normal: .22s linear;
 $trans-bounce: .22s cubic-bezier(0.23, 1, 0.320, 1);
 
-$site-padding: clamp(1rem, -9.357rem + 27.619vw, 15.5rem);
+$site-padding-inline: clamp(1rem, -9.357rem + 27.619vw, 15.5rem);
+$site-padding-block: clamp(3rem, 0.857rem + 5.714vw, 6rem);
