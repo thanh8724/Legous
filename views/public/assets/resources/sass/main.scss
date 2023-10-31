@@ -54,11 +54,20 @@
     8. block classes
     9. possition classes
     11. transition classes
+    11. devider classes
 */
 
 
 
 // || common classes start
+
+    // || devider classes start
+    .light-devider {
+        background: $neutral87;
+    }
+    // || devider classes end
+
+
 
     // || shadow classes start
     .box-shadow1 {
@@ -124,6 +133,9 @@
     }
     .rounded-12 {
         border-radius: 1.2rem;
+    }
+    .rounded-100 {
+        border-radius: 10rem;
     }
     .rounded-half {
         border-radius: 50%;
@@ -270,8 +282,7 @@
         width: 100%;
     }
     .section {
-        padding-block: clamp(3rem, 0.857rem + 5.714vw, 6rem);
-        padding-inline: clamp(1rem, -2.571rem + 9.524vw, 6rem);
+        padding: $site-padding-block $site-padding-inline;
     }
     // || common wrap item style end
     
@@ -375,25 +386,46 @@
         width: 100%;
         grid-template-columns: repeat(auto-fit, minmax(min(20em, 100%), 1fr));
     }
+    .grid-2 {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr);
+    }
     .grid-3 {
         display: grid;
         @include grid-layout(3 , 22em);
     }
-    @media screen and (max-width: 700px) {
-        .auto-grid {
-            grid-template-columns: repeat(2 , 1fr);
-        }
-    }
-    @media screen and (max-width: 374.98px) {
-        .auto-grid {
-            grid-template-columns: 1fr; 
-        }
-    }
+    // @media screen and (max-width: 700px) {
+    //     .auto-grid {
+    //         grid-template-columns: repeat(2 , 1fr);
+    //     }
+    // }
+    // @media screen and (max-width: 374.98px) {
+    //     .auto-grid {
+    //         grid-template-columns: 1fr; 
+    //     }
+    // }
     // || commone grid classes end
     
 
 
     // || common block styles classes start
+    .img-cover {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .banner-contain {
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: contain;
+        border: none;
+    }
+    .banner-cover {
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        border: none;
+    }
     .width-full {
         width: 100%;
     }

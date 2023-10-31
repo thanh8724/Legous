@@ -1,8 +1,11 @@
 .header {
     padding-inline: $site-padding-inline;
     height: 8rem;
+    top: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.40);
+    backdrop-filter: blur(10px);
     .header__inner {
-        // height: 100%;
         .header__nav {
             &__item {
                 line-height: 8rem;
@@ -66,6 +69,7 @@
                 width: 100%;
                 top: 130%;
                 left: 0;
+                background: $-white;
 
                 opacity: 0;
                 visibility: hidden;
@@ -106,6 +110,7 @@
             opacity: 0;
             visibility: hidden;
             transition: $trans-bounce;
+            background: $-white;
     
             .header__subnav {
                 transform: translateY(1rem);

@@ -3,7 +3,7 @@
     padding-inline: 2.4rem;
     padding-block: 1rem;
     font-size: clamp(1.2rem, 1.057rem + 0.381vw, 1.4rem);
-    font-weight: 500;
+    font-weight: 600;
     line-height: clamp(1.8rem, 1.657rem + 0.381vw, 2rem);
     display: inline-flex;
     overflow: hidden;
@@ -107,6 +107,7 @@
     align-items: center;
     flex-shrink: 0;
     font-size: 1.6rem;
+    font-weight: 600;
     width: 3.2rem;
     height: 3.2rem;
     color: #1D1B20; 

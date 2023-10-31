@@ -168,4 +168,26 @@
 .ttc {
     text-transform: capitalize;
 }
+
+.text-68 {
+    font-size: 6.8rem;
+    font-family: 'mainFont', sans-serif;
+    font-weight: 900;
+    line-height: 8rem;
+    letter-spacing: -1.25px;
+}
+
+.primary-masking-text {
+    background: linear-gradient(88deg, rgba(66, 0, 255, 0.60) 24.54%, #6A00F2 66.17%, rgba(255, 40, 169, 0.40) 117.27%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: 'mainFont';
+    font-size: 6.8rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 6.8rem;
+    letter-spacing: -0.25px;
+    text-transform: uppercase;
+}
 // || common text style classes end

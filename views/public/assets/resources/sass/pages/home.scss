@@ -1,0 +1,109 @@
+// hero banner
+$banner-padding-block: 10rem;
+.hero-banner__wrapper {
+    .hero-banner__item {
+        min-height: 70rem;
+        display: flex !important;
+        gap: 30px;
+        padding-inline: $site-padding-inline;
+        padding-block: $banner-padding-block;
+        .left {
+            width: 50%;
+            .hightlight-text {
+                color: var(--m-3-sys-light-on-primary-fixed, #21005D);
+                font-size: clamp(2.8rem, -0.057rem + 7.619vw, 6.8rem);
+                font-weight: 400;
+                line-height: clamp(4.2rem, 1.343rem + 7.619vw, 8.2rem);
+                letter-spacing: 0.05rem;
+            }
+            .avt-group {
+                $offset: -1rem;
+                img:nth-child(2) {
+                    transform: translateX($offset);
+                }
+                img:nth-child(3) {
+                    transform: translateX(calc($offset * 2));
+                }
+            }
+        }
+        .right {
+            flex-grow: 1;
+        }
+    }
+}
+
+// most love products section 
+.product-amount {
+    color: var(--m-3-sys-light-on-secondary-container, #1D192B);
+    font-family: 'mainFont', sans-serif;
+    font-size: 8.6rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 6.4rem;
+    letter-spacing: -0.025rem;
+}
+.carousel-navigation {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
+} 
+
+// benefit section 
+.benefit__wrapper {
+    .icon-box {
+        max-width: 30rem;
+        &__icon {
+            position: relative;
+            &::before {
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 0.4rem;
+                border-radius: 4px;
+                bottom: 0;  
+                background: rgba($color: #000000, $alpha: .2)
+            }
+        }
+    }
+}
+
+// product section 
+.product__section {
+    &__tab-container {
+        .tab__item {
+            display: flex;
+            height: 48px;
+            overflow: hidden;
+            background: var(--m-3-sys-light-surface, #FEF7FF);
+            justify-content: center;
+        }
+    }
+}
+
+// || Responsive 
+/* Mobile: with < 740px */
+@media only screen and (max-width: 46.1875em){
+    .hero-banner__item {
+        flex-direction: column-reverse !important;
+    }
+    .left {
+        width: 100% !important;
+    }
+    .right {
+        width: 100%;
+        height: 20rem;
+    }
+}
+/* Tablet: width >= 740px and width < 1024px */
+@media only screen and (min-width: 46.25em) and (max-width: 63.9375em){
+    
+}
+/* Mobile and Tablet: width < 1024px */
+@media only screen and (max-width: 63.9375em){
+    
+}
+/* PC: width >= 1024px */
+@media only screen and (min-width: 64em){
+
+}
