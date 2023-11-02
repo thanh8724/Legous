@@ -8,6 +8,7 @@
     // import base
     @import 'base/reset.scss';
     @import 'base/typography.scss';
+
     // import components
     @import 'components/header.scss';
     @import 'components/footer.scss';
@@ -23,6 +24,7 @@
     
     // import pages 
     @import 'pages/home.scss';
+    @import 'pages/admin_products.scss';
     @import 'pages/shop.scss';
 // import partials end
 
