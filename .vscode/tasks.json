@@ -6,7 +6,7 @@
         {
             "label": "Run sass",
             "type": "shell",
-            "command": "sass ./views/public/assets/resources/sass/main.scss ./views/public/assets/resources/sass/css/app.css --watch"
+            "command": "sass ./public/assets/resources/sass/main.scss ./public/assets/resources/sass/css/app.css --watch"
         }
     ]
 }

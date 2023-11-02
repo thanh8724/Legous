@@ -618,9 +618,6 @@ a {
   color: #410e0b;
 }
 
-body {
-  background: red;
-}
 body.dark main {
   background-color: #15192a;
   transition: 0.5s;
