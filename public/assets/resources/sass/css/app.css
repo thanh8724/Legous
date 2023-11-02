@@ -630,10 +630,6 @@ body.dark main nav {
   background-color: #1c2339;
   border-color: #1c2339;
 }
-body.dark main nav .menu-items .logout-mode {
-  background-color: #1c2339;
-  border-color: #1c2339;
-}
 body.dark main nav .logo-name .logo_name {
   color: #fff;
 }
@@ -820,10 +816,6 @@ main nav.close ~ .dashboard {
   left: 73px;
   width: calc(100% - 73px);
 }
-main nav.close ~ .dashboard .top {
-  left: 73px;
-  width: calc(100% - 73px);
-}
 main nav.close .logo-name {
   padding-left: 0px;
 }
@@ -838,15 +830,11 @@ main .dashboard {
   left: 250px;
   min-height: 100vh;
   width: calc(100% - 250px);
-  padding: 10px 14px;
   transition: all 0.5s ease;
 }
 main .dashboard .top {
-  position: fixed;
-  top: 0;
-  left: 250px;
   display: flex;
-  width: calc(100% - 250px);
+  width: 100%;
   justify-content: space-between;
   align-items: center;
   padding: 10px 14px;
@@ -855,12 +843,12 @@ main .dashboard .top {
   z-index: 10;
 }
 main .dashboard .top .sidebar-toggle {
-  font-size: 26px;
+  font-size: 20px;
   color: #000;
   cursor: pointer;
   background-color: #E8DEF8;
-  width: 40px;
-  height: 40px;
+  width: 48px;
+  height: 48px;
   line-height: 40px;
   display: flex;
   justify-content: center;
@@ -913,7 +901,7 @@ main .dashboard .top .info-user img {
 }
 main .dashboard .containerAdmin {
   width: 95%;
-  margin: 0 10px;
+  margin: 0 30px;
 }
 main .dashboard .containerAdmin .sliderDashboard {
   display: flex;
