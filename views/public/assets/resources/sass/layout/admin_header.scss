@@ -3,121 +3,23 @@ p {
     margin-bottom: 0px !important;
 }
 
-&::-webkit-scrollbar {
-    width: 8px;
-}
+// &::-webkit-scrollbar {
+//     width: 8px;
+// }
 
-&::-webkit-scrollbar-track {
-    background: #f1f1f1;
-}
+// &::-webkit-scrollbar-track {
+//     background: #f1f1f1;
+// }
 
-&::-webkit-scrollbar-thumb {
-    background: #3A3B3C;
-    border-radius: 12px;
-    transition: all 0.3s ease;
+// &::-webkit-scrollbar-thumb {
+//     background: #3A3B3C;
+//     border-radius: 12px;
+//     transition: all 0.3s ease;
 
-    &:hover {
-        background: #0b3cc1;
-    }
-}
-
-body.dark {
-    main {
-        background-color: #15192A;
-        transition: .5s;
-
-        .dashboard {
-            .top {
-                background-color: #1C2339;
-                border-color: #1C2339;
-            }
-        }
-
-        nav {
-            .menu-items {
-                .logout-mode {
-                    background-color: #1C2339;
-                    border-color: #1C2339;
-                }
-            }
-
-            background-color: #1C2339;
-            border-color: #1C2339;
-        }
-    }
-
-    &::-webkit-scrollbar-thumb {
-        &:hover {
-            background: #3A3B3C;
-        }
-    }
-
-    .activity-data {
-        &::-webkit-scrollbar-thumb {
-            &:hover {
-                background: #3A3B3C;
-            }
-        }
-    }
-
-    nav {
-        
-    }
-
-    .dashboard {
-        .top {
-            .info-user {
-                i {
-                    color: #fff;
-                }
-            }
-        }
-    }
-
-    .menu-items {
-        li {
-            span {
-                color: #fff;
-            }
-
-            i {
-                color: #fff;
-            }
-        }
-    }
-
-    li {
-        a {
-            &:hover {
-                &:before {
-                    background-color: #CCC;
-                }
-            }
-        }
-    }
-
-    .nav-links {
-        li {
-            a {
-                &:hover {
-                    i {
-                        color: #CCC;
-                    }
-
-                    .link-name {
-                        color: #CCC;
-                    }
-                }
-            }
-        }
-    }
-
-    .switch {
-        &:before {
-            left: 20px;
-        }
-    }
-}
+//     &:hover {
+//         background: #0b3cc1;
+//     }
+// }
 
 main {
     background-color: #f7f7f7;
@@ -532,7 +434,9 @@ main {
         }
     }
 }
-
+.testabc{
+    
+}
 ul {
     padding-left: 0px !important;
 }

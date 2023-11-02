@@ -1,0 +1,105 @@
+body {
+	background: red;
+	&.dark {
+		main {
+			background-color: #15192a;
+			transition: 0.5s;
+			.dashboard {
+				.top {
+					background-color: #1c2339;
+					border-color: #1c2339;
+				}
+			}
+			nav {
+				background-color: #1c2339;
+				border-color: #1c2339;
+				.menu-items {
+					.logout-mode {
+						background-color: #1c2339;
+						border-color: #1c2339;
+					}
+				}
+                .logo-name {
+                    .logo_name {
+                        color: #fff;
+                    }
+                }
+                .menu-items {
+                    li {
+                        span {
+                            color: #fff;
+                        }
+                        i {
+                            color: #fff;
+                        }
+                    }
+                    .nav-links {
+                        li {
+                            a {
+                                &:hover {
+                                    i {
+                                        color: #ccc;
+                                    }
+                                    .link-name {
+                                        color: #ccc;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .logout-mode {
+                        .mode {
+                            .mode-toggle {
+                                .switch {
+                                    &:before {
+                                        left: 20px !important;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+			}
+		}
+		&::-webkit-scrollbar-thumb {
+			&:hover {
+				background: #3a3b3c;
+			}
+		}
+		.activity-data {
+			&::-webkit-scrollbar-thumb {
+				&:hover {
+					background: #3a3b3c;
+				}
+			}
+		}
+		
+		.dashboard {
+			.top {
+				.info-user {
+					i {
+						color: #fff;
+					}
+				}
+			}
+		}
+		
+		li {
+			a {
+				&:hover {
+					&:before {
+						background-color: #ccc;
+					}
+				}
+			}
+		}
+		
+		
+	}
+}
+.testabcs{
+
+}
+.test1 {
+	
+}
