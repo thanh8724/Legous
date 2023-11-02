@@ -3,8 +3,11 @@
     grid-template-columns: repeat(auto-fit , minmax($min-width , $max-width));
     grid-template-rows: repeat(auto-fit , minmax($min-height , $max-height));
 }
-@mixin animate($animation, $duration, $method, $times, $loop) {
-    animation: $animation $duration $method $times $loop;
+@mixin animation($animation-name, $duration, $timing-function, $delay, $iteration-count, $direction, $fill-mode) {
+    animation: $animation-name $duration $timing-function $delay $iteration-count $direction $fill-mode;
+    -webkit-animation: $animation-name $duration $timing-function $delay $iteration-count $direction $fill-mode;
+    -moz-animation: $animation-name $duration $timing-function $delay $iteration-count $direction $fill-mode;
+    -o-animation: $animation-name $duration $timing-function $delay $iteration-count $direction $fill-mode;
 }
 @mixin keyframes($name) {
     @keyframes #{$name} {

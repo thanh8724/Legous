@@ -26,6 +26,23 @@ const app = {
                 searchBox.classList.toggle('open');
             })
         }
+
+
+        // product tabs
+        const tabs = document.querySelectorAll('.tab__item');
+        const panels = document.querySelectorAll('.panel__item');
+        console.log(panels)
+        if (tabs) {
+            tabs.forEach((tab, i) => {
+                tab.addEventListener('click' , () => {
+                    document.querySelector('.tab__item.active').classList.remove('active');
+                    document.querySelector('.panel__item.active').classList.remove('active');
+                    
+                    tab.classList.add('active');
+                    panels[i].classList.add('active');
+                })
+            })
+        }
     },
     start () {
         this.eventsHandler();
