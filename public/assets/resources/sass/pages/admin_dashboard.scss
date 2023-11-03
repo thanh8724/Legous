@@ -1,0 +1,118 @@
+main {
+  .dashboard {
+    .containerAdmin {
+      width: 95%;
+      margin: 0 30px;
+
+      .localDashboard {
+      .col-12{
+        .h2_dashboard{
+          color: $light-on-container;
+        }
+      }
+      }
+      .owl-carousel {
+          .slider_contain {
+            background-color: #fff;
+            border-radius: 5px;
+            .slider_items {
+              span {
+                color: #1d192b;
+                font-size: 1.25rem;
+                font-weight: bold;
+              }
+
+              h5 {
+                color: #1d192b;
+                font-size: 1.25rem;
+                font-weight: bold;
+              }
+
+              .buttonWallet {
+                border: transparent;
+                background-color: #00c58a;
+                width: 45px;
+                height: 45px;
+                border-radius: 5px;
+              }
+
+              .slider_items_stonks {
+                p {
+                  font-size: 1rem;
+                  font-weight: 700;
+                  color: #00c58a;
+                }
+
+                i {
+                  margin-right: 5px;
+                  color: #00c58a;
+                }
+              }
+
+              .dashboard-moneyEarn {
+                margin-left: 10px;
+              }
+            }
+          }
+
+          .slider_contain-2 {
+            .slider_items_stonks {
+              p {
+                color: #00b3ff;
+              }
+
+              i {
+                color: #00b3ff;
+              }
+            }
+
+            .slider_items {
+              .buttonWallet {
+                background-color: #00b3ff !important;
+              }
+            }
+
+            margin: 0 15px;
+          }
+
+          .slider_contain-3 {
+            .slider_items_stonks {
+              p {
+                color: #6750a4;
+              }
+
+              i {
+                color: #6750a4;
+              }
+            }
+
+            .slider_items {
+              .buttonWallet {
+                background-color: #6750a4 !important;
+              }
+            }
+
+            margin: 0 15px;
+          }
+
+          .slider_contain-4 {
+            .slider_items_stonks {
+              p {
+                color: #ff6acc;
+              }
+
+              i {
+                color: #ff6acc;
+              }
+            }
+
+            .slider_items {
+              .buttonWallet {
+                background-color: #ff6acc !important;
+              }
+            }
+          }
+      }
+    }
+  }
+}
