@@ -259,7 +259,7 @@ a {
 }
 
 .success-text {
-  color: #20E3B2;
+  color: #00c58a;
 }
 
 .pending-text {
@@ -434,6 +434,10 @@ a {
   }
 }
 /* PC: width >= 1024px */
+.footer {
+  background: #000000;
+}
+
 .product {
   display: grid;
   grid-row: span 4;
@@ -743,7 +747,7 @@ table th {
 }
 
 .pending {
-  color: #20E3B2;
+  color: #00c58a;
 }
 
 .canceled {
@@ -1889,7 +1893,7 @@ html {
   color: #000000;
 }
 .main__user .main__inner .main__inner--bottom .main__inner--info-order .status-order {
-  color: #20E3B2;
+  color: #00c58a;
 }
 .main__user .main__inner .main__inner--bottom .main__inner--info-order .main__inner--info-orderBottom {
   color: #6750a4;
