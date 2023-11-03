@@ -656,10 +656,6 @@ body.dark main nav {
   background-color: #1c2339;
   border-color: #1c2339;
 }
-body.dark main nav .menu-items .logout-mode {
-  background-color: #1c2339;
-  border-color: #1c2339;
-}
 body.dark main nav .logo-name .logo_name {
   color: #fff;
 }
@@ -712,7 +708,6 @@ main nav {
 main nav .logo-name {
   display: flex;
   align-items: center;
-  padding-left: 25px;
   transition: 0.5s;
   color: #fff;
 }
@@ -726,11 +721,10 @@ main nav .logo-name .logo-image img {
   object-fit: cover;
 }
 main nav .logo-name .logo_name {
-  font-size: 22px;
-  font-weight: 600;
-  color: #000;
+  color: #000000;
+  font-family: "mainFont", sans-serif;
   margin-left: 14px;
-  transition: all 0.5s ease;
+  transition: 0.22s cubic-bezier(0.23, 1, 0.32, 1);
 }
 main nav .menu-items {
   margin-top: 40px;
@@ -761,9 +755,7 @@ main nav .menu-items li a i {
   color: #625B71;
 }
 main nav .menu-items li a .link-name {
-  font-size: 18px;
-  font-weight: 400;
-  color: #625B71;
+  color: #625b71;
   transition: all 0.5s ease;
 }
 main nav .menu-items .logout-mode {
@@ -846,10 +838,6 @@ main nav.close ~ .dashboard {
   left: 73px;
   width: calc(100% - 73px);
 }
-main nav.close ~ .dashboard .top {
-  left: 73px;
-  width: calc(100% - 73px);
-}
 main nav.close .logo-name {
   padding-left: 0px;
 }
@@ -864,15 +852,11 @@ main .dashboard {
   left: 250px;
   min-height: 100vh;
   width: calc(100% - 250px);
-  padding: 10px 14px;
   transition: all 0.5s ease;
 }
 main .dashboard .top {
-  position: fixed;
-  top: 0;
-  left: 250px;
   display: flex;
-  width: calc(100% - 250px);
+  width: 100%;
   justify-content: space-between;
   align-items: center;
   padding: 10px 14px;
@@ -881,12 +865,12 @@ main .dashboard .top {
   z-index: 10;
 }
 main .dashboard .top .sidebar-toggle {
-  font-size: 26px;
+  font-size: 20px;
   color: #000;
   cursor: pointer;
   background-color: #E8DEF8;
-  width: 40px;
-  height: 40px;
+  width: 48px;
+  height: 48px;
   line-height: 40px;
   display: flex;
   justify-content: center;
@@ -936,80 +920,6 @@ main .dashboard .top .info-user img {
   width: 40px;
   border-radius: 50%;
   margin-left: 10px;
-}
-main .dashboard .containerAdmin {
-  width: 95%;
-  margin: 0 10px;
-}
-main .dashboard .containerAdmin .sliderDashboard {
-  display: flex;
-}
-main .dashboard .containerAdmin .sliderDashboard .slider_contain {
-  background-color: #fff;
-  border-radius: 5px;
-  width: 25%;
-}
-main .dashboard .containerAdmin .sliderDashboard .slider_contain .slider_items span {
-  color: #1D192B;
-  font-size: 1.25rem;
-  font-weight: bold;
-}
-main .dashboard .containerAdmin .sliderDashboard .slider_contain .slider_items h5 {
-  color: #1D192B;
-  font-size: 1.25rem;
-  font-weight: bold;
-}
-main .dashboard .containerAdmin .sliderDashboard .slider_contain .slider_items .buttonWallet {
-  border: transparent;
-  background-color: #00C58A;
-  width: 45px;
-  height: 45px;
-  border-radius: 5px;
-}
-main .dashboard .containerAdmin .sliderDashboard .slider_contain .slider_items .slider_items_stonks p {
-  font-size: 1rem;
-  font-weight: 700;
-  color: #00C58A;
-}
-main .dashboard .containerAdmin .sliderDashboard .slider_contain .slider_items .slider_items_stonks i {
-  margin-right: 5px;
-  color: #00C58A;
-}
-main .dashboard .containerAdmin .sliderDashboard .slider_contain .slider_items .dashboard-moneyEarn {
-  margin-left: 10px;
-}
-main .dashboard .containerAdmin .sliderDashboard .slider_contain-2 {
-  margin: 0 15px;
-}
-main .dashboard .containerAdmin .sliderDashboard .slider_contain-2 .slider_items_stonks p {
-  color: #00B3FF;
-}
-main .dashboard .containerAdmin .sliderDashboard .slider_contain-2 .slider_items_stonks i {
-  color: #00B3FF;
-}
-main .dashboard .containerAdmin .sliderDashboard .slider_contain-2 .slider_items .buttonWallet {
-  background-color: #00B3FF !important;
-}
-main .dashboard .containerAdmin .sliderDashboard .slider_contain-3 {
-  margin: 0 15px;
-}
-main .dashboard .containerAdmin .sliderDashboard .slider_contain-3 .slider_items_stonks p {
-  color: #6750A4;
-}
-main .dashboard .containerAdmin .sliderDashboard .slider_contain-3 .slider_items_stonks i {
-  color: #6750A4;
-}
-main .dashboard .containerAdmin .sliderDashboard .slider_contain-3 .slider_items .buttonWallet {
-  background-color: #6750A4 !important;
-}
-main .dashboard .containerAdmin .sliderDashboard .slider_contain-4 .slider_items_stonks p {
-  color: #FF6ACC;
-}
-main .dashboard .containerAdmin .sliderDashboard .slider_contain-4 .slider_items_stonks i {
-  color: #FF6ACC;
-}
-main .dashboard .containerAdmin .sliderDashboard .slider_contain-4 .slider_items .buttonWallet {
-  background-color: #FF6ACC !important;
 }
 
 ul {
@@ -1255,6 +1165,115 @@ ul {
 /* Tablet: width >= 740px and width < 1024px */
 /* Mobile and Tablet: width < 1024px */
 /* PC: width >= 1024px */
+.cart:hover {
+  box-shadow: 0px 2px 6px 2px rgba(0, 0, 0, 0.15), 0px 1px 2px 0px rgba(0, 0, 0, 0.3);
+}
+
+.content-table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  min-width: 400px;
+  text-align: center;
+  background: #fff;
+}
+.content-table thead tr {
+  text-align: center;
+  font-weight: 600;
+  font-size: 16px;
+  border-bottom: 1px solid #e8def8;
+}
+.content-table td {
+  font-size: 14px;
+  font-weight: 600;
+}
+.content-table th,
+.content-table td {
+  text-align: center;
+  padding: 20px 12px;
+  font-style: normal;
+}
+.content-table tbody tr {
+  border-bottom: 1px solid #e8def8;
+}
+.content-table tbody tr:last-child {
+  border: none;
+}
+
+main .dashboard .containerAdmin {
+  width: 95%;
+  margin: 0 30px;
+}
+main .dashboard .containerAdmin .localDashboard .col-12 .h2_dashboard {
+  color: #410e0b;
+}
+main .dashboard .containerAdmin .owl-carousel .slider_contain {
+  background-color: #fff;
+  border-radius: 5px;
+}
+main .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items span {
+  color: #1d192b;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+main .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items h5 {
+  color: #1d192b;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+main .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items .buttonWallet {
+  border: transparent;
+  background-color: #00c58a;
+  width: 45px;
+  height: 45px;
+  border-radius: 5px;
+}
+main .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items .slider_items_stonks p {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #00c58a;
+}
+main .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items .slider_items_stonks i {
+  margin-right: 5px;
+  color: #00c58a;
+}
+main .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items .dashboard-moneyEarn {
+  margin-left: 10px;
+}
+main .dashboard .containerAdmin .owl-carousel .slider_contain-2 {
+  margin: 0 15px;
+}
+main .dashboard .containerAdmin .owl-carousel .slider_contain-2 .slider_items_stonks p {
+  color: #00b3ff;
+}
+main .dashboard .containerAdmin .owl-carousel .slider_contain-2 .slider_items_stonks i {
+  color: #00b3ff;
+}
+main .dashboard .containerAdmin .owl-carousel .slider_contain-2 .slider_items .buttonWallet {
+  background-color: #00b3ff !important;
+}
+main .dashboard .containerAdmin .owl-carousel .slider_contain-3 {
+  margin: 0 15px;
+}
+main .dashboard .containerAdmin .owl-carousel .slider_contain-3 .slider_items_stonks p {
+  color: #6750a4;
+}
+main .dashboard .containerAdmin .owl-carousel .slider_contain-3 .slider_items_stonks i {
+  color: #6750a4;
+}
+main .dashboard .containerAdmin .owl-carousel .slider_contain-3 .slider_items .buttonWallet {
+  background-color: #6750a4 !important;
+}
+main .dashboard .containerAdmin .owl-carousel .slider_contain-4 .slider_items_stonks p {
+  color: #ff6acc;
+}
+main .dashboard .containerAdmin .owl-carousel .slider_contain-4 .slider_items_stonks i {
+  color: #ff6acc;
+}
+main .dashboard .containerAdmin .owl-carousel .slider_contain-4 .slider_items .buttonWallet {
+  background-color: #ff6acc !important;
+}
+
 /* Mobile: with < 740px */
 /* Tablet: width >= 740px and width < 1024px */
 /* Mobile and Tablet: width < 1024px */
