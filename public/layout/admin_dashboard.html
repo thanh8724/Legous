@@ -232,165 +232,170 @@
                         </div>
                     </div>
                 </div>
-                 <!----======== End Carousel DashBoard ======== -->
+                <!----======== End Carousel DashBoard ======== -->
 
-            <!----======== Statistical Chart ======== -->
-            <div class="statisticalChart p30">
-                <div class="statisticalChartItems">
-                    <div class="col-12 d-flex">
-                        <div class="col-7 p20 box-shadow3">
-                            <div class="col-12 d-flex">
-                                <div class="col-6"><p class="title-medium">Thống Kê Đơn Hàng</p></div>
-                                <div class="col-6"><ul class="nav nav-tabs" id="myTab" role="tablist">
-                                    <li class="nav-item" role="presentation">
-                                        <button class="nav-link active" id="statistical" data-bs-toggle="tab"
-                                            data-bs-target="#statistical-date" type="button" role="tab"
-                                            aria-controls="statistical-date" aria-selected="true">Theo Ngày</button>
-                                    </li>
-                                    <li class="nav-item" role="presentation">
-                                        <button class="nav-link" id="statistical" data-bs-toggle="tab"
-                                            data-bs-target="#statistical-month" type="button" role="tab"
-                                            aria-controls="statistical-month" aria-selected="false">Theo Tháng</button>
-                                    </li>
-                                </ul></div>
-                            </div>
-                            <div class="col-12">
-                                <div class="tab-content" id="myTabContent">
-                                    <div class="tab-pane fade show active" id="statistical-date" role="tabpanel"
-                                        aria-labelledby="statistical" tabindex="0">
-                                        <div style="width: 100%; height: 450px; margin: 0 auto;">
-                                            <canvas id="myChart2"></canvas>
-                                        </div>
+                <!----======== Statistical Chart ======== -->
+                <div class="statisticalChart p30">
+                    <div class="statisticalChartItems">
+                        <div class="col-12 d-flex customerOrderStatistics">
+                            <div class="col-7 p20 box-shadow3 orderStatistics">
+                                <div class="col-12 d-flex">
+                                    <div class="col-6">
+                                        <p class="title-medium">Thống Kê Đơn Hàng</p>
                                     </div>
-                                    <div class="tab-pane fade" id="statistical-month" role="tabpanel"
-                                        aria-labelledby="statistical" tabindex="0">
-                                        <div style="width: 100%; height: 450px; margin: 0 auto;">
-                                            <canvas id="myChart"></canvas>
+                                    <div class="col-6">
+                                        <ul class="nav nav-tabs myNavTabs" id="myTab" role="tablist">
+                                            <li class="nav-item myNavItem" role="presentation" style="width: 50%;">
+                                                <button style="width: 100%;" class="nav-link active" id="statistical" data-bs-toggle="tab"
+                                                    data-bs-target="#statistical-date" type="button" role="tab"
+                                                    aria-controls="statistical-date" aria-selected="true">Theo
+                                                    Ngày</button>
+                                            </li>
+                                            <li class="nav-item myNavItem" role="presentation" style="width: 50%;">
+                                                <button style="width: 100%;" class="nav-link" id="statistical" data-bs-toggle="tab"
+                                                    data-bs-target="#statistical-month" type="button" role="tab"
+                                                    aria-controls="statistical-month" aria-selected="false">Theo
+                                                    Tháng</button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="tab-content" id="myTabContent">
+                                        <div class="tab-pane fade show active" id="statistical-date" role="tabpanel"
+                                            aria-labelledby="statistical" tabindex="0">
+                                            <div style="width: 100%; height: 350px; margin: 0 auto;">
+                                                <canvas id="myChart2"></canvas>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="statistical-month" role="tabpanel"
+                                            aria-labelledby="statistical" tabindex="0">
+                                            <div style="width: 100%; height: 350px; margin: 0 auto;">
+                                                <canvas id="myChart"></canvas>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-5 p20 box-shadow3">
-                            <div class="headerTopUser d-flex justify-content-between">
-                                <p class="title-medium">Người Dùng Hàng Đầu</p>
-                                <button>
-                                    <i class="far fa-ellipsis-v"></i>
-                                </button>
-                            </div>
-                            <div style="width: 100%; background-color: #49454F; height: 1.5px; margin: 30px 0;" class="lineAdmin"></div>
-                            <div class="bodyTopUser">
-                                <div class="topUserOder">
-                                    <div class="topUserOder_items">
-                                        <div class="col-12 d-flex justify-content-between align-content-center">
-                                            <div class="col-6 d-flex ">
-                                                <div class="topUserOrder__image mr6">
-                                                    <img src="../assets/media/images/users/profile.jpg" alt="">
+                            <div class="col-5 p20 box-shadow3 topUsers">
+                                <div class="headerTopUser d-flex justify-content-between">
+                                    <p class="title-medium">Người Dùng Hàng Đầu</p>
+                                    <button>
+                                        <i class="far fa-ellipsis-v"></i>
+                                    </button>
+                                </div>
+                                <div style="width: 100%; background-color: #49454f36; height: 1.5px; margin: 30px 0;"
+                                    class="lineAdmin"></div>
+                                <div class="bodyTopUser">
+                                    <div class="topUserOder">
+                                        
+                                        <div class="topUserOder_items">
+                                            <div class="col-12 d-flex justify-content-between align-content-center">
+                                                <div class="col-6 d-flex ">
+                                                    <div class="topUserOrder__image mr6">
+                                                        <img src="../assets/media/images/users/profile.jpg" alt="">
+                                                    </div>
+                                                    <div class="topUserOrder__info">
+                                                        <div class="topUserOrder__name body-large">Tâm và Gia Huy</div>
+                                                        <div class="topUserOrder__role label-medium">Thành Viên Vip
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="topUserOrder__info">
-                                                    <div class="topUserOrder__name body-large">Tâm và Gia Huy</div>
-                                                    <div class="topUserOrder__role label-medium">Thành Viên Vip</div>
-                                                </div>
-                                            </div>
-                                            <div class="col-6 text-end">
-                                                <div class="topUserOrder_Spend">
-                                                    <div class="topUserOrder_totalPayed title-medium">12.389.900 VNĐ</div>
-                                                    <div class="topUserOrder_totalOrdered label-medium">5 orders</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="topUserOder_items">
-                                        <div class="col-12 d-flex justify-content-between align-content-center">
-                                            <div class="col-6 d-flex ">
-                                                <div class="topUserOrder__image mr6">
-                                                    <img src="../assets/media/images/users/profile.jpg" alt="">
-                                                </div>
-                                                <div class="topUserOrder__info">
-                                                    <div class="topUserOrder__name body-large">Tâm và Gia Huy</div>
-                                                    <div class="topUserOrder__role label-medium">Thành Viên Vip</div>
-                                                </div>
-                                            </div>
-                                            <div class="col-6 text-end">
-                                                <div class="topUserOrder_Spend">
-                                                    <div class="topUserOrder_totalPayed title-medium">12.389.900 VNĐ</div>
-                                                    <div class="topUserOrder_totalOrdered label-medium">5 orders</div>
+                                                <div class="col-6 text-end">
+                                                    <div class="topUserOrder_Spend">
+                                                        <div class="topUserOrder_totalPayed title-medium">12.389.900 VNĐ
+                                                        </div>
+                                                        <div class="topUserOrder_totalOrdered label-medium">5 orders
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="topUserOder_items">
-                                        <div class="col-12 d-flex justify-content-between align-content-center">
-                                            <div class="col-6 d-flex ">
-                                                <div class="topUserOrder__image mr6">
-                                                    <img src="../assets/media/images/users/profile.jpg" alt="">
+                                        <div class="topUserOder_items">
+                                            <div class="col-12 d-flex justify-content-between align-content-center">
+                                                <div class="col-6 d-flex ">
+                                                    <div class="topUserOrder__image mr6">
+                                                        <img src="../assets/media/images/users/profile.jpg" alt="">
+                                                    </div>
+                                                    <div class="topUserOrder__info">
+                                                        <div class="topUserOrder__name body-large">Tâm và Gia Huy</div>
+                                                        <div class="topUserOrder__role label-medium">Thành Viên Vip
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="topUserOrder__info">
-                                                    <div class="topUserOrder__name body-large">Tâm và Gia Huy</div>
-                                                    <div class="topUserOrder__role label-medium">Thành Viên Vip</div>
-                                                </div>
-                                            </div>
-                                            <div class="col-6 text-end">
-                                                <div class="topUserOrder_Spend">
-                                                    <div class="topUserOrder_totalPayed title-medium">12.389.900 VNĐ</div>
-                                                    <div class="topUserOrder_totalOrdered label-medium">5 orders</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="topUserOder_items">
-                                        <div class="col-12 d-flex justify-content-between align-content-center">
-                                            <div class="col-6 d-flex ">
-                                                <div class="topUserOrder__image mr6">
-                                                    <img src="../assets/media/images/users/profile.jpg" alt="">
-                                                </div>
-                                                <div class="topUserOrder__info">
-                                                    <div class="topUserOrder__name body-large">Tâm và Gia Huy</div>
-                                                    <div class="topUserOrder__role label-medium">Thành Viên Vip</div>
-                                                </div>
-                                            </div>
-                                            <div class="col-6 text-end">
-                                                <div class="topUserOrder_Spend">
-                                                    <div class="topUserOrder_totalPayed title-medium">12.389.900 VNĐ</div>
-                                                    <div class="topUserOrder_totalOrdered label-medium">5 orders</div>
+                                                <div class="col-6 text-end">
+                                                    <div class="topUserOrder_Spend">
+                                                        <div class="topUserOrder_totalPayed title-medium">12.389.900 VNĐ
+                                                        </div>
+                                                        <div class="topUserOrder_totalOrdered label-medium">5 orders
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="topUserOder_items">
-                                        <div class="col-12 d-flex justify-content-between align-content-center">
-                                            <div class="col-6 d-flex ">
-                                                <div class="topUserOrder__image mr6">
-                                                    <img src="../assets/media/images/users/profile.jpg" alt="">
+                                        <div class="topUserOder_items">
+                                            <div class="col-12 d-flex justify-content-between align-content-center">
+                                                <div class="col-6 d-flex ">
+                                                    <div class="topUserOrder__image mr6">
+                                                        <img src="../assets/media/images/users/profile.jpg" alt="">
+                                                    </div>
+                                                    <div class="topUserOrder__info">
+                                                        <div class="topUserOrder__name body-large">Tâm và Gia Huy</div>
+                                                        <div class="topUserOrder__role label-medium">Thành Viên Vip
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="topUserOrder__info">
-                                                    <div class="topUserOrder__name body-large">Tâm và Gia Huy</div>
-                                                    <div class="topUserOrder__role label-medium">Thành Viên Vip</div>
-                                                </div>
-                                            </div>
-                                            <div class="col-6 text-end">
-                                                <div class="topUserOrder_Spend">
-                                                    <div class="topUserOrder_totalPayed title-medium">12.389.900 VNĐ</div>
-                                                    <div class="topUserOrder_totalOrdered label-medium">5 orders</div>
+                                                <div class="col-6 text-end">
+                                                    <div class="topUserOrder_Spend">
+                                                        <div class="topUserOrder_totalPayed title-medium">12.389.900 VNĐ
+                                                        </div>
+                                                        <div class="topUserOrder_totalOrdered label-medium">5 orders
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="topUserOder_items">
-                                        <div class="col-12 d-flex justify-content-between align-content-center">
-                                            <div class="col-6 d-flex ">
-                                                <div class="topUserOrder__image mr6">
-                                                    <img src="../assets/media/images/users/profile.jpg" alt="">
+                                        <div class="topUserOder_items">
+                                            <div class="col-12 d-flex justify-content-between align-content-center">
+                                                <div class="col-6 d-flex ">
+                                                    <div class="topUserOrder__image mr6">
+                                                        <img src="../assets/media/images/users/profile.jpg" alt="">
+                                                    </div>
+                                                    <div class="topUserOrder__info">
+                                                        <div class="topUserOrder__name body-large">Tâm và Gia Huy</div>
+                                                        <div class="topUserOrder__role label-medium">Thành Viên Vip
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="topUserOrder__info">
-                                                    <div class="topUserOrder__name body-large">Tâm và Gia Huy</div>
-                                                    <div class="topUserOrder__role label-medium">Thành Viên Vip</div>
+                                                <div class="col-6 text-end">
+                                                    <div class="topUserOrder_Spend">
+                                                        <div class="topUserOrder_totalPayed title-medium">12.389.900 VNĐ
+                                                        </div>
+                                                        <div class="topUserOrder_totalOrdered label-medium">5 orders
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="col-6 text-end">
-                                                <div class="topUserOrder_Spend">
-                                                    <div class="topUserOrder_totalPayed title-medium">12.389.900 VNĐ</div>
-                                                    <div class="topUserOrder_totalOrdered label-medium">5 orders</div>
+                                        </div>
+                                        <div class="topUserOder_items">
+                                            <div class="col-12 d-flex justify-content-between align-content-center">
+                                                <div class="col-6 d-flex ">
+                                                    <div class="topUserOrder__image mr6">
+                                                        <img src="../assets/media/images/users/profile.jpg" alt="">
+                                                    </div>
+                                                    <div class="topUserOrder__info">
+                                                        <div class="topUserOrder__name body-large">Tâm và Gia Huy</div>
+                                                        <div class="topUserOrder__role label-medium">Thành Viên Vip
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6 text-end">
+                                                    <div class="topUserOrder_Spend">
+                                                        <div class="topUserOrder_totalPayed title-medium">12.389.900 VNĐ
+                                                        </div>
+                                                        <div class="topUserOrder_totalOrdered label-medium">5 orders
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -400,30 +405,68 @@
                         </div>
                     </div>
                 </div>
+                <!----======== End Statistical Chart ======== -->
+
+                <!----======== Recent Order  ======== -->
+                <div class="recentOrder p30">
+                    <div class="recentOrder_items p30">
+                        <h2 class="title-medium">Đơn hàng gần đây</h2>
+                        <div class="tableLine"></div>
+                        <table>
+                            <tr>
+                                <th class="label-large tableLargeItems"><input type="checkbox">Order ID</th>
+                                <th class="label-large">Sản Phẩm</th>
+                                <th class="label-large">Ngày Đặt</th>
+                                <th class="label-large">Tên Khách Hàng</th>
+                                <th class="label-large">Trạng Thái</th>
+                                <th class="label-large">Tổng</th>
+                                <th class="label-large">Khác</th>
+                            </tr>
+                            <tr>
+                                <td class="label-large tableLargeItems"><input type="checkbox">#2039124</td>
+                                <td class="label-large">Iphone 11 pro max</td>
+                                <td class="label-large">Feb 29,2023</td>
+                                <td class="label-large">Trần Thị Hồng Ngọc</td>
+                                <td class="label-large tableLargeItems" style="justify-content: center;"><span class="dotTable green"></span>Đã Giao</td>
+                                <td class="label-large">30.999.000 VNĐ</td>
+                                <td class="label-large"><button><i class="far fa-ellipsis-h"></i></button></td>
+                            </tr>
+                            <tr>
+                                <td class="label-large tableLargeItems"><input type="checkbox">#2039124</td>
+                                <td class="label-large">Iphone 14 pro max</td>
+                                <td class="label-large">Feb 29,2023</td>
+                                <td class="label-large">Trần Thị Hồng Ngọc</td>
+                                <td class="label-large tableLargeItems" style="justify-content: center;"><span class="dotTable orange"></span>Đang Giao</td>
+                                <td class="label-large">30.999.000 VNĐ</td>
+                                <td class="label-large"><button><i class="far fa-ellipsis-h"></i></button></td>
+                            </tr>
+                            <tr>
+                                <td class="label-large tableLargeItems"><input type="checkbox">#2039124</td>
+                                <td class="label-large">Iphone 15 pro max</td>
+                                <td class="label-large">Feb 29,2023</td>
+                                <td class="label-large">Trần Thị Hồng Ngọc</td>
+                                <td class="label-large tableLargeItems" style="justify-content: center;"><span class="dotTable red"></span>Đã Hủy</td>
+                                <td class="label-large">30.999.000 VNĐ</td>
+                                <td class="label-large"><button><i class="far fa-ellipsis-h"></i></button></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <!----======== End Recent Order ======== -->
+
+                <!----======== OverView DashBoard  ======== -->
+                <div class="overviewDashboard">
+                    <div class="col-12">
+                        <div class="col-4"></div>
+                        <div class="col-4"></div>
+                        <div class="col-4"></div>
+                    </div>
+                </div>
+
+                <!----======== End OverView DashBoard  ======== -->
+
             </div>
 
-
-            <!----======== End Statistical Chart ======== -->
-            </div>
-            <table>
-                <tr>
-                  <th>Sản Phẩm</th>
-                  <th>Order ID</th> 
-                  <th>Ngày Đặt</th>
-                  <th>Tên Khách Hàng</th>
-                  <th>Trạng Thái</th>
-                  <th>Khác</th>
-                </tr>
-                <tr>
-                  <td>Iphone 11 promax</td>
-                  <td>#777</td>
-                  <td>Feb 29,2023</td>
-                  <td>Trần Thị Hồng Ngọc</td>
-                  <td>Đã Giao</td>
-                  <td>9</td>
-                </tr>
-              </table>
-           
 
             <!----======== End Body DashBoard ======== -->
 
@@ -442,3 +485,7 @@
 </body>
 
 </html>
+
+
+
+

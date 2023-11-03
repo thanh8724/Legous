@@ -3,6 +3,7 @@ main {
     .containerAdmin {
       width: 95%;
       margin: 0 30px;
+//      <!----======== Local DashBoard ======== -->
 
       .localDashboard {
         .col-12 {
@@ -27,9 +28,13 @@ main {
         }
       }
 
+//      <!----======== End Local DashBoard ======== -->
+
+//      <!----======== Owl Carousel ======== -->
+
       .owl-carousel {
         .slider_contain {
-          background-color: #fff !important;
+          background-color: $-white !important;
           border-radius: 5px;
           .date-dashboard {
             color: $light-secondary;
@@ -140,20 +145,53 @@ main {
         }
       }
 
+//      <!----======== End Owl Carousel ======== -->
+
+//      <!----======== Statistical Chart ======== -->
+
       .statisticalChart {
 
         .statisticalChartItems {
 
-          .col-12 {
+          .customerOrderStatistics{
 
-            .col-7 {
-              background-color: #fff;
+            .orderStatistics {
+              background-color: $-white;
               margin-right: 20px;
               border-radius: 10px;
-            }
+              .myNavTabs {
+                .myNavItem {
+                  .nav-link {
+                    position: relative !important;
+                    color: $light-on-surface-variant;
+                    font-size: 14px;
+                    font-weight: 600;
+                    background-color: $light-surface2;
+                    &:after {
+                      content: "";
+                      position: absolute;
+                      background-color: $light-primary;
+                      height: 3px;
+                      width: 0;
+                      left: 0;
+                      bottom: 0px;
+                      transition: $trans-normal;
+                    }
+                    &.active{
+                      color: $light-primary;
 
-            .col-5 {
-              background-color: #fff;
+                    }
+                    &.active:after {
+                      content: "";
+                      width: 100%;
+                    }
+                  }
+                  
+                }
+              }
+            }
+            .topUsers {
+              background-color: $-white;
               border-radius: 10px;
 
               .headerTopUser {
@@ -175,7 +213,7 @@ main {
               .bodyTopUser {
                 .topUserOder {
                   .topUserOder_items {
-                    margin: 20px 0;
+                    margin: 15px 0;
                     .topUserOrder__image {
                       img {
                         width: 45px;
@@ -186,7 +224,8 @@ main {
                     }
                     .topUserOrder__info {
                       .topUserOrder__name {
-                        color: $light-on-container;
+                        color: $light-fixed;
+                        color: #1D192B !important;
                       }
                       .topUserOrder__role {
                         color: $light-secondary;
@@ -194,7 +233,8 @@ main {
                     }
                     .topUserOrder_Spend {
                       .topUserOrder_totalPayed {
-                        color: $light-on-container;
+                        color: $light-fixed;
+                        color: #1D192B !important;
                       }
                       .topUserOrder_totalOrdered {
                         color: $light-secondary;
@@ -207,6 +247,76 @@ main {
           }
         }
       }
+
+//      <!----======== End Statistical Chart ======== -->
+
+//      <!----======== Recent Order ======== -->
+
+      .recentOrder {
+        .recentOrder_items {
+          background-color: $-white !important;
+          .title-medium {
+            color: $light-on-container;
+            color: #1D192B;
+          }
+          .tableLine {
+            width: 100%;
+            height: 1px;
+            background-color: rgba(0, 0, 0, 0.247);
+            margin: 15px 0;
+          }
+          table{
+            tbody{
+              border: transparent !important;
+            }
+             td{
+              border: transparent !important;
+             }
+             tfoot{
+              border: transparent !important;
+             }
+             th{
+              border: transparent !important;
+              background-color: transparent !important;
+              color: $light-outline;
+             }
+             thead{
+              border: transparent !important;
+             }
+             tr{
+              border: transparent !important;
+              background-color: transparent !important;
+              .tableLargeItems {
+                display: flex;
+                align-items: center;
+                input{
+                  margin-right: 10px;
+                }
+                span {
+                  margin-right: 10px;
+                }
+              }
+             }
+             .dotTable{
+              width: 8px;
+              height: 8px;
+              border-radius: 9999px;
+              &.green {
+                background-color: $-green;
+              }
+              &.orange {
+                background-color: $-orange;
+              }
+              &.red {
+                background-color: $-orange;
+              }
+             }
+          }
+        }
+      }
+
+//      <!----======== End Recent Order ======== -->
+
     }
   }
 }

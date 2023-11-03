@@ -2055,7 +2055,7 @@ main .dashboard .containerAdmin .localDashboard .col-12 .dateCalender {
   color: #6750a4;
 }
 main .dashboard .containerAdmin .owl-carousel .slider_contain {
-  background-color: #fff !important;
+  background-color: #ffffff !important;
   border-radius: 5px;
 }
 main .dashboard .containerAdmin .owl-carousel .slider_contain .date-dashboard {
@@ -2126,47 +2126,131 @@ main .dashboard .containerAdmin .owl-carousel .slider_contain-4 .slider_items_st
 main .dashboard .containerAdmin .owl-carousel .slider_contain-4 .slider_items .buttonWallet {
   background-color: #ff6acc !important;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .col-12 .col-7 {
-  background-color: #fff;
+main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .orderStatistics {
+  background-color: #ffffff;
   margin-right: 20px;
   border-radius: 10px;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .col-12 .col-5 {
-  background-color: #fff;
+main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .orderStatistics .myNavTabs .myNavItem .nav-link {
+  position: relative !important;
+  color: #49454f;
+  font-size: 14px;
+  font-weight: 600;
+  background-color: #fef7ff;
+}
+main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .orderStatistics .myNavTabs .myNavItem .nav-link:after {
+  content: "";
+  position: absolute;
+  background-color: #6750a4;
+  height: 3px;
+  width: 0;
+  left: 0;
+  bottom: 0px;
+  transition: 0.22s linear;
+}
+main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .orderStatistics .myNavTabs .myNavItem .nav-link.active {
+  color: #6750a4;
+}
+main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .orderStatistics .myNavTabs .myNavItem .nav-link.active:after {
+  content: "";
+  width: 100%;
+}
+main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers {
+  background-color: #ffffff;
   border-radius: 10px;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .col-12 .col-5 .headerTopUser p {
+main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .headerTopUser p {
   color: #410e0b;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .col-12 .col-5 .headerTopUser button {
+main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .headerTopUser button {
   width: 40px;
   height: 40px;
   background-color: rgba(73, 69, 79, 0.12);
   border-radius: 9999px;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .col-12 .col-5 .headerTopUser button i {
+main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .headerTopUser button i {
   font-size: 16px;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .col-12 .col-5 .bodyTopUser .topUserOder .topUserOder_items {
-  margin: 20px 0;
+main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .bodyTopUser .topUserOder .topUserOder_items {
+  margin: 15px 0;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .col-12 .col-5 .bodyTopUser .topUserOder .topUserOder_items .topUserOrder__image img {
+main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .bodyTopUser .topUserOder .topUserOder_items .topUserOrder__image img {
   width: 45px;
   height: 45px;
   border-radius: 9999px;
   margin-right: 15px;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .col-12 .col-5 .bodyTopUser .topUserOder .topUserOder_items .topUserOrder__info .topUserOrder__name {
-  color: #410e0b;
+main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .bodyTopUser .topUserOder .topUserOder_items .topUserOrder__info .topUserOrder__name {
+  color: #ffd8e4;
+  color: #1D192B !important;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .col-12 .col-5 .bodyTopUser .topUserOder .topUserOder_items .topUserOrder__info .topUserOrder__role {
+main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .bodyTopUser .topUserOder .topUserOder_items .topUserOrder__info .topUserOrder__role {
   color: #625b71;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .col-12 .col-5 .bodyTopUser .topUserOder .topUserOder_items .topUserOrder_Spend .topUserOrder_totalPayed {
-  color: #410e0b;
+main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .bodyTopUser .topUserOder .topUserOder_items .topUserOrder_Spend .topUserOrder_totalPayed {
+  color: #ffd8e4;
+  color: #1D192B !important;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .col-12 .col-5 .bodyTopUser .topUserOder .topUserOder_items .topUserOrder_Spend .topUserOrder_totalOrdered {
+main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .bodyTopUser .topUserOder .topUserOder_items .topUserOrder_Spend .topUserOrder_totalOrdered {
   color: #625b71;
+}
+main .dashboard .containerAdmin .recentOrder .recentOrder_items {
+  background-color: #ffffff !important;
+}
+main .dashboard .containerAdmin .recentOrder .recentOrder_items .title-medium {
+  color: #410e0b;
+  color: #1D192B;
+}
+main .dashboard .containerAdmin .recentOrder .recentOrder_items .tableLine {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.247);
+  margin: 15px 0;
+}
+main .dashboard .containerAdmin .recentOrder .recentOrder_items table tbody {
+  border: transparent !important;
+}
+main .dashboard .containerAdmin .recentOrder .recentOrder_items table td {
+  border: transparent !important;
+}
+main .dashboard .containerAdmin .recentOrder .recentOrder_items table tfoot {
+  border: transparent !important;
+}
+main .dashboard .containerAdmin .recentOrder .recentOrder_items table th {
+  border: transparent !important;
+  background-color: transparent !important;
+  color: #79747e;
+}
+main .dashboard .containerAdmin .recentOrder .recentOrder_items table thead {
+  border: transparent !important;
+}
+main .dashboard .containerAdmin .recentOrder .recentOrder_items table tr {
+  border: transparent !important;
+  background-color: transparent !important;
+}
+main .dashboard .containerAdmin .recentOrder .recentOrder_items table tr .tableLargeItems {
+  display: flex;
+  align-items: center;
+}
+main .dashboard .containerAdmin .recentOrder .recentOrder_items table tr .tableLargeItems input {
+  margin-right: 10px;
+}
+main .dashboard .containerAdmin .recentOrder .recentOrder_items table tr .tableLargeItems span {
+  margin-right: 10px;
+}
+main .dashboard .containerAdmin .recentOrder .recentOrder_items table .dotTable {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+}
+main .dashboard .containerAdmin .recentOrder .recentOrder_items table .dotTable.green {
+  background-color: #00c58a;
+}
+main .dashboard .containerAdmin .recentOrder .recentOrder_items table .dotTable.orange {
+  background-color: #FF6651;
+}
+main .dashboard .containerAdmin .recentOrder .recentOrder_items table .dotTable.red {
+  background-color: #FF6651;
 }
 
 /* Mobile: with < 740px */
