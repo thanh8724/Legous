@@ -259,7 +259,7 @@ a {
 }
 
 .success-text {
-  color: #20E3B2;
+  color: #00c58a;
 }
 
 .pending-text {
@@ -751,7 +751,7 @@ table th {
 }
 
 .pending {
-  color: #20E3B2;
+  color: #00c58a;
 }
 
 .canceled {
@@ -1897,7 +1897,7 @@ html {
   color: #000000;
 }
 .main__user .main__inner .main__inner--bottom .main__inner--info-order .status-order {
-  color: #20E3B2;
+  color: #00c58a;
 }
 .main__user .main__inner .main__inner--bottom .main__inner--info-order .main__inner--info-orderBottom {
   color: #6750a4;
@@ -2039,9 +2039,33 @@ main .dashboard .containerAdmin {
 main .dashboard .containerAdmin .localDashboard .col-12 .h2_dashboard {
   color: #410e0b;
 }
+main .dashboard .containerAdmin .localDashboard .col-12 .aHref1 {
+  color: #000000;
+  text-decoration: unset;
+}
+main .dashboard .containerAdmin .localDashboard .col-12 .aHref2 {
+  color: #6750a4;
+  text-decoration: unset;
+}
+main .dashboard .containerAdmin .localDashboard .col-12 .calenderColor {
+  color: #6750a4;
+  font-size: 14px;
+}
+main .dashboard .containerAdmin .localDashboard .col-12 .dateCalender {
+  color: #6750a4;
+}
 main .dashboard .containerAdmin .owl-carousel .slider_contain {
-  background-color: #fff;
+  background-color: #fff !important;
   border-radius: 5px;
+}
+main .dashboard .containerAdmin .owl-carousel .slider_contain .date-dashboard {
+  color: #625b71;
+}
+main .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items .label .fa-ellipsis-v {
+  font-size: 24px;
+}
+main .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items .label-large {
+  color: #410e0b;
 }
 main .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items span {
   color: #1d192b;
@@ -2060,50 +2084,89 @@ main .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items .but
   height: 45px;
   border-radius: 5px;
 }
+main .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items .buttonWallet .fa-wallet {
+  font-size: 20px;
+}
 main .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items .slider_items_stonks p {
-  font-size: 1rem;
-  font-weight: 700;
   color: #00c58a;
 }
 main .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items .slider_items_stonks i {
   margin-right: 5px;
   color: #00c58a;
+  font-size: 18px;
 }
 main .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items .dashboard-moneyEarn {
   margin-left: 10px;
-}
-main .dashboard .containerAdmin .owl-carousel .slider_contain-2 {
-  margin: 0 15px;
+  color: #410e0b;
 }
 main .dashboard .containerAdmin .owl-carousel .slider_contain-2 .slider_items_stonks p {
-  color: #00b3ff;
+  color: #00b3ff !important;
 }
 main .dashboard .containerAdmin .owl-carousel .slider_contain-2 .slider_items_stonks i {
-  color: #00b3ff;
+  color: #00b3ff !important;
 }
 main .dashboard .containerAdmin .owl-carousel .slider_contain-2 .slider_items .buttonWallet {
   background-color: #00b3ff !important;
 }
-main .dashboard .containerAdmin .owl-carousel .slider_contain-3 {
-  margin: 0 15px;
-}
 main .dashboard .containerAdmin .owl-carousel .slider_contain-3 .slider_items_stonks p {
-  color: #6750a4;
+  color: #6750a4 !important;
 }
 main .dashboard .containerAdmin .owl-carousel .slider_contain-3 .slider_items_stonks i {
-  color: #6750a4;
+  color: #6750a4 !important;
 }
 main .dashboard .containerAdmin .owl-carousel .slider_contain-3 .slider_items .buttonWallet {
   background-color: #6750a4 !important;
 }
 main .dashboard .containerAdmin .owl-carousel .slider_contain-4 .slider_items_stonks p {
-  color: #ff6acc;
+  color: #ff6acc !important;
 }
 main .dashboard .containerAdmin .owl-carousel .slider_contain-4 .slider_items_stonks i {
-  color: #ff6acc;
+  color: #ff6acc !important;
 }
 main .dashboard .containerAdmin .owl-carousel .slider_contain-4 .slider_items .buttonWallet {
   background-color: #ff6acc !important;
+}
+main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .col-12 .col-7 {
+  background-color: #fff;
+  margin-right: 20px;
+  border-radius: 10px;
+}
+main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .col-12 .col-5 {
+  background-color: #fff;
+  border-radius: 10px;
+}
+main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .col-12 .col-5 .headerTopUser p {
+  color: #410e0b;
+}
+main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .col-12 .col-5 .headerTopUser button {
+  width: 40px;
+  height: 40px;
+  background-color: rgba(73, 69, 79, 0.12);
+  border-radius: 9999px;
+}
+main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .col-12 .col-5 .headerTopUser button i {
+  font-size: 16px;
+}
+main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .col-12 .col-5 .bodyTopUser .topUserOder .topUserOder_items {
+  margin: 20px 0;
+}
+main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .col-12 .col-5 .bodyTopUser .topUserOder .topUserOder_items .topUserOrder__image img {
+  width: 45px;
+  height: 45px;
+  border-radius: 9999px;
+  margin-right: 15px;
+}
+main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .col-12 .col-5 .bodyTopUser .topUserOder .topUserOder_items .topUserOrder__info .topUserOrder__name {
+  color: #410e0b;
+}
+main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .col-12 .col-5 .bodyTopUser .topUserOder .topUserOder_items .topUserOrder__info .topUserOrder__role {
+  color: #625b71;
+}
+main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .col-12 .col-5 .bodyTopUser .topUserOder .topUserOder_items .topUserOrder_Spend .topUserOrder_totalPayed {
+  color: #410e0b;
+}
+main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .col-12 .col-5 .bodyTopUser .topUserOder .topUserOder_items .topUserOrder_Spend .topUserOrder_totalOrdered {
+  color: #625b71;
 }
 
 /* Mobile: with < 740px */
