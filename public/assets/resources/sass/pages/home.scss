@@ -130,7 +130,21 @@ $banner-padding-block: 10rem;
     }
 }
 
-// comming soon section 
+// category soon section 
+.parent-category__wrapper {
+    .parent-category__name {
+        position: relative;
+        ::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 3.25rem;
+            height: .4rem;
+            background: $light-outline;
+        }
+    }
+}
 
 
 @keyframes slide-in {

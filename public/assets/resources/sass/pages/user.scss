@@ -1,0 +1,719 @@
+html {
+    font-size: 62.5%;
+}
+
+.main__user{
+    margin-top: 8rem;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    padding-inline: clamp(6rem, -11.143rem + 45.714vw, 30rem);
+    padding-block: clamp(1.2rem, -2.229rem + 9.143vw, 6rem);
+
+    .main__inner {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+
+        .main__inner--top {
+            width: 100%;
+            height: auto;
+            display: flex;
+            align-items: center;
+            gap: 2.2rem;
+        }
+    
+        .avatar__image {
+           width: 6.5rem;
+           height: 6.5rem;
+           border-radius: 100rem;
+           overflow: hidden;
+           display: flex;
+           flex-shrink: 0;
+    
+            .avatar__image--user {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        .info__user {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            
+            .info__user--top {
+                height: 2.8rem;
+                padding-top: 0.5rem;
+                background-color: inherit;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+
+                span {
+                    font-size: 2rem;
+                    font-weight: 500;
+                }
+            }
+
+            .info__user--bottom {
+                height: 2.8rem;
+                font-size: 1.4rem;
+                font-weight: 600;
+                display: flex;
+                align-items: center;
+                padding-bottom: 0.5rem;
+            }
+        }
+
+        .main__inner--bottom {
+            width: 100%;
+            height: auto;
+            display: flex;
+            gap: 3rem;
+            justify-content: center;
+
+            .main__inner--bottom-left {
+                width: 20rem;
+                height: auto;
+                    ul {
+                        list-style: none;
+                            li {
+                                width: 100%;
+                                height: 4.6rem;
+                                padding-left: 1rem;
+                                cursor: pointer;
+                                transition: $trans-bounce;
+                                    a {
+                                        width: 100%;
+                                        height: 100%;
+                                        font-size: 1.5rem;
+                                        color: black;
+                                        display: flex;
+                                        align-items: center;
+                                    }
+                            }
+                            li:hover {
+                                background-color: #eee;
+                            }
+                        .delete__acccount a {
+                            color: #b7332c;
+                        }
+                    }
+            }
+
+            .main__inner--bottom-right {
+                width: 100%;
+                height: 100%;
+                padding: 2rem 0;
+                display: flex;
+                flex-direction: column;
+                gap: 3rem;
+
+                h4 {
+                    font-weight: 600;
+                }
+                form {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 3rem;
+
+                        .form__checkbox {
+                            width: 100%;
+                            height: auto;
+                            display: flex;
+                            gap: 1rem;
+
+                                input {
+                                    width: 1.5rem;
+                                    height: 1.5rem;
+                                }
+                                
+                                label {
+                                    font-weight: 600;
+                                }
+                        }
+                        .form__group {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: space-between;
+                            gap: 1.8rem;
+                            height: auto;
+                            position: relative;
+
+                                span {
+                                    font-size: 1.3rem;
+                                }
+
+                                label {
+                                    font-size: 1.5rem;
+                                    font-weight: 600;
+                                    
+                                    span {
+                                        color: $light-error;
+                                        font-size: 2rem;
+                                    }
+                                }
+                                .label__place {
+                                    position: absolute;
+                                    top: 75%;
+                                    transform: translateY(-75%);
+                                    left: 2rem;
+                                    font-weight: 500;
+                                    color: #999;
+                                    pointer-events: none;
+                                    transition: all 0.3s ease;
+                                }
+                                input {
+                                    height: 4.6rem;
+                                    border-radius: 0.4rem;
+                                    padding: 0 2rem;
+                                    border: 1px solid black;
+                                    transition: all 0.3s ease;
+                                    color: black;
+                                }
+
+                                textarea:focus,
+                                input:focus {
+                                    border-color: #6750a4;
+                                }
+                                input:not(:placeholder-shown) + .label__place,
+                                input:focus + .label__place {
+                                    top: 46%;
+                                    left: 1rem;
+                                    background-color: white;
+                                    padding: 0 1rem;
+                                    color: #6750a4;
+                                }
+                                
+                                .form__upload-image {
+                                    width: auto;
+                                    height: 100%;
+                                    display: flex;
+                                    align-items: center;
+                                    gap: 3.2rem;
+
+                                        .box__image--user {
+                                            width: 9rem;
+                                            height: 9rem;
+                                            border-radius: 100rem;
+                                            overflow: hidden;
+                                            display: flex;
+                                            flex-shrink: 0;
+
+                                                img {
+                                                    width: 100%;
+                                                    height: 100%;
+                                                    object-fit: cover;
+                                                }
+                                        }
+
+                                        .box__btn {
+                                            width: auto;
+                                            height: 100%;
+                                            display: flex;
+                                            align-items: center;
+                                            gap: 2rem;
+
+                                            .input_file {
+                                                width: 14.5rem;
+                                                height: 40px;
+                                                border: none;
+                                                border-radius: 10rem;
+                                                background-color: #fff;
+                                                color: #555;
+                                                font-size: 14px;
+                                                cursor: pointer;
+                                                outline: none;
+                                                position: relative;
+                                                // z-index: 1;
+
+                                                    &:after {
+                                                        position: absolute;
+                                                        content: "Tải lên ảnh mới";
+                                                        width: 100%;
+                                                        height: 100%;
+                                                        background-color: #6750A4;
+                                                        // z-index: 100;
+                                                        top: 0;
+                                                        left: 0;
+                                                        display: flex;
+                                                        justify-content: center;
+                                                        align-items: center;
+                                                        color: white;
+                                                        font-weight: 600;
+                                                    }
+                                            }
+
+                                            .delete__upload--avatarImage {
+                                                width: 7.5rem;
+                                                height: 4rem;
+                                                border-radius: 10rem;
+                                                color: #6750A4;
+                                                font-weight: 600;
+                                                font-size: 1.4rem;
+                                            }
+                                        }
+                                }
+
+                                .form__group-bio {
+                                    display: flex;
+                                    flex-direction: column;
+                                    gap: 1.8rem;
+                                    position: relative;
+
+                                    textarea {
+                                        width: 100%;
+                                        height: 20rem;
+                                        border-radius: 4px;
+                                        padding: 1.2rem 2rem;
+                                        color: black;
+                                    }
+
+                                    .label__place {
+                                        position: absolute;
+                                        top: 25%;
+                                    }
+
+                                    textarea:not(:placeholder-shown) + .label__place,
+                                    textarea:focus + .label__place {
+                                        top: 3.7rem;
+                                        left: 1rem;
+                                        background-color: white;
+                                        padding: 0 1rem;
+                                        color: #6750a4;
+                                    }
+                                }
+
+                            }
+
+                        .form__group--submit {
+                            height: auto;
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: flex-end;
+
+                                .btn__submit {
+                                    border-radius: 100rem;
+                                    color: white;
+                                    font-weight: 600;
+                                    border: none;
+                                }
+                                .box__delete--account {
+                                    width: 15rem;
+                                    height: 4rem;
+                                    border-radius: 10rem;
+                                    padding: 1rem 2rem;
+                                    display: flex;
+                                    gap: 1rem;
+                                    align-items: center;
+                                    background-color: $light-error;
+                                    position: relative;
+                                    cursor: pointer;
+                                    
+
+                                    .btn__delete {
+                                        width: 100%;
+                                        height: 100%;
+                                        position: absolute;
+                                        top: 0;
+                                        left: 0;
+                                        border-radius: 10rem;
+                                        border: none;
+                                        color: white;
+                                        font-weight: 600;
+                                        cursor: pointer;
+                                        padding-left: 4rem;
+                                    }
+
+                                    i {
+                                        color: white;
+                                        font-size: 1.5rem;
+                                    }
+                                }
+                        }
+
+                        
+                }
+
+                .add_new-addres--box {
+                    width: 100%;
+                    height: 4rem;
+                    display: flex;
+                    justify-content: flex-end;
+
+                    .btn__submit {
+                        height: auto;
+                        width: auto;
+                        border-radius: 10rem;
+                        background-color: #6750a4;
+                        color: white;
+                        border: none;
+                        cursor: pointer;
+                        padding: 1rem 2rem;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+                }
+
+                .form__address {
+                    display: flex;
+                    flex-direction: row;
+                    width: 100%;
+                    height: auto;
+                    gap: 0;
+
+                    .form__address--left {
+                        width: 70%;
+                        height: auto;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 1.7rem;
+
+                        span {
+                            font-family: o;
+                            font-size: 1.3rem;
+                            font-style: normal;
+                            font-weight: 400;
+                            line-height: 2.4rem;
+                            color: var(--m-3-sys-light-secondary, #625B71);
+                        }
+
+                        &---rows-1 {
+                            display: flex;
+                            gap: 1rem;
+                        }
+
+                        &---rows-2 {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 1.7rem;
+                        }
+
+                        &---rows-3 {
+                        width: 100%;
+                        height: auto;
+                        display: flex;
+                        align-items: center;
+                        justify-content: flex-start;
+
+                        .label__default {
+                            width: 8.2rem;
+                            height: 3rem;
+                            border: 1px solid black;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            font-size: 1.3rem;
+                            font-weight: 600;
+                        }
+                        }
+                    }
+
+                    .form__address--right {
+                        width: 30%;
+                        height: auto;
+
+                            .form__address--right---btn {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 2rem;
+
+                            &_top {
+                                width: auto;
+                                display: flex;
+                                justify-content: flex-end;
+                                gap: 2rem;
+                                
+                                a {
+                                    font-size: 1.3rem;
+                                    font-weight: 600;
+                                    color: $light-primary;
+                                }
+                            }
+
+                            &_bottom {
+                                width: 100%;
+                                height: 4rem;
+
+                                input {
+                                    width: 100%;
+                                    height: 100%;
+                                    border-radius: 10rem;
+                                    border: 1px solid black;
+                                    font-size: 1.3rem;
+                                    font-weight: 600;
+                                    color: $light-primary;
+                                    cursor: pointer;
+                                    padding: 1rem 2.4rem;
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                }
+
+                                .address__dafault {
+                                    border: 1px solid $light-on-surface;
+                                    color: var(--m-3-sys-light-on-surface, #1D1B20);
+                                    opacity: 0.38;
+                                }
+                            }
+                            }
+                    }
+                }
+            }
+            .main__inner--bottom-container{
+                border-radius: 20px;
+                border: 1px solid var(--m-3-ref-neutral-neutral-87, #DED8E1);
+                background: var(--m-3-white, #FFF);
+                .fist--container{
+                    font-style: normal;
+                    font-weight: 600;
+                    line-height: 130%;
+                    .date{
+                        font-size: 1.2rem;
+                        font-style: normal;
+                        font-weight: 500;
+                        line-height: 1.6rem; /* 133.333% */
+                        letter-spacing: 0.5px;
+                        color: var(--m-3-sys-light-secondary, #625B71);
+                        
+                    }
+                    .pending{
+                        color: var(--green, #00C58A);
+                        font-size: 1.5rem;
+                        font-weight: 600;
+                    }
+                    
+                }
+                .second--container{
+                    .box-content{
+                        i{
+                            width: 1.8rem;
+                            height: 2rem;
+                            flex-shrink: 0;
+                        }
+                        h3{
+                            font-size: 1.6rem;
+                            font-style: normal;
+                            font-weight: 500;
+                            line-height: 2.4rem; /* 150% */
+                        }
+                        p{
+                            color: var(--m-3-sys-light-on-secondary-container, #1D192B);
+                            font-size: 1.4rem;
+                            font-style: normal;
+                            font-weight: 400;
+                            line-height: 2rem; /* 142.857% */
+                        }
+                    }
+                }
+                .finally--container{
+                    h2{
+                        color: var(--m-3-sys-light-on-secondary-container, #1D192B);
+                        font-size: 2.4rem;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 3.2rem; 
+                    }
+                }
+            }
+
+            .main__inner--bottom-right--content {
+                width: 100%;
+                min-height: 6rem;
+                gap: 1rem;
+
+                .bottom-right--content_top {
+                    width: 100%;
+                    height: 4rem;
+
+                    .filter__btn {
+                        padding: 10px 24px 10px 16px;
+                        // flex: 1 0 0;
+                        align-self: stretch;
+                        border: 1px solid $light-primary;
+
+                        span {
+                            color: $light-primary;
+                            font-weight: 700;
+                            font-size: 1.4rem;
+                        }
+                    }
+                }
+
+                .bottom-right--content_main {
+                    min-height: 10rem;
+                }
+
+                .bottom-right--content_bottom {
+
+                    .list__dots {
+
+                        .list__dots--item {
+                            width: 4rem;
+                            height: 4rem;
+                            cursor: pointer;
+                            font-size: 1.4rem;
+                            font-weight: 600;
+                            color: $light-secondary;
+                        }
+
+                        .dots-active {
+                            background-color: $light-primary;
+                            color: white;
+                        }
+                    }
+
+                    .btn-next,
+                    .btn-back {
+                        color: $light-primary;
+                        cursor: pointer;
+                        font-weight: 700;
+                    }
+                }
+            }
+
+            .main__inner--info-order {
+
+                span {
+                    font-size: 1.3rem;
+                    font-weight: 600;
+                    color: $light-outline;
+                }
+
+                .all_price {
+                    font-size: 2rem;
+                    color: $-black;
+                }
+
+                .status-order {
+                    color: $-green;
+                }
+
+                .main__inner--info-orderBottom {
+                    color: $light-primary;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
+
+.form__address--container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.527);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: $trans-normal;
+
+    .form__address--content {
+        width: 43.2rem;
+        height: auto;
+        padding: 2rem;
+        background-color: white;
+        border-radius: 0.8rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+
+        .label__place {
+            font-size: clamp(1.2rem, 1.057rem + 0.381vw, 1.4rem);
+            font-weight: 400;
+            line-height: clamp(1.8rem, 1.657rem + 0.381vw, 2rem);
+        }
+
+        &-rows1 {
+            display: flex;
+            gap: 1.8rem;
+            height: 4.6rem;
+
+
+            .form__group {
+                width: calc(100%/2);
+
+                input {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 0.4rem;
+                }
+            }
+        }
+
+        &-rows2 {
+            width: 100%;
+            height: 4.6rem;
+
+        }
+
+        &-rows3 {
+            width: 100%;
+            height: 14rem;
+            background-color: #D9D9D9;
+            margin: auto;
+        }
+
+        &-rows4 {
+            display: flex;
+            width: 100%;
+            height: auto;
+            align-items: center;
+            gap: 1rem;
+
+            iframe {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        &-rows5 {
+            width: 100%;
+            height: 4.6rem;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+
+            .form__group {
+                display: flex;
+                flex-direction: row;
+                gap: 1.2rem;
+
+                button {
+                    color: $light-primary;
+                }
+
+                input {
+                    color: $light-on-primary;
+                    background-color: $light-primary;
+                    padding: 10px 24px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border: none;
+                    border-radius: 10rem;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
+
+.menu__active {
+    background-color: #e6e0e9;
+}
+
+
+// respon

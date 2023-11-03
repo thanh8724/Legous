@@ -16,6 +16,8 @@
     @import 'components/button.scss';
     @import 'components/input.scss';
     @import 'components/searchProduct.scss';
+    @import 'components/table.scss';
+    @import 'components/categoryItem.scss';
     // import theme
     @import 'theme/darkModeAdmin.scss';
     
@@ -25,6 +27,8 @@
     // import pages 
     @import 'pages/home.scss';
     @import 'pages/shop.scss';
+    @import 'pages/login.scss';
+    @import 'pages/user.scss';
     @import 'pages/admin_products.scss';
     @import 'pages/admin_dashboard.scss';
 
@@ -220,6 +224,9 @@
             }
             .g16 {
                 gap: 1.6rem;
+            }
+            .g18 {
+                gap: 1.8rem;
             }
             .g2 {
                 gap: .2rem;
