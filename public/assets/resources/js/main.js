@@ -31,7 +31,6 @@ const app = {
         // product tabs
         const tabs = document.querySelectorAll('.tab__item');
         const panels = document.querySelectorAll('.panel__item');
-        console.log(panels)
         if (tabs) {
             tabs.forEach((tab, i) => {
                 tab.addEventListener('click' , () => {

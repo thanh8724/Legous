@@ -8,6 +8,7 @@
     // import base
     @import 'base/reset.scss';
     @import 'base/typography.scss';
+
     // import components
     @import 'components/header.scss';
     @import 'components/footer.scss';
@@ -25,8 +26,14 @@
     // import pages 
     @import 'pages/home.scss';
     @import 'pages/shop.scss';
+<<<<<<< HEAD
     @import 'pages/login.scss';
     @import 'pages/user.scss';
+=======
+    @import 'pages/admin_products.scss';
+    @import 'pages/admin_dashboard.scss';
+
+>>>>>>> 1546054b96723958482ef401c54d81473014a90b
 // import partials end
 
 // || Responsive 

@@ -122,27 +122,27 @@
 
 // || common text style classes start
 .fw-light {
-    font-weight: 300;
+    font-weight: 300 !important;
 }
 
 .fw-normal {
-    font-weight: normal;
+    font-weight: normal !important;
 }
 
 .fw-smb {
-    font-weight: 600;
+    font-weight: 600 !important;
 }
 
 .fw-bold {
-    font-weight: bold;
+    font-weight: bold !important;
 }
 
 .fw-exbold {
-    font-weight: 800;
+    font-weight: 800 !important;
 }
 
 .fw-black {
-    font-weight: 900;
+    font-weight: 900 !important;
 }
 
 .underline {
@@ -193,11 +193,28 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-family: 'mainFont';
-    font-size: 6.8rem;
+    font-size: clamp(2.4rem, -0.743rem + 8.381vw, 6.8rem);
     font-style: normal;
     font-weight: 700;
-    line-height: 6.8rem;
+    line-height: clamp(3.6rem, 0.457rem + 8.381vw, 8rem);
     letter-spacing: -0.25px;
     text-transform: uppercase;
 }
+
+.alert-text {
+    color: $light-error;
+}
+
+.error60 {
+    color: $error60 !important;
+}
+
+.success-text {
+    color: $-green;
+}
+
+.pending-text {
+    color: $-blue;
+}
+
 // || common text style classes end
