@@ -434,6 +434,14 @@ a {
   }
 }
 /* PC: width >= 1024px */
+.footer {
+  background: #000000;
+}
+.footer-column .footer-heading {
+  color: #ffffff;
+  margin-bottom: 1.6rem;
+}
+
 .product {
   display: grid;
   grid-row: span 4;
