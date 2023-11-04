@@ -1,914 +1,861 @@
 <!DOCTYPE html>
+<!--=== Coding by CodingLab | www.codinglabweb.com === -->
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin-Products</title>
     <link rel="stylesheet" href="/public/assets/resources/sass/css/app.css">
-    <link rel="icon" type="image/x-icon" href="/public/assets/media/images/favicon/favicon.svg">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css" rel="stylesheet" type="text/css" />
+    <link rel="icon" type="image/x-icon" href="/views/public/assets/media/images/favicon/favicon.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css" rel="stylesheet"
+        type="text/css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Space+Mono&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link
-        rel="stylesheet"
-        type="text/css"
-        href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
-    />
-    <script
-        type="text/javascript"
-        src="https://code.jquery.com/jquery-1.11.0.min.js"
-    ></script>
-    <script
-        type="text/javascript"
-        src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"
-    ></script>
-    <script
-        type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
-    ></script>
-    <script src="/views/public/assets/resources/js/jquery.js"></script>
+        href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Space+Mono&display=swap"
+        rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="../assets/resources/sass/css/owl.carousel.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="/public/assets/resources/js/jquery.js"></script>
+    <!-- Include Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Admin Dashboard Panel</title>
 </head>
 
 <body>
-  <div class="container-full">
-    <div class="flex">
-      <!--Nav-LEFT -->
-      <nav class="sidebar v-nav por" style="height: 100vh;border-right: 1px solid var(--m-3-sys-light-surface-dim, #DED8E1);
-      background: var(--m-3-white, #FFF); width: 250px; padding: 0px 20px;
-      align-self: stretch;
-      ">
-        <!--LOGO-->
-        <div class="logo flex" style="padding: 38px 10px; align-items: flex-start; gap: 10px;
-        ">
-          <img src="/public/assets/media/images/logo.svg" alt="">
+    <main>
+
+      <nav>
+        <div class="logo-name">
+            <div class="logo-image">
+                <img src="../assets/media/images/logo.png" alt="">
+            </div>
+
+            <span class="logo_name display-small fw-black">LEGOUS</span>
         </div>
 
-        <!--Menu-->
-        <a href="#">
-          <div class="flex g12 box-shadow1 active"
-            style="align-self: stretch; border-radius: 8px; background-color: #6750a4;">
-            <div class="flex g12" style="align-items: flex-start; align-self: stretch; padding: 16px 24px;">
-              <div class="flex-center" style="width: 24px; height: 24px; flex-shrink: 0; color: #FFF;">
-                <i class="fa-solid fa-table-columns"></i>
-              </div>
-              <p class="fw-normal label-large-prominent" style="font-size: 18px;line-height: 20px;letter-spacing: 0.1px; color: #FFF;">Dashboard</p>
-            </div>
-          </div>
-        </a>
-        <a href="#">
-          <div class="flex g12 " style="align-self: stretch; border-radius: 8px;">
-            <div class="flex g12" style="align-items: flex-start; align-self: stretch; padding: 16px 24px;">
-              <div class="flex-center" style="width: 24px; height: 24px; flex-shrink: 0; color: #625B71;">
-                <i class="fa-solid fa-store"></i>
-              </div>
-              <p class="fw-normal label-large-prominent" style="font-size: 18px;line-height: 20px;letter-spacing: 0.1px; color: #625B71;">Product</p>
-            </div>
-          </div>
-        </a>
-        <a href="#">
-          <div class="flex g12 " style="align-self: stretch; border-radius: 8px;">
-            <div class="flex g12" style="align-items: flex-start; align-self: stretch; padding: 16px 24px;">
-              <div class="flex-center" style="width: 24px; height: 24px; flex-shrink: 0; color: #625B71;">
-                <i class="fa-solid fa-list-check"></i>
-              </div>
-              <p class="fw-normal label-large-prominent" style="font-size: 18px;line-height: 20px;letter-spacing: 0.1px; color: #625B71;">Category</p>
-            </div>
-          </div>
-        </a>
-        <a href="#">
-          <div class="flex g12 " style="align-self: stretch; border-radius: 8px;">
-            <div class="flex g12" style="align-items: flex-start; align-self: stretch; padding: 16px 24px;">
-              <div class="flex-center" style="width: 24px; height: 24px; flex-shrink: 0; color: #625B71;">
-                <i class="fa-solid fa-bag-shopping"></i>
-              </div>
-              <p class="fw-normal label-large-prominent" style="font-size: 18px;line-height: 20px;letter-spacing: 0.1px; color: #625B71;">Orders</p>
-            </div>
-          </div>
-        </a>
-        <a href="#">
-          <div class="flex g12 " style="align-self: stretch; border-radius: 8px;">
-            <div class="flex g12" style="align-items: flex-start; align-self: stretch; padding: 16px 24px;">
-              <div class="flex-center" style="width: 24px; height: 24px; flex-shrink: 0; color: #625B71;">
-                <i class="fa-regular fa-user"></i>
-              </div>
-              <p class="fw-normal label-large-prominent" style="font-size: 18px;line-height: 20px;letter-spacing: 0.1px; color: #625B71;">Client</p>
-            </div>
-          </div>
-        </a>
+        <div class="menu-items">
+            <ul class="nav-links">
+                <li><a href="#">
+                        <i class="far fa-chart-line"></i>
+                        <span class="link-name title-small">Bảng Điều Khiển</span>
+                    </a></li>
+                <li class="active"><a href="#">
+                        <i class="far fa-store "></i>
+                        <span class="link-name title-small">Sản Phẩm</span>
+                    </a></li>
+                <li><a href="#">
+                        <i class="fal fa-clipboard-list-check"></i>
+                        <span class="link-name title-small">Danh Mục</span>
+                    </a></li>
+                <li><a href="#">
+                        <i class="fal fa-shopping-bag"></i>
+                        <span class="link-name title-small">Đơn Hàng</span>
+                    </a></li>
+                <li><a href="#">
+                        <i class="fal fa-user"></i>
+                        <span class="link-name title-small">Khách Hàng</span>
+                    </a></li>
 
-        <!---Menu-END -->
+            </ul>
 
-      </nav>
-      <!--Nav-LEFT-END -->
-      <!--Nav-RIGHT -->
-      <section class="v-nav" style="flex: 1;">
-        <div class="flex-between p30 ">
-          <!-- Hambuger --->
-          <div class="flex-center" style="gap: 10px; width: 48px; height: 48px;">
-            <button class="btn elevated-btn" style="padding: 8px; border-radius: 10rem;">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path d="M15.7049 7.41L14.2949 6L8.29492 12L14.2949 18L15.7049 16.59L11.1249 12L15.7049 7.41Z"
-                  fill="black" />
-              </svg>
-            </button>
-          </div>
-          <!-- Hambuger End --->
+            <ul class="logout-mode">
+                <li><a href="#">
+                        <i class="far fa-sign-out-alt"></i>
+                        <span class="link-name title-small">Logout</span>
+                    </a></li>
 
-          <!-- Search-Box --->
-          <div class="header__search-box">
-            <form action="" class="form search__form">
-              <div class="form__group flex-center por">
-                <button class="icon-btn search__form__btn"><i class="far fa-search"
-                    style="align-items: flex-start;"></i></button>
-                <input type="text" class="form__input search__form__input" placeholder="Nhập tên sản phẩm">
-              </div>
-            </form>
-          </div>
-          <!-- Search-Box End --->
+                <li class="mode">
+                    <a href="#">
+                        <i class="far fa-moon-stars"></i>
+                        <span class="link-name title-small">Dark Mode</span>
+                    </a>
 
-          <div class="flex-center g60">
-            <div class="" style="width: 20px;
-               height: 20.06px;">
-              <button>
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
-                  <path
-                    d="M7.5 17.97H7C3 17.97 1 16.97 1 11.97V6.96997C1 2.96997 3 0.969971 7 0.969971H15C19 0.969971 21 2.96997 21 6.96997V11.97C21 15.97 19 17.97 15 17.97H14.5C14.19 17.97 13.89 18.12 13.7 18.37L12.2 20.37C11.54 21.25 10.46 21.25 9.8 20.37L8.3 18.37C8.14 18.15 7.77 17.97 7.5 17.97Z"
-                    stroke="#625B71" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
-                  <path d="M14.9961 9.96991H15.005" stroke="#625B71" stroke-linecap="round" stroke-linejoin="round" />
-                  <path d="M10.9961 9.96991H11.0051" stroke="#625B71" stroke-linecap="round" stroke-linejoin="round" />
-                  <path d="M6.99414 9.96991H7.00315" stroke="#625B71" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-              </button>
-            </div>
-            <div class="" style="width: 20px;
-            height: 23.755px;">
-              <button>
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="26" viewBox="0 0 22 26" fill="none">
-                  <path
-                    d="M14.7116 22.6505C13.7218 24.1352 12.4845 24.8776 10.9998 24.8776C9.51511 24.8776 8.27786 24.1352 7.28806 22.6505M18.5488 20.4235H3.45082C2.09727 20.4235 1 19.3262 1 17.9726C1 17.5284 1.12072 17.0926 1.34926 16.7117C2.80653 14.2829 3.57631 11.5038 3.57631 8.67135V7.06115C3.57631 3.78124 6.2352 1.12235 9.51511 1.12235H12.4845C15.7644 1.12235 18.4233 3.78124 18.4233 7.06115V8.67135C18.4233 11.5038 19.1931 14.2829 20.6504 16.7117C21.3468 17.8724 20.9704 19.3778 19.8097 20.0742C19.4289 20.3027 18.993 20.4235 18.5488 20.4235Z"
-                    stroke="#625B71" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-              </button>
-            </div>
-            <div class="flex-center" style="width: 45px;
-            height: 45px; border-radius: 10rem; object-fit: contain;">
-              <a href="#">
-                <img src="/public/assets/media/images/users/user-2.svg"
-                  style="object-fit: cover; max-width: 100%; height: auto; border-radius: 10rem;" alt="">
-              </a>
-            </div>
-          </div>
-
+                    <div class="mode-toggle">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+            </ul>
         </div>
-        <div class="flex-column p30 g30"
-          style="align-self: stretch; align-items: flex-start; background-color: #f7f7f7;">
-          <div class="text">
-            <h1 class="label-large-prominent" style="font-size: 24px;
-            line-height: 32px;">Sản Phẩm</h1>
-          </div>
-          <!--DateTimelocal-->
-          <div class="flex-between width-full" style="gap: 8px;
-          align-items: center;">
-            <div class="flex g8">
-              <span>Admin</span>/<a href="#">Product</a>
+    </nav>
+
+        <section class="dashboard">
+            <!----======== Header DashBoard ======== -->
+            <div class="top">
+                <i class="fas fa-angle-left sidebar-toggle"></i>
+                <div class="search-box">
+                    <i class="far fa-search"></i>
+                    <input type="text" placeholder="Search here...">
+                </div>
+                <div class="info-user">
+                    <i class="far fa-comment-alt"></i>
+                    <i class="fal fa-bell"></i>
+                    <img src="/public/assets/media/images/users/user-2.svg" alt="">
+                </div>
             </div>
-            <div class="flex-center g8">
-              <span><i class="fa-solid fa-calendar-days"></i></span>
-              <input class="label-large-prominent" type="datetime-local" style="color: #625B71; border: none; font-size: 16px;
-              ">
+            <div class="flex-column p30 g30"
+            style="align-self: stretch; align-items: flex-start;">
+            <div class="text">
+              <h1 class="label-large-prominent" style="font-size: 24px;
+              line-height: 32px;">Sản Phẩm</h1>
             </div>
-          </div>
-          <!--DateTimelocal-END-->
-
-          <!--Products-->
-          <div class="container-products width-full flex" style="flex-wrap: wrap; justify-content: space-between; gap: 20px">
-            <!--Cart-->
-              <div class="cart trans-bounce flex-column p20" style="
-              height: 338px; border-radius: 12px;
-              border: 1px #DED8E1;
-              background:  #FFF;   
-              width: calc(100% / 3 - 30px);
-              ">
-                <div class="v-nav" style="gap: 22px; flex: 1;">
-                  <div class="h-nav g12">
-                    <div class="img-cart flex" style="width: 120px">
-                      <img src="/public/assets/media/images/product/v944cyfrwt851.webp"
-                        style="max-width: 100%; height: 100px;object-fit: cover; border-radius: 8px; flex-shrink: 0;" alt="">
-                    </div>
-                    <div class="text-info-cart flex-column" style="gap: 12px; max-width: 200px;">
-                      <h1 class="fw-smb label-large-prominent" style="
-                      font-size: 18px; word-break: break-all;display:-webkit-box;
-                      -webkit-line-clamp:3;
-                      -webkit-box-orient: vertical;
-                      overflow: hidden;
-                      text-overflow: ellipsis;
-                      word-break: break-word;">Sasuke - Susano toàn chân thể </h1>
-
-                      <p style="font-size: 14px;
-                      font-style: normal;
-                      font-weight: 500;
-                      line-height: 20px; /* 142.857% */
-                      letter-spacing: 0.25px">Category: Naruto</p>
-                      <span class="fw-smb label-medium-prominent" style="font-size: 16px;">1.256.900 VNĐ</span>
-
-                    </div>
-                    <div class="options">
-                      <div class="flex-center" style="border-radius: 12px;background: #ECE6F0;">
-                        <a href=""><i class="fa-solid fa-ellipsis" style="padding: 8px; color: #6750a4;"></i></a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="description flex-column g2" style="flex: 1;">
-                    <div class="flex-column" style="flex-shrink: 0; min-width: 330px;">
-                    <h1 class="label-large-prominent" style="font-size: 16px; ">Summary</h1>
-                    <p style="font-size: 12px; word-break: break-all;display:-webkit-box;
-                    -webkit-line-clamp:3;
-                    -webkit-box-orient: vertical;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    word-break: break-word;">Nam tempor accumsan felis, mollis mollis semdapibus non.</p>
-                    </div>
-                  </div>
-                  <!--INFO sales Qty -->
-                  <div class="info-sales-qty flex-column" style="padding: 14px; gap: 10px; border-radius: 4px; background: rgba(73, 69, 79, 0.08);">
-                    <div class="flex-between">
-                      <div class="Sales">
-                        <span class="fw-smb label-large-prominent">Sales</span>
-                      </div>
-                      <div class="index flex-center" style="gap: 4px;">
-                        <i class="fa-solid fa-arrow-up" style="color: #00C58A;"></i>
-                        <span class="fw-smb label-large-prominent" style="color: #00C58A;">1209</span>
-                      </div>
-                    </div>
-                    <div class="flex-between">
-                      <div class="Qty">
-                        <span class="fw-smb label-large-prominent">Qty</span>
-                      </div>
-                      <div class="index flex-center" style="gap: 4px;">
-                        <div class="flex" style="width: 36px; height: 4px; background: black;border: none; border-radius: 8px;padding-right: 0px;">
-                          <span class="flex" style="width: 70%; background: #00C58A; border-radius: 8px; flex-shrink: 0;
-                          align-self: stretch;"></span>
-                          
-                        </div>
-                        <span class="fw-smb label-large-prominent" style="color: #00C58A;">1209</span>
-                      </div>
-                    </div>
-                    
-                  </div>
-                  <!--INFO sales Qty - END -->
-                  <!--Cart-END-->
-                </div>
+            <!--DateTimelocal-->
+            <div class="flex-between width-full" style="gap: 8px;
+            align-items: center;">
+              <div class="flex g8">
+                <span class="label-large">Admin /</span><a href="#" class="label-large" style="text-decoration: none;">Sản Phẩm</a>
               </div>
-              <div class="cart trans-bounce flex-column p20" style="
-              height: 338px; border-radius: 12px;
-              border: 1px #DED8E1;
-              background:  #FFF;   
-              width: calc(100% / 3 - 30px);
-    
-              ">
-                <div class="v-nav" style="gap: 22px; flex: 1;">
-                  <div class="h-nav g12">
-                    <div class="img-cart flex" style="width: 120px">
-                      <img src="/public/assets/media/images/product/v944cyfrwt851.webp"
-                        style="max-width: 100%; height: 100px;object-fit: cover; border-radius: 8px; flex-shrink: 0;" alt="">
-                    </div>
-                    <div class="text-info-cart flex-column" style="gap: 12px; max-width: 200px;">
-                      <h1 class="fw-smb label-large-prominent" style="
-                      font-size: 18px; word-break: break-all;display:-webkit-box;
-                      -webkit-line-clamp:3;
-                      -webkit-box-orient: vertical;
-                      overflow: hidden;
-                      text-overflow: ellipsis;
-                      word-break: break-word;">Sasuke - Susano toàn chân thể </h1>
-
-                      <p style="font-size: 14px;
-                      font-style: normal;
-                      font-weight: 500;
-                      line-height: 20px; /* 142.857% */
-                      letter-spacing: 0.25px">Category: Naruto</p>
-
-                      <span class="fw-smb label-medium-prominent" style="font-size: 16px;">1.256.900 VNĐ</span>
-
-                    </div>
-                    <div class="options">
-                      <div class="flex-center" style="border-radius: 12px;background: #ECE6F0;">
-                        <a href=""><i class="fa-solid fa-ellipsis" style="padding: 8px; color: #6750a4;"></i></a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="description flex-column g2" style="flex: 1;">
-                    <div class="flex-column" style="flex-shrink: 0; min-width: 330px;">
-                    <h1 class="label-large-prominent" style="font-size: 16px; ">Summary</h1>
-                    <p style="font-size: 12px; word-break: break-all;display:-webkit-box;
-                    -webkit-line-clamp:3;
-                    -webkit-box-orient: vertical;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    word-break: break-word;">Nam tempor accumsan felis, mollis mollis semdapibus non.</p>
-                    </div>
-                  </div>
-                  <!--INFO sales Qty -->
-                  <div class="info-sales-qty flex-column" style="padding: 14px; gap: 10px; border-radius: 4px; background: rgba(73, 69, 79, 0.08);">
-                    <div class="flex-between">
-                      <div class="Sales">
-                        <span class="fw-smb label-large-prominent">Sales</span>
-                      </div>
-                      <div class="index flex-center" style="gap: 4px;">
-                        <i class="fa-solid fa-arrow-up" style="color: #00C58A;"></i>
-                        <span class="fw-smb label-large-prominent" style="color: #00C58A;">1209</span>
-                      </div>
-                    </div>
-                    <div class="flex-between">
-                      <div class="Qty">
-                        <span class="fw-smb label-large-prominent">Qty</span>
-                      </div>
-                      <div class="index flex-center" style="gap: 4px;">
-                        <div class="flex" style="width: 36px; height: 4px; background: black;border: none; border-radius: 8px;padding-right: 0px;">
-                          <span class="flex" style="width: 70%; background: #00C58A; border-radius: 8px; flex-shrink: 0;
-                          align-self: stretch;"></span>
-                          
-                        </div>
-                        <span class="fw-smb label-large-prominent" style="color: #00C58A;">1209</span>
-                      </div>
-                    </div>
-                    
-                  </div>
-                  <!--INFO sales Qty - END -->
-                  <!--Cart-END-->
-                </div>
-              </div>
-              <div class="cart trans-bounce flex-column p20" style="
-              height: 338px; border-radius: 12px;
-              border: 1px #DED8E1;
-              background:  #FFF;   
-              width: calc(100% / 3 - 30px);
-    
-              ">
-                <div class="v-nav" style="gap: 22px; flex: 1;">
-                  <div class="h-nav g12">
-                    <div class="img-cart flex" style="width: 120px">
-                      <img src="/public/assets/media/images/product/v944cyfrwt851.webp"
-                        style="max-width: 100%; height: 100px;object-fit: cover; border-radius: 8px; flex-shrink: 0;" alt="">
-                    </div>
-                    <div class="text-info-cart flex-column" style="gap: 12px; max-width: 200px;">
-                      <h1 class="fw-smb label-large-prominent" style="
-                      font-size: 18px; word-break: break-all;display:-webkit-box;
-                      -webkit-line-clamp:3;
-                      -webkit-box-orient: vertical;
-                      overflow: hidden;
-                      text-overflow: ellipsis;
-                      word-break: break-word;">Sasuke - Susano toàn chân thể </h1>
-
-                      <p style="font-size: 14px;
-                      font-style: normal;
-                      font-weight: 500;
-                      line-height: 20px; /* 142.857% */
-                      letter-spacing: 0.25px">Category: Naruto</p>
-
-                      <span class="fw-smb label-medium-prominent" style="font-size: 16px;">1.256.900 VNĐ</span>
-
-                    </div>
-                    <div class="options">
-                      <div class="flex-center" style="border-radius: 12px;background: #ECE6F0;">
-                        <a href=""><i class="fa-solid fa-ellipsis" style="padding: 8px; color: #6750a4;"></i></a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="description flex-column g2" style="flex: 1;">
-                    <div class="flex-column" style="flex-shrink: 0; min-width: 330px;">
-                    <h1 class="label-large-prominent" style="font-size: 16px; ">Summary</h1>
-                    <p style="font-size: 12px; word-break: break-all;display:-webkit-box;
-                    -webkit-line-clamp:3;
-                    -webkit-box-orient: vertical;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    word-break: break-word;">Nam tempor accumsan felis, mollis mollis semdapibus non.</p>
-                    </div>
-                  </div>
-                  <!--INFO sales Qty -->
-                  <div class="info-sales-qty flex-column" style="padding: 14px; gap: 10px; border-radius: 4px; background: rgba(73, 69, 79, 0.08);">
-                    <div class="flex-between">
-                      <div class="Sales">
-                        <span class="fw-smb label-large-prominent">Sales</span>
-                      </div>
-                      <div class="index flex-center" style="gap: 4px;">
-                        <i class="fa-solid fa-arrow-up" style="color: #00C58A;"></i>
-                        <span class="fw-smb label-large-prominent" style="color: #00C58A;">1209</span>
-                      </div>
-                    </div>
-                    <div class="flex-between">
-                      <div class="Qty">
-                        <span class="fw-smb label-large-prominent">Qty</span>
-                      </div>
-                      <div class="index flex-center" style="gap: 4px;">
-                        <div class="flex" style="width: 36px; height: 4px; background: black;border: none; border-radius: 8px;padding-right: 0px;">
-                          <span class="flex" style="width: 70%; background: #00C58A; border-radius: 8px; flex-shrink: 0;
-                          align-self: stretch;"></span>
-                          
-                        </div>
-                        <span class="fw-smb label-large-prominent" style="color: #00C58A;">1209</span>
-                      </div>
-                    </div>
-                    
-                  </div>
-                  <!--INFO sales Qty - END -->
-                  <!--Cart-END-->
-                </div>
-              </div>
-              <div class="cart trans-bounce flex-column p20" style="
-              height: 338px; border-radius: 12px;
-              border: 1px #DED8E1;
-              background:  #FFF;   
-              width: calc(100% / 3 - 30px);
-    
-              ">
-                <div class="v-nav" style="gap: 22px; flex: 1;">
-                  <div class="h-nav g12">
-                    <div class="img-cart flex" style="width: 120px">
-                      <img src="/public/assets/media/images/product/v944cyfrwt851.webp"
-                        style="max-width: 100%; height: 100px;object-fit: cover; border-radius: 8px; flex-shrink: 0;" alt="">
-                    </div>
-                    <div class="text-info-cart flex-column" style="gap: 12px; max-width: 200px;">
-                      <h1 class="fw-smb label-large-prominent" style="
-                      font-size: 18px; word-break: break-all;display:-webkit-box;
-                      -webkit-line-clamp:3;
-                      -webkit-box-orient: vertical;
-                      overflow: hidden;
-                      text-overflow: ellipsis;
-                      word-break: break-word;">Sasuke - Susano toàn chân thể </h1>
-
-                      <p style="font-size: 14px;
-                      font-style: normal;
-                      font-weight: 500;
-                      line-height: 20px; /* 142.857% */
-                      letter-spacing: 0.25px">Category: Naruto</p>
-
-                      <span class="fw-smb label-medium-prominent" style="font-size: 16px;">1.256.900 VNĐ</span>
-
-                    </div>
-                    <div class="options">
-                      <div class="flex-center" style="border-radius: 12px;background: #ECE6F0;">
-                        <a href=""><i class="fa-solid fa-ellipsis" style="padding: 8px; color: #6750a4;"></i></a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="description flex-column g2" style="flex: 1;">
-                    <div class="flex-column" style="flex-shrink: 0; min-width: 330px;">
-                    <h1 class="label-large-prominent" style="font-size: 16px; ">Summary</h1>
-                    <p style="font-size: 12px; word-break: break-all;display:-webkit-box;
-                    -webkit-line-clamp:3;
-                    -webkit-box-orient: vertical;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    word-break: break-word;">Nam tempor accumsan felis, mollis mollis semdapibus non.</p>
-                    </div>
-                  </div>
-                  <!--INFO sales Qty -->
-                  <div class="info-sales-qty flex-column" style="padding: 14px; gap: 10px; border-radius: 4px; background: rgba(73, 69, 79, 0.08);">
-                    <div class="flex-between">
-                      <div class="Sales">
-                        <span class="fw-smb label-large-prominent">Sales</span>
-                      </div>
-                      <div class="index flex-center" style="gap: 4px;">
-                        <i class="fa-solid fa-arrow-up" style="color: #00C58A;"></i>
-                        <span class="fw-smb label-large-prominent" style="color: #00C58A;">1209</span>
-                      </div>
-                    </div>
-                    <div class="flex-between">
-                      <div class="Qty">
-                        <span class="fw-smb label-large-prominent">Qty</span>
-                      </div>
-                      <div class="index flex-center" style="gap: 4px;">
-                        <div class="flex" style="width: 36px; height: 4px; background: black;border: none; border-radius: 8px;padding-right: 0px;">
-                          <span class="flex" style="width: 70%; background: #00C58A; border-radius: 8px; flex-shrink: 0;
-                          align-self: stretch;"></span>
-                          
-                        </div>
-                        <span class="fw-smb label-large-prominent" style="color: #00C58A;">1209</span>
-                      </div>
-                    </div>
-                    
-                  </div>
-                  <!--INFO sales Qty - END -->
-                  <!--Cart-END-->
-                </div>
-              </div>
-              <div class="cart trans-bounce flex-column p20" style="
-              height: 338px; border-radius: 12px;
-              border: 1px #DED8E1;
-              background:  #FFF;   
-              width: calc(100% / 3 - 30px);
-    
-              ">
-                <div class="v-nav" style="gap: 22px; flex: 1;">
-                  <div class="h-nav g12">
-                    <div class="img-cart flex" style="width: 120px">
-                      <img src="/public/assets/media/images/product/v944cyfrwt851.webp"
-                        style="max-width: 100%; height: 100px;object-fit: cover; border-radius: 8px; flex-shrink: 0;" alt="">
-                    </div>
-                    <div class="text-info-cart flex-column" style="gap: 12px; max-width: 200px;">
-                      <h1 class="fw-smb label-large-prominent" style="
-                      font-size: 18px; word-break: break-all;display:-webkit-box;
-                      -webkit-line-clamp:3;
-                      -webkit-box-orient: vertical;
-                      overflow: hidden;
-                      text-overflow: ellipsis;
-                      word-break: break-word;">Sasuke - Susano toàn chân thể </h1>
-
-                      <p style="font-size: 14px;
-                      font-style: normal;
-                      font-weight: 500;
-                      line-height: 20px; /* 142.857% */
-                      letter-spacing: 0.25px">Category: Naruto</p>
-
-                      <span class="fw-smb label-medium-prominent" style="font-size: 16px;">1.256.900 VNĐ</span>
-
-                    </div>
-                    <div class="options">
-                      <div class="flex-center" style="border-radius: 12px;background: #ECE6F0;">
-                        <a href=""><i class="fa-solid fa-ellipsis" style="padding: 8px; color: #6750a4;"></i></a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="description flex-column g2" style="flex: 1;">
-                    <div class="flex-column" style="flex-shrink: 0; min-width: 330px;">
-                    <h1 class="label-large-prominent" style="font-size: 16px; ">Summary</h1>
-                    <p style="font-size: 12px; word-break: break-all;display:-webkit-box;
-                    -webkit-line-clamp:3;
-                    -webkit-box-orient: vertical;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    word-break: break-word;">Nam tempor accumsan felis, mollis mollis semdapibus non.</p>
-                    </div>
-                  </div>
-                  <!--INFO sales Qty -->
-                  <div class="info-sales-qty flex-column" style="padding: 14px; gap: 10px; border-radius: 4px; background: rgba(73, 69, 79, 0.08);">
-                    <div class="flex-between">
-                      <div class="Sales">
-                        <span class="fw-smb label-large-prominent">Sales</span>
-                      </div>
-                      <div class="index flex-center" style="gap: 4px;">
-                        <i class="fa-solid fa-arrow-up" style="color: #00C58A;"></i>
-                        <span class="fw-smb label-large-prominent" style="color: #00C58A;">1209</span>
-                      </div>
-                    </div>
-                    <div class="flex-between">
-                      <div class="Qty">
-                        <span class="fw-smb label-large-prominent">Qty</span>
-                      </div>
-                      <div class="index flex-center" style="gap: 4px;">
-                        <div class="flex" style="width: 36px; height: 4px; background: black;border: none; border-radius: 8px;padding-right: 0px;">
-                          <span class="flex" style="width: 70%; background: #00C58A; border-radius: 8px; flex-shrink: 0;
-                          align-self: stretch;"></span>
-                          
-                        </div>
-                        <span class="fw-smb label-large-prominent" style="color: #00C58A;">1209</span>
-                      </div>
-                    </div>
-                    
-                  </div>
-                  <!--INFO sales Qty - END -->
-                  <!--Cart-END-->
-                </div>
-              </div>
-              <div class="cart trans-bounce flex-column p20" style="
-              height: 338px; border-radius: 12px;
-              border: 1px #DED8E1;
-              background:  #FFF;   
-              width: calc(100% / 3 - 30px);
-    
-              ">
-                <div class="v-nav" style="gap: 22px; flex: 1;">
-                  <div class="h-nav g12">
-                    <div class="img-cart flex" style="width: 120px">
-                      <img src="/public/assets/media/images/product/v944cyfrwt851.webp"
-                        style="max-width: 100%; height: 100px;object-fit: cover; border-radius: 8px; flex-shrink: 0;" alt="">
-                    </div>
-                    <div class="text-info-cart flex-column" style="gap: 12px; max-width: 200px;">
-                      <h1 class="fw-smb label-large-prominent" style="
-                      font-size: 18px; word-break: break-all;display:-webkit-box;
-                      -webkit-line-clamp:3;
-                      -webkit-box-orient: vertical;
-                      overflow: hidden;
-                      text-overflow: ellipsis;
-                      word-break: break-word;">Sasuke - Susano toàn chân thể </h1>
-
-                      <p style="font-size: 14px;
-                      font-style: normal;
-                      font-weight: 500;
-                      line-height: 20px; /* 142.857% */
-                      letter-spacing: 0.25px">Category: Naruto</p>
-
-                      <span class="fw-smb label-medium-prominent" style="font-size: 16px;">1.256.900 VNĐ</span>
-
-                    </div>
-                    <div class="options">
-                      <div class="flex-center" style="border-radius: 12px;background: #ECE6F0;">
-                        <a href=""><i class="fa-solid fa-ellipsis" style="padding: 8px; color: #6750a4;"></i></a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="description flex-column g2" style="flex: 1;">
-                    <div class="flex-column" style="flex-shrink: 0; min-width: 330px;">
-                    <h1 class="label-large-prominent" style="font-size: 16px; ">Summary</h1>
-                    <p style="font-size: 12px; word-break: break-all;display:-webkit-box;
-                    -webkit-line-clamp:3;
-                    -webkit-box-orient: vertical;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    word-break: break-word;">Nam tempor accumsan felis, mollis mollis semdapibus non.</p>
-                    </div>
-                  </div>
-                  <!--INFO sales Qty -->
-                  <div class="info-sales-qty flex-column" style="padding: 14px; gap: 10px; border-radius: 4px; background: rgba(73, 69, 79, 0.08);">
-                    <div class="flex-between">
-                      <div class="Sales">
-                        <span class="fw-smb label-large-prominent">Sales</span>
-                      </div>
-                      <div class="index flex-center" style="gap: 4px;">
-                        <i class="fa-solid fa-arrow-up" style="color: #00C58A;"></i>
-                        <span class="fw-smb label-large-prominent" style="color: #00C58A;">1209</span>
-                      </div>
-                    </div>
-                    <div class="flex-between">
-                      <div class="Qty">
-                        <span class="fw-smb label-large-prominent">Qty</span>
-                      </div>
-                      <div class="index flex-center" style="gap: 4px;">
-                        <div class="flex" style="width: 36px; height: 4px; background: black;border: none; border-radius: 8px;padding-right: 0px;">
-                          <span class="flex" style="width: 70%; background: #00C58A; border-radius: 8px; flex-shrink: 0;
-                          align-self: stretch;"></span>
-                          
-                        </div>
-                        <span class="fw-smb label-large-prominent" style="color: #00C58A;">1209</span>
-                      </div>
-                    </div>
-                    
-                  </div>
-                  <!--INFO sales Qty - END -->
-                  <!--Cart-END-->
-                </div>
-              </div>
-              <div class="cart trans-bounce flex-column p20" style="
-              height: 338px; border-radius: 12px;
-              border: 1px #DED8E1;
-              background:  #FFF;   
-              width: calc(100% / 3 - 30px);
-    
-              ">
-                <div class="v-nav" style="gap: 22px; flex: 1;">
-                  <div class="h-nav g12">
-                    <div class="img-cart flex" style="width: 120px">
-                      <img src="/public/assets/media/images/product/v944cyfrwt851.webp"
-                        style="max-width: 100%; height: 100px;object-fit: cover; border-radius: 8px; flex-shrink: 0;" alt="">
-                    </div>
-                    <div class="text-info-cart flex-column" style="gap: 12px; max-width: 200px;">
-                      <h1 class="fw-smb label-large-prominent" style="
-                      font-size: 18px; word-break: break-all;display:-webkit-box;
-                      -webkit-line-clamp:3;
-                      -webkit-box-orient: vertical;
-                      overflow: hidden;
-                      text-overflow: ellipsis;
-                      word-break: break-word;">Sasuke - Susano toàn chân thể </h1>
-
-                      <p style="font-size: 14px;
-                      font-style: normal;
-                      font-weight: 500;
-                      line-height: 20px; /* 142.857% */
-                      letter-spacing: 0.25px">Category: Naruto</p>
-
-                      <span class="fw-smb label-medium-prominent" style="font-size: 16px;">1.256.900 VNĐ</span>
-
-                    </div>
-                    <div class="options">
-                      <div class="flex-center" style="border-radius: 12px;background: #ECE6F0;">
-                        <a href=""><i class="fa-solid fa-ellipsis" style="padding: 8px; color: #6750a4;"></i></a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="description flex-column g2" style="flex: 1;">
-                    <div class="flex-column" style="flex-shrink: 0; min-width: 330px;">
-                    <h1 class="label-large-prominent" style="font-size: 16px; ">Summary</h1>
-                    <p style="font-size: 12px; word-break: break-all;display:-webkit-box;
-                    -webkit-line-clamp:3;
-                    -webkit-box-orient: vertical;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    word-break: break-word;">Nam tempor accumsan felis, mollis mollis semdapibus non.</p>
-                    </div>
-                  </div>
-                  <!--INFO sales Qty -->
-                  <div class="info-sales-qty flex-column" style="padding: 14px; gap: 10px; border-radius: 4px; background: rgba(73, 69, 79, 0.08);">
-                    <div class="flex-between">
-                      <div class="Sales">
-                        <span class="fw-smb label-large-prominent">Sales</span>
-                      </div>
-                      <div class="index flex-center" style="gap: 4px;">
-                        <i class="fa-solid fa-arrow-up" style="color: #00C58A;"></i>
-                        <span class="fw-smb label-large-prominent" style="color: #00C58A;">1209</span>
-                      </div>
-                    </div>
-                    <div class="flex-between">
-                      <div class="Qty">
-                        <span class="fw-smb label-large-prominent">Qty</span>
-                      </div>
-                      <div class="index flex-center" style="gap: 4px;">
-                        <div class="flex" style="width: 36px; height: 4px; background: black;border: none; border-radius: 8px;padding-right: 0px;">
-                          <span class="flex" style="width: 70%; background: #00C58A; border-radius: 8px; flex-shrink: 0;
-                          align-self: stretch;"></span>
-                          
-                        </div>
-                        <span class="fw-smb label-large-prominent" style="color: #00C58A;">1209</span>
-                      </div>
-                    </div>
-                    
-                  </div>
-                  <!--INFO sales Qty - END -->
-                  <!--Cart-END-->
-                </div>
-              </div>
-              <div class="cart trans-bounce flex-column p20" style="
-              height: 338px; border-radius: 12px;
-              border: 1px #DED8E1;
-              background:  #FFF;   
-              width: calc(100% / 3 - 30px);
-    
-              ">
-                <div class="v-nav" style="gap: 22px; flex: 1;">
-                  <div class="h-nav g12">
-                    <div class="img-cart flex" style="width: 120px">
-                      <img src="/public/assets/media/images/product/v944cyfrwt851.webp"
-                        style="max-width: 100%; height: 100px;object-fit: cover; border-radius: 8px; flex-shrink: 0;" alt="">
-                    </div>
-                    <div class="text-info-cart flex-column" style="gap: 12px; max-width: 200px;">
-                      <h1 class="fw-smb label-large-prominent" style="
-                      font-size: 18px; word-break: break-all;display:-webkit-box;
-                      -webkit-line-clamp:3;
-                      -webkit-box-orient: vertical;
-                      overflow: hidden;
-                      text-overflow: ellipsis;
-                      word-break: break-word;">Sasuke - Susano toàn chân thể </h1>
-
-                      <p style="font-size: 14px;
-                      font-style: normal;
-                      font-weight: 500;
-                      line-height: 20px; /* 142.857% */
-                      letter-spacing: 0.25px">Category: Naruto</p>
-
-                      <span class="fw-smb label-medium-prominent" style="font-size: 16px;">1.256.900 VNĐ</span>
-
-                    </div>
-                    <div class="options">
-                      <div class="flex-center" style="border-radius: 12px;background: #ECE6F0;">
-                        <a href=""><i class="fa-solid fa-ellipsis" style="padding: 8px; color: #6750a4;"></i></a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="description flex-column g2" style="flex: 1;">
-                    <div class="flex-column" style="flex-shrink: 0; min-width: 330px;">
-                    <h1 class="label-large-prominent" style="font-size: 16px; ">Summary</h1>
-                    <p style="font-size: 12px; word-break: break-all;display:-webkit-box;
-                    -webkit-line-clamp:3;
-                    -webkit-box-orient: vertical;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    word-break: break-word;">Nam tempor accumsan felis, mollis mollis semdapibus non.</p>
-                    </div>
-                  </div>
-                  <!--INFO sales Qty -->
-                  <div class="info-sales-qty flex-column" style="padding: 14px; gap: 10px; border-radius: 4px; background: rgba(73, 69, 79, 0.08);">
-                    <div class="flex-between">
-                      <div class="Sales">
-                        <span class="fw-smb label-large-prominent">Sales</span>
-                      </div>
-                      <div class="index flex-center" style="gap: 4px;">
-                        <i class="fa-solid fa-arrow-up" style="color: #00C58A;"></i>
-                        <span class="fw-smb label-large-prominent" style="color: #00C58A;">1209</span>
-                      </div>
-                    </div>
-                    <div class="flex-between">
-                      <div class="Qty">
-                        <span class="fw-smb label-large-prominent">Qty</span>
-                      </div>
-                      <div class="index flex-center" style="gap: 4px;">
-                        <div class="flex" style="width: 36px; height: 4px; background: black;border: none; border-radius: 8px;padding-right: 0px;">
-                          <span class="flex" style="width: 70%; background: #00C58A; border-radius: 8px; flex-shrink: 0;
-                          align-self: stretch;"></span>
-                          
-                        </div>
-                        <span class="fw-smb label-large-prominent" style="color: #00C58A;">1209</span>
-                      </div>
-                    </div>
-                    
-                  </div>
-                  <!--INFO sales Qty - END -->
-                  <!--Cart-END-->
-                </div>
-              </div>
-              <div class="cart trans-bounce flex-column p20" style="
-              height: 338px; border-radius: 12px;
-              border: 1px #DED8E1;
-              background:  #FFF;   
-              width: calc(100% / 3 - 30px);
-    
-              ">
-                <div class="v-nav" style="gap: 22px; flex: 1;">
-                  <div class="h-nav g12">
-                    <div class="img-cart flex" style="width: 120px">
-                      <img src="/public/assets/media/images/product/v944cyfrwt851.webp"
-                        style="max-width: 100%; height: 100px;object-fit: cover; border-radius: 8px; flex-shrink: 0;" alt="">
-                    </div>
-                    <div class="text-info-cart flex-column" style="gap: 12px; max-width: 200px;">
-                      <h1 class="fw-smb label-large-prominent" style="
-                      font-size: 18px; word-break: break-all;display:-webkit-box;
-                      -webkit-line-clamp:3;
-                      -webkit-box-orient: vertical;
-                      overflow: hidden;
-                      text-overflow: ellipsis;
-                      word-break: break-word;">Sasuke - Susano toàn chân thể </h1>
-
-                      <p style="font-size: 14px;
-                      font-style: normal;
-                      font-weight: 500;
-                      line-height: 20px; /* 142.857% */
-                      letter-spacing: 0.25px">Category: Naruto</p>
-
-                      <span class="fw-smb label-medium-prominent" style="font-size: 16px;">1.256.900 VNĐ</span>
-
-                    </div>
-                    <div class="options">
-                      <div class="flex-center" style="border-radius: 12px;background: #ECE6F0;">
-                        <a href=""><i class="fa-solid fa-ellipsis" style="padding: 8px; color: #6750a4;"></i></a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="description flex-column g2" style="flex: 1;">
-                    <div class="flex-column" style="flex-shrink: 0; min-width: 330px;">
-                    <h1 class="label-large-prominent" style="font-size: 16px; ">Summary</h1>
-                    <p style="font-size: 12px; word-break: break-all;display:-webkit-box;
-                    -webkit-line-clamp:3;
-                    -webkit-box-orient: vertical;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    word-break: break-word;">Nam tempor accumsan felis, mollis mollis semdapibus non.</p>
-                    </div>
-                  </div>
-                  <!--INFO sales Qty -->
-                  <div class="info-sales-qty flex-column" style="padding: 14px; gap: 10px; border-radius: 4px; background: rgba(73, 69, 79, 0.08);">
-                    <div class="flex-between">
-                      <div class="Sales">
-                        <span class="fw-smb label-large-prominent">Sales</span>
-                      </div>
-                      <div class="index flex-center" style="gap: 4px;">
-                        <i class="fa-solid fa-arrow-up" style="color: #00C58A;"></i>
-                        <span class="fw-smb label-large-prominent" style="color: #00C58A;">1209</span>
-                      </div>
-                    </div>
-                    <div class="flex-between">
-                      <div class="Qty">
-                        <span class="fw-smb label-large-prominent">Qty</span>
-                      </div>
-                      <div class="index flex-center" style="gap: 4px;">
-                        <div class="flex" style="width: 36px; height: 4px; background: black;border: none; border-radius: 8px;padding-right: 0px;">
-                          <span class="flex" style="width: 70%; background: #00C58A; border-radius: 8px; flex-shrink: 0;
-                          align-self: stretch;"></span>
-                          
-                        </div>
-                        <span class="fw-smb label-large-prominent" style="color: #00C58A;">1209</span>
-                      </div>
-                    </div>
-                    
-                  </div>
-                  <!--INFO sales Qty - END -->
-                  <!--Cart-END-->
-                </div>
-              </div>
-            <div class="flex mt30">
-              <div class="options-number flex g16" >
-                <button class="btn primary-btn">1</button>
-                <button class="btn">2</button>
-                <button class="btn">3</button>
-                <button class="btn">4</button>
-                <button class="btn">5</button>
-                <a href="" class="flex-center g8"><i class="fa-solid fa-arrow-right"></i><span class="title-medium" style="text-align: center;">Next</span></a>
+              <div class="flex-center g8">
+                <span><i class="fa-solid fa-calendar-days"></i></span>
+                <input class="label-large-prominent" type="datetime-local" style="color: #625B71; border: none; font-size: 16px;
+                ">
               </div>
             </div>
+            </div>
+            <!----======== End Header DashBoard ======== -->
 
-           
-              
-           
-          </div>
-        </div>
-        <!--Products-END-->
-      </section>
-    </div>
-    <!--NAV-RIGHT-END-->
-  </div>
-  </div>
+            <!----======== Body DashBoard ======== -->
+            <div class="containerAdmin">
+              <div class="container-products width-full flex" style="flex-wrap: wrap; justify-content: space-between; gap: 20px">
+                <!--Cart-->
+                  <div class="cart trans-bounce flex-column p20" style="
+                  height: 338px; border-radius: 12px;
+                  border: 1px #DED8E1;
+                  background:  #FFF;   
+                  width: calc(100% / 3 - 30px);
+                  ">
+                    <div class="v-nav" style="gap: 22px; flex: 1;">
+                      <div class="h-nav g12">
+                        <div class="img-cart flex" style="width: 120px">
+                          <img src="/public/assets/media/images/product/v944cyfrwt851.webp"
+                            style="max-width: 100%; height: 100px;object-fit: cover; border-radius: 8px; flex-shrink: 0;" alt="">
+                        </div>
+                        <div class="text-info-cart flex-column" style="gap: 12px; max-width: 200px;">
+                          <h1 class="fw-smb label-large-prominent" style="
+                          font-size: 18px; word-break: break-all;display:-webkit-box;
+                          -webkit-line-clamp:3;
+                          -webkit-box-orient: vertical;
+                          overflow: hidden;
+                          text-overflow: ellipsis;
+                          word-break: break-word;">Sasuke - Susano toàn chân thể </h1>
+    
+                          <p style="font-size: 14px;
+                          font-style: normal;
+                          font-weight: 500;
+                          line-height: 20px; /* 142.857% */
+                          letter-spacing: 0.25px">Category: Naruto</p>
+                          <span class="fw-smb label-medium-prominent" style="font-size: 16px;">1.256.900 VNĐ</span>
+    
+                        </div>
+                        <div class="options">
+                          <div class="flex-center" style="border-radius: 12px;background: #ECE6F0;">
+                            <a href=""><i class="fa-solid fa-ellipsis" style="padding: 8px; color: #6750a4;"></i></a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="description flex-column g2" style="flex: 1;">
+                        <div class="flex-column" style="flex-shrink: 0; min-width: 330px;">
+                        <h1 class="label-large-prominent" style="font-size: 16px; ">Summary</h1>
+                        <p style="font-size: 12px; word-break: break-all;display:-webkit-box;
+                        -webkit-line-clamp:3;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        word-break: break-word;">Nam tempor accumsan felis, mollis mollis semdapibus non.</p>
+                        </div>
+                      </div>
+                      <!--INFO sales Qty -->
+                      <div class="info-sales-qty flex-column" style="padding: 14px; gap: 10px; border-radius: 4px; background: rgba(73, 69, 79, 0.08);">
+                        <div class="flex-between">
+                          <div class="Sales">
+                            <span class="fw-smb label-large-prominent">Sales</span>
+                          </div>
+                          <div class="index flex-center" style="gap: 4px;">
+                            <i class="fa-solid fa-arrow-up" style="color: #00C58A;"></i>
+                            <span class="fw-smb label-large-prominent" style="color: #00C58A;">1209</span>
+                          </div>
+                        </div>
+                        <div class="flex-between">
+                          <div class="Qty">
+                            <span class="fw-smb label-large-prominent">Qty</span>
+                          </div>
+                          <div class="index flex-center" style="gap: 4px;">
+                            <div class="flex" style="width: 36px; height: 4px; background: black;border: none; border-radius: 8px;padding-right: 0px;">
+                              <span class="flex" style="width: 70%; background: #00C58A; border-radius: 8px; flex-shrink: 0;
+                              align-self: stretch;"></span>
+                              
+                            </div>
+                            <span class="fw-smb label-large-prominent" style="color: #00C58A;">1209</span>
+                          </div>
+                        </div>
+                        
+                      </div>
+                      <!--INFO sales Qty - END -->
+                      <!--Cart-END-->
+                    </div>
+                  </div>
+                  <div class="cart trans-bounce flex-column p20" style="
+                  height: 338px; border-radius: 12px;
+                  border: 1px #DED8E1;
+                  background:  #FFF;   
+                  width: calc(100% / 3 - 30px);
+        
+                  ">
+                    <div class="v-nav" style="gap: 22px; flex: 1;">
+                      <div class="h-nav g12">
+                        <div class="img-cart flex" style="width: 120px">
+                          <img src="/public/assets/media/images/product/v944cyfrwt851.webp"
+                            style="max-width: 100%; height: 100px;object-fit: cover; border-radius: 8px; flex-shrink: 0;" alt="">
+                        </div>
+                        <div class="text-info-cart flex-column" style="gap: 12px; max-width: 200px;">
+                          <h1 class="fw-smb label-large-prominent" style="
+                          font-size: 18px; word-break: break-all;display:-webkit-box;
+                          -webkit-line-clamp:3;
+                          -webkit-box-orient: vertical;
+                          overflow: hidden;
+                          text-overflow: ellipsis;
+                          word-break: break-word;">Sasuke - Susano toàn chân thể </h1>
+    
+                          <p style="font-size: 14px;
+                          font-style: normal;
+                          font-weight: 500;
+                          line-height: 20px; /* 142.857% */
+                          letter-spacing: 0.25px">Category: Naruto</p>
+    
+                          <span class="fw-smb label-medium-prominent" style="font-size: 16px;">1.256.900 VNĐ</span>
+    
+                        </div>
+                        <div class="options">
+                          <div class="flex-center" style="border-radius: 12px;background: #ECE6F0;">
+                            <a href=""><i class="fa-solid fa-ellipsis" style="padding: 8px; color: #6750a4;"></i></a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="description flex-column g2" style="flex: 1;">
+                        <div class="flex-column" style="flex-shrink: 0; min-width: 330px;">
+                        <h1 class="label-large-prominent" style="font-size: 16px; ">Summary</h1>
+                        <p style="font-size: 12px; word-break: break-all;display:-webkit-box;
+                        -webkit-line-clamp:3;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        word-break: break-word;">Nam tempor accumsan felis, mollis mollis semdapibus non.</p>
+                        </div>
+                      </div>
+                      <!--INFO sales Qty -->
+                      <div class="info-sales-qty flex-column" style="padding: 14px; gap: 10px; border-radius: 4px; background: rgba(73, 69, 79, 0.08);">
+                        <div class="flex-between">
+                          <div class="Sales">
+                            <span class="fw-smb label-large-prominent">Sales</span>
+                          </div>
+                          <div class="index flex-center" style="gap: 4px;">
+                            <i class="fa-solid fa-arrow-up" style="color: #00C58A;"></i>
+                            <span class="fw-smb label-large-prominent" style="color: #00C58A;">1209</span>
+                          </div>
+                        </div>
+                        <div class="flex-between">
+                          <div class="Qty">
+                            <span class="fw-smb label-large-prominent">Qty</span>
+                          </div>
+                          <div class="index flex-center" style="gap: 4px;">
+                            <div class="flex" style="width: 36px; height: 4px; background: black;border: none; border-radius: 8px;padding-right: 0px;">
+                              <span class="flex" style="width: 70%; background: #00C58A; border-radius: 8px; flex-shrink: 0;
+                              align-self: stretch;"></span>
+                              
+                            </div>
+                            <span class="fw-smb label-large-prominent" style="color: #00C58A;">1209</span>
+                          </div>
+                        </div>
+                        
+                      </div>
+                      <!--INFO sales Qty - END -->
+                      <!--Cart-END-->
+                    </div>
+                  </div>
+                  <div class="cart trans-bounce flex-column p20" style="
+                  height: 338px; border-radius: 12px;
+                  border: 1px #DED8E1;
+                  background:  #FFF;   
+                  width: calc(100% / 3 - 30px);
+        
+                  ">
+                    <div class="v-nav" style="gap: 22px; flex: 1;">
+                      <div class="h-nav g12">
+                        <div class="img-cart flex" style="width: 120px">
+                          <img src="/public/assets/media/images/product/v944cyfrwt851.webp"
+                            style="max-width: 100%; height: 100px;object-fit: cover; border-radius: 8px; flex-shrink: 0;" alt="">
+                        </div>
+                        <div class="text-info-cart flex-column" style="gap: 12px; max-width: 200px;">
+                          <h1 class="fw-smb label-large-prominent" style="
+                          font-size: 18px; word-break: break-all;display:-webkit-box;
+                          -webkit-line-clamp:3;
+                          -webkit-box-orient: vertical;
+                          overflow: hidden;
+                          text-overflow: ellipsis;
+                          word-break: break-word;">Sasuke - Susano toàn chân thể </h1>
+    
+                          <p style="font-size: 14px;
+                          font-style: normal;
+                          font-weight: 500;
+                          line-height: 20px; /* 142.857% */
+                          letter-spacing: 0.25px">Category: Naruto</p>
+    
+                          <span class="fw-smb label-medium-prominent" style="font-size: 16px;">1.256.900 VNĐ</span>
+    
+                        </div>
+                        <div class="options">
+                          <div class="flex-center" style="border-radius: 12px;background: #ECE6F0;">
+                            <a href=""><i class="fa-solid fa-ellipsis" style="padding: 8px; color: #6750a4;"></i></a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="description flex-column g2" style="flex: 1;">
+                        <div class="flex-column" style="flex-shrink: 0; min-width: 330px;">
+                        <h1 class="label-large-prominent" style="font-size: 16px; ">Summary</h1>
+                        <p style="font-size: 12px; word-break: break-all;display:-webkit-box;
+                        -webkit-line-clamp:3;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        word-break: break-word;">Nam tempor accumsan felis, mollis mollis semdapibus non.</p>
+                        </div>
+                      </div>
+                      <!--INFO sales Qty -->
+                      <div class="info-sales-qty flex-column" style="padding: 14px; gap: 10px; border-radius: 4px; background: rgba(73, 69, 79, 0.08);">
+                        <div class="flex-between">
+                          <div class="Sales">
+                            <span class="fw-smb label-large-prominent">Sales</span>
+                          </div>
+                          <div class="index flex-center" style="gap: 4px;">
+                            <i class="fa-solid fa-arrow-up" style="color: #00C58A;"></i>
+                            <span class="fw-smb label-large-prominent" style="color: #00C58A;">1209</span>
+                          </div>
+                        </div>
+                        <div class="flex-between">
+                          <div class="Qty">
+                            <span class="fw-smb label-large-prominent">Qty</span>
+                          </div>
+                          <div class="index flex-center" style="gap: 4px;">
+                            <div class="flex" style="width: 36px; height: 4px; background: black;border: none; border-radius: 8px;padding-right: 0px;">
+                              <span class="flex" style="width: 70%; background: #00C58A; border-radius: 8px; flex-shrink: 0;
+                              align-self: stretch;"></span>
+                              
+                            </div>
+                            <span class="fw-smb label-large-prominent" style="color: #00C58A;">1209</span>
+                          </div>
+                        </div>
+                        
+                      </div>
+                      <!--INFO sales Qty - END -->
+                      <!--Cart-END-->
+                    </div>
+                  </div>
+                  <div class="cart trans-bounce flex-column p20" style="
+                  height: 338px; border-radius: 12px;
+                  border: 1px #DED8E1;
+                  background:  #FFF;   
+                  width: calc(100% / 3 - 30px);
+        
+                  ">
+                    <div class="v-nav" style="gap: 22px; flex: 1;">
+                      <div class="h-nav g12">
+                        <div class="img-cart flex" style="width: 120px">
+                          <img src="/public/assets/media/images/product/v944cyfrwt851.webp"
+                            style="max-width: 100%; height: 100px;object-fit: cover; border-radius: 8px; flex-shrink: 0;" alt="">
+                        </div>
+                        <div class="text-info-cart flex-column" style="gap: 12px; max-width: 200px;">
+                          <h1 class="fw-smb label-large-prominent" style="
+                          font-size: 18px; word-break: break-all;display:-webkit-box;
+                          -webkit-line-clamp:3;
+                          -webkit-box-orient: vertical;
+                          overflow: hidden;
+                          text-overflow: ellipsis;
+                          word-break: break-word;">Sasuke - Susano toàn chân thể </h1>
+    
+                          <p style="font-size: 14px;
+                          font-style: normal;
+                          font-weight: 500;
+                          line-height: 20px; /* 142.857% */
+                          letter-spacing: 0.25px">Category: Naruto</p>
+    
+                          <span class="fw-smb label-medium-prominent" style="font-size: 16px;">1.256.900 VNĐ</span>
+    
+                        </div>
+                        <div class="options">
+                          <div class="flex-center" style="border-radius: 12px;background: #ECE6F0;">
+                            <a href=""><i class="fa-solid fa-ellipsis" style="padding: 8px; color: #6750a4;"></i></a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="description flex-column g2" style="flex: 1;">
+                        <div class="flex-column" style="flex-shrink: 0; min-width: 330px;">
+                        <h1 class="label-large-prominent" style="font-size: 16px; ">Summary</h1>
+                        <p style="font-size: 12px; word-break: break-all;display:-webkit-box;
+                        -webkit-line-clamp:3;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        word-break: break-word;">Nam tempor accumsan felis, mollis mollis semdapibus non.</p>
+                        </div>
+                      </div>
+                      <!--INFO sales Qty -->
+                      <div class="info-sales-qty flex-column" style="padding: 14px; gap: 10px; border-radius: 4px; background: rgba(73, 69, 79, 0.08);">
+                        <div class="flex-between">
+                          <div class="Sales">
+                            <span class="fw-smb label-large-prominent">Sales</span>
+                          </div>
+                          <div class="index flex-center" style="gap: 4px;">
+                            <i class="fa-solid fa-arrow-up" style="color: #00C58A;"></i>
+                            <span class="fw-smb label-large-prominent" style="color: #00C58A;">1209</span>
+                          </div>
+                        </div>
+                        <div class="flex-between">
+                          <div class="Qty">
+                            <span class="fw-smb label-large-prominent">Qty</span>
+                          </div>
+                          <div class="index flex-center" style="gap: 4px;">
+                            <div class="flex" style="width: 36px; height: 4px; background: black;border: none; border-radius: 8px;padding-right: 0px;">
+                              <span class="flex" style="width: 70%; background: #00C58A; border-radius: 8px; flex-shrink: 0;
+                              align-self: stretch;"></span>
+                              
+                            </div>
+                            <span class="fw-smb label-large-prominent" style="color: #00C58A;">1209</span>
+                          </div>
+                        </div>
+                        
+                      </div>
+                      <!--INFO sales Qty - END -->
+                      <!--Cart-END-->
+                    </div>
+                  </div>
+                  <div class="cart trans-bounce flex-column p20" style="
+                  height: 338px; border-radius: 12px;
+                  border: 1px #DED8E1;
+                  background:  #FFF;   
+                  width: calc(100% / 3 - 30px);
+        
+                  ">
+                    <div class="v-nav" style="gap: 22px; flex: 1;">
+                      <div class="h-nav g12">
+                        <div class="img-cart flex" style="width: 120px">
+                          <img src="/public/assets/media/images/product/v944cyfrwt851.webp"
+                            style="max-width: 100%; height: 100px;object-fit: cover; border-radius: 8px; flex-shrink: 0;" alt="">
+                        </div>
+                        <div class="text-info-cart flex-column" style="gap: 12px; max-width: 200px;">
+                          <h1 class="fw-smb label-large-prominent" style="
+                          font-size: 18px; word-break: break-all;display:-webkit-box;
+                          -webkit-line-clamp:3;
+                          -webkit-box-orient: vertical;
+                          overflow: hidden;
+                          text-overflow: ellipsis;
+                          word-break: break-word;">Sasuke - Susano toàn chân thể </h1>
+    
+                          <p style="font-size: 14px;
+                          font-style: normal;
+                          font-weight: 500;
+                          line-height: 20px; /* 142.857% */
+                          letter-spacing: 0.25px">Category: Naruto</p>
+    
+                          <span class="fw-smb label-medium-prominent" style="font-size: 16px;">1.256.900 VNĐ</span>
+    
+                        </div>
+                        <div class="options">
+                          <div class="flex-center" style="border-radius: 12px;background: #ECE6F0;">
+                            <a href=""><i class="fa-solid fa-ellipsis" style="padding: 8px; color: #6750a4;"></i></a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="description flex-column g2" style="flex: 1;">
+                        <div class="flex-column" style="flex-shrink: 0; min-width: 330px;">
+                        <h1 class="label-large-prominent" style="font-size: 16px; ">Summary</h1>
+                        <p style="font-size: 12px; word-break: break-all;display:-webkit-box;
+                        -webkit-line-clamp:3;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        word-break: break-word;">Nam tempor accumsan felis, mollis mollis semdapibus non.</p>
+                        </div>
+                      </div>
+                      <!--INFO sales Qty -->
+                      <div class="info-sales-qty flex-column" style="padding: 14px; gap: 10px; border-radius: 4px; background: rgba(73, 69, 79, 0.08);">
+                        <div class="flex-between">
+                          <div class="Sales">
+                            <span class="fw-smb label-large-prominent">Sales</span>
+                          </div>
+                          <div class="index flex-center" style="gap: 4px;">
+                            <i class="fa-solid fa-arrow-up" style="color: #00C58A;"></i>
+                            <span class="fw-smb label-large-prominent" style="color: #00C58A;">1209</span>
+                          </div>
+                        </div>
+                        <div class="flex-between">
+                          <div class="Qty">
+                            <span class="fw-smb label-large-prominent">Qty</span>
+                          </div>
+                          <div class="index flex-center" style="gap: 4px;">
+                            <div class="flex" style="width: 36px; height: 4px; background: black;border: none; border-radius: 8px;padding-right: 0px;">
+                              <span class="flex" style="width: 70%; background: #00C58A; border-radius: 8px; flex-shrink: 0;
+                              align-self: stretch;"></span>
+                              
+                            </div>
+                            <span class="fw-smb label-large-prominent" style="color: #00C58A;">1209</span>
+                          </div>
+                        </div>
+                        
+                      </div>
+                      <!--INFO sales Qty - END -->
+                      <!--Cart-END-->
+                    </div>
+                  </div>
+                  <div class="cart trans-bounce flex-column p20" style="
+                  height: 338px; border-radius: 12px;
+                  border: 1px #DED8E1;
+                  background:  #FFF;   
+                  width: calc(100% / 3 - 30px);
+        
+                  ">
+                    <div class="v-nav" style="gap: 22px; flex: 1;">
+                      <div class="h-nav g12">
+                        <div class="img-cart flex" style="width: 120px">
+                          <img src="/public/assets/media/images/product/v944cyfrwt851.webp"
+                            style="max-width: 100%; height: 100px;object-fit: cover; border-radius: 8px; flex-shrink: 0;" alt="">
+                        </div>
+                        <div class="text-info-cart flex-column" style="gap: 12px; max-width: 200px;">
+                          <h1 class="fw-smb label-large-prominent" style="
+                          font-size: 18px; word-break: break-all;display:-webkit-box;
+                          -webkit-line-clamp:3;
+                          -webkit-box-orient: vertical;
+                          overflow: hidden;
+                          text-overflow: ellipsis;
+                          word-break: break-word;">Sasuke - Susano toàn chân thể </h1>
+    
+                          <p style="font-size: 14px;
+                          font-style: normal;
+                          font-weight: 500;
+                          line-height: 20px; /* 142.857% */
+                          letter-spacing: 0.25px">Category: Naruto</p>
+    
+                          <span class="fw-smb label-medium-prominent" style="font-size: 16px;">1.256.900 VNĐ</span>
+    
+                        </div>
+                        <div class="options">
+                          <div class="flex-center" style="border-radius: 12px;background: #ECE6F0;">
+                            <a href=""><i class="fa-solid fa-ellipsis" style="padding: 8px; color: #6750a4;"></i></a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="description flex-column g2" style="flex: 1;">
+                        <div class="flex-column" style="flex-shrink: 0; min-width: 330px;">
+                        <h1 class="label-large-prominent" style="font-size: 16px; ">Summary</h1>
+                        <p style="font-size: 12px; word-break: break-all;display:-webkit-box;
+                        -webkit-line-clamp:3;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        word-break: break-word;">Nam tempor accumsan felis, mollis mollis semdapibus non.</p>
+                        </div>
+                      </div>
+                      <!--INFO sales Qty -->
+                      <div class="info-sales-qty flex-column" style="padding: 14px; gap: 10px; border-radius: 4px; background: rgba(73, 69, 79, 0.08);">
+                        <div class="flex-between">
+                          <div class="Sales">
+                            <span class="fw-smb label-large-prominent">Sales</span>
+                          </div>
+                          <div class="index flex-center" style="gap: 4px;">
+                            <i class="fa-solid fa-arrow-up" style="color: #00C58A;"></i>
+                            <span class="fw-smb label-large-prominent" style="color: #00C58A;">1209</span>
+                          </div>
+                        </div>
+                        <div class="flex-between">
+                          <div class="Qty">
+                            <span class="fw-smb label-large-prominent">Qty</span>
+                          </div>
+                          <div class="index flex-center" style="gap: 4px;">
+                            <div class="flex" style="width: 36px; height: 4px; background: black;border: none; border-radius: 8px;padding-right: 0px;">
+                              <span class="flex" style="width: 70%; background: #00C58A; border-radius: 8px; flex-shrink: 0;
+                              align-self: stretch;"></span>
+                              
+                            </div>
+                            <span class="fw-smb label-large-prominent" style="color: #00C58A;">1209</span>
+                          </div>
+                        </div>
+                        
+                      </div>
+                      <!--INFO sales Qty - END -->
+                      <!--Cart-END-->
+                    </div>
+                  </div>
+                  <div class="cart trans-bounce flex-column p20" style="
+                  height: 338px; border-radius: 12px;
+                  border: 1px #DED8E1;
+                  background:  #FFF;   
+                  width: calc(100% / 3 - 30px);
+        
+                  ">
+                    <div class="v-nav" style="gap: 22px; flex: 1;">
+                      <div class="h-nav g12">
+                        <div class="img-cart flex" style="width: 120px">
+                          <img src="/public/assets/media/images/product/v944cyfrwt851.webp"
+                            style="max-width: 100%; height: 100px;object-fit: cover; border-radius: 8px; flex-shrink: 0;" alt="">
+                        </div>
+                        <div class="text-info-cart flex-column" style="gap: 12px; max-width: 200px;">
+                          <h1 class="fw-smb label-large-prominent" style="
+                          font-size: 18px; word-break: break-all;display:-webkit-box;
+                          -webkit-line-clamp:3;
+                          -webkit-box-orient: vertical;
+                          overflow: hidden;
+                          text-overflow: ellipsis;
+                          word-break: break-word;">Sasuke - Susano toàn chân thể </h1>
+    
+                          <p style="font-size: 14px;
+                          font-style: normal;
+                          font-weight: 500;
+                          line-height: 20px; /* 142.857% */
+                          letter-spacing: 0.25px">Category: Naruto</p>
+    
+                          <span class="fw-smb label-medium-prominent" style="font-size: 16px;">1.256.900 VNĐ</span>
+    
+                        </div>
+                        <div class="options">
+                          <div class="flex-center" style="border-radius: 12px;background: #ECE6F0;">
+                            <a href=""><i class="fa-solid fa-ellipsis" style="padding: 8px; color: #6750a4;"></i></a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="description flex-column g2" style="flex: 1;">
+                        <div class="flex-column" style="flex-shrink: 0; min-width: 330px;">
+                        <h1 class="label-large-prominent" style="font-size: 16px; ">Summary</h1>
+                        <p style="font-size: 12px; word-break: break-all;display:-webkit-box;
+                        -webkit-line-clamp:3;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        word-break: break-word;">Nam tempor accumsan felis, mollis mollis semdapibus non.</p>
+                        </div>
+                      </div>
+                      <!--INFO sales Qty -->
+                      <div class="info-sales-qty flex-column" style="padding: 14px; gap: 10px; border-radius: 4px; background: rgba(73, 69, 79, 0.08);">
+                        <div class="flex-between">
+                          <div class="Sales">
+                            <span class="fw-smb label-large-prominent">Sales</span>
+                          </div>
+                          <div class="index flex-center" style="gap: 4px;">
+                            <i class="fa-solid fa-arrow-up" style="color: #00C58A;"></i>
+                            <span class="fw-smb label-large-prominent" style="color: #00C58A;">1209</span>
+                          </div>
+                        </div>
+                        <div class="flex-between">
+                          <div class="Qty">
+                            <span class="fw-smb label-large-prominent">Qty</span>
+                          </div>
+                          <div class="index flex-center" style="gap: 4px;">
+                            <div class="flex" style="width: 36px; height: 4px; background: black;border: none; border-radius: 8px;padding-right: 0px;">
+                              <span class="flex" style="width: 70%; background: #00C58A; border-radius: 8px; flex-shrink: 0;
+                              align-self: stretch;"></span>
+                              
+                            </div>
+                            <span class="fw-smb label-large-prominent" style="color: #00C58A;">1209</span>
+                          </div>
+                        </div>
+                        
+                      </div>
+                      <!--INFO sales Qty - END -->
+                      <!--Cart-END-->
+                    </div>
+                  </div>
+                  <div class="cart trans-bounce flex-column p20" style="
+                  height: 338px; border-radius: 12px;
+                  border: 1px #DED8E1;
+                  background:  #FFF;   
+                  width: calc(100% / 3 - 30px);
+        
+                  ">
+                    <div class="v-nav" style="gap: 22px; flex: 1;">
+                      <div class="h-nav g12">
+                        <div class="img-cart flex" style="width: 120px">
+                          <img src="/public/assets/media/images/product/v944cyfrwt851.webp"
+                            style="max-width: 100%; height: 100px;object-fit: cover; border-radius: 8px; flex-shrink: 0;" alt="">
+                        </div>
+                        <div class="text-info-cart flex-column" style="gap: 12px; max-width: 200px;">
+                          <h1 class="fw-smb label-large-prominent" style="
+                          font-size: 18px; word-break: break-all;display:-webkit-box;
+                          -webkit-line-clamp:3;
+                          -webkit-box-orient: vertical;
+                          overflow: hidden;
+                          text-overflow: ellipsis;
+                          word-break: break-word;">Sasuke - Susano toàn chân thể </h1>
+    
+                          <p style="font-size: 14px;
+                          font-style: normal;
+                          font-weight: 500;
+                          line-height: 20px; /* 142.857% */
+                          letter-spacing: 0.25px">Category: Naruto</p>
+    
+                          <span class="fw-smb label-medium-prominent" style="font-size: 16px;">1.256.900 VNĐ</span>
+    
+                        </div>
+                        <div class="options">
+                          <div class="flex-center" style="border-radius: 12px;background: #ECE6F0;">
+                            <a href=""><i class="fa-solid fa-ellipsis" style="padding: 8px; color: #6750a4;"></i></a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="description flex-column g2" style="flex: 1;">
+                        <div class="flex-column" style="flex-shrink: 0; min-width: 330px;">
+                        <h1 class="label-large-prominent" style="font-size: 16px; ">Summary</h1>
+                        <p style="font-size: 12px; word-break: break-all;display:-webkit-box;
+                        -webkit-line-clamp:3;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        word-break: break-word;">Nam tempor accumsan felis, mollis mollis semdapibus non.</p>
+                        </div>
+                      </div>
+                      <!--INFO sales Qty -->
+                      <div class="info-sales-qty flex-column" style="padding: 14px; gap: 10px; border-radius: 4px; background: rgba(73, 69, 79, 0.08);">
+                        <div class="flex-between">
+                          <div class="Sales">
+                            <span class="fw-smb label-large-prominent">Sales</span>
+                          </div>
+                          <div class="index flex-center" style="gap: 4px;">
+                            <i class="fa-solid fa-arrow-up" style="color: #00C58A;"></i>
+                            <span class="fw-smb label-large-prominent" style="color: #00C58A;">1209</span>
+                          </div>
+                        </div>
+                        <div class="flex-between">
+                          <div class="Qty">
+                            <span class="fw-smb label-large-prominent">Qty</span>
+                          </div>
+                          <div class="index flex-center" style="gap: 4px;">
+                            <div class="flex" style="width: 36px; height: 4px; background: black;border: none; border-radius: 8px;padding-right: 0px;">
+                              <span class="flex" style="width: 70%; background: #00C58A; border-radius: 8px; flex-shrink: 0;
+                              align-self: stretch;"></span>
+                              
+                            </div>
+                            <span class="fw-smb label-large-prominent" style="color: #00C58A;">1209</span>
+                          </div>
+                        </div>
+                        
+                      </div>
+                      <!--INFO sales Qty - END -->
+                      <!--Cart-END-->
+                    </div>
+                  </div>
+                  <div class="cart trans-bounce flex-column p20" style="
+                  height: 338px; border-radius: 12px;
+                  border: 1px #DED8E1;
+                  background:  #FFF;   
+                  width: calc(100% / 3 - 30px);
+        
+                  ">
+                    <div class="v-nav" style="gap: 22px; flex: 1;">
+                      <div class="h-nav g12">
+                        <div class="img-cart flex" style="width: 120px">
+                          <img src="/public/assets/media/images/product/v944cyfrwt851.webp"
+                            style="max-width: 100%; height: 100px;object-fit: cover; border-radius: 8px; flex-shrink: 0;" alt="">
+                        </div>
+                        <div class="text-info-cart flex-column" style="gap: 12px; max-width: 200px;">
+                          <h1 class="fw-smb label-large-prominent" style="
+                          font-size: 18px; word-break: break-all;display:-webkit-box;
+                          -webkit-line-clamp:3;
+                          -webkit-box-orient: vertical;
+                          overflow: hidden;
+                          text-overflow: ellipsis;
+                          word-break: break-word;">Sasuke - Susano toàn chân thể </h1>
+    
+                          <p style="font-size: 14px;
+                          font-style: normal;
+                          font-weight: 500;
+                          line-height: 20px; /* 142.857% */
+                          letter-spacing: 0.25px">Category: Naruto</p>
+    
+                          <span class="fw-smb label-medium-prominent" style="font-size: 16px;">1.256.900 VNĐ</span>
+    
+                        </div>
+                        <div class="options">
+                          <div class="flex-center" style="border-radius: 12px;background: #ECE6F0;">
+                            <a href=""><i class="fa-solid fa-ellipsis" style="padding: 8px; color: #6750a4;"></i></a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="description flex-column g2" style="flex: 1;">
+                        <div class="flex-column" style="flex-shrink: 0; min-width: 330px;">
+                        <h1 class="label-large-prominent" style="font-size: 16px; ">Summary</h1>
+                        <p style="font-size: 12px; word-break: break-all;display:-webkit-box;
+                        -webkit-line-clamp:3;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        word-break: break-word;">Nam tempor accumsan felis, mollis mollis semdapibus non.</p>
+                        </div>
+                      </div>
+                      <!--INFO sales Qty -->
+                      <div class="info-sales-qty flex-column" style="padding: 14px; gap: 10px; border-radius: 4px; background: rgba(73, 69, 79, 0.08);">
+                        <div class="flex-between">
+                          <div class="Sales">
+                            <span class="fw-smb label-large-prominent">Sales</span>
+                          </div>
+                          <div class="index flex-center" style="gap: 4px;">
+                            <i class="fa-solid fa-arrow-up" style="color: #00C58A;"></i>
+                            <span class="fw-smb label-large-prominent" style="color: #00C58A;">1209</span>
+                          </div>
+                        </div>
+                        <div class="flex-between">
+                          <div class="Qty">
+                            <span class="fw-smb label-large-prominent">Qty</span>
+                          </div>
+                          <div class="index flex-center" style="gap: 4px;">
+                            <div class="flex" style="width: 36px; height: 4px; background: black;border: none; border-radius: 8px;padding-right: 0px;">
+                              <span class="flex" style="width: 70%; background: #00C58A; border-radius: 8px; flex-shrink: 0;
+                              align-self: stretch;"></span>
+                              
+                            </div>
+                            <span class="fw-smb label-large-prominent" style="color: #00C58A;">1209</span>
+                          </div>
+                        </div>
+                        
+                      </div>
+                      <!--INFO sales Qty - END -->
+                      <!--Cart-END-->
+                    </div>
+                  </div>
+                <div class="flex mt30">
+                  <div class="options-number flex g16" >
+                    <button class="btn primary-btn">1</button>
+                    <button class="btn">2</button>
+                    <button class="btn">3</button>
+                    <button class="btn">4</button>
+                    <button class="btn">5</button>
+                    <a href="" class="flex-center g8"><i class="fa-solid fa-arrow-right"></i><span class="title-medium" style="text-align: center;">Next</span></a>
+                  </div>
+                </div>
+    
+               
+                  
+               
+              </div>
+            </div>
+
+            <!----======== End Body DashBoard ======== -->
+
+        </section>
+    </main>
+
+    <script src="/public/assets/resources/js/admin.js"></script>
+    <!----======== Bootstrap ======== -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

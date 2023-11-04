@@ -1,0 +1,91 @@
+// body admin_order-detail
+@mixin border_solid_b{
+    border: 1px solid black;
+}
+
+.containerAdmin_order-detail{
+    font-size: 1.3rem;
+    background-color: white;
+    a{
+        text-decoration: none;
+        color: $light-primary;
+    }
+    .admin-black{
+        color: black;
+    }
+    .container_order-detail{
+        section{
+            font-size: 1.5rem;
+        }
+        button{
+            font-size: 1.5rem;
+            padding: 10px 24px !important;
+        }
+        textarea{
+            resize: none;
+            width: 100%;
+            border-radius: 8px;
+            border:1px gray solid;
+            padding: 10px;
+            color: black;
+            height: 140px;
+        }
+        
+    }
+    .container{
+        .row{
+            .col{
+                padding: 0px;
+            }
+        }
+    }
+}
+.sliderDashboard_order-detail{
+    width: 100%;
+    min-height: 200px;
+    margin-top: 3rem;
+    @include border_solid_b();
+}
+.in4_order-detail{
+    .col-4{
+    min-height: 160px;
+    width: 280px;
+    // @include border_solid_b();
+    }
+  
+   
+}
+.icon_order-detail{
+    i{
+        font-size: 2rem;
+    }
+}
+.content_order-detail{
+    h3{
+        margin: 8px;
+    }
+    p{
+        margin: 8px; 
+    }
+    a{
+        margin: 8px;
+        position: relative;
+        top: 20px;
+    }
+}
+.total_order-detail{
+    position: relative;
+    top:20px;
+    font-size: 1.3rem;
+}
+.table_order-detail{
+    text-align: center;
+    tr{
+        border-top: 1px solid rgba(128, 128, 128, 0.203);
+        td,th{
+            padding:10px 12px;
+            color: gray;
+            
+        }
+    }
+}
