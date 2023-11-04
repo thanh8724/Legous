@@ -71,6 +71,8 @@
     gap: 8px;
     flex: 1 0 0;
     align-self: stretch;
+    text-decoration: none;
+
     font-size: clamp(1.2rem, 0.914rem + 0.762vw, 1.6rem);
   font-weight: 500;
   transform: translateY(1.25rem);
