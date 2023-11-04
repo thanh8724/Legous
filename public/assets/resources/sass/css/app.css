@@ -2032,6 +2032,51 @@ html {
   border: none;
 }
 
+.content-filter {
+  position: relative;
+}
+
+.dropdown-menu {
+  width: 185px;
+  text-decoration: none;
+  align-items: flex-start;
+  border-radius: 8px;
+  background-color: white;
+  transition: 0.22s cubic-bezier(0.23, 1, 0.32, 1);
+  right: 0px;
+  top: 45px;
+  display: none;
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+}
+.dropdown-menu a {
+  display: flex;
+  padding: 10px 12px;
+  align-items: center;
+  gap: 8px;
+  flex: 1 0 0;
+  align-self: stretch;
+  font-size: clamp(1.2rem, 0.914rem + 0.762vw, 1.6rem);
+  font-weight: 500;
+  transform: translateY(1.25rem);
+  transition: 0.22s cubic-bezier(0.23, 1, 0.32, 1);
+  line-height: clamp(2rem, 1.714rem + 0.762vw, 2.4rem);
+}
+.dropdown-menu a:hover {
+  background-color: #f5eff7;
+}
+
+.dropdown-menu.active {
+  opacity: 1;
+  display: block;
+  visibility: visible;
+}
+.dropdown-menu.active a {
+  z-index: 9999;
+  transform: translateY(0);
+}
+
 main .dashboard .containerAdmin {
   width: 95%;
   margin: 0 30px;
