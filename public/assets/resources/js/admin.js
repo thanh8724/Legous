@@ -213,3 +213,28 @@ sidebarToggle.addEventListener("click", () => {
             data.datasets[2].data = generateRandomDataMonth();
             myChart2.update(); // Update the chart with new data
         }, 30000);
+
+
+        function generateRandomData() {
+            return Math.floor(Math.random() * 100);
+          }
+        
+          var data3 = {
+            labels: ["Direct", "Social"],
+            datasets: [
+              {
+                data: [generateRandomData(), generateRandomData()],
+                backgroundColor: ["#ff6b6b", "#6b66ff"],
+              },
+            ],
+          };
+        
+          var ctx3 = document.getElementById('myChart3').getContext('2d');
+          var myChart = new Chart(ctx3, {
+            type: 'doughnut', // You can use other chart types like 'bar', 'line', etc.
+            data: data3,
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+            },
+          });

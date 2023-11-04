@@ -3,7 +3,7 @@ main {
     .containerAdmin {
       width: 95%;
       margin: 0 30px;
-//      <!----======== Local DashBoard ======== -->
+      //      <!----======== Local DashBoard ======== -->
 
       .localDashboard {
         .col-12 {
@@ -28,9 +28,9 @@ main {
         }
       }
 
-//      <!----======== End Local DashBoard ======== -->
+      //      <!----======== End Local DashBoard ======== -->
 
-//      <!----======== Owl Carousel ======== -->
+      //      <!----======== Owl Carousel ======== -->
 
       .owl-carousel {
         .slider_contain {
@@ -145,16 +145,13 @@ main {
         }
       }
 
-//      <!----======== End Owl Carousel ======== -->
+      //      <!----======== End Owl Carousel ======== -->
 
-//      <!----======== Statistical Chart ======== -->
+      //      <!----======== Statistical Chart ======== -->
 
       .statisticalChart {
-
         .statisticalChartItems {
-
-          .customerOrderStatistics{
-
+          .customerOrderStatistics {
             .orderStatistics {
               background-color: $-white;
               margin-right: 20px;
@@ -177,16 +174,14 @@ main {
                       bottom: 0px;
                       transition: $trans-normal;
                     }
-                    &.active{
+                    &.active {
                       color: $light-primary;
-
                     }
                     &.active:after {
                       content: "";
                       width: 100%;
                     }
                   }
-                  
                 }
               }
             }
@@ -198,7 +193,7 @@ main {
                 p {
                   color: $light-on-container;
                 }
-                button{
+                button {
                   width: 40px;
                   height: 40px;
                   background-color: rgba(73, 69, 79, 12%);
@@ -225,7 +220,7 @@ main {
                     .topUserOrder__info {
                       .topUserOrder__name {
                         color: $light-fixed;
-                        color: #1D192B !important;
+                        color: #1d192b !important;
                       }
                       .topUserOrder__role {
                         color: $light-secondary;
@@ -234,7 +229,7 @@ main {
                     .topUserOrder_Spend {
                       .topUserOrder_totalPayed {
                         color: $light-fixed;
-                        color: #1D192B !important;
+                        color: #1d192b !important;
                       }
                       .topUserOrder_totalOrdered {
                         color: $light-secondary;
@@ -248,16 +243,17 @@ main {
         }
       }
 
-//      <!----======== End Statistical Chart ======== -->
+      //      <!----======== End Statistical Chart ======== -->
 
-//      <!----======== Recent Order ======== -->
+      //      <!----======== Recent Order ======== -->
 
       .recentOrder {
         .recentOrder_items {
           background-color: $-white !important;
+          border-radius: 10px;
           .title-medium {
             color: $light-on-container;
-            color: #1D192B;
+            color: #1d192b;
           }
           .tableLine {
             width: 100%;
@@ -265,39 +261,39 @@ main {
             background-color: rgba(0, 0, 0, 0.247);
             margin: 15px 0;
           }
-          table{
-            tbody{
+          table {
+            tbody {
               border: transparent !important;
             }
-             td{
+            td {
               border: transparent !important;
-             }
-             tfoot{
+            }
+            tfoot {
               border: transparent !important;
-             }
-             th{
+            }
+            th {
               border: transparent !important;
               background-color: transparent !important;
               color: $light-outline;
-             }
-             thead{
+            }
+            thead {
               border: transparent !important;
-             }
-             tr{
+            }
+            tr {
               border: transparent !important;
               background-color: transparent !important;
               .tableLargeItems {
                 display: flex;
                 align-items: center;
-                input{
+                input {
                   margin-right: 10px;
                 }
                 span {
                   margin-right: 10px;
                 }
               }
-             }
-             .dotTable{
+            }
+            .dotTable {
               width: 8px;
               height: 8px;
               border-radius: 9999px;
@@ -310,13 +306,150 @@ main {
               &.red {
                 background-color: $-orange;
               }
-             }
+            }
           }
         }
       }
 
-//      <!----======== End Recent Order ======== -->
+      //      <!----======== End Recent Order ======== -->
 
+      //      <!----======== Overview Dashboard ======== -->
+      .overviewDashboard {
+        .col-12 {
+          .theadoverviewDashboard {
+            p {
+              color: $light-on-container;
+            }
+            button {
+              width: 40px;
+              height: 40px;
+              border-radius: 9999px;
+              line-height: 40px;
+              i {
+                font-size: 16px;
+              }
+            }
+          }
+          .vitsitOverview {
+            .vitsitOverview_item {
+              
+              .lineDashboard {
+                width: 100%;
+                height: 1px;
+                background-color: rgba(0, 0, 0, 0.349);
+                margin: 15px 0;
+              }
+              .weekyChart {
+                display: flex;
+                justify-content: center;
+                .wekkyChart_item {
+                  .loader {
+                    width: 150px;
+                    position: relative;
+                    transform: rotate(-90deg);
+                    .loading {
+                      margin: 20px 0 0;
+                      position: relative;
+                      width: 100%;
+                      height: 20px;
+                      background-color: #e8edf2;
+                      border-radius: 10px;
+                      .lineLoading {
+                        display: block;
+                        position: absolute;
+                        width: 30%;
+                        height: 100%;
+                        background-color: #6750a4;
+                        box-shadow: 10px;
+                        border-radius: 10px;
+                      }
+                      .lineLoading2 {
+                        display: block;
+                        position: absolute;
+                        width: 40%;
+                        height: 100%;
+                        background-color: #6750a4;
+                        box-shadow: 10px;
+                        border-radius: 10px;
+                      }
+                      .lineLoading3 {
+                        display: block;
+                        position: absolute;
+                        width: 50%;
+                        height: 100%;
+                        background-color: #6750a4;
+                        box-shadow: 10px;
+                        border-radius: 10px;
+                      }
+                      .lineLoading4 {
+                        display: block;
+                        position: absolute;
+                        width: 65%;
+                        height: 100%;
+                        background-color: #6750a4;
+                        box-shadow: 10px;
+                        border-radius: 10px;
+                      }
+                      .lineLoading5 {
+                        display: block;
+                        position: absolute;
+                        width: 70%;
+                        height: 100%;
+                        background-color: #6750a4;
+                        box-shadow: 10px;
+                        border-radius: 10px;
+                      }
+                      .lineLoading6 {
+                        display: block;
+                        position: absolute;
+                        width: 90%;
+                        height: 100%;
+                        background-color: #6750a4;
+                        box-shadow: 10px;
+                        border-radius: 10px;
+                      }.lineLoading7 {
+                        display: block;
+                        position: absolute;
+                        width: 75%;
+                        height: 100%;
+                        background-color: #6750a4;
+                        box-shadow: 10px;
+                        border-radius: 10px;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          .topProductSeller {
+            .topProductSeller_item {
+              .ordertopProduct {
+                .ordertopProduct_items {
+                  height: 320px;
+                  overflow-y: scroll;
+                  .ordertopProduct_item {
+                    background-color: $light-on-fixed-variant;
+                    padding: 15px;
+                    .nameCategories {
+                      h2 {
+                        color: $-white;
+                      }
+                    }
+                    .priceProduct {
+                      text-align: end;
+                      h2 {
+                        color: $-white;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      //      <!----======== End Overview Dashboard ======== -->
     }
   }
 }

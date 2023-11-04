@@ -313,7 +313,7 @@ a {
   transform: translateY(0);
 }
 .header .header__inner .header__nav__link {
-  color: #410e0b;
+  color: #1d192b;
   font-size: 1.6rem;
   font-weight: 600;
   transition: 0.22s linear;
@@ -344,7 +344,7 @@ a {
   display: block;
   line-height: 6rem;
   text-transform: uppercase;
-  color: #410e0b;
+  color: #1d192b;
   transition: 0.22s cubic-bezier(0.23, 1, 0.32, 1);
 }
 .header .header__inner .header__nav-respon-full__link:hover {
@@ -380,7 +380,7 @@ a {
   width: max-content;
 }
 .header .header__inner .header__subnav__wrapper .header__subnav__title {
-  color: #410e0b;
+  color: #1d192b;
   position: relative;
 }
 .header .header__inner .header__subnav__wrapper .header__subnav__title::before {
@@ -686,7 +686,7 @@ a {
 .search__product {
   background: rgba(255, 255, 255, 0.4);
   margin-inline: auto;
-  color: #410e0b;
+  color: #1d192b;
 }
 .search__product__banner {
   width: 10rem;
@@ -700,7 +700,7 @@ a {
   object-fit: cover;
 }
 .search__product__name {
-  color: #410e0b;
+  color: #1d192b;
 }
 
 .pd150 {
@@ -2037,7 +2037,7 @@ main .dashboard .containerAdmin {
   margin: 0 30px;
 }
 main .dashboard .containerAdmin .localDashboard .col-12 .h2_dashboard {
-  color: #410e0b;
+  color: #1d192b;
 }
 main .dashboard .containerAdmin .localDashboard .col-12 .aHref1 {
   color: #000000;
@@ -2065,7 +2065,7 @@ main .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items .lab
   font-size: 24px;
 }
 main .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items .label-large {
-  color: #410e0b;
+  color: #1d192b;
 }
 main .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items span {
   color: #1d192b;
@@ -2097,7 +2097,7 @@ main .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items .sli
 }
 main .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items .dashboard-moneyEarn {
   margin-left: 10px;
-  color: #410e0b;
+  color: #1d192b;
 }
 main .dashboard .containerAdmin .owl-carousel .slider_contain-2 .slider_items_stonks p {
   color: #00b3ff !important;
@@ -2160,7 +2160,7 @@ main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .custom
   border-radius: 10px;
 }
 main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .headerTopUser p {
-  color: #410e0b;
+  color: #1d192b;
 }
 main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .headerTopUser button {
   width: 40px;
@@ -2182,24 +2182,25 @@ main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .custom
 }
 main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .bodyTopUser .topUserOder .topUserOder_items .topUserOrder__info .topUserOrder__name {
   color: #ffd8e4;
-  color: #1D192B !important;
+  color: #1d192b !important;
 }
 main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .bodyTopUser .topUserOder .topUserOder_items .topUserOrder__info .topUserOrder__role {
   color: #625b71;
 }
 main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .bodyTopUser .topUserOder .topUserOder_items .topUserOrder_Spend .topUserOrder_totalPayed {
   color: #ffd8e4;
-  color: #1D192B !important;
+  color: #1d192b !important;
 }
 main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .bodyTopUser .topUserOder .topUserOder_items .topUserOrder_Spend .topUserOrder_totalOrdered {
   color: #625b71;
 }
 main .dashboard .containerAdmin .recentOrder .recentOrder_items {
   background-color: #ffffff !important;
+  border-radius: 10px;
 }
 main .dashboard .containerAdmin .recentOrder .recentOrder_items .title-medium {
-  color: #410e0b;
-  color: #1D192B;
+  color: #1d192b;
+  color: #1d192b;
 }
 main .dashboard .containerAdmin .recentOrder .recentOrder_items .tableLine {
   width: 100%;
@@ -2251,6 +2252,121 @@ main .dashboard .containerAdmin .recentOrder .recentOrder_items table .dotTable.
 }
 main .dashboard .containerAdmin .recentOrder .recentOrder_items table .dotTable.red {
   background-color: #FF6651;
+}
+main .dashboard .containerAdmin .overviewDashboard .col-12 .theadoverviewDashboard p {
+  color: #1d192b;
+}
+main .dashboard .containerAdmin .overviewDashboard .col-12 .theadoverviewDashboard button {
+  width: 40px;
+  height: 40px;
+  border-radius: 9999px;
+  line-height: 40px;
+}
+main .dashboard .containerAdmin .overviewDashboard .col-12 .theadoverviewDashboard button i {
+  font-size: 16px;
+}
+main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .lineDashboard {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.349);
+  margin: 15px 0;
+}
+main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart {
+  display: flex;
+  justify-content: center;
+}
+main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart .wekkyChart_item .loader {
+  width: 150px;
+  position: relative;
+  transform: rotate(-90deg);
+}
+main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart .wekkyChart_item .loader .loading {
+  margin: 20px 0 0;
+  position: relative;
+  width: 100%;
+  height: 20px;
+  background-color: #e8edf2;
+  border-radius: 10px;
+}
+main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart .wekkyChart_item .loader .loading .lineLoading {
+  display: block;
+  position: absolute;
+  width: 30%;
+  height: 100%;
+  background-color: #6750a4;
+  box-shadow: 10px;
+  border-radius: 10px;
+}
+main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart .wekkyChart_item .loader .loading .lineLoading2 {
+  display: block;
+  position: absolute;
+  width: 40%;
+  height: 100%;
+  background-color: #6750a4;
+  box-shadow: 10px;
+  border-radius: 10px;
+}
+main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart .wekkyChart_item .loader .loading .lineLoading3 {
+  display: block;
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  background-color: #6750a4;
+  box-shadow: 10px;
+  border-radius: 10px;
+}
+main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart .wekkyChart_item .loader .loading .lineLoading4 {
+  display: block;
+  position: absolute;
+  width: 65%;
+  height: 100%;
+  background-color: #6750a4;
+  box-shadow: 10px;
+  border-radius: 10px;
+}
+main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart .wekkyChart_item .loader .loading .lineLoading5 {
+  display: block;
+  position: absolute;
+  width: 70%;
+  height: 100%;
+  background-color: #6750a4;
+  box-shadow: 10px;
+  border-radius: 10px;
+}
+main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart .wekkyChart_item .loader .loading .lineLoading6 {
+  display: block;
+  position: absolute;
+  width: 90%;
+  height: 100%;
+  background-color: #6750a4;
+  box-shadow: 10px;
+  border-radius: 10px;
+}
+main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart .wekkyChart_item .loader .loading .lineLoading7 {
+  display: block;
+  position: absolute;
+  width: 75%;
+  height: 100%;
+  background-color: #6750a4;
+  box-shadow: 10px;
+  border-radius: 10px;
+}
+main .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .topProductSeller_item .ordertopProduct .ordertopProduct_items {
+  height: 320px;
+  overflow-y: scroll;
+}
+main .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .topProductSeller_item .ordertopProduct .ordertopProduct_items .ordertopProduct_item {
+  background-color: #4f378b;
+  padding: 15px;
+}
+main .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .topProductSeller_item .ordertopProduct .ordertopProduct_items .ordertopProduct_item .nameCategories h2 {
+  color: #ffffff;
+}
+main .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .topProductSeller_item .ordertopProduct .ordertopProduct_items .ordertopProduct_item .priceProduct {
+  text-align: end;
+}
+main .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .topProductSeller_item .ordertopProduct .ordertopProduct_items .ordertopProduct_item .priceProduct h2 {
+  color: #ffffff;
 }
 
 /* Mobile: with < 740px */
