@@ -35,17 +35,7 @@ sidebarToggle.addEventListener("click", () => {
 
 
 
-function openOptions (){
-   const  options = document.getElementById('dropdown-menu');
-   if (options.style.display === "none") {
-    options.style.display = "block";
-    options.style.opacity = '1';
-} else {
-    options.style.display = "none";
-    options.style.opacity = '0';
-  }
 
-}
 
 const options = document.querySelector('.dropdown-menu');
 const filterBtn = document.querySelector('#filter');

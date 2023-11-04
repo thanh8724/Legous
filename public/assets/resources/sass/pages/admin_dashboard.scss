@@ -1,0 +1,322 @@
+main {
+  .dashboard {
+    .containerAdmin {
+      width: 95%;
+      margin: 0 30px;
+//      <!----======== Local DashBoard ======== -->
+
+      .localDashboard {
+        .col-12 {
+          .h2_dashboard {
+            color: $light-on-container;
+          }
+          .aHref1 {
+            color: $-black;
+            text-decoration: unset;
+          }
+          .aHref2 {
+            color: $light-surface-tint;
+            text-decoration: unset;
+          }
+          .calenderColor {
+            color: $light-surface-tint;
+            font-size: 14px;
+          }
+          .dateCalender {
+            color: $light-surface-tint;
+          }
+        }
+      }
+
+//      <!----======== End Local DashBoard ======== -->
+
+//      <!----======== Owl Carousel ======== -->
+
+      .owl-carousel {
+        .slider_contain {
+          background-color: $-white !important;
+          border-radius: 5px;
+          .date-dashboard {
+            color: $light-secondary;
+          }
+          .slider_items {
+            .label .fa-ellipsis-v {
+              font-size: 24px;
+            }
+
+            .label-large {
+              color: $light-on-container;
+            }
+
+            span {
+              color: #1d192b;
+              font-size: 1.25rem;
+              font-weight: bold;
+            }
+
+            h5 {
+              color: #1d192b;
+              font-size: 1.25rem;
+              font-weight: bold;
+            }
+
+            .buttonWallet {
+              border: transparent;
+              background-color: $-green;
+              width: 45px;
+              height: 45px;
+              border-radius: 5px;
+              .fa-wallet {
+                font-size: 20px;
+              }
+            }
+
+            .slider_items_stonks {
+              p {
+                color: $-green;
+              }
+
+              i {
+                margin-right: 5px;
+                color: $-green;
+                font-size: 18px;
+              }
+            }
+
+            .dashboard-moneyEarn {
+              margin-left: 10px;
+              color: $light-on-container;
+            }
+          }
+        }
+
+        .slider_contain-2 {
+          .slider_items_stonks {
+            p {
+              color: #00b3ff !important;
+            }
+
+            i {
+              color: #00b3ff !important;
+            }
+          }
+
+          .slider_items {
+            .buttonWallet {
+              background-color: #00b3ff !important;
+            }
+          }
+        }
+
+        .slider_contain-3 {
+          .slider_items_stonks {
+            p {
+              color: $light-primary !important;
+            }
+
+            i {
+              color: $light-primary !important;
+            }
+          }
+
+          .slider_items {
+            .buttonWallet {
+              background-color: $light-primary !important;
+            }
+          }
+        }
+
+        .slider_contain-4 {
+          .slider_items_stonks {
+            p {
+              color: $-pink-2 !important;
+            }
+
+            i {
+              color: $-pink-2 !important;
+            }
+          }
+
+          .slider_items {
+            .buttonWallet {
+              background-color: $-pink-2 !important;
+            }
+          }
+        }
+      }
+
+//      <!----======== End Owl Carousel ======== -->
+
+//      <!----======== Statistical Chart ======== -->
+
+      .statisticalChart {
+
+        .statisticalChartItems {
+
+          .customerOrderStatistics{
+
+            .orderStatistics {
+              background-color: $-white;
+              margin-right: 20px;
+              border-radius: 10px;
+              .myNavTabs {
+                .myNavItem {
+                  .nav-link {
+                    position: relative !important;
+                    color: $light-on-surface-variant;
+                    font-size: 14px;
+                    font-weight: 600;
+                    background-color: $light-surface2;
+                    &:after {
+                      content: "";
+                      position: absolute;
+                      background-color: $light-primary;
+                      height: 3px;
+                      width: 0;
+                      left: 0;
+                      bottom: 0px;
+                      transition: $trans-normal;
+                    }
+                    &.active{
+                      color: $light-primary;
+
+                    }
+                    &.active:after {
+                      content: "";
+                      width: 100%;
+                    }
+                  }
+                  
+                }
+              }
+            }
+            .topUsers {
+              background-color: $-white;
+              border-radius: 10px;
+
+              .headerTopUser {
+                p {
+                  color: $light-on-container;
+                }
+                button{
+                  width: 40px;
+                  height: 40px;
+                  background-color: rgba(73, 69, 79, 12%);
+                  border-radius: 9999px;
+
+                  i {
+                    font-size: 16px;
+                  }
+                }
+              }
+
+              .bodyTopUser {
+                .topUserOder {
+                  .topUserOder_items {
+                    margin: 15px 0;
+                    .topUserOrder__image {
+                      img {
+                        width: 45px;
+                        height: 45px;
+                        border-radius: 9999px;
+                        margin-right: 15px;
+                      }
+                    }
+                    .topUserOrder__info {
+                      .topUserOrder__name {
+                        color: $light-fixed;
+                        color: #1D192B !important;
+                      }
+                      .topUserOrder__role {
+                        color: $light-secondary;
+                      }
+                    }
+                    .topUserOrder_Spend {
+                      .topUserOrder_totalPayed {
+                        color: $light-fixed;
+                        color: #1D192B !important;
+                      }
+                      .topUserOrder_totalOrdered {
+                        color: $light-secondary;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+//      <!----======== End Statistical Chart ======== -->
+
+//      <!----======== Recent Order ======== -->
+
+      .recentOrder {
+        .recentOrder_items {
+          background-color: $-white !important;
+          .title-medium {
+            color: $light-on-container;
+            color: #1D192B;
+          }
+          .tableLine {
+            width: 100%;
+            height: 1px;
+            background-color: rgba(0, 0, 0, 0.247);
+            margin: 15px 0;
+          }
+          table{
+            tbody{
+              border: transparent !important;
+            }
+             td{
+              border: transparent !important;
+             }
+             tfoot{
+              border: transparent !important;
+             }
+             th{
+              border: transparent !important;
+              background-color: transparent !important;
+              color: $light-outline;
+             }
+             thead{
+              border: transparent !important;
+             }
+             tr{
+              border: transparent !important;
+              background-color: transparent !important;
+              .tableLargeItems {
+                display: flex;
+                align-items: center;
+                input{
+                  margin-right: 10px;
+                }
+                span {
+                  margin-right: 10px;
+                }
+              }
+             }
+             .dotTable{
+              width: 8px;
+              height: 8px;
+              border-radius: 9999px;
+              &.green {
+                background-color: $-green;
+              }
+              &.orange {
+                background-color: $-orange;
+              }
+              &.red {
+                background-color: $-orange;
+              }
+             }
+          }
+        }
+      }
+
+//      <!----======== End Recent Order ======== -->
+
+    }
+  }
+}

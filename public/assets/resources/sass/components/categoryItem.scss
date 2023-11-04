@@ -1,0 +1,7 @@
+.category__item {
+    .category__banner {
+        width: clamp(4.5rem, 3.071rem + 3.81vw, 6.5rem);
+        height: clamp(4.5rem, 3.071rem + 3.81vw, 6.5rem);
+        aspect-ratio: 1;
+    }
+}

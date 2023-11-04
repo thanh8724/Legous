@@ -1,6 +1,6 @@
 .product {
     display: grid;
-    grid-row: span 3;
+    grid-row: span 4;
     grid-template-rows: subgrid;
     gap: 1.2rem;
     &__overlay {
