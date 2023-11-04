@@ -1,6 +1,15 @@
 body {
 	&.dark {
 		main {
+			.localDashboard {
+				.h2_dashboard{
+					color: $-white !important;
+				}
+				.aHref1{
+					color: $-white !important;
+
+				}
+			}
 			background-color: #15192a;
 			transition: 0.5s;
 			.dashboard {

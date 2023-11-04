@@ -264,17 +264,21 @@ main {
           table {
             tbody {
               border: transparent !important;
+              color: $-black;
             }
             td {
               border: transparent !important;
+              color: $-black;
             }
             tfoot {
               border: transparent !important;
+              color: $-black;
             }
             th {
               border: transparent !important;
               background-color: transparent !important;
               color: $light-outline;
+              color: $-black;
             }
             thead {
               border: transparent !important;
@@ -316,7 +320,15 @@ main {
       //      <!----======== Overview Dashboard ======== -->
       .overviewDashboard {
         .col-12 {
+          .lineDashboard {
+            width: 100%;
+            height: 1px;
+            background-color: rgba(0, 0, 0, 0.349);
+          }
           .theadoverviewDashboard {
+            padding: 5px 20px;
+            display: flex;
+            align-items: center;
             p {
               color: $light-on-container;
             }
@@ -325,33 +337,31 @@ main {
               height: 40px;
               border-radius: 9999px;
               line-height: 40px;
+              background-color: rgba(73, 69, 79, 0.12);
               i {
                 font-size: 16px;
               }
             }
           }
           .vitsitOverview {
+            background-color: $-white;
+            border-radius: 10px;
             .vitsitOverview_item {
               
-              .lineDashboard {
-                width: 100%;
-                height: 1px;
-                background-color: rgba(0, 0, 0, 0.349);
-                margin: 15px 0;
-              }
+
               .weekyChart {
                 display: flex;
                 justify-content: center;
                 .wekkyChart_item {
                   .loader {
-                    width: 150px;
+                    width: 200px;
                     position: relative;
                     transform: rotate(-90deg);
                     .loading {
-                      margin: 20px 0 0;
+                      margin: 25px 0 0;
                       position: relative;
                       width: 100%;
-                      height: 20px;
+                      height: 18px;
                       background-color: #e8edf2;
                       border-radius: 10px;
                       .lineLoading {
@@ -418,11 +428,25 @@ main {
                       }
                     }
                   }
+                  
+                }
+              }
+              .sevenDayOfWeek {
+                align-items: center;
+                justify-content: center;
+                padding: 10px 0;
+                p {
+                  margin: 0 14px;
                 }
               }
             }
           }
           .topProductSeller {
+            .lineDashboard {
+              margin: 15px 0 0;
+            }
+            background-color: $-white;
+            border-radius: 10px;
             .topProductSeller_item {
               .ordertopProduct {
                 .ordertopProduct_items {
@@ -432,6 +456,9 @@ main {
                     background-color: $light-on-fixed-variant;
                     padding: 15px;
                     .nameCategories {
+                      p {
+                        color: $light-on-container;
+                      }
                       h2 {
                         color: $-white;
                       }
@@ -447,9 +474,43 @@ main {
               }
             }
           }
+          .totalProfit {
+            background-color: $-white;
+            border-radius: 10px;
+            .totalProfit_items {
+              p {
+                color: $light-on-container;
+              }
+            }
+          }
         }
       }
       //      <!----======== End Overview Dashboard ======== -->
     }
   }
+  .adminFooter {
+    .col-6 {
+      p {
+        color: $secondary60;
+      }
+    }
+    ul{
+      display: flex;
+      justify-content: end;
+      li{
+        color: $secondary60;
+        margin: 0 15px;
+        list-style: none;
+        a{
+          text-decoration: none;
+         color: $secondary60;
+
+        }
+      }
+    }
+    }
+}
+
+*{
+  // border: 1px solid black;
 }

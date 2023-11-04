@@ -34,10 +34,27 @@ sidebarToggle.addEventListener("click", () => {
 })
 
 
+
+
+
         $('.owl-carousel').owlCarousel({
             margin: 10,
             nav: true,
-
+            responsive:{
+                0:{
+                    items:1
+                },
+                600:{
+                    items:2
+                },
+                1100:{
+                    items:3 
+                },
+                1440:{
+                    items:4
+                }
+                
+            }
         })
         
         // Function to generate random data for each line
@@ -215,3 +232,56 @@ sidebarToggle.addEventListener("click", () => {
             data.datasets[2].data = generateRandomDataMonth();
             myChart2.update(); // Update the chart with new data
         }, 30000);
+
+        function generateRandomData() {
+            return Math.floor(Math.random() * 100);
+          }
+        
+          var data3 = {
+            labels: ["Direct", "Social"],
+            datasets: [
+              {
+                data: [generateRandomData(), generateRandomData()],
+                backgroundColor: ["#00B3FF", "#FF6ACC"],
+              },
+            ],
+          };
+        
+          var ctx3 = document.getElementById('myChart3').getContext('2d');
+          var myChart3 = new Chart(ctx3, {
+            type: 'doughnut', // You can use other chart types like 'bar', 'line', etc.
+            data: data3,
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+            },
+          });
+
+
+
+          const menuButton = document.getElementById("menuButton");
+const closeButton = document.getElementById("closeButton");
+const overlay = document.querySelector(".overlay");
+
+// Open the mobile menu
+menuButton.addEventListener("click", function () {
+    document.body.classList.add("nav-open");
+});
+
+// Close the mobile menu
+closeButton.addEventListener("click", function () {
+    document.body.classList.remove("nav-open");
+});
+
+// Close the mobile menu when clicking on a list item
+const listItems = document.querySelectorAll(".navBarMobile_item ul li a");
+listItems.forEach(function (item) {
+    item.addEventListener("click", function () {
+        document.body.classList.remove("nav-open");
+    });
+});
+
+// Close the mobile menu when clicking on the overlay
+overlay.addEventListener("click", function () {
+    document.body.classList.remove("nav-open");
+});

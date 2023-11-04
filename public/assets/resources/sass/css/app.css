@@ -772,6 +772,12 @@ body.dark main {
   background-color: #15192a;
   transition: 0.5s;
 }
+body.dark main .localDashboard .h2_dashboard {
+  color: #ffffff !important;
+}
+body.dark main .localDashboard .aHref1 {
+  color: #ffffff !important;
+}
 body.dark main .dashboard .top {
   background-color: #1c2339;
   border-color: #1c2339;
@@ -1006,7 +1012,7 @@ main .dashboard .top .sidebar-toggle {
 main .dashboard .top .search-box {
   position: relative;
   height: 45px;
-  max-width: 600px;
+  max-width: 400px;
   width: 100%;
   margin: 0 30px;
 }
@@ -1064,11 +1070,13 @@ ul {
   }
   nav ~ .dashboard {
     left: 73px;
-    width: calc(100% - 73px);
   }
   nav ~ .dashboard .top {
     left: 73px;
     width: calc(100% - 73px);
+  }
+  nav ~ .dashboard .top .sidebar-toggle {
+    display: none;
   }
   nav.close {
     width: 250px;
@@ -1083,11 +1091,11 @@ ul {
   }
   nav.close ~ .dashboard {
     left: 250px;
-    width: calc(100% - 250px);
+    width: 100%;
   }
   nav.close ~ .dashboard .top {
     left: 250px;
-    width: calc(100% - 250px);
+    width: 100%;
   }
   .activity .activity-data {
     overflow-x: scroll;
@@ -1131,6 +1139,52 @@ ul {
   nav.close ~ .dashboard .top {
     left: 0;
     width: 100%;
+  }
+}
+.headMobie {
+  display: none;
+}
+
+.navBarMobile {
+  position: fixed;
+  top: 0;
+  left: -300px; /* Initially hidden to the left */
+  width: 300px;
+  height: 100%;
+  background: #fff;
+  overflow: auto;
+  transition: left 0.3s;
+  z-index: 2;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  z-index: 1;
+}
+
+/* Show the navigation when the menu button is clicked */
+.nav-open .navBarMobile {
+  left: 0;
+}
+
+/* Hiding the menu button on larger screens */
+@media (min-width: 768px) {
+  #menuButton {
+    display: none;
   }
 }
 .hero-banner__wrapper .hero-banner__item {
@@ -2256,17 +2310,21 @@ main .dashboard .containerAdmin .recentOrder .recentOrder_items .tableLine {
 }
 main .dashboard .containerAdmin .recentOrder .recentOrder_items table tbody {
   border: transparent !important;
+  color: #000000;
 }
 main .dashboard .containerAdmin .recentOrder .recentOrder_items table td {
   border: transparent !important;
+  color: #000000;
 }
 main .dashboard .containerAdmin .recentOrder .recentOrder_items table tfoot {
   border: transparent !important;
+  color: #000000;
 }
 main .dashboard .containerAdmin .recentOrder .recentOrder_items table th {
   border: transparent !important;
   background-color: transparent !important;
   color: #79747e;
+  color: #000000;
 }
 main .dashboard .containerAdmin .recentOrder .recentOrder_items table thead {
   border: transparent !important;
@@ -2299,6 +2357,16 @@ main .dashboard .containerAdmin .recentOrder .recentOrder_items table .dotTable.
 main .dashboard .containerAdmin .recentOrder .recentOrder_items table .dotTable.red {
   background-color: #FF6651;
 }
+main .dashboard .containerAdmin .overviewDashboard .col-12 .lineDashboard {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.349);
+}
+main .dashboard .containerAdmin .overviewDashboard .col-12 .theadoverviewDashboard {
+  padding: 5px 20px;
+  display: flex;
+  align-items: center;
+}
 main .dashboard .containerAdmin .overviewDashboard .col-12 .theadoverviewDashboard p {
   color: #1d192b;
 }
@@ -2307,30 +2375,29 @@ main .dashboard .containerAdmin .overviewDashboard .col-12 .theadoverviewDashboa
   height: 40px;
   border-radius: 9999px;
   line-height: 40px;
+  background-color: rgba(73, 69, 79, 0.12);
 }
 main .dashboard .containerAdmin .overviewDashboard .col-12 .theadoverviewDashboard button i {
   font-size: 16px;
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .lineDashboard {
-  width: 100%;
-  height: 1px;
-  background-color: rgba(0, 0, 0, 0.349);
-  margin: 15px 0;
+main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview {
+  background-color: #ffffff;
+  border-radius: 10px;
 }
 main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart {
   display: flex;
   justify-content: center;
 }
 main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart .wekkyChart_item .loader {
-  width: 150px;
+  width: 200px;
   position: relative;
   transform: rotate(-90deg);
 }
 main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart .wekkyChart_item .loader .loading {
-  margin: 20px 0 0;
+  margin: 25px 0 0;
   position: relative;
   width: 100%;
-  height: 20px;
+  height: 18px;
   background-color: #e8edf2;
   border-radius: 10px;
 }
@@ -2397,6 +2464,21 @@ main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vits
   box-shadow: 10px;
   border-radius: 10px;
 }
+main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .sevenDayOfWeek {
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0;
+}
+main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .sevenDayOfWeek p {
+  margin: 0 14px;
+}
+main .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller {
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+main .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .lineDashboard {
+  margin: 15px 0 0;
+}
 main .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .topProductSeller_item .ordertopProduct .ordertopProduct_items {
   height: 320px;
   overflow-y: scroll;
@@ -2404,6 +2486,9 @@ main .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .to
 main .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .topProductSeller_item .ordertopProduct .ordertopProduct_items .ordertopProduct_item {
   background-color: #4f378b;
   padding: 15px;
+}
+main .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .topProductSeller_item .ordertopProduct .ordertopProduct_items .ordertopProduct_item .nameCategories p {
+  color: #1d192b;
 }
 main .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .topProductSeller_item .ordertopProduct .ordertopProduct_items .ordertopProduct_item .nameCategories h2 {
   color: #ffffff;
@@ -2413,6 +2498,29 @@ main .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .to
 }
 main .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .topProductSeller_item .ordertopProduct .ordertopProduct_items .ordertopProduct_item .priceProduct h2 {
   color: #ffffff;
+}
+main .dashboard .containerAdmin .overviewDashboard .col-12 .totalProfit {
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+main .dashboard .containerAdmin .overviewDashboard .col-12 .totalProfit .totalProfit_items p {
+  color: #1d192b;
+}
+main .adminFooter .col-6 p {
+  color: #958da5;
+}
+main .adminFooter ul {
+  display: flex;
+  justify-content: end;
+}
+main .adminFooter ul li {
+  color: #958da5;
+  margin: 0 15px;
+  list-style: none;
+}
+main .adminFooter ul li a {
+  text-decoration: none;
+  color: #958da5;
 }
 
 .containerAdmin_order-detail {
@@ -2649,6 +2757,34 @@ main .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .to
 }
 
 /* Mobile: with < 740px */
+@media only screen and (max-width: 46.1875em) {
+  .headMobie {
+    display: block;
+  }
+  .headMobie .col-12 .col-4 {
+    font-size: 20px;
+  }
+  #adminDashboard nav {
+    display: none !important;
+  }
+  #adminDashboard .p30 {
+    padding: 15px;
+  }
+  #adminDashboard .dashboard {
+    width: 100% !important;
+    left: 0;
+  }
+  #adminDashboard .dashboard .top {
+    display: none;
+  }
+  .owl-carousel .owl-item {
+    width: unset !important;
+  }
+  .owl-carousel .owl-dots .owl-dot {
+    padding: 5px 30px !important;
+    box-shadow: unset;
+  }
+}
 /* Tablet: width >= 740px and width < 1024px */
 /* Mobile and Tablet: width < 1024px */
 /* PC: width >= 1024px */
