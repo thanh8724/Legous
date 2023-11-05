@@ -33,6 +33,11 @@ sidebarToggle.addEventListener("click", () => {
     }
 })
 
+const btnFilter = document.querySelector("#filter");
+const filterOptions = document.querySelector(".dropdown-menu");
+btnFilter.addEventListener("click", function (){
+    filterOptions.classList.toggle("active");
+})
 
 
 
@@ -259,7 +264,7 @@ sidebarToggle.addEventListener("click", () => {
 
 
 
-          const menuButton = document.getElementById("menuButton");
+const menuButton = document.getElementById("menuButton");
 const closeButton = document.getElementById("closeButton");
 const overlay = document.querySelector(".overlay");
 
@@ -285,3 +290,4 @@ listItems.forEach(function (item) {
 overlay.addEventListener("click", function () {
     document.body.classList.remove("nav-open");
 });
+

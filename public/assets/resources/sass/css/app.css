@@ -2099,8 +2099,8 @@ html {
   transition: 0.22s cubic-bezier(0.23, 1, 0.32, 1);
   right: 0px;
   top: 45px;
-  display: none;
   position: absolute;
+  display: none;
   opacity: 0;
   visibility: hidden;
 }
@@ -2123,12 +2123,11 @@ html {
 }
 
 .dropdown-menu.active {
-  opacity: 1;
   display: block;
+  opacity: 1;
   visibility: visible;
 }
 .dropdown-menu.active a {
-  z-index: 9999;
   transform: translateY(0);
 }
 
