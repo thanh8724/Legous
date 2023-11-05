@@ -91,3 +91,17 @@
     transform: translateY(0)
   }
 }
+
+table{
+  tbody{
+    tr{
+      td{
+        a{
+          text-decoration: none;
+          color: $light-primary;
+        }
+      }
+    }
+  }
+
+}

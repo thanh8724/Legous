@@ -2131,6 +2131,11 @@ html {
   transform: translateY(0);
 }
 
+table tbody tr td a {
+  text-decoration: none;
+  color: #6750a4;
+}
+
 main .dashboard .containerAdmin {
   width: 95%;
   margin: 0 30px;
