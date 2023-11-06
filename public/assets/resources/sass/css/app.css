@@ -2580,9 +2580,9 @@ html {
   margin-top: 0px;
 }
 
-/* .container-full {
+.container-full {
   background-color: black !important;
-} */
+}
 .container-full main .lineMiniConfirm {
   width: 90px;
   height: 4px;
