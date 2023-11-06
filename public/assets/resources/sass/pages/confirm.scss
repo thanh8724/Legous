@@ -65,10 +65,21 @@
                 height: 1px;
                 background-color: $light-outline-variant;
             }
+            .label-medium {
+              color: $light-on-container;
+            }
             .totalAmount {
               background: -webkit-linear-gradient(60deg,#ff79ea, #A93CFF,#6791FF);
               -webkit-background-clip: text;
               -webkit-text-fill-color: transparent;
+            }
+            .buttonNextOrders {
+              .nextOrders{
+                background-color: $-black;
+                color: $-white;
+                padding: 15px;
+                border-radius: 10px;
+              }
             }
           }
         }
