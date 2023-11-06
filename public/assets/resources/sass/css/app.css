@@ -1073,6 +1073,10 @@ p {
   margin-bottom: 0px !important;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 main {
   background-color: #f7f7f7;
 }
@@ -1083,7 +1087,7 @@ main nav {
   height: 100%;
   width: 250px;
   padding: 10px 14px;
-  background-color: #FFF;
+  background-color: #fff;
   border-right: 1px solid #e6e5e5;
   transition: all 0.5s ease;
 }
@@ -1103,7 +1107,7 @@ main nav .logo-name .logo-image img {
   object-fit: cover;
 }
 main nav .logo-name .logo_name {
-  color: #000000;
+  color: #000000 !important;
   font-family: "mainFont", sans-serif;
   margin-left: 14px;
   transition: 0.22s cubic-bezier(0.23, 1, 0.32, 1);
@@ -1134,7 +1138,7 @@ main nav .menu-items li a i {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #625B71;
+  color: #625b71;
 }
 main nav .menu-items li a .link-name {
   color: #625b71;
@@ -1175,7 +1179,7 @@ main nav .menu-items .logout-mode .mode .mode-toggle .switch:before {
   transform: translateY(-50%);
   height: 15px;
   width: 15px;
-  background-color: #FFF;
+  background-color: #fff;
   border-radius: 50%;
   transition: all 0.3s ease;
 }
@@ -1184,7 +1188,7 @@ main nav .menu-items .nav-links li {
   margin: 5px 0;
 }
 main nav .menu-items .nav-links li:hover {
-  background-color: #6750A4;
+  background-color: #6750a4;
   border-radius: 10px;
   color: #fff;
 }
@@ -1195,7 +1199,7 @@ main nav .menu-items .nav-links li:hover a i {
   color: #fff;
 }
 main nav .menu-items .nav-links li.active {
-  background-color: #6750A4;
+  background-color: #6750a4;
   border-radius: 10px;
   color: #fff;
 }
@@ -1242,7 +1246,7 @@ main .dashboard .top {
   justify-content: space-between;
   align-items: center;
   padding: 10px 14px;
-  background-color: #FFF;
+  background-color: #fff;
   transition: all 0.5s ease;
   z-index: 10;
 }
@@ -1250,7 +1254,7 @@ main .dashboard .top .sidebar-toggle {
   font-size: 20px;
   color: #000;
   cursor: pointer;
-  background-color: #E8DEF8;
+  background-color: #e8def8;
   width: 48px;
   height: 48px;
   line-height: 40px;
@@ -1271,7 +1275,7 @@ main .dashboard .top .search-box {
 main .dashboard .top .search-box input {
   position: absolute;
   border: 1px solid #e6e5e5;
-  background-color: #FFF;
+  background-color: #fff;
   padding: 0 25px 0 50px;
   border-radius: 5px;
   height: 100%;
@@ -1298,7 +1302,60 @@ main .dashboard .top .info-user i {
   margin: 0 25px;
   font-size: 22px;
 }
-main .dashboard .top .info-user img {
+main .dashboard .top .info-user .showFeatureAdminHeader {
+  display: none;
+  position: absolute;
+  width: 300px;
+  right: 15px;
+  background-color: #f7f7f7;
+  border-radius: 10px;
+  z-index: 99;
+}
+main .dashboard .top .info-user .showFeatureAdminHeader li {
+  list-style: none;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: center;
+}
+main .dashboard .top .info-user .showFeatureAdminHeader li .notifiAdminText {
+  margin-left: 15px;
+}
+main .dashboard .top .info-user .showFeatureAdminHeader li:hover {
+  background-color: rgba(112, 112, 112, 0.1294117647);
+}
+main .dashboard .top .info-user .showFeatureAdminHeader li a {
+  text-decoration: none;
+  color: #1d192b;
+}
+main .dashboard .top .info-user .showFeatureAdminHeader img {
+  width: 40px;
+  border-radius: 50%;
+  margin-left: 10px;
+}
+main .dashboard .top .info-user .notifiComment {
+  position: relative;
+  cursor: pointer;
+}
+main .dashboard .top .info-user .notifiComment:hover .showFeatureAdminHeader {
+  display: block;
+}
+main .dashboard .top .info-user .notifiBell {
+  position: relative;
+  cursor: pointer;
+}
+main .dashboard .top .info-user .notifiBell:hover .showFeatureAdminHeader {
+  display: block;
+}
+main .dashboard .top .info-user .imgUserAdmin {
+  position: relative;
+  cursor: pointer;
+}
+main .dashboard .top .info-user .imgUserAdmin:hover .showFeatureAdminHeader {
+  display: block;
+}
+main .dashboard .top .info-user .imgUserAdmin img {
   width: 40px;
   border-radius: 50%;
   margin-left: 10px;
@@ -1396,41 +1453,101 @@ ul {
 .headMobie {
   display: none;
 }
+.headMobie a {
+  text-decoration: none;
+}
 
 .navBarMobile {
   position: fixed;
   top: 0;
-  left: -300px; /* Initially hidden to the left */
-  width: 300px;
+  left: -3000px; /* Initially hidden to the left */
+  width: 100%;
   height: 100%;
-  background: #fff;
+  background: rgba(0, 0, 0, 0.4);
   overflow: auto;
   transition: left 0.3s;
-  z-index: 2;
+  z-index: 99999;
+}
+.navBarMobile .navBarMobile_item .close-button {
+  width: 50px;
+  height: 50px;
+}
+.navBarMobile .navBarMobile_item .close-button i {
+  font-size: 30px;
+  padding: 10px 20px;
+}
+.navBarMobile .navBarMobile_item .close-button i:hover {
+  background-color: #6750a4;
+  border-radius: 10px;
+}
+.navBarMobile .navBarMobile_item ul {
+  margin-top: 50px;
+}
+.navBarMobile .navBarMobile_item ul li {
+  text-align: center;
+  list-style: none;
+  padding: 20px 50px;
+  width: 80%;
+  margin: auto;
+}
+.navBarMobile .navBarMobile_item ul li:hover {
+  background-color: #6750a4;
+  border-radius: 10px;
+}
+.navBarMobile .navBarMobile_item ul li a {
+  color: #ffffff;
+  text-decoration: none;
 }
 
 .close-button {
   position: absolute;
+  display: block;
   top: 10px;
   right: 10px;
   cursor: pointer;
   z-index: 3;
 }
 
-.overlay {
-  display: none;
+.searchBarMobile {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: -1000px;
+  left: 0; /* Initially hidden to the left */
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
-  z-index: 1;
+  background: #9b9b9b;
+  overflow: auto;
+  transition: left 0.3s;
+  z-index: 999;
+}
+.searchBarMobile .close-button {
+  font-size: 20px;
+}
+.searchBarMobile .search-box {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  margin: 100px auto 0;
+}
+.searchBarMobile .search-box input {
+  width: 60%;
+  height: 50px;
+  border: transparent;
+  font-size: 16px;
+}
+.searchBarMobile .search-box i {
+  width: 20%;
+  height: 50px;
+  line-height: 50px;
+  font-size: 25px;
 }
 
 /* Show the navigation when the menu button is clicked */
 .nav-open .navBarMobile {
   left: 0;
+}
+
+.searchBarMobile.active {
+  top: 0;
 }
 
 /* Hiding the menu button on larger screens */
@@ -1439,6 +1556,23 @@ ul {
     display: none;
   }
 }
+@media only screen and (max-width: 46.1875em) {
+  .headMobie {
+    display: block;
+  }
+  .headMobie .col-12 {
+    padding: 15px 0;
+  }
+  .headMobie .col-12 .logo-name .logo_name {
+    margin-left: 5px;
+  }
+  .headMobie .col-12 .col-4 {
+    font-size: 20px;
+  }
+}
+/* Tablet: width >= 740px and width < 1024px */
+/* Mobile and Tablet: width < 1024px */
+/* PC: width >= 1024px */
 .hero-banner__wrapper .hero-banner__item {
   min-height: 70rem;
   display: grid !important;
@@ -2562,6 +2696,9 @@ main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .custom
   background-color: #ffffff;
   border-radius: 10px;
 }
+main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .headerTopUser {
+  position: relative;
+}
 main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .headerTopUser p {
   color: #1d192b;
 }
@@ -2573,6 +2710,24 @@ main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .custom
 }
 main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .headerTopUser button i {
   font-size: 16px;
+}
+main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .headerTopUser .showMoreInfoAdminDashboard {
+  display: none;
+  position: absolute;
+  bottom: -60px;
+  right: 0;
+  background-color: #fff;
+  border-radius: 10px;
+  text-align: center;
+}
+main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .headerTopUser .showMoreInfoAdminDashboard li {
+  list-style: none;
+  padding: 10px 20px;
+}
+main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .headerTopUser .showMoreInfoAdminDashboard li a {
+  text-decoration: none;
+  color: #000000;
+  text-align: center;
 }
 main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .bodyTopUser .topUserOder .topUserOder_items {
   margin: 15px 0;
@@ -2669,6 +2824,7 @@ main .dashboard .containerAdmin .overviewDashboard .col-12 .theadoverviewDashboa
   padding: 5px 20px;
   display: flex;
   align-items: center;
+  position: relative;
 }
 main .dashboard .containerAdmin .overviewDashboard .col-12 .theadoverviewDashboard p {
   color: #1d192b;
@@ -2682,6 +2838,24 @@ main .dashboard .containerAdmin .overviewDashboard .col-12 .theadoverviewDashboa
 }
 main .dashboard .containerAdmin .overviewDashboard .col-12 .theadoverviewDashboard button i {
   font-size: 16px;
+}
+main .dashboard .containerAdmin .overviewDashboard .col-12 .theadoverviewDashboard .showMoreInfoAdminDashboard {
+  display: none;
+  position: absolute;
+  bottom: -60px;
+  right: 0;
+  background-color: #fff;
+  border-radius: 10px;
+  text-align: center;
+}
+main .dashboard .containerAdmin .overviewDashboard .col-12 .theadoverviewDashboard .showMoreInfoAdminDashboard li {
+  list-style: none;
+  padding: 10px 20px;
+}
+main .dashboard .containerAdmin .overviewDashboard .col-12 .theadoverviewDashboard .showMoreInfoAdminDashboard li a {
+  text-decoration: none;
+  color: #000000;
+  text-align: center;
 }
 main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview {
   background-color: #ffffff;
@@ -2826,6 +3000,37 @@ main .adminFooter ul li a {
   color: #958da5;
 }
 
+@media only screen and (max-width: 46.1875em) {
+  #adminDashboard nav {
+    display: none !important;
+  }
+  #adminDashboard .p30 {
+    padding: 15px;
+  }
+  #adminDashboard .dashboard {
+    width: 100% !important;
+    left: 0;
+  }
+  #adminDashboard .dashboard .top {
+    display: none;
+  }
+  #adminDashboard .dashboard .statisticalChart .statisticalChartItems .customerOrderStatistics .orderStatistics {
+    margin: 0;
+  }
+  #adminDashboard .dashboard .recentOrder .recentOrder_items {
+    overflow-x: scroll;
+  }
+  .owl-carousel .owl-item {
+    width: unset !important;
+  }
+  .owl-carousel .owl-dots .owl-dot {
+    padding: 5px 30px !important;
+    box-shadow: unset;
+  }
+}
+/* Tablet: width >= 740px and width < 1024px */
+/* Mobile and Tablet: width < 1024px */
+/* PC: width >= 1024px */
 .text-small-primary-masking {
   background: linear-gradient(88deg, rgba(66, 0, 255, 0.6) 24.54%, #6A00F2 66.17%, rgba(255, 40, 169, 0.4) 117.27%);
   background-clip: text;
@@ -3233,34 +3438,6 @@ main .adminFooter ul li a {
 }
 
 /* Mobile: with < 740px */
-@media only screen and (max-width: 46.1875em) {
-  .headMobie {
-    display: block;
-  }
-  .headMobie .col-12 .col-4 {
-    font-size: 20px;
-  }
-  #adminDashboard nav {
-    display: none !important;
-  }
-  #adminDashboard .p30 {
-    padding: 15px;
-  }
-  #adminDashboard .dashboard {
-    width: 100% !important;
-    left: 0;
-  }
-  #adminDashboard .dashboard .top {
-    display: none;
-  }
-  .owl-carousel .owl-item {
-    width: unset !important;
-  }
-  .owl-carousel .owl-dots .owl-dot {
-    padding: 5px 30px !important;
-    box-shadow: unset;
-  }
-}
 /* Tablet: width >= 740px and width < 1024px */
 /* Mobile and Tablet: width < 1024px */
 /* PC: width >= 1024px */

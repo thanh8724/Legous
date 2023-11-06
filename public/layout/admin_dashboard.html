@@ -38,15 +38,17 @@
         <div class="col-12 d-flex justify-content-around align-items-center">
             <div id="menuButton" style="padding-left: 30px;" class="col-4"><i class="fas fa-bars"></i></div>
             <div class="col-4">
-                <div class="logo-name d-flex">
-                <div class="logo-image">
-                    <img src="../assets/media/images/logo.png" alt="">
-                </div>
-
-                <span class="logo_name label-large fw-black">LEGOUS</span>
-                </div>
+                <a href="#">
+                    <div class="logo-name d-flex justify-content-center align-items-center">
+                        <div class="logo-image">
+                            <img style="width: 20px; height: 20px;" src="../assets/media/images/logo.png" alt="">
+                        </div>
+    
+                        <span class="logo_name title-large fw-black" style="color: black;">LEGOUS</span>
+                    </div>
+                </a>
             </div>
-            <div class="col-4"><i class="far fa-search"></i></div>
+            <div id="searchButtonBar" class="col-4 text-end" style="margin-right: 30px;"><i  class="far fa-search "></i></div>
         </div>
     </div>
     <div class="navBarMobile">
@@ -55,12 +57,23 @@
                 <i class="fas fa-times"></i>
             </div>
             <ul>
-                <li><a href="#">Bảng Điều Khiển</a></li>
-                <li><a href="#">Sản Phẩm</a></li>
-                <li><a href="#">Danh Mục</a></li>
-                <li><a href="#">Đơn Hàng</a></li>
-                <li><a href="#">Khách Hàng</a></li>
+                <li><a class="title-large" href="#">Bảng Điều Khiển</a></li>
+                <li><a class="title-large" href="#">Sản Phẩm</a></li>
+                <li><a class="title-large" href="#">Danh Mục</a></li>
+                <li><a class="title-large" href="#">Đơn Hàng</a></li>
+                <li><a class="title-large" href="#">Khách Hàng</a></li>
+                <li><a class="title-large" href="#">Đăng Xuất</a></li>
             </ul>
+        </div>
+    </div>
+    <div class="searchBarMobile">
+        <div class="close-button" id="closeButton1"> <!-- Add the close button here -->
+            <i class="fas fa-times"></i>
+            
+        </div>
+        <div class="search-box">
+            <input type="text" placeholder="Tìm Kiếm Tại Đây...">
+            <i class="far fa-search"></i>
         </div>
     </div>
     <main id="adminDashboard">
@@ -129,9 +142,126 @@
                     <input type="text" placeholder="Tìm Kiếm Tại Đây...">
                 </div>
                 <div class="info-user">
-                    <i class="far fa-comment-alt"></i>
-                    <i class="fal fa-bell"></i>
-                    <img src="../assets/media/images/users/profile.jpg" alt="">
+                    <div class="notifiComment">
+                        <i class="far fa-comment-alt btnShowFeature"></i>
+                        <ul class="showFeatureAdminHeader box-shadow1">
+                            <li>
+                                <div class="col-12 d-flex">
+                                    <div class="col-2">
+                                        <img class="notifiAdminImg" src="../assets/media/images/users/profile.jpg" alt="">
+                                    </div>
+                                    <div class="col-10">
+                                        <p class="notifiAdminText body-small"><strong>Trần Thị Hồng Ngọc</strong><span> vừa mua một mô hình với mã đơn hàng <strong>#999</strong></span></p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="col-12 d-flex">
+                                    <div class="col-2">
+                                        <img class="notifiAdminImg" src="../assets/media/images/users/profile.jpg" alt="">
+                                    </div>
+                                    <div class="col-10">
+                                        <p class="notifiAdminText body-small"><strong>Trần Thị Hồng Ngọc</strong><span> vừa mua một mô hình với mã đơn hàng <strong>#999</strong></span></p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="col-12 d-flex">
+                                    <div class="col-2">
+                                        <img class="notifiAdminImg" src="../assets/media/images/users/profile.jpg" alt="">
+                                    </div>
+                                    <div class="col-10">
+                                        <p class="notifiAdminText body-small"><strong>Trần Thị Hồng Ngọc</strong><span> vừa mua một mô hình với mã đơn hàng <strong>#999</strong></span></p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="col-12 d-flex">
+                                    <div class="col-2">
+                                        <img class="notifiAdminImg" src="../assets/media/images/users/profile.jpg" alt="">
+                                    </div>
+                                    <div class="col-10">
+                                        <p class="notifiAdminText body-small"><strong>Trần Thị Hồng Ngọc</strong><span> vừa mua một mô hình với mã đơn hàng <strong>#999</strong></span></p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="col-12 d-flex">
+                                    <div class="col-2">
+                                        <img class="notifiAdminImg" src="../assets/media/images/users/profile.jpg" alt="">
+                                    </div>
+                                    <div class="col-10">
+                                        <p class="notifiAdminText body-small"><strong>Trần Thị Hồng Ngọc</strong><span> vừa mua một mô hình với mã đơn hàng <strong>#999</strong></span></p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="notifiBell">
+                        <i class="fal fa-bell btnShowFeature"></i>
+                        <ul class="showFeatureAdminHeader box-shadow1">
+                            <li>
+                                <div class="col-12 d-flex">
+                                    <div class="col-2">
+                                        <img class="notifiAdminImg" src="../assets/media/images/users/profile.jpg" alt="">
+                                    </div>
+                                    <div class="col-10">
+                                        <p class="notifiAdminText body-small"><strong>Trần Thị Hồng Ngọc</strong><span> vừa mua một mô hình với mã đơn hàng <strong>#999</strong></span></p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="col-12 d-flex">
+                                    <div class="col-2">
+                                        <img class="notifiAdminImg" src="../assets/media/images/users/profile.jpg" alt="">
+                                    </div>
+                                    <div class="col-10">
+                                        <p class="notifiAdminText body-small"><strong>Trần Thị Hồng Ngọc</strong><span> vừa mua một mô hình với mã đơn hàng <strong>#999</strong></span></p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="col-12 d-flex">
+                                    <div class="col-2">
+                                        <img class="notifiAdminImg" src="../assets/media/images/users/profile.jpg" alt="">
+                                    </div>
+                                    <div class="col-10">
+                                        <p class="notifiAdminText body-small"><strong>Trần Thị Hồng Ngọc</strong><span> vừa mua một mô hình với mã đơn hàng <strong>#999</strong></span></p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="col-12 d-flex">
+                                    <div class="col-2">
+                                        <img class="notifiAdminImg" src="../assets/media/images/users/profile.jpg" alt="">
+                                    </div>
+                                    <div class="col-10">
+                                        <p class="notifiAdminText body-small"><strong>Trần Thị Hồng Ngọc</strong><span> vừa mua một mô hình với mã đơn hàng <strong>#999</strong></span></p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="col-12 d-flex">
+                                    <div class="col-2">
+                                        <img class="notifiAdminImg" src="../assets/media/images/users/profile.jpg" alt="">
+                                    </div>
+                                    <div class="col-10">
+                                        <p class="notifiAdminText body-small"><strong>Trần Thị Hồng Ngọc</strong><span> vừa mua một mô hình với mã đơn hàng <strong>#999</strong></span></p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="imgUserAdmin">
+                        <img class="btnShowFeature" src="../assets/media/images/users/profile.jpg" alt="">
+                        <ul class="showFeatureAdminHeader box-shadow1" >
+                            
+                            <li><a class="body-small" href="#statisticalChart">Thống kê đơn hàng</a></li>
+                            <li><a class="body-small" href="#recentOrder">Đơn Hàng Gần Đây</a></li>
+                            <li><a class="body-small" href="#overviewDashboard">Tổng quan</a></li>
+                            <li><a class="body-small" href="#">Đăng Xuất</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <!----======== End Header DashBoard ======== -->
@@ -264,7 +394,7 @@
                 <!----======== End Carousel DashBoard ======== -->
 
                 <!----======== Statistical Chart ======== -->
-                <div class="statisticalChart p30">
+                <div id="statisticalChart" class="statisticalChart p30">
                     <div class="statisticalChartItems">
                         <div class="col-12 d-xxl-flex customerOrderStatistics d-md-block d-sm-block">
                             <div class="col-xxl-7  col-lg-12 col-md-12 col-sm-12 p20 box-shadow3 orderStatistics">
@@ -308,12 +438,15 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xxl-5 col-lg-12 col-md-12 col-sm-12 p20 box-shadow3 topUsers mt-xxl-0 mt-md-5 mt-sm-5">
-                                <div class="headerTopUser d-flex justify-content-between">
+                            <div class="col-xxl-5 col-lg-12 col-md-12 col-sm-12 p20 box-shadow3 topUsers mt-xxl-0 mt-md-5 mt-sm-5 mt-5">
+                                <div class="headerTopUser d-flex justify-content-between align-items-center">
                                     <p class="title-medium">Người Dùng Hàng Đầu</p>
-                                    <button>
+                                    <button class="btnShowMoreInfoAdminDashboard">
                                         <i class="far fa-ellipsis-v"></i>
                                     </button>
+                                    <ul class="showMoreInfoAdminDashboard box-shadow1">
+                                        <li class=""><a class="title-medium" href="">Xem Chi Tiết</a></li>
+                                    </ul>
                                 </div>
                                 <div style="width: 100%; background-color: #49454f36; height: 1.5px; margin: 30px 0;"
                                     class="lineAdmin"></div>
@@ -439,7 +572,7 @@
                 <!----======== End Statistical Chart ======== -->
 
                 <!----======== Recent Order  ======== -->
-                <div class="recentOrder p30">
+                <div id="recentOrder" class="recentOrder p30">
                     <div class="recentOrder_items p30">
                         <h2 class="title-medium">Đơn hàng gần đây</h2>
                         <div class="tableLine"></div>
@@ -485,12 +618,12 @@
                             </tr>
                         </table>
                     </div>
-                    
+
                 </div>
                 <!----======== End Recent Order ======== -->
 
                 <!----======== OverView DashBoard  ======== -->
-                <div class="overviewDashboard">
+                <div id="overviewDashboard" class="overviewDashboard">
                     <div class="col-12 d-xxl-flex d-md-block d-sm-block">
                         <div class="col-xxl-4 p30 col-sm-12 com-md-12">
                             <div class="vitsitOverview">
@@ -498,11 +631,14 @@
                                     <div class="theadoverviewDashboard">
                                         <div class="col-12 d-flex justify-content-between align-items-center">
                                             <p class="title-medium">Tổng quan lượt truy cập</p>
-                                            <button>
+                                            <button class="btnsShowMoreInfoAdminDashboard">
                                                 <i class="fas fa-ellipsis-v"></i>
                                             </button>
+                                            <ul class="showMoreInfoAdminDashboard box-shadow1">
+                                                <li class=""><a class="title-medium" href="">Xem Chi Tiết</a></li>
+                                            </ul>
                                         </div>
-                                        
+
                                     </div>
                                     <div class="lineDashboard"></div>
                                     <div class="weekyChart">
@@ -552,9 +688,12 @@
                                     <div class="theadoverviewDashboard">
                                         <div class="col-12 d-flex justify-content-between align-items-center">
                                             <p class="title-medium">Top sản phẩm bán chạy</p>
-                                            <button>
+                                            <button class="btnsShowMoreInfoAdminDashboard">
                                                 <i class="fas fa-ellipsis-v"></i>
                                             </button>
+                                            <ul class="showMoreInfoAdminDashboard box-shadow1">
+                                                <li class=""><a class="title-medium" href="">Xem Chi Tiết</a></li>
+                                            </ul>
                                         </div>
                                     </div>
                                     <div class="lineDashboard"></div>
@@ -564,7 +703,8 @@
                                                 <div class="col-12 d-flex justify-content-between">
                                                     <div class="col-6 nameCategories">
                                                         <h2 class="body-large">Sasuke - Susano toàn....</h2>
-                                                        <p class="label-medium">Danh mục: <span>Naruto</span></p></div>
+                                                        <p class="label-medium">Danh mục: <span>Naruto</span></p>
+                                                    </div>
                                                     <div class="col-6 priceProduct">
                                                         <h2 class="body-large">12.389.000 VNĐ</h2>
                                                         <p class="label-medium">5 đã mua</p>
@@ -575,7 +715,8 @@
                                                 <div class="col-12 d-flex justify-content-between">
                                                     <div class="col-6 nameCategories">
                                                         <h2 class="body-large">Sasuke - Susano toàn....</h2>
-                                                        <p class="label-medium">Danh mục: <span>Naruto</span></p></div>
+                                                        <p class="label-medium">Danh mục: <span>Naruto</span></p>
+                                                    </div>
                                                     <div class="col-6 priceProduct">
                                                         <h2 class="body-large">12.389.000 VNĐ</h2>
                                                         <p class="label-medium">5 đã mua</p>
@@ -586,7 +727,8 @@
                                                 <div class="col-12 d-flex justify-content-between">
                                                     <div class="col-6 nameCategories">
                                                         <h2 class="body-large">Sasuke - Susano toàn....</h2>
-                                                        <p class="label-medium">Danh mục: <span>Naruto</span></p></div>
+                                                        <p class="label-medium">Danh mục: <span>Naruto</span></p>
+                                                    </div>
                                                     <div class="col-6 priceProduct">
                                                         <h2 class="body-large">12.389.000 VNĐ</h2>
                                                         <p class="label-medium">5 đã mua</p>
@@ -597,7 +739,8 @@
                                                 <div class="col-12 d-flex justify-content-between">
                                                     <div class="col-6 nameCategories">
                                                         <h2 class="body-large">Sasuke - Susano toàn....</h2>
-                                                        <p class="label-medium">Danh mục: <span>Naruto</span></p></div>
+                                                        <p class="label-medium">Danh mục: <span>Naruto</span></p>
+                                                    </div>
                                                     <div class="col-6 priceProduct">
                                                         <h2 class="body-large">12.389.000 VNĐ</h2>
                                                         <p class="label-medium">5 đã mua</p>
@@ -608,7 +751,8 @@
                                                 <div class="col-12 d-flex justify-content-between">
                                                     <div class="col-6 nameCategories">
                                                         <h2 class="body-large">Sasuke - Susano toàn....</h2>
-                                                        <p class="label-medium">Danh mục: <span>Naruto</span></p></div>
+                                                        <p class="label-medium">Danh mục: <span>Naruto</span></p>
+                                                    </div>
                                                     <div class="col-6 priceProduct">
                                                         <h2 class="body-large">12.389.000 VNĐ</h2>
                                                         <p class="label-medium">5 đã mua</p>
@@ -619,7 +763,8 @@
                                                 <div class="col-12 d-flex justify-content-between">
                                                     <div class="col-6 nameCategories">
                                                         <h2 class="body-large">Sasuke - Susano toàn....</h2>
-                                                        <p class="label-medium">Danh mục: <span>Naruto</span></p></div>
+                                                        <p class="label-medium">Danh mục: <span>Naruto</span></p>
+                                                    </div>
                                                     <div class="col-6 priceProduct">
                                                         <h2 class="body-large">12.389.000 VNĐ</h2>
                                                         <p class="label-medium">5 đã mua</p>
@@ -637,11 +782,14 @@
                                     <div class="theadoverviewDashboard">
                                         <div class="col-12 d-flex justify-content-between align-items-center">
                                             <p class="title-medium">Tổng quan lượt truy cập</p>
-                                            <button>
+                                            <button class="btnsShowMoreInfoAdminDashboard">
                                                 <i class="fas fa-ellipsis-v"></i>
                                             </button>
+                                            <ul class="showMoreInfoAdminDashboard box-shadow1">
+                                                <li class=""><a class="title-medium" href="">Xem Chi Tiết</a></li>
+                                            </ul>
                                         </div>
-                                        
+
                                     </div>
                                     <div class="lineDashboard"></div>
                                     <div style="width: 100%; height: 330px; margin: 0 auto;" class="p30">
@@ -656,27 +804,29 @@
                 <!----======== End OverView DashBoard  ======== -->
 
             </div>
-                <footer class="adminFooter p30">
-                    <div class="col-12 d-flex">
-                        <div class="col-6"><p class="label-medium">® LEGOUS admin</p></div>
-                        <div class="col-6">
-                            <ul>
-                                <li><a href="#">About</a></li>
-                                <li><a href="#">Policy</a></li>
-                                <li><a href="#">Contact</a></li>
-                            </ul>
-                        </div>
+            <footer class="adminFooter p30">
+                <div class="col-12 d-flex">
+                    <div class="col-6">
+                        <p class="label-medium">® LEGOUS admin</p>
                     </div>
-                </footer>
+                    <div class="col-6">
+                        <ul>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Policy</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </footer>
             </div>
 
 
             <!----======== End Body DashBoard ======== -->
 
         </section>
-        
+
     </main>
-    
+
     <!-- Owl Carousel JS -->
     <script src="../assets/resources/js/owl.carousel.min.js"></script>
 

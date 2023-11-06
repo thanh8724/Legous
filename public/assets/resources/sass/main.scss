@@ -44,40 +44,7 @@
 // || Responsive 
 /* Mobile: with < 740px */
 @media only screen and (max-width: 46.1875em){
-    .headMobie {
-        display: block;
-        .col-12 {
-            .col-4 {
-                font-size: 20px;
-            }
-        }
-    }
-    #adminDashboard {
-            nav{
-                display: none !important;
-            }
-        .p30{
-            padding: 15px;
-        }
-        .dashboard {
-            width: 100% !important;
-            left: 0;
-            .top {
-                display: none;
-            }
-        }
-    }
-    .owl-carousel {
-        .owl-item {
-            width: unset !important;
-        }
-        .owl-dots {
-            .owl-dot {
-                padding: 5px 30px !important;
-                box-shadow: unset;
-            }
-        }
-    }
+     
 }
 /* Tablet: width >= 740px and width < 1024px */
 @media only screen and (min-width: 46.25em) and (max-width: 63.9375em){
