@@ -1,0 +1,16 @@
+$widthOffset: 35rem;
+.feature-category__item {
+    width: $widthOffset;
+    min-width: $widthOffset;
+    border-radius: 1.2rem;
+    display: flex !important;
+    gap: 2rem;
+    margin-inline: 1rem;
+    .feature-category__banner {
+        width: 6.5rem;
+        aspect-ratio: 1;
+    }
+    .feature-category__content {
+        color: $-white;
+    }
+}

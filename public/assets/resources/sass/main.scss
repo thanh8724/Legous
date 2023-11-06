@@ -18,6 +18,10 @@
     @import 'components/searchProduct.scss';
     @import 'components/table.scss';
     @import 'components/categoryItem.scss';
+    @import 'components/homeBottomNavBar.scss';
+    @import 'components/slickCustom.scss';
+    @import 'components/featureCategoryItem.scss';
+    @import 'components/shopFilter.scss';
     // import theme
     @import 'theme/darkModeAdmin.scss';
     
@@ -29,7 +33,7 @@
     @import 'pages/shop.scss';
     @import 'pages/login.scss';
     @import 'pages/user.scss';
-    @import 'pages/admin_products.scss';
+    @import 'pages/admin_categories.scss';
     @import 'pages/admin_dashboard.scss';
     @import 'pages/admin_order-detail.scss';
     @import 'pages/admin_order-add-create.scss';
@@ -105,6 +109,14 @@
 
 
 // || common classes start
+
+    // || scroll with overflow classes
+    .scroll-y {
+        overflow-y: scroll !important;
+    }
+    .scroll-x {
+        overflow-x: scroll !important;
+    }
 
     // || devider classes start
     .light-devider {
@@ -281,24 +293,27 @@
             .g60 {
                 gap: 6rem;
             }
+            .g100 {
+                gap: 10rem;
+            }
         
 
 
         // padding spacing classes
             .p10 {
-                padding: 1rem;
+                padding: 1rem !important;
             }
             .p12 {
-                padding: 1.2rem;
+                padding: 1.2rem !important;
             }
             .p16 {
-                padding: 1.6rem;
+                padding: 1.6rem !important;
             }
             .p20 {
-                padding: 2rem;
+                padding: 2rem !important;
             }
             .p30 {
-                padding: 3rem;
+                padding: 3rem !important;
             }
             .p60 {
                 padding: 6rem;
@@ -430,7 +445,7 @@
 
     // || commone grid classes start
     .auto-grid {
-        display: grid;
+        display: grid !important;
         width: 100%;
         grid-template-columns: repeat(auto-fit, minmax(min(18em, 100%), 1fr));
     }
@@ -538,3 +553,6 @@
     // || custom scroll bar end
 
 // || common classes end
+
+
+
