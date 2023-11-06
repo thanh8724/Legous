@@ -2484,6 +2484,57 @@ html {
   background-color: #e6e0e9;
 }
 
+.container-full {
+  background-color: black !important;
+}
+.container-full main .lineMiniConfirm {
+  width: 90px;
+  height: 4px;
+  border-radius: 10px;
+  background-color: #625b71;
+  color: #625b71;
+}
+.container-full main .confirmHeadingText .col-12 .confirmHeadingText_left .title-medium {
+  color: #1d192b;
+}
+.container-full main .confirmHeadingText .col-12 .confirmHeadingText_left .display-medium {
+  color: #6750a4;
+}
+.container-full main .confirmHeadingText .col-12 .confirmHeadingText_right p {
+  color: #1d192b;
+}
+.container-full main .detailOrders .detailerOrders_top h2 {
+  color: #1d192b;
+}
+.container-full main .detailOrders .detailerOrders_bottom .detailOrders-left .detailOrder_items h3,
+.container-full main .detailOrders .detailerOrders_bottom .detailOrders-left .detailOrder_items h2,
+.container-full main .detailOrders .detailerOrders_bottom .detailOrders-left .detailOrder_items h4 {
+  color: #1d192b;
+}
+.container-full main .detailOrders .detailerOrders_bottom .detailOrders-right h2 {
+  color: #1d192b;
+}
+.container-full main .detailOrders .detailerOrders_bottom .detailOrders-right .listProductCart .listProductCart_item {
+  margin: 15px 0;
+}
+.container-full main .detailOrders .detailerOrders_bottom .detailOrders-right .listProductCart .listProductCart_item img {
+  width: 130px;
+  border-radius: 10px;
+}
+.container-full main .detailOrders .detailerOrders_bottom .detailOrders-right .totalInfoCartConfirm p {
+  color: #1d192b;
+}
+.container-full main .detailOrders .detailerOrders_bottom .detailOrders-right .totalInfoCartConfirm .lineAmmoutConfirm {
+  width: 100%;
+  height: 1px;
+  background-color: #cac4d0;
+}
+.container-full main .detailOrders .detailerOrders_bottom .detailOrders-right .totalInfoCartConfirm .totalAmount {
+  background: -webkit-linear-gradient(60deg, #ff79ea, #A93CFF, #6791FF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .cart:hover {
   box-shadow: 0px 2px 6px 2px rgba(0, 0, 0, 0.15), 0px 1px 2px 0px rgba(0, 0, 0, 0.3);
 }
