@@ -1,5 +1,5 @@
 .product {
-    display: grid;
+    display: grid !important;
     grid-row: span 4;
     grid-template-rows: subgrid;
     gap: 1.2rem;
