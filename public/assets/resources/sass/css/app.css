@@ -2741,12 +2741,6 @@ main .adminFooter ul li a {
   width: 100%;
 }
 
-#image-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
 .right-order-add-create {
   align-items: center;
 }
@@ -2754,6 +2748,58 @@ main .adminFooter ul li a {
   height: 500px;
   width: 400px;
   background-color: #D9D9D9;
+}
+.right-order-add-create .button_delete_img {
+  margin-top: 48px;
+  display: none;
+}
+.right-order-add-create .button_delete_img button:first-child {
+  background-color: #6750a4;
+}
+.right-order-add-create .button_delete_img button:last-child {
+  color: #6750a4;
+  font-weight: 700;
+}
+.right-order-add-create .button_delete_img button {
+  padding: 10px 24px;
+}
+
+.chuahinh {
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 74px;
+  border-radius: 8px;
+  margin: 8px 0;
+  box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15), 0px 1px 2px 0px rgba(0, 0, 0, 0.3);
+  /* display: none; */
+}
+.chuahinh #image-container {
+  display: none;
+}
+.chuahinh img {
+  height: 50px;
+  width: 50px;
+  border-radius: 8px;
+}
+.chuahinh .nameimg {
+  width: 70%;
+}
+
+.thanhnangluong {
+  height: 4px;
+  background: black;
+  border: none;
+  border-radius: 8px;
+  padding-right: 0px;
+}
+.thanhnangluong span {
+  width: 70%;
+  background: #00C58A;
+  border-radius: 8px;
+  flex-shrink: 0;
+  align-self: stretch;
 }
 
 /* Mobile: with < 740px */
