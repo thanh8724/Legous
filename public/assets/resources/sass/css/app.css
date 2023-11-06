@@ -312,7 +312,7 @@ a {
   transform: translateY(0);
 }
 .header .header__inner .header__nav__link {
-  color: #410e0b;
+  color: #1d192b;
   font-size: 1.6rem;
   font-weight: 600;
   transition: 0.22s linear;
@@ -343,7 +343,7 @@ a {
   display: block;
   line-height: 6rem;
   text-transform: uppercase;
-  color: #410e0b;
+  color: #1d192b;
   transition: 0.22s cubic-bezier(0.23, 1, 0.32, 1);
 }
 .header .header__inner .header__nav-respon-full__link:hover {
@@ -379,7 +379,7 @@ a {
   width: max-content;
 }
 .header .header__inner .header__subnav__wrapper .header__subnav__title {
-  color: #410e0b;
+  color: #1d192b;
   position: relative;
 }
 .header .header__inner .header__subnav__wrapper .header__subnav__title::before {
@@ -761,7 +761,7 @@ a {
 .search__product {
   background: rgba(255, 255, 255, 0.4);
   margin-inline: auto;
-  color: #410e0b;
+  color: #1d192b;
 }
 .search__product__banner {
   width: 10rem;
@@ -775,7 +775,7 @@ a {
   object-fit: cover;
 }
 .search__product__name {
-  color: #410e0b;
+  color: #1d192b;
 }
 
 .pd150 {
@@ -1024,6 +1024,12 @@ body.dark main {
   background-color: #15192a;
   transition: 0.5s;
 }
+body.dark main .localDashboard .h2_dashboard {
+  color: #ffffff !important;
+}
+body.dark main .localDashboard .aHref1 {
+  color: #ffffff !important;
+}
 body.dark main .dashboard .top {
   background-color: #1c2339;
   border-color: #1c2339;
@@ -1258,7 +1264,7 @@ main .dashboard .top .sidebar-toggle {
 main .dashboard .top .search-box {
   position: relative;
   height: 45px;
-  max-width: 600px;
+  max-width: 400px;
   width: 100%;
   margin: 0 30px;
 }
@@ -1316,11 +1322,13 @@ ul {
   }
   nav ~ .dashboard {
     left: 73px;
-    width: calc(100% - 73px);
   }
   nav ~ .dashboard .top {
     left: 73px;
     width: calc(100% - 73px);
+  }
+  nav ~ .dashboard .top .sidebar-toggle {
+    display: none;
   }
   nav.close {
     width: 250px;
@@ -1335,11 +1343,11 @@ ul {
   }
   nav.close ~ .dashboard {
     left: 250px;
-    width: calc(100% - 250px);
+    width: 100%;
   }
   nav.close ~ .dashboard .top {
     left: 250px;
-    width: calc(100% - 250px);
+    width: 100%;
   }
   .activity .activity-data {
     overflow-x: scroll;
@@ -1383,6 +1391,52 @@ ul {
   nav.close ~ .dashboard .top {
     left: 0;
     width: 100%;
+  }
+}
+.headMobie {
+  display: none;
+}
+
+.navBarMobile {
+  position: fixed;
+  top: 0;
+  left: -300px; /* Initially hidden to the left */
+  width: 300px;
+  height: 100%;
+  background: #fff;
+  overflow: auto;
+  transition: left 0.3s;
+  z-index: 2;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  z-index: 1;
+}
+
+/* Show the navigation when the menu button is clicked */
+.nav-open .navBarMobile {
+  left: 0;
+}
+
+/* Hiding the menu button on larger screens */
+@media (min-width: 768px) {
+  #menuButton {
+    display: none;
   }
 }
 .hero-banner__wrapper .hero-banner__item {
@@ -2331,12 +2385,62 @@ html {
   border: none;
 }
 
+.content-filter {
+  position: relative;
+}
+
+.dropdown-menu {
+  width: 185px;
+  text-decoration: none;
+  align-items: flex-start;
+  border-radius: 8px;
+  background-color: white;
+  transition: 0.22s cubic-bezier(0.23, 1, 0.32, 1);
+  right: 0px;
+  top: 45px;
+  position: absolute;
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+}
+.dropdown-menu a {
+  display: flex;
+  padding: 10px 12px;
+  align-items: center;
+  gap: 8px;
+  flex: 1 0 0;
+  align-self: stretch;
+  text-decoration: none;
+  font-size: clamp(1.2rem, 0.914rem + 0.762vw, 1.6rem);
+  font-weight: 500;
+  transform: translateY(1.25rem);
+  transition: 0.22s cubic-bezier(0.23, 1, 0.32, 1);
+  line-height: clamp(2rem, 1.714rem + 0.762vw, 2.4rem);
+}
+.dropdown-menu a:hover {
+  background-color: #f5eff7;
+}
+
+.dropdown-menu.active {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+}
+.dropdown-menu.active a {
+  transform: translateY(0);
+}
+
+table tbody tr td a {
+  text-decoration: none;
+  color: #6750a4;
+}
+
 main .dashboard .containerAdmin {
   width: 95%;
   margin: 0 30px;
 }
 main .dashboard .containerAdmin .localDashboard .col-12 .h2_dashboard {
-  color: #410e0b;
+  color: #1d192b;
 }
 main .dashboard .containerAdmin .localDashboard .col-12 .aHref1 {
   color: #000000;
@@ -2354,7 +2458,7 @@ main .dashboard .containerAdmin .localDashboard .col-12 .dateCalender {
   color: #6750a4;
 }
 main .dashboard .containerAdmin .owl-carousel .slider_contain {
-  background-color: #fff !important;
+  background-color: #ffffff !important;
   border-radius: 5px;
 }
 main .dashboard .containerAdmin .owl-carousel .slider_contain .date-dashboard {
@@ -2364,7 +2468,7 @@ main .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items .lab
   font-size: 24px;
 }
 main .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items .label-large {
-  color: #410e0b;
+  color: #1d192b;
 }
 main .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items span {
   color: #1d192b;
@@ -2396,7 +2500,7 @@ main .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items .sli
 }
 main .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items .dashboard-moneyEarn {
   margin-left: 10px;
-  color: #410e0b;
+  color: #1d192b;
 }
 main .dashboard .containerAdmin .owl-carousel .slider_contain-2 .slider_items_stonks p {
   color: #00b3ff !important;
@@ -2425,50 +2529,565 @@ main .dashboard .containerAdmin .owl-carousel .slider_contain-4 .slider_items_st
 main .dashboard .containerAdmin .owl-carousel .slider_contain-4 .slider_items .buttonWallet {
   background-color: #ff6acc !important;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .col-12 .col-7 {
-  background-color: #fff;
+main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .orderStatistics {
+  background-color: #ffffff;
   margin-right: 20px;
   border-radius: 10px;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .col-12 .col-5 {
-  background-color: #fff;
+main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .orderStatistics .myNavTabs .myNavItem .nav-link {
+  position: relative !important;
+  color: #49454f;
+  font-size: 14px;
+  font-weight: 600;
+  background-color: #fef7ff;
+}
+main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .orderStatistics .myNavTabs .myNavItem .nav-link:after {
+  content: "";
+  position: absolute;
+  background-color: #6750a4;
+  height: 3px;
+  width: 0;
+  left: 0;
+  bottom: 0px;
+  transition: 0.22s linear;
+}
+main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .orderStatistics .myNavTabs .myNavItem .nav-link.active {
+  color: #6750a4;
+}
+main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .orderStatistics .myNavTabs .myNavItem .nav-link.active:after {
+  content: "";
+  width: 100%;
+}
+main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers {
+  background-color: #ffffff;
   border-radius: 10px;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .col-12 .col-5 .headerTopUser p {
-  color: #410e0b;
+main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .headerTopUser p {
+  color: #1d192b;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .col-12 .col-5 .headerTopUser button {
+main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .headerTopUser button {
   width: 40px;
   height: 40px;
   background-color: rgba(73, 69, 79, 0.12);
   border-radius: 9999px;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .col-12 .col-5 .headerTopUser button i {
+main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .headerTopUser button i {
   font-size: 16px;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .col-12 .col-5 .bodyTopUser .topUserOder .topUserOder_items {
-  margin: 20px 0;
+main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .bodyTopUser .topUserOder .topUserOder_items {
+  margin: 15px 0;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .col-12 .col-5 .bodyTopUser .topUserOder .topUserOder_items .topUserOrder__image img {
+main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .bodyTopUser .topUserOder .topUserOder_items .topUserOrder__image img {
   width: 45px;
   height: 45px;
   border-radius: 9999px;
   margin-right: 15px;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .col-12 .col-5 .bodyTopUser .topUserOder .topUserOder_items .topUserOrder__info .topUserOrder__name {
-  color: #410e0b;
+main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .bodyTopUser .topUserOder .topUserOder_items .topUserOrder__info .topUserOrder__name {
+  color: #ffd8e4;
+  color: #1d192b !important;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .col-12 .col-5 .bodyTopUser .topUserOder .topUserOder_items .topUserOrder__info .topUserOrder__role {
+main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .bodyTopUser .topUserOder .topUserOder_items .topUserOrder__info .topUserOrder__role {
   color: #625b71;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .col-12 .col-5 .bodyTopUser .topUserOder .topUserOder_items .topUserOrder_Spend .topUserOrder_totalPayed {
-  color: #410e0b;
+main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .bodyTopUser .topUserOder .topUserOder_items .topUserOrder_Spend .topUserOrder_totalPayed {
+  color: #ffd8e4;
+  color: #1d192b !important;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .col-12 .col-5 .bodyTopUser .topUserOder .topUserOder_items .topUserOrder_Spend .topUserOrder_totalOrdered {
+main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .bodyTopUser .topUserOder .topUserOder_items .topUserOrder_Spend .topUserOrder_totalOrdered {
   color: #625b71;
+}
+main .dashboard .containerAdmin .recentOrder .recentOrder_items {
+  background-color: #ffffff !important;
+  border-radius: 10px;
+}
+main .dashboard .containerAdmin .recentOrder .recentOrder_items .title-medium {
+  color: #1d192b;
+  color: #1d192b;
+}
+main .dashboard .containerAdmin .recentOrder .recentOrder_items .tableLine {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.247);
+  margin: 15px 0;
+}
+main .dashboard .containerAdmin .recentOrder .recentOrder_items table tbody {
+  border: transparent !important;
+  color: #000000;
+}
+main .dashboard .containerAdmin .recentOrder .recentOrder_items table td {
+  border: transparent !important;
+  color: #000000;
+}
+main .dashboard .containerAdmin .recentOrder .recentOrder_items table tfoot {
+  border: transparent !important;
+  color: #000000;
+}
+main .dashboard .containerAdmin .recentOrder .recentOrder_items table th {
+  border: transparent !important;
+  background-color: transparent !important;
+  color: #79747e;
+  color: #000000;
+}
+main .dashboard .containerAdmin .recentOrder .recentOrder_items table thead {
+  border: transparent !important;
+}
+main .dashboard .containerAdmin .recentOrder .recentOrder_items table tr {
+  border: transparent !important;
+  background-color: transparent !important;
+}
+main .dashboard .containerAdmin .recentOrder .recentOrder_items table tr .tableLargeItems {
+  display: flex;
+  align-items: center;
+}
+main .dashboard .containerAdmin .recentOrder .recentOrder_items table tr .tableLargeItems input {
+  margin-right: 10px;
+}
+main .dashboard .containerAdmin .recentOrder .recentOrder_items table tr .tableLargeItems span {
+  margin-right: 10px;
+}
+main .dashboard .containerAdmin .recentOrder .recentOrder_items table .dotTable {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+}
+main .dashboard .containerAdmin .recentOrder .recentOrder_items table .dotTable.green {
+  background-color: #00c58a;
+}
+main .dashboard .containerAdmin .recentOrder .recentOrder_items table .dotTable.orange {
+  background-color: #FF6651;
+}
+main .dashboard .containerAdmin .recentOrder .recentOrder_items table .dotTable.red {
+  background-color: #FF6651;
+}
+main .dashboard .containerAdmin .overviewDashboard .col-12 .lineDashboard {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.349);
+}
+main .dashboard .containerAdmin .overviewDashboard .col-12 .theadoverviewDashboard {
+  padding: 5px 20px;
+  display: flex;
+  align-items: center;
+}
+main .dashboard .containerAdmin .overviewDashboard .col-12 .theadoverviewDashboard p {
+  color: #1d192b;
+}
+main .dashboard .containerAdmin .overviewDashboard .col-12 .theadoverviewDashboard button {
+  width: 40px;
+  height: 40px;
+  border-radius: 9999px;
+  line-height: 40px;
+  background-color: rgba(73, 69, 79, 0.12);
+}
+main .dashboard .containerAdmin .overviewDashboard .col-12 .theadoverviewDashboard button i {
+  font-size: 16px;
+}
+main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview {
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart {
+  display: flex;
+  justify-content: center;
+}
+main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart .wekkyChart_item .loader {
+  width: 200px;
+  position: relative;
+  transform: rotate(-90deg);
+}
+main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart .wekkyChart_item .loader .loading {
+  margin: 25px 0 0;
+  position: relative;
+  width: 100%;
+  height: 18px;
+  background-color: #e8edf2;
+  border-radius: 10px;
+}
+main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart .wekkyChart_item .loader .loading .lineLoading {
+  display: block;
+  position: absolute;
+  width: 30%;
+  height: 100%;
+  background-color: #6750a4;
+  box-shadow: 10px;
+  border-radius: 10px;
+}
+main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart .wekkyChart_item .loader .loading .lineLoading2 {
+  display: block;
+  position: absolute;
+  width: 40%;
+  height: 100%;
+  background-color: #6750a4;
+  box-shadow: 10px;
+  border-radius: 10px;
+}
+main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart .wekkyChart_item .loader .loading .lineLoading3 {
+  display: block;
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  background-color: #6750a4;
+  box-shadow: 10px;
+  border-radius: 10px;
+}
+main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart .wekkyChart_item .loader .loading .lineLoading4 {
+  display: block;
+  position: absolute;
+  width: 65%;
+  height: 100%;
+  background-color: #6750a4;
+  box-shadow: 10px;
+  border-radius: 10px;
+}
+main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart .wekkyChart_item .loader .loading .lineLoading5 {
+  display: block;
+  position: absolute;
+  width: 70%;
+  height: 100%;
+  background-color: #6750a4;
+  box-shadow: 10px;
+  border-radius: 10px;
+}
+main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart .wekkyChart_item .loader .loading .lineLoading6 {
+  display: block;
+  position: absolute;
+  width: 90%;
+  height: 100%;
+  background-color: #6750a4;
+  box-shadow: 10px;
+  border-radius: 10px;
+}
+main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart .wekkyChart_item .loader .loading .lineLoading7 {
+  display: block;
+  position: absolute;
+  width: 75%;
+  height: 100%;
+  background-color: #6750a4;
+  box-shadow: 10px;
+  border-radius: 10px;
+}
+main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .sevenDayOfWeek {
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0;
+}
+main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .sevenDayOfWeek p {
+  margin: 0 14px;
+}
+main .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller {
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+main .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .lineDashboard {
+  margin: 15px 0 0;
+}
+main .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .topProductSeller_item .ordertopProduct .ordertopProduct_items {
+  height: 320px;
+  overflow-y: scroll;
+}
+main .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .topProductSeller_item .ordertopProduct .ordertopProduct_items .ordertopProduct_item {
+  background-color: #4f378b;
+  padding: 15px;
+}
+main .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .topProductSeller_item .ordertopProduct .ordertopProduct_items .ordertopProduct_item .nameCategories p {
+  color: #1d192b;
+}
+main .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .topProductSeller_item .ordertopProduct .ordertopProduct_items .ordertopProduct_item .nameCategories h2 {
+  color: #ffffff;
+}
+main .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .topProductSeller_item .ordertopProduct .ordertopProduct_items .ordertopProduct_item .priceProduct {
+  text-align: end;
+}
+main .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .topProductSeller_item .ordertopProduct .ordertopProduct_items .ordertopProduct_item .priceProduct h2 {
+  color: #ffffff;
+}
+main .dashboard .containerAdmin .overviewDashboard .col-12 .totalProfit {
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+main .dashboard .containerAdmin .overviewDashboard .col-12 .totalProfit .totalProfit_items p {
+  color: #1d192b;
+}
+main .adminFooter .col-6 p {
+  color: #958da5;
+}
+main .adminFooter ul {
+  display: flex;
+  justify-content: end;
+}
+main .adminFooter ul li {
+  color: #958da5;
+  margin: 0 15px;
+  list-style: none;
+}
+main .adminFooter ul li a {
+  text-decoration: none;
+  color: #958da5;
+}
+
+.containerAdmin_order-detail {
+  font-size: 1.3rem;
+  background-color: white;
+}
+.containerAdmin_order-detail a {
+  text-decoration: none;
+  color: #6750a4;
+}
+.containerAdmin_order-detail .admin-black {
+  color: black;
+}
+.containerAdmin_order-detail .container_order-detail section {
+  font-size: 1.5rem;
+}
+.containerAdmin_order-detail .container_order-detail button {
+  font-size: 1.5rem;
+  padding: 10px 24px !important;
+}
+.containerAdmin_order-detail .container_order-detail textarea {
+  resize: none;
+  width: 100%;
+  border-radius: 8px;
+  border: 1px gray solid;
+  padding: 10px;
+  color: black;
+  height: 140px;
+}
+.containerAdmin_order-detail .container .row .col {
+  padding: 0px;
+}
+
+.sliderDashboard_order-detail {
+  width: 100%;
+  min-height: 200px;
+  margin-top: 3rem;
+  border: 1px solid black;
+}
+
+.in4_order-detail .col-4 {
+  min-height: 160px;
+  width: 280px;
+}
+
+.icon_order-detail i {
+  font-size: 2rem;
+}
+
+.content_order-detail h3 {
+  margin: 8px;
+}
+.content_order-detail p {
+  margin: 8px;
+}
+.content_order-detail a {
+  margin: 8px;
+  position: relative;
+  top: 20px;
+}
+
+.total_order-detail {
+  position: relative;
+  top: 20px;
+  font-size: 1.3rem;
+}
+
+.table_order-detail {
+  text-align: center;
+}
+.table_order-detail tr {
+  border-top: 1px solid rgba(128, 128, 128, 0.203);
+}
+.table_order-detail tr td, .table_order-detail tr th {
+  padding: 10px 12px;
+  color: gray;
+}
+
+/* phần làm catchy */
+/* Phần order detail add create */
+/* phần dropdown */
+/* end phần dropdown */
+/* phần kéo thả hình ảnh */
+/* end phần kéo thả hình ảnh */
+/* end Phần order detail add create */
+.containerAdmin_order-detail {
+  font-size: 1.3rem;
+  background-color: white;
+}
+.containerAdmin_order-detail a {
+  text-decoration: none;
+  color: blue;
+}
+.containerAdmin_order-detail .admin-black {
+  color: black;
+}
+.containerAdmin_order-detail .container_order-detail section {
+  font-size: 1.5rem;
+}
+.containerAdmin_order-detail .container_order-detail button {
+  font-size: 1.5rem;
+  padding: 10px 24px !important;
+}
+.containerAdmin_order-detail .container_order-detail textarea {
+  resize: none;
+  width: 100%;
+  border-radius: 8px;
+  border: 1px gray solid;
+  padding: 10px;
+  color: black;
+  height: 140px;
+}
+.containerAdmin_order-detail .container .row .col {
+  padding: 0px;
+}
+
+.sliderDashboard_order-detail {
+  width: 100%;
+  min-height: 200px;
+  margin-top: 3rem;
+  border: 1px solid black;
+}
+
+.in4_order-detail .col-4 {
+  min-height: 160px;
+  width: 280px;
+}
+
+.icon_order-detail i {
+  font-size: 2rem;
+}
+
+.content_order-detail h3 {
+  margin: 8px;
+}
+.content_order-detail p {
+  margin: 8px;
+}
+.content_order-detail a {
+  margin: 8px;
+  position: relative;
+  top: 20px;
+}
+
+.total_order-detail {
+  position: relative;
+  top: 20px;
+  font-size: 1.3rem;
+}
+
+.table_order-detail {
+  text-align: center;
+}
+.table_order-detail tr {
+  border-top: 1px solid rgba(128, 128, 128, 0.203);
+}
+.table_order-detail tr td {
+  padding: 10px 12px;
+  color: gray;
+}
+.table_order-detail tr th {
+  padding: 10px 12px;
+  color: gray;
+}
+
+.sliderDashboard_order-add-create .body_sliderDashboard_order-add-create .col-7 .left-order-add-create {
+  margin-bottom: 60px;
+}
+
+.body_sliderDashboard_order-add-create .col-7 input {
+  width: 100%;
+  border-radius: 4px;
+  border-style: none;
+  border: 1px solid gray;
+  padding: 10px;
+  color: #000;
+}
+.body_sliderDashboard_order-add-create .col-7 textarea {
+  resize: none;
+  width: 100%;
+  height: 168px;
+  border-radius: 4px;
+  border: 1px solid gray;
+  padding: 10px;
+  color: #000;
+  margin-bottom: 60px;
+}
+
+.custom-select {
+  position: relative;
+  font-size: 16px;
+  width: 100%;
+  margin-bottom: 60px;
+}
+.custom-select select {
+  padding: 10px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  color: #000;
+  width: 100%;
+}
+.custom-select input {
+  padding: 10px;
+  width: 100%;
+  border: 1px solid gray;
+  border-radius: 5px;
+  color: #000;
+}
+
+#drop-area {
+  border: 2px dashed #ccc;
+  text-align: center;
+  padding: 20px;
+}
+
+#drop-area.highlight {
+  background-color: #f0f0f0;
+  width: 100%;
+}
+
+#image-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.right-order-add-create {
+  align-items: center;
+}
+.right-order-add-create .img_order-add-create {
+  height: 500px;
+  width: 400px;
+  background-color: #D9D9D9;
 }
 
 /* Mobile: with < 740px */
+@media only screen and (max-width: 46.1875em) {
+  .headMobie {
+    display: block;
+  }
+  .headMobie .col-12 .col-4 {
+    font-size: 20px;
+  }
+  #adminDashboard nav {
+    display: none !important;
+  }
+  #adminDashboard .p30 {
+    padding: 15px;
+  }
+  #adminDashboard .dashboard {
+    width: 100% !important;
+    left: 0;
+  }
+  #adminDashboard .dashboard .top {
+    display: none;
+  }
+  .owl-carousel .owl-item {
+    width: unset !important;
+  }
+  .owl-carousel .owl-dots .owl-dot {
+    padding: 5px 30px !important;
+    box-shadow: unset;
+  }
+}
 /* Tablet: width >= 740px and width < 1024px */
 /* Mobile and Tablet: width < 1024px */
 /* PC: width >= 1024px */

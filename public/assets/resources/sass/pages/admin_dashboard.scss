@@ -3,6 +3,7 @@ main {
     .containerAdmin {
       width: 95%;
       margin: 0 30px;
+      //      <!----======== Local DashBoard ======== -->
 
       .localDashboard {
         .col-12 {
@@ -27,9 +28,13 @@ main {
         }
       }
 
+      //      <!----======== End Local DashBoard ======== -->
+
+      //      <!----======== Owl Carousel ======== -->
+
       .owl-carousel {
         .slider_contain {
-          background-color: #fff !important;
+          background-color: $-white !important;
           border-radius: 5px;
           .date-dashboard {
             color: $light-secondary;
@@ -140,27 +145,55 @@ main {
         }
       }
 
+      //      <!----======== End Owl Carousel ======== -->
+
+      //      <!----======== Statistical Chart ======== -->
+
       .statisticalChart {
-
         .statisticalChartItems {
-
-          .col-12 {
-
-            .col-7 {
-              background-color: #fff;
+          .customerOrderStatistics {
+            .orderStatistics {
+              background-color: $-white;
               margin-right: 20px;
               border-radius: 10px;
+              .myNavTabs {
+                .myNavItem {
+                  .nav-link {
+                    position: relative !important;
+                    color: $light-on-surface-variant;
+                    font-size: 14px;
+                    font-weight: 600;
+                    background-color: $light-surface2;
+                    &:after {
+                      content: "";
+                      position: absolute;
+                      background-color: $light-primary;
+                      height: 3px;
+                      width: 0;
+                      left: 0;
+                      bottom: 0px;
+                      transition: $trans-normal;
+                    }
+                    &.active {
+                      color: $light-primary;
+                    }
+                    &.active:after {
+                      content: "";
+                      width: 100%;
+                    }
+                  }
+                }
+              }
             }
-
-            .col-5 {
-              background-color: #fff;
+            .topUsers {
+              background-color: $-white;
               border-radius: 10px;
 
               .headerTopUser {
                 p {
                   color: $light-on-container;
                 }
-                button{
+                button {
                   width: 40px;
                   height: 40px;
                   background-color: rgba(73, 69, 79, 12%);
@@ -175,7 +208,7 @@ main {
               .bodyTopUser {
                 .topUserOder {
                   .topUserOder_items {
-                    margin: 20px 0;
+                    margin: 15px 0;
                     .topUserOrder__image {
                       img {
                         width: 45px;
@@ -186,7 +219,8 @@ main {
                     }
                     .topUserOrder__info {
                       .topUserOrder__name {
-                        color: $light-on-container;
+                        color: $light-fixed;
+                        color: #1d192b !important;
                       }
                       .topUserOrder__role {
                         color: $light-secondary;
@@ -194,7 +228,8 @@ main {
                     }
                     .topUserOrder_Spend {
                       .topUserOrder_totalPayed {
-                        color: $light-on-container;
+                        color: $light-fixed;
+                        color: #1d192b !important;
                       }
                       .topUserOrder_totalOrdered {
                         color: $light-secondary;
@@ -207,6 +242,275 @@ main {
           }
         }
       }
+
+      //      <!----======== End Statistical Chart ======== -->
+
+      //      <!----======== Recent Order ======== -->
+
+      .recentOrder {
+        .recentOrder_items {
+          background-color: $-white !important;
+          border-radius: 10px;
+          .title-medium {
+            color: $light-on-container;
+            color: #1d192b;
+          }
+          .tableLine {
+            width: 100%;
+            height: 1px;
+            background-color: rgba(0, 0, 0, 0.247);
+            margin: 15px 0;
+          }
+          table {
+            tbody {
+              border: transparent !important;
+              color: $-black;
+            }
+            td {
+              border: transparent !important;
+              color: $-black;
+            }
+            tfoot {
+              border: transparent !important;
+              color: $-black;
+            }
+            th {
+              border: transparent !important;
+              background-color: transparent !important;
+              color: $light-outline;
+              color: $-black;
+            }
+            thead {
+              border: transparent !important;
+            }
+            tr {
+              border: transparent !important;
+              background-color: transparent !important;
+              .tableLargeItems {
+                display: flex;
+                align-items: center;
+                input {
+                  margin-right: 10px;
+                }
+                span {
+                  margin-right: 10px;
+                }
+              }
+            }
+            .dotTable {
+              width: 8px;
+              height: 8px;
+              border-radius: 9999px;
+              &.green {
+                background-color: $-green;
+              }
+              &.orange {
+                background-color: $-orange;
+              }
+              &.red {
+                background-color: $-orange;
+              }
+            }
+          }
+        }
+      }
+
+      //      <!----======== End Recent Order ======== -->
+
+      //      <!----======== Overview Dashboard ======== -->
+      .overviewDashboard {
+        .col-12 {
+          .lineDashboard {
+            width: 100%;
+            height: 1px;
+            background-color: rgba(0, 0, 0, 0.349);
+          }
+          .theadoverviewDashboard {
+            padding: 5px 20px;
+            display: flex;
+            align-items: center;
+            p {
+              color: $light-on-container;
+            }
+            button {
+              width: 40px;
+              height: 40px;
+              border-radius: 9999px;
+              line-height: 40px;
+              background-color: rgba(73, 69, 79, 0.12);
+              i {
+                font-size: 16px;
+              }
+            }
+          }
+          .vitsitOverview {
+            background-color: $-white;
+            border-radius: 10px;
+            .vitsitOverview_item {
+              
+
+              .weekyChart {
+                display: flex;
+                justify-content: center;
+                .wekkyChart_item {
+                  .loader {
+                    width: 200px;
+                    position: relative;
+                    transform: rotate(-90deg);
+                    .loading {
+                      margin: 25px 0 0;
+                      position: relative;
+                      width: 100%;
+                      height: 18px;
+                      background-color: #e8edf2;
+                      border-radius: 10px;
+                      .lineLoading {
+                        display: block;
+                        position: absolute;
+                        width: 30%;
+                        height: 100%;
+                        background-color: #6750a4;
+                        box-shadow: 10px;
+                        border-radius: 10px;
+                      }
+                      .lineLoading2 {
+                        display: block;
+                        position: absolute;
+                        width: 40%;
+                        height: 100%;
+                        background-color: #6750a4;
+                        box-shadow: 10px;
+                        border-radius: 10px;
+                      }
+                      .lineLoading3 {
+                        display: block;
+                        position: absolute;
+                        width: 50%;
+                        height: 100%;
+                        background-color: #6750a4;
+                        box-shadow: 10px;
+                        border-radius: 10px;
+                      }
+                      .lineLoading4 {
+                        display: block;
+                        position: absolute;
+                        width: 65%;
+                        height: 100%;
+                        background-color: #6750a4;
+                        box-shadow: 10px;
+                        border-radius: 10px;
+                      }
+                      .lineLoading5 {
+                        display: block;
+                        position: absolute;
+                        width: 70%;
+                        height: 100%;
+                        background-color: #6750a4;
+                        box-shadow: 10px;
+                        border-radius: 10px;
+                      }
+                      .lineLoading6 {
+                        display: block;
+                        position: absolute;
+                        width: 90%;
+                        height: 100%;
+                        background-color: #6750a4;
+                        box-shadow: 10px;
+                        border-radius: 10px;
+                      }.lineLoading7 {
+                        display: block;
+                        position: absolute;
+                        width: 75%;
+                        height: 100%;
+                        background-color: #6750a4;
+                        box-shadow: 10px;
+                        border-radius: 10px;
+                      }
+                    }
+                  }
+                  
+                }
+              }
+              .sevenDayOfWeek {
+                align-items: center;
+                justify-content: center;
+                padding: 10px 0;
+                p {
+                  margin: 0 14px;
+                }
+              }
+            }
+          }
+          .topProductSeller {
+            .lineDashboard {
+              margin: 15px 0 0;
+            }
+            background-color: $-white;
+            border-radius: 10px;
+            .topProductSeller_item {
+              .ordertopProduct {
+                .ordertopProduct_items {
+                  height: 320px;
+                  overflow-y: scroll;
+                  .ordertopProduct_item {
+                    background-color: $light-on-fixed-variant;
+                    padding: 15px;
+                    .nameCategories {
+                      p {
+                        color: $light-on-container;
+                      }
+                      h2 {
+                        color: $-white;
+                      }
+                    }
+                    .priceProduct {
+                      text-align: end;
+                      h2 {
+                        color: $-white;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          .totalProfit {
+            background-color: $-white;
+            border-radius: 10px;
+            .totalProfit_items {
+              p {
+                color: $light-on-container;
+              }
+            }
+          }
+        }
+      }
+      //      <!----======== End Overview Dashboard ======== -->
     }
   }
+  .adminFooter {
+    .col-6 {
+      p {
+        color: $secondary60;
+      }
+    }
+    ul{
+      display: flex;
+      justify-content: end;
+      li{
+        color: $secondary60;
+        margin: 0 15px;
+        list-style: none;
+        a{
+          text-decoration: none;
+         color: $secondary60;
+
+        }
+      }
+    }
+    }
+}
+
+*{
+  // border: 1px solid black;
 }

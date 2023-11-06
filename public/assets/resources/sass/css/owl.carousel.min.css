@@ -18,7 +18,9 @@
     height: 100%;
     padding: 10px 0;
 }
-
+.owl-carousel .owl-stage-outer .owl-stage {
+    display: flex !important;
+}
 .owl-carousel .owl-stage:after {
     content: ".";
     display: block;
