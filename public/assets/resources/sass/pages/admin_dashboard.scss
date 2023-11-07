@@ -190,6 +190,7 @@ main {
               border-radius: 10px;
 
               .headerTopUser {
+                position: relative;
                 p {
                   color: $light-on-container;
                 }
@@ -201,6 +202,25 @@ main {
 
                   i {
                     font-size: 16px;
+                  }
+                }
+                .showMoreInfoAdminDashboard {
+                  display: none;
+                  position: absolute;
+                  bottom: -60px;
+                  right: 0;
+                  background-color: #fff;
+                  border-radius: 10px;
+                  text-align: center;
+                  li {
+                    list-style: none;
+                    padding: 10px 20px;
+                    a {
+                      text-decoration: none;
+                      color: $-black;
+                    text-align: center;
+
+                    }
                   }
                 }
               }
@@ -329,6 +349,7 @@ main {
             padding: 5px 20px;
             display: flex;
             align-items: center;
+            position: relative;
             p {
               color: $light-on-container;
             }
@@ -340,6 +361,25 @@ main {
               background-color: rgba(73, 69, 79, 0.12);
               i {
                 font-size: 16px;
+              }
+            }
+            .showMoreInfoAdminDashboard {
+              display: none;
+              position: absolute;
+              bottom: -60px;
+              right: 0;
+              background-color: #fff;
+              border-radius: 10px;
+              text-align: center;
+              li {
+                list-style: none;
+                padding: 10px 20px;
+                a {
+                  text-decoration: none;
+                  color: $-black;
+                text-align: center;
+
+                }
               }
             }
           }
@@ -513,4 +553,64 @@ main {
 
 *{
   // border: 1px solid black;
+}
+
+
+
+
+
+@media only screen and (max-width: 46.1875em){
+  #adminDashboard {
+          nav{
+              display: none !important;
+          }
+      .p30{
+          padding: 15px;
+      }
+      .dashboard {
+          width: 100% !important;
+          left: 0;
+          .top {
+              display: none;
+          }
+          .statisticalChart {
+            .statisticalChartItems {
+              .customerOrderStatistics {
+                .orderStatistics {
+                  margin: 0;
+                }
+              }
+            }
+          }
+          .recentOrder {
+            .recentOrder_items {
+              overflow-x: scroll;
+            }
+          }
+      }
+  }
+  
+  .owl-carousel {
+      .owl-item {
+          width: unset !important;
+      }
+      .owl-dots {
+          .owl-dot {
+              padding: 5px 30px !important;
+              box-shadow: unset;
+          }
+      }
+  }
+}
+/* Tablet: width >= 740px and width < 1024px */
+@media only screen and (min-width: 46.25em) and (max-width: 63.9375em){
+  
+}
+/* Mobile and Tablet: width < 1024px */
+@media only screen and (max-width: 63.9375em){
+  
+}
+/* PC: width >= 1024px */
+@media only screen and (min-width: 64em){
+
 }

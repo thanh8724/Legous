@@ -2,17 +2,48 @@ const body = document.querySelector("body")
     modeToggle = body.querySelector(".mode-toggle");
     sidebar = body.querySelector("nav");
     sidebarToggle = body.querySelector(".sidebar-toggle");
+    btnShowMore = document.querySelector(".btnShowMoreInfoAdminDashboard");
+    listShowMore = body.querySelector(".showMoreInfoAdminDashboard");
+    btnsShowMore = document.querySelectorAll(".btnsShowMoreInfoAdminDashboard")
+    listsShowMore = document.querySelectorAll(".showMoreInfoAdminDashboard");
+    theadoverviewDashboard = document.querySelectorAll(".theadoverviewDashboard");
 
 let getMode = localStorage.getItem("mode");
 if(getMode && getMode ==="dark"){
     body.classList.toggle("dark");
 }
 
+btnShowMore.addEventListener("click", function () {
+    // Kiểm tra trạng thái hiển thị của listShowMore
+    if (listShowMore.style.display === "block") {
+        listShowMore.style.display = "none"; // Ẩn nếu đã hiển thị
+    } else {
+        listShowMore.style.display = "block"; // Hiển thị nếu đã ẩn
+    }
+});
+
+btnsShowMore.forEach((btn, index) => {
+    btn.addEventListener("click", function () {
+        // Tìm phần tử cha (theadoverviewDashboard) của nút được bấm
+        const parent = btn.closest(".theadoverviewDashboard");
+
+        // Tìm phần tử showMoreInfoAdminDashboard bên trong phần tử cha và thay đổi trạng thái hiển thị
+        const showMore = parent.querySelector(".showMoreInfoAdminDashboard");
+        if (showMore.style.display === "block") {
+            showMore.style.display = "none"; // Ẩn nếu đã hiển thị
+        } else {
+            showMore.style.display = "block"; // Hiển thị nếu đã ẩn
+        }
+    });
+});
+
 let getStatus = localStorage.getItem("status");
 if(getStatus && getStatus ==="close"){
     sidebar.classList.toggle("close");
 }
-
+if(window.innerWidth < 992) {
+    sidebar.classList.toggle("close");
+}
 
 
 modeToggle.addEventListener("click", () =>{
@@ -32,15 +63,6 @@ sidebarToggle.addEventListener("click", () => {
         localStorage.setItem("status", "open");
     }
 })
-
-const btnFilter = document.querySelector("#filter");
-const filterOptions = document.querySelector(".dropdown-menu");
-btnFilter.addEventListener("click", function (){
-    filterOptions.classList.toggle("active");
-})
-
-
-
 
         $('.owl-carousel').owlCarousel({
             margin: 10,
@@ -145,10 +167,6 @@ btnFilter.addEventListener("click", function (){
             data.datasets[2].data = generateRandomDataMonth();
             myChart.update(); // Update the chart with new data
         }, 30000);
-
-
-
-
         function generateRandomDataDate() {
             var data = [];
             for (var i = 0; i < 7; i++) {
@@ -247,7 +265,7 @@ btnFilter.addEventListener("click", function (){
             datasets: [
               {
                 data: [generateRandomData(), generateRandomData()],
-                backgroundColor: ["#00B3FF", "#FF6ACC"],
+                backgroundColor: ["#e6e0e9","#6750a4"],
               },
             ],
           };
@@ -266,7 +284,8 @@ btnFilter.addEventListener("click", function (){
 
 const menuButton = document.getElementById("menuButton");
 const closeButton = document.getElementById("closeButton");
-const overlay = document.querySelector(".overlay");
+
+
 
 // Open the mobile menu
 menuButton.addEventListener("click", function () {
@@ -286,8 +305,27 @@ listItems.forEach(function (item) {
     });
 });
 
-// Close the mobile menu when clicking on the overlay
-overlay.addEventListener("click", function () {
-    document.body.classList.remove("nav-open");
+const searchButtonBar = document.getElementById('searchButtonBar');
+const searchBarMobile = document.querySelector('.searchBarMobile');
+const closeButton1 = document.getElementById('closeButton1');
+
+// Thêm sự kiện click cho nút tìm kiếm
+searchButtonBar.addEventListener('click', function () {
+    searchBarMobile.classList.add('active'); // Hiển thị searchBarMobile từ trên xuống dưới
 });
+
+// Thêm sự kiện click cho nút đóng
+closeButton1.addEventListener('click', function () {
+    searchBarMobile.classList.remove('active') // Ẩn searchBarMobile bằng cách đặt chiều cao về 0
+});
+
+
+
+
+
+const btnFilter = document.querySelector("#filter");
+const filterOptions = document.querySelector(".dropdown-menu");
+btnFilter.addEventListener("click", function (){
+    filterOptions.classList.toggle("active");
+})
 
