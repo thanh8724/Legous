@@ -94,6 +94,12 @@
     }
 }
 
+.mobile__search-form {
+    .form__input {
+        padding: 0.6rem 0.1rem 0.6rem 0.8rem;
+        height: unset;
+    }
+}
 
 .footer__email-input {
     max-width: 30rem;

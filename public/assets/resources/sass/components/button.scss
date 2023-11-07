@@ -118,6 +118,33 @@
     }
 }
 
+.love-btn {
+    background: $-pink;
+    color: $-white;
+    &:hover {
+        opacity: 0.8;
+        background: $-pink;
+        color: $-white;
+    }
+}
+
+.love-btn.transparent {
+    background: none;
+    font-size: 1.6rem;
+    color: $neutral20;
+    &:hover {
+        background: $neutral90;
+    }
+}
+.love-btn.active {
+    background: $-pink;
+    color: $-white;
+    &:hover {
+        opacity: 0.8;
+        background: $-pink;
+        color: $-white;
+    }
+}
 // || tool tips text for icon buttons
 /* Hide the tooltip text by default */
 // .tooltip-text {

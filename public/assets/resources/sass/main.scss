@@ -22,6 +22,11 @@
     @import 'components/slickCustom.scss';
     @import 'components/featureCategoryItem.scss';
     @import 'components/shopFilter.scss';
+    @import 'components/pagination.scss';
+    @import 'components/saleBanner.scss';
+    @import 'components/mobileFilter.scss';
+    @import 'components/featureProductItem.scss';
+    @import 'components/mobileTopBar.scss';
     // import theme
     @import 'theme/darkModeAdmin.scss';
     
@@ -37,50 +42,23 @@
     @import 'pages/admin_dashboard.scss';
     @import 'pages/admin_order-detail.scss';
     @import 'pages/admin_order-add-create.scss';
+    @import 'pages/category.scss';
+    @import 'pages/singleProduct.scss';
 
 // import partials end
 
 // || Responsive 
 /* Mobile: with < 740px */
 @media only screen and (max-width: 46.1875em){
-    .headMobie {
+    .mobile {
         display: block;
-        .col-12 {
-            .col-4 {
-                font-size: 20px;
-            }
-        }
     }
-    #adminDashboard {
-            nav{
-                display: none !important;
-            }
-        .p30{
-            padding: 15px;
-        }
-        .dashboard {
-            width: 100% !important;
-            left: 0;
-            .top {
-                display: none;
-            }
-        }
-    }
-    .owl-carousel {
-        .owl-item {
-            width: unset !important;
-        }
-        .owl-dots {
-            .owl-dot {
-                padding: 5px 30px !important;
-                box-shadow: unset;
-            }
-        }
+    .desktop {
+        display: none !important;
     }
 }
 /* Tablet: width >= 740px and width < 1024px */
 @media only screen and (min-width: 46.25em) and (max-width: 63.9375em){
-    
 }
 /* Mobile and Tablet: width < 1024px */
 @media only screen and (max-width: 63.9375em){
@@ -88,7 +66,9 @@
 }
 /* PC: width >= 1024px */
 @media only screen and (min-width: 64em){
-
+    .mobile {
+        display: none;
+    }
 }
 
 /* 
@@ -169,7 +149,7 @@
 
     // || common display classes start
     .display-block {
-        display: block;
+        display: block !important;
     }
     .display-none {
         display: none;
@@ -240,7 +220,7 @@
                 margin-top: 6rem;
             }
             .mt80 {
-                margin-top: 8rem;
+                margin-top: clamp(3rem, -0.571rem + 9.524vw, 8rem);
             }
             .mt100 {
                 margin-top: 10rem;
@@ -288,7 +268,7 @@
                 gap: 2rem;
             }
             .g30 {
-                gap: 3rem;
+                gap: clamp(1.6rem, 0.6rem + 2.667vw, 3rem);
             }
             .g60 {
                 gap: 6rem;
@@ -319,7 +299,7 @@
                 padding: 6rem;
             }
             .pi12 {
-                padding-inline: 1.2rem;
+                padding-inline: 1.2rem !important;
             }
             .pi20 {
                 padding-inline: 2rem;
@@ -388,6 +368,10 @@
     .flex-between {
         display: flex;
         justify-content: space-between;
+    }  
+    .flex-around {
+        display: flex;
+        justify-content: space-around;
     }
     .flex-center {
         display: flex;
@@ -472,6 +456,14 @@
 
 
     // || common block styles classes start
+    .block { /** just a block and do nothing */
+        display: block;
+    }
+    .avt {
+        width: clamp(4rem, 3.286rem + 1.905vw, 5rem);
+        height: clamp(4rem, 3.286rem + 1.905vw, 5rem);
+        aspect-ratio: 1;
+    }
     .img-cover {
         width: 100%;
         height: 100%;

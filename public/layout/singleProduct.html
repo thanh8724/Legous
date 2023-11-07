@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LEGOUS - SHOP</title>
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEGOUS - SINGLE PRODUCT</title>
     <link rel="stylesheet" href="/public/assets/resources/sass/css/app.css">
     <link rel="icon" type="image/x-icon" href="/public/assets/media/images/favicon/favicon.svg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -32,8 +35,10 @@
     ></script>
     <script src="/public/assets/resources/js/jquery.js"></script>
 </head>
+</head>
 <body>
     <div class="container-full">
+
         <!-- shop mobile top navigation bar start -->
         <div class="mobile-top__bar mobile-top__bar--shop p12 flex-center">
             <div class="mobile-top__inner flex-full flex-between v-center g12">
@@ -44,6 +49,7 @@
                         <input type="text" class="form__input rounded-100 width-full" style="padding-left: 4rem">
                     </div>
                 </form>
+                <button class="icon-btn share-btn"><i class="fal fa-share-alt"></i></button>
                 <button class="icon-btn cart-btn"><i class="fal fa-shopping-cart"></i></button>
                 <button class="icon-btn more-btn"><i class="far fa-ellipsis-h"></i></button>
             </div>
@@ -228,157 +234,224 @@
 
         <!-- header end -->
 
-        <!-- shop title start -->
-        <section class="section shop__title auto-grid g30 mt80">
-            <div class="width-full">
-                <div class="flex-column g12" style="max-width: 27rem">
-                    <span class="label-large">LEGOUS /</span>
-                    <h1 class="text-68">SHOP</h1>
-                    <span class="label-large">Chúng tôi hân hạnh đem đến cho bạn mô hình được lấy cảm hứng từ những nhân vật truyện tranh tuổi thơ với chất lượng cao</span>
+        <!-- product overview start -->
+        <main class="section single-product__main auto-grid g30 mt80">
+            <div class="product__gallery mobile">
+                <div class="gallery__spotlight">
+                    <div class="gallery__spotlight__item">
+                        <img src="/public/assets/media/images/product/sample-image1.png" alt="" class="img-cover">
+                    </div>
+                </div>
+                <div class="gallery__thumbnails flex g12 mt12">
+                    <div class="gallery__thumbnails__item">
+                        <img src="/public/assets/media/images/product/sample-image1.png" alt="" class="img-cover">
+                    </div>
+                    <div class="gallery__thumbnails__item">
+                        <img src="/public/assets/media/images/product/sample-image2.png" alt="" class="img-cover">
+                    </div>
+                    <div class="gallery__thumbnails__item">
+                        <img src="/public/assets/media/images/product/sample-image3.png" alt="" class="img-cover">
+                    </div>
+                    <div class="gallery__thumbnails__item">
+                        <img src="/public/assets/media/images/product/sample-image4.png" alt="" class="img-cover">
+                    </div>
                 </div>
             </div>
-            <div class="flex-column g12 flex-full">
-                <h4 class="title-medium">DANH MỤC NỔI BẬT</h4>
-                <div class="feature-category__wrapper oh flex g20 width-full">
-                    <div class="feature-category__item p20 flex g20 v-center" style="background: #7254B7">
-                        <div class="feature-category__banner">
-                            <img src="/public/assets/media/images/category/onpiece__banner.svg" alt="" class="img-cover">
+            <div class="product__info flex-column g30">
+                <span class="label-large text-navagtion desktop">LEGOUS / SHOP / PRODUCT</span>
+                <div class="flex-between v-center">
+                    <div class="product__name text-68 fw-normal" style="font-family: inherit;">
+                        NARUTO HIỀN NHÂN THUẬT
+                    </div>
+                    <button class="icon-btn love-btn toggle-btn mobile transparent"><i class="fal fa-heart"></i></button>
+                </div>
+                <p class="body-medium desktop">NARUTO - Hiền nhân thuật là trạng thái được nhiều fan hâm mộ của nhân vật này săn đuổi nhất chỉ sau trạng thái cửu vĩ hình. Còn chần chừ gì nữa mà không tậu ngay cho mình một sản phẩm ngầu như vậy chứ!</p>
+                <span class="text-38 fw-normal" style="font-family: inherit;">1.289.099 VND</span>
+                <span class="label-medium">128 sản phẩm</span>
+                <div class="flex g12">
+                    <button class="btn elevated-btn rounded-100"><i class="fal fa-shopping-cart-plus"></i>THÊM VÀO GIỎ HÀNG</button>
+                    <button class="btn primary-btn rounded-100"><i class="fal fa-arrow-right"></i>MUA NGAY</button>
+                </div>
+            </div>
+            <div class="product__gallery por desktop">
+                <div class="gallery__spotlight">
+                    <div class="gallery__spotlight__item">
+                        <img src="/public/assets/media/images/product/sample-image1.png" alt="" class="img-cover">
+                    </div>
+                </div>
+                <div class="gallery__thumbnails poa flex-between flex-column g12">
+                    <div class="gallery__thumbnails__item">
+                        <img src="/public/assets/media/images/product/sample-image1.png" alt="" class="img-cover">
+                    </div>
+                    <div class="gallery__thumbnails__item">
+                        <img src="/public/assets/media/images/product/sample-image2.png" alt="" class="img-cover">
+                    </div>
+                    <div class="gallery__thumbnails__item">
+                        <img src="/public/assets/media/images/product/sample-image3.png" alt="" class="img-cover">
+                    </div>
+                    <div class="gallery__thumbnails__item">
+                        <img src="/public/assets/media/images/product/sample-image4.png" alt="" class="img-cover">
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!-- product overview end -->
+
+        <!-- product info start -->
+        <section class="product-info__section">
+            <div class="tab__container full">
+                <div class="tabs flex-center width-full">
+                    <div class="tab__item active">
+                        <span class="tab__item__label label-large ttu tac">MÔ TẢ SẢN PHẨM</span>
+                    </div>
+                    <div class="tab__item">
+                        <span class="tab__item__label label-large ttu tac">THÔNG TIN CHI TIẾT</span>
+                    </div>
+                    <div class="tab__item">
+                        <span class="tab__item__label label-large ttu tac">ĐÁNH GIÁ</span>
+                    </div>
+                    <div class="tab__item">
+                        <span class="tab__item__label label-large ttu tac">THÔNG TIN ĐẶT HÀNG</span>
+                    </div>
+                </div>
+                <div class="panels">
+                    <div class="panel__item active">
+                        MÔ TẢ SẢN PHẨM
+                    </div>
+                    <div class="panel__item">
+                        THÔNG TIN CHI TIẾT
+                    </div>
+                    <div class="panel__item comment__panel">
+                        <div class="block">
+                            <div class="title-large fw-black">390 comments</div>
+                            <form action="#" class="form comment__form flex-center" method="post">
+                                <input type="text" class="form__input comment__input" placeholder="Comment">
+                                <button class="icon-btn send-comment__btn"><i class="fal fa-paper-plane"></i></button>
+                            </form>
                         </div>
-                        <div class="feature-category__content flex-column g8">
-                            <h4 class="title-medium">ONE PIECE</h4>
-                            <span class="body-medium">Lorem ipsum dolor sit amet consectetur, adipisicing elit. </span>
-                            <span class="label-large">120 sản phẩm có sẵn</span>
+
+                        <div class="mt30 comment__wrapper">
+                            <!-- single comment start -->
+                            <div class="comment__item mb30">
+                                <div class="flex g12 comment__user">
+                                    <div class="user__avt avt"><img src="/public/assets/media/images/users/user-1.svg" alt="user 1" class="imgcover"></div>
+                                    <div class="flex-column flex-between">
+                                        <div class="user__name title-medium fw-smb">Lorem ipsum</div>
+                                        <div class="user-comment__date title-small">29/12/2023</div>
+                                    </div>
+                                </div>
+                                <div class="comment__content body-medium fw-normal mt12">
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt cum qui voluptate! Libero est vero sequi perspiciatis, ratione, praesentium, ipsam quisquam autem voluptates et minus animi voluptas saepe. Asperiores, modi!
+                                </div>
+                            </div>
+                            <!-- single comment end -->
+
+                            <div class="comment__item mb30">
+                                <div class="flex g12 comment__user">
+                                    <div class="user__avt avt"><img src="/public/assets/media/images/users/user-1.svg" alt="user 1" class="imgcover"></div>
+                                    <div class="flex-column flex-between">
+                                        <div class="user__name title-medium fw-smb">Lorem ipsum</div>
+                                        <div class="user-comment__date title-small">29/12/2023</div>
+                                    </div>
+                                </div>
+                                <div class="comment__content body-medium fw-normal mt12">
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt cum qui voluptate! Libero est vero sequi perspiciatis, ratione, praesentium, ipsam quisquam autem voluptates et minus animi voluptas saepe. Asperiores, modi!
+                                </div>
+                            </div>
+                            <div class="comment__item mb30">
+                                <div class="flex g12 comment__user">
+                                    <div class="user__avt avt"><img src="/public/assets/media/images/users/user-1.svg" alt="user 1" class="imgcover"></div>
+                                    <div class="flex-column flex-between">
+                                        <div class="user__name title-medium fw-smb">Lorem ipsum</div>
+                                        <div class="user-comment__date title-small">29/12/2023</div>
+                                    </div>
+                                </div>
+                                <div class="comment__content body-medium fw-normal mt12">
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt cum qui voluptate! Libero est vero sequi perspiciatis, ratione, praesentium, ipsam quisquam autem voluptates et minus animi voluptas saepe. Asperiores, modi!
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="feature-category__item p20 flex g20 v-center" style="background: #7254B7">
-                        <div class="feature-category__banner">
-                            <img src="/public/assets/media/images/category/onpiece__banner.svg" alt="" class="img-cover">
-                        </div>
-                        <div class="feature-category__content flex-column g8">
-                            <h4 class="title-medium">ONE PIECE</h4>
-                            <span class="body-medium">Lorem ipsum dolor sit amet consectetur, adipisicing elit. </span>
-                            <span class="label-large">120 sản phẩm có sẵn</span>
-                        </div>
-                    </div>
-                    <div class="feature-category__item p20 flex g20 v-center" style="background: #7254B7">
-                        <div class="feature-category__banner">
-                            <img src="/public/assets/media/images/category/onpiece__banner.svg" alt="" class="img-cover">
-                        </div>
-                        <div class="feature-category__content flex-column g8">
-                            <h4 class="title-medium">ONE PIECE</h4>
-                            <span class="body-medium">Lorem ipsum dolor sit amet consectetur, adipisicing elit. </span>
-                            <span class="label-large">120 sản phẩm có sẵn</span>
+                    <div class="panel__item">
+                        <div class="bill-info__panel auto-grid g20">
+                            <div class="bill-info__box p20 rounded-8 box-shadow1 flex-column g12">
+                                <h4 class="box__title title-medium fw-smb">Người nhận</h4>
+                                <div class="box__content flex-column g12">
+                                    <h4 class="title-large">Hồ Duy Hoàng Giang</h4>
+                                    <p class="body-medium">Sđt: 0934630736</p>
+                                    <p class="body-medium">Email: giang@gmail.com</p>
+                                    <p class="body-medium">Địa chỉ: 212B, Baker street, London</p>
+                                </div>
+                            </div>
+                            <div class="bill-info__box p20 rounded-8 box-shadow1 flex-column g12">
+                                <h4 class="box__title title-medium fw-smb">Người đặt</h4>
+                                <div class="box__content flex-column g12">
+                                    <h4 class="title-large">Hồ Duy Hoàng Giang</h4>
+                                    <p class="body-medium">Sđt: 0934630736</p>
+                                    <p class="body-medium">Email: giang@gmail.com</p>
+                                    <p class="body-medium">Địa chỉ: 212B, Baker street, London</p>
+                                </div>
+                            </div>
+                            <div class="bill-info__box p20 rounded-8 box-shadow1 flex-column g12">
+                                <h4 class="box__title title-medium fw-smb">Phương thức thanh toán</h4>
+                                <div class="box__content flex-column g12">
+                                    <p class="body-medium">Tiền mặt</p>
+                                    <label for="#" class="body-small default-label">Mặc định</label>
+                                </div>
+                            </div>
+                            <div class="bill-info__box p20 rounded-8 box-shadow1 flex-column g12">
+                                <h4 class="box__title title-medium fw-smb">Phương thức vận chuyển</h4>
+                                <div class="box__content flex-column g12">
+                                    <p class="body-medium">Thông thường (25k / 3 - 5 ngày)</p>
+                                    <label for="#" class="body-small default-label">Mặc định</label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- shop title end -->
+        <!-- product info end -->
 
-        <!-- shop product start -->
-        <main class="section shop__main">
-            <div class="flex-between width-full">
-                <div class="v-center flex-between filter-bar--respon">
-                    <h4 class="title-medium shop__main__title">SẢN PHẨM</h4>
-                    <button class="mobile__filter__btn--open btn outline-btn rounded-100">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-                            <path d="M7.5 13.5H10.5V12H7.5V13.5ZM2.25 4.5V6H15.75V4.5H2.25ZM4.5 9.75H13.5V8.25H4.5V9.75Z" fill="#6750A4"/>
-                        </svg>
-                        Lọc sản phẩm
-                    </button>
+        <!-- related products section start -->
+        <section class="section related-product__section">
+            <div class="block">
+                <div class="text-38">
+                    SẢN PHẨM LIÊN QUAN
                 </div>
-                <div class="filter-btn flex-full">
-                    <button class="btn outline-btn toggle-filter-btn rounded-100">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-                            <path d="M7.5 13.5H10.5V12H7.5V13.5ZM2.25 4.5V6H15.75V4.5H2.25ZM4.5 9.75H13.5V8.25H4.5V9.75Z" fill="#6750A4"/>
-                        </svg>
-                        <span class="btn__text">Ẩn filter</span>
-                    </button>
-                </div>
-                <ul class="filter__list open flex g12">
-                    <li class="filter__list__item por">
-                        <button class="btn elevated-btn rounded-100 filter__list__btn"><i class="fa-solid fa-caret-down"></i>Giá</button>
-                        <ul class="filter-option__list poa p20 rounded-8 box-shadow1" style="right: 0">
-                            <li class="filter-option__item">
-                                <form action="" method="post">
-                                    <!-- normal form group -->
-                                    <div class="form__group">
-                                        <span class="form__group__title">Nhập giá sản phẩm</span>
-                                        <input type="number" class="form__input" placeholder="VD: 1.000.000">
-                                        <span class="form__message"></span>
-                                    </div>
-                                    <button class="btn primary-btn rounded-8 ttu width-full" type="submit">LỌC</button>
-                                    <div class="form__group mt30">
-                                        <input type="range" min="0" max="50" value="0" id="range2" class="range-input"/> 
-                                        <div class="flex-between">
-                                            <div class="flex-column flex-center">
-                                                min
-                                                <span class="body-large">0</span>
-                                            </div>
-                                            <div class="flex-column flex-center">
-                                                max
-                                                <span class="body-large">20.000.000</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="filter__list__item por">
-                        <button class="btn elevated-btn rounded-100 filter__list__btn"><i class="fa-solid fa-caret-down"></i>Danh mục</button>
-                        <ul class="filter-option__list poa p20 rounded-8 grid-2 g30 box-shadow1" style="right: 0">
-                            <li class="filter-option__item flex-column g12" style="color:#7254B7">
-                                <h4 class="title-medium filter-option__title fw-smb">MÔ HÌNH</h4>
-                                <ul>
-                                    <li class="p12 flex v-center g8"><input id="option-checkbox1" type="checkbox"><label class="fw-smb" for="option-checkbox1">Naruto</label></li>
-                                    <li class="p12 flex v-center g8"><input id="option-checkbox2" type="checkbox"><label class="fw-smb" for="option-checkbox2">Dragon Ball</label></li>
-                                    <li class="p12 flex v-center g8"><input id="option-checkbox3" type="checkbox"><label class="fw-smb" for="option-checkbox3">Jujutsu Kaisen</label></li>
-                                    <li class="p12 flex v-center g8"><input id="option-checkbox4" type="checkbox"><label class="fw-smb" for="option-checkbox4">Kimetsu No Yaiba</label></li>
-                                </ul>
-                            </li>
-                            <li class="filter-option__item flex-column g12" style="color:#7254B7">
-                                <h4 class="title-medium filter-option__title fw-smb">MÔ HÌNH</h4>
-                                <ul>
-                                    <li class="p12 flex v-center g8"><input id="option-checkbox1" type="checkbox"><label class="fw-smb" for="option-checkbox1">Naruto</label></li>
-                                    <li class="p12 flex v-center g8"><input id="option-checkbox2" type="checkbox"><label class="fw-smb" for="option-checkbox2">Dragon Ball</label></li>
-                                    <li class="p12 flex v-center g8"><input id="option-checkbox3" type="checkbox"><label class="fw-smb" for="option-checkbox3">Jujutsu Kaisen</label></li>
-                                    <li class="p12 flex v-center g8"><input id="option-checkbox4" type="checkbox"><label class="fw-smb" for="option-checkbox4">Kimetsu No Yaiba</label></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="filter__list__item por">
-                        <button class="btn elevated-btn rounded-100 filter__list__btn"><i class="fa-solid fa-caret-down"></i>Tên</button>
-                        <ul class="filter-option__list poa p20 rounded-8 grid-2 g30 box-shadow1" style="right: 0">
-                            <li class="filter-option__item flex-column g12" style="color:#7254B7">
-                                <ul>
-                                    <li class="p12 flex v-center g8"><input id="option-checkbox1" type="checkbox"><label class="fw-smb" for="option-checkbox1">Từ A - Z</label></li>
-                                    <li class="p12 flex v-center g8"><input id="option-checkbox2" type="checkbox"><label class="fw-smb" for="option-checkbox2">Từ Z - A</label></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="filter__list__item por">
-                        <button class="btn elevated-btn rounded-100 filter__list__btn"><i class="fa-solid fa-caret-down"></i>Ngày ra mắt</button>
-                        <ul class="filter-option__list poa p20 rounded-8 grid-2 g30 box-shadow1" style="right: 0">
-                            <li class="filter-option__item flex-column g12" style="color:#7254B7">
-                                <ul>
-                                    <li class="p12 flex v-center g8"><input id="option-checkbox1" type="checkbox"><label class="fw-smb" for="option-checkbox1">1 tuần trước</label></li>
-                                    <li class="p12 flex v-center g8"><input id="option-checkbox2" type="checkbox"><label class="fw-smb" for="option-checkbox2">1 tháng trước</label></li>
-                                    <li class="p12 flex v-center g8"><input id="option-checkbox2" type="checkbox"><label class="fw-smb" for="option-checkbox2">6 tháng trước</label></li>
-                                    <li class="p12 flex v-center g8"><input id="option-checkbox2" type="checkbox"><label class="fw-smb" for="option-checkbox2">1 năm trước</label></li>
-                                    <div class="form__group">
-                                        <input type="date" class="datePicker form__input" id="shop-filter__day-picker">
-                                    </div>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
+                <span class="label-large">LEGOUS / SHOP / PRODUCT</span>
             </div>
-            <div class="product__wrapper product__wrapper--without-carousel auto-grid g20 mt30">
-                <div class="product">
+            <div class="product__wrapper product__wrapper--normal product__wrapper--normal--slick__1 auto-grid g20 mt30">
+                <!-- single product start -->
+                <div class="product product__carousel">
+                    <a href="#" class="product__banner oh banner-cover rounded-8 por" style="background-image: url('/public/assets/media/images/product/v944cyfrwt851.webp')">
+                        <div class="product__overlay poa flex-center">
+                            <div class="flex g12 in-stock__btn-set">
+                                <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
+                                <button class="icon-btn love-btn toggle-btn"><i class="fa fa-heart"></i></button>
+                                <button class="icon-btn"><i class="fal fa-shopping-cart"></i></button>
+                            </div>
+                            <!-- <div class="flex g12 sold-out__btn-set">
+                                <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
+                                <button class="icon-btn"><i class="fal fa-plus"></i></button>
+                                <button class="icon-btn"><i class="fal fa-arrow-right"></i></button>
+                            </div> -->
+                        </div>
+                    </a>
+                    <a href="#" class="product__info">
+                        <div class="product__info__name title-medium fw-smb">Lorem ipsum para desbaren</div>
+                        <div class="product__info__price body-medium">289.000đ</div>
+                    </a>
+                    <div class="product__info flex-between width-full">
+                        <div class="product__info__view body-medium">1,2m+ views</div>
+                        <div class="product__info__rated flex g6 v-center body-medium">
+                            4.4 <i class="fa fa-star start"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- single product end -->
+
+                <div class="product product__carousel">
                     <a href="#" class="product__banner oh banner-cover rounded-8 por" style="background-image: url('/public/assets/media/images/product/v944cyfrwt851.webp')">
                         <div class="product__overlay poa flex-center">
                             <div class="flex g12 in-stock__btn-set">
@@ -404,7 +477,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="product">
+                <div class="product product__carousel">
                     <a href="#" class="product__banner oh banner-cover rounded-8 por" style="background-image: url('/public/assets/media/images/product/v944cyfrwt851.webp')">
                         <div class="product__overlay poa flex-center">
                             <div class="flex g12 in-stock__btn-set">
@@ -430,7 +503,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="product">
+                <div class="product product__carousel">
                     <a href="#" class="product__banner oh banner-cover rounded-8 por" style="background-image: url('/public/assets/media/images/product/v944cyfrwt851.webp')">
                         <div class="product__overlay poa flex-center">
                             <div class="flex g12 in-stock__btn-set">
@@ -456,7 +529,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="product">
+                <div class="product product__carousel">
                     <a href="#" class="product__banner oh banner-cover rounded-8 por" style="background-image: url('/public/assets/media/images/product/v944cyfrwt851.webp')">
                         <div class="product__overlay poa flex-center">
                             <div class="flex g12 in-stock__btn-set">
@@ -482,7 +555,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="product">
+                <div class="product product__carousel">
                     <a href="#" class="product__banner oh banner-cover rounded-8 por" style="background-image: url('/public/assets/media/images/product/v944cyfrwt851.webp')">
                         <div class="product__overlay poa flex-center">
                             <div class="flex g12 in-stock__btn-set">
@@ -508,7 +581,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="product">
+                <div class="product product__carousel">
                     <a href="#" class="product__banner oh banner-cover rounded-8 por" style="background-image: url('/public/assets/media/images/product/v944cyfrwt851.webp')">
                         <div class="product__overlay poa flex-center">
                             <div class="flex g12 in-stock__btn-set">
@@ -534,7 +607,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="product">
+                <div class="product product__carousel">
                     <a href="#" class="product__banner oh banner-cover rounded-8 por" style="background-image: url('/public/assets/media/images/product/v944cyfrwt851.webp')">
                         <div class="product__overlay poa flex-center">
                             <div class="flex g12 in-stock__btn-set">
@@ -560,85 +633,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="product">
-                    <a href="#" class="product__banner oh banner-cover rounded-8 por" style="background-image: url('/public/assets/media/images/product/v944cyfrwt851.webp')">
-                        <div class="product__overlay poa flex-center">
-                            <div class="flex g12 in-stock__btn-set">
-                                <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
-                                <button class="icon-btn love-btn"><i class="fa fa-heart"></i></button>
-                                <button class="icon-btn"><i class="fal fa-shopping-cart"></i></button>
-                            </div>
-                            <!-- <div class="flex g12 sold-out__btn-set">
-                                <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
-                                <button class="icon-btn"><i class="fal fa-plus"></i></button>
-                                <button class="icon-btn"><i class="fal fa-arrow-right"></i></button>
-                            </div> -->
-                        </div>
-                    </a>
-                    <a href="#" class="product__info">
-                        <div class="product__info__name title-medium fw-smb">Lorem ipsum para desbaren</div>
-                        <div class="product__info__price body-medium">289.000đ</div>
-                    </a>
-                    <div class="product__info flex-between width-full">
-                        <div class="product__info__view body-medium">1,2m+ views</div>
-                        <div class="product__info__rated flex g6 v-center body-medium">
-                            4.4 <i class="fa fa-star start"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="product">
-                    <a href="#" class="product__banner oh banner-cover rounded-8 por" style="background-image: url('/public/assets/media/images/product/v944cyfrwt851.webp')">
-                        <div class="product__overlay poa flex-center">
-                            <div class="flex g12 in-stock__btn-set">
-                                <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
-                                <button class="icon-btn love-btn"><i class="fa fa-heart"></i></button>
-                                <button class="icon-btn"><i class="fal fa-shopping-cart"></i></button>
-                            </div>
-                            <!-- <div class="flex g12 sold-out__btn-set">
-                                <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
-                                <button class="icon-btn"><i class="fal fa-plus"></i></button>
-                                <button class="icon-btn"><i class="fal fa-arrow-right"></i></button>
-                            </div> -->
-                        </div>
-                    </a>
-                    <a href="#" class="product__info">
-                        <div class="product__info__name title-medium fw-smb">Lorem ipsum para desbaren</div>
-                        <div class="product__info__price body-medium">289.000đ</div>
-                    </a>
-                    <div class="product__info flex-between width-full">
-                        <div class="product__info__view body-medium">1,2m+ views</div>
-                        <div class="product__info__rated flex g6 v-center body-medium">
-                            4.4 <i class="fa fa-star start"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="product">
-                    <a href="#" class="product__banner oh banner-cover rounded-8 por" style="background-image: url('/public/assets/media/images/product/v944cyfrwt851.webp')">
-                        <div class="product__overlay poa flex-center">
-                            <div class="flex g12 in-stock__btn-set">
-                                <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
-                                <button class="icon-btn love-btn"><i class="fa fa-heart"></i></button>
-                                <button class="icon-btn"><i class="fal fa-shopping-cart"></i></button>
-                            </div>
-                            <!-- <div class="flex g12 sold-out__btn-set">
-                                <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
-                                <button class="icon-btn"><i class="fal fa-plus"></i></button>
-                                <button class="icon-btn"><i class="fal fa-arrow-right"></i></button>
-                            </div> -->
-                        </div>
-                    </a>
-                    <a href="#" class="product__info">
-                        <div class="product__info__name title-medium fw-smb">Lorem ipsum para desbaren</div>
-                        <div class="product__info__price body-medium">289.000đ</div>
-                    </a>
-                    <div class="product__info flex-between width-full">
-                        <div class="product__info__view body-medium">1,2m+ views</div>
-                        <div class="product__info__rated flex g6 v-center body-medium">
-                            4.4 <i class="fa fa-star start"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="product">
+                <div class="product product__carousel">
                     <a href="#" class="product__banner oh banner-cover rounded-8 por" style="background-image: url('/public/assets/media/images/product/v944cyfrwt851.webp')">
                         <div class="product__overlay poa flex-center">
                             <div class="flex g12 in-stock__btn-set">
@@ -665,113 +660,9 @@
                     </div>
                 </div>
             </div>
-            <ul class="pagination flex g16 mt30">
-                <li class="pagination__item active"><a href="#" class="pagination__link">1</a></li>
-                <li class="pagination__item"><a href="#" class="pagination__link">2</a></li>
-                <li class="pagination__item"><a href="#" class="pagination__link">3</a></li>
-                <li class="pagination__item"><a href="#" class="pagination__link">4</a></li>
-                <li class="pagination__item"><a href="#" class="pagination__link"><i class="fal fa-arrow-right" style="margin-right: .6rem"></i>Next</a></li>
-            </ul>
-        </main>
-
-        <!-- mobile shop filter start -->
-        <div class="mobile__filter box-shadow1">
-            <div class="flex-between mobile__filter__top v-center">
-                <span class="title-large ttu">FILTER</span>
-                <button class="icon-btn mobile__filter__btn--close"><i class="fal fa-times"></i></button>
-            </div>
-            <ul class="mobile__filter__list pi12">
-                <li class="accordion mobile__filter__item">
-                    <div class="mobile__filter__name ttc accordion__top flex-between p16">
-                        DANH MỤC 
-                        <i class="fa-solid fa-caret-down"></i>
-                    </div>
-                    <div class="p10 accordion__content">
-                        <ul class="mobile__filter__option-list p10">
-                            <h4 class="title-medium ttu">MÔ HÌNH</h4>
-                            <li class="option__list__item flex-between p12">
-                                <label for="">Label</label>
-                                <input id="" type="checkbox">
-                            </li>
-                            <li class="option__list__item flex-between p12">
-                                <label for="">Label</label>
-                                <input id="" type="checkbox">
-                            </li>
-                            <li class="option__list__item flex-between p12">
-                                <label for="">Label</label>
-                                <input id="" type="checkbox">
-                            </li>
-                        </ul>
-                        <div class="light-devider" style="display: block; height: .1rem"></div>
-                        <ul class="mobile__filter__option-list p10">
-                            <h4 class="title-medium ttu">LEGO</h4>
-                            <li class="option__list__item flex-between p12">
-                                <label for="">Label</label>
-                                <input id="" type="checkbox">
-                            </li>
-                            <li class="option__list__item flex-between p12">
-                                <label for="">Label</label>
-                                <input id="" type="checkbox">
-                            </li>
-                            <li class="option__list__item flex-between p12">
-                                <label for="">Label</label>
-                                <input id="" type="checkbox">
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="accordion mobile__filter__item">
-                    <div class="mobile__filter__name ttc accordion__top flex-between p16">
-                        TÊN 
-                        <i class="fa-solid fa-caret-down"></i>
-                    </div>
-                    <ul class="mobile__filter__option-list accordion__content pi12">
-                        <li class="option__list__item flex-between p12">
-                            <label for="">Từ A - Z</label>
-                            <input id="" type="checkbox">
-                        </li>
-                        <li class="option__list__item flex-between p12">
-                            <label for="">Từ Z - A</label>
-                            <input id="" type="checkbox">
-                        </li>
-                    </ul>
-                </li>
-                <li class="accordion mobile__filter__item">
-                    <div class="mobile__filter__name ttc accordion__top flex-between p16">
-                        GIÁ 
-                        <i class="fa-solid fa-caret-down"></i>
-                    </div>
-                    <div class="mobile__filter__option-list accordion__content pi12">
-                        <form action="" method="post">
-                            <!-- normal form group -->
-                            <div class="form__group">
-                                <span class="form__group__title mt12
-">Nhập giá sản phẩm</span>
-                                <input type="number" class="form__input" placeholder="VD: 1.000.000">
-                                <span class="form__message"></span>
-                            </div>
-                            <button class="btn primary-btn rounded-8 ttu width-full" type="submit">LỌC</button>
-                            <div class="form__group mt30">
-                                <input type="range" min="0" max="50" value="0" id="range2" class="range-input"/> 
-                                <div class="flex-between">
-                                    <div class="flex-column flex-center">
-                                        min
-                                        <span class="body-large">0</span>
-                                    </div>
-                                    <div class="flex-column flex-center">
-                                        max
-                                        <span class="body-large">20.000.000</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <!-- mobile shop filter end -->
-        <!-- shop product end -->
-
+        </section>
+        <!-- related products section end -->
+        
         <!-- sale banner start -->
         <section class="section sale-banner grid-2">
             <div class="flex-column g16">
@@ -790,110 +681,256 @@ HALLOWEEN 20%</div>
         </section>
         <!-- sale banner end -->
 
-        <!-- category section start -->
-        <section class="section category__section">
-            <div class="flex-column g12">
-                <h2 class="text-68">DANH MỤC</h2>
-                <label for="" class="label-large-prominent">LEGOUS/</label>
+        <!-- maybe you love section start -->
+        <section class="section related-product__section">
+            <div class="block">
+                <div class="text-38">
+                    CÓ THỂ BẠN SẼ THÍCH
+                </div>
+                <span class="label-large">LEGOUS / SHOP / PRODUCT</span>
             </div>
-            <div class="auto-grid parent-category__wrapper g20 mt30">
-                <div class="parent-category__item flex-column g30">
-                    <h3 class="parent-category__name headline-large ttu">STATUE</h3>
-                    <div class="category__wrapper flex-column g20">
-                        <!-- single category start -->
-                        <a href="#" class="category__item flex-center g20 p20 rounded-12" style="background: #7255B7; color: white">
-                            <div class="banner-cover category__banner rounded-full" style="background-image: url('/public/assets/media/images/category/onpiece__banner.svg')"></div>
-                            <div class="category__content flex-column g12">
-                                <div class="title-medium">ONE PIECE</div>
-                                <span class="body-medium">
-                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt nulla eum magnam quisquam alias suscipit odit nihil
-                                </span>
-                                <label for="" class="label large">120 sản phẩm có sẵn</label>
+            <div class="product__wrapper product__wrapper--normal product__wrapper--normal--slick__1 auto-grid g20 mt30">
+                <!-- single product start -->
+                <div class="product product__carousel">
+                    <a href="#" class="product__banner oh banner-cover rounded-8 por" style="background-image: url('/public/assets/media/images/product/v944cyfrwt851.webp')">
+                        <div class="product__overlay poa flex-center">
+                            <div class="flex g12 in-stock__btn-set">
+                                <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
+                                <button class="icon-btn love-btn toggle-btn"><i class="fa fa-heart"></i></button>
+                                <button class="icon-btn"><i class="fal fa-shopping-cart"></i></button>
                             </div>
-                        </a> 
-                        <!-- single category end -->
-
-                        <div class="category__item flex-center g20 p20 rounded-12" style="background: #7255B7; color: white">
-                            <div class="banner-cover category__banner rounded-full" style="background-image: url('/public/assets/media/images/category/onpiece__banner.svg')"></div>
-                            <div class="category__content flex-column g12">
-                                <div class="title-medium">ONE PIECE</div>
-                                <span class="body-medium">
-                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt nulla eum magnam quisquam alias suscipit odit nihil
-                                </span>
-                                <label for="" class="label large">120 sản phẩm có sẵn</label>
-                            </div>
-                        </div> 
-                        <div class="category__item flex-center g20 p20 rounded-12" style="background: #7255B7; color: white">
-                            <div class="banner-cover category__banner rounded-full" style="background-image: url('/public/assets/media/images/category/onpiece__banner.svg')"></div>
-                            <div class="category__content flex-column g12">
-                                <div class="title-medium">ONE PIECE</div>
-                                <span class="body-medium">
-                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt nulla eum magnam quisquam alias suscipit odit nihil
-                                </span>
-                                <label for="" class="label large">120 sản phẩm có sẵn</label>
-                            </div>
-                        </div> 
-                        <div class="category__item flex-center g20 p20 rounded-12" style="background: #7255B7; color: white">
-                            <div class="banner-cover category__banner rounded-full" style="background-image: url('/public/assets/media/images/category/onpiece__banner.svg')"></div>
-                            <div class="category__content flex-column g12">
-                                <div class="title-medium">ONE PIECE</div>
-                                <span class="body-medium">
-                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt nulla eum magnam quisquam alias suscipit odit nihil
-                                </span>
-                                <label for="" class="label large">120 sản phẩm có sẵn</label>
-                            </div>
-                        </div> 
+                            <!-- <div class="flex g12 sold-out__btn-set">
+                                <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
+                                <button class="icon-btn"><i class="fal fa-plus"></i></button>
+                                <button class="icon-btn"><i class="fal fa-arrow-right"></i></button>
+                            </div> -->
+                        </div>
+                    </a>
+                    <a href="#" class="product__info">
+                        <div class="product__info__name title-medium fw-smb">Lorem ipsum para desbaren</div>
+                        <div class="product__info__price body-medium">289.000đ</div>
+                    </a>
+                    <div class="product__info flex-between width-full">
+                        <div class="product__info__view body-medium">1,2m+ views</div>
+                        <div class="product__info__rated flex g6 v-center body-medium">
+                            4.4 <i class="fa fa-star start"></i>
+                        </div>
                     </div>
                 </div>
-                <div class="parent-category__item flex-column g30">
-                    <h3 class="parent-category__name headline-large ttu">STATUE</h3>
-                    <div class="category__wrapper flex-column g20">
-                        <div class="category__item flex-center g20 p20 rounded-12" style="background: #7255B7; color: white">
-                            <div class="banner-cover category__banner rounded-full" style="background-image: url('/public/assets/media/images/category/onpiece__banner.svg')"></div>
-                            <div class="category__content flex-column g12">
-                                <div class="title-medium">ONE PIECE</div>
-                                <span class="body-medium">
-                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt nulla eum magnam quisquam alias suscipit odit nihil
-                                </span>
-                                <label for="" class="label large">120 sản phẩm có sẵn</label>
+                <!-- single product end -->
+
+                <div class="product product__carousel">
+                    <a href="#" class="product__banner oh banner-cover rounded-8 por" style="background-image: url('/public/assets/media/images/product/v944cyfrwt851.webp')">
+                        <div class="product__overlay poa flex-center">
+                            <div class="flex g12 in-stock__btn-set">
+                                <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
+                                <button class="icon-btn love-btn"><i class="fa fa-heart"></i></button>
+                                <button class="icon-btn"><i class="fal fa-shopping-cart"></i></button>
                             </div>
-                        </div> 
-                        <div class="category__item flex-center g20 p20 rounded-12" style="background: #7255B7; color: white">
-                            <div class="banner-cover category__banner rounded-full" style="background-image: url('/public/assets/media/images/category/onpiece__banner.svg')"></div>
-                            <div class="category__content flex-column g12">
-                                <div class="title-medium">ONE PIECE</div>
-                                <span class="body-medium">
-                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt nulla eum magnam quisquam alias suscipit odit nihil
-                                </span>
-                                <label for="" class="label large">120 sản phẩm có sẵn</label>
+                            <!-- <div class="flex g12 sold-out__btn-set">
+                                <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
+                                <button class="icon-btn"><i class="fal fa-plus"></i></button>
+                                <button class="icon-btn"><i class="fal fa-arrow-right"></i></button>
+                            </div> -->
+                        </div>
+                    </a>
+                    <a href="#" class="product__info">
+                        <div class="product__info__name title-medium fw-smb">Lorem ipsum para desbaren</div>
+                        <div class="product__info__price body-medium">289.000đ</div>
+                    </a>
+                    <div class="product__info flex-between width-full">
+                        <div class="product__info__view body-medium">1,2m+ views</div>
+                        <div class="product__info__rated flex g6 v-center body-medium">
+                            4.4 <i class="fa fa-star start"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="product product__carousel">
+                    <a href="#" class="product__banner oh banner-cover rounded-8 por" style="background-image: url('/public/assets/media/images/product/v944cyfrwt851.webp')">
+                        <div class="product__overlay poa flex-center">
+                            <div class="flex g12 in-stock__btn-set">
+                                <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
+                                <button class="icon-btn love-btn"><i class="fa fa-heart"></i></button>
+                                <button class="icon-btn"><i class="fal fa-shopping-cart"></i></button>
                             </div>
-                        </div> 
-                        <div class="category__item flex-center g20 p20 rounded-12" style="background: #7255B7; color: white">
-                            <div class="banner-cover category__banner rounded-full" style="background-image: url('/public/assets/media/images/category/onpiece__banner.svg')"></div>
-                            <div class="category__content flex-column g12">
-                                <div class="title-medium">ONE PIECE</div>
-                                <span class="body-medium">
-                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt nulla eum magnam quisquam alias suscipit odit nihil
-                                </span>
-                                <label for="" class="label large">120 sản phẩm có sẵn</label>
+                            <!-- <div class="flex g12 sold-out__btn-set">
+                                <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
+                                <button class="icon-btn"><i class="fal fa-plus"></i></button>
+                                <button class="icon-btn"><i class="fal fa-arrow-right"></i></button>
+                            </div> -->
+                        </div>
+                    </a>
+                    <a href="#" class="product__info">
+                        <div class="product__info__name title-medium fw-smb">Lorem ipsum para desbaren</div>
+                        <div class="product__info__price body-medium">289.000đ</div>
+                    </a>
+                    <div class="product__info flex-between width-full">
+                        <div class="product__info__view body-medium">1,2m+ views</div>
+                        <div class="product__info__rated flex g6 v-center body-medium">
+                            4.4 <i class="fa fa-star start"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="product product__carousel">
+                    <a href="#" class="product__banner oh banner-cover rounded-8 por" style="background-image: url('/public/assets/media/images/product/v944cyfrwt851.webp')">
+                        <div class="product__overlay poa flex-center">
+                            <div class="flex g12 in-stock__btn-set">
+                                <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
+                                <button class="icon-btn love-btn"><i class="fa fa-heart"></i></button>
+                                <button class="icon-btn"><i class="fal fa-shopping-cart"></i></button>
                             </div>
-                        </div> 
-                        <div class="category__item flex-center g20 p20 rounded-12" style="background: #7255B7; color: white">
-                            <div class="banner-cover category__banner rounded-full" style="background-image: url('/public/assets/media/images/category/onpiece__banner.svg')"></div>
-                            <div class="category__content flex-column g12">
-                                <div class="title-medium">ONE PIECE</div>
-                                <span class="body-medium">
-                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt nulla eum magnam quisquam alias suscipit odit nihil
-                                </span>
-                                <label for="" class="label large">120 sản phẩm có sẵn</label>
+                            <!-- <div class="flex g12 sold-out__btn-set">
+                                <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
+                                <button class="icon-btn"><i class="fal fa-plus"></i></button>
+                                <button class="icon-btn"><i class="fal fa-arrow-right"></i></button>
+                            </div> -->
+                        </div>
+                    </a>
+                    <a href="#" class="product__info">
+                        <div class="product__info__name title-medium fw-smb">Lorem ipsum para desbaren</div>
+                        <div class="product__info__price body-medium">289.000đ</div>
+                    </a>
+                    <div class="product__info flex-between width-full">
+                        <div class="product__info__view body-medium">1,2m+ views</div>
+                        <div class="product__info__rated flex g6 v-center body-medium">
+                            4.4 <i class="fa fa-star start"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="product product__carousel">
+                    <a href="#" class="product__banner oh banner-cover rounded-8 por" style="background-image: url('/public/assets/media/images/product/v944cyfrwt851.webp')">
+                        <div class="product__overlay poa flex-center">
+                            <div class="flex g12 in-stock__btn-set">
+                                <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
+                                <button class="icon-btn love-btn"><i class="fa fa-heart"></i></button>
+                                <button class="icon-btn"><i class="fal fa-shopping-cart"></i></button>
                             </div>
-                        </div> 
+                            <!-- <div class="flex g12 sold-out__btn-set">
+                                <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
+                                <button class="icon-btn"><i class="fal fa-plus"></i></button>
+                                <button class="icon-btn"><i class="fal fa-arrow-right"></i></button>
+                            </div> -->
+                        </div>
+                    </a>
+                    <a href="#" class="product__info">
+                        <div class="product__info__name title-medium fw-smb">Lorem ipsum para desbaren</div>
+                        <div class="product__info__price body-medium">289.000đ</div>
+                    </a>
+                    <div class="product__info flex-between width-full">
+                        <div class="product__info__view body-medium">1,2m+ views</div>
+                        <div class="product__info__rated flex g6 v-center body-medium">
+                            4.4 <i class="fa fa-star start"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="product product__carousel">
+                    <a href="#" class="product__banner oh banner-cover rounded-8 por" style="background-image: url('/public/assets/media/images/product/v944cyfrwt851.webp')">
+                        <div class="product__overlay poa flex-center">
+                            <div class="flex g12 in-stock__btn-set">
+                                <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
+                                <button class="icon-btn love-btn"><i class="fa fa-heart"></i></button>
+                                <button class="icon-btn"><i class="fal fa-shopping-cart"></i></button>
+                            </div>
+                            <!-- <div class="flex g12 sold-out__btn-set">
+                                <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
+                                <button class="icon-btn"><i class="fal fa-plus"></i></button>
+                                <button class="icon-btn"><i class="fal fa-arrow-right"></i></button>
+                            </div> -->
+                        </div>
+                    </a>
+                    <a href="#" class="product__info">
+                        <div class="product__info__name title-medium fw-smb">Lorem ipsum para desbaren</div>
+                        <div class="product__info__price body-medium">289.000đ</div>
+                    </a>
+                    <div class="product__info flex-between width-full">
+                        <div class="product__info__view body-medium">1,2m+ views</div>
+                        <div class="product__info__rated flex g6 v-center body-medium">
+                            4.4 <i class="fa fa-star start"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="product product__carousel">
+                    <a href="#" class="product__banner oh banner-cover rounded-8 por" style="background-image: url('/public/assets/media/images/product/v944cyfrwt851.webp')">
+                        <div class="product__overlay poa flex-center">
+                            <div class="flex g12 in-stock__btn-set">
+                                <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
+                                <button class="icon-btn love-btn"><i class="fa fa-heart"></i></button>
+                                <button class="icon-btn"><i class="fal fa-shopping-cart"></i></button>
+                            </div>
+                            <!-- <div class="flex g12 sold-out__btn-set">
+                                <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
+                                <button class="icon-btn"><i class="fal fa-plus"></i></button>
+                                <button class="icon-btn"><i class="fal fa-arrow-right"></i></button>
+                            </div> -->
+                        </div>
+                    </a>
+                    <a href="#" class="product__info">
+                        <div class="product__info__name title-medium fw-smb">Lorem ipsum para desbaren</div>
+                        <div class="product__info__price body-medium">289.000đ</div>
+                    </a>
+                    <div class="product__info flex-between width-full">
+                        <div class="product__info__view body-medium">1,2m+ views</div>
+                        <div class="product__info__rated flex g6 v-center body-medium">
+                            4.4 <i class="fa fa-star start"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="product product__carousel">
+                    <a href="#" class="product__banner oh banner-cover rounded-8 por" style="background-image: url('/public/assets/media/images/product/v944cyfrwt851.webp')">
+                        <div class="product__overlay poa flex-center">
+                            <div class="flex g12 in-stock__btn-set">
+                                <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
+                                <button class="icon-btn love-btn"><i class="fa fa-heart"></i></button>
+                                <button class="icon-btn"><i class="fal fa-shopping-cart"></i></button>
+                            </div>
+                            <!-- <div class="flex g12 sold-out__btn-set">
+                                <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
+                                <button class="icon-btn"><i class="fal fa-plus"></i></button>
+                                <button class="icon-btn"><i class="fal fa-arrow-right"></i></button>
+                            </div> -->
+                        </div>
+                    </a>
+                    <a href="#" class="product__info">
+                        <div class="product__info__name title-medium fw-smb">Lorem ipsum para desbaren</div>
+                        <div class="product__info__price body-medium">289.000đ</div>
+                    </a>
+                    <div class="product__info flex-between width-full">
+                        <div class="product__info__view body-medium">1,2m+ views</div>
+                        <div class="product__info__rated flex g6 v-center body-medium">
+                            4.4 <i class="fa fa-star start"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="product product__carousel">
+                    <a href="#" class="product__banner oh banner-cover rounded-8 por" style="background-image: url('/public/assets/media/images/product/v944cyfrwt851.webp')">
+                        <div class="product__overlay poa flex-center">
+                            <div class="flex g12 in-stock__btn-set">
+                                <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
+                                <button class="icon-btn love-btn"><i class="fa fa-heart"></i></button>
+                                <button class="icon-btn"><i class="fal fa-shopping-cart"></i></button>
+                            </div>
+                            <!-- <div class="flex g12 sold-out__btn-set">
+                                <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
+                                <button class="icon-btn"><i class="fal fa-plus"></i></button>
+                                <button class="icon-btn"><i class="fal fa-arrow-right"></i></button>
+                            </div> -->
+                        </div>
+                    </a>
+                    <a href="#" class="product__info">
+                        <div class="product__info__name title-medium fw-smb">Lorem ipsum para desbaren</div>
+                        <div class="product__info__price body-medium">289.000đ</div>
+                    </a>
+                    <div class="product__info flex-between width-full">
+                        <div class="product__info__view body-medium">1,2m+ views</div>
+                        <div class="product__info__rated flex g6 v-center body-medium">
+                            4.4 <i class="fa fa-star start"></i>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- category section end -->
-        
+        <!-- maybe you love section end -->
+
         <!-- footer start -->
         <footer class="footer section auto-grid g60">
             <div class="footer__infomation flex-column g30">
