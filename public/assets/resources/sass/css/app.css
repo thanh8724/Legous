@@ -2495,10 +2495,6 @@ html {
 .container_cart-checkout input {
   margin-top: 12px;
 }
-.container_cart-checkout h1 {
-  font-weight: 900;
-  font-size: x-large;
-}
 .container_cart-checkout hr {
   margin: 10px 0;
   width: 50px !important;
@@ -2545,7 +2541,7 @@ html {
 .container_cart-checkout .content_cart-checkout .cart_check-out-right {
   width: calc(50% - 10px) !important;
   font-weight: 700;
-  max-height: 670px;
+  max-height: 100%;
 }
 .container_cart-checkout .content_cart-checkout .cart_check-out-right .cart_check-out-right-up .bth_location-other {
   margin: 14px 0;
@@ -2579,9 +2575,53 @@ html {
   margin-right: 20px;
   margin-top: 0px;
 }
+.container_cart-checkout .bill-checkout button {
+  background-color: black;
+  color: white;
+}
+.container_cart-checkout .bill-checkout .tex-products .flex_repo .line div {
+  height: 5px;
+  width: 50px;
+}
 
-.container-full {
-  background-color: black !important;
+/* Mobile: with < 740px */
+@media only screen and (max-width: 46.1875em) {
+  .container_cart-checkout {
+    margin-top: 0px !important;
+  }
+  .container_cart-checkout .text-large {
+    font-size: 30px;
+    line-height: 30px;
+  }
+  .container_cart-checkout .content_cart-checkout {
+    flex-direction: column;
+    align-items: center;
+  }
+  .container_cart-checkout .content_cart-checkout .cart_check-out-left {
+    width: 100% !important;
+  }
+  .container_cart-checkout .content_cart-checkout .cart_check-out-right {
+    width: 100% !important;
+    height: 90%;
+  }
+  .container_cart-checkout .bill-checkout {
+    flex-direction: column;
+    align-items: center;
+    height: 100% !important;
+    width: 100% !important;
+  }
+  .container_cart-checkout .bill-checkout .flex-column {
+    width: 100% !important;
+  }
+  .container_cart-checkout .bill-checkout .flex_repo .line {
+    width: 50px;
+  }
+}
+/* Tablet: width >= 740px and width < 1024px */
+@media only screen and (min-width: 46.25em) and (max-width: 63.9375em) {
+  .container_cart-checkout {
+    padding: 30px !important;
+  }
 }
 .container-full main .lineMiniConfirm {
   width: 90px;
