@@ -1,23 +1,23 @@
-// .container-full {
-//   background-color: black !important;
-//   main {
-//     .lineMiniConfirm {
-//       width: 90px;
-//       height: 4px;
-//       border-radius: 10px;
-//       background-color: $light-secondary;
-//       color: $light-secondary;
-//     }
-//     .confirmHeadingText {
-//       .col-12 {
-//         .confirmHeadingText_left {
-//           .title-medium {
-//             color: $light-on-container;
-//           }
-//           .display-medium {
-//             color: $light-primary;
-//           }
-//         }
+.container-full {
+  background-color: black !important;
+  main {
+    .lineMiniConfirm {
+      width: 90px;
+      height: 4px;
+      border-radius: 10px;
+      background-color: $light-secondary;
+      color: $light-secondary;
+    }
+    .confirmHeadingText {
+      .col-12 {
+        .confirmHeadingText_left {
+          .title-medium {
+            color: $light-on-container;
+          }
+          .display-medium {
+            color: $light-primary;
+          }
+        }
 
 //         .confirmHeadingText_right {
 //           p {

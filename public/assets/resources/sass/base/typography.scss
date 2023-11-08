@@ -185,6 +185,14 @@
     font-style: normal;
     font-weight: 700;
     line-height: clamp(3rem, 1.429rem + 4.19vw, 5.2rem);
+}
+.text-38 {
+    // color: var(--m-3-sys-light-on-secondary-container, #1D192B);
+    font-family: 'mainFont', sans-serif;
+    font-size: clamp(1.6rem, 0.029rem + 4.19vw, 3.8rem);
+    font-style: normal;
+    font-weight: 700;
+    line-height: clamp(3rem, 1.429rem + 4.19vw, 5.2rem);
 } 
 
 .primary-masking-text {

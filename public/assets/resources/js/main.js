@@ -1,6 +1,5 @@
 const app = {
     eventsHandler () {
-
         /* header onscroll */
         // const heroBanner = document.querySelector('.hero-banner__wrapper')
         const header = document.querySelector('.header')
@@ -76,6 +75,69 @@ const app = {
                 }
             });
         }
+        // close / open filter 
+        const toggleFilterBtn = document.querySelector('.toggle-filter-btn');
+        const filterList = document.querySelector('.filter__list');
+        // console.log(toggleFilterBtn, filterList)
+        
+        if (filterList && toggleFilterBtn) {
+            toggleFilterBtn.onclick = () => {
+                filterList.classList.toggle('open');
+
+                if (filterList.classList.contains('open')) {
+                    toggleFilterBtn.querySelector('.btn__text').textContent = 'Ẩn filter';
+                } else {
+                    toggleFilterBtn.querySelector('.btn__text').textContent = 'Hiện filter';
+                }
+
+            }
+        }
+
+        /** mobile filter system  */
+        const mobileFilterCloseBtn = document.querySelector('.mobile__filter__btn--close')
+        const mobileFilterOpenBtn = document.querySelector('.mobile__filter__btn--open')
+
+        const mobileFilter = document.querySelector('.mobile__filter');
+        
+        if (mobileFilter) {
+            mobileFilterOpenBtn.onclick = () => {
+                mobileFilter.classList.add('open');
+            }
+            mobileFilterCloseBtn.onclick = () => {
+                mobileFilter.classList.remove('open');
+            }
+        }
+
+        /** mobile top nav bar - member widget */
+        const moreBtn = document.querySelector('.member-widget .more-btn');
+        const optionList = document.querySelector('.member-widget .option__list');
+        if (optionList) {
+            moreBtn.onclick = () => {
+                optionList.classList.toggle('open');
+            }
+        }
+
+        /** toggle button handler */
+        const toggleBtns = document.querySelectorAll('.toggle-btn');
+        if (toggleBtns) {
+            toggleBtns.forEach(btn => {
+                btn.onclick = () => {
+                    btn.classList.toggle('active');
+                    if (btn.classList.contains('active')) {
+                        if (btn.classList.contains('love-btn')) {
+                            btn.querySelector('.fal').classList.remove('fal');
+                            btn.querySelector('.fa-heart').classList.add('fa');
+                        }
+                    } else {
+                        if (btn.querySelector('i').classList.contains('fa')) {
+                            btn.querySelector('i').classList.remove('fa');
+                            btn.querySelector('i').classList.add('fal');
+                        }
+                    }
+                }
+            });
+        }
+
     },
     start () {
         this.eventsHandler();
