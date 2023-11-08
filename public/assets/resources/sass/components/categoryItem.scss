@@ -5,3 +5,23 @@
         aspect-ratio: 1;
     }
 }
+
+// || Responsive 
+/* Mobile: with < 740px */
+@media only screen and (max-width: 46.1875em){
+    .category__desc {
+        display: none;
+    }
+}   
+/* Tablet: width >= 740px and width < 1024px */
+@media only screen and (min-width: 46.25em) and (max-width: 63.9375em){
+    
+}
+/* Mobile and Tablet: width < 1024px */
+@media only screen and (max-width: 63.9375em){
+    
+}
+/* PC: width >= 1024px */
+@media only screen and (min-width: 64em){
+
+}

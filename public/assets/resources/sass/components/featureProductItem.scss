@@ -1,0 +1,37 @@
+$featureProductOffsetHeight: 24rem;
+$featureProductOffsetWidth: 20rem;
+.feature-product {
+    background: linear-gradient(108deg, #5816AE 7.75%, rgba(124, 36, 238, 0.60) 88.02%);
+    color: $-white;
+    max-width: $featureProductOffsetWidth;
+    width: $featureProductOffsetWidth;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+
+    &__banner {
+        max-width: 50%;
+    }
+    
+    .product-btns {
+        margin-top: 1rem;
+        .icon-btn {
+            background: $-white;
+            color: $-black;
+            transition: $trans-bounce;
+            &:hover {
+                opacity: 0.8;
+            }
+        }
+        .love-btn {
+            &:hover {
+                background: $-pink;
+                color: $-white;
+                opacity: unset;
+            }
+        } 
+    }
+}
+.feature-product.feature-product__carousel {
+    margin: .6rem;
+}
