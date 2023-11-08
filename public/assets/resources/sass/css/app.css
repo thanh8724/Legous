@@ -3399,6 +3399,9 @@ main .adminFooter ul li a {
 .containerAdmin_order-detail .container .row .col {
   padding: 0px;
 }
+.containerAdmin_order-detail .container .row .col p {
+  display: none;
+}
 
 .sliderDashboard_order-detail {
   width: 100%;
@@ -3440,18 +3443,88 @@ main .adminFooter ul li a {
 .table_order-detail tr {
   border-top: 1px solid rgba(128, 128, 128, 0.203);
 }
-.table_order-detail tr td, .table_order-detail tr th {
+.table_order-detail tr td,
+.table_order-detail tr th {
   padding: 10px 12px;
   color: gray;
 }
 
-/* phần làm catchy */
-/* Phần order detail add create */
-/* phần dropdown */
-/* end phần dropdown */
-/* phần kéo thả hình ảnh */
-/* end phần kéo thả hình ảnh */
-/* end Phần order detail add create */
+/* Mobile: with < 740px */
+@media only screen and (max-width: 46.1875em) {
+  .containerAdmin_order-detail .sliderDashboard_order-detail .container_order-detail .Order_ID {
+    text-align: center;
+  }
+  .containerAdmin_order-detail .sliderDashboard_order-detail .container_order-detail .container .row {
+    text-align: center;
+  }
+  .containerAdmin_order-detail .sliderDashboard_order-detail .container_order-detail .container .row .col p {
+    display: block;
+  }
+  .containerAdmin_order-detail .sliderDashboard_order-detail .container_order-detail .container .row .col-lg-2 {
+    display: flex;
+    justify-content: space-between;
+  }
+  .containerAdmin_order-detail .sliderDashboard_order-detail .container_order-detail .text-success {
+    display: none;
+  }
+  .containerAdmin_order-detail .sliderDashboard_order-detail .container_order-detail .in4_order-detail {
+    justify-content: center !important;
+  }
+  .containerAdmin_order-detail .sliderDashboard_order-detail .container_order-detail .in4_order-detail .col-4 {
+    margin: 20px;
+  }
+  .containerAdmin_order-detail .sliderDashboard_order-detail .container_order-detail .table_order-detail table thead tr .label-large-prominent {
+    width: 220px !important;
+  }
+  .containerAdmin_order-detail .total_order-detail .col-9 {
+    display: none !important;
+  }
+  .containerAdmin_order-detail .total_order-detail .col-3 {
+    width: 100% !important;
+  }
+  .containerAdmin_order-detail .align-items-start {
+    margin-top: 20px;
+    align-items: center !important;
+  }
+}
+/* Tablet: width >= 740px and width < 1024px */
+@media only screen and (min-width: 46.25em) and (max-width: 63.9375em) {
+  .containerAdmin_order-detail .sliderDashboard_order-detail .container_order-detail .Order_ID {
+    text-align: center;
+  }
+  .containerAdmin_order-detail .sliderDashboard_order-detail .container_order-detail .container .row {
+    text-align: center;
+  }
+  .containerAdmin_order-detail .sliderDashboard_order-detail .container_order-detail .container .row .col p {
+    display: block;
+  }
+  .containerAdmin_order-detail .sliderDashboard_order-detail .container_order-detail .container .row .col-lg-2 {
+    display: flex;
+    justify-content: space-between;
+  }
+  .containerAdmin_order-detail .sliderDashboard_order-detail .container_order-detail .text-success {
+    display: none;
+  }
+  .containerAdmin_order-detail .sliderDashboard_order-detail .container_order-detail .in4_order-detail {
+    justify-content: center !important;
+  }
+  .containerAdmin_order-detail .sliderDashboard_order-detail .container_order-detail .in4_order-detail .col-4 {
+    margin: 20px;
+  }
+  .containerAdmin_order-detail .sliderDashboard_order-detail .container_order-detail .table_order-detail table thead tr .label-large-prominent {
+    width: 220px !important;
+  }
+  .containerAdmin_order-detail .total_order-detail .col-9 {
+    display: none !important;
+  }
+  .containerAdmin_order-detail .total_order-detail .col-3 {
+    width: 100% !important;
+  }
+  .containerAdmin_order-detail .align-items-start {
+    margin-top: 20px;
+    align-items: center !important;
+  }
+}
 .containerAdmin_order-detail {
   font-size: 1.3rem;
   background-color: white;
@@ -3592,7 +3665,7 @@ main .adminFooter ul li a {
 }
 .right-order-add-create .img_order-add-create {
   height: 500px;
-  width: 400px;
+  width: 100%;
   background-color: #D9D9D9;
 }
 .right-order-add-create .button_delete_img {
@@ -3648,6 +3721,19 @@ main .adminFooter ul li a {
   align-self: stretch;
 }
 
+/* Mobile and Tablet: width < 1024px */
+@media only screen and (max-width: 63.9375em) {
+  .sliderDashboard_order-add-create .body_sliderDashboard_order-add-create {
+    flex-direction: column;
+    align-items: center;
+  }
+  .sliderDashboard_order-add-create .body_sliderDashboard_order-add-create .col-7 {
+    width: 100% !important;
+  }
+  .sliderDashboard_order-add-create .body_sliderDashboard_order-add-create .col-5 {
+    width: 100% !important;
+  }
+}
 /* Mobile: with < 740px */
 /* Tablet: width >= 740px and width < 1024px */
 /* Mobile and Tablet: width < 1024px */

@@ -31,7 +31,49 @@
 </head>
 
 <body>
-    <main>
+    <div class="headMobie">
+        <div class="col-12 d-flex justify-content-around align-items-center">
+            <div id="menuButton" style="padding-left: 30px;" class="col-4"><i class="fas fa-bars"></i></div>
+            <div class="col-4">
+                <a href="#">
+                    <div class="logo-name d-flex justify-content-center align-items-center">
+                        <div class="logo-image">
+                            <img style="width: 20px; height: 20px;" src="../assets/media/images/logo.png" alt="">
+                        </div>
+    
+                        <span class="logo_name title-large fw-black" style="color: black;">LEGOUS</span>
+                    </div>
+                </a>
+            </div>
+            <div id="searchButtonBar" class="col-4 text-end" style="margin-right: 30px;"><i  class="far fa-search "></i></div>
+        </div>
+    </div>
+    <div class="navBarMobile">
+        <div class="navBarMobile_item">
+            <div class="close-button" id="closeButton"> <!-- Add the close button here -->
+                <i class="fas fa-times"></i>
+            </div>
+            <ul>
+                <li><a class="title-large" href="#">Bảng Điều Khiển</a></li>
+                <li><a class="title-large" href="#">Sản Phẩm</a></li>
+                <li><a class="title-large" href="#">Danh Mục</a></li>
+                <li><a class="title-large" href="#">Đơn Hàng</a></li>
+                <li><a class="title-large" href="#">Khách Hàng</a></li>
+                <li><a class="title-large" href="#">Đăng Xuất</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="searchBarMobile">
+        <div class="close-button" id="closeButton1"> <!-- Add the close button here -->
+            <i class="fas fa-times"></i>
+            
+        </div>
+        <div class="search-box">
+            <input type="text" placeholder="Tìm Kiếm Tại Đây...">
+            <i class="far fa-search"></i>
+        </div>
+    </div>
+    <main id="adminDashboard">
 
         <nav>
             <div class="logo-name">
@@ -45,6 +87,7 @@
             <div class="menu-items">
                 <ul class="nav-links">
                     <li class="active"><a href="#">
+
                             <i class="far fa-chart-line"></i>
                             <span class="link-name title-small">Bảng Điều Khiển</span>
                         </a></li>
@@ -93,12 +136,129 @@
                 <i class="fas fa-angle-left sidebar-toggle"></i>
                 <div class="search-box">
                     <i class="far fa-search"></i>
-                    <input type="text" placeholder="Tìm kiếm...">
+                    <input type="text" placeholder="Tìm Kiếm Tại Đây...">
                 </div>
                 <div class="info-user">
-                    <i class="far fa-comment-alt"></i>
-                    <i class="fal fa-bell"></i>
-                    <img src="images/profile.jpg" alt="">
+                    <div class="notifiComment">
+                        <i class="far fa-comment-alt btnShowFeature"></i>
+                        <ul class="showFeatureAdminHeader box-shadow1">
+                            <li>
+                                <div class="col-12 d-flex">
+                                    <div class="col-2">
+                                        <img class="notifiAdminImg" src="../assets/media/images/users/profile.jpg" alt="">
+                                    </div>
+                                    <div class="col-10">
+                                        <p class="notifiAdminText body-small"><strong>Trần Thị Hồng Ngọc</strong><span> vừa mua một mô hình với mã đơn hàng <strong>#999</strong></span></p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="col-12 d-flex">
+                                    <div class="col-2">
+                                        <img class="notifiAdminImg" src="../assets/media/images/users/profile.jpg" alt="">
+                                    </div>
+                                    <div class="col-10">
+                                        <p class="notifiAdminText body-small"><strong>Trần Thị Hồng Ngọc</strong><span> vừa mua một mô hình với mã đơn hàng <strong>#999</strong></span></p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="col-12 d-flex">
+                                    <div class="col-2">
+                                        <img class="notifiAdminImg" src="../assets/media/images/users/profile.jpg" alt="">
+                                    </div>
+                                    <div class="col-10">
+                                        <p class="notifiAdminText body-small"><strong>Trần Thị Hồng Ngọc</strong><span> vừa mua một mô hình với mã đơn hàng <strong>#999</strong></span></p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="col-12 d-flex">
+                                    <div class="col-2">
+                                        <img class="notifiAdminImg" src="../assets/media/images/users/profile.jpg" alt="">
+                                    </div>
+                                    <div class="col-10">
+                                        <p class="notifiAdminText body-small"><strong>Trần Thị Hồng Ngọc</strong><span> vừa mua một mô hình với mã đơn hàng <strong>#999</strong></span></p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="col-12 d-flex">
+                                    <div class="col-2">
+                                        <img class="notifiAdminImg" src="../assets/media/images/users/profile.jpg" alt="">
+                                    </div>
+                                    <div class="col-10">
+                                        <p class="notifiAdminText body-small"><strong>Trần Thị Hồng Ngọc</strong><span> vừa mua một mô hình với mã đơn hàng <strong>#999</strong></span></p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="notifiBell">
+                        <i class="fal fa-bell btnShowFeature"></i>
+                        <ul class="showFeatureAdminHeader box-shadow1">
+                            <li>
+                                <div class="col-12 d-flex">
+                                    <div class="col-2">
+                                        <img class="notifiAdminImg" src="../assets/media/images/users/profile.jpg" alt="">
+                                    </div>
+                                    <div class="col-10">
+                                        <p class="notifiAdminText body-small"><strong>Trần Thị Hồng Ngọc</strong><span> vừa mua một mô hình với mã đơn hàng <strong>#999</strong></span></p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="col-12 d-flex">
+                                    <div class="col-2">
+                                        <img class="notifiAdminImg" src="../assets/media/images/users/profile.jpg" alt="">
+                                    </div>
+                                    <div class="col-10">
+                                        <p class="notifiAdminText body-small"><strong>Trần Thị Hồng Ngọc</strong><span> vừa mua một mô hình với mã đơn hàng <strong>#999</strong></span></p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="col-12 d-flex">
+                                    <div class="col-2">
+                                        <img class="notifiAdminImg" src="../assets/media/images/users/profile.jpg" alt="">
+                                    </div>
+                                    <div class="col-10">
+                                        <p class="notifiAdminText body-small"><strong>Trần Thị Hồng Ngọc</strong><span> vừa mua một mô hình với mã đơn hàng <strong>#999</strong></span></p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="col-12 d-flex">
+                                    <div class="col-2">
+                                        <img class="notifiAdminImg" src="../assets/media/images/users/profile.jpg" alt="">
+                                    </div>
+                                    <div class="col-10">
+                                        <p class="notifiAdminText body-small"><strong>Trần Thị Hồng Ngọc</strong><span> vừa mua một mô hình với mã đơn hàng <strong>#999</strong></span></p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="col-12 d-flex">
+                                    <div class="col-2">
+                                        <img class="notifiAdminImg" src="../assets/media/images/users/profile.jpg" alt="">
+                                    </div>
+                                    <div class="col-10">
+                                        <p class="notifiAdminText body-small"><strong>Trần Thị Hồng Ngọc</strong><span> vừa mua một mô hình với mã đơn hàng <strong>#999</strong></span></p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="imgUserAdmin">
+                        <img class="btnShowFeature" src="../assets/media/images/users/profile.jpg" alt="">
+                        <ul class="showFeatureAdminHeader box-shadow1" >
+                            
+                            <li><a class="body-small" href="#statisticalChart">Thống kê đơn hàng</a></li>
+                            <li><a class="body-small" href="#recentOrder">Đơn Hàng Gần Đây</a></li>
+                            <li><a class="body-small" href="#overviewDashboard">Tổng quan</a></li>
+                            <li><a class="body-small" href="#">Đăng Xuất</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <!----======== End Header DashBoard ======== -->
@@ -120,7 +280,7 @@
 
                 <div class="sliderDashboard_order-detail rounded-4 ">
                     <div class="container_order-detail p20">
-                        <div class="">
+                        <div class="Order_ID">
                             <span>Order ID:</span>
                             <span>#234923</span>
                         </div>
@@ -128,6 +288,7 @@
                             <div class="row">
                                 <div class="col">
                                     <section><i class="fal fa-calendar-alt"></i> Aug 21, 2023 - Aug 28, 2023</section>
+                                    <p class="text-success" style="font-weight: 700;">Đang chờ</p>
                                 </div>
                                 <div class="col-md-auto">
                                     <div class="dropdown">
@@ -150,11 +311,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="">
-                            <span>
-                                <p class="text-success">Đang chờ</p>
-                            </span>
-                        </div>
+                        <p class="text-success" style="font-weight: 700;">Đang chờ</p>
                         <hr>
                         <div class="in4_order-detail row d-flex justify-content-between">
                             <div class="col-4">
