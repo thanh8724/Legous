@@ -1,5 +1,5 @@
 .container-full {
-  // background-color: black !important;
+  background-color: black !important;
   main {
     .lineMiniConfirm {
       width: 90px;
@@ -19,74 +19,74 @@
           }
         }
 
-        .confirmHeadingText_right {
-          p {
-            color: $light-on-container;
-          }
-        }
-      }
-    }
+//         .confirmHeadingText_right {
+//           p {
+//             color: $light-on-container;
+//           }
+//         }
+//       }
+//     }
 
-    .detailOrders {
-      .detailerOrders_top {
-        h2 {
-          color: $light-on-container;
-        }
-      }
-      .detailerOrders_bottom {
-        .detailOrders-left {
-          .detailOrder_items {
-            h3,
-            h2,
-            h4 {
-              color: $light-on-container;
-            }
-          }
-        }
-        .detailOrders-right {
-          h2 {
-            color: $light-on-container;
-          }
-          .listProductCart {
-            .listProductCart_item {
-              margin: 15px 0;
-              img {
-                width: 130px;
-                border-radius: 10px;
-              }
-            }
-          }
-          .totalInfoCartConfirm {
-            p {
-              color: $light-on-container;
-            }
-            .lineAmmoutConfirm{
-                width: 100%;
-                height: 1px;
-                background-color: $light-outline-variant;
-            }
-            .label-medium {
-              color: $light-on-container;
-            }
-            .totalAmount {
-              background: -webkit-linear-gradient(60deg,#ff79ea, #A93CFF,#6791FF);
-              -webkit-background-clip: text;
-              -webkit-text-fill-color: transparent;
-            }
-            .buttonNextOrders {
-              .nextOrders{
-                background-color: $-black;
-                color: $-white;
-                padding: 15px;
-                border-radius: 10px;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
+//     .detailOrders {
+//       .detailerOrders_top {
+//         h2 {
+//           color: $light-on-container;
+//         }
+//       }
+//       .detailerOrders_bottom {
+//         .detailOrders-left {
+//           .detailOrder_items {
+//             h3,
+//             h2,
+//             h4 {
+//               color: $light-on-container;
+//             }
+//           }
+//         }
+//         .detailOrders-right {
+//           h2 {
+//             color: $light-on-container;
+//           }
+//           .listProductCart {
+//             .listProductCart_item {
+//               margin: 15px 0;
+//               img {
+//                 width: 130px;
+//                 border-radius: 10px;
+//               }
+//             }
+//           }
+//           .totalInfoCartConfirm {
+//             p {
+//               color: $light-on-container;
+//             }
+//             .lineAmmoutConfirm{
+//                 width: 100%;
+//                 height: 1px;
+//                 background-color: $light-outline-variant;
+//             }
+//             .label-medium {
+//               color: $light-on-container;
+//             }
+//             .totalAmount {
+//               background: -webkit-linear-gradient(60deg,#ff79ea, #A93CFF,#6791FF);
+//               -webkit-background-clip: text;
+//               -webkit-text-fill-color: transparent;
+//             }
+//             .buttonNextOrders {
+//               .nextOrders{
+//                 background-color: $-black;
+//                 color: $-white;
+//                 padding: 15px;
+//                 border-radius: 10px;
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
 
 // || Responsive 
 /* Mobile: with < 740px */
