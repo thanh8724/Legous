@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LEGOUS - HOME PAGE</title>
+    <link
+        rel="stylesheet"
+        type="text/css"
+        href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+      />
     <link rel="stylesheet" href="/public/assets/resources/sass/css/app.css">
     <link rel="icon" type="image/x-icon" href="/public/assets/media/images/favicon/favicon.svg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -221,16 +226,71 @@
                 </div>
                 <div class="main__inner--bottom">
                     <div class="main__inner--bottom-left">
-                        <ul>
-                            <li><a href="user-general.html">Tổng Quan</a></li>
-                            <li><a href="user-editProfile.html">Chỉnh sửa thông tin</a></li>
-                            <li><a href="user-password.html">Mật khẩu</a></li>
-                            <li><a href="user-address.html">Địa chỉ</a></li>
-                            <li><a href="user-ordersHistory.html">Lịch sử đơn hàng</a></li>
-                            <li><a href="">Đăng xuất</a></li>
-                            <li><a href="">Chuyển tài khoản</a></li>
-                            <li class="delete__acccount"><a href="user-deleteAccount.html">Xóa tài khoản</a></li>
+                        <ul class="menu__destop--ul">
+                            <li class="menu__destop--li menu__active"><a href="user-general.html">Tổng Quan</a></li>
+                            <li class="menu__destop--li "><a href="user-editProfile.html">Chỉnh sửa thông tin</a></li>
+                            <li class="menu__destop--li "><a href="user-password.html">Mật khẩu</a></li>
+                            <li class="menu__destop--li "><a href="user-address.html">Địa chỉ</a></li>
+                            <li class="menu__destop--li "><a href="user-ordersHistory.html">Lịch sử đơn hàng</a></li>
+                            <li class="menu__destop--li "><a href="">Đăng xuất</a></li>
+                            <li class="menu__destop--li "><a href="">Chuyển tài khoản</a></li>
+                            <li class=" menu__destop--li delete__acccount"><a href="user-deleteAccount.html">Xóa tài khoản</a></li>
                         </ul>
+                        
+                        <!-- menu mobile start -->
+                        <div class="box__menu--mobile">
+                            <ul class="menu__mobile--ul">
+                                <li class="menu__mobile--li">
+                                    <a href="user-general.html">
+                                        <i class="fas fa-home"></i>
+                                        <span>Tổng quan</span>
+                                    </a>
+                                </li>
+                                <li class="menu__mobile--li">
+                                    <a href="user-editProfile.html">
+                                        <i class="fas fa-edit"></i>
+                                        <span>Chỉnh sửa</span>
+                                    </a>
+                                </li>
+                                <li class="menu__mobile--li">
+                                    <a href="user-password.html">
+                                        <i class="fas fa-lock"></i>
+                                        <span>Mật khẩu</span>
+                                    </a>
+                                </li>
+                                <li class="menu__mobile--li">
+                                    <a href="user-address.html">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <span>Địa chỉ</span>
+                                    </a>
+                                </li>
+                                <li class="menu__mobile--li">
+                                    <a href="user-ordersHistory.html">
+                                        <i class="fas fa-history"></i>
+                                        <span>Đơn hàng</span>
+                                    </a>
+                                </li class="menu__mobile--li">
+                                <li class="menu__mobile--li">
+                                    <a href="">
+                                        <i class="fas fa-sign-out-alt"></i>
+                                        <span>Đăng xuất</span>
+                                    </a>
+                                </li>
+                                <li class="menu__mobile--li">
+                                    <a href="">
+                                        <i class="fas fa-exchange-alt"></i>
+                                        <span>Chuyển đổi</span>
+                                    </a>
+                                </li>
+                                <li class="delete__acccount menu__mobile--li">
+                                    <a href="user-deleteAccount.html">
+                                        <i class="fas fa-user-times"></i>
+                                    <span>Xóa tài khoản</span>
+                                </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- menu mobile end -->
                     </div>
 
                     <div class="main__inner--bottom-right">
@@ -313,19 +373,28 @@
         <section  class="form__address--container full">
             <form action="" class="form__address--content">
                 <div class="form__address--content-rows1 flex">
-                    <div class="form__group">
-                        <input type="text" name="username"  class="user__name--input" placeholder=" ">
-                        <label for="" class="body-small label__place">Họ và tên</label>
+                    <!-- normal form group -->
+                    <div class="form__group without-title">
+                        <!-- <span class="form__label"></span> -->
+                        <input type="text" class="form__input" placeholder=" ">
+                        <label for="" class="label__place">Họ và tên</label>
+                        <span class="form__message">this is massage</span>
                     </div>
-                    <div class="form__group">
-                        <input type="text" name="number"  class="user__name--input" placeholder=" ">
-                        <label for="" class="body-small label__place">Số điện thoại</label>
+                    <!-- normal form group -->
+                    <div class="form__group without-title">
+                        <!-- <span class="form__label"></span> -->
+                        <input type="number" class="form__input" placeholder=" ">
+                        <label for="" class="label__place">Số điện thoại</label>
+                        <span class="form__message">this is massage</span>
                     </div>
                 </div>
                 <div class="form__address--content-rows2">
-                    <div class="form__group">
-                        <input type="text" name="username"  class="user__name--input" placeholder=" ">
-                        <label for="" class="body-small label__place">Tỉnh/Thành phố, Quận/huyện, Phường/xã</label>
+                    <!-- normal form group -->
+                    <div class="form__group without-title">
+                        <!-- <span class="form__label"></span> -->
+                        <input type="text" class="form__input" placeholder=" ">
+                        <label for="" class="label__place">Tỉnh/Thành phố, Quận/Huyện, Phường/Xã</label>
+                        <span class="form__message">this is massage</span>
                     </div>
                 </div>
                 <div class="form__address--content-rows3">

@@ -1,4 +1,3 @@
-
 /* Search form input */
 .search__form {
     margin-inline: auto;
@@ -22,56 +21,147 @@
 }
 
 .form__group {
-display: flex;
-flex-direction: column;
-justify-content: space-between;
-gap: 1.8rem;
-height: auto;
-position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1.2rem;
+    height: auto;
+    position: relative;
 
-    span {
-        font-size: 1.3rem;
+    &__title {
+        font-size: 1.4rem;
+        font-weight: bold;
+        line-height: 2rem;
+        color: var(--m-3-sys-light-on-secondary-container, #1D192B);
     }
 
-    label {
-        font-size: 1.5rem;
+    .form__input {
+        height: 4.6rem;
+        border-radius: 0.4rem;
+        padding: 0 2rem;
+        border: 1px solid $neutral87;
+        transition: $trans-bounce;
+        color: $neutral24;
+    }
+
+    .form__message {
+        font-size: 1.2rem;
         font-weight: 600;
-        
-        span {
-            color: $light-error;
-            font-size: 2rem;
-        }
+        color: $light-primary;
     }
+    &__message.invalid {
+        color: $light-error;
+    }
+    
     .label__place {
         position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
+        top: 25%;
+        transform: translateY(130%);
         left: 2rem;
         font-weight: 500;
         color: #999;
         pointer-events: none;
-        transition: all 0.3s ease;
-    }
-    input {
-        height: 4.6rem;
-        border-radius: 0.4rem;
-        padding: 0 2rem;
-        border: 1px solid black;
-        transition: all 0.3s ease;
-        color: black;
+        transition: $trans-bounce;
     }
 
+    .label__place--bio {
+        position: absolute;
+        top: 10%;
+        transform: translateY(130%);
+        left: 2rem;
+        font-weight: 500;
+        color: #999;
+        pointer-events: none;
+        transition: $trans-bounce;
+    }
+
+    textarea {
+        width: 100%;
+        height: 20rem;
+        border-radius: 4px;
+        padding: 1.2rem 2rem;
+        color: black;
+    }
     textarea:focus,
     input:focus {
-        border-color: #6750a4;
+        border-color: $light-primary;
+    }
+
+    textarea:not(:placeholder-shown) + .label__place,
+        textarea:focus + .label__place {
+            top: 0%;
+            left: 1rem;
+            background-color: #f7f7f7;
+            padding: 0 1rem;
+            color: #6750a4;
     }
     input:not(:placeholder-shown) + .label__place,
     input:focus + .label__place {
         top: 0%;
         left: 1rem;
-        background-color: white;
+        background-color: #f7f7f7;
         padding: 0 1rem;
-        color: #6750a4;
+        color: $light-primary;
     }
 
+    .hidden-show__password {
+        width: 3rem;
+        height: 4.6rem;
+        position: absolute;
+        top: 15%;
+        transform: translateY(30%);
+        right: 2rem;
+        font-weight: 500;
+        color: #999;
+        transition: $trans-bounce;
+        cursor: pointer;
+        z-index: 99;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        i {
+            width: 2rem;
+            height: auto;
+            cursor: pointer;
+            z-index: 999;
+        }
+
+        .eye-icon {
+            display: none;
+        }
+        .eye-icon.eye-active {
+            display: block;
+        }
+    }
+}
+.form__group.without-title {
+    .label__place {
+        top: -10%;
+    }
+
+    input:not(:placeholder-shown)+.label__place,
+    input:focus+.label__place {
+        top: -50%;
+        left: 1rem;
+        background-color: white;
+        padding: 0 1rem;
+        color: $light-primary;
+    }
+}
+
+
+.footer__email-input {
+    max-width: 30rem;
+    border-radius: 10rem !important;
+    background: $light-surface-container;
+    color: $light-on-surface-variant !important;
+}
+.form-btn {
+    display: flex;
+    overflow: hidden;
+    padding: 1.6rem !important;
+    justify-content: center;
+    align-items: center;
+    right: 0;
 }

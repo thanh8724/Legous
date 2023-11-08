@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LEGOUS - HOME PAGE</title>
+    <link
+        rel="stylesheet"
+        type="text/css"
+        href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+      />
     <link rel="stylesheet" href="/public/assets/resources/sass/css/app.css">
     <link rel="icon" type="image/x-icon" href="/public/assets/media/images/favicon/favicon.svg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -220,6 +225,62 @@
                     </div>
                 </div>
                 <div class="main__inner--bottom flex-column">
+                    <div class="main__inner--bottom-left menu__left--detail">
+                        <!-- menu mobile start -->
+                        <div class="box__menu--mobile">
+                             <ul class="menu__mobile--ul auto-grid">
+                                 <li class="menu__mobile--li">
+                                     <a href="user-general.html">
+                                         <i class="fas fa-home"></i>
+                                         <span>Tổng quan</span>
+                                     </a>
+                                 </li>
+                                 <li class="menu__mobile--li">
+                                     <a href="user-editProfile.html">
+                                         <i class="fas fa-edit"></i>
+                                         <span>Chỉnh sửa</span>
+                                     </a>
+                                 </li>
+                                 <li class="menu__mobile--li">
+                                     <a href="user-password.html">
+                                         <i class="fas fa-lock"></i>
+                                         <span>Mật khẩu</span>
+                                     </a>
+                                 </li>
+                                 <li class="menu__mobile--li">
+                                     <a href="user-address.html">
+                                         <i class="fas fa-map-marker-alt"></i>
+                                         <span>Địa chỉ</span>
+                                     </a>
+                                 </li>
+                                 <li class="menu__mobile--li">
+                                     <a href="user-ordersHistory.html">
+                                         <i class="fas fa-history"></i>
+                                         <span>Đơn hàng</span>
+                                     </a>
+                                 </li class="menu__mobile--li">
+                                 <li class="menu__mobile--li">
+                                     <a href="">
+                                         <i class="fas fa-sign-out-alt"></i>
+                                         <span>Đăng xuất</span>
+                                     </a>
+                                 </li>
+                                 <li class="menu__mobile--li">
+                                     <a href="">
+                                         <i class="fas fa-exchange-alt"></i>
+                                         <span>Chuyển đổi</span>
+                                     </a>
+                                 </li>
+                                 <li class="delete__acccount menu__mobile--li">
+                                     <a href="user-deleteAccount.html">
+                                         <i class="fas fa-user-times"></i>
+                                     <span>Xóa tài khoản</span>
+                                 </a>
+                                 </li>
+                             </ul>
+                         </div>
+                     <!-- menu mobile end -->
+                    </div>
                     <div class="main__inner--bottom-container flex-column rounded-2 p20 g30 ">
                         <div class="main__inner--bottom  fist--container flex-column">
                             Order ID: #234923
@@ -263,47 +324,49 @@
                         <div class="main__inner--bottom light-devider " style="height: .1rem; width: 100%"></div>
                         <div class="main__inner--bottom finally--container flex-column ">
                             <h2>Product</h2>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th class="label-large-prominent"><input type="checkbox"></th>
-                                        <th class="label-large-prominent">Tên Sản Phẩm</th>
-                                        <th class="label-large-prominent">Giá Sản Phẩm</th>
-                                        <th class="label-large-prominent">Số Lượng</th>
-                                        <th class="label-large-prominent">Tổng Giá</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="label-large-prominent"><input type="checkbox"></td>
-                                        <td class="label-large-prominent"><span>Sasuke - Susano Toàn Chân Thể</span></td>
-                                        <td class="label-large-prominent"><span>1.243.000 VNĐ</span></td>
-                                        <td class="label-large-prominent"><span>2</span></td>
-                                        <td class="label-large-prominent"><span>2.486.000 VNĐ</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="label-large-prominent"><input type="checkbox"></td>
-                                        <td class="label-large-prominent"><span>Sasuke - Susano Toàn Chân Thể</span></td>
-                                        <td class="label-large-prominent"><span>1.243.000 VNĐ</span></td>
-                                        <td class="label-large-prominent"><span>2</span></td>
-                                        <td class="label-large-prominent"><span>2.486.000 VNĐ</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="label-large-prominent"><input type="checkbox"></td>
-                                        <td class="label-large-prominent"><span>Sasuke - Susano Toàn Chân Thể</span></td>
-                                        <td class="label-large-prominent"><span>1.243.000 VNĐ</span></td>
-                                        <td class="label-large-prominent"><span>2</span></td>
-                                        <td class="label-large-prominent"><span>2.486.000 VNĐ</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="label-large-prominent"><input type="checkbox"></td>
-                                        <td class="label-large-prominent"><span>Sasuke - Susano Toàn Chân Thể</span></td>
-                                        <td class="label-large-prominent"><span>1.243.000 VNĐ</span></td>
-                                        <td class="label-large-prominent"><span>2</span></td>
-                                        <td class="label-large-prominent"><span>2.486.000 VNĐ</span></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <div class="box__table">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th class="label-large-prominent"><input type="checkbox"></th>
+                                            <th class="label-large-prominent">Tên Sản Phẩm</th>
+                                            <th class="label-large-prominent">Giá Sản Phẩm</th>
+                                            <th class="label-large-prominent">Số Lượng</th>
+                                            <th class="label-large-prominent">Tổng Giá</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="label-large-prominent"><input type="checkbox"></td>
+                                            <td class="label-large-prominent"><span>Sasuke - Susano Toàn Chân Thể</span></td>
+                                            <td class="label-large-prominent"><span>1.243.000 VNĐ</span></td>
+                                            <td class="label-large-prominent"><span>2</span></td>
+                                            <td class="label-large-prominent"><span>2.486.000 VNĐ</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="label-large-prominent"><input type="checkbox"></td>
+                                            <td class="label-large-prominent"><span>Sasuke - Susano Toàn Chân Thể</span></td>
+                                            <td class="label-large-prominent"><span>1.243.000 VNĐ</span></td>
+                                            <td class="label-large-prominent"><span>2</span></td>
+                                            <td class="label-large-prominent"><span>2.486.000 VNĐ</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="label-large-prominent"><input type="checkbox"></td>
+                                            <td class="label-large-prominent"><span>Sasuke - Susano Toàn Chân Thể</span></td>
+                                            <td class="label-large-prominent"><span>1.243.000 VNĐ</span></td>
+                                            <td class="label-large-prominent"><span>2</span></td>
+                                            <td class="label-large-prominent"><span>2.486.000 VNĐ</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="label-large-prominent"><input type="checkbox"></td>
+                                            <td class="label-large-prominent"><span>Sasuke - Susano Toàn Chân Thể</span></td>
+                                            <td class="label-large-prominent"><span>1.243.000 VNĐ</span></td>
+                                            <td class="label-large-prominent"><span>2</span></td>
+                                            <td class="label-large-prominent"><span>2.486.000 VNĐ</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                     <div class="main__inner--info-order full flex-column g30">
@@ -331,7 +394,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="main__inner--info-orderBottom flex v-center label-large">
+                        <div class="main__inner--info-orderBottom flex v-center label-large" onclick="button_back()">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
                                 <path d="M15 8.25H5.8725L10.065 4.0575L9 3L3 9L9 15L10.0575 13.9425L5.8725 9.75H15V8.25Z" fill="#6750A4"/>
                                 </svg>
@@ -340,9 +403,22 @@
                     </div>
                 </div>
             </div>
+            <div class="form__address--container" style="display: none;"></div>
         </main>
 
     </div>
+    <script
+      type="text/javascript"
+      src="https://code.jquery.com/jquery-1.11.0.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
+    ></script>
 </body>
 </html>
 <script src="/public/assets/resources/js/main.js"></script>

@@ -42,6 +42,23 @@ const app = {
                 })
             })
         }
+
+
+    // hidden - show password
+    const hiddenShowPasswordButtons = document.querySelectorAll(".hidden-show__password");
+    if(hiddenShowPasswordButtons) {
+        hiddenShowPasswordButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            const input_password = button.closest(".form__group").querySelector(".form__input");
+            input_password.type = input_password.type === "password" ? "text" : "password";
+            button.querySelectorAll('.eye-icon').forEach((item) => {
+                item.classList.toggle("eye-active");
+            });
+            event.preventDefault();
+        });
+        });
+    }
+
     },
     start () {
         this.eventsHandler();
