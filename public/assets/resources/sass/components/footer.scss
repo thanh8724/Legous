@@ -1,0 +1,24 @@
+.footer {
+    background: $-black;
+    &-column {
+        .footer-heading {
+            color: $-white;
+            margin-bottom: 1.6rem;
+        }
+    }
+}
+.footer--mini {
+    &__item,
+    &__link {
+        color: $-white;
+        &:is(:not(:first-child)) {
+
+        }
+    }
+    &__link {
+        transition: $trans-bounce;
+        &:hover {
+            color: $light-primary;
+        }
+    }
+}

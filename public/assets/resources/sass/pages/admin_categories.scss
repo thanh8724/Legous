@@ -1,0 +1,107 @@
+.cart {
+
+  &:hover {
+    box-shadow: 0px 2px 6px 2px rgba(0, 0, 0, 0.15), 0px 1px 2px 0px rgba(0, 0, 0, 0.3);
+  }
+
+}
+
+.content-table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  min-width: 400px;
+  text-align: center;
+  background: #fff;
+
+  thead tr {
+    text-align: center;
+    font-weight: 600;
+    font-size: 16px;
+    border-bottom: 1px solid $secondary90;
+
+  }
+
+  td {
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  th,
+  td {
+    text-align: center;
+    padding: 20px 12px;
+    font-style: normal;
+
+  }
+
+  tbody tr {
+    border-bottom: 1px solid $secondary90;
+
+    &:last-child {
+      border: none;
+    }
+  }
+
+}
+
+.content-filter {
+  position: relative;
+  
+  
+}
+.dropdown-menu{
+  width: 185px;
+  text-decoration: none;
+  align-items: flex-start;
+  border-radius: 8px;
+  background-color: white;
+  transition: $trans-bounce;
+  right: 0px;
+  top: 45px;
+  position: absolute;
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+
+  a{
+    display: flex;
+    padding: 10px 12px;
+    align-items: center;
+    gap: 8px;
+    flex: 1 0 0;
+    align-self: stretch;
+    text-decoration: none;
+
+    font-size: clamp(1.2rem, 0.914rem + 0.762vw, 1.6rem);
+  font-weight: 500;
+  transform: translateY(1.25rem);
+  transition: $trans-bounce;
+  line-height: clamp(2rem, 1.714rem + 0.762vw, 2.4rem);
+    &:hover{
+      background-color: $neutral95;
+    }
+  }
+}
+.dropdown-menu.active {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+  a {
+    transform: translateY(0)
+  }
+}
+
+table{
+  tbody{
+    tr{
+      td{
+        a{
+          text-decoration: none;
+          color: $light-primary;
+        }
+      }
+    }
+  }
+
+}
