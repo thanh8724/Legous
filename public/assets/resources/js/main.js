@@ -65,7 +65,6 @@ const app = {
             })
         }
 
-<<<<<<< HEAD
 
     // hidden - show password
     const hiddenShowPasswordButtons = document.querySelectorAll(".hidden-show__password");
@@ -81,7 +80,6 @@ const app = {
         });
         });
     }
-=======
         /** shop filter */
         const filterBtns = document.querySelectorAll('.filter__list__btn');
         if (filterBtns) {
@@ -154,7 +152,6 @@ const app = {
                 }
             });
         }
->>>>>>> 27780755a50f9506eb8ee56ebbea53cd411a310f
 
     },
     start () {
