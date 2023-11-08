@@ -214,37 +214,58 @@
         <!-- header end -->
 
         <!-- shop title start -->
-        <section class="section shop__title flex-column mt80 g30">
-          <div class="flex" style="justify-content: space-between;">
-                <div class="flex g6">
-                    <span class="primary-masking-text">3</span>
-                    <span class="text-small-primary-masking">SẢN PHẨM</span>
-                </div>
-            <div class="info flex-column g20">
-                <h1 class="text-large">GIỎ HÀNG</h1>
-                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="4" viewBox="0 0 63 4" fill="none">
-                  <path d="M1.99219 2H61.0007" stroke="black" stroke-opacity="0.2" stroke-width="4" stroke-linecap="round"/>
-                </svg>
-                <span class="label-large fw-smb">LEGOUS / CART</span>
+        <section class="section trans-bounce flex-column mt80 g30">
+          <div class="main_info-cart flex" style="justify-content: space-between;">
+            <div class="text-top flex-full" style="justify-content: space-between">
+              <div class="flex g6">
+                      <span class="primary-masking-text">3</span>
+                      <span class="text-small-primary-masking">SẢN PHẨM</span>
+              </div>
+              <div class="info flex-column g20">
+                  <h1 class="text-68">GIỎ HÀNG</h1>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="50" height="4" viewBox="0 0 63 4" fill="none">
+                    <path d="M1.99219 2H61.0007" stroke="black" stroke-opacity="0.2" stroke-width="4" stroke-linecap="round"/>
+                  </svg>
+                  <span class="label-large fw-smb">LEGOUS / CART</span>
+              </div>
+            </div>
+            <div class="delete-cartall">
+                <button class="delete-size"><i class="fa-solid fa-trash"></i></button> 
             </div>
           </div>
-          <div class="container-cart flex-column flex-center flex-full g20" style="justify-content: space-between;" >
+          <div class="container-cart d-xl-flex flex-column flex-center flex-full g20 " style="justify-content: space-between;" >
             <!-- cart -->
             <div class="cart flex-center width-full" style="justify-content: space-between;">
               <div class="info-cart-start flex g16">
+                <div class="check-box-cart">
+                  <input type="checkbox" class="check-box">
+                </div>
                 <div class="img-cart">
                   <img src="/public/assets/media/images/product/v944cyfrwt851.webp" alt="">
                 </div>
                 <div class="text-cart text-start flex-column g18 flex-center" style="align-items: flex-start;">
-                  <h1 class="title-medium fw-smb">ProductName</h1>
-                  <div class="collection__item flex g6">
-                    <span class="body-medium fw-normal">Collection</span>
-                    <span class="body-medium">NARUTO</span>
+                  <div class="content-cart flex-column">
+                    <h1 class="title-medium fw-smb">ProductName</h1>
+                    <div class="collection__item flex g6">
+                      <span class="body-medium fw-normal">Collection:</span>
+                      <span class="body-medium">NARUTO</span>
+                    </div>
                   </div>
+                  <!-- rep moblie  -->
+                  <div class="prize-quality-rep">
+                    <div class="priceProduct-rep">
+                      <span class="fw-smb">1.289.099 VNĐ</span>
+                    </div>
+                    <div class="quality-rep flex">
+                      <button class="minus-btn" onclick="handleMinus()"><i class="fa-solid fa-minus"></i></button>
+                      <input class="fw-smb" type="text" name="amount" id="amount" value="1">
+                      <button class="plus-btn" onclick="handlePlus()"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                  </div>
+                   <!-- rep moblie end  -->
                 </div>
               </div>
               <div class="heart">
-                <!--<i class="fas fa-heart pulse"></i> -->
                   <i class="far fa-heart js-heart heart"></i>
                 </div>
               <div class="priceProduct">
@@ -255,80 +276,21 @@
                 <input class="fw-smb" type="text" name="amount" id="amount" value="1">
                 <button class="plus-btn" onclick="handlePlus()"><i class="fa-solid fa-plus"></i></button>
               </div>
-              <div class="close">
+              <div class="delete-cart">
                 <button class="btn-close"><i class="fa-solid fa-x"></i></button>
               </div>
             </div>
-            <div class="cart flex-center width-full" style="justify-content: space-between;">
-              <div class="info-cart-start flex g16">
-                <div class="img-cart">
-                  <img src="/public/assets/media/images/product/v944cyfrwt851.webp" alt="">
-                </div>
-                <div class="text-cart text-start flex-column g18 flex-center" style="align-items: flex-start;">
-                  <h1 class="title-medium fw-smb">ProductName</h1>
-                  <div class="collection__item flex g6">
-                    <span class="body-medium fw-normal">Collection</span>
-                    <span class="body-medium">NARUTO</span>
-                  </div>
-                </div>
-              </div>
-              <div class="heart">
-                <!--<i class="fas fa-heart pulse"></i> -->
-                  <i class="far fa-heart js-heart heart"></i>
-                </div>
-              <div class="priceProduct">
-                <span class="fw-smb">1.289.099 VNĐ</span>
-              </div>
-              <div class="quality flex">
-                <button class="minus-btn" onclick="handleMinus()"><i class="fa-solid fa-minus"></i></button>
-                <input class="fw-smb" type="text" name="amount" id="amount" value="1">
-                <button class="plus-btn" onclick="handlePlus()"><i class="fa-solid fa-plus"></i></button>
-              </div>
-              <div class="close">
-                <button class="btn-close"><i class="fa-solid fa-x"></i></button>
-              </div>
-            </div>
-            <div class="cart flex-center width-full" style="justify-content: space-between;">
-              <div class="info-cart-start flex g16">
-                <div class="img-cart">
-                  <img src="/public/assets/media/images/product/v944cyfrwt851.webp" alt="">
-                </div>
-                <div class="text-cart text-start flex-column g18 flex-center" style="align-items: flex-start;">
-                  <h1 class="title-medium fw-smb">ProductName</h1>
-                  <div class="collection__item flex g6">
-                    <span class="body-medium fw-normal">Collection</span>
-                    <span class="body-medium">NARUTO</span>
-                  </div>
-                </div>
-              </div>
-              <div class="heart">
-                <!--<i class="fas fa-heart pulse"></i> -->
-                  <i class="far fa-heart js-heart heart"></i>
-                </div>
-              <div class="priceProduct">
-                <span class="fw-smb">1.289.099 VNĐ</span>
-              </div>
-              <div class="quality flex">
-                <button class="minus-btn" onclick="handleMinus()"><i class="fa-solid fa-minus"></i></button>
-                <input class="fw-smb" type="text" name="amount" id="amount" value="1">
-                <button class="plus-btn" onclick="handlePlus()"><i class="fa-solid fa-plus"></i></button>
-              </div>
-              <div class="close">
-                <button class="btn-close"><i class="fa-solid fa-x"></i></button>
-              </div>
-            </div>
-            
             <!-- cart end -->
           </div>
           <div class="line flex-center">
-            <div style="min-width: 468px; height: 2px; background: #CAC4D0; border-radius: 8px;">
+            <div style="min-width: 50%; height: 2px; background: #CAC4D0; border-radius: 8px;">
 
             </div>
           </div>
           <!-- bill check out -->
           <div class="bill-checkout flex" style="padding: 60px 0px;justify-content: space-between;">
             <div class="bill-text-left flex-column g20">
-              <h1 class="text-large">TỔNG ĐƠN</h1>
+              <h1 class="text-68">TỔNG ĐƠN</h1>
               <svg xmlns="http://www.w3.org/2000/svg" width="50" height="4" viewBox="0 0 63 4" fill="none">
                 <path d="M1.99219 2H61.0007" stroke="black" stroke-opacity="0.2" stroke-width="4" stroke-linecap="round"/>
               </svg>
@@ -339,24 +301,24 @@
                 <!-- text products -->
                 <div class="flex g16" style="justify-content: space-between;">
                   <h1 class="title-medium">ProductName</h1>
-                  <div class="line flex-center">
-                    <div style="min-width: 200px; height: 2px; background: #CAC4D0; border-radius: 8px;">
+                  <div class="line flex-center" style="min-width: 50%;">
+                    <div style="width: 100%; height: 2px; background: #CAC4D0; border-radius: 8px;">
                     </div>
                   </div>
                   <span class="title-medium">1.289.089 VNĐ</span>
                 </div>
                 <div class="flex g16" style="justify-content: space-between;">
                   <h1 class="title-medium">ProductName</h1>
-                  <div class="line flex-center">
-                    <div style="min-width: 200px; height: 2px; background: #CAC4D0; border-radius: 8px;">
+                  <div class="line flex-center" style="min-width: 50%;">
+                    <div style="width: 100%; height: 2px; background: #CAC4D0; border-radius: 8px;">
                     </div>
                   </div>
                   <span class="title-medium">1.289.089 VNĐ</span>
                 </div>
                 <div class="flex g16" style="justify-content: space-between;">
                   <h1 class="title-medium">ProductName</h1>
-                  <div class="line flex-center">
-                    <div style="min-width: 200px; height: 2px; background: #CAC4D0; border-radius: 8px;">
+                  <div class="line flex-center" style="min-width: 50%;">
+                    <div style="width: 100%; height: 2px; background: #CAC4D0; border-radius: 8px;">
                     </div>
                   </div>
                   <span class="title-medium">1.289.089 VNĐ</span>
@@ -381,16 +343,42 @@
               </div>
               <div class="flex g16" style="justify-content: space-between;">
                 <h1 class="title-medium" style="font-size: 18px;">Tổng tiền</h1>
-                <div class="line flex-center">
-                  <div style="min-width: 300px; height: 2px; background: #CAC4D0; border-radius: 8px;">
+                <div class="line flex-center" style="min-width: 50%;">
+                  <div style="width: 100%; height: 2px; background: #CAC4D0; border-radius: 8px;">
                   </div>
                 </div>
                 <span class="toltal-money title-medium">9.999.999 VNĐ</span>
               </div>
               
-                <button class="btn primary-btn">Đăng nhập</button>
+                <button class="btn dark-btn"> <i class="fa-solid fa-arrow-right"></i>ĐI ĐẾN THANH TOÁN </button>
             </div>
           </div>
+
+          <!-- Bill Thanh toán resp moblie -->
+          <div class="bill-checkout-rep flex-column">
+            <div class="container-checkout-rep flex-column g16 p20 box-shadow4 rounded-8">
+              <div class="text-top-rep flex" style="justify-content: space-between;">
+                <div class="check-all flex g8">
+                  <input type="checkbox" class="label-large" name="" id="">
+                  <span class="title-small">Tấc cả 3</span>
+                </div>
+                <div class="coupon flex g8">
+                  <i class="fa-solid fa-arrow-right label-large"></i>
+                  <span class="label-large">Add coupon</span>
+                </div>
+              </div>
+              <div class="total-bill-rep flex-center" style="justify-content: space-between;">
+                <span class="title-small">Tổng tiền</span>
+                <div class="line-rep">
+                </div>
+                <span class="text-small-primary-masking">9.999.999 VNĐ</span>
+              </div>
+              <div class="">
+                <button class="btn dark-btn width-full"><i class="fa-solid fa-arrow-right"></i>ĐI ĐẾN THANH TOÁN </button>
+              </div>
+            </div>
+          </div>
+          <!-- Bill Thanh toán resp moblie end -->
           <!-- bill check out  end -->
         </section>
         <!-- shop title end -->

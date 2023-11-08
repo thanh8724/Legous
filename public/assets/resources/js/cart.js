@@ -5,17 +5,38 @@ let render = (amount) =>{
   amountElement.value = amount;
 }
 let handlePlus = () =>{
-  amount++;
-  render(amount);
-}
+  // Tạo một mảng chứa các giá trị amount đã có sẵn
+  let values = [];
+  for (let i = 1; i <= amount; i++) {
+    values.push(i);
+  }
 
-let handleMinus = ()=>{
-  if(amount > 1){
-    amount--;
+  // Tăng amount lên 1
+  amount++;
+
+  // Kiểm tra trùng lặp
+  if (!values.includes(amount)) {
+    // Render amount mới
     render(amount);
   }
 }
 
+let handleMinus = ()=>{
+  // Tạo một mảng chứa các giá trị amount đã có sẵn
+  let values = [];
+  for (let i = 1; i <= amount; i++) {
+    values.push(i);
+  }
+
+  // Giảm amount xuống 1
+  amount--;
+
+  // Kiểm tra trùng lặp
+  if (values.includes(amount)) {
+    // Render amount cũ
+    render(amount);
+  }
+}
 amountElement.addEventListener('input',function(){
   amount = amountElement.value;
   amount = parseInt(amount);
