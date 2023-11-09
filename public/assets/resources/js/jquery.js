@@ -20,8 +20,10 @@ $(document).ready(function () {
     const slidesToShow = 4;
     const productCarouselConfig = {
         infinite: false,
-        slidesToShow,
+        slidesToShow: 4,
         slidesToScroll: 1,
+        swipeToSlide: true,
+        swipe: true,
         prevArrow: '<button class="icon-btn prev-btn box-shadow1" style="background: white; color: black"><i class="fal fa-chevron-left"></i></button>',
         nextArrow: '<button class="icon-btn next-btn box-shadow1" style="background: white; color: black"><i class="fal fa-chevron-right"></i></button>',
         responsive: [
@@ -76,6 +78,7 @@ $(document).ready(function () {
         infinite: true,
         slidesToShow: 2,
         slidesToScroll: 1,
+        swipeToSlide: true,
         prevArrow: '<button class="icon-btn prev-btn box-shadow1" style="background: white; color: black"><i class="fal fa-chevron-left"></i></button>',
         nextArrow: '<button class="icon-btn next-btn box-shadow1" style="background: white; color: black"><i class="fal fa-chevron-right"></i></button>',
     }
@@ -86,7 +89,7 @@ $(document).ready(function () {
     $('.partner__slick-carousel').slick({
         autoplay: true,
         dots: true,
-        // speed: ,
+        swipe: true,
         slidesToShow: 4,
         slidesToScroll: 1,
         prevArrow: false,
@@ -118,11 +121,96 @@ $(document).ready(function () {
     $('.feature-category__wrapper').slick({
         arrows: false,
         dots: false,
-        variableWidth: true
+        variableWidth: true,
+        swipeToSlide: true
+    });
+    $('.feature-product__wrapper').slick({
+        arrows: false,
+        dots: true,
+        variableWidth: true,
+        swipeToSlide: true
     });
 });
 
 /** day picker */
+// $(document).ready(function () {
+//     $('#shop-filter__day-picker').dayPicker();
+// })
+
+/** accordion handler */
 $(document).ready(function () {
-    $('#shop-filter__day-picker').dayPicker();
-})
+    (function ($) {
+
+        var allPanels = $('.accordion > .accordion__content').hide();
+
+        $('.accordion > .accordion__top').click(function () {
+            allPanels.slideUp(200);
+            $(this).next().slideDown(200);
+            return false;
+        });
+
+    })(jQuery);
+});
+
+
+/** tab respon handler */
+$(document).ready(function() {
+    if ($(document).width() < 768) {
+        $('.tabs').slick({
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            infinite: false,
+            arrows: false,
+            prevArrow: false,
+            nextArrow: false,
+            swipeToSlide: true,
+            variableWidth: true,
+            swipe: true,
+            responsive: [
+                {
+                    breakpoint: 768, // Define a breakpoint where the configuration changes
+                    settings: {
+                        slidesToShow: 2, // Adjust slidesToShow for screens narrower than 768px
+                    }
+                },
+                {
+                    breakpoint: 992, // Define another breakpoint if needed
+                    settings: {
+                        slidesToShow: 3, // Adjust slidesToShow for screens narrower than 992px
+                    }
+                },
+                // Add more breakpoints and settings as needed
+            ]
+        });
+    }
+});
+
+/** mobile keyword */
+$(document).ready(function () {
+    $('.keyword__wrapper ').slick({
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        infinite: false,
+        arrows: false,
+        prevArrow: false,
+        nextArrow: false,
+        swipeToSlide: true,
+        variableWidth: true,
+        swipe: true,
+        responsive: [
+            {
+                breakpoint: 768, // Define a breakpoint where the configuration changes
+                settings: {
+                    slidesToShow: 2, // Adjust slidesToShow for screens narrower than 768px
+                }
+            },
+            {
+                breakpoint: 992, // Define another breakpoint if needed
+                settings: {
+                    slidesToShow: 3, // Adjust slidesToShow for screens narrower than 992px
+                }
+            },
+            // Add more breakpoints and settings as needed
+        ]
+    });
+});

@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LEGOUS - HOME PAGE</title>
+    <link
+        rel="stylesheet"
+        type="text/css"
+        href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+      />
     <link rel="stylesheet" href="/public/assets/resources/sass/css/app.css">
     <link rel="icon" type="image/x-icon" href="/public/assets/media/images/favicon/favicon.svg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -221,16 +226,71 @@
                 </div>
                 <div class="main__inner--bottom">
                     <div class="main__inner--bottom-left">
-                        <ul>
-                            <li><a href="user-general.html">Tổng Quan</a></li>
-                            <li><a href="user-editProfile.html">Chỉnh sửa thông tin</a></li>
-                            <li><a href="user-password.html">Mật khẩu</a></li>
-                            <li><a href="user-address.html">Địa chỉ</a></li>
-                            <li><a href="user-ordersHistory.html">Lịch sử đơn hàng</a></li>
-                            <li><a href="">Đăng xuất</a></li>
-                            <li><a href="">Chuyển tài khoản</a></li>
-                            <li class="delete__acccount"><a href="user-deleteAccount.html">Xóa tài khoản</a></li>
+                        <ul class="menu__destop--ul">
+                            <li class="menu__destop--li menu__active"><a href="user-general.html">Tổng Quan</a></li>
+                            <li class="menu__destop--li "><a href="user-editProfile.html">Chỉnh sửa thông tin</a></li>
+                            <li class="menu__destop--li "><a href="user-password.html">Mật khẩu</a></li>
+                            <li class="menu__destop--li "><a href="user-address.html">Địa chỉ</a></li>
+                            <li class="menu__destop--li "><a href="user-ordersHistory.html">Lịch sử đơn hàng</a></li>
+                            <li class="menu__destop--li "><a href="">Đăng xuất</a></li>
+                            <li class="menu__destop--li "><a href="">Chuyển tài khoản</a></li>
+                            <li class=" menu__destop--li delete__acccount"><a href="user-deleteAccount.html">Xóa tài khoản</a></li>
                         </ul>
+                        
+                       <!-- menu mobile start -->
+                       <div class="box__menu--mobile">
+                        <ul class="menu__mobile--ul">
+                            <li class="menu__mobile--li">
+                                <a href="user-general.html">
+                                    <i class="fas fa-home"></i>
+                                    <span>Tổng quan</span>
+                                </a>
+                            </li>
+                            <li class="menu__mobile--li">
+                                <a href="user-editProfile.html">
+                                    <i class="fas fa-edit"></i>
+                                    <span>Chỉnh sửa</span>
+                                </a>
+                            </li>
+                            <li class="menu__mobile--li">
+                                <a href="user-password.html">
+                                    <i class="fas fa-lock"></i>
+                                    <span>Mật khẩu</span>
+                                </a>
+                            </li>
+                            <li class="menu__mobile--li">
+                                <a href="user-address.html">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Địa chỉ</span>
+                                </a>
+                            </li>
+                            <li class="menu__mobile--li">
+                                <a href="user-ordersHistory.html">
+                                    <i class="fas fa-history"></i>
+                                    <span>Đơn hàng</span>
+                                </a>
+                            </li class="menu__mobile--li">
+                            <li class="menu__mobile--li">
+                                <a href="">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                    <span>Đăng xuất</span>
+                                </a>
+                            </li>
+                            <li class="menu__mobile--li">
+                                <a href="">
+                                    <i class="fas fa-exchange-alt"></i>
+                                    <span>Chuyển đổi</span>
+                                </a>
+                            </li>
+                            <li class="delete__acccount menu__mobile--li">
+                                <a href="user-deleteAccount.html">
+                                    <i class="fas fa-user-times"></i>
+                                <span>Xóa tài khoản</span>
+                            </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- menu mobile end -->
                     </div>
 
                     <div class="main__inner--bottom-right">
@@ -240,14 +300,12 @@
                                  class="title-medium">Xóa tài khoản của bạn</label>
                                 <span class="label-large">Nếu muốn giảm thông báo qua email, bạn có thể tắt chúng tại đây hoặc nếu bạn chỉ muốn thay đổi tên người dùng của mình, bạn có thể làm điều đó tại đây. Xin lưu ý, việc xóa tài khoản là quyết định cuối cùng. Sẽ không có cách nào để khôi phục tài khoản của bạn.</span>
                             </div>
-                            <div class="form__checkbox">
-                                <input class="submit__delete--account" type="checkbox" name="">
-                                <label for="">Tôi đã hiểu rõ, xóa tài khoản là quyết định của tôi.</label>
-                            </div>
-                            <div class="form__group">
-                                <label for="password">Xác nhận mật khẩu <span class="light-error">*</span></label>
-                                <input type="password" name="password"  class="email--input" placeholder=" ">
-                                <label for="" class="label__place">Nhập mật khẩu</label>
+                            <!-- checkbox form group -->
+                            <div class="form__group without-title">
+                                <div class="flex g6">
+                                    <input type="checkbox" class="input">
+                                    <div class="form__label">Tôi đã hiểu rõ, xóa tài khoản là quyết định của tôi</div>
+                                </div>
                             </div>
                             <div class="form__group form__group--submit">
                                 <div class="box__delete--account">
@@ -263,6 +321,7 @@
         </main>
 
     </div>
+    <div class="form__address--container" style="display: none;"></div>
 </body>
 </html>
 <script src="/public/assets/resources/js/main.js"></script>

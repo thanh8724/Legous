@@ -1,4 +1,8 @@
+.filter-bar--respon {
+    display: none !important;
+}
 .filter__list {
+    display: none !important;
     &__item {
         list-style-type: none;
         .filter-option__list {
@@ -82,4 +86,33 @@
             }
         }
     }
+}
+.filter__list.open {
+    display: flex !important;
+}
+
+// || Responsive 
+/* Mobile: with < 740px */
+@media only screen and (max-width: 46.1875em){
+    
+}
+/* Tablet: width >= 740px and width < 1024px */
+@media only screen and (min-width: 46.25em) and (max-width: 63.9375em){
+    
+}
+/* Mobile and Tablet: width < 1024px */
+@media only screen and (max-width: 63.9375em){
+    .filter-btn,
+    .filter__list.open {
+        display: none !important;
+    }
+    .filter-bar--respon {
+        display: flex !important;
+        width: 100%;
+    }
+    
+}
+/* PC: width >= 1024px */
+@media only screen and (min-width: 64em){
+
 }

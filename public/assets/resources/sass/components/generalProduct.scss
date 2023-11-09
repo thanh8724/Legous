@@ -10,18 +10,14 @@
         opacity: 0;
         visibility: hidden;
         .icon-btn {
-            background: $-white;
-            color: $-black;
+            background: $-white !important;
+            color: $-black !important;
             transition: $trans-bounce;
             transform: translateY(1rem);
-            &:hover {
+            &:hover {   
                 opacity: 0.8;
             }
-        }
-        .love-btn {
-            background: $-pink;
-            color: $-white;
-        }
+        }   
     }
     &__carousel {
         padding: 1rem;

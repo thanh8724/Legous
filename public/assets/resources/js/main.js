@@ -1,6 +1,5 @@
 const app = {
     eventsHandler () {
-
         /* header onscroll */
         // const heroBanner = document.querySelector('.hero-banner__wrapper')
         const header = document.querySelector('.header')
@@ -66,6 +65,21 @@ const app = {
             })
         }
 
+
+    // hidden - show password
+    const hiddenShowPasswordButtons = document.querySelectorAll(".hidden-show__password");
+    if(hiddenShowPasswordButtons) {
+        hiddenShowPasswordButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            const input_password = button.closest(".form__group").querySelector(".form__input");
+            input_password.type = input_password.type === "password" ? "text" : "password";
+            button.querySelectorAll('.eye-icon').forEach((item) => {
+                item.classList.toggle("eye-active");
+            });
+            event.preventDefault();
+        });
+        });
+    }
         /** shop filter */
         const filterBtns = document.querySelectorAll('.filter__list__btn');
         if (filterBtns) {
@@ -76,6 +90,86 @@ const app = {
                 }
             });
         }
+        // close / open filter 
+        const toggleFilterBtn = document.querySelector('.toggle-filter-btn');
+        const filterList = document.querySelector('.filter__list');
+        // console.log(toggleFilterBtn, filterList)
+        
+        if (filterList && toggleFilterBtn) {
+            toggleFilterBtn.onclick = () => {
+                filterList.classList.toggle('open');
+
+                if (filterList.classList.contains('open')) {
+                    toggleFilterBtn.querySelector('.btn__text').textContent = 'Ẩn filter';
+                } else {
+                    toggleFilterBtn.querySelector('.btn__text').textContent = 'Hiện filter';
+                }
+
+            }
+        }
+
+        /** mobile filter system  */
+        const mobileFilterCloseBtn = document.querySelector('.mobile__filter__btn--close')
+        const mobileFilterOpenBtn = document.querySelector('.mobile__filter__btn--open')
+
+        const mobileFilter = document.querySelector('.mobile__filter');
+        
+        if (mobileFilter) {
+            mobileFilterOpenBtn.onclick = () => {
+                mobileFilter.classList.add('open');
+            }
+            mobileFilterCloseBtn.onclick = () => {
+                mobileFilter.classList.remove('open');
+            }
+        }
+
+        /** mobile top nav bar - member widget */
+        const moreBtn = document.querySelector('.member-widget .more-btn');
+        const optionList = document.querySelector('.member-widget .option__list');
+        if (optionList) {
+            moreBtn.onclick = () => {
+                optionList.classList.toggle('open');
+            }
+        }
+
+        /** toggle button handler */
+        const toggleBtns = document.querySelectorAll('.toggle-btn');
+        if (toggleBtns) {
+            toggleBtns.forEach(btn => {
+                btn.onclick = () => {
+                    btn.classList.toggle('active');
+                    if (btn.classList.contains('active')) {
+                        if (btn.classList.contains('love-btn')) {
+                            btn.querySelector('.fal').classList.remove('fal');
+                            btn.querySelector('.fa-heart').classList.add('fa');
+                        }
+                    } else {
+                        if (btn.querySelector('i').classList.contains('fa')) {
+                            btn.querySelector('i').classList.remove('fa');
+                            btn.querySelector('i').classList.add('fal');
+                        }
+                    }
+                }
+            });
+        }
+
+        /** product gallery handler  */
+        const gallery = document.querySelector('.product__gallery');
+
+        if (gallery) {
+            const spotlight = gallery.querySelector('.gallery__spotlight > img');
+            const thumbnails = gallery.querySelectorAll('.gallery__thumbnails__item > img');
+            thumbnails.forEach(item => {
+                item.onclick = () => {
+                    spotlight.src = item.src;
+                }
+            });
+        }
+
+        /** add coupon handler */
+        const addCouponeBtn = document.querySelector('add-coupon-btn');
+        
+
     },
     start () {
         this.eventsHandler();
