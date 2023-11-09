@@ -3758,6 +3758,39 @@ html {
     padding: 30px !important;
   }
 }
+.container-full {
+  background-color: black !important;
+}
+.container-full main .lineMiniConfirm {
+  width: 90px;
+  height: 4px;
+  border-radius: 10px;
+  background-color: #625b71;
+  color: #625b71;
+}
+.container-full main .confirmHeadingText .col-12 {
+  /* Mobile: with < 740px */
+  /* Tablet: width >= 740px and width < 1024px */
+  /* Mobile and Tablet: width < 1024px */
+  /* PC: width >= 1024px */
+}
+.container-full main .confirmHeadingText .col-12 .confirmHeadingText_left .title-medium {
+  color: #1d192b;
+}
+.container-full main .confirmHeadingText .col-12 .confirmHeadingText_left .display-medium {
+  color: #6750a4;
+}
+@media only screen and (max-width: 46.1875em) {
+  .container-full main .confirmHeadingText .col-12 .confirmHeadingText .d-md-block {
+    display: block !important;
+  }
+  .container-full main .confirmHeadingText .col-12 .detailOrders .d-md-block {
+    display: block !important;
+  }
+  .container-full main .confirmHeadingText .col-12 .detailOrders .d-sm-block {
+    display: block !important;
+  }
+}
 .cart:hover {
   box-shadow: 0px 2px 6px 2px rgba(0, 0, 0, 0.15), 0px 1px 2px 0px rgba(0, 0, 0, 0.3);
 }
