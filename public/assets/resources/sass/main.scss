@@ -47,8 +47,12 @@
     @import 'pages/admin_order-add-create.scss';
     @import 'pages/category.scss';
     @import 'pages/singleProduct.scss';
+<<<<<<< HEAD
     @import 'pages/coupon.scss';
     @import 'pages/mobileSearch.scss';
+=======
+    @import 'pages/contact.scss';
+>>>>>>> b258d4f06c30c4dd6ee35d9cdbfc90924879ac34
 
 // import partials end
 
@@ -56,7 +60,7 @@
 /* Mobile: with < 740px */
 @media only screen and (max-width: 46.1875em){
     .mobile {
-        display: block;
+        display: block !important;
     }
     .desktop {
         display: none !important;

@@ -6,19 +6,19 @@
                 Chào mừng đến với LEGOUS <br>
                 Tạo tài khoản ngay!
             </div>
-            <div class="form__group">
+            <div class="form__group without-title">
                 <!-- <label for="username">Tên đăng nhập</label> -->
-                <input type="text" name="username" class="user__name--input" placeholder=" ">
+                <input type="text" name="username" class="form__input user__name--input" placeholder=" ">
                 <label for="" class="label__place">Tên đăng nhập</label>
             </div>
-            <div class="form__group">
+            <div class="form__group without-title">
                 <!-- <label for="username">Email</label> -->
-                <input type="text" name="username" class="user__name--input" placeholder=" ">
+                <input type="text" name="username" class="form__input email--input" placeholder=" ">
                 <label for="" class="label__place">Email</label>
             </div>
-            <div class="form__group">
+            <div class="form__group without-title">
                 <!-- <label for="username">Mật khẩu</label> -->
-                <input type="text" name="username" class="user__name--input" placeholder=" ">
+                <input type="text" name="username" class="form__input password--input" placeholder=" ">
                 <label for="" class="label__place">Mật khẩu</label>
             </div>
             <button type="submit" class="btn form__btn"><i class="fal fa-arrow-right"></i>TẠO TÀI KHOẢN</button>
