@@ -46,7 +46,7 @@ textarea {
 html {
   font-size: 62.5%;
   box-sizing: border-box;
-  font-family: "Quicksand", sans-serif;
+  font-family: "Quicksand", 'mainFont', sans-serif;
 }
 
 button {
@@ -69,8 +69,9 @@ a {
 
 @font-face {
   font-family: "mainFont";
-  src: url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/FS PFBeauSansPro-Black.ttf"), url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/FS PFBeauSansPro-BlackItalic.ttf"), url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/FS PFBeauSansPro-Bold.ttf"), url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/FS PFBeauSansPro-BoldItalic.ttf"), url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/FS PFBeauSansPro-Italic.ttf"), url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/FS PFBeauSansPro-Light.ttf"), url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/FS PFBeauSansPro-LightItalic.ttf"), url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/FS PFBeauSansPro-Regular.ttf"), url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/FS PFBeauSansPro-SemiBold.ttf"), url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/FS PFBeauSansPro-Thin.ttf"), url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/FS PFBeauSansPro-ThinItalic.ttf"), url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/FS PFBeauSansPro-");
   font-style: normal;
+  src: 
+url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/FS PFBeauSansPro-Black.ttf"), url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/FS PFBeauSansPro-BlackItalic.ttf"), url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/FS PFBeauSansPro-Bold.ttf"), url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/FS PFBeauSansPro-BoldItalic.ttf"), url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/FS PFBeauSansPro-Italic.ttf"), url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/FS PFBeauSansPro-Light.ttf"), url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/FS PFBeauSansPro-LightItalic.ttf"), url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/FS PFBeauSansPro-Regular.ttf"), url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/FS PFBeauSansPro-SemiBold.ttf"), url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/FS PFBeauSansPro-Thin.ttf"), url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/FS PFBeauSansPro-ThinItalic.ttf"), url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/FS PFBeauSansPro-");
 }
 .display-large {
   font-size: clamp(4.4rem, 3.471rem + 2.476vw, 5.7rem);
@@ -278,6 +279,10 @@ a {
   color: #2cccff;
 }
 
+.primary-text {
+  color: #6750a4;
+}
+
 .header {
   padding-inline: clamp(1rem, -9.357rem + 27.619vw, 15.5rem);
   height: 8rem;
@@ -411,6 +416,7 @@ a {
   display: flex;
   padding: clamp(3rem, 0.857rem + 5.714vw, 6rem) clamp(1rem, -9.357rem + 27.619vw, 15.5rem);
   background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(1rem);
   flex-direction: column;
   align-items: flex-start;
   gap: 30px;
@@ -663,6 +669,26 @@ a {
   background: var(--m-3-state-layers-light-on-surface-variant-opacity-008, rgba(73, 69, 79, 0.08));
 }
 
+.icon-btn.fab {
+  padding: 2rem;
+  border-radius: 0.8rem;
+  background: #ece6f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.icon-btn.fab:hover {
+  opacity: 0.8;
+}
+.icon-btn.fab:active {
+  transform: scale(0.95);
+}
+
+.fab-primary {
+  background: #6750a4 !important;
+  color: #ffffff;
+}
+
 .love-btn {
   background: #F62682;
   color: #ffffff;
@@ -906,6 +932,7 @@ table th {
   display: grid;
 }
 .home-bottom-navbar .bottom-navbar__item .bottom-navbar__link {
+  color: #6750a4;
   display: grid;
   place-items: center;
   grid-row: span 2;
@@ -964,6 +991,22 @@ table th {
 .slick-dots li.slick-active button {
   background-color: #6750a4;
   /* Change the active dot's color */
+}
+
+.slick-dots {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.slick-dots li ::before {
+  content: "";
+  width: 0.6rem;
+  aspect-ratio: 1;
+  background: #48464c;
+}
+.slick-dots li.slick-active ::before {
+  background: #6750a4;
 }
 
 /* Mobile: with < 740px */
@@ -1973,22 +2016,6 @@ ul {
     opacity: 1;
   }
 }
-.slick-dots {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.slick-dots li ::before {
-  content: "";
-  width: 0.6rem;
-  aspect-ratio: 1;
-  background: #48464c;
-}
-.slick-dots li.slick-active ::before {
-  background: #6750a4;
-}
-
 /* Mobile: with < 740px */
 @media only screen and (max-width: 46.1875em) {
   .hero-banner__item {
@@ -2027,9 +2054,6 @@ ul {
   }
   .shop__main__title {
     display: block !important;
-  }
-  .header {
-    display: none !important;
   }
   .mobile-top__bar {
     display: flex !important;
@@ -3593,10 +3617,6 @@ main .adminFooter ul li a {
   transition: 0.22s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.fas {
-  color: red;
-}
-
 .heart {
   cursor: pointer;
 }
@@ -3941,10 +3961,11 @@ main .adminFooter ul li a {
   /* Change border color for the selected thumbnail */
 }
 
-.comment__panel {
+.product-info__section .panels .panel__item {
   padding-block: clamp(1.6rem, 0.6rem + 2.667vw, 3rem);
   padding-inline: clamp(1rem, -9.357rem + 27.619vw, 15.5rem);
 }
+
 .comment__panel .comment__form {
   width: 100%;
 }
@@ -3959,16 +3980,23 @@ main .adminFooter ul li a {
   border-bottom-color: #6750a4;
 }
 
-.bill-info__panel {
-  padding-block: clamp(1.6rem, 0.6rem + 2.667vw, 3rem);
-  padding-inline: clamp(1rem, -9.357rem + 27.619vw, 15.5rem);
-}
 .bill-info__panel .bill-info__box {
   background: #ffffff;
 }
 .bill-info__panel .bill-info__box .default-label {
   color: #6750a4;
   font-weight: 600;
+}
+
+.single-product__bottom-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+}
+.single-product__bottom-bar .bottom-bar__inner {
+  background: #ffffff;
 }
 
 /* Mobile: with < 740px */
@@ -3981,13 +4009,13 @@ main .adminFooter ul li a {
     display: flex !important;
     flex-direction: column-reverse;
   }
-  .product__gallery .gallery__spotlight__item {
+  .product__gallery .gallery__spotlight {
     display: flex;
     justify-content: center;
     border-radius: 0.4rem;
     overflow: hidden;
   }
-  .product__gallery .gallery__spotlight__item img {
+  .product__gallery .gallery__spotlight img {
     width: 60%;
   }
   .product__gallery .gallery__thumbnails {
@@ -4004,6 +4032,38 @@ main .adminFooter ul li a {
 /* Tablet: width >= 740px and width < 1024px */
 /* Mobile and Tablet: width < 1024px */
 /* PC: width >= 1024px */
+.coupon__wrapper .coupon__item {
+  transition: 0.22s cubic-bezier(0.23, 1, 0.32, 1);
+  background: #f7f2fa;
+}
+.coupon__wrapper .coupon__item:hover {
+  box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15), 0px 1px 2px 0px rgba(0, 0, 0, 0.3);
+}
+
+.keyword__wrapper .keyword__item {
+  max-width: fit-content;
+  border: 1px solid #e6e0e9;
+  color: #aea9b1;
+  margin-inline: 0.6rem;
+}
+.keyword__wrapper .keyword__item .delete-keyword__btn {
+  color: #79747e;
+}
+.keyword__wrapper .keyword__item .delete-keyword__btn:hover {
+  color: #938f96;
+}
+
+.most-search__section .most-search__wrapper {
+  margin-top: 1.2rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.most-search__section .most-search__wrapper .most-search__product .most-search__banner {
+  aspect-ratio: 1;
+  border-radius: 0.8rem;
+  overflow: hidden;
+}
+
 /* Mobile: with < 740px */
 @media only screen and (max-width: 46.1875em) {
   .mobile {
@@ -4012,8 +4072,16 @@ main .adminFooter ul li a {
   .desktop {
     display: none !important;
   }
+  footer {
+    display: none !important;
+  }
 }
 /* Tablet: width >= 740px and width < 1024px */
+@media only screen and (min-width: 46.25em) and (max-width: 63.9375em) {
+  .mobile {
+    display: none;
+  }
+}
 /* Mobile and Tablet: width < 1024px */
 /* PC: width >= 1024px */
 @media only screen and (min-width: 64em) {
@@ -4191,6 +4259,10 @@ main .adminFooter ul li a {
   margin-top: 1.2rem;
 }
 
+.mt16 {
+  margin-top: 1.6rem;
+}
+
 .mt20 {
   margin-top: 2rem;
 }
@@ -4329,6 +4401,10 @@ main .adminFooter ul li a {
 
 .section {
   padding: clamp(3rem, 0.857rem + 5.714vw, 6rem) clamp(1rem, -9.357rem + 27.619vw, 15.5rem);
+}
+
+.mobile-section {
+  padding: clamp(1.6rem, 0.6rem + 2.667vw, 3rem) clamp(0.6rem, -0.114rem + 1.905vw, 1.6rem);
 }
 
 .flex {

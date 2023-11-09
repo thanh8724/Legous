@@ -19,9 +19,17 @@
     }
 }
 
+.product-info__section {
+    .panels {
+        .panel__item {
+            padding-block: clamp(1.6rem, 0.6rem + 2.667vw, 3rem);
+            padding-inline: clamp(1rem, -9.357rem + 27.619vw, 15.5rem);
+        }
+    }
+}
+
+
 .comment__panel {
-    padding-block: clamp(1.6rem, 0.6rem + 2.667vw, 3rem);
-    padding-inline: clamp(1rem, -9.357rem + 27.619vw, 15.5rem);
     .comment__form{
         width: 100%;
         .comment__input {
@@ -38,14 +46,23 @@
 }
 
 .bill-info__panel {
-    padding-block: clamp(1.6rem, 0.6rem + 2.667vw, 3rem);
-    padding-inline: clamp(1rem, -9.357rem + 27.619vw, 15.5rem);
     .bill-info__box {
         background: $-white;
         .default-label {
             color: $light-primary;
             font-weight: 600;
         }
+    }
+}
+
+.single-product__bottom-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    .bottom-bar__inner {
+        background: $-white;
     }
 }
 
@@ -66,14 +83,12 @@
 
     .product__gallery {
         .gallery__spotlight {
-            &__item {
-                display: flex;
-                justify-content: center;
-                border-radius: .4rem;
-                overflow: hidden;
-                img {
-                    width: 60%
-                }
+            display: flex;
+            justify-content: center;
+            border-radius: .4rem;
+            overflow: hidden;
+            img {
+                width: 60%
             }
         }
         .gallery__thumbnails {

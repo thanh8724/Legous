@@ -231,3 +231,5 @@ $trans-bounce: .22s cubic-bezier(0.23, 1, 0.320, 1);
 
 $site-padding-inline: clamp(1rem, -9.357rem + 27.619vw, 15.5rem);
 $site-padding-block: clamp(3rem, 0.857rem + 5.714vw, 6rem);
+$site-padding-block-respon: clamp(1.6rem, 0.6rem + 2.667vw, 3rem);
+$site-padding-inline-respon: clamp(0.6rem, -0.114rem + 1.905vw, 1.6rem);

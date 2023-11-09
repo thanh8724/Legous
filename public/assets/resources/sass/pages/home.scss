@@ -193,26 +193,7 @@ $banner-padding-block: clamp(2rem, -3.714rem + 15.238vw, 10rem);
     }
 }
 
-// slick edit 
-.slick-dots {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    li {
-        ::before {
-            content: ''; 
-            width: .6rem;
-            aspect-ratio: 1;
-            background: $neutral30;
-        }
-    }
-    li.slick-active {
-        ::before {
-            background: $light-primary;
-        }
-    }
-}
+
 
 
 // || Responsive 

@@ -49,15 +49,47 @@
                         <input type="text" class="form__input rounded-100 width-full" style="padding-left: 4rem">
                     </div>
                 </form>
-                <button class="icon-btn share-btn"><i class="fal fa-share-alt"></i></button>
                 <button class="icon-btn cart-btn"><i class="fal fa-shopping-cart"></i></button>
-                <button class="icon-btn more-btn"><i class="far fa-ellipsis-h"></i></button>
+
+                <!-- guest widget -->
+                <!-- <button class="icon-btn user-btn"><i class="fal fa-user"></i></button> -->
+
+                <!-- member widget -->
+                <div class="por member-widget">
+                    <button class="icon-btn more-btn"><i class="far fa-ellipsis-h"></i></button>
+                    <ul class="poa option__list oh p10 box-shadow1 rounded-8">
+                        <li class="option__item">
+                            <a href="#" class="option__link ttc">trang chủ</a>
+                        </li>
+                        <li class="option__item">
+                            <a href="#" class="option__link ttc">chia sẻ</a>
+                        </li>
+                        <li class="option__item">
+                            <a href="#" class="option__link ttc">tìm kiếm</a>
+                        </li>
+                        <li class="option__item">
+                            <a href="#" class="option__link ttc">tin nhắn</a>
+                        </li>
+                        <li class="option__item">
+                            <a href="#" class="option__link ttc">tài khoản của tôi</a>
+                        </li>
+                        <li class="option__item">
+                            <a href="#" class="option__link ttc">báo cáo</a>
+                        </li>
+                        <li class="option__item">
+                            <a href="#" class="option__link ttc">trợ giúp</a>
+                        </li>
+                        <li class="option__item">
+                            <a href="#" class="option__link ttc">phản hồi</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
         <!-- shop mobile top navigation bar end -->
         
         <!-- header start -->
-        <header class="header flex-full width-full flex-center pof">
+        <header class="header flex-full width-full flex-center pof desktop">
             <div class="header__inner flex-full flex-between por v-center">
                 <!-- header respon nav start -->
                 <ul class="header__nav header__nav-respon">
@@ -238,9 +270,7 @@
         <main class="section single-product__main auto-grid g30 mt80">
             <div class="product__gallery mobile">
                 <div class="gallery__spotlight">
-                    <div class="gallery__spotlight__item">
-                        <img src="/public/assets/media/images/product/sample-image1.png" alt="" class="img-cover">
-                    </div>
+                    <img src="/public/assets/media/images/product/sample-image1.png" alt="" class="img-cover">
                 </div>
                 <div class="gallery__thumbnails flex g12 mt12">
                     <div class="gallery__thumbnails__item">
@@ -266,18 +296,18 @@
                     <button class="icon-btn love-btn toggle-btn mobile transparent"><i class="fal fa-heart"></i></button>
                 </div>
                 <p class="body-medium desktop">NARUTO - Hiền nhân thuật là trạng thái được nhiều fan hâm mộ của nhân vật này săn đuổi nhất chỉ sau trạng thái cửu vĩ hình. Còn chần chừ gì nữa mà không tậu ngay cho mình một sản phẩm ngầu như vậy chứ!</p>
-                <span class="text-38 fw-normal" style="font-family: inherit;">1.289.099 VND</span>
-                <span class="label-medium">128 sản phẩm</span>
-                <div class="flex g12">
+                <div class="flex-between v-center">
+                    <span class="text-38 fw-normal" style="font-family: inherit;">1.289.099 VND</span>
+                    <span class="label-medium">128 sản phẩm</span>
+                </div>
+                <div class="flex g12 desktop">
                     <button class="btn elevated-btn rounded-100"><i class="fal fa-shopping-cart-plus"></i>THÊM VÀO GIỎ HÀNG</button>
                     <button class="btn primary-btn rounded-100"><i class="fal fa-arrow-right"></i>MUA NGAY</button>
                 </div>
             </div>
             <div class="product__gallery por desktop">
                 <div class="gallery__spotlight">
-                    <div class="gallery__spotlight__item">
-                        <img src="/public/assets/media/images/product/sample-image1.png" alt="" class="img-cover">
-                    </div>
+                    <img src="/public/assets/media/images/product/sample-image1.png" alt="" class="img-cover">
                 </div>
                 <div class="gallery__thumbnails poa flex-between flex-column g12">
                     <div class="gallery__thumbnails__item">
@@ -1019,6 +1049,21 @@ CHỈ BẰNG EMAIL</div>
             <a href="#" class="footer--mini__link body-small">Support</a>
         </footer>
         <!-- footer end -->
+
+        <!-- single product bottom nav bar start -->
+        <div class="p10 flex-center single-product__bottom-bar mobile">
+            <div class="bottom-bar__inner flex-full p10 flex-column g12 rounded-12 box-shadow1">
+                <div class="flex-between">
+                    <div class="flex-column flex-between">
+                        <h4 class="title-large fw-black">1.268.099 VNĐ</h4>
+                        <a href="" class="add-coupon-btn primary-text label-large fw-black">Thêm phiếu giảm giá</a>
+                    </div>
+                    <button class="icon-btn fab box-shadow1"><i class="far fa-cart-plus"></i></button>
+                </div>
+                <button class="btn primary-btn rounded-8"><i class="fal fa-arrow-right"></i>MUA NGAY</button>
+            </div>
+        </div>
+        <!-- single product bottom nav bar end -->
     </div>
 </body>
 </html>

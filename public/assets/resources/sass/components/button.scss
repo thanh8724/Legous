@@ -118,6 +118,25 @@
     }
 }
 
+.icon-btn.fab {
+    padding: 2rem;
+    border-radius: .8rem;
+    background: $light-surface-container-high;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:hover  {
+        opacity: 0.8;
+    }
+    &:active {
+        transform: scale(.95);
+    }
+}
+.fab-primary {
+    background: $light-primary !important;
+    color: $-white;
+}
+
 .love-btn {
     background: $-pink;
     color: $-white;
