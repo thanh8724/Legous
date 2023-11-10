@@ -46,7 +46,7 @@ textarea {
 html {
   font-size: 62.5%;
   box-sizing: border-box;
-  font-family: "Quicksand", 'mainFont', sans-serif;
+  font-family: "Quicksand", sans-serif;
 }
 
 button {
@@ -69,9 +69,8 @@ a {
 
 @font-face {
   font-family: "mainFont";
+  src: url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/PFBeauSansPro-Black.ttf"), url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/PFBeauSansPro-BlackItalic.ttf"), url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/PFBeauSansPro-Bold.ttf"), url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/PFBeauSansPro-BoldItalic.ttf"), url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/PFBeauSansPro-Italic.ttf"), url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/PFBeauSansPro-Light.ttf"), url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/PFBeauSansPro-LightItalic.ttf"), url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/PFBeauSansPro-Regular.ttf"), url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/PFBeauSansPro-SemiBold.ttf"), url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/PFBeauSansPro-Thin.ttf"), url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/PFBeauSansPro-ThinItalic.ttf"), url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/PFBeauSansPro-");
   font-style: normal;
-  src: 
-url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/FS PFBeauSansPro-Black.ttf"), url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/FS PFBeauSansPro-BlackItalic.ttf"), url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/FS PFBeauSansPro-Bold.ttf"), url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/FS PFBeauSansPro-BoldItalic.ttf"), url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/FS PFBeauSansPro-Italic.ttf"), url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/FS PFBeauSansPro-Light.ttf"), url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/FS PFBeauSansPro-LightItalic.ttf"), url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/FS PFBeauSansPro-Regular.ttf"), url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/FS PFBeauSansPro-SemiBold.ttf"), url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/FS PFBeauSansPro-Thin.ttf"), url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/FS PFBeauSansPro-ThinItalic.ttf"), url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/FS PFBeauSansPro-");
 }
 .display-large {
   font-size: clamp(4.4rem, 3.471rem + 2.476vw, 5.7rem);
@@ -3785,6 +3784,78 @@ html {
     padding: 30px !important;
   }
 }
+.container-full main .lineMiniConfirm {
+  width: 90px;
+  height: 4px;
+  border-radius: 10px;
+  background-color: #625b71;
+  color: #625b71;
+}
+.container-full main .confirmHeadingText .col-12 .confirmHeadingText_left .title-medium {
+  color: #1d192b;
+}
+.container-full main .confirmHeadingText .col-12 .confirmHeadingText_left .display-medium {
+  color: #6750a4;
+}
+.container-full main .confirmHeadingText .col-12 .confirmHeadingText_right p {
+  color: #1d192b;
+}
+.container-full main .detailOrders .detailerOrders_top h2 {
+  color: #1d192b;
+}
+.container-full main .detailOrders .detailerOrders_bottom .detailOrders-left .detailOrder_items h3,
+.container-full main .detailOrders .detailerOrders_bottom .detailOrders-left .detailOrder_items h2,
+.container-full main .detailOrders .detailerOrders_bottom .detailOrders-left .detailOrder_items h4 {
+  color: #1d192b;
+}
+.container-full main .detailOrders .detailerOrders_bottom .detailOrders-right h2 {
+  color: #1d192b;
+}
+.container-full main .detailOrders .detailerOrders_bottom .detailOrders-right .listProductCart .listProductCart_item {
+  margin: 15px 0;
+}
+.container-full main .detailOrders .detailerOrders_bottom .detailOrders-right .listProductCart .listProductCart_item img {
+  width: 130px;
+  border-radius: 10px;
+}
+.container-full main .detailOrders .detailerOrders_bottom .detailOrders-right .totalInfoCartConfirm p {
+  color: #1d192b;
+}
+.container-full main .detailOrders .detailerOrders_bottom .detailOrders-right .totalInfoCartConfirm .lineAmmoutConfirm {
+  width: 100%;
+  height: 1px;
+  background-color: #cac4d0;
+}
+.container-full main .detailOrders .detailerOrders_bottom .detailOrders-right .totalInfoCartConfirm .label-medium {
+  color: #1d192b;
+}
+.container-full main .detailOrders .detailerOrders_bottom .detailOrders-right .totalInfoCartConfirm .totalAmount {
+  background: -webkit-linear-gradient(60deg, #ff79ea, #A93CFF, #6791FF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.container-full main .detailOrders .detailerOrders_bottom .detailOrders-right .totalInfoCartConfirm .buttonNextOrders .nextOrders {
+  background-color: #000000;
+  color: #ffffff;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+/* Mobile: with < 740px */
+@media only screen and (max-width: 46.1875em) {
+  .confirmHeadingText .d-md-block {
+    display: block !important;
+  }
+  .detailOrders .d-md-block {
+    display: block !important;
+  }
+  .detailOrders .d-sm-block {
+    display: block !important;
+  }
+}
+/* Tablet: width >= 740px and width < 1024px */
+/* Mobile and Tablet: width < 1024px */
+/* PC: width >= 1024px */
 .cart:hover {
   box-shadow: 0px 2px 6px 2px rgba(0, 0, 0, 0.15), 0px 1px 2px 0px rgba(0, 0, 0, 0.3);
 }
@@ -4313,7 +4384,7 @@ main .adminFooter ul li a {
   main .dashboard,
   #adminDashboard .dashboard {
     width: 100% !important;
-    left: 0;
+    left: 0 !important;
   }
   main .dashboard .top,
   #adminDashboard .dashboard .top {
@@ -5079,7 +5150,6 @@ main .adminFooter ul li a {
 /* Tablet: width >= 740px and width < 1024px */
 /* Mobile and Tablet: width < 1024px */
 /* PC: width >= 1024px */
-<<<<<<< HEAD
 .coupon__wrapper .coupon__item {
   transition: 0.22s cubic-bezier(0.23, 1, 0.32, 1);
   background: #f7f2fa;
@@ -5112,7 +5182,6 @@ main .adminFooter ul li a {
   overflow: hidden;
 }
 
-=======
 .main__contact {
   margin-top: 8rem;
   width: 100%;
@@ -5347,7 +5416,6 @@ main .adminFooter ul li a {
 /* Tablet: width >= 740px and width < 1024px */
 /* Mobile and Tablet: width < 1024px */
 /* PC: width >= 1024px */
->>>>>>> b258d4f06c30c4dd6ee35d9cdbfc90924879ac34
 /* Mobile: with < 740px */
 @media only screen and (max-width: 46.1875em) {
   .mobile {
