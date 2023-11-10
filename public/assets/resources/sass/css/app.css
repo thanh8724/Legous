@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300;400;500;600;700&family=Space+Mono&display=swap");
 *,
 *:before,
 *:after {
@@ -46,7 +47,7 @@ textarea {
 html {
   font-size: 62.5%;
   box-sizing: border-box;
-  font-family: "Quicksand", 'mainFont', sans-serif;
+  font-family: "Quicksand", sans-serif;
 }
 
 button {
@@ -67,12 +68,6 @@ a {
   text-decoration: none;
 }
 
-@font-face {
-  font-family: "mainFont";
-  font-style: normal;
-  src: 
-url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/FS PFBeauSansPro-Black.ttf"), url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/FS PFBeauSansPro-BlackItalic.ttf"), url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/FS PFBeauSansPro-Bold.ttf"), url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/FS PFBeauSansPro-BoldItalic.ttf"), url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/FS PFBeauSansPro-Italic.ttf"), url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/FS PFBeauSansPro-Light.ttf"), url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/FS PFBeauSansPro-LightItalic.ttf"), url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/FS PFBeauSansPro-Regular.ttf"), url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/FS PFBeauSansPro-SemiBold.ttf"), url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/FS PFBeauSansPro-Thin.ttf"), url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/FS PFBeauSansPro-ThinItalic.ttf"), url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/FS PFBeauSansPro-");
-}
 .display-large {
   font-size: clamp(4.4rem, 3.471rem + 2.476vw, 5.7rem);
   font-weight: 400;
@@ -225,7 +220,7 @@ url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/FS PFBeauSansPro-Black.ttf"),
 
 .text-68 {
   font-size: clamp(2.4rem, -0.743rem + 8.381vw, 6.8rem);
-  font-family: "mainFont", sans-serif;
+  font-family: "Exo 2", sans-serif;
   font-weight: 900;
   line-height: clamp(3.6rem, 0.457rem + 8.381vw, 8rem);
   letter-spacing: -1.25px;
@@ -234,7 +229,7 @@ url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/FS PFBeauSansPro-Black.ttf"),
 
 .text-46 {
   color: var(--m-3-sys-light-on-secondary-container, #1D192B);
-  font-family: "mainFont", sans-serif;
+  font-family: "Exo 2", sans-serif;
   font-size: clamp(2.4rem, 0.829rem + 4.19vw, 4.6rem);
   font-style: normal;
   font-weight: 700;
@@ -242,7 +237,7 @@ url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/FS PFBeauSansPro-Black.ttf"),
 }
 
 .text-38 {
-  font-family: "mainFont", sans-serif;
+  font-family: "Exo 2", sans-serif;
   font-size: clamp(1.6rem, 0.029rem + 4.19vw, 3.8rem);
   font-style: normal;
   font-weight: 700;
@@ -254,7 +249,7 @@ url("/public/assets/media/fonts/FS-PF-BeauSans-Pro/FS PFBeauSansPro-Black.ttf"),
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-family: "mainFont";
+  font-family: "Exo 2", sans-serif;
   font-size: clamp(2.4rem, -0.743rem + 8.381vw, 6.8rem);
   font-style: normal;
   font-weight: 700;
@@ -3785,6 +3780,35 @@ html {
     padding: 30px !important;
   }
 }
+.container-full main .lineMiniConfirm {
+  width: 90px;
+  height: 4px;
+  border-radius: 10px;
+  background-color: #625b71;
+  color: #625b71;
+}
+.container-full main .confirmHeadingText .col-12 .confirmHeadingText_left .title-medium {
+  color: #1d192b;
+}
+.container-full main .confirmHeadingText .col-12 .confirmHeadingText_left .display-medium {
+  color: #6750a4;
+}
+
+/* Mobile: with < 740px */
+@media only screen and (max-width: 46.1875em) {
+  .confirmHeadingText .d-md-block {
+    display: block !important;
+  }
+  .detailOrders .d-md-block {
+    display: block !important;
+  }
+  .detailOrders .d-sm-block {
+    display: block !important;
+  }
+}
+/* Tablet: width >= 740px and width < 1024px */
+/* Mobile and Tablet: width < 1024px */
+/* PC: width >= 1024px */
 .cart:hover {
   box-shadow: 0px 2px 6px 2px rgba(0, 0, 0, 0.15), 0px 1px 2px 0px rgba(0, 0, 0, 0.3);
 }
@@ -5079,7 +5103,6 @@ main .adminFooter ul li a {
 /* Tablet: width >= 740px and width < 1024px */
 /* Mobile and Tablet: width < 1024px */
 /* PC: width >= 1024px */
-<<<<<<< HEAD
 .coupon__wrapper .coupon__item {
   transition: 0.22s cubic-bezier(0.23, 1, 0.32, 1);
   background: #f7f2fa;
@@ -5112,7 +5135,6 @@ main .adminFooter ul li a {
   overflow: hidden;
 }
 
-=======
 .main__contact {
   margin-top: 8rem;
   width: 100%;
@@ -5347,7 +5369,6 @@ main .adminFooter ul li a {
 /* Tablet: width >= 740px and width < 1024px */
 /* Mobile and Tablet: width < 1024px */
 /* PC: width >= 1024px */
->>>>>>> b258d4f06c30c4dd6ee35d9cdbfc90924879ac34
 /* Mobile: with < 740px */
 @media only screen and (max-width: 46.1875em) {
   .mobile {
