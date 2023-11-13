@@ -31,14 +31,18 @@
         z-index: 99;
             .form__title{
                 color: var(--m-3-black, #000);
-                font-family: 'mainFont';
+                font-family: 'Exo 2';
                 font-size: 24px;
                 font-style: normal;
                 font-weight: 900;
                 line-height: normal;
             }
-        
-    }
+            .form__btn {
+                background: $-black;
+                border-radius: .4rem;
+                color: $-white;
+            }
+    }   
     
 }
 .login__section{
@@ -67,7 +71,7 @@
         z-index: 99;
             .form__title{
                 color: var(--m-3-black, #000);
-                font-family: 'mainFont';
+                font-family: 'Exo 2';
                 font-size: 24px;
                 font-style: normal;
                 font-weight: 900;

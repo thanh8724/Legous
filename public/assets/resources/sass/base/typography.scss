@@ -184,10 +184,10 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-family: 'Exo 2', sans-serif;
-    font-size: clamp(2.4rem, -0.743rem + 8.381vw, 6.8rem);
+    // font-size: clamp(2.4rem, -0.743rem + 8.381vw, 6.8rem);
     font-style: normal;
     font-weight: 700;
-    line-height: clamp(3.6rem, 0.457rem + 8.381vw, 8rem);
+    // line-height: clamp(3.6rem, 0.457rem + 8.381vw, 8rem);
     letter-spacing: -0.25px;
     text-transform: uppercase;
 }

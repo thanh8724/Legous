@@ -42,14 +42,14 @@
                 Chào mừng trở lại LEGOUS <br>
                 Đăng nhập ngay !
             </div>
-            <div class="form__group">
+            <div class="form__group without-title">
                 <!-- <label for="username">Email</label> -->
-                <input type="text" name="username" class="user__name--input" placeholder=" ">
+                <input type="text" name="username" class="email--input" placeholder=" ">
                 <label for="" class="label__place">Email</label>
             </div>
-            <div class="form__group">
+            <div class="form__group without-title">
                 <!-- <label for="username">Mật khẩu</label> -->
-                <input type="text" name="username" class="user__name--input" placeholder=" ">
+                <input type="text" name="username" class="password--input" placeholder=" ">
                 <label for="" class="label__place">Mật khẩu</label>
             </div>
             <button type="submit" class="btn form__btn"><i class="fal fa-arrow-right"></i>ĐĂNG NHẬP NGAY</button>
