@@ -31,6 +31,29 @@
     background-color: $light-primary;
     /* Change the active dot's color */
 }
+
+// slick edit 
+.slick-dots {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    li {
+        ::before {
+            content: '';
+            width: .6rem;
+            aspect-ratio: 1;
+            background: $neutral30;
+        }
+    }
+
+    li.slick-active {
+        ::before {
+            background: $light-primary;
+        }
+    }
+}
 // || Responsive 
 /* Mobile: with < 740px */
 @media only screen and (max-width: 46.1875em){

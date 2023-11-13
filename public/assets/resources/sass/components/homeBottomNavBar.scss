@@ -8,6 +8,7 @@
     .bottom-navbar__item {
         display: grid;
         .bottom-navbar__link {
+            color: $light-primary;
             display: grid;
             place-items: center;
             grid-row: span 2;

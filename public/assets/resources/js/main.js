@@ -153,6 +153,23 @@ const app = {
             });
         }
 
+        /** product gallery handler  */
+        const gallery = document.querySelector('.product__gallery');
+
+        if (gallery) {
+            const spotlight = gallery.querySelector('.gallery__spotlight > img');
+            const thumbnails = gallery.querySelectorAll('.gallery__thumbnails__item > img');
+            thumbnails.forEach(item => {
+                item.onclick = () => {
+                    spotlight.src = item.src;
+                }
+            });
+        }
+
+        /** add coupon handler */
+        const addCouponeBtn = document.querySelector('add-coupon-btn');
+        
+
     },
     start () {
         this.eventsHandler();

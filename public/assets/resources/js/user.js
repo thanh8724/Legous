@@ -66,6 +66,17 @@ function select__order()
     });
 }
 
+// show - hidden switch account
+
+const button_switchAccount = document.querySelector('.box__changeAccount svg');
+// let type_switchAccount = 
+if(button_switchAccount) {
+    let box__changeAccount__content = document.querySelector('.box__changeAccount--content');
+    button_switchAccount.addEventListener("click", () => {
+        box__changeAccount__content.classList.toggle('show');
+    });
+}
+
 slider_menuMobile();
 input_typeCheckbox();
 select__order();

@@ -73,6 +73,138 @@ html {
             }
         }
 
+        .box__changeAccount {
+            min-width: 1rem;
+            height: 100%;
+
+            svg {
+                width: 3rem;
+                height: 3rem;
+                color: $neutral80;
+                cursor: pointer;
+                transition: $trans-normal;
+
+                &:hover {
+                    color: $neutral70;
+                    transform: rotate(90deg);
+                }
+            }         
+            
+            &--content {
+                position: absolute;
+                width: 34.5rem;
+                height: auto;
+                background-color: #f7f7f7;
+                right: 30rem;
+                z-index: 999;
+                border-radius: 1rem;
+                padding: 1rem 2rem;
+                transition: $trans-bounce;
+                opacity: 0;
+                visibility: hidden;
+
+                .box__listAccount {
+                    width: 100%;
+                    min-height: 10rem;
+                    border-radius: 0.5rem;
+                    padding: 0.5rem 1rem;
+                    display: flex;
+                    flex-direction: column;
+
+                    &--item {
+                        display: flex;
+                        gap: 2rem;
+                        width: 100%;
+                        height: auto;
+                        padding: 2rem 0;
+                        cursor: pointer;
+                        
+
+                        .box__avatar--account {
+                            width: 4.6rem;
+                            height: 4.6rem;
+                            border-radius: 100rem;
+                            overflow: hidden;
+                            display: flex;
+                            flex-shrink: 0;
+
+                            img {
+                                width: 100%;
+                                height: 100%;
+                                object-fit: cover;
+                            }
+                        }
+
+                        .box__info--account {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            // gap: 1rem;
+
+                            .info--account_name {
+                                font-weight: 600;
+                                padding: 0.2rem 0;
+                                display:-webkit-box;
+                                -webkit-line-clamp:1;
+                                -webkit-box-orient: vertical;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                word-break: break-word;
+                            }
+                            .info--account_email {
+                                font-size: 1.3rem;
+                                color: $neutral0;
+                            }
+                        }
+                    }
+
+                    .account__notActive {
+                        padding: 1rem;
+                        transition: $trans-bounce;
+                        border-radius: 1rem;
+                    }
+                    .account__notActive:hover {
+                        background-color: $neutral90;
+                    }
+                }
+                
+                .box__changeAccount--logOut {
+                    width: 100%;
+                    height: auto;
+                    margin-top: 2rem;
+                    :hover {
+                        background-color: #eee;
+                    }
+
+                    .box__changeAccount--logOut__button {
+                        display: flex;
+                        align-items: center;
+                        gap: 2rem;
+                        padding: 0.5rem 0.5rem;
+                        border-radius: 1rem;
+                        cursor: pointer;
+                        transition: $trans-bounce;
+
+                        i {
+                            width: 3.5rem;
+                            height: 3.5rem;
+                            font-size: 2rem;
+                            border-radius: 100rem;
+                            background-color: $neutral90;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            flex-shrink: 0;
+                        }
+    
+                        span {
+                            font-weight: 600;
+                        }
+                    }
+                }
+            }
+        }
+
         .main__inner--bottom {
             width: 100%;
             height: auto;
@@ -609,6 +741,11 @@ html {
     }
 }
 
+.show {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
 .main__historyOrder {
     padding-inline: clamp(6rem, -11.143rem + 45.714vw, 16rem);
     padding-block: clamp(1.2rem, -2.229rem + 9.143vw, 6rem);        
@@ -815,6 +952,14 @@ html {
             flex-direction: column;
             padding: 1.6rem;
 
+            .box__changeAccount {
+                svg:focus {
+                    transform: rotate(90deg);
+                }
+                .box__changeAccount--content {
+                    right: 1.6rem;
+                }
+            }
             .main__inner--bottom {
                 display: flex;
                 flex-direction: column;
@@ -871,6 +1016,15 @@ html {
         padding: 5rem 15rem;
         .main__inner{
             gap: 1rem;
+
+            .box__changeAccount {
+                svg:focus {
+                    transform: rotate(90deg);
+                }
+                .box__changeAccount--content {
+                    right: 15rem;
+                }
+            }
             .main__inner--top{
                 .info__user{
                     .info__user--top{
@@ -921,6 +1075,15 @@ html {
         padding-block: 1rem;
         .main__inner{
             gap: 2rem;
+
+            .box__changeAccount {
+                svg:focus {
+                    transform: rotate(90deg);
+                }
+                .box__changeAccount--content {
+                    right: 1.6rem;
+                }
+            }
             .main__inner--top{
                 .info__user{
                     .info__user--top{
@@ -970,9 +1133,9 @@ html {
                             .form__upload-image {
                                 width: 100%;
                                 .box__image--user{
+                                    width: 7.5rem !important;
+                                    height: 7.5rem !important;
                                     overflow: hidden;
-                                    width: 6rem;
-                                    height: 6rem;
                                     .image__user--upload{
                                         width: 100%;
                                         height: 100%;
@@ -1013,6 +1176,15 @@ html {
         padding: 5rem 15rem;
         .main__inner{
             gap: 1rem;
+
+            .box__changeAccount {
+                svg:focus {
+                    transform: rotate(90deg);
+                }
+                .box__changeAccount--content {
+                    right: 15rem;
+                }
+            }
             .main__inner--top{
                 .info__user{
                     .info__user--top{
@@ -1063,6 +1235,15 @@ html {
         padding-block: 1rem;
         .main__inner{
             gap: 2rem;
+
+            .box__changeAccount {
+                svg:focus {
+                    transform: rotate(90deg);
+                }
+                .box__changeAccount--content {
+                    right: 1.6rem;
+                }
+            }
             .main__inner--top{
                 .info__user{
                     .info__user--top{
@@ -1127,6 +1308,16 @@ html {
         padding: 5rem 15rem;
         .main__inner{
             gap: 1rem;
+
+            .box__changeAccount {
+                svg:focus {
+                    transform: rotate(90deg);
+                }
+                .box__changeAccount--content {
+                    right: 15rem;
+                }
+            }
+
             .main__inner--top{
                 .info__user{
                     .info__user--top{
@@ -1177,6 +1368,15 @@ html {
         padding-block: 1rem;
         .main__inner{
             gap: 2rem;
+
+            .box__changeAccount {
+                svg:focus {
+                    transform: rotate(90deg);
+                }
+                .box__changeAccount--content {
+                    right: 1.6rem;
+                }
+            }
             .main__inner--top{
                 .info__user{
                     .info__user--top{
@@ -1242,6 +1442,16 @@ html {
         padding: 5rem 15rem;
         .main__inner{
             gap: 1rem;
+
+            .box__changeAccount {
+                svg:focus {
+                    transform: rotate(90deg);
+                }
+                .box__changeAccount--content {
+                    right: 15rem;
+                }
+            }
+
             .main__inner--top{
                 .info__user{
                     .info__user--top{
@@ -1299,6 +1509,15 @@ html {
             display: flex;
             flex-direction: column;
             // padding: 1.6rem;
+
+            .box__changeAccount {
+                svg:focus {
+                    transform: rotate(90deg);
+                }
+                .box__changeAccount--content {
+                    right: 1.6rem;
+                }
+            }
             .info__user--top {
                 span{
                     font-size: 1.6rem;
@@ -1456,6 +1675,16 @@ html {
         padding: 5rem 15rem;
         .main__inner{
             gap: 1rem;
+
+            .box__changeAccount {
+                svg:focus {
+                    transform: rotate(90deg);
+                }
+                .box__changeAccount--content {
+                    right: 15rem;
+                }
+            }
+
             .main__inner--top{
                 .info__user{
                     .info__user--top{
@@ -1506,6 +1735,15 @@ html {
         padding-block: 1rem;
         .main__inner{
             gap: 2rem;
+
+            .box__changeAccount {
+                svg:focus {
+                    transform: rotate(90deg);
+                }
+                .box__changeAccount--content {
+                    right: 1.6rem;
+                }
+            }
             .main__inner--top{
                 .info__user{
                     .info__user--top{
@@ -1662,6 +1900,16 @@ html {
         padding: 5rem 15rem;
         .main__inner{
             gap: 1rem;
+
+            .box__changeAccount {
+                svg:focus {
+                    transform: rotate(90deg);
+                }
+                .box__changeAccount--content {
+                    right: 15rem;
+                }
+            }
+
             .main__inner--top{
                 .info__user{
                     .info__user--top{
@@ -1707,6 +1955,15 @@ html {
 
 // || Responsive User-deleteAccount
 @media only screen and (max-width: 46.1875em){
+    .box__changeAccount {
+        svg:focus {
+            transform: rotate(90deg);
+        }
+        .box__changeAccount--content {
+            right: 1.6rem;
+        }
+    }
+
     .info__user--top {
         span{
             font-size: 1.6rem;
@@ -1748,6 +2005,16 @@ html {
         padding: 5rem 15rem;
         .main__inner{
             gap: 1rem;
+
+            .box__changeAccount {
+                svg:focus {
+                    transform: rotate(90deg);
+                }
+                .box__changeAccount--content {
+                    right: 15rem;
+                }
+            }
+
             .main__inner--top{
                 .info__user{
                     .info__user--top{
