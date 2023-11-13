@@ -1,4 +1,39 @@
-<div class="containerAdmin">
+<section class="dashboard">
+      <!----======== Header DashBoard ======== -->
+      <div class="top">
+        <i class="fas fa-angle-left sidebar-toggle"></i>
+        <div class="search-box">
+          <i class="far fa-search"></i>
+          <input type="text" placeholder="Search here...">
+        </div>
+        <div class="info-user">
+          <i class="far fa-comment-alt"></i>
+          <i class="fal fa-bell"></i>
+          <img src="/public/assets/media/images/users/user-1.svg" alt="">
+        </div>
+      </div>
+      <div class="flex-column p30 g30" style="align-self: stretch; align-items: flex-start;">
+        <div class="text">
+          <h1 class="label-large-prominent" style="font-size: 24px;
+              line-height: 32px;">Đơn Hàng</h1>
+        </div>
+        <!--DateTimelocal-->
+        <div class="flex-between width-full" style="gap: 8px;
+            align-items: center;">
+          <div class="flex g8">
+            <span class="label-large">Admin /</span><a href="#" class="label-large" style="text-decoration: none;">Đơn Hàng</a>
+          </div>
+          <div class="flex-center g8">
+            <span><i class="fa-solid fa-calendar-days"></i></span>
+            <input class="label-large-prominent" type="datetime-local" style="color: #625B71; border: none; font-size: 16px;
+                ">
+          </div>
+        </div>
+      </div>
+      <!----======== End Header DashBoard ======== -->
+
+      <!----======== Body DashBoard ======== -->
+      <div class="containerAdmin">
         <div class="flex-column width-full">
           <div class="content-filter flex-column">
             <button onclick="" id="filter" class="flex-center g8" style="padding: 10px 16px;
@@ -94,3 +129,8 @@
         </table>
 
       </div>
+      </div>
+
+      <!----======== End Body DashBoard ======== -->
+
+    </section>

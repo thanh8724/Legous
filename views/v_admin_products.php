@@ -1,4 +1,18 @@
-<div class="flex-column p30 g30"
+<section class="dashboard">
+            <!----======== Header DashBoard ======== -->
+            <div class="top">
+                <i class="fas fa-angle-left sidebar-toggle"></i>
+                <div class="search-box">
+                    <i class="far fa-search"></i>
+                    <input type="text" placeholder="Search here...">
+                </div>
+                <div class="info-user">
+                    <i class="far fa-comment-alt"></i>
+                    <i class="fal fa-bell"></i>
+                    <img src="/public/assets/media/images/users/user-2.svg" alt="">
+                </div>
+            </div>
+            <div class="flex-column p30 g30"
             style="align-self: stretch; align-items: flex-start;">
             <div class="text">
               <h1 class="label-large-prominent" style="font-size: 24px;
@@ -17,7 +31,10 @@
               </div>
             </div>
             </div>
-<div class="containerAdmin">
+            <!----======== End Header DashBoard ======== -->
+
+            <!----======== Body DashBoard ======== -->
+            <div class="containerAdmin">
               <div class="container-products width-full flex" style="flex-wrap: wrap; justify-content: space-between; gap: 20px">
                 <!--Cart-->
                   <div class="cart trans-bounce flex-column p20" style="
@@ -736,3 +753,7 @@
                
               </div>
             </div>
+
+            <!----======== End Body DashBoard ======== -->
+
+        </section>

@@ -10,7 +10,10 @@ if (isset($_GET['act'])) {
             $view_name='admin_home';
             break;
         case 'categories':
-             // lấy dữ liệu
+            // lấy dữ liệu  
+            // include_once 'models/m_categories.php';
+
+            
             // hiển thị dữ liệu  
             $view_name='admin_categories';
             break;

@@ -1,5 +1,162 @@
-<div class="containerAdmin">
-                <div class="localDashboard p30">
+<section class="dashboard">
+            <!----======== Header DashBoard ======== -->
+            
+            <div class="top">
+                <i class="fas fa-angle-left sidebar-toggle"></i>
+                <div class="search-box">
+                    <i class="far fa-search"></i>
+                    <input type="text" placeholder="Tìm Kiếm Tại Đây...">
+                </div>
+                <div class="info-user">
+                    <div class="notifiComment">
+                        <i class="far fa-comment-alt btnShowFeature"></i>
+                        <ul class="showFeatureAdminHeader box-shadow1">
+                            <li>
+                                <div class="col-12 d-flex">
+                                    <div class="col-2">
+                                        <img class="notifiAdminImg" src="../assets/media/images/users/profile.jpg" alt="">
+                                    </div>
+                                    <div class="col-10">
+                                        <p class="notifiAdminText body-small"><strong>Trần Thị Hồng Ngọc</strong><span> vừa mua một mô hình với mã đơn hàng <strong>#999</strong></span></p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="col-12 d-flex">
+                                    <div class="col-2">
+                                        <img class="notifiAdminImg" src="../assets/media/images/users/profile.jpg" alt="">
+                                    </div>
+                                    <div class="col-10">
+                                        <p class="notifiAdminText body-small"><strong>Trần Thị Hồng Ngọc</strong><span> vừa mua một mô hình với mã đơn hàng <strong>#999</strong></span></p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="col-12 d-flex">
+                                    <div class="col-2">
+                                        <img class="notifiAdminImg" src="../assets/media/images/users/profile.jpg" alt="">
+                                    </div>
+                                    <div class="col-10">
+                                        <p class="notifiAdminText body-small"><strong>Trần Thị Hồng Ngọc</strong><span> vừa mua một mô hình với mã đơn hàng <strong>#999</strong></span></p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="col-12 d-flex">
+                                    <div class="col-2">
+                                        <img class="notifiAdminImg" src="../assets/media/images/users/profile.jpg" alt="">
+                                    </div>
+                                    <div class="col-10">
+                                        <p class="notifiAdminText body-small"><strong>Trần Thị Hồng Ngọc</strong><span> vừa mua một mô hình với mã đơn hàng <strong>#999</strong></span></p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="col-12 d-flex">
+                                    <div class="col-2">
+                                        <img class="notifiAdminImg" src="../assets/media/images/users/profile.jpg" alt="">
+                                    </div>
+                                    <div class="col-10">
+                                        <p class="notifiAdminText body-small"><strong>Trần Thị Hồng Ngọc</strong><span> vừa mua một mô hình với mã đơn hàng <strong>#999</strong></span></p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="notifiBell">
+                        <i class="fal fa-bell btnShowFeature"></i>
+                        <ul class="showFeatureAdminHeader box-shadow1">
+                            <li>
+                                <div class="col-12 d-flex">
+                                    <div class="col-2">
+                                        <img class="notifiAdminImg" src="../assets/media/images/users/profile.jpg" alt="">
+                                    </div>
+                                    <div class="col-10">
+                                        <p class="notifiAdminText body-small"><strong>Trần Thị Hồng Ngọc</strong><span> vừa mua một mô hình với mã đơn hàng <strong>#999</strong></span></p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="col-12 d-flex">
+                                    <div class="col-2">
+                                        <img class="notifiAdminImg" src="../assets/media/images/users/profile.jpg" alt="">
+                                    </div>
+                                    <div class="col-10">
+                                        <p class="notifiAdminText body-small"><strong>Trần Thị Hồng Ngọc</strong><span> vừa mua một mô hình với mã đơn hàng <strong>#999</strong></span></p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="col-12 d-flex">
+                                    <div class="col-2">
+                                        <img class="notifiAdminImg" src="../assets/media/images/users/profile.jpg" alt="">
+                                    </div>
+                                    <div class="col-10">
+                                        <p class="notifiAdminText body-small"><strong>Trần Thị Hồng Ngọc</strong><span> vừa mua một mô hình với mã đơn hàng <strong>#999</strong></span></p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="col-12 d-flex">
+                                    <div class="col-2">
+                                        <img class="notifiAdminImg" src="../assets/media/images/users/profile.jpg" alt="">
+                                    </div>
+                                    <div class="col-10">
+                                        <p class="notifiAdminText body-small"><strong>Trần Thị Hồng Ngọc</strong><span> vừa mua một mô hình với mã đơn hàng <strong>#999</strong></span></p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="col-12 d-flex">
+                                    <div class="col-2">
+                                        <img class="notifiAdminImg" src="../assets/media/images/users/profile.jpg" alt="">
+                                    </div>
+                                    <div class="col-10">
+                                        <p class="notifiAdminText body-small"><strong>Trần Thị Hồng Ngọc</strong><span> vừa mua một mô hình với mã đơn hàng <strong>#999</strong></span></p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="imgUserAdmin">
+                        <img class="btnShowFeature" src="../assets/media/images/users/profile.jpg" alt="">
+                        <ul class="showFeatureAdminHeader box-shadow1" >
+                            
+                            <li><a class="body-small" href="#statisticalChart">Thống kê đơn hàng</a></li>
+                            <li><a class="body-small" href="#recentOrder">Đơn Hàng Gần Đây</a></li>
+                            <li><a class="body-small" href="#overviewDashboard">Tổng quan</a></li>
+                            <li><a class="body-small" href="#">Đăng Xuất</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!----======== End Header DashBoard ======== -->
+
+            <!----======== Body DashBoard ======== -->
+
+            <!----======== Carousel DashBoard ======== -->
+
+            <div class="containerAdmin" style="margin:0;">
+            <div class="flex-column p30 g30" style="align-self: stretch; align-items: flex-start;">
+                    <div class="text">
+                    <h1 class="label-large-prominent" style="font-size: 24px;
+                        line-height: 32px;">Bảng Điều Khiển</h1>
+                    </div>
+                    <!--DateTimelocal-->
+                    <div class="flex-between width-full" style="gap: 8px;
+                        align-items: center;">
+                    <div class="flex g8">
+                        <span class="label-large">Admin /</span><a href="#" class="label-large" style="text-decoration: none;">Bảng Điều Khiển</a>
+                    </div>
+                    <div class="flex-center g8">
+                        <span><i class="fa-solid fa-calendar-days"></i></span>
+                        <input class="label-large-prominent" type="datetime-local" style="color: #625B71; border: none; font-size: 16px;
+                            ">
+                    </div>
+                    </div>
+                </div>
+                <!-- <div class="localDashboard p30">
                     <div class="col-12 d-flex mt-5 pt-5">
                         <div class="col-6">
                             <div class="col-12">
@@ -15,7 +172,7 @@
                                     class="dateCalender label-medium ml12">Aug 21, 2023 - Aug 28, 2023</span></section>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="owl-carousel owl-theme p30">
                     <div class="item box-shadow4 slider_contain">
                         <div class="slider_items p-4">
@@ -532,3 +689,23 @@
                 <!----======== End OverView DashBoard  ======== -->
 
             </div>
+            <footer class="adminFooter p30">
+                <div class="col-12 d-flex">
+                    <div class="col-6">
+                        <p class="label-medium">® LEGOUS admin</p>
+                    </div>
+                    <div class="col-6">
+                        <ul>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Policy</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </footer>
+            </div>
+
+
+            <!----======== End Body DashBoard ======== -->
+
+        </section>
