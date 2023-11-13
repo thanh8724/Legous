@@ -35,24 +35,24 @@
       <!----======== Body DashBoard ======== -->
       <div class="containerAdmin">
         <div class="flex-column width-full">
-          <div class="content-filter flex-column">
+          <div class="content-filter flex-column dropdown-center">
             <button id="filter" class="flex-center g8" style="padding: 10px 16px;
                   border: 1px solid #79747E; border-radius: 100px;
-                  margin-left: auto;">
+                  margin-left: auto;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
                 <path d="M7.5 13.5H10.5V12H7.5V13.5ZM2.25 4.5V6H15.75V4.5H2.25ZM4.5 9.75H13.5V8.25H4.5V9.75Z"
                   fill="#6750A4" />
                 <span class="label-medium fw-smb" style="color: #6750a4;">Lọc</span>
               </svg>
             </button>
-            <ul class="dropdown-menu"
-              style="margin-left: auto; align-items: flex-start; list-style: none;">
+            <ul class="dropdown-menu">
               <li><a href="">Tên Sản phẩm</a></li>
               <li><a href="">Giá</a></li>
               <li><a href="">Danh Mục</a></li>
               <li><a href="">Ngày - Tháng</a></li>
             </ul>
           </div>
+          
         </div>
         <table class="content-table width-full">
           <thead>
