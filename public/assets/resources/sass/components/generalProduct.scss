@@ -18,6 +18,20 @@
                 opacity: 0.8;
             }
         }   
+        .love-btn {
+            background: $-pink;
+            color: $-white;
+
+            &:hover {
+                opacity: 0.8;
+                background: $-pink;
+                color: $-white;
+            }
+        }
+        .love-btn.active {
+            background: $-pink !important;
+            color: $-white !important;
+        }
     }
     &__carousel {
         padding: 1rem;

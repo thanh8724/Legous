@@ -1,6 +1,9 @@
 <?php
 // Điều hướng đến các controller
 
+include_once 'models/m_pdo.php';
+include_once 'config.php';
+
 // include models
 include_once 'models/m_cart.php';
 include_once 'models/m_category.php';
@@ -23,10 +26,6 @@ if (isset($_GET['mod'])) {
         case 'category':
             $ctrl_name = 'category';
             break;
-        // default:
-        //     $ctrl_name = 'home';
-        //     header("Location: ?mod=page&act=home");
-        //     break;
     }
     // controller sẽ là cầu nối nơi điều hướng các trang bên trong nó.
     //VD: v_page_home / "page" là controller và "home" là trang nằm trong controller

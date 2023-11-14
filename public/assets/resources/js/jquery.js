@@ -214,3 +214,19 @@ $(document).ready(function () {
         ]
     });
 });
+
+/** tabs respon handler */
+$(document).ready(function() {
+    $('.tabs').slick({
+        variableWidth: true,
+        arrows: false,
+        prevArrow: false,
+        nextArrow: false,
+        swipe: true,
+        infinite: false,
+        swipeToSlide: true,
+        centerMode: true,
+        // prevArrow: '<button class="icon-btn prev-btn box-shadow1" style="background: white; color: black"><i class="fal fa-chevron-left"></i></button>',
+        // nextArrow: '<button class="icon-btn next-btn box-shadow1" style="background: white; color: black"><i class="fal fa-chevron-right"></i></button>',
+    });
+})

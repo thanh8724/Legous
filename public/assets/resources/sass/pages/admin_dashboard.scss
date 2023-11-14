@@ -570,7 +570,7 @@ main {
       }
       .dashboard {
           width: 100% !important;
-          left: 0;
+          left: 0 !important;
           .top {
               display: none;
           }

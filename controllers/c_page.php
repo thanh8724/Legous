@@ -6,6 +6,10 @@
             case 'home':
                 // lấy dữ liệu
                 include_once 'models/m_cart.php';
+                include_once 'models/m_product.php';
+                $topLoveProduct = getProductsByLove(1);
+                $loveProducts = getProductsByLove(12);
+                $categories = getCategories();
                 
                 // hiển thị dữ liệu
                 $view_name = 'home';
