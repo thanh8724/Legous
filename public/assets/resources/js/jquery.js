@@ -90,8 +90,9 @@ $(document).ready(function () {
         autoplay: true,
         dots: true,
         swipe: true,
+        swipeToSlide: true,
         slidesToShow: 4,
-        slidesToScroll: 1,
+        // slidesToScroll: 1,
         prevArrow: false,
         nextArrow: false,
         responsive: [
@@ -132,11 +133,6 @@ $(document).ready(function () {
     });
 });
 
-/** day picker */
-// $(document).ready(function () {
-//     $('#shop-filter__day-picker').dayPicker();
-// })
-
 /** accordion handler */
 $(document).ready(function () {
     (function ($) {
@@ -149,7 +145,7 @@ $(document).ready(function () {
             return false;
         });
 
-    })(jQuery);
+    })($);
 });
 
 
@@ -225,8 +221,26 @@ $(document).ready(function() {
         swipe: true,
         infinite: false,
         swipeToSlide: true,
-        centerMode: true,
         // prevArrow: '<button class="icon-btn prev-btn box-shadow1" style="background: white; color: black"><i class="fal fa-chevron-left"></i></button>',
         // nextArrow: '<button class="icon-btn next-btn box-shadow1" style="background: white; color: black"><i class="fal fa-chevron-right"></i></button>',
+    });
+})
+
+
+/** search handler */
+$(document).ready(() => {
+    $('.search__product__wrapper').hide();
+    $('.search__form__input').keyup(() => {
+        let val = $('.search__form__input').val();
+        if (val == "") {
+            $('.search__product__wrapper').hide();
+        } else {
+            $('.search__product__wrapper').show();
+        }
+        $.post('./views/libs/search.php', {
+            search: val,
+        }, (data) => {
+            $(".search__product__wrapper").html(data);
+        });
     });
 })

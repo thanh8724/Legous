@@ -7,9 +7,12 @@
                 // lấy dữ liệu
                 include_once 'models/m_cart.php';
                 include_once 'models/m_product.php';
+                include_once 'models/m_partner.php';
                 $topLoveProduct = getProductsByLove(1);
                 $loveProducts = getProductsByLove(12);
                 $categories = getCategories();
+                $partner = getPartner();
+                $upcommingProduct = getFeatureProduct();
                 
                 // hiển thị dữ liệu
                 $view_name = 'home';

@@ -1,3 +1,39 @@
+<?php 
+    /** header nav rendering */
+    $subnavHtml = '';
+    $categories = getCategories();
+    foreach ($categories as $item) {
+        extract($item);
+        $link = "?mod=page&act=product&idCategory=$id";
+        $products = getProductsByCategoryId($id , 3);
+
+        $productHtml = '';
+        foreach ($products as $product) {
+            extract($product);
+            $link = "?mod=page&act=product&idProduct=$id";
+            
+            $productHtml .=
+                <<<HTML
+                    <li class="mega-menu__nav--item"><a href="$link" class="mega-menu__nav--link body-large">$name</a></li>
+                HTML;
+        }
+        
+        $subnavHtml .= 
+        <<<HTML
+            <ul class="mega-menu__nav">
+                <h4 class="title-large fw-black">$item[name]</h4>
+                <div class="block">
+                    $productHtml
+                </div>
+            </ul>
+        HTML;
+    }
+
+    // render special product in mega menu
+    $specialProduct = getSpecialProduct();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,45 +80,50 @@
                 <ul class="header__nav flex g60">
                     <li class="header__nav__item"><a href="?mod=page&act=home" class="header__nav__link">Trang chủ</a>
                     </li>
-                    <li class="header__nav__item por">
+                    <li class="header__nav__item">
                         <a href="#" class="header__nav__link">Cửa hàng</a>
-                        <div class="flex-between header__subnav__wrapper poa box-shadow1 p20 rounded-8">
-                            <ul class="header__subnav flex-full flex-column g6">
-                                <h4 class="title-medium header__subnav__title ttc">mô hình</h4>
-                                <li class="header__nav__item header__subnav__item">
-                                    <a href="#" class="header__nav__link header__subnav__link ttu">naruto</a>
-                                </li>
-                                <li class="header__nav__item header__subnav__item">
-                                    <a href="#" class="header__nav__link header__subnav__link ttu">one piece</a>
-                                </li>
-                                <li class="header__nav__item header__subnav__item">
-                                    <a href="#" class="header__nav__link header__subnav__link ttu">dragon ball</a>
-                                </li>
-                                <li class="header__nav__item header__subnav__item">
-                                    <a href="#" class="header__nav__link header__subnav__link ttu">jujutsu kaisen</a>
-                                </li>
-                                <li class="header__nav__item header__subnav__item">
-                                    <a href="#" class="header__nav__link header__subnav__link ttu">kimetsu no yaiba</a>
-                                </li>
-                            </ul>
-                            <ul class="header__subnav flex-full flex-column g6">
-                                <h4 class="title-medium header__subnav__title ttc">mô hình</h4>
-                                <li class="header__nav__item header__subnav__item">
-                                    <a href="#" class="header__nav__link header__subnav__link ttu">naruto</a>
-                                </li>
-                                <li class="header__nav__item header__subnav__item">
-                                    <a href="#" class="header__nav__link header__subnav__link ttu">one piece</a>
-                                </li>
-                                <li class="header__nav__item header__subnav__item">
-                                    <a href="#" class="header__nav__link header__subnav__link ttu">dragon ball</a>
-                                </li>
-                                <li class="header__nav__item header__subnav__item">
-                                    <a href="#" class="header__nav__link header__subnav__link ttu">jujutsu kaisen</a>
-                                </li>
-                                <li class="header__nav__item header__subnav__item">
-                                    <a href="#" class="header__nav__link header__subnav__link ttu">kimetsu no yaiba</a>
-                                </li>
-                            </ul>
+                        <div class="header__subnav__wrapper header__mega-menu poa box-shadow1 rounded-8">
+                            <div class="top p20 flex-column g12 mega-menu__item">
+                                <div class="title-medium fw-bold">Cửa hàng</div>
+                                <span class="body-medium">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta consequuntur assumenda</span>
+                            </div>
+                            <div class="content flex mega-menu__item">
+                                <div class="product__wrapper p20">
+                                    <!-- single product start -->
+                                    <div class="title-large fw-bold primary-masking-text">Hot deal! Sale off 20%</div>
+                                    <div class="product mt12">
+                                        <a href="#" class="product__banner oh banner-cover rounded-8 por"
+                                            style="background-image: url('<?= constant('PRODUCT_PATH') . $specialProduct['img'] ?>')">
+                                            <div class="product__overlay poa flex-center">
+                                                <div class="flex g12 in-stock__btn-set">
+                                                    <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
+                                                    <button class="icon-btn love-btn"><i class="fa fa-heart"></i></button>
+                                                    <button class="icon-btn"><i class="fal fa-shopping-cart"></i></button>
+                                                </div>
+                                                <!-- <div class="flex g12 sold-out__btn-set">
+                                                    <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
+                                                    <button class="icon-btn"><i class="fal fa-plus"></i></button>
+                                                    <button class="icon-btn"><i class="fal fa-arrow-right"></i></button>
+                                                </div> -->
+                                            </div>
+                                        </a>
+                                        <a href="#" class="product__info">
+                                            <div class="product__info__name title-medium fw-smb"><?= $specialProduct['name'] ?></div>
+                                            <div class="product__info__price body-medium"><?= formatVND($specialProduct['price']) ?></div>
+                                        </a>
+                                        <div class="product__info flex-between width-full">
+                                            <div class="product__info__view body-medium">1,2m+ views</div>
+                                            <div class="product__info__rated flex g6 v-center body-medium">
+                                                4.4 <i class="fa fa-star start"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- single product end -->
+                                </div>
+                                <div class="mega-menu__nav--wrapper p20 auto-grid g30">
+                                    <?= $subnavHtml ?>
+                                </div>
+                            </div>
                         </div>
                     </li>
                     <li class="header__nav__item por">
@@ -161,9 +202,9 @@
                         <button class="icon-btn search__form__btn"><i class="far fa-search"></i></button>
                     </div>
                 </form>
-                <div class="search__product__wrapper mia flex-column g16" style="overflow-y: auto; width: 50vw">
+                <div class="search__product__wrapper mia flex-column g16" style="overflow-y: auto; width: 50vw; height: 50rem">
                     <!-- single search product start -->
-                    <div class="search__product flex-between p20 rounded-8 width-full">
+                    <!-- <div class="search__product flex-between p20 rounded-8 width-full">
                         <div class="flex g12">
                             <div class="search__product__banner">
                                 <img src="./public/assets/media/images/product/v944cyfrwt851.webp" alt="">
@@ -178,11 +219,11 @@
                             <button class="icon-btn delete-search-product__btn"><i class="fal fa-times"></i></button>
                             <div class="flex g12">
                                 <button class="icon-btn"><i class="fal fa-share"></i></button>
-                                <button class="icon-btn love-btn"><i class="fal fa-heart"></i></button>
+                                <button class="icon-btn love-btn toggle-btn"><i class="fal fa-heart"></i></button>
                                 <button class="icon-btn"><i class="fal fa-shopping-cart"></i></button>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- single search product end -->
                 </div>
             </div>

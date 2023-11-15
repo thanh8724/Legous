@@ -7,6 +7,7 @@ include_once 'config.php';
 // include models
 include_once 'models/m_cart.php';
 include_once 'models/m_category.php';
+include_once 'models/m_product.php';
 
 
 if (isset($_GET['mod'])) {
