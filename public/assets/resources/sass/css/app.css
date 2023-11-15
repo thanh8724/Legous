@@ -5029,7 +5029,6 @@ main .adminFooter ul li a {
 }
 .right-order-add-create .button_delete_img {
   margin-top: 48px;
-  display: none;
 }
 .right-order-add-create .button_delete_img button:first-child {
   background-color: #6750a4;

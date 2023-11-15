@@ -1,7 +1,7 @@
 <?php
 // Gữi/nhận dữ liệu thông qua model
+require_once './models/m_user.php';
 // Hiển thị dữ liệu thông qua view
-
 if (isset($_GET['act'])) {
     switch ($_GET['act']) {
         case 'home':
@@ -20,7 +20,16 @@ if (isset($_GET['act'])) {
         case 'client':
              // lấy dữ liệu
             // hiển thị dữ liệu  
+            $user_list = getUser();
+           
             $view_name='admin_client';
+            break;
+        case 'client-edit':
+            $view_name = 'admin_client_edit';
+                if(@$_GET['id']) {
+                $idUser = $_GET['id'];
+                $userInfo = getUserInfo($idUser);
+              }
             break;
         case 'orders':
              // lấy dữ liệu

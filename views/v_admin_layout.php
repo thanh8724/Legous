@@ -84,7 +84,7 @@
         <nav>
             <div class="logo-name">
                 <div class="logo-image">
-                    <img src="../assets/media/images/logo.png" alt="">
+                    <img src="./public/assets/media/images/users/profile.jpg" alt="">
                 </div>
 
                 <span class="logo_name display-small fw-black">LEGOUS</span>

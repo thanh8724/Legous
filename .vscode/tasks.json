@@ -1,18 +1,7 @@
 {
-<<<<<<< HEAD
     // See https://go.microsoft.com/fwlink/?LinkId=733558
     // for the documentation about the tasks.json format
-    "version": "2.0.0",
-    "tasks": [
-        {
-            "label": "Run sass",
-            "type": "shell",
-            "command": "sass ./public/assets/resources/sass/main.scss ./public/assets/resources/sass/css/app.css --watch"
-        }
-    ]
-}
-// views\public\assets\resources\sass\main.scss
-=======
+
     "version": "2.0.0",
     "tasks": [
         {
@@ -31,4 +20,3 @@
         }
     ]
 }
->>>>>>> 27780755a50f9506eb8ee56ebbea53cd411a310f
