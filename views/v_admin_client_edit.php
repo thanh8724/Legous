@@ -38,12 +38,59 @@
         
         $role = $_POST['role'];
         $id = $_GET['id'];
+        if (isset($_FILES['file'])) {
+            //Thư mục chứa file upload
+            $upload_dir = './public/assets/media/images/users/';
+            //Đường dẫn của file sau khi upload
+            $upload_file = $upload_dir . $_FILES['file']['name'];
+            //Xử lý upload đúng file ảnh
+            $type_allow = array('png', 'jpg', 'jpeg', 'gif');
+            //PATHINFO_EXTENSION lấy đuôi file
+            $type = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
+            // echo $type;
+            if(!in_array(strtolower($type), $type_allow)) {
+                $error['type'] = "Chỉ được upload file có đuôi PNG, JPG, GIF, JPEG";
+            }
+        
+            #Upload file có kích thước cho phép (<20mb ~ 29.000.000BYTE)
+            $file_size = $_FILES['file']['size'];
+            if($file_size > 29000000) {
+                $error['file_size'] = "Chỉ được upload file bé hơn 20MB";
+            }
+            #Kiểm tra trùng file trên hệ thống
+            if(file_exists($upload_file)) {
+                // $error['file_exists'] = "File đã tồn tại trên hệ thống";
+                // Xử lý đổi tên file tự động
+        
+                #Tạo file mới
+                // TênFile.ĐuôiFile
+                $filename = pathinfo($_FILES["file"]["name"], PATHINFO_FILENAME);
+                $new_filename = $filename.'- Copy.';
+                $new_upload_file = $upload_dir.$new_filename.$type;
+                $k=1;
+                while(file_exists($new_upload_file)) {
+                    $new_filename = $filename." - Copy({$k}).";
+                    $k++;
+                    $new_upload_file = $upload_dir.$new_filename.$type;
+                }
+                $upload_file = $new_upload_file;
+            }
+        
+        
+            if(empty($error)) {
+                if (move_uploaded_file($_FILES['file']['tmp_name'], $upload_file)) {
+                    $image = $new_filename.$type;
+                } else {
+                    echo "Upload file thất bại";
+                }
+            }
+        }
         if(empty($error)) {
             echo $id;
             echo $fullname;
             echo $password;
             echo $username;
-            editUserProfile($id,$fullname, $username, $password, $email, $address);
+            editUserProfile($id,$fullname, $username, $password, $email, $address, $image);
         }else {
             $error = "Loi64";
         }
@@ -156,7 +203,9 @@
                         <div class="col-5 col-md">
                             <div class="right-order-add-create p30 d-flex justify-content-center flex-column ">
                                 <div class="img_order-add-create rounded-4">
-                                    <img src="../public/assets/media/images/product/00e8115d9521e69a31f8ee479cb7814e6cdb0b49550b8f06d49a21fd.jpg" alt="">
+                                    <!-- <img src="../public/assets/media/images/product/00e8115d9521e69a31f8ee479cb7814e6cdb0b49550b8f06d49a21fd.jpg" alt=""> -->
+                                <img src="./public/assets/media/images/users/<?php echo $userInfo[0]['img'] ?>">
+
                                 </div>
                                 <hr>
                                 <div style="width: 100%;" id="drop-area">
