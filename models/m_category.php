@@ -35,4 +35,14 @@ include_once 'models/m_pdo.php';
     function getCategoriesSorted() {
         return pdo_query("SELECT * FROM category ORDER BY name ASC");
     }
+    function  getCategories($start = 0, $limit = 0,$kyw =""){
+        $sql = "SELECT * FROM category";
+        if( $limit > 0){
+            $sql .= " LIMIT ".$start.",".$limit;
+        }
+        if($kyw!=""){
+            $sql = "AND LIKE '%".$kyw."%'";
+        }
+        return pdo_query($sql);
+    }
 ?>
