@@ -102,6 +102,17 @@
 
 // || common classes start
 
+    // || form class 
+    .invalid {
+        .form__input {
+            border: .1rem solid $error50 !important;
+        }
+        .label__place,
+        .form__message {
+            color: $error50 !important;
+        }
+    }
+
     // || scroll with overflow classes
     .scroll-y {
         overflow-y: scroll !important;

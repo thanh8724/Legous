@@ -19,15 +19,14 @@ function pdo_get_connection(){
  */
 function pdo_execute($sql){
     $sql_args = array_slice(func_get_args(), 1);
-    try{
+    try {
         $conn = pdo_get_connection();
         $stmt = $conn->prepare($sql);
         $stmt->execute($sql_args);
-    }
-    catch(PDOException $e){
+        return $conn->lastInsertId(); // Return the last inserted ID
+    } catch(PDOException $e) {
         throw $e;
-    }
-    finally{
+    } finally {
         unset($conn);
     }
 }

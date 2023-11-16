@@ -129,7 +129,7 @@
               <td><a href="">Xem chi tiết</a></td>
             </tr>
             
-           
+          
 
           </tbody>
         </table>
@@ -149,3 +149,6 @@
       <!----======== End Body DashBoard ======== -->
 
     </section>
+    <?php 
+        }
+    ?>

@@ -32,6 +32,34 @@
     // render special product in mega menu
     $specialProduct = getSpecialProduct();
 
+    /** render user widget */
+    $userWidgetHtml = '';
+    if (isset($_SESSION['user'])) {
+        $user = $_SESSION['user'];
+        extract($user);
+        $userWidgetHtml =
+        <<<HTML
+            <a href="#" class="user-widget flex flex-center g6">
+                <i class="fal fa-user user-widget__icon"></i>
+                <div class="username">$name_user</div>
+            </a>
+            <div class="flex-between header__subnav__wrapper poa box-shadow1 p20 rounded-8" style="top: 100%; left: 0;">
+                <ul class="header__subnav flex-full flex-column g6">
+                    <li class="header__nav__item header__subnav__item">
+                        <a href="#" class="header__nav__link header__subnav__link ttu">Account detail</a>
+                    </li>
+                    <li class="header__nav__item header__subnav__item">
+                        <a href="#" class="header__nav__link header__subnav__link ttu error60">Log out</a>
+                    </li>
+                </ul>
+            </div>
+        HTML;
+    } else {
+        $userWidgetHtml = 
+        <<<HTML
+            <a href="?mod=page&act=login" class="btn primary-btn">Đăng ký ngay</a>
+        HTML;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -76,12 +104,12 @@
                     </li>
                 </ul>
                 <!-- header respon nav end -->
-                <img src="./public/assets/media/images/logo.svg" alt="" class="logo">
+                <a href="?mod=page&act=home"><img src="./public/assets/media/images/logo.svg" alt="" class="logo"></a>
                 <ul class="header__nav flex g60">
                     <li class="header__nav__item"><a href="?mod=page&act=home" class="header__nav__link">Trang chủ</a>
                     </li>
                     <li class="header__nav__item">
-                        <a href="#" class="header__nav__link">Cửa hàng</a>
+                        <a href="?mod=page&act=shop" class="header__nav__link">Cửa hàng</a>
                         <div class="header__subnav__wrapper header__mega-menu poa box-shadow1 rounded-8">
                             <div class="top p20 flex-column g12 mega-menu__item">
                                 <div class="title-medium fw-bold">Cửa hàng</div>
@@ -160,24 +188,7 @@
                     <li class="header__nav__item flex-center"><button class="icon-btn" data-elm-function=""><i
                                 class="far fa-shopping-cart"></i></button></li>
                     <li class="header__nav__item por flex-center">
-                        <!-- guest navigation -->
-                        <a href="?mod=page&act=login" class="btn primary-btn">Đăng ký ngay</a>
-
-                        <!-- customer navigation -->
-                        <!-- <a href="#" class="user-widget flex flex-center g6">
-                            <i class="fal fa-user user-widget__icon"></i>
-                            <div class="username">Username</div>
-                        </a>
-                        <div class="flex-between header__subnav__wrapper poa box-shadow1 p20 rounded-8" style="top: 100%; left: 0;">
-                            <ul class="header__subnav flex-full flex-column g6">
-                                <li class="header__nav__item header__subnav__item">
-                                    <a href="#" class="header__nav__link header__subnav__link ttu">Account detail</a>
-                                </li>
-                                <li class="header__nav__item header__subnav__item">
-                                    <a href="#" class="header__nav__link header__subnav__link ttu">Log out</a>
-                                </li>
-                            </ul>
-                        </div> -->
+                        <?= $userWidgetHtml ?>
                     </li>
                 </ul>
 
