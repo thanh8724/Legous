@@ -23,12 +23,12 @@
     }
 
     function getFeatureProduct () {
-        $sql = "SELECT * FROM product WHERE is_upcomming = 1 LIMIT 1";
+        $sql = "SELECT * FROM product WHERE is_upcomming > 0 LIMIT 1";
         return pdo_query_one($sql);
     }
     
     function getSpecialProduct() {
-        $sql = "SELECT * FROM product WHERE is_special = 1 LIMIT 1";
+        $sql = "SELECT * FROM product WHERE is_special > 0 LIMIT 1";
         return pdo_query_one($sql);
     }
 

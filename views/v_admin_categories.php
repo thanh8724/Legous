@@ -4,7 +4,8 @@
         <i class="fas fa-angle-left sidebar-toggle"></i>
         <div class="search-box">
           <i class="far fa-search"></i>
-          <input type="text" placeholder="Search here...">
+          <input type="text" placeholder="Tìm danh mục">
+          </form>
         </div>
         <div class="info-user">
           <i class="far fa-comment-alt"></i>
@@ -34,6 +35,11 @@
 
       <!----======== Body DashBoard ======== -->
       <div class="containerAdmin">
+        <ul>
+          <?php// foreach ($categories as $category): ?>
+              <li><?php// echo htmlspecialchars($category['name']); ?></li>
+          <?php //endforeach; ?>
+          </ul>
         <div class="flex-column width-full">
           <div class="content-filter flex-column dropdown-center">
             <button id="filter" class="flex-center g8" style="padding: 10px 16px;
@@ -46,10 +52,8 @@
               </svg>
             </button>
             <ul class="dropdown-menu">
-              <li><a href="">Tên Sản phẩm</a></li>
-              <li><a href="">Giá</a></li>
-              <li><a href="">Danh Mục</a></li>
-              <li><a href="">Ngày - Tháng</a></li>
+              <li><a href="">Tên Danh mục</a></li>
+              <li><a href="">Cũ nhất</a></li>
             </ul>
           </div>
           
@@ -63,88 +67,119 @@
               </th>
               <th>ID</th>
               <th>Tên Danh Mục</th>
-              <th>Giá</th>
-              <th>Giá khuyến mãi</th>
-              <th>Số lượng</th>
-              <th>Đã bán</th>
+              <th>Hình danh mục</th>
+              <th>Mô tả danh mục</th>
+              <th>Số lượng sản phẩm</th>
+              <th>Ngày đã tạo</th>
               <th>Khác</th>
             </tr>
           </thead>
           <tbody>
             <!-- Thêm các hàng dữ liệu vào đây -->
-            <tr>
-              <td style="text-align: start;">
-                <input type="checkbox" style="width: 18px; height: 18px;">
-                </input>
-              </td>
-              <td>#123891</td>
-              <td>Naruto</td>
-              <td>100.000.000 VNĐ</td>
-              <td>90.000.000 VNĐ</td>
-              <td>20</td>
-              <td>2</td>
-              <td><a href="">Xem chi tiết</a></td>
-            </tr>
-            <tr>
-              <td style="text-align: start;">
-                <input type="checkbox" style="width: 18px; height: 18px;">
-                </input>
-              </td>
-              <td>#123891</td>
-              <td>Naruto</td>
-              <td>100.000.000 VNĐ</td>
-              <td>90.000.000 VNĐ</td>
-              <td>20</td>
-              <td>2</td>
-              <td><a href="">Xem chi tiết</a></td>
-            </tr>
-            <tr>
-              <td style="text-align: start;">
-                <input type="checkbox" style="width: 18px; height: 18px;">
-                </input>
-              </td>
-              <td>#123891</td>
-              <td>Naruto</td>
-              <td>100.000.000 VNĐ</td>
-              <td>90.000.000 VNĐ</td>
-              <td>20</td>
-              <td>2</td>
-              <td><a href="">Xem chi tiết</a></td>
-            </tr>
-            <tr>
-              <td style="text-align: start;">
-                <input type="checkbox" style="width: 18px; height: 18px;">
-                </input>
-              </td>
-              <td>#123891</td>
-              <td>Naruto</td>
-              <td>100.000.000 VNĐ</td>
-              <td>90.000.000 VNĐ</td>
-              <td>20</td>
-              <td>2</td>
-              <td><a href="">Xem chi tiết</a></td>
-            </tr>
-            <tr>
-              <td style="text-align: start;">
-                <input type="checkbox" style="width: 18px; height: 18px;">
-                </input>
-              </td>
-              <td>#123891</td>
-              <td>Naruto</td>
-              <td>100.000.000 VNĐ</td>
-              <td>90.000.000 VNĐ</td>
-              <td>20</td>
-              <td>2</td>
-              <td><a href="">Xem chi tiết</a></td>
-            </tr>
-           
-
+            <?php foreach ($get_Category as $item): ?> 
+                <tr>
+                    <td style="text-align: start;">
+                        <input type="checkbox" style="width: 18px; height: 18px;"></input>
+                    </td>
+                    <td>#<?= $item['id'] ?></td>
+                    <td><?= $item['name'] ?></td>
+                    <td style="width:100px;"><img style="width: 100%;
+                        height: auto; 
+                        display: block;
+                        object-fit: cover;" src="./public/assets/media/images/category/<?= $item['img'] ?>" alt=""></td>
+                    <td style="text-align:left;"><?= $item['description'] ?></td>
+                    <td><?= count_products_category($item['id'])[0]['SLSP'] ?> sản phẩm</td>
+                    <td><?= $item['create_date'] ?></td>
+                    <td><a href="?mod=admin&act=categories&page=<?= $page_nows?>&id=<?=$item['id']?>" id="myButton">Xem chi tiết</a></td>
+                </tr>
+            <?php endforeach; ?>  
           </tbody>
         </table>
+          <?php
+            if(@$_GET['id']):
+              $getidCategories = getidCategories($_GET['id'])
+            ?>
+              
+              <div style=" 
+                  font-size: 16px;
+                  display:block;
+                  position: fixed; /* Stay in place */
+                  z-index: 1; /* Sit on top */
+                  padding-top: 100px; /* Location of the box */
+                  left: 0;
+                  top: 0;
+                  width: 100%; /* Full width */
+                  height: 100%; /* Full height */
+                  overflow: auto; /* Enable scroll if needed */
+                  background-color: rgb(0,0,0); /* Fallback color */
+                  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */" id="myModal" class="modal">
+                  <!-- Modal content -->
+                  <div style=" background-color: #fefefe;
+                  margin: auto;
+                  padding: 20px;
+                  border: 1px solid #888;
+                  width: 50%;" class="modal-content">
+                      <div style="width:100%;"><span style="float: inline-end;font-size:20px; cursor: pointer;"
+                              class="close">&times;</span></div>
+                        <form action="?mod=admin&act=categories&page=<?=$page_nows?>&id=<?=$id_category?>" method="POST">
+                          <div class="mb-3">
+                              <label class="form-label">Tên danh mục</label>
+                              <input style="font-size: 16px; margin-bottom:20px;" type="text" name="name_cg" value="<?=$getidCategories['name']?>" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                              <div id="emailHelp" class="form-text"></div>
+                              <div class="mb-3">
+                                  <label class="form-label">Mô tả danh mục</label>
+                                  <textarea style="font-size: 16px;height:100px;margin-bottom:20px;" name="description_cg" class="form-control" placeholder="Nhập mô tả sản phẩm"><?=$getidCategories['description']?></textarea>
+                              </div>
+                              <div class="mb-3">
+                                  <label class="form-label">Mô tả danh mục</label>
+                                  <input style="font-size: 16px;" class="form-control" type="file" name="" id="">
+                              </div>
+                          </div>
+              
+                         <button type="submit" name="submit" class="btn btn-primary float-end">Cập nhật</button>
 
+                      </form>
+                  </div>
+              </div>
+          <?php endif;?>
+            
+        <div class="flex mb30">
+          <div class="options-number flex g16" >
+            <?php for($i=1 ;$i <= $number_Page; $i++):?>
+            <a href="?mod=admin&act=categories&page=<?=$i?>" class="<?=($page_nows==$i)?'primary-btn':''?>" style="padding: 10px 15px;"><?=$i?></a>
+            <?php $page = $i; ?>
+            <?php endfor;?>
+            <?php
+            ?>
+              <a href="?mod=admin&act=categories&page=<?php
+                if($number_Page == $page_nows){
+                  echo '1';
+                }
+                else{
+                  echo "$page";
+                }
+              ?>" class="flex-center g8"><i class="fa-solid fa-arrow-right"></i><span class="title-medium" >Next</span></a>
+          </div>
+        </div>
       </div>
       </div>
 
       <!----======== End Body DashBoard ======== -->
 
     </section>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var modal = document.getElementById('myModal');
+        var button = document.getElementById('myButton');
+        var closeBtn = modal.querySelector(".close");
+
+        button.addEventListener("click", function () {
+            modal.style.display = "block";
+        });
+
+        closeBtn.addEventListener("click", function () {
+            modal.style.display = "none";
+        });
+    });
+
+</script>

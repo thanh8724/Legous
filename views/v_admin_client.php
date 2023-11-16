@@ -71,18 +71,23 @@
           </thead>
           <tbody>
             <!-- Thêm các hàng dữ liệu vào đây -->
-            <tr>
+            <?php 
+
+            $user_list = getUser();
+              foreach ($user_list as $item) {
+                ?>
+                <tr>
               <td style="text-align: start;">
                 <input type="checkbox" style="width: 18px; height: 18px;">
                 </input>
               </td>
-              <td>#123891</td>
-              <td>Songoku</td>
-              <td>songgokuvip</td>
-              <td>******</td>
-              <td>songgokuvip@gmail.com</td>
-              <td>0766116989</td>
-              <td><a href="">Xem chi tiết</a></td>
+              <td><?php echo $item['id']?></td>
+              <td><?php echo $item['fullname']?></td>
+              <td><?php echo $item['username']?></td>
+              <td><?php echo md5($item['id'])?></td>
+              <td><?php echo $item['email']?></td>
+              <td><?php echo $item['phone']?></td>
+              <td><a href="?mod=admin&act=client-edit&id=<?php echo $item['id'] ?>">Xem chi tiết</a></td>
             </tr>
             <tr>
               <td style="text-align: start;">
@@ -124,7 +129,7 @@
               <td><a href="">Xem chi tiết</a></td>
             </tr>
             
-           
+          
 
           </tbody>
         </table>
@@ -144,3 +149,6 @@
       <!----======== End Body DashBoard ======== -->
 
     </section>
+    <?php 
+        }
+    ?>
