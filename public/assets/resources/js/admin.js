@@ -47,7 +47,7 @@ if (getStatus && getStatus === "close") {
 }
 
 if (window.innerWidth < 992) {
-  sidebar.classList.toggle("close");
+  sidebar.classList.add("close");
 }
 
 sidebarToggle.addEventListener("click", () => {

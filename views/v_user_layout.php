@@ -1,3 +1,8 @@
+<?php
+    if(isset($_SESSION['user']) && (is_array($_SESSION['user']) || is_object($_SESSION['user']) && count($_SESSION['user']) > 0)){
+        extract($_SESSION['user']);
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -214,11 +219,11 @@
         <!-- header end -->
 
         <!-- site content start -->
-        <?php 
-            require_once 'v_'. $view_name .'.php';
+        <?php
+            require_once 'v_'.$view_name.'.php';
         ?>
         <!-- site content end -->
-        
+
         <!-- footer start -->
         <footer class="footer section auto-grid g60">
             <div class="footer__infomation flex-column g30">
@@ -311,9 +316,11 @@
             <a href="#" class="footer--mini__link body-small">Support</a>
         </footer>
         <!-- footer end -->
+        <div class="form__address--container" style="display: none;"></div>
     </div>
 </body>
 
 </html>
 <script src="./public/assets/resources/js/main.js"></script>
+<script src="./public/assets/resources/js/user.js"></script>
 <script src="./public/assets/resources/js/slickEdit.js"></script>

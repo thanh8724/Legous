@@ -1,4 +1,7 @@
 <?php 
+    session_start();
+    ob_start();
+
     // Gữi/nhận dữ liệu thông qua models
     // Hiển thị dữ liệu thông qua view
     if(isset($_GET['act'])){
@@ -26,11 +29,15 @@
                 // hiển thị dữ liệu
                 $view_name = 'page_cart';
                 break;
+            case'general':
+                include_once 'models/m_user.php';
+                $view_name = 'general';
+                break;
 
             default:
                 
                 break;
         }
         require_once 'views/v_user_layout.php';
-}
+    }
 ?>
