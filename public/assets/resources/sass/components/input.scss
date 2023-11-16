@@ -1,3 +1,4 @@
+
 /* Search form input */
 .search__form {
     margin-inline: auto;
@@ -42,6 +43,7 @@
         border: 1px solid $neutral87;
         transition: $trans-bounce;
         color: $neutral24;
+        outline: none;
     }
 
     .form__message {

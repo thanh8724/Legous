@@ -794,6 +794,7 @@ a {
   border: 1px solid #ded8e1;
   transition: 0.22s cubic-bezier(0.23, 1, 0.32, 1);
   color: #3b383e;
+  outline: none;
 }
 .form__group .form__message {
   font-size: 1.2rem;
@@ -1065,8 +1066,8 @@ table th {
   background-color: #ccc;
   /* Set the background color */
   width: 0.6rem;
+  height: 0.6rem;
   /* Set the width and height to create circular dots */
-  aspect-ratio: 1;
   border-radius: 50%;
   /* Create circular shape */
   border: none;
@@ -1310,12 +1311,18 @@ table th {
   color: #ffffff;
   max-width: 20rem;
   width: 20rem;
-  display: flex !important;
-  justify-content: center;
-  align-items: center;
+  height: 100%;
 }
 .feature-product__banner {
-  max-width: 50%;
+  height: 16rem;
+}
+.feature-product .feature-product__name {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
 }
 .feature-product .product-btns {
   margin-top: 1rem;
@@ -5516,6 +5523,14 @@ main .adminFooter ul li a {
     11. transition classes
     11. devider classes
 */
+.invalid .form__input {
+  border: 0.1rem solid #dc362e !important;
+}
+.invalid .label__place,
+.invalid .form__message {
+  color: #dc362e !important;
+}
+
 .scroll-y {
   overflow-y: scroll !important;
 }

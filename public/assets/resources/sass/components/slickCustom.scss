@@ -1,3 +1,7 @@
+.slick-track {
+    // display: grid !important;
+}
+
 /* Style the dots as simple circles */
 .slick-dots {
     position: absolute;
@@ -12,8 +16,8 @@
     background-color: #ccc;
     /* Set the background color */
     width: .6rem;
+    height: .6rem;
     /* Set the width and height to create circular dots */
-    aspect-ratio: 1;
     border-radius: 50%;
     /* Create circular shape */
     border: none;

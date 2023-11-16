@@ -127,8 +127,8 @@
                             </a>
                             <a href="#" class="product__info">
                                 <div class="product__info__name title-medium fw-smb">$name</div>
-                                    $priceView
-                                    $salePriceView
+                                $priceView
+                                $salePriceView
                             </a>
                             <div class="product__info flex-between width-full">
                                 <div class="product__info__view body-medium">1,2m+ views</div>
@@ -274,7 +274,7 @@
         $categoryHtml .=
         <<<HTML
             <!-- single category start -->
-            <a href="#" class="category__item flex-center g20 p20 rounded-12"
+            <a href="?mod=page&act=category&idCategory=$id" class="category__item flex-center g20 p20 rounded-12"
                 style="background: $bg_color; color: white">
                 <div class="banner-cover category__banner rounded-full"
                     style="background-image: url('./public/assets/media/images/category/$img')">
@@ -284,7 +284,7 @@
                     <span class="body-medium">
                         $description
                     </span>
-                    <label for="" class="label large">$amount products</label>
+                    <label for="" class="label large">$amount sản phẩm</label>
                 </div>
             </a>
             <!-- single category end -->
