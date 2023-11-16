@@ -89,10 +89,49 @@
               <td><?php echo $item['phone']?></td>
               <td><a href="?mod=admin&act=client-edit&id=<?php echo $item['id'] ?>">Xem chi tiết</a></td>
             </tr>
-                <?php 
-              }
-              ?>
-        </tbody>
+            <tr>
+              <td style="text-align: start;">
+                <input type="checkbox" style="width: 18px; height: 18px;">
+                </input>
+              </td>
+              <td>#123891</td>
+              <td>Songoku</td>
+              <td>songgokuvip</td>
+              <td>******</td>
+              <td>songgokuvip@gmail.com</td>
+              <td>0766116989</td>
+              <td><a href="">Xem chi tiết</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: start;">
+                <input type="checkbox" style="width: 18px; height: 18px;">
+                </input>
+              </td>
+              <td>#123891</td>
+              <td>Songoku</td>
+              <td>songgokuvip</td>
+              <td>******</td>
+              <td>songgokuvip@gmail.com</td>
+              <td>0766116989</td>
+              <td><a href="">Xem chi tiết</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: start;">
+                <input type="checkbox" style="width: 18px; height: 18px;">
+                </input>
+              </td>
+              <td>#123891</td>
+              <td>Songoku</td>
+              <td>songgokuvip</td>
+              <td>******</td>
+              <td>songgokuvip@gmail.com</td>
+              <td>0766116989</td>
+              <td><a href="">Xem chi tiết</a></td>
+            </tr>
+            
+           
+
+          </tbody>
         </table>
         <div class="flex mt30">
           <div class="options-number flex g16" >

@@ -100,7 +100,7 @@
                             <i class="far fa-store"></i>
                             <span class="link-name title-small">Sản Phẩm</span>
                         </a></li>
-                    <li class="<?=(strpos($view_name,'categories'))?'active':''?>"><a href="?mod=admin&act=categories">
+                    <li class="<?=(strpos($view_name,'categories'))?'active':''?>"><a href="?mod=admin&act=categories&page=1">
                             <i class="fal fa-clipboard-list-check"></i>
                             <span class="link-name title-small">Danh Mục</span>
                         </a></li>
@@ -172,6 +172,7 @@
             }
         })
     </script>
+    
 </body>
 
 </html>
