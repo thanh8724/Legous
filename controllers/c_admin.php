@@ -1,4 +1,5 @@
 <?php
+ob_start();
 // Gữi/nhận dữ liệu thông qua model
 require_once './models/m_user.php';
 // Hiển thị dữ liệu thông qua view
@@ -62,6 +63,9 @@ if (isset($_GET['act'])) {
                 $userInfo = getUserInfo($idUser);
             }
             break;
+        case 'client-add':
+            $view_name = 'admin_client_add';
+            break;
         case 'orders':
             // lấy dữ liệu
             // hiển thị dữ liệu  
@@ -78,7 +82,10 @@ if (isset($_GET['act'])) {
             // hiển thị dữ liệu  
             $view_name = 'admin_orders-edit';
             break;
+        case 'orders-delete':
+            $view_name = 'admin_client';
 
+            break;
         case 'orders-detail':
             $view_name = 'admin_orders-detail';
 

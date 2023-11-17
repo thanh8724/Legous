@@ -3,10 +3,12 @@
             
             <div class="top">
                 <i class="fas fa-angle-left sidebar-toggle"></i>
-                <div class="search-box">
-                    <i class="far fa-search"></i>
-                    <input type="text" placeholder="Tìm Kiếm Tại Đây...">
-                </div>
+                <form style="width: 100%;display:flex; justify-content: center;" action="" method="post">
+          <div class="search-box">
+            <i class="far fa-search"></i>
+            <input type="text" placeholder="Search here...">
+          </div>
+        </form>
                 <div class="info-user">
                     <div class="notifiComment">
                         <i class="far fa-comment-alt btnShowFeature"></i>

@@ -5037,15 +5037,20 @@ main .adminFooter ul li a {
 .right-order-add-create .button_delete_img {
   margin-top: 48px;
 }
-.right-order-add-create .button_delete_img button:first-child {
+.right-order-add-create .button_delete_img input:first-child {
   background-color: #6750a4;
 }
-.right-order-add-create .button_delete_img button:last-child {
+.right-order-add-create .button_delete_img input:last-child {
   color: #6750a4;
   font-weight: 700;
 }
-.right-order-add-create .button_delete_img button {
+.right-order-add-create .button_delete_img input {
   padding: 10px 24px;
+  border-radius: 10px;
+  margin: 0 10px;
+}
+.right-order-add-create .button_delete_img .btn_cancelled {
+  border-radius: 10px;
 }
 
 .chuahinh {
@@ -5109,6 +5114,33 @@ main .adminFooter ul li a {
 @media only screen and (max-width: 46.1875em) {
   .sliderDashboard_order-add-create .body_sliderDashboard_order-add-create .col-5 .right-order-add-create .img_order-add-create {
     height: 400px !important;
+  }
+}
+@media only screen and (max-width: 36em) {
+  a-ssm-center {
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .f-ssm-column {
+    flex-direction: column;
+  }
+  .right-order-add-create .button_delete_img {
+    margin-top: 48px;
+  }
+  .right-order-add-create .button_delete_img input:first-child {
+    background-color: #6750a4;
+  }
+  .right-order-add-create .button_delete_img input:last-child {
+    color: #6750a4;
+    font-weight: 700;
+  }
+  .right-order-add-create .button_delete_img input {
+    padding: 5px 10px;
+    border-radius: 10px;
+    margin: 0 10px;
+  }
+  .right-order-add-create .button_delete_img .btn_cancelled {
+    border-radius: 10px;
   }
 }
 .category__name {
