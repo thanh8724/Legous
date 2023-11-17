@@ -168,15 +168,15 @@
                                     <h2>Danh mục</h2>
                                     <div class="custom-select">
                                         <!-- Dropdown -->
-                                        <select id="dropdown" onchange="updateInput()">
-                                            <option value="1" <?=($productdetail['category_name'] == 1)?'selected':''?>>Ninja Go</option>
-                                            <option value="2" <?=($productdetail['category_name'] == 2)?'selected':''?>>Naruto</option>
-                                            <option value="3" <?=($productdetail['category_name'] == 3)?'selected':''?>>dragon ball</option>
-                                            <option value="4" <?=($productdetail['category_name'] == 4)?'selected':''?>>Marvel & DC</option>
-                                            <option value="5" <?=($productdetail['category_name'] == 5)?'selected':''?>>One Piece</option>
-                                            <option value="6" <?=($productdetail['category_name'] == 6)?'selected':''?>>Car</option>
-                                            <option value="7" <?=($productdetail['category_name'] == 7)?'selected':''?>>Gundam</option>
-                                            <option value="8" <?=($productdetail['category_name'] == 8)?'selected':''?>>Kimetsu no Yaiba</option>
+                                        <select id="dropdown" onchange="updateInput()" name="id_category">
+                                            <option value="1" <?=($productdetail['id_category'] == 1)?'selected':''?>>Ninja Go</option>
+                                            <option value="2" <?=($productdetail['id_category'] == 2)?'selected':''?>>Naruto</option>
+                                            <option value="3" <?=($productdetail['id_category'] == 3)?'selected':''?>>dragon ball</option>
+                                            <option value="4" <?=($productdetail['id_category'] == 4)?'selected':''?>>Marvel & DC</option>
+                                            <option value="5" <?=($productdetail['id_category'] == 5)?'selected':''?>>One Piece</option>
+                                            <option value="6" <?=($productdetail['id_category'] == 6)?'selected':''?>>Car</option>
+                                            <option value="7" <?=($productdetail['id_category'] == 7)?'selected':''?>>Gundam</option>
+                                            <option value="8" <?=($productdetail['id_category'] == 8)?'selected':''?>>Kimetsu no Yaiba</option>
                                         </select>
                                     </div>
                                 </div>
@@ -205,7 +205,7 @@
                         <div class="col-5 col-md">
                             <div class="right-order-add-create p30 d-flex justify-content-center flex-column ">
                                 <div class="img_order-add-create rounded-4">
-                                    <img src=./public/assets/media/images/product/<?=$productdetail['img']?>>
+                                <img src=./public/assets/media/images/product/<?=$productdetail['img']?>>
                                 </div>
                                 <hr>
                                 <div style="width: 100%;" id="drop-area">
