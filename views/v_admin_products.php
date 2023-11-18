@@ -2,23 +2,12 @@
   <!----======== Header DashBoard ======== -->
   <div class="top">
     <i class="fas fa-angle-left sidebar-toggle"></i>
+    <form action="?mod=admin&act=product-search" method="post" style="width: 100%;display:flex; justify-content: center;">
     <div class="search-box">
-       <form action="" method="post">
-                <i class="far fa-search"></i>
-                <input type="text" name="kwsearch" placeholder="Search here...">
-            </form>
-        </div>
-      </form>
-    </div>
-    <?php 
-  // if(isset($_POST['kwsearch'])) {
-  //   $kwsearch = $_POST['kwsearch'];
-  //   getSearch($kwsearch);
-  //   $getproductAdmin = $_POST[''];
-  // }else {
-  //   $getproductAdmin = getProduct();
-  // }
-    ?>
+            <input type="submit" value=""><i class="far fa-search"></i>
+            <input name="keyword" value="" type="text" placeholder="Search here...">
+          </div>
+    </form>
     <div class="info-user">
       <i class="far fa-comment-alt"></i>
       <i class="fal fa-bell"></i>
@@ -92,7 +81,7 @@
                   <button type="button" data-bs-toggle="dropdown" aria-expanded="false" href=""><i class="fa-solid fa-ellipsis" style="padding: 8px; color: #6750a4;"></i></button>
                   <ul class="dropdown-menu">
                     <li><a class="dropdown-item label-large" href="?mod=admin&act=product-detail&id=<?= $item['id'] ?>">Xem Chi Tiết</a></li>
-                    <li><button class="dropdown-item label-large" style="cursor: pointer;" onclick="remove_product(<?=$item['id'] ?>)">Xóa</button></li>
+                    <li><a href="?mod=admin&act=product-delete&page=<?=$page?>&id=<?= $item['id'] ?>"  class="dropdown-item label-large" style="cursor: pointer;" onclick="deleteProduct(<?=$item['id'] ?>)">Xóa</a></li>
                   </ul>
                 </div>
               </div>
@@ -144,7 +133,7 @@
 
     </div>
     <ul id="paging" class="pagination flex g16 mt30">
-      <?php for ($i = 1; $i <= $sotrang; $i++) : ?>
+      <?php for ($i = 1; $i <= $soTrang; $i++) : ?>
         <li class="pagination__item <?= (isset($_GET['page']) && $_GET['page'] == $i) ? 'active' : '' ?>">
           <a href="?mod=admin&act=products&page=<?= $i ?>" class="pagination__link"><?= $i ?></a>
         </li>
@@ -160,10 +149,10 @@
 </section>
 <script src="/public/assets/resources/js/pagination.js"></script>
 <script>
-  function remove_product(id) {
+  function deleteProduct(id) {
     var kq = confirm("Bạn chắc là có muốn xóa sản phẩm này không ?")
     if (kq) {
-      window.location = '?mod=admin&act=products&product-delete=' + id;
+      window.location = '?mod=admin&act=product-delete=' + id;
     }
   }
 </script>

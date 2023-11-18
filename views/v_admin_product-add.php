@@ -223,6 +223,10 @@ if(isset($_POST['submit'])) {
                 <div class="alert alert-danger" role="alert"><?= $_SESSION['loi'] ?></div>
             <?php endif;
             unset($_SESSION['loi']) ?>
+            <?php if (isset($_SESSION['thongbao'])) : ?>
+                <div class="alert alert-danger" role="alert"><?= $_SESSION['thongbao'] ?></div>
+            <?php endif;
+            unset($_SESSION['thongbao']) ?>
 
             <form action="" method="post" enctype="multipart/form-data">
                 <div class="body_sliderDashboard_order-add-create p20 row">

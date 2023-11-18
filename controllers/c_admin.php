@@ -95,14 +95,14 @@ if (isset($_GET['act'])) {
             include_once 'models/m_cart.php';
             if (isset($_POST['page'])) {
                 // đổi từ phương thức POST sang GET
-                header("location: ?mod=products&act=product-detail&page=".$_POST['page']."");
+                header("location: ?mod=products&act=product-detail&page=" . $_POST['page'] . "");
             }
             $page = 1;
             if (isset($_GET['page'])) {
                 $page = $_GET['page'];
             }
             $getproductAdmin = productAdmin($page);
-            $sotrang = ceil(product_CountTotal() / 9);
+            $soTrang = ceil(product_CountTotal() / 9);
 
             // hiển thị dữ liệu
             $view_name = 'admin_products';
@@ -111,7 +111,7 @@ if (isset($_GET['act'])) {
             include_once 'models/m_cart.php';
             // lấy dữ liệu
             $productdetail = product_getById($_GET['id']);
-            
+
             // hiển thị dữ liệu  
             $view_name = 'admin_product-detail';
             break;
@@ -119,7 +119,7 @@ if (isset($_GET['act'])) {
             include_once 'models/m_cart.php';
 
             // lấy dữ liệu
-            
+
 
             // hiển thị dữ liệu  
             $view_name = 'admin_product-add';
@@ -127,28 +127,36 @@ if (isset($_GET['act'])) {
 
         case 'product-delete':
             include_once 'models/m_cart.php';
-            remove_product($_GET['id']);
-            header('location: ?mod=admin&act=products');
+            if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+                $product_id = $_GET['id'];
+                remove_product($product_id);
+                header('location: ?mod=admin&act=products');
+            } else {
+                // Xử lý khi không có hoặc id không hợp lệ
+                echo "ID sản phẩm không hợp lệ";
+            }
+            
             break;
 
         case 'product-search':
             include_once 'models/m_cart.php';
-            if (isset($_POST['keyword'])) {
-                // đổi từ phương thức POST sang GET
-                header("location: ?mod=admin&act=product-search".$_POST['keyword']. "");
+            if (@isset($_POST['keyword'])) {
+                $inputSearch = $_POST['keyword'];
+                header("location: ?mod=admin&act=product-search&page=1&kw=" . $inputSearch);
+                exit; // Kết thúc việc chuyển hướng
             }
-            // lấy dữ liệu
-            include_once 'model/m_book.php';
-            $ketqua = productSearchAdmin($_GET['keyword']);
+
+            // Lấy dữ liệu
+            $keyword = isset($_GET['kw']) ? $_GET['kw'] : ''; // Lấy từ khóa tìm kiếm từ URL
             $page = 1;
             if (isset($_GET['page'])) {
                 $page = $_GET['page'];
-            }
-            $ketqua = productSearchAdmin($_GET['keyword'], $page);
+            } // Lấy trang từ URL
 
-            $totalResults = product_searchTotal($_GET['keyword']);
-            $soTrang = ceil($totalResults / 9);
+            $ketqua = productSearchAdmin($keyword, $page);
+            $totalResults = ceil(product_searchTotal($keyword) / 9);
             $view_name = 'admin_product-search';
+
             break;
         default:
 

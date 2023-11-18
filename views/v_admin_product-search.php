@@ -2,12 +2,12 @@
   <!----======== Header DashBoard ======== -->
   <div class="top">
     <i class="fas fa-angle-left sidebar-toggle"></i>
+    <form action="?mod=admin&act=product-search" method="post" style="width: 100%;display:flex; justify-content: center;">
     <div class="search-box">
-        <form action="" method="post">
-        <i class="far fa-search"></i>
-        <input type="text" placeholder="Search here...">
-      </form>
-    </div>
+            <input type="submit" value=""><i class="far fa-search"></i>
+            <input name="keyword" value="" type="text" placeholder="Search here...">
+          </div>
+    </form>
     <div class="info-user">
       <i class="far fa-comment-alt"></i>
       <i class="fal fa-bell"></i>
@@ -39,6 +39,10 @@
 
   <!----======== Body DashBoard ======== -->
   <div class="containerAdmin">
+  <?php if (isset($_SESSION['loi'])) : ?>
+                <div class="alert alert-danger" role="alert"><?= $_SESSION['loi'] ?></div>
+            <?php endif;
+            unset($_SESSION['loi']) ?>
     <div class="width-full mb-3">
       <div class="content-filter dropdown-center width-full d-flex align-items-center justify-content-between">
         <button id="btn_addMore_admin" type="button" style="width:130px;height:45px;background-color:#6750a4;border-radius:10px"><a style="color: white; font-size: 14px; font-weight: 500; text-decoration: none; padding: 10px 5px;" href="?mod=admin&act=product-add">Thêm Sản Phẩm</a></button>
@@ -128,7 +132,7 @@
 
     </div>
     <ul id="paging" class="pagination flex g16 mt30">
-      <?php for ($i = 1; $i <= $sotrang; $i++) : ?>
+      <?php for ($i = 1; $i <= $totalResults; $i++) : ?>
         <li class="pagination__item <?= (isset($_GET['page']) && $_GET['page'] == $i) ? 'active' : '' ?>">
           <a href="?mod=admin&act=products&page=<?= $i ?>" class="pagination__link"><?= $i ?></a>
         </li>
@@ -147,7 +151,7 @@
   function remove_product(id) {
     var kq = confirm("Bạn chắc là có muốn xóa sản phẩm này không ?")
     if (kq) {
-      window.location = '?mod=admin&act=products&product-delete=' + id;
+      window.location = '?mod=admin&act=product-delete=' + id;
     }
   }
 </script>

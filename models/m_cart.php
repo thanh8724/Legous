@@ -6,12 +6,13 @@
     $batdau = ($page - 1)*9;
     return pdo_query("SELECT p.*, c.name AS category_name FROM product p LEFT JOIN category c ON p.id_category = c.id LIMIT $batdau,9 ");
   }
-  function productSearchAdmin($keyword,$page=1){
-    $batdau = ($page - 1)*9;
-    return pdo_query("SELECT * FROM product p WHERE p.name LIKE '%$keyword%' LIMIT $batdau,9 ");
-  }
+  function productSearchAdmin($keyword, $page=1){
+    $batdau = ($page - 1) * 9;
+    return pdo_query("SELECT p.*, c.name AS category_name FROM product p LEFT JOIN category c ON p.id_category = c.id WHERE p.name LIKE '%$keyword%' LIMIT $batdau, 9");
+}
+
   function product_searchTotal($keyword){
-    return pdo_query_value("SELECT COUNT(*) FROM product WHERE TuaSach LIKE '%$keyword%'");
+    return pdo_query_value("SELECT COUNT(*) FROM product p WHERE p.name LIKE '%$keyword%'");
 }
   
   // hàm đếm tấc cả các product trong database
