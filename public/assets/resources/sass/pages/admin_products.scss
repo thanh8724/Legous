@@ -1,0 +1,151 @@
+  
+
+
+.containerAdmin{
+  .container-products{
+    .options{
+      .dropdown-item {
+      a{
+        cursor: pointer;
+      }
+    }
+    }
+  }
+}
+
+section{
+  .containerAdmin{
+        .pagination{
+          .options-number{
+            a{
+              text-align: center;
+              text-decoration: none;
+            }
+            .btn-active{
+              padding: 10px 15px;
+              background-color: $-key-colors-primary;
+              border-radius: 10px;
+              color: $-white;
+            }
+          }
+        }
+      }
+  }
+
+
+.dashboard{
+  .detail{
+    .btn-add{
+      text-decoration: none;
+      color: $masking-text;
+      background-color: $light-on-tertiary;
+      padding: 10px 15px; 
+      border-radius: 10px;
+      border: 1px solid transparent;
+      display: inline-block;
+      &:hover{
+        border: 1px solid $light-shadow;
+
+      }
+    }
+    
+  }
+}
+
+
+@media only screen and (max-width: 46.1875em){
+  main{
+    .dashboard{
+      .containerAdmin{
+        .container-products{
+          .cart{
+            
+            width: calc(100% / 2 - 30px) !important;
+            .v-nav{
+              .description,
+              .info-sales-qty{
+                display: none;
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.2s ease;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Tablet: width >= 740px and width < 1024px */
+@media only screen and (min-width: 46.25em) and (max-width: 63.9375em){
+  main{
+    .dashboard{
+      .containerAdmin{
+        .container-products{
+          .cart{
+            
+            width: calc(100% / 2 - 30px) !important;
+            .v-nav{
+              .description,
+              .info-sales-qty{
+                display: none;
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.2s ease;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+/* Mobile and Tablet: width < 1024px */
+@media only screen and (max-width: 63.9375em){
+  main{
+    .dashboard{
+      .containerAdmin{
+        .container-products{
+          .cart{
+            
+            width: calc(100% / 2 - 30px) !important;
+            .v-nav{
+              .description,
+              .info-sales-qty{
+                display: none;
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.2s ease;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+/* PC: width >= 1024px */
+@media only screen and (min-width: 64em){
+  main{
+    .dashboard{
+      .containerAdmin{
+        .container-products{
+          .cart{
+            
+            width: calc(100% / 2 - 30px) !important;
+            .v-nav{
+              .description,
+              .info-sales-qty{
+                display: none;
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.2s ease;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

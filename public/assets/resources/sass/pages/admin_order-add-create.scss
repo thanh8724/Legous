@@ -196,17 +196,23 @@ $background-color_3: #D9D9D9;
 		margin-top: 48px;
 		// display: none;
 
-		button:first-child {
+		input:first-child {
 			background-color: $light-primary ;
 		}
 
-		button:last-child {
+		input:last-child {
 			color: $light-primary ;
 			font-weight: 700;
 		}
 
-		button {
+		input {
 			padding: 10px 24px;
+			border-radius: 10px;
+			margin: 0 10px;
+		}
+		.btn_cancelled {
+			border-radius: 10px;
+
 		}
 	}
 }
@@ -298,3 +304,41 @@ $background-color_3: #D9D9D9;
 		}
 	}
 }
+
+@media only screen and (max-width: 36em) {
+	a-ssm-center{
+		align-items: center !important;
+		justify-content: center !important;
+	}
+	.f-ssm-column {
+		flex-direction: column;
+	}
+	.right-order-add-create {
+
+		.button_delete_img {
+			margin-top: 48px;
+			// display: none;
+	
+			input:first-child {
+				background-color: $light-primary ;
+			}
+	
+			input:last-child {
+				color: $light-primary ;
+				font-weight: 700;
+			}
+	
+			input {
+				padding: 5px 10px;
+				border-radius: 10px;
+				margin: 0 10px;
+			}
+			.btn_cancelled {
+				border-radius: 10px;
+	
+			}
+		}
+	}
+}
+
+

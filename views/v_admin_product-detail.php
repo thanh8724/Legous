@@ -137,11 +137,11 @@
                     <div class="col-12 d-flex">
                         <div class="col-6">
                             <div class="col-12">
-                                <h2>Thêm Sản Phẩm</h2>
+                                <h2>Chi tiết sản phẩm</h2>
                             </div>
                             <div class="col-12">
-                                <span class="label-large">Admin /</span><a href="?mod=admin&act=products" class="label-large"
-                                    style="text-decoration: none;"> Sản Phẩm</a>
+                                <span class="label-large">Admin /</span><a href="#" class="label-large"
+                                    style="text-decoration: none;">Sản Phẩm</a>
                             </div>
                             <div>
 
@@ -151,75 +151,66 @@
                 </div>
 
                 <div class="sliderDashboard_order-add-create sliderDashboard_order-detail rounded-4">
-                <?php if (isset($_SESSION['thongbao'])) : ?>
-                     <div class="alert alert-success" role="alert"><?= $_SESSION['thongbao'] ?></div>
-                <?php endif;
-                unset($_SESSION['thongbao']) ?>
-                <?php if (isset($_SESSION['loi'])) : ?>
-                        <div class="alert alert-danger" role="alert"><?= $_SESSION['loi'] ?></div>
-                <?php endif;
-                unset($_SESSION['loi']) ?>
-
-                <form action="" method="post">
                     <div class="body_sliderDashboard_order-add-create p20 row">
                         <div class="col-7">
+                            <form action="">
                                 <div class="left-order-add-create">
-                                    <label class="title-medium">Tên Sản Phẩm</label>
-                                    <input class="" type="text" id="name" name="name" placeholder="Nhập tên sản phẩm"
+                                    <h2>Tên Sản Phẩm</h2>
+                                    <input class="" type="text" placeholder="<?=$productdetail['name']?>"
                                         aria-label="default input example">
                                 </div>
                                 <div class="describe-order_detail">
-                                    <label class="title-medium">Mô Tả</label>
-                                    <textarea name="description" id="description"  cols="30" rows="10"
-                                        placeholder="Nhập mô tả sản phẩm"></textarea>
+                                    <h2>Mô Tả</h2>
+                                    <textarea name="" id="" cols="30" rows="10"
+                                        placeholder="<?=$productdetail['description']?>"></textarea>
                                 </div>
                                 <div class="Dropdowns_categogy">
-                                    <label  class="title-medium">Danh mục</label>
+                                    <h2>Danh mục</h2>
                                     <div class="custom-select">
                                         <!-- Dropdown -->
-                                        <select id="id_category" name="id_category" >
-                                        <option value="1">Ninja Go</option>
-                                            <option value="2">Naruto</option>
-                                            <option value="3">dragon ball</option>
-                                            <option value="4">Marvel & DC</option>
-                                            <option value="5">One Piece</option>
-                                            <option value="6">Car</option>
-                                            <option value="7">Gundam</option>
-                                            <option value="8">Kimetsu no Yaiba</option>
+                                        <select id="dropdown" onchange="updateInput()" name="id_category">
+                                            <option value="1" <?=($productdetail['id_category'] == 1)?'selected':''?>>Ninja Go</option>
+                                            <option value="2" <?=($productdetail['id_category'] == 2)?'selected':''?>>Naruto</option>
+                                            <option value="3" <?=($productdetail['id_category'] == 3)?'selected':''?>>dragon ball</option>
+                                            <option value="4" <?=($productdetail['id_category'] == 4)?'selected':''?>>Marvel & DC</option>
+                                            <option value="5" <?=($productdetail['id_category'] == 5)?'selected':''?>>One Piece</option>
+                                            <option value="6" <?=($productdetail['id_category'] == 6)?'selected':''?>>Car</option>
+                                            <option value="7" <?=($productdetail['id_category'] == 7)?'selected':''?>>Gundam</option>
+                                            <option value="8" <?=($productdetail['id_category'] == 8)?'selected':''?>>Kimetsu no Yaiba</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-12" style="margin-bottom: 30px;">
-                                        <label class="title-medium">Sản phẩm còn lại</label>
-                                        <input class="" type="text" name="qty" placeholder="1000"
+                                        <h2>Sản phẩm còn lại</h2>
+                                        <input style="" class="" type="text" placeholder="1000"
                                             aria-label="default input example">
                                     </div>
                                     
                                 </div>
                                 <div class="row">
                                     <div class="col-6">
-                                        <label class="title-medium">Giá</label>
-                                        <input class="" type="text" id="price" name="price" placeholder="Nhập giá tiền"
+                                        <h2>Giá</h2>
+                                        <input class="" type="text" placeholder="<?=number_format($productdetail['price'])?> VNĐ"
                                             aria-label="default input example">
                                     </div>
                                     <div class="col-6">
-                                        <label class="title-medium">Giá khuyến mãi</label>
-                                        <input class="" type="text" placeholder="Nhập giá khuyến mãi"
+                                        <h2>Giá khuyến mãi</h2>
+                                        <input class="" type="text" placeholder="1.000.000"
                                             aria-label="default input example">
                                     </div>
                                 </div>
+                            </form>
                         </div>
                         <div class="col-5 col-md">
                             <div class="right-order-add-create p30 d-flex justify-content-center flex-column ">
                                 <div class="img_order-add-create rounded-4">
-                                    <img src="../assets/media/images/category/dragon ball/Gohan - ZBC Studio/ab0332c4e1a739a15332b87eca29d1c71afce4f8a289fbc786c188c0 (1).png" alt="">
+                                <img src=./public/assets/media/images/product/<?=$productdetail['img']?>>
                                 </div>
                                 <hr>
                                 <div style="width: 100%;" id="drop-area">
-                                    <label class="title-medium">Kéo thả ảnh ở đây</label>
-                                    <br>
-                                    <input type="file" id="img" name="img" accept="image/*" multiple>
+                                    <h3>Kéo thả ảnh ở đây</h3>
+                                    <input type="file" id="fileInput" accept="image/*" multiple>
                                 </div>
 
                                 <div style="width: 100%;" id="demo" class="demo .box-shadow1">
@@ -240,9 +231,6 @@
                         </div>
 
                     </div>
-                    <button class="btn btn-primary" type="submit" name="submit" value="submit">Xác nhận</button>
-                </form>
-                    
                 </div>
 
             </div>
@@ -250,3 +238,143 @@
             <!----======== End Body DashBoard ======== -->
 
         </section>
+        <script>
+        const dropArea = document.getElementById('drop-area');
+        const fileInput = document.getElementById('fileInput');
+        const demoDiv = document.getElementById('demo');
+        var count = 0;
+        var idValue = '';
+
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropArea.addEventListener(eventName, preventDefaults, false);
+            document.body.addEventListener(eventName, preventDefaults, false);
+        });
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropArea.addEventListener(eventName, highlight, false);
+
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropArea.addEventListener(eventName, unhighlight, false);
+        });
+
+        dropArea.addEventListener('drop', handleDrop, false);
+        fileInput.addEventListener('change', handleFiles, false);
+
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        function highlight() {
+            dropArea.classList.add('highlight');
+
+        }
+
+        function unhighlight() {
+            dropArea.classList.remove('highlight');
+        }
+
+        function handleDrop(e) {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            handleFiles(files);
+        }
+
+        function handleFiles(files) {
+            files = [...files];
+            files.forEach(uploadFile);
+        }
+
+        function createImageContainer() {
+            count++;
+            const newChuahinhDiv = document.createElement('div');
+            newChuahinhDiv.className = 'chuahinh';
+            const tenchuahinh1 = 'chuahinh'
+            const tenchuahinh2 = tenchuahinh1.concat("", count);
+            newChuahinhDiv.id = tenchuahinh2;
+
+            const newImageContainer = document.createElement('div');
+            newImageContainer.id = 'image-container';
+
+            newChuahinhDiv.appendChild(newImageContainer);
+            demoDiv.appendChild(newChuahinhDiv);
+
+        }
+
+        function uploadFile(file) {
+            createImageContainer(); // Tạo phần tử <div> chứa ảnh
+
+            const url = URL.createObjectURL(file);
+            const img = new Image();
+            img.src = url;
+
+            const newChuahinhDiv = document.querySelector('.chuahinh:last-child'); // Chọn phần tử "chuahinh" cuối cùng
+
+            // Tạo các phần tử div bên trong "chuahinh" và cấu trúc HTML tương ứng
+            const div1 = document.createElement('div');
+            const div2 = document.createElement('div');
+            div2.className = 'nameimg';
+            const div3 = document.createElement('div');
+
+            const h3 = document.createElement('h3');
+            h3.textContent = 'ảnh ở đây nè';
+
+            const thanhnangluong = document.createElement('div');
+            thanhnangluong.className = 'flex thanhnangluong';
+            const loithanhnangluong = document.createElement('span');
+            // loithanhnangluong.classList = '':  
+            thanhnangluong.appendChild(loithanhnangluong);
+
+            loithanhnangluong.classList = 'flex ';
+
+            // const deleteButton = document.createElement('i');
+            // deleteButton.classList = 'fa-regular fa-circle-xmark';
+            // const tenxoahinh1 = 'deleteButtonSingle'
+            // const tenxoahinh2 = tenxoahinh1.concat("", count);
+            // deleteButton.id = tenxoahinh2;
+
+            // Tạo một nút xóa riêng lẻ cho phần tử này
+            const deleteButton = document.createElement('i');
+            deleteButton.classList = 'fa-regular fa-circle-xmark';
+            const tenxoahinh1 = 'deleteButtonSingle'
+            const tenxoahinh2 = tenxoahinh1.concat("", count);
+            deleteButton.id = tenxoahinh2;
+
+            // Gắn sự kiện xóa cho nút xóa này
+            deleteButton.addEventListener('click', function () {
+                newChuahinhDiv.remove();
+                console.log(countdetele);
+            });
+
+            // Thêm nút xóa vào phần tử newChuahinhDiv
+            newChuahinhDiv.appendChild(deleteButton);
+
+            div1.appendChild(img);
+            div2.appendChild(h3);
+            div2.appendChild(thanhnangluong);
+            div3.appendChild(deleteButton);
+
+            newChuahinhDiv.appendChild(div1);
+            newChuahinhDiv.appendChild(div2);
+            newChuahinhDiv.appendChild(div3);
+
+            document.getElementById('deleteButtonImg').style.display = 'flex';
+        }
+        function removeAllImageContainers() {
+            const deleteButtonAll = document.getElementById('deleteButtonAll');
+            deleteButtonAll.addEventListener('click', function () {
+                const imageContainers = document.querySelectorAll('.chuahinh');
+                imageContainers.forEach(function (container) {
+                    container.remove();
+                });
+                // Sau khi xóa tất cả phần tử, bạn có thể ẩn nút xóa (nếu cần)
+                const deleteButtonImg = document.getElementById('deleteButtonImg');
+                deleteButtonImg.style.display = 'none';
+            });
+        } removeAllImageContainers();
+
+
+
+    </script>

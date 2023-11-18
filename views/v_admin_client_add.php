@@ -7,21 +7,36 @@ if (isset($_POST['btn_update'])) {
         $error['fullname'] = "Không được để trống tên đăng nhập";
     }
     if (!empty($_POST['username'])) {
-        $username = $_POST['username'];
+        $UserRegis = getFullNameUser();
+        foreach ($UserRegis as $value) {
+            if ($value == $_POST['username']) {
+                $error['username'] = "Tên đăng nhập bị trùng";
+            } else {
+                $username = $_POST['username'];
+            }
+        }
     } else {
         $error['username'] = "Không được để trống tên đăng nhập";
     }
-
-    if (!empty($_POST['password'])) {
+    $patternPassword = "/^.{6,}$/";
+if (!empty($_POST['password'])) {
+    if (preg_match($patternPassword, $_POST['password'])) {
         $password = $_POST['password'];
     } else {
-        $error['password'] = "Không được để trống mật khẩu";
+        $error['password'] = "Mật khẩu phải có ít nhất 6 ký tự";
     }
-
+} else {
+    $error['phone'] = "Không được để trống mật khẩu";
+}
+    $paternPhone = "/^(0[2|3|5|6|7|8|9])+([0-9]{8})$/";
     if (!empty($_POST['phone'])) {
-        $phone = $_POST['phone'];
+        if (preg_match($paternPhone, $_POST['phone'])) {
+            $phone = $_POST['phone'];
+        } else {
+            $error['phone'] = "Số điện thoại không khả dụng";
+        }
     } else {
-        $error['phone'] = "Không được để trống số điện thoại";
+        $error['phone'] = "Không được để trống mật khẩu";
     }
 
     if (!empty($_POST['email'])) {
@@ -38,8 +53,6 @@ if (isset($_POST['btn_update'])) {
 
     $role = $_POST['role'];
     $bio = $_POST['bio'];
-    $id = $_GET['id'];
-
     if (isset($_FILES['file'])) {
         //Thư mục chứa file upload
         $upload_dir = './public/assets/media/images/users/';
@@ -50,100 +63,77 @@ if (isset($_POST['btn_update'])) {
         //PATHINFO_EXTENSION lấy đuôi file
         $type = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
         // echo $type;
-        if (!in_array(strtolower($type), $type_allow)) {
+        if(!in_array(strtolower($type), $type_allow)) {
             $error['type'] = "Chỉ được upload file có đuôi PNG, JPG, GIF, JPEG";
         }
 
         #Upload file có kích thước cho phép (<20mb ~ 29.000.000BYTE)
         $file_size = $_FILES['file']['size'];
-        if ($file_size > 29000000) {
+        if($file_size > 29000000) {
             $error['file_size'] = "Chỉ được upload file bé hơn 20MB";
         }
         #Kiểm tra trùng file trên hệ thống
-        if (file_exists($upload_file)) {
+        if(file_exists($upload_file)) {
             // $error['file_exists'] = "File đã tồn tại trên hệ thống";
             // Xử lý đổi tên file tự động
+
             #Tạo file mới
             // TênFile.ĐuôiFile
             $filename = pathinfo($_FILES["file"]["name"], PATHINFO_FILENAME);
-            $new_filename = $filename . '- Copy.';
-            $new_upload_file = $upload_dir . $new_filename . $type;
-            $k = 1;
-            while (file_exists($new_upload_file)) {
-                $new_filename = $filename . " - Copy({$k}).";
+            $new_filename = $filename.'- Copy.';
+            $new_upload_file = $upload_dir.$new_filename.$type;
+            $k=1;
+            while(file_exists($new_upload_file)) {
+                $new_filename = $filename." - Copy({$k}).";
                 $k++;
-                $new_upload_file = $upload_dir . $new_filename . $type;
+                $new_upload_file = $upload_dir.$new_filename.$type;
             }
             $upload_file = $new_upload_file;
+        }
+
+
+        if(empty($error)) {
             if (move_uploaded_file($_FILES['file']['tmp_name'], $upload_file)) {
-                $image = $new_filename . $type;
+                $image = $new_filename.$type;
                 header("Location: ?mod=admin&act=client");
-            }
-        } else {
-            if (move_uploaded_file($_FILES['file']['tmp_name'], $upload_file)) {
-                $filename = pathinfo($_FILES["file"]["name"], PATHINFO_FILENAME);
-                $image = $filename . $type;
-                header("Location: ?mod=admin&act=client");
+            } else {
+                echo "Upload file thất bại";
             }
         }
     }
     if (empty($error)) {
-        $id = $_GET['id'];
-        //Thư mục chứa file Delete
-        $delete_dir = './public/assets/media/images/users/';
-        //Đường dẫn của file sau khi Delete
-        $delete_file = $delete_dir . $userInfo[0]['img'];
-        unlink($delete_file);
-        editUserProfile($id, $fullname, $username, $password, $email, $address, $image, $role, $bio, $phone);
-        header("Location: ?mod=admin&act=client");
-
+        // addUserProfile($fullname, $username, $password, $email, $address, $image, $role, $bio, $phone);
     } else {
+
         $error = "Loi64";
     }
-
 }
-if (@isset($_POST['btn_delete'])) {
-    $id = $_GET['id'];
-    //Thư mục chứa file Delete
-    $delete_dir = './public/assets/media/images/users/';
-    //Đường dẫn của file sau khi Delete
-    $delete_file = $delete_dir . $userInfo[0]['img'];
-    echo $delete_file;
-    deleteUser($id);
-    unlink($delete_file);
-    header("Location: ?mod=admin&act=client");
-
-}
-if (isset($_POST['btn_cancelled'])) {
-    header("Location: ?mod=admin&act=client");
-}
-
 ?>
 <section class="dashboard">
     <!----======== Header DashBoard ======== -->
     <div class="top">
         <i class="fas fa-angle-left sidebar-toggle"></i>
-        <form style="width: 100%;display:flex; justify-content: center;" action="" method="post">
-          <div class="search-box">
-            <i class="far fa-search"></i>
-            <input type="text" placeholder="Search here...">
-          </div>
-        </form>
+        <div class="search-box">
+            <form action="" method="post">
+                <i class="far fa-search"></i>
+                <input type="text" placeholder="Search here...">
+            </form>
+        </div>
         <div class="info-user">
             <i class="far fa-comment-alt"></i>
             <i class="fal fa-bell"></i>
             <img src="/public/assets/media/images/users/user-1.svg" alt="">
         </div>
     </div>
-    <div class="flex-column a-ssm-center p30 g30" style="align-self: stretch; align-items: flex-start;">
+    <div class="flex-column p30 g30" style="align-self: stretch; align-items: flex-start;">
         <div class="text">
             <h1 class="label-large-prominent" style="font-size: 24px;
-              line-height: 32px;">Chỉnh Sửa Thông Tin</h1>
+              line-height: 32px;">Thêm Tài Khoản</h1>
         </div>
         <!--DateTimelocal-->
-        <div class="flex-between width-full f-ssm-column" style="gap: 8px;
+        <div class="flex-between width-full" style="gap: 8px;
             align-items: center;">
-            <div class="flex g8 a-ssm-center">
+            <div class="flex g8">
                 <span class="label-large">Admin /</span><a href="?mod=admin&act=client" class="label-large"
                     style="text-decoration: none;">Khách Hàng</a>
             </div>
@@ -163,38 +153,38 @@ if (isset($_POST['btn_cancelled'])) {
                     <div class="col-7">
                         <div class="left-order-add-create">
                             <h2>Họ Và Tên</h2>
-                            <input name="fullname" class="" type="text" value="<?php echo $userInfo[0]['fullname'] ?>"
-                                placeholder="Nhập Họ Và Tên" aria-label="default input example">
+                            <input name="fullname" class="" type="text" placeholder="Nhập Họ Và Tên"
+                                aria-label="default input example">
                         </div>
                         <div class="left-order-add-create">
                             <h2>Tên Đăng Nhập</h2>
-                            <input name="username" class="" type="text" value="<?php echo $userInfo[0]['username'] ?>"
-                                placeholder="Nhập Tên Đăng Nhập" aria-label="default input example">
+                            <input name="username" class="" type="text" placeholder="Nhập Tên Đăng Nhập"
+                                aria-label="default input example">
                         </div>
                         <div class="left-order-add-create">
                             <h2>Mật Khẩu</h2>
-                            <input name="password" class="" type="text" value="<?php echo $userInfo[0]['password'] ?>"
-                                placeholder="Nhập Mật Khẩu" aria-label="default input example">
+                            <input name="password" class="" type="password" placeholder="Nhập Mật Khẩu"
+                                aria-label="default input example">
                         </div>
                         <div class="left-order-add-create">
                             <h2>Email</h2>
-                            <input name="email" class="" type="text" value="<?php echo $userInfo[0]['email'] ?>"
-                                placeholder="Email" aria-label="default input example">
+                            <input name="email" class="" type="email" placeholder="Email"
+                                aria-label="default input example">
                         </div>
                         <div class="left-order-add-create">
                             <h2>Số điện thoại</h2>
-                            <input name="phone" class="" type="text" value="<?php echo $userInfo[0]['phone'] ?>"
-                                placeholder="Nhập Số Điện Thoại" aria-label="default input example">
+                            <input name="phone" class="" type="number" placeholder="Nhập Số Điện Thoại"
+                                aria-label="default input example">
                         </div>
                         <div class="left-order-add-create">
                             <h2>Địa Chỉ</h2>
-                            <input name="address" class="" type="text" value="<?php echo $userInfo[0]['address'] ?>"
-                                placeholder="Nhập Địa chỉ" aria-label="default input example">
+                            <input name="address" class="" type="text" placeholder="Nhập Địa chỉ"
+                                aria-label="default input example">
                         </div>
                         <div class="describe-order_detail">
                             <h2>Mô Tả</h2>
-                            <textarea name="bio" id="" cols="30" rows="10" placeholder="Nhập mô tả người dùng"
-                                value="<?php echo $userInfo[0]['bio'] ?>"><?php echo $userInfo[0]['bio'] ?></textarea>
+                            <textarea name="bio" id="" cols="30" rows="10"
+                                placeholder="Nhập mô tả người dùng"></textarea>
                         </div>
 
                         <div class="Dropdowns_categogy">
@@ -227,11 +217,10 @@ if (isset($_POST['btn_cancelled'])) {
                             </div>
                             <div style="width: 100%;" id="deleteButtonImg" class="button_delete_img row">
                                 <div class="col-4"></div>
-                                <div class="col-8 d-flex j-end">
-                                    <input name="btn_update" value="Cập Nhật" type="submit" class="btn btn-primary">
-                                    <input name="btn_delete" value="Xóa" type="submit" id="deleteButtonAll"
-                                        class="btn btn-danger">
-                                    <input name="btn_cancelled" type="submit" value="Thoát" class="btn_cancelled">
+                                <div class="col-8 d-flex flex-end">
+                                    <input name="btn_update" value="Cập Nhật" type="submit"
+                                        class="btn btn-primary "></input>
+                                    <button type="button" class="btn box-shadow1 ">Hủy</button>
                                 </div>
                             </div>
                         </div>

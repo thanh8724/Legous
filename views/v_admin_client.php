@@ -1,11 +1,22 @@
+<?php 
+  if(@$_POST['act_search']) {
+    $inputSearch = $_POST['act_search'];
+    $user_list = searchUser($inputSearch);
+  }else {
+    $user_list = getUser();
+  }
+?>
 <section class="dashboard">
       <!----======== Header DashBoard ======== -->
       <div class="top">
         <i class="fas fa-angle-left sidebar-toggle"></i>
-        <div class="search-box">
-          <i class="far fa-search"></i>
-          <input type="text" placeholder="Search here...">
-        </div>
+        <form style="width: 100%;display:flex; justify-content: center;" action="" method="post">
+          <div class="search-box">
+            <input type="submit" value=""><i class="far fa-search"></i>
+            
+            <input name="act_search" value="" type="text" placeholder="Search here...">
+          </div>
+        </form>
         <div class="info-user">
           <i class="far fa-comment-alt"></i>
           <i class="fal fa-bell"></i>
@@ -15,13 +26,13 @@
       <div class="flex-column p30 g30" style="align-self: stretch; align-items: flex-start;">
         <div class="text">
           <h1 class="label-large-prominent" style="font-size: 24px;
-              line-height: 32px;">Danh Mục</h1>
+              line-height: 32px;">Khách Hàng</h1>
         </div>
         <!--DateTimelocal-->
         <div class="flex-between width-full" style="gap: 8px;
             align-items: center;">
           <div class="flex g8">
-            <span class="label-large">Admin /</span><a href="#" class="label-large" style="text-decoration: none;">Danh Mục</a>
+            <span class="label-large">Admin /</span><a href="?mod=admin&act=client" class="label-large" style="text-decoration: none;">Khách Hàng</a>
           </div>
           <div class="flex-center g8">
             <span><i class="fa-solid fa-calendar-days"></i></span>
@@ -31,11 +42,12 @@
         </div>
       </div>
       <!----======== End Header DashBoard ======== -->
-
+      
       <!----======== Body DashBoard ======== -->
       <div class="containerAdmin">
-        <div class="flex-column width-full">
-        <div class="content-filter flex-column dropdown-center">
+        <div class="width-full d-flex align-items-center justify-content-between">
+        <div class="content-filter dropdown-center width-full d-flex align-items-center justify-content-between">
+          <button id="btn_addMore_admin" type="button" style="width:130px;height:45px;background-color:#6750a4;border-radius:10px"><a style="color: white; font-size: 12px; text-decoration: none; padding: 10px 5px;" href="?mod=admin&act=client-add">Thêm danh mục</a></button>
             <button id="filter" class="flex-center g8" style="padding: 10px 16px;
                   border: 1px solid #79747E; border-radius: 100px;
                   margin-left: auto;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -46,10 +58,8 @@
               </svg>
             </button>
             <ul class="dropdown-menu">
-              <li><a href="">Tên Sản phẩm</a></li>
-              <li><a href="">Giá</a></li>
-              <li><a href="">Danh Mục</a></li>
-              <li><a href="">Ngày - Tháng</a></li>
+              <li><a href="">Tên Danh mục</a></li>
+              <li><a href="">Cũ nhất</a></li>
             </ul>
           </div>
         </div>
@@ -72,8 +82,6 @@
           <tbody>
             <!-- Thêm các hàng dữ liệu vào đây -->
             <?php 
-
-            $user_list = getUser();
               foreach ($user_list as $item) {
                 ?>
                 <tr>
@@ -89,47 +97,9 @@
               <td><?php echo $item['phone']?></td>
               <td><a href="?mod=admin&act=client-edit&id=<?php echo $item['id'] ?>">Xem chi tiết</a></td>
             </tr>
-            <tr>
-              <td style="text-align: start;">
-                <input type="checkbox" style="width: 18px; height: 18px;">
-                </input>
-              </td>
-              <td>#123891</td>
-              <td>Songoku</td>
-              <td>songgokuvip</td>
-              <td>******</td>
-              <td>songgokuvip@gmail.com</td>
-              <td>0766116989</td>
-              <td><a href="">Xem chi tiết</a></td>
-            </tr>
-            <tr>
-              <td style="text-align: start;">
-                <input type="checkbox" style="width: 18px; height: 18px;">
-                </input>
-              </td>
-              <td>#123891</td>
-              <td>Songoku</td>
-              <td>songgokuvip</td>
-              <td>******</td>
-              <td>songgokuvip@gmail.com</td>
-              <td>0766116989</td>
-              <td><a href="">Xem chi tiết</a></td>
-            </tr>
-            <tr>
-              <td style="text-align: start;">
-                <input type="checkbox" style="width: 18px; height: 18px;">
-                </input>
-              </td>
-              <td>#123891</td>
-              <td>Songoku</td>
-              <td>songgokuvip</td>
-              <td>******</td>
-              <td>songgokuvip@gmail.com</td>
-              <td>0766116989</td>
-              <td><a href="">Xem chi tiết</a></td>
-            </tr>
-            
-          
+            <?php 
+        }
+    ?>
 
           </tbody>
         </table>
@@ -149,6 +119,3 @@
       <!----======== End Body DashBoard ======== -->
 
     </section>
-    <?php 
-        }
-    ?>
