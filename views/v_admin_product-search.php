@@ -3,22 +3,11 @@
   <div class="top">
     <i class="fas fa-angle-left sidebar-toggle"></i>
     <div class="search-box">
-       <form action="" method="post">
-                <i class="far fa-search"></i>
-                <input type="text" name="kwsearch" placeholder="Search here...">
-            </form>
-        </div>
+        <form action="" method="post">
+        <i class="far fa-search"></i>
+        <input type="text" placeholder="Search here...">
       </form>
     </div>
-    <?php 
-  // if(isset($_POST['kwsearch'])) {
-  //   $kwsearch = $_POST['kwsearch'];
-  //   getSearch($kwsearch);
-  //   $getproductAdmin = $_POST[''];
-  // }else {
-  //   $getproductAdmin = getProduct();
-  // }
-    ?>
     <div class="info-user">
       <i class="far fa-comment-alt"></i>
       <i class="fal fa-bell"></i>
@@ -54,15 +43,10 @@
       <div class="content-filter dropdown-center width-full d-flex align-items-center justify-content-between">
         <button id="btn_addMore_admin" type="button" style="width:130px;height:45px;background-color:#6750a4;border-radius:10px"><a style="color: white; font-size: 14px; font-weight: 500; text-decoration: none; padding: 10px 5px;" href="?mod=admin&act=product-add">Thêm Sản Phẩm</a></button>
       </div>
-      <?php if (isset($_SESSION['thongbao'])) : ?>
-        <div class="alert alert-success" role="alert"><?= $_SESSION['thongbao'] ?></div>
-      <?php endif;
-      unset($_SESSION['thongbao']) ?>
-
     </div>
     <div class="container-products width-full flex" style="flex-wrap: wrap; gap: 45px">
       <!--Cart-->
-      <?php foreach ($getproductAdmin as $item) : ?>
+      <?php foreach ($ketqua as $item) : ?>
         <div class="cart trans-bounce flex-column p20" style="
                   border-radius: 12px;
                   border: 1px #DED8E1;

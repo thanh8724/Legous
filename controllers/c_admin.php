@@ -2,6 +2,7 @@
 // Gữi/nhận dữ liệu thông qua model
 require_once './models/m_user.php';
 // Hiển thị dữ liệu thông qua view
+
 if (isset($_GET['act'])) {
     switch ($_GET['act']) {
         case 'home':
@@ -85,49 +86,62 @@ if (isset($_GET['act'])) {
             break;
         case 'products':
             include_once 'models/m_cart.php';
+            if (isset($_POST['page'])) {
+                // đổi từ phương thức POST sang GET
+                header("location: ?mod=products&act=product-detail&page=".$_POST['page']."");
+            }
             $page = 1;
             if (isset($_GET['page'])) {
                 $page = $_GET['page'];
             }
-            $getproductAdmin = productAdmin();
-            $sotrang = product_CountTotal($getproductAdmin);
+            $getproductAdmin = productAdmin($page);
+            $sotrang = ceil(product_CountTotal() / 9);
 
             // hiển thị dữ liệu
             $view_name = 'admin_products';
             break;
         case 'product-detail':
+            include_once 'models/m_cart.php';
             // lấy dữ liệu
             $productdetail = product_getById($_GET['id']);
+            
             // hiển thị dữ liệu  
             $view_name = 'admin_product-detail';
             break;
         case 'product-add':
+            include_once 'models/m_cart.php';
+
             // lấy dữ liệu
-            if (isset($_POST['submit']) && $_POST['submit']) {
-
-                $name = $_POST['name'];
-                $id_category = $_POST['id_category'];
-                $description = $_POST['description'];
-                $price = $_POST['price'];
-                $img = $_POST['img'];
-                $qty = $_POST['qty'];
-
-                $kq = product_checkName($name);
-                if ($kq) {
-                    $_SESSION['loi'] = 'Không thể tạo trùng tên của sản phẩm <strong>' . $name . '</strong>';
-                } else {
-                    product_add($name, $id_category, $description, $price, $img, $qty);
-                    $_SESSION['thongbao'] = 'Đã tạo thành công <strong>' . $name . '</strong>';
-                }
-            }
+            
 
             // hiển thị dữ liệu  
             $view_name = 'admin_product-add';
             break;
-        case 'delete-products':
-            include_once 'models/m_user.php';
+
+        case 'product-delete':
+            include_once 'models/m_cart.php';
             remove_product($_GET['id']);
             header('location: ?mod=admin&act=products');
+            break;
+
+        case 'product-search':
+            include_once 'models/m_cart.php';
+            if (isset($_POST['keyword'])) {
+                // đổi từ phương thức POST sang GET
+                header("location: ?mod=admin&act=product-search".$_POST['keyword']. "");
+            }
+            // lấy dữ liệu
+            include_once 'model/m_book.php';
+            $ketqua = productSearchAdmin($_GET['keyword']);
+            $page = 1;
+            if (isset($_GET['page'])) {
+                $page = $_GET['page'];
+            }
+            $ketqua = productSearchAdmin($_GET['keyword'], $page);
+
+            $totalResults = product_searchTotal($_GET['keyword']);
+            $soTrang = ceil($totalResults / 9);
+            $view_name = 'admin_product-search';
             break;
         default:
 
