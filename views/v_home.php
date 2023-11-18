@@ -280,7 +280,7 @@
                     style="background-image: url('./public/assets/media/images/category/$img')">
                 </div>
                 <div class="category__content flex-column g12">
-                    <div class="title-medium">$name</div>
+                    <div class="title-medium ttu">$name</div>
                     <span class="body-medium">
                         $description
                     </span>

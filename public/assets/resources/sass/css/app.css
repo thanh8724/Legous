@@ -1392,6 +1392,26 @@ table th {
 /* Tablet: width >= 740px and width < 1024px */
 /* Mobile and Tablet: width < 1024px */
 /* PC: width >= 1024px */
+.ui-slider-range {
+  background-color: #6750a4 !important;
+}
+
+.ui-slider-handle {
+  width: 2.5rem !important;
+  height: 2.5rem !important;
+  border-radius: 50% !important;
+  background-color: #fef7ff !important;
+  transition: 0.22s cubic-bezier(0.23, 1, 0.32, 1);
+  cursor: grab;
+}
+
+.ui-state-active,
+.ui-state-hover {
+  border: none !important;
+  box-shadow: 0 0 0 0.6rem rgba(103, 80, 164, 0.2) !important;
+  background: #6750a4 !important;
+}
+
 body.dark main {
   background-color: #15192a;
   transition: 0.5s;

@@ -5,7 +5,7 @@
     foreach ($categories as $item) {
         extract($item);
         $link = "?mod=page&act=product&idCategory=$id";
-        $products = getProductsByCategoryId($id , 3);
+        $products = getProductsByCategoryId($id, 1, 3);
 
         $productHtml = '';
         foreach ($products as $product) {
@@ -69,33 +69,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LEGOUS - HOME PAGE</title>
+    <!-- css link -->
     <link rel="stylesheet" href="./public/assets/resources/sass/css/app.css">
+    <!-- favicon link -->
     <link rel="icon" type="image/x-icon" href="./public/assets/media/images/favicon/favicon.svg">
+    <!-- font awesome link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css" rel="stylesheet"
         type="text/css" />
+    <!-- google font link -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Space+Mono&display=swap"
         rel="stylesheet">
+    <!-- slick slider link -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
         integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-    <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script> -->
-    <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.jLOs"></script> -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <!-- jquery ui link -->
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <!-- jquery link -->
     <script src="./public/assets/resources/js/jquery.js"></script>
 </head>
 
 <body>
     <div class="container-full por">
         <!-- header start -->
-        <header class="header flex-full width-full flex-center pof">
+        <header class="header desktop flex-full width-full flex-center pof">
             <div class="header__inner flex-full flex-between por v-center">
                 <!-- header respon nav start -->
                 <ul class="header__nav header__nav-respon">
