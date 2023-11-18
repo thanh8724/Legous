@@ -246,31 +246,3 @@ $(document).ready(() => {
 })
 
 
-/** form validation with ajax */
-// $(document).ready(function () {
-//     $('.register__form').submit(function (event) {
-//         event.preventDefault(); // Prevent form submission
-
-//         // Get form data
-//         var formData = $(this).serialize();
-
-//         // Perform AJAX request
-//         $.ajax({
-//             url: './views/libs/validate.php', // Path to your PHP validation script
-//             type: 'POST',
-//             data: formData,
-//             success: function (response) {
-//                 // Handle the validation response
-//                 if (response === 'success') {
-//                     // Validation passed, do something (e.g., redirect)
-//                     // window.location.href = 'http://localhost/project-1/?mod=page&act=login#login-section';
-//                 } else {
-//                     // Validation failed, update form interface (e.g., display error messages)
-//                     // Example assuming your PHP script returns JSON with error messages
-//                     var errors = JSON.parse(response);
-//                     $('.submit__message').html(errors.join('<br>'));
-//                 }
-//             }
-//         });
-//     });
-// });

@@ -2,11 +2,12 @@
       <!----======== Header DashBoard ======== -->
       <div class="top">
         <i class="fas fa-angle-left sidebar-toggle"></i>
-        <div class="search-box">
-          <i class="far fa-search"></i>
-          <input type="text" placeholder="Tìm danh mục">
-          </form>
-        </div>
+        <form style="width: 100%;display:flex; justify-content: center;" action="" method="post">
+          <div class="search-box">
+            <i class="far fa-search"></i>
+            <input type="text" placeholder="Search here...">
+          </div>
+        </form>
         <div class="info-user">
           <i class="far fa-comment-alt"></i>
           <i class="fal fa-bell"></i>
@@ -24,11 +25,11 @@
           <div class="flex g8">
             <span class="label-large">Admin /</span><a href="#" class="label-large" style="text-decoration: none;">Danh Mục</a>
           </div>
-          <div class="flex-center g8">
+          <!-- <div class="flex-center g8">
             <span><i class="fa-solid fa-calendar-days"></i></span>
             <input class="label-large-prominent" type="datetime-local" style="color: #625B71; border: none; font-size: 16px;
                 ">
-          </div>
+          </div> -->
         </div>
       </div>
       <!----======== End Header DashBoard ======== -->

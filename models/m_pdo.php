@@ -37,19 +37,16 @@ function pdo_execute($sql){
  * @return array mảng các bản ghi
  * @throws PDOException lỗi thực thi câu lệnh
  */
-function pdo_query($sql){
-    $sql_args = array_slice(func_get_args(), 1);
-    try{
+function pdo_query($sql, $params = []) {
+    try {
         $conn = pdo_get_connection();
         $stmt = $conn->prepare($sql);
-        $stmt->execute($sql_args);
+        $stmt->execute($params);
         $rows = $stmt->fetchAll();
         return $rows;
-    }
-    catch(PDOException $e){
+    } catch (PDOException $e) {
         throw $e;
-    }
-    finally{
+    } finally {
         unset($conn);
     }
 }
@@ -107,10 +104,26 @@ function pdo_query_value($sql){
  * @return giá trị tiền đã format
  */
 
- //Đếm số lượng của product
 function formatVND($amount) {
     $formattedAmount = number_format($amount, 0, ',', '.');
     $formattedAmount .= ' đ';
     
     return $formattedAmount;
 }
+
+function get_current_url() {
+    $current_url  = 'http';
+    // if ($_SERVER["HTTPS"] == "on") {
+    //     $current_url .= "s";
+    // }
+    $current_url .= "://";
+    if ($_SERVER["SERVER_PORT"] != "80") {
+        $current_url .= $_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . $_SERVER["REQUEST_URI"];
+    } else {
+        $current_url .= $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"];
+    }
+    return $current_url;
+}
+
+
+

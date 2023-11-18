@@ -9,6 +9,7 @@
                 // lấy dữ liệu
                 include_once 'models/m_cart.php';
                 include_once 'models/m_product.php';
+                include_once 'models/m_category.php';
                 include_once 'models/m_partner.php';
                 $topLoveProduct = getProductsByLove(1);
                 $loveProducts = getProductsByLove(12);
@@ -82,6 +83,16 @@
                  // lấy dữ liệu
                 include_once 'models/m_product.php';
                 include_once 'models/m_category.php';
+
+                $maxPrice = getMaxProductPrice();
+                $minPrice = getMinProductPrice();
+
+                $manualMin = $minPrice;
+                $manualMax = $maxPrice;
+                if (isset($_GET['minPrice']) && isset($_GET['maxPrice'])) {
+                    $manualMin = $_GET['minPrice'];
+                    $manualMax = $_GET['maxPrice'];
+                }
                 
                 if (isset($_GET['idCategory'])) {
                     $idCategory = $_GET['idCategory'];
@@ -93,20 +104,34 @@
                     if (isset($_POST['priceFilter']) && $_POST['priceFilter']) {
                         $min = $_POST['minPrice'];
                         $max = $_POST['maxPrice'];
-
+                        
                         $categoryProducts = getCategoryProductsByPriceFilter($min , $max , $idCategory);
                     }
+
+                    // Check if the 'minPrice' and 'maxPrice' values are set in the POST data
+                    if (isset($_GET['minPrice']) && isset($_GET['maxPrice'])) {
+                        $min = $_GET['minPrice'];
+                        $max = $_GET['maxPrice'];
+
+                        // Use the $min and $max values to filter the category products
+                        $categoryProducts = getCategoryProductsByPriceFilter($min, $max, $idCategory);
+                    }
+
+                    // name filter approach
+                    if (isset($_GET['filterName']) and $_GET['filterName'] != '') {
+                        $order = $_GET['filterName'];
+                        $categoryProduct = getProductsByCategoryId($idCategory, $order);
+                    }
                 }
-                
                 // hiển thị dữ liệu
                 $view_name = 'category';
                 break;
-            // case 'filter':
-            //     include_once 'models/m_product.php';
-            //     include_once 'models/m_category.php';
+            case 'shop':
+                include_once 'models/m_product.php';
+                include_once 'models/m_category.php';
                 
-                
-            //     break;
+                $view_name = 'shop';
+                break;
             default:
                 
                 break;
