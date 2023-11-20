@@ -132,13 +132,13 @@
 
     </div>
     <ul id="paging" class="pagination flex g16 mt30">
-      <?php for ($i = 1; $i <= $totalResults; $i++) : ?>
+      <?php for ($i = 1; $i <= $soTrang; $i++) : ?>
         <li class="pagination__item <?= (isset($_GET['page']) && $_GET['page'] == $i) ? 'active' : '' ?>">
-          <a href="?mod=admin&act=products&page=<?= $i ?>" class="pagination__link"><?= $i ?></a>
+          <a href="?mod=admin&act=product-search&page=<?= $i ?> &kw=<?= $keyword ?>" class="pagination__link"><?= $i ?></a>
         </li>
       <?php endfor; ?>
-      <li class="btn text-btn rounded-100">
-        <a href="?mod=admin&act=products&page=<?= $page + 1 ?>"" class=" pagination__link"><i class="fal fa-arrow-right" style="margin-right: .6rem"></i>Next</a>
+      <li class="btn text-btn rounded-100 <?= $page >= $soTrang ? 'disabled' : '' ?>">
+        <a href="?mod=admin&act=product-search&page=<?= $page + 1 ?> &kw=<?= $keyword ?> "" class=" pagination__link"><i class="fal fa-arrow-right" style="margin-right: .6rem"></i>Next</a>
       </li>
     </ul>
 
