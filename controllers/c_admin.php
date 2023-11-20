@@ -281,27 +281,33 @@ if (isset($_GET['act'])) {
                 // Xử lý khi không có hoặc id không hợp lệ
                 echo "ID sản phẩm không hợp lệ";
             }
-            
+
             break;
 
         case 'product-search':
             include_once 'models/m_cart.php';
-            if (@isset($_POST['keyword'])) {
+            if (isset($_POST['keyword'])) {
                 $inputSearch = $_POST['keyword'];
                 header("location: ?mod=admin&act=product-search&page=1&kw=" . $inputSearch);
                 exit; // Kết thúc việc chuyển hướng
             }
 
             // Lấy dữ liệu
+            // Lấy dữ liệu
             $keyword = isset($_GET['kw']) ? $_GET['kw'] : ''; // Lấy từ khóa tìm kiếm từ URL
             $page = 1;
             if (isset($_GET['page'])) {
                 $page = $_GET['page'];
-            } // Lấy trang từ URL
+            }
 
-            $ketqua = productSearchAdmin($keyword, $page);
-            $totalResults = ceil(product_searchTotal($keyword) / 9);
+            $perPage = 9; // Số kết quả muốn hiển thị trên mỗi trang
+            $totalResults = product_searchTotal($keyword);
+            $soTrang = ceil($totalResults / $perPage);
+
+            $batdau = ($page - 1) * $perPage;
+            $ketqua = productSearchAdmin($keyword, $page, $perPage);
             $view_name = 'admin_product-search';
+
 
             break;
         default:
