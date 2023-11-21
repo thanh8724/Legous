@@ -23,7 +23,7 @@
     <div class="flex-between width-full" style="gap: 8px;
             align-items: center;">
       <div class="flex g8">
-        <span class="label-large">Admin /</span><a href="#" class="label-large" style="text-decoration: none;">Sản Phẩm</a>
+        <span class="label-large">Admin /</span><a href="?mod=admin&act=products&page=1" class="label-large" style="text-decoration: none;">Sản Phẩm</a>
       </div>
       <div class="flex-center g8">
         <span><i class="fa-solid fa-calendar-days"></i></span>

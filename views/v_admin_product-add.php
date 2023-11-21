@@ -208,7 +208,7 @@ if(isset($_POST['submit'])) {
                         <h2>Thêm Sản Phẩm</h2>
                     </div>
                     <div class="col-12">
-                        <span class="label-large">Admin /</span><a href="?mod=admin&act=products" class="label-large" style="text-decoration: none;"> Sản Phẩm</a>
+                        <span class="label-large">Admin /</span><a href="?mod=admin&act=products&page=1" class="label-large" style="text-decoration: none;"> Sản Phẩm</a>
                     </div>
                     <div>
 
