@@ -173,7 +173,19 @@
             }
         })
     </script>
-    
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="./public/assets/resources/js/jquery.dataTables.min.js"></script>
+<script src="./public/assets/resources/js/dataTables.bootstrap4.min.js"></script>
+<script>
+$(function() {
+    $("#example1").DataTable({
+        "responsive": true,
+        "lengthChange": false,
+        "autoWidth": false,
+        "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+});
+</script>
 </body>
 
 </html>
