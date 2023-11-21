@@ -1,12 +1,19 @@
 <?php 
-    function getProducts ($limit = 0, $order = '') {
+    function getProducts ($limit = 0, $order = 0) {
         $sql = "SELECT * FROM product";
         if ($limit > 0) {
             $sql .= " LIMIT $limit";
         }
-        if ($order != '')
-            $sql .= " ORDER BY $order";
+        if ($order != 0) {
+            $sql .= " ORDER BY name DESC";
+        }
+
         return pdo_query($sql);
+    }
+
+    function getProductById($idProduct) {
+        $sql = "SELECT * FROM product WHERE id = $idProduct";
+        return pdo_query_one($sql);
     }
 
     function getProductsByCategoryId($id_category, $order = 0, $limit = 0) {
@@ -22,6 +29,22 @@
 
         return pdo_query($sql);
     }
+
+    function getProductsByCategoryIds($categoryIds, $order = 0, $limit = 0) {
+        $categoryIds = implode(',', $categoryIds);
+        $sql = "SELECT * FROM product WHERE id_category IN ($categoryIds)";
+
+        if ($order != 0) {
+            $sql .= " ORDER BY name DESC";
+        }
+
+        if ($limit > 0) {
+            $sql .= " LIMIT $limit";
+        }
+
+        return pdo_query($sql);
+    }
+    
     function getProductsByLove ($limit = 0) {
         $sql = "SELECT * FROM product ORDER BY love DESC";
         if ($limit > 0) {
@@ -50,6 +73,10 @@
 
     function getCategoryProductsByPriceFilter($min , $max , $idCategory) {
         $sql = "SELECT * FROM product WHERE id_category = $idCategory AND price BETWEEN $min AND $max";
+        return pdo_query($sql);
+    }
+    function getProductsByPriceFilter($min , $max) {
+        $sql = "SELECT * FROM product WHERE price BETWEEN $min AND $max";
         return pdo_query($sql);
     }
     function getMaxProductPrice() {

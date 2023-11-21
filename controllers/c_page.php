@@ -120,7 +120,7 @@
                     // name filter approach
                     if (isset($_GET['filterName']) and $_GET['filterName'] != '') {
                         $order = $_GET['filterName'];
-                        $categoryProduct = getProductsByCategoryId($idCategory, $order);
+                        $categoryProducts = getProductsByCategoryId($idCategory, $order);
                     }
                 }
                 // hiển thị dữ liệu
@@ -129,8 +129,20 @@
             case 'shop':
                 include_once 'models/m_product.php';
                 include_once 'models/m_category.php';
+                $maxPrice = getMaxProductPrice();
+                $minPrice = getMinProductPrice();
+
+                $manualMin = $minPrice;
+                $manualMax = $maxPrice;
                 
                 $view_name = 'shop';
+                break;
+            case 'productDetail';
+                include_once 'models/m_product.php';
+                include_once 'models/m_category.php';
+                include_once 'models/m_img.php';
+                
+                $view_name = 'productDetail';
                 break;
             default:
                 
