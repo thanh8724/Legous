@@ -5,12 +5,27 @@ $featureProductOffsetWidth: 20rem;
     color: $-white;
     max-width: $featureProductOffsetWidth;
     width: $featureProductOffsetWidth;
-    display: flex !important;
-    justify-content: center;
-    align-items: center;
-
+    height: 100%;
+    // display: flex !important;
+    // justify-content: center;
+    // align-items: center;
+    // width: 30rem !important;
+    // height: 45rem !important;
+    // display: grid !important;
+    // grid-column: span 4;
+    // grid-template-columns: subgrid;
+    
     &__banner {
-        max-width: 50%;
+        height: 16rem;
+    }
+    
+    .feature-product__name {
+        display:-webkit-box;
+        -webkit-line-clamp:2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-break: break-word;
     }
     
     .product-btns {

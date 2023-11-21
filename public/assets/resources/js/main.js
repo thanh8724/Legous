@@ -55,10 +55,16 @@ const app = {
         const panels = document.querySelectorAll('.panel__item');
         if (tabs) {
             tabs.forEach((tab, i) => {
+                if (tab.dataset.defaultactive == '1') {
+                    tab.classList.add('active');
+                    panels[i].classList.add('active');
+                }
                 tab.addEventListener('click' , () => {
-                    document.querySelector('.tab__item.active').classList.remove('active');
-                    document.querySelector('.panel__item.active').classList.remove('active');
-                    
+                    if (document.querySelector('.tab__item.active'))                    
+                        document.querySelector('.tab__item.active').classList.remove('active');
+                    if (document.querySelector('.panel__item.active')) 
+                        document.querySelector('.panel__item.active').classList.remove('active');
+
                     tab.classList.add('active');
                     panels[i].classList.add('active');
                 })
@@ -81,15 +87,43 @@ const app = {
         });
     }
         /** shop filter */
+
+        const optionLists = document.querySelectorAll('.filter-option__list');
         const filterBtns = document.querySelectorAll('.filter__list__btn');
+
         if (filterBtns) {
-            filterBtns.forEach(btn => {
+            filterBtns.forEach((btn) => {
                 btn.onclick = () => {
                     const optionList = btn.parentElement.querySelector('.filter-option__list');
+                    closeOtherOptionLists(optionList);
                     optionList.classList.toggle('active');
+                };
+            });
+        }
+
+        document.body.addEventListener('click', (event) => {
+            const isDescendantOfOptionList = Array.from(optionLists).some((optionList) =>
+                optionList.contains(event.target)
+            );
+            const isDescendantOfFilterBtn = Array.from(filterBtns).some((btn) =>
+                btn.contains(event.target)
+            );
+
+            if (!isDescendantOfOptionList && !isDescendantOfFilterBtn) {
+                optionLists.forEach((optionList) => {
+                    optionList.classList.remove('active');
+                });
+            }
+        });
+
+        function closeOtherOptionLists(activeOptionList) {
+            optionLists.forEach((optionList) => {
+                if (optionList !== activeOptionList) {
+                    optionList.classList.remove('active');
                 }
             });
         }
+        
         // close / open filter 
         const toggleFilterBtn = document.querySelector('.toggle-filter-btn');
         const filterList = document.querySelector('.filter__list');
@@ -136,12 +170,17 @@ const app = {
         const toggleBtns = document.querySelectorAll('.toggle-btn');
         if (toggleBtns) {
             toggleBtns.forEach(btn => {
-                btn.onclick = () => {
+                btn.onclick = e => {
+                    e.preventDefault();
                     btn.classList.toggle('active');
                     if (btn.classList.contains('active')) {
                         if (btn.classList.contains('love-btn')) {
-                            btn.querySelector('.fal').classList.remove('fal');
-                            btn.querySelector('.fa-heart').classList.add('fa');
+                            if (btn.querySelector('.fal')) {
+                                btn.querySelector('.fal').classList.remove('fal');
+                            }
+                            if (btn.querySelector('.fa-heart')) {
+                                btn.querySelector('.fa-heart').classList.add('fa');
+                            }
                         }
                     } else {
                         if (btn.querySelector('i').classList.contains('fa')) {

@@ -1,25 +1,39 @@
 <?php
-    if(isset($_SESSION['user']) && (is_array($_SESSION['user']) || is_object($_SESSION['user']) && count($_SESSION['user']) > 0)){
-        extract($_SESSION['user']);
+    // xử lí khi người dùng nhập form
+    if(isset($_POST['button__submit'])) {
+        $id_user = $_POST['id_user'];
+        if(is_array($checkUses)) {
+            extract($checkUses);
+        }
+        if($_POST['new_username'] != "") {
+            $new_username = $_POST['new_username'];
+        }else {
+            $new_username = $username;
+        }
+        if($_POST['new_email'] != "") {
+            $new_email = $_POST['new_email'];
+        }else {
+            $new_email = $email;
+        }
+        update_userName_email($new_username, $new_email, $id_user);
+        header('location: ?mod=user&act=general');
     }
 ?>
-
-
 <main class="main__user">
     <div class="main__inner">
         <div class="main__inner--top">
             <div class="avatar__image">
-                <img srcset="upload/users/<?=$avatar_user?> 2x" alt="" class="avatar__image--user">
+                <img srcset="upload/users/<?=$avatarImage_user?> 2x" alt="" class="avatar__image--user">
             </div>
             <div class="info__user">
                 <div class="info__user--top">
-                    <span class="user__name"><?=$name_user?></span>
+                    <span class="user__name"><?=$username?></span>
                     <span>/</span>
-                    <span><?=$title?></span>
+                    <span>Tổng quan</span>
                 </div>
                 <div class="info__user--bottom">
                     <span class="info__user--desc">
-                        Update your username and manage your account
+                        Cập nhật và quản lý tài khoản của bạn
                     </span>
                 </div>
             </div>
@@ -74,57 +88,51 @@
                     <li class="menu__destop--li "><a href="?mod=user&act=password">Mật khẩu</a></li>
                     <li class="menu__destop--li "><a href="?mod=user&act=address">Địa chỉ</a></li>
                     <li class="menu__destop--li "><a href="?mod=user&act=order-history">Lịch sử đơn hàng</a></li>
-                    <li class="menu__destop--li "><a href="">Đăng xuất</a></li>
-                    <li class=" menu__destop--li delete__acccount"><a href="user-deleteAccount.html">Xóa tài khoản</a></li>
+                    <li class="menu__destop--li "><a href="?mod=user&act=logOut-account&id-account=<?=$id_user?>">Đăng xuất</a></li>
+                    <li class=" menu__destop--li delete__acccount"><a href="?mod=user&act=delete-account">Xóa tài khoản</a></li>
                 </ul>
                 
                 <!-- menu mobile start -->
                 <div class="box__menu--mobile">
                     <ul class="menu__mobile--ul">
                         <li class="menu__mobile--li">
-                            <a href="user-general.html">
+                            <a href="?mod=user&act=general">
                                 <i class="fas fa-home"></i>
                                 <span>Tổng quan</span>
                             </a>
                         </li>
                         <li class="menu__mobile--li">
-                            <a href="user-editProfile.html">
+                            <a href="?mod=user&act=editprofile">
                                 <i class="fas fa-edit"></i>
                                 <span>Chỉnh sửa</span>
                             </a>
                         </li>
                         <li class="menu__mobile--li">
-                            <a href="user-password.html">
+                            <a href="?mod=user&act=password">
                                 <i class="fas fa-lock"></i>
                                 <span>Mật khẩu</span>
                             </a>
                         </li>
                         <li class="menu__mobile--li">
-                            <a href="user-address.html">
+                            <a href="?mod=user&act=address">
                                 <i class="fas fa-map-marker-alt"></i>
                                 <span>Địa chỉ</span>
                             </a>
                         </li>
                         <li class="menu__mobile--li">
-                            <a href="user-ordersHistory.html">
+                            <a href="?mod=user&act=order-history">
                                 <i class="fas fa-history"></i>
                                 <span>Đơn hàng</span>
                             </a>
                         </li class="menu__mobile--li">
                         <li class="menu__mobile--li">
-                            <a href="">
+                            <a href="?mod=user&act=logOut-account&id-account=<?=$id_user?>">
                                 <i class="fas fa-sign-out-alt"></i>
                                 <span>Đăng xuất</span>
                             </a>
                         </li>
-                        <li class="menu__mobile--li">
-                            <a href="">
-                                <i class="fas fa-exchange-alt"></i>
-                                <span>Chuyển đổi</span>
-                            </a>
-                        </li>
                         <li class="delete__acccount menu__mobile--li">
-                            <a href="user-deleteAccount.html">
+                            <a href="?mod=user&act=delete-account">
                                 <i class="fas fa-user-times"></i>
                             <span>Xóa tài khoản</span>
                         </a>
@@ -140,13 +148,13 @@
                     <!-- normal form group -->
                     <div class="form__group">
                         <span class="form__label">Tên đăng nhập</span>
-                        <input type="text" name="new_username" class="form__input" placeholder="<?=$name_user?>">
+                        <input type="text" name="new_username" class="form__input" placeholder="<?=$username?>">
                         <!-- <label for="" class="label__place">Tên đăng nhập</label> -->
                         <span class="form__message"></span>
                     </div>
                     <div class="form__group">
                         <span class="form__label">Email</span>
-                        <input type="email" name="new_email" class="form__input" placeholder="<?=$email_user?>">
+                        <input type="email" name="new_email" class="form__input" placeholder="<?=$email?>">
                         <!-- <label for="" class="label__place">Email</label> -->
                         <span class="form__message"></span>
                     </div>

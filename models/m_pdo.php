@@ -19,15 +19,14 @@ function pdo_get_connection(){
  */
 function pdo_execute($sql){
     $sql_args = array_slice(func_get_args(), 1);
-    try{
+    try {
         $conn = pdo_get_connection();
         $stmt = $conn->prepare($sql);
         $stmt->execute($sql_args);
-    }
-    catch(PDOException $e){
+        return $conn->lastInsertId(); // Return the last inserted ID
+    } catch(PDOException $e) {
         throw $e;
-    }
-    finally{
+    } finally {
         unset($conn);
     }
 }
@@ -101,4 +100,17 @@ function pdo_query_value($sql){
     finally{
         unset($conn);
     }
+}
+/**
+ * Thực thi câu lệnh sql truy vấn một giá trị
+ * @param string $amount số tiền
+ * @return giá trị tiền đã format
+ */
+
+ //Đếm số lượng của product
+function formatVND($amount) {
+    $formattedAmount = number_format($amount, 0, ',', '.');
+    $formattedAmount .= ' đ';
+    
+    return $formattedAmount;
 }

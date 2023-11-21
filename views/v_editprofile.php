@@ -1,21 +1,72 @@
 <?php
-    if(isset($_SESSION['user']) && (is_array($_SESSION['user']) || is_object($_SESSION['user']) && count($_SESSION['user']) > 0)){
-        extract($_SESSION['user']);
+    if(is_array($checkUses)) {
+        extract($checkUses);
     }
-    if($country_user == "") {
+    if($country == "") {
         $country_label = "Quốc gia";
     }else {
-        $country_label = $_SESSION['user']['country_user'];
+        $country_label = $country;
     }
-    if($_SESSION['user']['fullName_user'] == "") {
+    if($fullname == "") {
         $fullname_label = "Tên đầy đủ";
     }else {
-        $fullname_label = $_SESSION['user']['fullName_user'];
+        $fullname_label = $fullname;
     }
-    if($_SESSION['user']['bio_user'] == "") {
+    if($bio == "") {
         $bio_label = "Bio";
     }else {
-        $bio_label = $_SESSION['user']['bio_user'];
+        $bio_label = $bio;
+    }
+
+    // xử lí khi người dùng nhập form
+    if(isset($_POST['button__submit'])) {
+        $id_user = $_POST['id_user'];
+        $bio = $_POST['bio'];
+        $new_avatar = $_FILES['avatar__user']['name'];
+        if($new_avatar != "") {
+            $target_file = "upload/users/".$new_avatar;
+            move_uploaded_file($_FILES["avatar__user"]["tmp_name"], $target_file);
+            // lấy ảnh từ db về
+            foreach (get_imgAvatar($id_user) as $key) {
+                $path_img = $key;
+            }
+            if($path_img != "avatar-none.png") {
+                $hinh = "upload/users/".$path_img;
+                if(file_exists($hinh)) {
+                    unlink($hinh);
+                }
+            }
+        }else {
+            $new_avatar = $img;
+        }
+        if($_POST['new_fullname'] != "") {
+            $new_fullname = $_POST['new_fullname'];
+        }else {
+            $new_fullname = $fullname;
+        }
+        if($_POST['country'] != "") {
+            $country = $_POST['country'];
+        }
+        if($_POST['bio'] != "") {
+            $bio = $_POST['bio'];
+        }
+        update_fullName_country_bio_avatar($new_fullname, $country, $bio, $new_avatar, $id_user);
+        header('location: ?mod=user&act=editprofile');
+    }
+    if(isset($_POST['delete_avatar'])) {
+        $id_user = $_POST['id_user'];
+        // lấy ảnh từ db về
+        foreach (get_imgAvatar($id_user) as $key) {
+            $path_img = $key;
+        }
+        $hinh = "upload/users/".$path_img;
+        echo var_dump($hinh);
+        if(file_exists($hinh)) {
+            unlink($hinh);
+        }
+        $new_avatar = "";
+        remove_avatar($new_avatar, $id_user);
+        header('location: ?mod=user&act=editprofile');
     }
 ?>
 
@@ -23,17 +74,17 @@
     <div class="main__inner">
         <div class="main__inner--top">
             <div class="avatar__image">
-                <img srcset="upload/users/<?=$avatar_user?> 2x" alt="" class="avatar__image--user">
+                <img srcset="upload/users/<?=$avatarImage_user?> 2x" alt="" class="avatar__image--user">
             </div>
             <div class="info__user">
                 <div class="info__user--top">
-                    <span class="user__name"><?=$name_user?></span>
+                    <span class="user__name"><?=$username?></span>
                     <span>/</span>
-                    <span><?=$title?></span>
+                    <span>Tổng quan</span>
                 </div>
                 <div class="info__user--bottom">
                     <span class="info__user--desc">
-                        Update your username and manage your account
+                        Cập nhật và quản lý tài khoản của bạn
                     </span>
                 </div>
             </div>
@@ -88,57 +139,51 @@
                     <li class="menu__destop--li "><a href="?mod=user&act=password">Mật khẩu</a></li>
                     <li class="menu__destop--li "><a href="?mod=user&act=address">Địa chỉ</a></li>
                     <li class="menu__destop--li "><a href="?mod=user&act=order-history">Lịch sử đơn hàng</a></li>
-                    <li class="menu__destop--li "><a href="">Đăng xuất</a></li>
-                    <li class=" menu__destop--li delete__acccount"><a href="user-deleteAccount.html">Xóa tài khoản</a></li>
+                    <li class="menu__destop--li "><a href="?mod=user&act=logOut-account&id-account=<?=$id_user?>">Đăng xuất</a></li>
+                    <li class=" menu__destop--li delete__acccount"><a href="?mod=user&act=delete-account">Xóa tài khoản</a></li>
                 </ul>
                 
                 <!-- menu mobile start -->
                 <div class="box__menu--mobile">
                     <ul class="menu__mobile--ul">
                         <li class="menu__mobile--li">
-                            <a href="user-general.html">
+                            <a href="?mod=user&act=general">
                                 <i class="fas fa-home"></i>
                                 <span>Tổng quan</span>
                             </a>
                         </li>
                         <li class="menu__mobile--li">
-                            <a href="user-editProfile.html">
+                            <a href="?mod=user&act=editprofile">
                                 <i class="fas fa-edit"></i>
                                 <span>Chỉnh sửa</span>
                             </a>
                         </li>
                         <li class="menu__mobile--li">
-                            <a href="user-password.html">
+                            <a href="?mod=user&act=password">
                                 <i class="fas fa-lock"></i>
                                 <span>Mật khẩu</span>
                             </a>
                         </li>
                         <li class="menu__mobile--li">
-                            <a href="user-address.html">
+                            <a href="?mod=user&act=address">
                                 <i class="fas fa-map-marker-alt"></i>
                                 <span>Địa chỉ</span>
                             </a>
                         </li>
                         <li class="menu__mobile--li">
-                            <a href="user-ordersHistory.html">
+                            <a href="?mod=user&act=order-history">
                                 <i class="fas fa-history"></i>
                                 <span>Đơn hàng</span>
                             </a>
                         </li class="menu__mobile--li">
                         <li class="menu__mobile--li">
-                            <a href="">
+                            <a href="?mod=user&act=logOut-account&id-account=<?=$id_user?>">
                                 <i class="fas fa-sign-out-alt"></i>
                                 <span>Đăng xuất</span>
                             </a>
                         </li>
-                        <li class="menu__mobile--li">
-                            <a href="">
-                                <i class="fas fa-exchange-alt"></i>
-                                <span>Chuyển đổi</span>
-                            </a>
-                        </li>
                         <li class="delete__acccount menu__mobile--li">
-                            <a href="user-deleteAccount.html">
+                            <a href="?mod=user&act=delete-account">
                                 <i class="fas fa-user-times"></i>
                             <span>Xóa tài khoản</span>
                         </a>
@@ -154,7 +199,7 @@
                     <div class="form__group--uploadImage">
                         <div class="form__upload-image">
                             <div class="box__image--user">
-                                <img srcset="upload/users/<?=$avatar_user?> 2x" alt="" class="image__user--upload">
+                                <img srcset="upload/users/<?=$avatarImage_user?> 2x" alt="" class="image__user--upload">
                             </div>
                             <div class="box__btn">
                                 <input type="file" name="avatar__user" class="input_file">

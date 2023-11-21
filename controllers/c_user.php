@@ -1,39 +1,22 @@
-<?php 
-    $title = '';
+<?php
     session_start();
     ob_start();
-    if (!isset($_SESSION['user'])) {
-        $_SESSION['user'] = [];
-    }
     // Gữi/nhận dữ liệu thông qua models
     // Hiển thị dữ liệu thông qua view
     include_once 'models/m_user.php';
     if(isset($_GET['act'])){
-        $get_user = get_User();
-        if(is_array($get_user)){
-            extract($get_user);
+        if(isset($_SESSION['user'])) {
+            extract($_SESSION['user']);
+            $id_user =  $_SESSION['id_user'];
         }
-        $checkUses = checkAccount($email, $password);
+        $checkUses = checkAccount($id_user);
+        $avatar_user = '';
         if(is_array($checkUses)) {
             extract($checkUses);
-            $list_infoUser = [
-                                "id_user" => $id,
-                                "avatar_user" => $img,
-                                "name_user" => $username,
-                                "password_user" => $password,
-                                "email_user" => $email,
-                                "fullName_user" => $fullname,
-                                "phone_user" => $phone,
-                                "address_user" => $address,
-                                "country_user" => $country,
-                                "bio_user" => $bio
-                            ];
-            // array_push($_SESSION["user"], $list_infoUser);
-            $_SESSION['user'] = $list_infoUser;
-            if($_SESSION['user']['avatar_user'] == "") {
-                $_SESSION['user']['avatar_user'] = 'avatar-none.png';
-            }else {
-                $_SESSION['user']['avatar_user'] = $img;
+            if($img == "") {
+                $avatarImage_user = 'avatar-none.png';
+            }else if($img != '') {
+                $avatarImage_user = $img;
             }
         }
         switch ($_GET['act']){
@@ -42,123 +25,88 @@
                 include_once 'models/m_user.php';
                 // hiển thị dữ liệu
                 $view_name = 'general';
-                $title = 'Tổng Quan';
-
-                // xử lí khi người dùng nhập form
-                if(isset($_POST['button__submit'])) {
-                    $id_user = $_POST['id_user'];
-                    if($_POST['new_username'] != "") {
-                        $new_username = $_POST['new_username'];
-                    }else {
-                        $new_username = $_SESSION['user']['name_user'];
-                    }
-                    if($_POST['new_email'] != "") {
-                        $new_email = $_POST['new_email'];
-                    }else {
-                        $new_email = $_SESSION['user']['email_user'];
-                    }
-                    update_userName_email($new_username, $new_email, $id_user);
-                    header('location: ?mod=user&act=general');
-                }
+                # code bên trang v_general.php nha... <3
                 break;
+
             case 'editprofile':
                 // lấy dữ liệu
                 include_once 'models/m_user.php';
-
                 // hiển thị dữ liệu
                 $view_name = 'editprofile';
-                $title = 'Chỉnh sửa thông tin';
-
-                // xử lí khi người dùng nhập form
-                if(isset($_POST['button__submit'])) {
-                    $id_user = $_POST['id_user'];
-                    $bio = $_POST['bio'];
-                    $new_avatar = $_FILES['avatar__user']['name'];
-                    if($new_avatar != "") {
-                        $target_file = "upload/users/".$new_avatar;
-                        move_uploaded_file($_FILES["avatar__user"]["tmp_name"], $target_file);
-                        // lấy ảnh từ db về
-                        // foreach (get_imgAvatar($id_user) as $key) {
-                        //     $path_img = $key;
-                        // }
-                        // if($path_img != "avatar-none.png") {
-                        //     $hinh = "upload/users/".$path_img;
-                        //     if(file_exists($hinh)) {
-                        //         unlink($hinh);
-                        //     }
-                        // }
-                    }else {
-                        $new_avatar = $_SESSION['user']['avatar_user'];
-                    }
-                    if($_POST['new_fullname'] != "") {
-                        $new_fullname = $_POST['new_fullname'];
-                    }else {
-                        $new_fullname = $_SESSION['user']['user_fullName'];
-                    }
-                    if($_POST['country'] != "") {
-                        $country = $_POST['country'];
-                    }else {
-                        $country = $_SESSION['user']['country_user'];
-                    }
-                    if($_POST['bio'] != "") {
-                        $bio = $_POST['bio'];
-                    }else {
-                        $bio = $_SESSION['user']['bio_user'];
-                    }
-                    update_fullName_country_bio_avatar($new_fullname, $country, $bio, $new_avatar, $id_user);
-                    header('location: ?mod=user&act=editprofile');
-                }
-                if(isset($_POST['delete_avatar'])) {
-                    $id_user = $_POST['id_user'];
-                    // lấy ảnh từ db về
-                    foreach (get_imgAvatar($id_user) as $key) {
-                        $path_img = $key;
-                    }
-                    $hinh = "upload/users/".$path_img;
-                    echo var_dump($hinh);
-                    if(file_exists($hinh)) {
-                        unlink($hinh);
-                    }
-                    $new_avatar = "";
-                    remove_avatar($new_avatar, $id_user);
-                    header('location: ?mod=user&act=editprofile');
-                }
+                # code bên trang v_editprofile.php nha... <3
                 break;
-            case'password':
+
+            case 'password':
                 include_once 'models/m_user.php';
-
-                // hiển thị dữ liệu
-                $view_name = 'password';
-                $title = "Mật Khẩu";
-
-
+                $view_name = 'user_password';
                 break;
 
             case 'address':
                 include_once 'models/m_user.php';
-
                 // hiển thị dữ liệu
                 $view_name = 'address';
-                $title = "Địa Chỉ";
+               # qua v_address.php kiếm code đi fen....
+                break;
 
-                #code
-                $id_user = $_SESSION['user']['id_user'];
-                $list_addressUser = get_address($id_user);
-                $list_fullName_user = get_fullName_user($id_user);
+            case 'edit-address':
+                include_once 'models/m_user.php';
+                $view_name = 'form-editAddress';
+                break;
 
-                if(isset($_POST['back_address'])) {
+            case 'delete-address':
+                include_once 'models/m_user.php';
+                $view_name = 'form-editAddress';
+               # xóa địa chỉ
+                if(isset($_GET['id-address']) && ($_GET['id-address']) > 0) {
+                    $id_address = $_GET['id-address'];
+                    delete_address($id_address);
                     header('location: ?mod=user&act=address');
                 }
-
-                if(isset($_POST['add_address'])) {
-                    $value = $_POST['add_address'];
-                }
-                if(isset($_POST['button_address'])) {
-                    
+                break;
+            
+            case 'order-history':
+                include_once 'models/m_user.php';
+                $view_name = 'user_orderHistory';
+                $id_user = $_SESSION['id_user'];
+                $order_history = get_orderHistory($id_user);
+                break;
+        
+            case 'order-detail':
+                include_once 'models/m_user.php';
+                $view_name = 'user_orderDetail';
+                if (isset($_GET['id'])) {
+                    $id_order = ($_GET['id']);
+                    $order = get_order($id_order);
+                    $product_order = get_product_order($id_order);
+                    // var_dump($product_order);
                 }
                 break;
+
+            case 'logOut-account':
+                include_once 'models/m_user.php';
+                if(isset($_GET['id-account'])) {
+                    $id_user = $_GET['id-account'];
+                    extract(checkAccount($id_user));
+                }
+                
+                // # lấy id thiết bị người dùng
+                // $id_deviceUser = $_SERVER['HTTP_USER_AGENT'];
+                // # tạo cookie
+                // $cookie_account = array(
+                //     'name' => 'remember_account',
+                //     'value' => json_encode(array('username' => $username, 'email' => $email, 'avatar' => $img)),
+                //     'name_device' => $id_deviceUser
+                //   );
+                // setcookie($cookie_account['name'], $cookie_account['value'], $cookie_account['name_device'], '/', '', true);
+                // session_destroy();
+                // header('location: ?mod=page&act=login');
+                break;
+
+            case 'delete-account':
+                include_once 'models/m_user.php';
+                $view_name = 'user-deleteAccount';
+                break;
             default:
-                $title = '';
                 break;
         }
         require_once 'views/v_user_layout.php';

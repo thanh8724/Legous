@@ -78,37 +78,55 @@ $banner-padding-block: clamp(2rem, -3.714rem + 15.238vw, 10rem);
 
 // benefit section 
 .benefit__wrapper {
-    .icon-box {
-        max-width: 30rem;
-        &__icon {
-            position: relative;
-            &::before {
-                content: '';
-                position: absolute;
-                width: 100%;
-                height: 0.4rem;
-                border-radius: 4px;
-                bottom: 0;  
-                background: rgba($color: #000000, $alpha: .2)
-            }
+    .benefit__item {
+        width: clamp(10rem, -2.857rem + 34.286vw, 28rem);
+        aspect-ratio: 1;
+        padding: 1.2rem;
+        .benefit__icon {
+            padding: 1.2rem;
+            border-radius: 0.8rem;
+            background: var(--liner-tm, linear-gradient(180deg, rgba(58, 53, 129, 0.40) 0%, rgba(58, 53, 129, 0.30) 100%));
+            width: fit-content;
         }
+    }
+    .benefit__item:first-child {
+        border-bottom: .4rem solid $light-inverse-primary;
+        border-right: .4rem solid $light-inverse-primary;
+    }
+    .benefit__item:nth-child(2){
+        border-bottom: .4rem solid $light-inverse-primary;
+        border-left: .4rem solid $light-inverse-primary;
+    }
+    .benefit__item:nth-child(3){
+        border-top: .4rem solid $light-inverse-primary;
+        border-right: .4rem solid $light-inverse-primary;
+    }
+    .benefit__item:nth-child(4){
+        border-top: .4rem solid $light-inverse-primary;
+        border-left: .4rem solid $light-inverse-primary;
     }
 }
 
 // product section 
 .tab__container {
+    .tabs {
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+    }
     .tab__item {
         display: flex;
-        width: min(20rem , 100%);
+        // width: min(20rem , 100%);
+        width: fit-content;
         height: 4.8rem;
         overflow: hidden;
-        background: $light-surface;
         justify-content: center;
-        padding: 0rem 1.6rem;
+        padding: 0rem 2.4rem;
+        border-radius: 10rem;
         align-items: center;
         cursor: pointer;
         &:hover {
-            opacity: 0.8;
+            background: $light-surface;
             .tab__item__label {
                 &::after {
                     transform: translateY(0);
@@ -139,6 +157,7 @@ $banner-padding-block: clamp(2rem, -3.714rem + 15.238vw, 10rem);
         }
     }
     .tab__item.active {
+        background: $light-surface;
         .tab__item__label {
             &::after {
                 transform: translateY(0);

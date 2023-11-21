@@ -90,8 +90,9 @@ $(document).ready(function () {
         autoplay: true,
         dots: true,
         swipe: true,
+        swipeToSlide: true,
         slidesToShow: 4,
-        slidesToScroll: 1,
+        // slidesToScroll: 1,
         prevArrow: false,
         nextArrow: false,
         responsive: [
@@ -125,17 +126,14 @@ $(document).ready(function () {
         swipeToSlide: true
     });
     $('.feature-product__wrapper').slick({
-        arrows: false,
+        infinite: false,
         dots: true,
         variableWidth: true,
-        swipeToSlide: true
+        swipeToSlide: true,
+        prevArrow: '<button class="icon-btn prev-btn box-shadow1" style="background: white; color: black"><i class="fal fa-chevron-left"></i></button>',
+        nextArrow: '<button class="icon-btn next-btn box-shadow1" style="background: white; color: black"><i class="fal fa-chevron-right"></i></button>',
     });
 });
-
-/** day picker */
-// $(document).ready(function () {
-//     $('#shop-filter__day-picker').dayPicker();
-// })
 
 /** accordion handler */
 $(document).ready(function () {
@@ -149,7 +147,7 @@ $(document).ready(function () {
             return false;
         });
 
-    })(jQuery);
+    })($);
 });
 
 
@@ -214,3 +212,65 @@ $(document).ready(function () {
         ]
     });
 });
+
+/** tabs respon handler */
+$(document).ready(function() {
+    $('.tabs').slick({
+        variableWidth: true,
+        arrows: false,
+        prevArrow: false,
+        nextArrow: false,
+        swipe: true,
+        infinite: false,
+        swipeToSlide: true,
+    });
+})
+
+
+/** search handler */
+$(document).ready(() => {
+    $('.search__product__wrapper').hide();
+    $('.search__form__input').keyup(() => {
+        let val = $('.search__form__input').val();
+        if (val == "") {
+            $('.search__product__wrapper').hide();
+        } else {
+            $('.search__product__wrapper').show();
+        }
+        $.post('./views/libs/search.php', {
+            search: val,
+        }, (data) => {
+            $(".search__product__wrapper").html(data);
+        });
+    });
+})
+
+
+/** form validation with ajax */
+// $(document).ready(function () {
+//     $('.register__form').submit(function (event) {
+//         event.preventDefault(); // Prevent form submission
+
+//         // Get form data
+//         var formData = $(this).serialize();
+
+//         // Perform AJAX request
+//         $.ajax({
+//             url: './views/libs/validate.php', // Path to your PHP validation script
+//             type: 'POST',
+//             data: formData,
+//             success: function (response) {
+//                 // Handle the validation response
+//                 if (response === 'success') {
+//                     // Validation passed, do something (e.g., redirect)
+//                     // window.location.href = 'http://localhost/project-1/?mod=page&act=login#login-section';
+//                 } else {
+//                     // Validation failed, update form interface (e.g., display error messages)
+//                     // Example assuming your PHP script returns JSON with error messages
+//                     var errors = JSON.parse(response);
+//                     $('.submit__message').html(errors.join('<br>'));
+//                 }
+//             }
+//         });
+//     });
+// });
