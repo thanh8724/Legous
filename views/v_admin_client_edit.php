@@ -93,7 +93,7 @@ if (isset($_POST['btn_update'])) {
         echo $fullname;
         echo $password;
         echo $username;
-        editUserProfile($id, $fullname, $username, $password, $email, $address, $image);
+        editUserProfile($id, $fullname, $username, $password, $email, $address, $image, $role, $bio, $phone);
     } else {
         $error = "Loi64";
     }
