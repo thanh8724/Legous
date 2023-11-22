@@ -153,34 +153,64 @@ $(document).ready(function () {
 
 /** tab respon handler */
 $(document).ready(function() {
-    if ($(document).width() < 768) {
-        $('.tabs').slick({
-            slidesToShow: 4,
-            slidesToScroll: 1,
-            infinite: false,
-            arrows: false,
-            prevArrow: false,
-            nextArrow: false,
-            swipeToSlide: true,
-            variableWidth: true,
-            swipe: true,
-            responsive: [
-                {
-                    breakpoint: 768, // Define a breakpoint where the configuration changes
-                    settings: {
-                        slidesToShow: 2, // Adjust slidesToShow for screens narrower than 768px
-                    }
-                },
-                {
-                    breakpoint: 992, // Define another breakpoint if needed
-                    settings: {
-                        slidesToShow: 3, // Adjust slidesToShow for screens narrower than 992px
-                    }
-                },
-                // Add more breakpoints and settings as needed
-            ]
-        });
-    }
+    $(window).resize(function () {
+        if ($(document).width() < 1300) {
+            $('.tabs').slick({
+                slidesToShow: 4,
+                slidesToScroll: 1,
+                infinite: false,
+                arrows: false,
+                prevArrow: false,
+                nextArrow: false,
+                swipeToSlide: true,
+                variableWidth: true,
+                swipe: true,
+                responsive: [
+                    {
+                        breakpoint: 768, // Define a breakpoint where the configuration changes
+                        settings: {
+                            slidesToShow: 2, // Adjust slidesToShow for screens narrower than 768px
+                        }
+                    },
+                    {
+                        breakpoint: 992, // Define another breakpoint if needed
+                        settings: {
+                            slidesToShow: 3, // Adjust slidesToShow for screens narrower than 992px
+                        }
+                    },
+                    // Add more breakpoints and settings as needed
+                ]
+            });
+        } else {
+            $('.tabs').slick('unslick');
+        }
+    });
+    $('.tabs').slick({
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        infinite: false,
+        arrows: false,
+        prevArrow: false,
+        nextArrow: false,
+        swipeToSlide: true,
+        variableWidth: true,
+        swipe: true,
+        responsive: [
+            {
+                breakpoint: 768, // Define a breakpoint where the configuration changes
+                settings: {
+                    slidesToShow: 2, // Adjust slidesToShow for screens narrower than 768px
+                }
+            },
+            {
+                breakpoint: 992, // Define another breakpoint if needed
+                settings: {
+                    slidesToShow: 3, // Adjust slidesToShow for screens narrower than 992px
+                }
+            },
+            // Add more breakpoints and settings as needed
+        ]
+    });
 });
 
 /** mobile keyword */
@@ -212,20 +242,6 @@ $(document).ready(function () {
         ]
     });
 });
-
-/** tabs respon handler */
-$(document).ready(function() {
-    $('.tabs').slick({
-        variableWidth: true,
-        arrows: false,
-        prevArrow: false,
-        nextArrow: false,
-        swipe: true,
-        infinite: false,
-        swipeToSlide: true,
-    });
-})
-
 
 /** search handler */
 $(document).ready(() => {

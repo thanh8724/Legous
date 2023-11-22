@@ -8,7 +8,8 @@ $widthOffset: 30rem;
     margin-inline: 1rem;
     .feature-category__banner {
         width: 6.5rem;
-        aspect-ratio: 1;
+        height: 6.5rem;
+        flex-shrink: 0;
     }
     .feature-category__content {
         color: $-white;

@@ -513,6 +513,9 @@ a {
   color: #ffffff;
   margin-bottom: 1.6rem;
 }
+.footer-link {
+  color: #ffffff !important;
+}
 
 .footer--mini__item, .footer--mini__link {
   color: #ffffff;
@@ -1126,7 +1129,8 @@ table th {
 }
 .feature-category__item .feature-category__banner {
   width: 6.5rem;
-  aspect-ratio: 1;
+  height: 6.5rem;
+  flex-shrink: 0;
 }
 .feature-category__item .feature-category__content {
   color: #ffffff;
@@ -5839,14 +5843,14 @@ section .containerAdmin .pagination .pagination__item .pagination__link {
 /* Tablet: width >= 740px and width < 1024px */
 @media only screen and (min-width: 46.25em) and (max-width: 63.9375em) {
   .mobile {
-    display: none;
+    display: none !important;
   }
 }
 /* Mobile and Tablet: width < 1024px */
 /* PC: width >= 1024px */
 @media only screen and (min-width: 64em) {
   .mobile {
-    display: none;
+    display: none !important;
   }
 }
 /* 

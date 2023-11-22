@@ -11,6 +11,11 @@ include_once 'models/m_pdo.php';
         return pdo_query($sql);
     }
 
+    function getFeatureCategories () {
+        $sql = "SELECT * FROM category WHERE is_special = 1";
+        return pdo_query($sql);
+    }
+    
     function getCategoryById ($idCategory) {
         $sql = "SELECT * FROM category WHERE id = $idCategory";
         return pdo_query_one($sql);

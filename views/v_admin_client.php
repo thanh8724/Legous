@@ -63,7 +63,7 @@
             </ul>
           </div>
         </div>
-        <table class="content-table width-full">
+        <table id="example1" class="content-table width-full">
           <thead>
             <tr>
               <th style="text-align: start;">
@@ -103,7 +103,8 @@
 
           </tbody>
         </table>
-        <div class="flex mt30">
+        
+        <!-- <div class="flex mt30">
           <div class="options-number flex g16" >
             <button class="primary-btn" style="padding: 10px 15px;">1</button>
             <button class="btn">2</button>
@@ -112,10 +113,12 @@
             <button class="btn">5</button>
             <a href="" class="flex-center g8"><i class="fa-solid fa-arrow-right"></i><span class="title-medium" >Next</span></a>
           </div>
-        </div>
+        </div> -->
       </div>
       </div>
 
       <!----======== End Body DashBoard ======== -->
 
     </section>
+
+

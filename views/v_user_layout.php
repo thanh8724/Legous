@@ -296,7 +296,7 @@
         <footer class="footer section auto-grid g60">
             <div class="footer__infomation flex-column g30">
                 <a href="#" class="logo">
-                    <img src="./public/assets/media/images/logo-dark.svg" alt="" class="logo-image" />
+                    <img src="./public/assets/media/images/logo-white.svg" alt="" class="logo-image" />
                 </a>
                 <div class="row g30">
                     <div class="footer-column">
@@ -353,7 +353,7 @@
                 </div>
             </div>
             <div class="footer__email-form flex-column g30" style="color: white;">
-                <div class="text-46 ttu" style="max-width: 75%;">ĐĂNG KÝ NGAY
+                <div class="text-46 ttu" style="max-width: 75%; color: white">ĐĂNG KÝ NGAY
                     CHỈ BẰNG EMAIL</div>
                 <form action="" class="form email__form" method="post" style="width: fit-content">
                     <div class="form__group por flex">
