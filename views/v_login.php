@@ -1,5 +1,3 @@
-
-
 <main class="main__login-register">
     <section id="register-section" class="oh section create-account__section banner-cover flex-center g60"
         style="background-image: url('./public/assets/media/images/banners/banner-login-1.svg')">
@@ -49,12 +47,12 @@
             </div>
             <div class="form__group without-title">
                 <!-- <label for="username">Email</label> -->
-                <input type="text" name="email" class="form__input email--input" placeholder=" " value="<?= $emailView ?>">
+                <input type="text" name="email" class="form__input email--input" placeholder=" " value="">
                 <label for="" class="label__place">Email</label>
             </div>
             <div class="form__group without-title">
                 <!-- <label for="username">Mật khẩu</label> -->
-                <input type="text" name="password" class="form__input password--input" placeholder=" " value="<?= $passwordView ?>">
+                <input type="text" name="password" class="form__input password--input" placeholder=" " value="">
                 <label for="" class="label__place">Mật khẩu</label>
             </div>
             <input type="submit" name="login" class="btn form__btn" style="background: black; color: white; border-radius: .8rem;" value="ĐĂNG NHẬP NGAY">

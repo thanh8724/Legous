@@ -10,4 +10,4 @@ function click_scroll() {
             behavior: 'smooth'
         });
     }
-} 
+}

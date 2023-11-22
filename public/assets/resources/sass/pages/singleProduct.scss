@@ -1,14 +1,14 @@
 .single-product__main {
     .product__gallery {
-        .gallery__thumbnails {  
-            top: 1rem;
-            right: 1rem;
-        }
         /* Style for each thumbnail item */
         .gallery__thumbnails__item {
-            width: 6rem;
-            height: 8rem;
+            flex-basis: 16rem;
+            width: 16rem;
+            margin: 1rem;
             /* Adjust the spacing between thumbnails */
+        }
+        .gallery__thumbnails__item.slick-active {
+            // border: .2rem solid $light-primary;
         }
 
         /* Style for the selected (active) thumbnail */
