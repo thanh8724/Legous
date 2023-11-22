@@ -5201,13 +5201,10 @@ main .adminFooter ul li a {
   /* Style for each thumbnail item */
   /* Style for the selected (active) thumbnail */
 }
-.single-product__main .product__gallery .gallery__thumbnails {
-  top: 1rem;
-  right: 1rem;
-}
 .single-product__main .product__gallery .gallery__thumbnails__item {
-  width: 6rem;
-  height: 8rem;
+  flex-basis: 16rem;
+  width: 16rem;
+  margin: 1rem;
   /* Adjust the spacing between thumbnails */
 }
 .single-product__main .product__gallery .gallery__thumbnails__item.slick-current img {

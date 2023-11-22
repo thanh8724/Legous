@@ -143,6 +143,9 @@
                 include_once 'models/m_img.php';
                 
                 $view_name = 'productDetail';
+
+                
+                
                 break;
             default:
                 
