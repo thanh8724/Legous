@@ -141,10 +141,10 @@
         </div>
         <div class="panels">
             <div class="panel__item active">
-                MÔ TẢ SẢN PHẨM
+                <?= $short_detail ?>
             </div>
             <div class="panel__item">
-                THÔNG TIN CHI TIẾT
+                <?= $description ?>
             </div>
             <div class="panel__item comment__panel">
                 <div class="block">

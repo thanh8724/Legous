@@ -352,7 +352,7 @@ foreach($featureCategories as $item) {
             <!-- date filter end -->
         </ul>
     </div>
-    <div class="filter-toggle__list--mobile flex g20 flex-full"></div>
+    <div class="filter-toggle__list--mobile mobile flex g20 flex-full"></div>
     <div class="product__wrapper product__wrapper--without-carousel auto-grid g20 mt30">
         <?= $productHtml ?>
     </div>

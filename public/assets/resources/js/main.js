@@ -381,14 +381,16 @@ const app = {
                         const cateIds = filterValue.split(',')
                         const categories = 
                         [
-                            'Ninja Go',
-                            'Naruto',
+                            'naruto',
                             'dragon ball',
-                            'Marvel & DC',
-                            'One Piece',
-                            'Car',
-                            'Gundam',
-                            'Kimetsu no Yaiba'
+                            'jujustsu kaisen',
+                            'demon slayer',
+                            'gundam',
+                            'genshin impact',
+                            'one piece',
+                            'pack card',
+                            'car',
+                            'lego'
                         ];
                         const categoryNames = cateIds.map((id) => categories[id - 1]);
                         return `Danh mục: ${categoryNames.join(', ')}`; 
