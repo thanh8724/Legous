@@ -6,16 +6,34 @@ include_once 'models/m_pdo.php';
     return pdo_query("SELECT * FROM user");
   }
 
-  function get_Categoris($start = 0, $limit = 0, $kyw_cg = "") {
+//   
+function get_Categoris($start = 0, $limit = 0, $kyw_cg = "", $sort = 0) {
     $sql = "SELECT * FROM category";
+
     if ($kyw_cg != "") {
         $sql .= " WHERE name LIKE '%$kyw_cg%'";
     }
+
+    if($sort > 0){
+        if($sort == 1){
+            $sql .= " ORDER BY id DESC";
+        }
+        elseif($sort == 2){
+            $sql .= " ORDER BY name DESC";
+        }
+        elseif($sort == 3){
+            $sql .= " ORDER BY name ASC";
+        }
+    }
+
     if ($limit > 0) {
         $sql .= " LIMIT $start, $limit";
     }
+
     return pdo_query($sql);
 }
+
+
 
 function count_Categoris(){
     return pdo_query_one("SELECT count(*) AS soluong FROM category");
