@@ -42,7 +42,7 @@
                 <a href="#">
                     <div class="logo-name d-flex justify-content-center align-items-center">
                         <div class="logo-image">
-                            <img style="width: 20px; height: 20px;" src="../assets/media/images/logo.png" alt="">
+                            <img style="width: 20px; height: 20px;" src="./public/assets/media/images/users/images/logo.png" alt="">
                         </div>
     
                         <span class="logo_name title-large fw-black" style="color: black;">LEGOUS</span>
@@ -96,7 +96,7 @@
                             <i class="far fa-chart-line"></i>
                             <span class="link-name title-small">Bảng Điều Khiển</span>
                         </a></li>
-                    <li class="<?=(strpos($view_name,'products'))?'active':''?>"><a href="?mod=admin&act=products">
+                    <li class="<?=(strpos($view_name,'products'))?'active':''?>"><a href="?mod=admin&act=products&page=1">
                             <i class="far fa-store"></i>
                             <span class="link-name title-small">Sản Phẩm</span>
                         </a></li>
@@ -149,6 +149,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
+        
 
     </script>
     <script>

@@ -1,9 +1,28 @@
 <?php
     $id_user = $_SESSION['id_user'];
+    $id_bill = 0;
+    $message_password = '';
+    $message_checkbox = '';
+    extract(checkAccount($id_user));
+    foreach (get_allBill($id_user) as $key) {
+        extract($key);
+        $id_bill = $id;
+    }
     if(isset($_POST['deleteAccount'])) {
-        if(isset($_POST['confirm_delete'])) {
-            delete_acccount($id_user);
-            header('location: ?mod=page&act=home');
+        if($_POST['old_password'] == $password) {
+            if(isset($_POST['confirm_delete'])) {
+                delete_bill_fromCart($id_bill);
+                delete_bill($id_user);
+                delete_acccount($id_user);
+                session_destroy();
+                header('location: ?mod=page&act=home');
+            }else {
+                $message_checkbox = 'Cần xác nhận trước khi xóa.';
+            }
+        } else if($_POST['old_password'] == '') {
+            $message_password = 'Nhập mật khẩu để xác nhận.';
+        } else if($_POST['old_password'] != $password) {
+            $message_password = 'Mật khẩu xác nhận không đúng.';
         }
     }
 ?>
@@ -17,7 +36,7 @@
                 <div class="info__user--top">
                     <span class="user__name"><?=$username?></span>
                     <span>/</span>
-                    <span>Tổng quan</span>
+                    <span>Xóa tài khoản</span>
                 </div>
                 <div class="info__user--bottom">
                     <span class="info__user--desc">
@@ -131,28 +150,53 @@
             </div>
 
             <div class="main__inner--bottom-right">
-                        <form action="" method="POST">
-                            <div class="form__group">
-                                <label for="username"
-                                 class="title-medium">Xóa tài khoản của bạn</label>
-                                <span class="label-large">Nếu muốn giảm thông báo qua email, bạn có thể tắt chúng tại đây hoặc nếu bạn chỉ muốn thay đổi tên người dùng của mình, bạn có thể làm điều đó tại đây. Xin lưu ý, việc xóa tài khoản là quyết định cuối cùng. Sẽ không có cách nào để khôi phục tài khoản của bạn.</span>
-                            </div>
-                            <!-- checkbox form group -->
-                            <div class="form__group without-title">
-                                <div class="flex g6">
-                                    <input type="checkbox" name="confirm_delete" class="input">
-                                    <div class="form__label">Tôi đã hiểu rõ, xóa tài khoản là quyết định của tôi</div>
-                                </div>
-                            </div>
-                            <div class="form__group form__group--submit">
-                                <div class="box__delete--account">
-                                    <i class="far fa-trash-alt">
-                                        <input type="submit" name="deleteAccount" value="Xóa tài khoản" class="btn__delete">
-                                    </i>
-                                </div>
-                            </div>
-                        </form>
+                <form action="" method="POST">
+                    <span class="old_password" style="display: none;"><?= $password ?></span>
+                    <div class="form__group">
+                        <label for="username"
+                            class="form_label">Xóa tài khoản của bạn</label>
+                        <span class="label-large">Nếu muốn giảm thông báo qua email, bạn có thể tắt chúng tại đây hoặc nếu bạn chỉ muốn thay đổi tên người dùng của mình, bạn có thể làm điều đó tại đây. Xin lưu ý, việc xóa tài khoản là quyết định cuối cùng. Sẽ không có cách nào để khôi phục tài khoản của bạn.</span>
+                    </div>
+                    <!-- checkbox form group -->
+                    <div class="form__group">
+                        <span class="form__label">Mật khẩu cũ</span>
+                        <input type="password" class="form__input password--input" name="old_password" placeholder="Nhập mật khẩu cũ">
+                        <!-- <label for="" class="label__place">Nhập mật khẩu cũ</label> -->
+                        <span class="form__message"><?= $message_password ?></span>
+                    </div>
+                    <div class="form__group without-title">
+                        <div class="flex g6">
+                            <input type="checkbox" name="confirm_delete" class="input input_checkbox">
+                            <div class="form__label">Tôi đã hiểu rõ, xóa tài khoản là quyết định của tôi</div>
+                        </div>
+                        <span class="form__message"><?= $message_checkbox ?></span>
+                    </div>
+                    <div class="form__group form__group--submit">
+                        <div class="box__delete--account">
+                            <i class="far fa-trash-alt">
+                                <input type="submit" name="deleteAccount" value="Xóa tài khoản" class="btn__delete">
+                            </i>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 </main>
+<script>
+    let input_password =document.querySelector('.password--input');
+    let old_password =document.querySelector('.old_password').innerText;
+    let placeholder = input_password.placeholder;
+    console.log(placeholder);
+    document.querySelectorAll('.form__message').forEach(e => {
+        e.classList.add('error_formMessage');
+        if(e.innerText != "") {
+            input_password.classList.toggle('error_input'); 
+            // input_password.placeholder.style.color = 'red';
+        }
+    });
+
+    if(input_password.value == '' || input_password.value!= old_password) {
+        input_password.focus();
+    }
+</script>

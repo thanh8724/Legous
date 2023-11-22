@@ -45,9 +45,24 @@
 
 }
 
+.dashboard{
+  .detail{
+    .btn-add{
+      text-decoration: none;
+      color: $masking-text;
+      background-color: $light-on-tertiary;
+      padding: 10px 15px; 
+      border-radius: 10px;
+      border: 1px solid transparent;
+      display: inline-block;
+      &:hover{
+        border: 1px solid $light-shadow;
+    }
+  }
+}
+}
 .content-filter {
   position: relative;
-  
   
 }
 .dropdown-menu{
@@ -97,5 +112,9 @@ table{
       }
     }
   }
+
+}
+
+@media only screen and (max-width: 46.1875em){
 
 }

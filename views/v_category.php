@@ -109,7 +109,11 @@
     }
 
     /** category rendering */
+    /** categroy filter rendering */
+
     $categoryHtml = '';
+    $categoryFilterHtml = '';
+
     foreach ($categories as $item) {
         extract($item);
         $amount = count(getProductsByCategoryId($id));
@@ -131,7 +135,20 @@
                 </a>
                 <!-- single category end -->
             HTML;
+
+        $url = get_current_url();
+        $queryString = parse_url($url, PHP_URL_QUERY);
+
+        $categoryFilterHtml .= 
+            <<<HTML
+                <li class="p12 flex v-center g8">
+                    <input class="filter__input" data-id-category="$id" id="idCategory=$id" type="checkbox">
+                    <label class="fw-smb ttc" for="idCategory=$id">$name</label>
+                </li>
+            HTML;
     }
+
+    
 ?>
 
 <!-- shop mobile top navigation bar start -->
@@ -221,10 +238,11 @@
                 </button>
             </div>
             <ul class="filter__list open flex g12">
+                <!-- price filter start -->
                 <li class="filter__list__item por">
                     <button class="btn elevated-btn rounded-100 filter__list__btn"><i nclass="fa-solid fa-caret-down"></i>Giá</button>
                     <ul class="filter-option__list poa p20 rounded-8 box-shadow1" style="right: 0">
-                        <li class="filter-option__item">
+                        <li class="filter-option__item por">
                             <form action="?mod=page&act=category&idCategory=<?= $idCategory ?>" method="post">
                                 <!-- normal form group -->
                                 <div class="flex g20">
@@ -241,88 +259,76 @@
                                 </div>
                                 <input class="btn primary-btn rounded-8 ttu width-full form__btn" name="priceFilter" type="submit" value="LỌC">
                                 <div class="form__group mt30">
-                                    <input type="range" min="0" max="50" value="0" id="range2" class="range-input"/>
-                                    <div class="flex-between">
-                                        <div class="flex-column flex-center">
-                                            min
-                                            <span class="body-large">0</span>
-                                        </div>
-                                        <div class="flex-column flex-center">
-                                            max
-                                            <span class="body-large">20.000.000</span>
-                                        </div>
-                                    </div>
+                                    <p>
+                                        <label for="amount">Khoảng giá:</label>
+                                        <input type="text" id="amount" readonly style="border:0; ; font-weight:bold;">
+                                    </p>
+                                    
+                                    <div id="slider-range"></div>
                                 </div>
                             </form>
                         </li>
                     </ul>
                 </li>
-                <li class="filter__list__item por">
+                <!-- price filter end -->
+
+                <!-- category filter start -->
+                <!-- <li class="filter__list__item por">
                     <button class="btn elevated-btn rounded-100 filter__list__btn"><i
                             class="fa-solid fa-caret-down"></i>Danh mục</button>
                     <ul class="filter-option__list poa p20 rounded-8 grid-2 g30 box-shadow1" style="right: 0">
                         <li class="filter-option__item flex-column g12" style="color:#7254B7">
-                            <h4 class="title-medium filter-option__title fw-smb">MÔ HÌNH</h4>
                             <ul>
-                                <li class="p12 flex v-center g8"><input id="option-checkbox1" type="checkbox"><label
-                                        class="fw-smb" for="option-checkbox1">Naruto</label></li>
-                                <li class="p12 flex v-center g8"><input id="option-checkbox2" type="checkbox"><label
-                                        class="fw-smb" for="option-checkbox2">Dragon Ball</label></li>
-                                <li class="p12 flex v-center g8"><input id="option-checkbox3" type="checkbox"><label
-                                        class="fw-smb" for="option-checkbox3">Jujutsu Kaisen</label></li>
-                                <li class="p12 flex v-center g8"><input id="option-checkbox4" type="checkbox"><label
-                                        class="fw-smb" for="option-checkbox4">Kimetsu No Yaiba</label></li>
-                            </ul>
-                        </li>
-                        <li class="filter-option__item flex-column g12" style="color:#7254B7">
-                            <h4 class="title-medium filter-option__title fw-smb">MÔ HÌNH</h4>
-                            <ul>
-                                <li class="p12 flex v-center g8"><input id="option-checkbox1" type="checkbox"><label
-                                        class="fw-smb" for="option-checkbox1">Naruto</label></li>
-                                <li class="p12 flex v-center g8"><input id="option-checkbox2" type="checkbox"><label
-                                        class="fw-smb" for="option-checkbox2">Dragon Ball</label></li>
-                                <li class="p12 flex v-center g8"><input id="option-checkbox3" type="checkbox"><label
-                                        class="fw-smb" for="option-checkbox3">Jujutsu Kaisen</label></li>
-                                <li class="p12 flex v-center g8"><input id="option-checkbox4" type="checkbox"><label
-                                        class="fw-smb" for="option-checkbox4">Kimetsu No Yaiba</label></li>
+                                <?= $categoryFilterHtml ?>
                             </ul>
                         </li>
                     </ul>
-                </li>
+                </li> -->
+                <!-- category filter end -->
+
+                <!-- name filter start -->
                 <li class="filter__list__item por">
                     <button class="btn elevated-btn rounded-100 filter__list__btn"><i class="fa-solid fa-caret-down"></i>Tên</button>
                     <ul class="filter-option__list poa p20 rounded-8 grid-2 g30 box-shadow1" style="right: 0">
                         <li class="filter-option__item flex-column g12" style="color:#7254B7">
                             <ul>
-                                <li class="p12 flex v-center g8"><input id="option-checkbox1" type="checkbox"><label
-                                        class="fw-smb" for="option-checkbox1">Từ A - Z</label></li>
-                                <li class="p12 flex v-center g8"><input id="option-checkbox2" type="checkbox"><label
-                                        class="fw-smb" for="option-checkbox2">Từ Z - A</label></li>
+                                <li class="p12 flex v-center g8">
+                                    <input class="filter__input--name" id="name-ASC" value="ASC" type="checkbox">
+                                    <label class="fw-smb" for="name-ASC">Từ A - Z</label>
+                                </li>
+                                <li class="p12 flex v-center g8">
+                                    <input class="filter__input--name" id="name-DESC" value="DESC" type="checkbox">
+                                    <label class="fw-smb" for="name-DESC">Từ Z - A</label>
+                                </li>
                             </ul>
                         </li>
                     </ul>
                 </li>
+                <!-- name filter end -->
+                
+                <!-- date filter start -->
                 <li class="filter__list__item por">
                     <button class="btn elevated-btn rounded-100 filter__list__btn"><i
                             class="fa-solid fa-caret-down"></i>Ngày ra mắt</button>
                     <ul class="filter-option__list poa p20 rounded-8 grid-2 g30 box-shadow1" style="right: 0">
                         <li class="filter-option__item flex-column g12" style="color:#7254B7">
                             <ul>
-                                <li class="p12 flex v-center g8"><input id="option-checkbox1" type="checkbox"><label
-                                        class="fw-smb" for="option-checkbox1">1 tuần trước</label></li>
-                                <li class="p12 flex v-center g8"><input id="option-checkbox2" type="checkbox"><label
-                                        class="fw-smb" for="option-checkbox2">1 tháng trước</label></li>
-                                <li class="p12 flex v-center g8"><input id="option-checkbox2" type="checkbox"><label
-                                        class="fw-smb" for="option-checkbox2">6 tháng trước</label></li>
-                                <li class="p12 flex v-center g8"><input id="option-checkbox2" type="checkbox"><label
-                                        class="fw-smb" for="option-checkbox2">1 năm trước</label></li>
+                                <li class="p12 flex v-center g8"><input value="1w" class="filter__input--date" id="date-filter--1w" type="checkbox"><label
+                                        class="fw-smb" for="date-filter--1w">1 tuần trước</label></li>
+                                <li class="p12 flex v-center g8"><input value="1m" class="filter__input--date" id="date-filter--1m" type="checkbox"><label
+                                        class="fw-smb" for="date-filter--1m">1 tháng trước</label></li>
+                                <li class="p12 flex v-center g8"><input value="6m" class="filter__input--date" id="date-filter--6m" type="checkbox"><label
+                                        class="fw-smb" for="date-filter--6m">6 tháng trước</label></li>
+                                <li class="p12 flex v-center g8"><input value="1y" class="filter__input--date" id="date-filter--1y" type="checkbox"><label
+                                        class="fw-smb" for="date-filter--1y">1 năm trước</label></li>
                                 <div class="form__group">
-                                    <input type="date" class="datePicker form__input" id="shop-filter__day-picker">
+                                    <input type="date" class="datePicker form__input filter__input--date" id="shop__filter--day-picker">
                                 </div>
                             </ul>
                         </li>
                     </ul>
                 </li>
+                <!-- date filter end -->
             </ul>
         </div>
         <div class="product__wrapper product__wrapper--without-carousel auto-grid g20 mt30">
@@ -333,8 +339,7 @@
             <li class="pagination__item"><a href="#" class="pagination__link">2</a></li>
             <li class="pagination__item"><a href="#" class="pagination__link">3</a></li>
             <li class="pagination__item"><a href="#" class="pagination__link">4</a></li>
-            <li class="btn text-btn rounded-100"><a href="#" class="pagination__link"><i class="fal fa-arrow-right"
-                        style="margin-right: .6rem"></i>Next</a></li>
+            <li class="btn text-btn rounded-100"><a href="#" class="pagination__link"><i class="fal fa-arrow-right" style="margin-right: .6rem"></i>Next</a></li>
         </ul>
     </main>
 
@@ -439,7 +444,7 @@
 <!-- category section start -->
 <section class="section category__section">
     <div class="flex-column g12">
-        <h2 class="text-68">CÓ THỂ BẠN SẼ THÍCH</h2>
+        <h2 class="text-68 ttu">danh mục khác</h2>
         <label for="" class="label-large-prominent">LEGOUS/</label>
     </div>
     <div class="category__wrapper mt30 auto-grid g12">
@@ -447,3 +452,118 @@
     </div>
 </section>
 <!-- category section end -->
+
+<!-- price filter start -->
+<script>
+    $(function() {
+    const min = <?= $minPrice ?>;
+    const max = <?= $maxPrice ?>;
+
+    $("#slider-range").slider({
+        range: true,
+        min: min,
+        max: max,
+        values: [<?= $manualMin ?> , <?= $manualMax ?>],
+        slide: function (event, ui) {
+            $("#amount").val(formatCurrency(ui.values[0]) + " - " + formatCurrency(ui.values[1]));
+        },
+        stop: function(event, ui) {
+            const minPrice = ui.values[0];
+            const maxPrice = ui.values[1];
+            // Redirect the user to the URL with the updated prices
+            window.location.href = `?mod=page&act=category&idCategory=<?= $idCategory ?>&minPrice=${minPrice}&maxPrice=${maxPrice}`;
+        }
+    });
+
+    $("#amount").val(formatCurrency($("#slider-range").slider("values", 0)) + " - " + formatCurrency($("#slider-range").slider("values", 1)));
+    });
+
+    // Function to format the value with currency symbol and rounding for VND
+    function formatCurrency(value) {
+        const formatter = new Intl.NumberFormat('vi-VN', {
+            style: 'currency',
+            currency: 'VND',
+            maximumFractionDigits: 0,
+        });
+        return formatter.format(value);
+    }
+</script>
+<!-- price filter end -->
+
+
+<script>
+    let filterInputs = document.querySelectorAll('.filter__input');
+
+    filterInputs.forEach(function(input) {
+        let id = input.getAttribute('data-id-category');
+        let urlParams = new URLSearchParams(window.location.search);
+        let existingParams = Array.from(urlParams.entries());
+
+        let filterCategory = urlParams.getAll('filterCategory[]');
+        if (filterCategory.includes(id)) {
+            input.checked = true;
+        }
+
+        input.addEventListener('click', function() {
+            if (input.checked) {
+            if (!filterCategory.includes(id)) {
+                filterCategory.push(id);
+            }
+            } else {
+            filterCategory = filterCategory.filter(item => item !== id);
+            }
+
+            // Remove existing filterCategory parameters
+            existingParams = existingParams.filter(([param, value]) => param !== 'filterCategory[]');
+
+            // Append updated filterCategory parameter
+            filterCategory.forEach(category => {
+            existingParams.push(['filterCategory[]', category]);
+            });
+
+            // Construct the new URL
+            let newUrl = window.location.pathname;
+
+            if (existingParams.length > 0) {
+            newUrl += '?' + new URLSearchParams(existingParams).toString();
+            }
+
+            newUrl += window.location.hash;
+
+            // Redirect to the new URL
+            window.location.href = newUrl;
+        });
+    });
+
+    let filterNameInputs = document.querySelectorAll('.filter__input--name');
+
+    filterNameInputs.forEach(function(input) {
+        input.addEventListener('click', function() {
+            let urlParams = new URLSearchParams(window.location.search);
+            let filterName = urlParams.get('filterName') || '';
+
+            if (filterName === 'ASC') {
+            filterName = 'DESC';
+            } else {
+            filterName = 'ASC';
+            }
+
+            urlParams.set('filterName', filterName);
+
+            let newUrl = window.location.origin + window.location.pathname + '?' + urlParams.toString() + window.location.hash;
+
+            window.location.href = newUrl;
+        });
+
+        // Check the input if filterName matches
+        let urlParams = new URLSearchParams(window.location.search);
+        let filterName = urlParams.get('filterName') || '';
+
+        if (filterName === 'ASC' && input.value === 'ASC') {
+            input.checked = true;
+        } else if (filterName === 'DESC' && input.value === 'DESC') {
+            input.checked = true;
+        }
+    });
+</script>
+

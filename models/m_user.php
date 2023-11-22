@@ -48,17 +48,27 @@
         $sql = "SELECT * FROM user WHERE email = '$email' AND password = '$password'";
         return pdo_query_one($sql);
     }
+    #Admin Starts
+    function getUser() {
+        return pdo_query("SELECT * FROM user ORDER BY id");
+    }
+    function getFullNameUser() {
+        $result = pdo_query("SELECT username FROM user");
+        $usernames = array();
+        foreach ($result as $row) {
+            $usernames[] = $row['username'];
+        }
+        return $usernames;
+    }
     function getUserInfo($id) {
         return pdo_query("SELECT * FROM user WHERE id = {$id}"); 
     }
-
-    function editUserProfile($id,$fullname, $username, $password, $email, $address) {
-        pdo_execute("UPDATE user SET fullname = $fullname, username = $username, email = $email, password = $password, address = $address WHERE id = ".$id);
+    function searchUser($inputSearch) {
+        return pdo_query("SELECT * FROM user WHERE fullname LIKE '%$inputSearch%'");
     }
 
     function get_addressByid($id_address) {
         $sql = "SELECT * FROM address WHERE id = '$id_address'";
-        return pdo_query($sql);
     }
 
     function check_addressDefault() {
@@ -118,7 +128,38 @@
 
 
     # delete account
+    function  get_allBill($id_user) {
+        return pdo_query("SELECT * FROM bill WHERE id_user = ?", $id_user);
+    }
+    function  get_id_bill_cart($id_bill) {
+        return pdo_query("SELECT id FROM cart WHERE id_bill = ?", $id_bill);
+    }
+    function  get_id_bill($id_user) {
+        return pdo_query("SELECT id FROM bill WHERE id_user = ?", $id_user);
+    }
+    function delete_bill_fromCart($id_bill) {
+        pdo_execute("DELETE FROM cart WHERE id_bill = {$id_bill}");
+    }
+    function delete_bill($id_user) {
+        pdo_execute("DELETE FROM bill WHERE id_user = {$id_user}");
+    }
     function delete_acccount($id_user) {
         pdo_execute("DELETE FROM user WHERE id = ?",$id_user);
     }
+
+
+
+    function editUserProfile($id, $fullname, $username, $password, $email, $address, $image, $role, $bio, $phone) {
+        pdo_execute("UPDATE user SET fullname = '$fullname', username = '$username', email = '$email', password = '$password', address = '$address', img = '$image', role = '$role', bio = '$bio', phone = '$phone' WHERE id = ".$id);
+    }
+    function addUserProfile($fullname, $username, $password, $email, $address, $image, $role, $bio, $phone) {
+        pdo_execute("INSERT INTO user (fullname, username, email, password, address, img, role, bio, phone) VALUES ('$fullname', '$username', '$email', '$password', '$address', '$image', '$role', '$bio', '$phone') ");
+    }
+
+    function deleteUser($id) {
+        pdo_execute("DELETE FROM user WHERE id = {$id}");
+    }
+
+    
+    #Admin Ends
 ?>

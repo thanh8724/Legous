@@ -3,9 +3,11 @@
       <div class="top">
         <i class="fas fa-angle-left sidebar-toggle"></i>
         <div class="search-box">
+        <form action="?mod=admin&act=categories&page=<?=$page_nows?>&search_category" method="post">
           <i class="far fa-search"></i>
-          <input type="text" placeholder="Tìm danh mục">
-          </form>
+          <input name="kyw_cg" type="text" placeholder="Tìm danh mục">
+          <button name="search_cg" type="submit"></button>
+        </form>
         </div>
         <div class="info-user">
           <i class="far fa-comment-alt"></i>
@@ -24,24 +26,20 @@
           <div class="flex g8">
             <span class="label-large">Admin /</span><a href="#" class="label-large" style="text-decoration: none;">Danh Mục</a>
           </div>
-          <div class="flex-center g8">
+          <!-- <div class="flex-center g8">
             <span><i class="fa-solid fa-calendar-days"></i></span>
             <input class="label-large-prominent" type="datetime-local" style="color: #625B71; border: none; font-size: 16px;
                 ">
-          </div>
+          </div> -->
         </div>
       </div>
       <!----======== End Header DashBoard ======== -->
 
       <!----======== Body DashBoard ======== -->
       <div class="containerAdmin">
-        <ul>
-          <?php// foreach ($categories as $category): ?>
-              <li><?php// echo htmlspecialchars($category['name']); ?></li>
-          <?php //endforeach; ?>
-          </ul>
-        <div class="flex-column width-full">
-          <div class="content-filter flex-column dropdown-center">
+        <div class="width-full ">
+          <div class="content-filter dropdown-center width-full d-flex align-items-center justify-content-between">
+          <button id="btn_addMore_admin" type="button" style="width:130px;height:45px;background-color:#6750a4;border-radius:10px"><a style="color: white; font-size: 12px; text-decoration: none; padding: 10px 5px;" href="?mod=admin&act=categories-add">Thêm danh mục</a></button>
             <button id="filter" class="flex-center g8" style="padding: 10px 16px;
                   border: 1px solid #79747E; border-radius: 100px;
                   margin-left: auto;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -58,6 +56,11 @@
           </div>
           
         </div>
+         <!-- text -->
+         <?php
+           
+         ?>
+         <!-- end text -->
         <table class="content-table width-full">
           <thead>
             <tr>
@@ -90,16 +93,18 @@
                     <td style="text-align:left;"><?= $item['description'] ?></td>
                     <td><?= count_products_category($item['id'])[0]['SLSP'] ?> sản phẩm</td>
                     <td><?= $item['create_date'] ?></td>
-                    <td><a href="?mod=admin&act=categories&page=<?= $page_nows?>&id=<?=$item['id']?>" id="myButton">Xem chi tiết</a></td>
+                    <td><a href="?mod=admin&act=categories&page=<?= $page_nows?>&id=<?=$item['id']?>" id="myButton"><i style="font-size:20px;" class="fa-solid fa-gear"></i></a></td>
                 </tr>
             <?php endforeach; ?>  
           </tbody>
         </table>
+          
           <?php
+            
             if(@$_GET['id']):
               $getidCategories = getidCategories($_GET['id'])
             ?>
-              
+           
               <div style=" 
                   font-size: 16px;
                   display:block;
@@ -119,9 +124,9 @@
                   padding: 20px;
                   border: 1px solid #888;
                   width: 50%;" class="modal-content">
-                      <div style="width:100%;"><span style="float: inline-end;font-size:20px; cursor: pointer;"
-                              class="close">&times;</span></div>
-                        <form action="?mod=admin&act=categories&page=<?=$page_nows?>&id=<?=$id_category?>" method="POST">
+                      <a href="?mod=admin&act=categories&page=<?=$page_nows?>" style="width:100%;"><span style="float: inline-end;font-size:20px; cursor: pointer;"
+                              class="close">&times;</span></a>
+                        <form action="?mod=admin&act=categories&page=<?=$page_nows?>&id=<?=$id_category?>" method="POST" enctype="multipart/form-data">
                           <div class="mb-3">
                               <label class="form-label">Tên danh mục</label>
                               <input style="font-size: 16px; margin-bottom:20px;" type="text" name="name_cg" value="<?=$getidCategories['name']?>" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -130,9 +135,54 @@
                                   <label class="form-label">Mô tả danh mục</label>
                                   <textarea style="font-size: 16px;height:100px;margin-bottom:20px;" name="description_cg" class="form-control" placeholder="Nhập mô tả sản phẩm"><?=$getidCategories['description']?></textarea>
                               </div>
+                              <div class="Dropdowns_categogy">
+                            <div class="row">
+                              <div class="custom-select col-6">
+                              <label>Cho xuất hiện danh mục</label>
+                                  <!-- Dropdown -->
+                                  <select id="id_category" name="is_appear">
+                                    <?php
+                                      if($get_appear == 1){
+                                        echo '
+                                        <option value="1">Có</option>
+                                        <option value="0">Không</option>
+                                        ';
+                                      }else{
+                                        echo'
+                                        <option value="0">Không</option>
+                                        <option value="1">Có</option>
+                                        ';
+                                      }
+                                    
+                                    ?>
+                                    
+                                  </select>
+                              </div>
+                              <div class="custom-select col-6">
+                              <label>Danh mục đặt biệt</label>
+                                  <!-- Dropdown -->
+                                  <select id="id_category" name="is_special">
+                                  <?php
+                                      if($get_special == 1){
+                                        echo '
+                                        <option value="1">Có</option>
+                                        <option value="0">Không</option>
+                                        ';
+                                      }else{
+                                        echo'
+                                        <option value="0">Không</option>
+                                        <option value="1">Có</option>
+                                        ';
+                                      }
+                                    
+                                    ?>
+                                  </select>
+                              </div>
+                            </div>
+                        </div>
                               <div class="mb-3">
-                                  <label class="form-label">Mô tả danh mục</label>
-                                  <input style="font-size: 16px;" class="form-control" type="file" name="" id="">
+                                  <label class="form-label">Cập nhật ảnh</label>
+                                  <input style="font-size: 16px;" name="file" type="file" id="fileInput">
                               </div>
                           </div>
               
@@ -143,22 +193,24 @@
               </div>
           <?php endif;?>
             
-        <div class="flex mb30">
+        <!-- <div class="flex mb30 " style="<?//php if(isset($_GET['search_category']))'display:none':''?>"> -->
+        <div class="flex mb30" style="<?php if(isset($_GET['search_category'])): ?>display:none;<?php endif; ?>">
+
           <div class="options-number flex g16" >
-            <?php for($i=1 ;$i <= $number_Page; $i++):?>
-            <a href="?mod=admin&act=categories&page=<?=$i?>" class="<?=($page_nows==$i)?'primary-btn':''?>" style="padding: 10px 15px;"><?=$i?></a>
-            <?php $page = $i; ?>
-            <?php endfor;?>
-            <?php
-            ?>
-              <a href="?mod=admin&act=categories&page=<?php
-                if($number_Page == $page_nows){
-                  echo '1';
-                }
-                else{
-                  echo "$page";
-                }
-              ?>" class="flex-center g8"><i class="fa-solid fa-arrow-right"></i><span class="title-medium" >Next</span></a>
+              <?php for($i=1 ;$i <= $number_Page; $i++):?>
+              <a href="?mod=admin&act=categories&page=<?=$i?>" class="<?=($page_nows==$i)?'primary-btn':''?>" style="padding: 10px 15px;"><?=$i?></a>
+              <?php $page = $i; ?>
+              <?php endfor;?>
+              <?php
+              ?>
+                <a href="?mod=admin&act=categories&page=<?php
+                  if($number_Page == $page_nows){
+                    echo '1';
+                  }
+                  else{
+                    echo "$page";
+                  }
+                ?>" class="flex-center g8"><i class="fa-solid fa-arrow-right"></i><span class="title-medium" >Next</span></a>
           </div>
         </div>
       </div>

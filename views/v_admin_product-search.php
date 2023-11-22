@@ -39,19 +39,18 @@
 
   <!----======== Body DashBoard ======== -->
   <div class="containerAdmin">
+  <?php if (isset($_SESSION['loi'])) : ?>
+                <div class="alert alert-danger" role="alert"><?= $_SESSION['loi'] ?></div>
+            <?php endif;
+            unset($_SESSION['loi']) ?>
     <div class="width-full mb-3">
       <div class="content-filter dropdown-center width-full d-flex align-items-center justify-content-between">
         <button id="btn_addMore_admin" type="button" style="width:130px;height:45px;background-color:#6750a4;border-radius:10px"><a style="color: white; font-size: 14px; font-weight: 500; text-decoration: none; padding: 10px 5px;" href="?mod=admin&act=product-add">Thêm Sản Phẩm</a></button>
       </div>
-      <?php if (isset($_SESSION['thongbao'])) : ?>
-        <div class="alert alert-success" role="alert"><?= $_SESSION['thongbao'] ?></div>
-      <?php endif;
-      unset($_SESSION['thongbao']) ?>
-
     </div>
     <div class="container-products width-full flex" style="flex-wrap: wrap; gap: 45px">
       <!--Cart-->
-      <?php foreach ($getproductAdmin as $item) : ?>
+      <?php foreach ($ketqua as $item) : ?>
         <div class="cart trans-bounce flex-column p20" style="
                   border-radius: 12px;
                   border: 1px #DED8E1;
@@ -81,7 +80,7 @@
                   <button type="button" data-bs-toggle="dropdown" aria-expanded="false" href=""><i class="fa-solid fa-ellipsis" style="padding: 8px; color: #6750a4;"></i></button>
                   <ul class="dropdown-menu">
                     <li><a class="dropdown-item label-large" href="?mod=admin&act=product-detail&id=<?= $item['id'] ?>">Xem Chi Tiết</a></li>
-                    <li><a href="?mod=admin&act=product-delete&page=<?=$page?>&id=<?= $item['id'] ?>"  class="dropdown-item label-large" style="cursor: pointer;" onclick="deleteProduct(<?=$item['id'] ?>)">Xóa</a></li>
+                    <li><button class="dropdown-item label-large" style="cursor: pointer;" onclick="remove_product(<?=$item['id'] ?>)">Xóa</button></li>
                   </ul>
                 </div>
               </div>
@@ -135,11 +134,11 @@
     <ul id="paging" class="pagination flex g16 mt30">
       <?php for ($i = 1; $i <= $soTrang; $i++) : ?>
         <li class="pagination__item <?= (isset($_GET['page']) && $_GET['page'] == $i) ? 'active' : '' ?>">
-          <a href="?mod=admin&act=products&page=<?= $i ?>" class="pagination__link"><?= $i ?></a>
+          <a href="?mod=admin&act=product-search&page=<?= $i ?> &kw=<?= $keyword ?>" class="pagination__link"><?= $i ?></a>
         </li>
       <?php endfor; ?>
-      <li class="btn text-btn rounded-100">
-        <a href="?mod=admin&act=products&page=<?= $page + 1 ?>"" class=" pagination__link"><i class="fal fa-arrow-right" style="margin-right: .6rem"></i>Next</a>
+      <li class="btn text-btn rounded-100 <?= $page >= $soTrang ? 'disabled' : '' ?>">
+        <a href="?mod=admin&act=product-search&page=<?= $page + 1 ?> &kw=<?= $keyword ?> "" class=" pagination__link"><i class="fal fa-arrow-right" style="margin-right: .6rem"></i>Next</a>
       </li>
     </ul>
 
@@ -149,7 +148,7 @@
 </section>
 <script src="/public/assets/resources/js/pagination.js"></script>
 <script>
-  function deleteProduct(id) {
+  function remove_product(id) {
     var kq = confirm("Bạn chắc là có muốn xóa sản phẩm này không ?")
     if (kq) {
       window.location = '?mod=admin&act=product-delete=' + id;

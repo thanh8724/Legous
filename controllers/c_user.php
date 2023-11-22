@@ -98,8 +98,8 @@
                 //     'name_device' => $id_deviceUser
                 //   );
                 // setcookie($cookie_account['name'], $cookie_account['value'], $cookie_account['name_device'], '/', '', true);
-                // session_destroy();
-                // header('location: ?mod=page&act=login');
+                session_destroy();
+                header('location: ?mod=page&act=login');
                 break;
 
             case 'delete-account':

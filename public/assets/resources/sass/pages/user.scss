@@ -747,6 +747,12 @@ html {
     }
 }
 
+.error_input {
+    border: 1px solid $light-error !important;
+}
+.error_formMessage {
+    color: $light-error !important;
+}
 .show {
     opacity: 1 !important;
     visibility: visible !important;
@@ -1662,6 +1668,15 @@ html {
                                 height: auto;
                                 display: flex;
                                 justify-content: center;
+
+                                &--item {
+                                    width: 4rem;
+                                    height: 4rem;
+                                    border-radius: 0.2rem;
+                                }
+                                .dots-active {
+                                    background-color: $light-primary;
+                                }
                             }
 
                             .btn-back {
