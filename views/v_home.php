@@ -110,7 +110,7 @@
                     <div class="product product__carousel">
                         <!-- single product start -->
                         <div class="product product__carousel">
-                            <a href="#" class="product__banner banner-contain box-shadow1 rounded-8 por"
+                            <a href="#" class="product__banner banner-contain rounded-8 por"
                                 style="background-image: url('$imgPath')">
                                 <div class="product__overlay poa flex-center">
                                     <div class="flex g12 in-stock__btn-set">
@@ -202,7 +202,7 @@
                 <<<HTML
                     <!-- single product start -->
                     <div class="product product__carousel">
-                        <a href="#" class="product__banner oh banner-contain rounded-8 por box-shadow1"
+                        <a href="#" class="product__banner oh banner-contain rounded-8 por"
                             style="background-image: url($imgPath)">
                             <div class="product__overlay poa flex-center">
                                 <div class="flex g12 in-stock__btn-set">

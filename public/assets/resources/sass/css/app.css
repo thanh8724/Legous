@@ -3987,6 +3987,19 @@ html {
   border: none;
 }
 
+.dashboard .detail .btn-add {
+  text-decoration: none;
+  color: linear-gradient(49deg, #779dff 0%, #9104ff 54.17%, #ff00d6 100%);
+  background-color: #ffffff;
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  display: inline-block;
+}
+.dashboard .detail .btn-add:hover {
+  border: 1px solid #000000;
+}
+
 .content-filter {
   position: relative;
 }
@@ -5538,6 +5551,53 @@ main .adminFooter ul li a {
 }
 /* Tablet: width >= 740px and width < 1024px */
 /* Mobile and Tablet: width < 1024px */
+/* PC: width >= 1024px */
+.containerAdmin .container-products .options .dropdown-item a {
+  cursor: pointer;
+}
+
+section .containerAdmin .pagination .pagination__item .pagination__link {
+  text-decoration: none;
+}
+
+@media only screen and (max-width: 46.1875em) {
+  main .dashboard .containerAdmin .container-products .cart {
+    width: calc(50% - 30px) !important;
+  }
+  main .dashboard .containerAdmin .container-products .cart .v-nav .description,
+  main .dashboard .containerAdmin .container-products .cart .v-nav .info-sales-qty {
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+  }
+}
+/* Tablet: width >= 740px and width < 1024px */
+@media only screen and (min-width: 46.25em) and (max-width: 63.9375em) {
+  main .dashboard .containerAdmin .container-products .cart {
+    width: calc(50% - 30px) !important;
+  }
+  main .dashboard .containerAdmin .container-products .cart .v-nav .description,
+  main .dashboard .containerAdmin .container-products .cart .v-nav .info-sales-qty {
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+  }
+}
+/* Mobile and Tablet: width < 1024px */
+@media only screen and (max-width: 63.9375em) {
+  main .dashboard .containerAdmin .container-products .cart {
+    width: calc(50% - 30px) !important;
+  }
+  main .dashboard .containerAdmin .container-products .cart .v-nav .description,
+  main .dashboard .containerAdmin .container-products .cart .v-nav .info-sales-qty {
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+  }
+}
 /* PC: width >= 1024px */
 /* Mobile: with < 740px */
 @media only screen and (max-width: 46.1875em) {

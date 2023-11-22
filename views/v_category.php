@@ -78,7 +78,7 @@ foreach ($categoryProducts as $item) {
         <<<HTML
             <!-- single product start -->
             <div class="product">
-                <a href="$linkToDetail" class="product__banner oh banner-contain rounded-8 por box-shadow1"
+                <a href="$linkToDetail" class="product__banner oh banner-contain rounded-8 por"
                     style="background-image: url($imgPath)">
                     <div class="product__overlay poa flex-center">
                         <div class="flex g12 product-btns stock__btn-set">
