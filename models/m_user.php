@@ -48,7 +48,10 @@
         $sql = "SELECT * FROM user WHERE email = '$email' AND password = '$password'";
         return pdo_query_one($sql);
     }
-    #Admin Starts
+
+
+
+    
     function getUser() {
         return pdo_query("SELECT * FROM user ORDER BY id");
     }
@@ -160,6 +163,16 @@
         pdo_execute("DELETE FROM user WHERE id = {$id}");
     }
 
-    
-    #Admin Ends
-?>
+
+    #Sort User
+    function sortOldUser() {
+        return pdo_query("SELECT * FROM user ORDER BY id DESC");
+    }
+
+    function sortAToZUser() {
+        return pdo_query("SELECT * FROM user ORDER BY fullname");
+    }
+    function sortZToAUser() {
+        return pdo_query("SELECT * FROM user ORDER BY fullname DESC");
+    }
+?>  

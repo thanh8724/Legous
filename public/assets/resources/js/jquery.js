@@ -213,6 +213,20 @@ $(document).ready(function() {
     });
 });
 
+/** product gallery handler */
+$(document).ready(function () {
+    $('.gallery__thumbnails').slick({
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        swipeToSlide: true,
+        swipe: true,
+        infinite: false,
+        arrowns: false,
+        prevArrow: '<button class="icon-btn prev-btn box-shadow1" style="background: white; color: black"><i class="fal fa-chevron-left"></i></button>',
+        nextArrow: '<button class="icon-btn next-btn box-shadow1" style="background: white; color: black"><i class="fal fa-chevron-right"></i></button>',
+    });
+});
+
 /** mobile keyword */
 $(document).ready(function () {
     $('.keyword__wrapper ').slick({
