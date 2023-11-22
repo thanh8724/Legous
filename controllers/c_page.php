@@ -137,13 +137,6 @@
                 
                 $view_name = 'shop';
                 break;
-            case 'productDetail';
-                include_once 'models/m_product.php';
-                include_once 'models/m_category.php';
-                include_once 'models/m_img.php';
-                
-                $view_name = 'productDetail';
-                break;
             default:
                 
                 break;
