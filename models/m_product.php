@@ -87,4 +87,13 @@
         $sql = "SELECT MIN(price) AS min_price FROM product";
         return pdo_query_value($sql);
     }
+
+    function getRelatedProduct($idCategory, $limit=0) {
+        $sql = "SELECT * FROM product WHERE id_category = $idCategory";
+        if ($limit > 0) {
+            $sql .= " LIMIT $limit";
+        }
+        return pdo_query($sql);
+    }
+    
 ?>

@@ -24,6 +24,11 @@ include_once 'models/m_pdo.php';
     function getCategoriesSorted() {
         return pdo_query("SELECT * FROM category ORDER BY name ASC");
     }
+
+    function getIdCategoryByIdProducts($idProduct) {
+        $sql = "SELECT id_category FROM product WHERE id = $idProduct";
+        return pdo_query_value($sql);
+    }
 ?>
 
     
