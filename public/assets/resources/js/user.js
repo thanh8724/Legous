@@ -1,22 +1,29 @@
-let form_address = document.querySelector('.form__address--container');
-let form_hidden = true;
-form_address.style.opacity = '0';
-form_address.style.visibility = 'hidden';
+// let form_address = document.querySelector('.form__address--container');
+// let form_hidden = true;
+// if(form_address) {
+//     form_address.style.opacity = '0';
+//     form_address.style.visibility = 'hidden';
+// }
 
-// ẩn hiện form address
-function show_hidden()
-{
-    console.log('this is add address');
-    if(form_hidden) {
-        form_address.style.opacity = '1';
-        form_address.style.visibility = 'visible';
-        form_hidden = false;
-    }else {
-        form_address.style.opacity = '0';
-        form_address.style.visibility = 'hidden';
-        form_hidden = true;
-    }
+let form_addAddress = document.querySelector('#form_add-address');
+// let form_editAddress = document.querySelector('#form_edit-address');
+let btn_add_address = document.querySelector('#button_add-address');
+
+if(form_addAddress) {
+    form_addAddress.style.opacity = '0';
+    form_addAddress.style.visibility = 'hidden';
+    // form_editAddress.style.opacity = '0';
+    // form_editAddress.style.visibility = 'hidden';
 }
+function btn_addAddress()
+{
+    form_addAddress.classList.toggle('show');
+}
+function btn_editAddress()
+{
+    // form_editAddress.classList.toggle('show');
+}
+
 
 function button_back()
 {
@@ -63,6 +70,17 @@ function select__order()
             checkbox.checked = false;
         }
       }
+    });
+}
+
+// show - hidden switch account
+
+const button_switchAccount = document.querySelector('.box__changeAccount svg');
+// let type_switchAccount = 
+if(button_switchAccount) {
+    let box__changeAccount__content = document.querySelector('.box__changeAccount--content');
+    button_switchAccount.addEventListener("click", () => {
+        box__changeAccount__content.classList.toggle('show');
     });
 }
 

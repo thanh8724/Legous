@@ -1,6 +1,7 @@
 <?php 
     session_start();
     ob_start();
+
     // Gữi/nhận dữ liệu thông qua models
     // Hiển thị dữ liệu thông qua view
     if(isset($_GET['act'])){
@@ -11,6 +12,7 @@
                 include_once 'models/m_product.php';
                 include_once 'models/m_category.php';
                 include_once 'models/m_partner.php';
+                include_once 'models/m_user.php';
                 $topLoveProduct = getProductsByLove(1);
                 $loveProducts = getProductsByLove(12);
                 $categories = getCategories();
@@ -38,7 +40,6 @@
                             "password_user" => $password,
                             "email_user" => $email
                         ];
-                        // array_push($_SESSION["user"], $list_infoUser);
                         $_SESSION['user'] = $list_infoUser;
                         if (isset($_SESSION['user'])) {
                             extract($_SESSION['user']);
@@ -54,19 +55,25 @@
 
                 /** login */
                 $loginMessage = '';
-                if (isset($_SESSION['user'])){
-                    extract($_SESSION['user']);
-                    $emailView = $email_user;
-                    $passwordView = $password_user;
-                }
+                // if (isset($_SESSION['user'])){
+                //     extract($_SESSION['user']);
+                //     $emailView = $email_user;
+                //     $passwordView = $password_user;
+                // }
                 if(isset($_POST['login']) && $_POST['login']) {
                     $email = $_POST['email'];
                     $password = $_POST['password'];
+                    $list_infoUser = [
+                        "email_user" => $email,
+                        "password_user" => $password
+                    ];
                     if(!empty($email) || !empty($password)) {
                         if (count(checkUser($email, $password)) != 0) {
                             $user = getUserByInfo($email, $password);
                             extract($user);
                             if ($role == 0) {
+                                #lưu thông tin user lên session
+                                $_SESSION['user'] = $list_infoUser;
                                 header("Location: ?mod=page&act=home&idUser= $id");
                             } else if ($role == 2023) {
                                 header("Location: ?mod=admin&act=dashboard");
@@ -126,6 +133,14 @@
                 // hiển thị dữ liệu
                 $view_name = 'category';
                 break;
+            case'general':
+                include_once 'models/m_user.php';
+                $view_name = 'general';
+                break;
+
+            // case 'filter':
+            //     include_once 'models/m_product.php';
+            //     include_once 'models/m_category.php';
             case 'shop':
                 include_once 'models/m_product.php';
                 include_once 'models/m_category.php';
@@ -142,5 +157,5 @@
                 break;
         }
         require_once 'views/v_user_layout.php';
-}
+    }
 ?>
