@@ -2,13 +2,13 @@
     include_once 'models/m_pdo.php';
 
     # general - edit profile
-   function checkAccount($id_user) {
-       return pdo_query_one("SELECT * FROM user WHERE id = ?", $id_user);
-   }
-   
-   function get_userBy_email_password($email_user, $password_user) {
+    function checkAccount($id_user) {
+        return pdo_query_one("SELECT * FROM user WHERE id = ?", $id_user);
+    }
+    
+    function get_userBy_email_password($email_user, $password_user) {
         return pdo_query("SELECT * FROM user WHERE email = ? AND password = ?", $email_user, $password_user);
-   }
+    }
 
    // chỉnh sửa thông tin người dùng từ mã tài khoản
     function update_userName_email($new_username, $new_email, $id_user) {
@@ -33,6 +33,7 @@
     function get_address($id_user) {
         return pdo_query("SELECT * FROM address WHERE id_user = ?", $id_user);
     }
+
     function insertUser($username, $email, $password) {
         $sql = "INSERT INTO user (username, email, password) VALUES (?, ?, ?)"; // Use parameterized query
         $userId = pdo_execute($sql, $username, $email, $password);

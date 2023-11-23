@@ -60,6 +60,7 @@
                 //     $emailView = $email_user;
                 //     $passwordView = $password_user;
                 // }
+
                 if(isset($_POST['login']) && $_POST['login']) {
                     $email = $_POST['email'];
                     $password = $_POST['password'];
@@ -68,12 +69,17 @@
                         "password_user" => $password
                     ];
                     if(!empty($email) || !empty($password)) {
-                        if (count(checkUser($email, $password)) != 0) {
+                        if (!empty(checkUser($email, $password) )) {
+                            if (!isset($_SESSION['user']) && empty($_SESSION['user'])) {
+                                $_SESSION['user'] = $list_infoUser; 
+                            } else {
+                                
+                            }
                             $user = getUserByInfo($email, $password);
+                            print_r($user);
                             extract($user);
                             if ($role == 0) {
                                 #lưu thông tin user lên session
-                                $_SESSION['user'] = $list_infoUser;
                                 header("Location: ?mod=page&act=home&idUser= $id");
                             } else if ($role == 2023) {
                                 header("Location: ?mod=admin&act=dashboard");
@@ -156,10 +162,10 @@
                 include_once 'models/m_product.php';
                 include_once 'models/m_category.php';
                 include_once 'models/m_img.php';
+                include_once 'models/m_comment.php';
                 
                 $view_name = 'productDetail';
 
-                
                 
                 break;
             default:

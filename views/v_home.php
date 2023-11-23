@@ -31,9 +31,11 @@
     /** product rendering */
     extract($topLoveProduct[0]);
     $img_path = './public/assets/media/images/product/'.$img.'';
+    $linkToDetail = "?mod=page&act=productDetail&idProduct=$id";
+
     $topProductHtml = '
         <div class="product product__spotlight">
-            <a href="#" class="product__banner product__spotlight__banner banner-contain rounded-8 por"
+            <a href="'.$linkToDetail.'" class="product__banner product__spotlight__banner banner-contain rounded-8 por"
                 style="background-image: url('.$img_path.')">
                 <div class="product__overlay poa flex-center">
                     <div class="flex g12 in-stock__btn-set">
@@ -86,6 +88,8 @@
                 }
                 extract($product);
                 $imgPath = constant('PRODUCT_PATH') . $img;
+                $linkToDetail = "?mod=page&act=productDetail&idProduct=$id";
+
 
                 $priceView = '';
                 $salePriceView = '';
@@ -110,7 +114,7 @@
                     <div class="product product__carousel">
                         <!-- single product start -->
                         <div class="product product__carousel">
-                            <a href="#" class="product__banner banner-contain rounded-8 por"
+                            <a href="$linkToDetail" class="product__banner banner-contain rounded-8 por"
                                 style="background-image: url('$imgPath')">
                                 <div class="product__overlay poa flex-center">
                                     <div class="flex g12 in-stock__btn-set">
@@ -178,6 +182,7 @@
             foreach ($products as $product) {
                 extract($product);
                 $imgPath = constant('PRODUCT_PATH') . $img;
+                $linkToDetail = "?mod=page&act=productDetail&idProduct=$id";
 
                 $priceView = '';
                 $salePriceView = '';
@@ -202,7 +207,7 @@
                 <<<HTML
                     <!-- single product start -->
                     <div class="product product__carousel">
-                        <a href="#" class="product__banner oh banner-contain rounded-8 por"
+                        <a href="$linkToDetail" class="product__banner oh banner-contain rounded-8 por"
                             style="background-image: url($imgPath)">
                             <div class="product__overlay poa flex-center">
                                 <div class="flex g12 in-stock__btn-set">

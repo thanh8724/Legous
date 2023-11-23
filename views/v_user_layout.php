@@ -2,11 +2,7 @@
     require_once 'models/m_user.php';
     if(isset($_SESSION['user']) && (is_array($_SESSION['user']) || is_object($_SESSION['user']) && count($_SESSION['user']) > 0)){
         extract($_SESSION['user']);
-        foreach (get_userBy_email_password($email_user, $password_user) as $key) {
-            extract($key);
-            $_SESSION['id_user'] = $id;
-        }
-        $id_user = $_SESSION['id_user'];
+        $_SESSION['id_user'] = $id_user;
         if(is_array(checkAccount($id_user))) {
             extract(checkAccount($id_user));
         }
@@ -24,7 +20,7 @@
         $productHtml = '';
         foreach ($products as $product) {
             extract($product);
-            $link = "?mod=page&act=product&idProduct=$id";
+            $link = "?mod=page&act=productDetail&idProduct=$id";
             
             $productHtml .=
                 <<<HTML
@@ -51,11 +47,12 @@
     if (isset($_SESSION['user'])) {
         $user = $_SESSION['user'];
         extract($user);
+        print_r($user);
         $userWidgetHtml =
         <<<HTML
             <a href="#" class="user-widget flex flex-center g6">
                 <i class="fal fa-user user-widget__icon"></i>
-                <div class="username">$username</div>
+                <div class="username">$name_user</div>
             </a>
             <div class="flex-between header__subnav__wrapper poa box-shadow1 p20 rounded-8" style="top: 100%; left: 0;">
                 <ul class="header__subnav flex-full flex-column g6">
@@ -141,7 +138,7 @@
                                     <!-- single product start -->
                                     <div class="title-large fw-bold primary-masking-text">Hot deal! Sale off 20%</div>
                                     <div class="product mt12">
-                                        <a href="#" class="product__banner oh banner-cover rounded-8 por"
+                                        <a href="#" class="product__banner oh banner-contain rounded-8 por"
                                             style="background-image: url('<?= constant('PRODUCT_PATH') . $specialProduct['img'] ?>')">
                                             <div class="product__overlay poa flex-center">
                                                 <div class="flex g12 in-stock__btn-set">
