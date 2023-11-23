@@ -3,8 +3,126 @@
         $idProduct = $_GET['idProduct'];
         $product = getProductById($idProduct);
         $productThumbnails = getThumbnailsById($idProduct);
-        print_r($productThumbnails);
+        // print_r($productThumbnails);
         extract($product);
+
+        $btnsHtml = '';
+        $btnsHtmlMobile = '';
+        $btnText = '';
+        
+        if ($qty > 0) {
+            $btnText = 'MUA NGAY';
+            $btnsHtml .= 
+                <<<HTML
+                    <form action="?mod=cart&act=addCart" method="post" class="flex-column g12">
+                        <a class="">
+                            <i class="fal fa-shopping-cart-plus"></i>
+                            <input class="btn elevated-btn rounded-100" name="addCart" type="submit" value="THÊM VÀO GIỎ HÀNG" style="border: transparent">   
+                        </a>
+                        <input type="hidden" name="name" value="$name">
+                        <input type="hidden" name="price" value="$price">
+                        <input type="hidden" name="img" value="$img">
+                        <input type="hidden" name="id" value="$idProduct">
+                        <input type="hidden" name="qty" id="data-qty" value="1">
+                    </form>
+                    <button class="btn primary-btn rounded-100"><i class="fal fa-arrow-right"></i>MUA NGAY</button>
+                HTML;
+            $btnsHtmlMobile .= 
+                <<<HTML
+                    <form action="?mod=cart&act=addCart" method="post" class="flex-column g12">
+                        <a href="" class="product__btn">
+                            <i class="far fa-cart-plus"></i>
+                            <input class="icon-btn fab box-shadow1" name="addCart" type="submit" value="">
+                        </a>
+                        <input type="hidden" name="name" value="$name">
+                        <input type="hidden" name="price" value="$price">
+                        <input type="hidden" name="img" value="$img">
+                        <input type="hidden" name="id" value="$idProduct">
+                        <input type="hidden" name="qty" id="data-qty" value="1">
+                    </form>
+                HTML;
+            ;
+        } else {
+            $btnsHtml .=
+                <<<HTML
+                    <button class="btn primary-btn rounded-100">MUA NGAY</button>
+                HTML;
+            $btnsHtmlMobile .= '';
+            $btnText = 'ĐẶT TRƯỚC';
+        }   
+        
+
+        $idCategory = getIdCategoryByIdProducts($idProduct);
+        $relatedProducts = getRelatedProduct($idCategory, 12);
+        $randomProducts = getProducts(12);
+
+        function renderCarouselProduct ($products) {
+            shuffle($products);
+            $productsHtml = '';
+
+            foreach ($products as $product) {
+                extract($product);
+                $imgPath = constant('PRODUCT_PATH') . $img;
+                $linkToDetail = "?mod=page&act=productDetail&idProduct=$id";
+
+                $priceView = '';
+                $salePriceView = '';
+                $loveBtn = '<button class="icon-btn love-btn toggle-btn" data-product-id="' . $id . '"><i class="fal fa-heart"></i></button>';
+
+                if (isset($price) && $price > 0) {
+                    $priceView = '<div class="product__info__price body-medium">' . formatVND($price) . '</div>';
+                } else {
+                    $priceView = '<div class="product__info__price body-medium">Đang cập nhật</div>';
+                }
+
+                if (isset($promotion) and $promotion > 0) {
+                    $salePrice = $price - $price * $promotion / 100;
+                    $salePriceView = '<div class="product__info__sale-price body-medium">' . formatVND($salePrice) . '</div>';
+                    $priceView = '<del class="product__info__price body-small">' . formatVND($price) . '</del>';
+                } else {
+                    $salePriceView = '';
+                    $priceView = '<div class="product__info__price body-medium">' . formatVND($price) . '</div>';
+                }
+
+                $productsHtml .=
+                    <<<HTML
+                            <!-- single product start -->
+                            <div class="product product__carousel">
+                                <a href="$linkToDetail" class="product__banner oh banner-contain rounded-8 por"
+                                    style="background-image: url($imgPath)">
+                                    <div class="product__overlay poa flex-center">
+                                        <div class="flex g12 in-stock__btn-set">
+                                            <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
+                                            $loveBtn
+                                            <button class="icon-btn"><i class="fal fa-shopping-cart"></i></button>
+                                        </div>
+                                        <!-- <div class="flex g12 sold-out__btn-set">
+                                                    <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
+                                                    <button class="icon-btn"><i class="fal fa-plus"></i></button>
+                                                    <button class="icon-btn"><i class="fal fa-arrow-right"></i></button>
+                                                </div> -->
+                                    </div>
+                                </a>
+                                <a href="#" class="product__info">
+                                    <div class="product__info__name title-medium fw-smb">$name</div>
+                                    $priceView
+                                    $salePriceView
+                                </a>
+                                <div class="product__info flex-between width-full">
+                                    <div class="product__info__view body-medium">1,2m+ views</div>
+                                    <div class="product__info__rated flex g6 v-center body-medium">
+                                        4.4 <i class="fa fa-star start"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- single product end -->
+                        HTML;
+            }
+            return $productsHtml;
+        }
+
+        /** create cart product section */
+
     }
 
     /** render gallery thumbnails */
@@ -19,6 +137,7 @@
             </div>
         HTML;
     }
+
 ?>
 
 
@@ -78,21 +197,18 @@
             <img src="./public/assets/media/images/product/<?= $img ?>" alt="" class="img-cover">
         </div>
         <div class="gallery__thumbnails flex g12 mt12">
-            <div class="gallery__thumbnails__item">
-                <img src="/public/assets/media/images/product/sample-image1.png" alt="" class="img-cover">
-            </div>
-            <div class="gallery__thumbnails__item">
-                <img src="/public/assets/media/images/product/sample-image2.png" alt="" class="img-cover">
-            </div>
-            <div class="gallery__thumbnails__item">
-                <img src="/public/assets/media/images/product/sample-image3.png" alt="" class="img-cover">
-            </div>
-            <div class="gallery__thumbnails__item">
-                <img src="/public/assets/media/images/product/sample-image4.png" alt="" class="img-cover">
-            </div>
+            <?= $galleryThumbnailsHtml ?>
         </div>
     </div>
-    <div class="product__info flex-column g30">
+    <div class="product__gallery por desktop">
+        <div class="gallery__spotlight flex-center">
+            <img src="./public/assets/media/images/product/<?= $img ?>" alt="" class="img-contain">
+        </div>
+        <div class="gallery__thumbnails flex g12">
+            <?= $galleryThumbnailsHtml ?>
+        </div>
+    </div>
+    <div class="product__info flex-column g30" style="grid-column: span 2">
         <span class="label-large text-navagtion desktop">LEGOUS / CỬA HÀNG / SẢN PHẨM</span>
         <div class="flex-between v-center">
             <div class="product__name text-38 fw-smb" style="font-family: inherit;">
@@ -100,30 +216,25 @@
             </div>
             <button class="icon-btn love-btn toggle-btn mobile transparent"><i class="fal fa-heart"></i></button>
         </div>
-        <p class="body-medium desktop"></p>
         <div class="flex-between v-center">
             <span class="text-38 fw-normal" style="font-family: inherit;">1.289.099 VND</span>
             <span class="label-medium"><?= $qty ?> sản phẩm</span>
         </div>
+        <div class="qty__form flex v-center g12">
+            Số lượng:
+            <button class="minus-btn icon-btn outline-btn"><i class="fal fa-minus"></i></button>
+            <input type="number" min="0" max="<?= $qty ?>" class="qty__input form__input" style="border: none; ouline: none; width: 3rem" value="1">
+            <button class="plus-btn icon-btn outline-btn"><i class="fal fa-plus"></i></button>
+        </div>
         <div class="flex g12 desktop">
-            <button class="btn elevated-btn rounded-100"><i class="fal fa-shopping-cart-plus"></i>THÊM VÀO GIỎ
-                HÀNG</button>
-            <button class="btn primary-btn rounded-100"><i class="fal fa-arrow-right"></i>MUA NGAY</button>
-        </div>
-    </div>
-    <div class="product__gallery por desktop" style="height: 60rem">
-        <div class="gallery__spotlight flex-center" style="height: 100%">
-            <img src="./public/assets/media/images/product/<?= $img ?>" alt="" class="img-contain" style="height: 100%;">
-        </div>
-        <div class="gallery__thumbnails poa flex-between flex-column g12">
-            <?= $galleryThumbnailsHtml ?>
+            <?= $btnsHtml ?>
         </div>
     </div>
 </main>
 <!-- product overview end -->
 
 <!-- product info start -->
-<section class="product-info__section">
+<section class="product-info__section mt30">
     <div class="tab__container full">
         <div class="tabs flex-center width-full">
             <div class="tab__item active">
@@ -256,252 +367,7 @@
         <span class="label-large">LEGOUS / SHOP / PRODUCT</span>
     </div>
     <div class="product__wrapper product__wrapper--normal product__wrapper--normal--slick__1 auto-grid g20 mt30">
-        <!-- single product start -->
-        <div class="product product__carousel">
-            <a href="#" class="product__banner oh banner-cover rounded-8 por"
-                style="background-image: url('/public/assets/media/images/product/v944cyfrwt851.webp')">
-                <div class="product__overlay poa flex-center">
-                    <div class="flex g12 in-stock__btn-set">
-                        <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
-                        <button class="icon-btn love-btn toggle-btn"><i class="fa fa-heart"></i></button>
-                        <button class="icon-btn"><i class="fal fa-shopping-cart"></i></button>
-                    </div>
-                    <!-- <div class="flex g12 sold-out__btn-set">
-                                <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
-                                <button class="icon-btn"><i class="fal fa-plus"></i></button>
-                                <button class="icon-btn"><i class="fal fa-arrow-right"></i></button>
-                            </div> -->
-                </div>
-            </a>
-            <a href="#" class="product__info">
-                <div class="product__info__name title-medium fw-smb">Lorem ipsum para desbaren</div>
-                <div class="product__info__price body-medium">289.000đ</div>
-            </a>
-            <div class="product__info flex-between width-full">
-                <div class="product__info__view body-medium">1,2m+ views</div>
-                <div class="product__info__rated flex g6 v-center body-medium">
-                    4.4 <i class="fa fa-star start"></i>
-                </div>
-            </div>
-        </div>
-        <!-- single product end -->
-
-        <div class="product product__carousel">
-            <a href="#" class="product__banner oh banner-cover rounded-8 por"
-                style="background-image: url('/public/assets/media/images/product/v944cyfrwt851.webp')">
-                <div class="product__overlay poa flex-center">
-                    <div class="flex g12 in-stock__btn-set">
-                        <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
-                        <button class="icon-btn love-btn"><i class="fa fa-heart"></i></button>
-                        <button class="icon-btn"><i class="fal fa-shopping-cart"></i></button>
-                    </div>
-                    <!-- <div class="flex g12 sold-out__btn-set">
-                                <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
-                                <button class="icon-btn"><i class="fal fa-plus"></i></button>
-                                <button class="icon-btn"><i class="fal fa-arrow-right"></i></button>
-                            </div> -->
-                </div>
-            </a>
-            <a href="#" class="product__info">
-                <div class="product__info__name title-medium fw-smb">Lorem ipsum para desbaren</div>
-                <div class="product__info__price body-medium">289.000đ</div>
-            </a>
-            <div class="product__info flex-between width-full">
-                <div class="product__info__view body-medium">1,2m+ views</div>
-                <div class="product__info__rated flex g6 v-center body-medium">
-                    4.4 <i class="fa fa-star start"></i>
-                </div>
-            </div>
-        </div>
-        <div class="product product__carousel">
-            <a href="#" class="product__banner oh banner-cover rounded-8 por"
-                style="background-image: url('/public/assets/media/images/product/v944cyfrwt851.webp')">
-                <div class="product__overlay poa flex-center">
-                    <div class="flex g12 in-stock__btn-set">
-                        <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
-                        <button class="icon-btn love-btn"><i class="fa fa-heart"></i></button>
-                        <button class="icon-btn"><i class="fal fa-shopping-cart"></i></button>
-                    </div>
-                    <!-- <div class="flex g12 sold-out__btn-set">
-                                <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
-                                <button class="icon-btn"><i class="fal fa-plus"></i></button>
-                                <button class="icon-btn"><i class="fal fa-arrow-right"></i></button>
-                            </div> -->
-                </div>
-            </a>
-            <a href="#" class="product__info">
-                <div class="product__info__name title-medium fw-smb">Lorem ipsum para desbaren</div>
-                <div class="product__info__price body-medium">289.000đ</div>
-            </a>
-            <div class="product__info flex-between width-full">
-                <div class="product__info__view body-medium">1,2m+ views</div>
-                <div class="product__info__rated flex g6 v-center body-medium">
-                    4.4 <i class="fa fa-star start"></i>
-                </div>
-            </div>
-        </div>
-        <div class="product product__carousel">
-            <a href="#" class="product__banner oh banner-cover rounded-8 por"
-                style="background-image: url('/public/assets/media/images/product/v944cyfrwt851.webp')">
-                <div class="product__overlay poa flex-center">
-                    <div class="flex g12 in-stock__btn-set">
-                        <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
-                        <button class="icon-btn love-btn"><i class="fa fa-heart"></i></button>
-                        <button class="icon-btn"><i class="fal fa-shopping-cart"></i></button>
-                    </div>
-                    <!-- <div class="flex g12 sold-out__btn-set">
-                                <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
-                                <button class="icon-btn"><i class="fal fa-plus"></i></button>
-                                <button class="icon-btn"><i class="fal fa-arrow-right"></i></button>
-                            </div> -->
-                </div>
-            </a>
-            <a href="#" class="product__info">
-                <div class="product__info__name title-medium fw-smb">Lorem ipsum para desbaren</div>
-                <div class="product__info__price body-medium">289.000đ</div>
-            </a>
-            <div class="product__info flex-between width-full">
-                <div class="product__info__view body-medium">1,2m+ views</div>
-                <div class="product__info__rated flex g6 v-center body-medium">
-                    4.4 <i class="fa fa-star start"></i>
-                </div>
-            </div>
-        </div>
-        <div class="product product__carousel">
-            <a href="#" class="product__banner oh banner-cover rounded-8 por"
-                style="background-image: url('/public/assets/media/images/product/v944cyfrwt851.webp')">
-                <div class="product__overlay poa flex-center">
-                    <div class="flex g12 in-stock__btn-set">
-                        <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
-                        <button class="icon-btn love-btn"><i class="fa fa-heart"></i></button>
-                        <button class="icon-btn"><i class="fal fa-shopping-cart"></i></button>
-                    </div>
-                    <!-- <div class="flex g12 sold-out__btn-set">
-                                <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
-                                <button class="icon-btn"><i class="fal fa-plus"></i></button>
-                                <button class="icon-btn"><i class="fal fa-arrow-right"></i></button>
-                            </div> -->
-                </div>
-            </a>
-            <a href="#" class="product__info">
-                <div class="product__info__name title-medium fw-smb">Lorem ipsum para desbaren</div>
-                <div class="product__info__price body-medium">289.000đ</div>
-            </a>
-            <div class="product__info flex-between width-full">
-                <div class="product__info__view body-medium">1,2m+ views</div>
-                <div class="product__info__rated flex g6 v-center body-medium">
-                    4.4 <i class="fa fa-star start"></i>
-                </div>
-            </div>
-        </div>
-        <div class="product product__carousel">
-            <a href="#" class="product__banner oh banner-cover rounded-8 por"
-                style="background-image: url('/public/assets/media/images/product/v944cyfrwt851.webp')">
-                <div class="product__overlay poa flex-center">
-                    <div class="flex g12 in-stock__btn-set">
-                        <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
-                        <button class="icon-btn love-btn"><i class="fa fa-heart"></i></button>
-                        <button class="icon-btn"><i class="fal fa-shopping-cart"></i></button>
-                    </div>
-                    <!-- <div class="flex g12 sold-out__btn-set">
-                                <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
-                                <button class="icon-btn"><i class="fal fa-plus"></i></button>
-                                <button class="icon-btn"><i class="fal fa-arrow-right"></i></button>
-                            </div> -->
-                </div>
-            </a>
-            <a href="#" class="product__info">
-                <div class="product__info__name title-medium fw-smb">Lorem ipsum para desbaren</div>
-                <div class="product__info__price body-medium">289.000đ</div>
-            </a>
-            <div class="product__info flex-between width-full">
-                <div class="product__info__view body-medium">1,2m+ views</div>
-                <div class="product__info__rated flex g6 v-center body-medium">
-                    4.4 <i class="fa fa-star start"></i>
-                </div>
-            </div>
-        </div>
-        <div class="product product__carousel">
-            <a href="#" class="product__banner oh banner-cover rounded-8 por"
-                style="background-image: url('/public/assets/media/images/product/v944cyfrwt851.webp')">
-                <div class="product__overlay poa flex-center">
-                    <div class="flex g12 in-stock__btn-set">
-                        <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
-                        <button class="icon-btn love-btn"><i class="fa fa-heart"></i></button>
-                        <button class="icon-btn"><i class="fal fa-shopping-cart"></i></button>
-                    </div>
-                    <!-- <div class="flex g12 sold-out__btn-set">
-                                <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
-                                <button class="icon-btn"><i class="fal fa-plus"></i></button>
-                                <button class="icon-btn"><i class="fal fa-arrow-right"></i></button>
-                            </div> -->
-                </div>
-            </a>
-            <a href="#" class="product__info">
-                <div class="product__info__name title-medium fw-smb">Lorem ipsum para desbaren</div>
-                <div class="product__info__price body-medium">289.000đ</div>
-            </a>
-            <div class="product__info flex-between width-full">
-                <div class="product__info__view body-medium">1,2m+ views</div>
-                <div class="product__info__rated flex g6 v-center body-medium">
-                    4.4 <i class="fa fa-star start"></i>
-                </div>
-            </div>
-        </div>
-        <div class="product product__carousel">
-            <a href="#" class="product__banner oh banner-cover rounded-8 por"
-                style="background-image: url('/public/assets/media/images/product/v944cyfrwt851.webp')">
-                <div class="product__overlay poa flex-center">
-                    <div class="flex g12 in-stock__btn-set">
-                        <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
-                        <button class="icon-btn love-btn"><i class="fa fa-heart"></i></button>
-                        <button class="icon-btn"><i class="fal fa-shopping-cart"></i></button>
-                    </div>
-                    <!-- <div class="flex g12 sold-out__btn-set">
-                                <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
-                                <button class="icon-btn"><i class="fal fa-plus"></i></button>
-                                <button class="icon-btn"><i class="fal fa-arrow-right"></i></button>
-                            </div> -->
-                </div>
-            </a>
-            <a href="#" class="product__info">
-                <div class="product__info__name title-medium fw-smb">Lorem ipsum para desbaren</div>
-                <div class="product__info__price body-medium">289.000đ</div>
-            </a>
-            <div class="product__info flex-between width-full">
-                <div class="product__info__view body-medium">1,2m+ views</div>
-                <div class="product__info__rated flex g6 v-center body-medium">
-                    4.4 <i class="fa fa-star start"></i>
-                </div>
-            </div>
-        </div>
-        <div class="product product__carousel">
-            <a href="#" class="product__banner oh banner-cover rounded-8 por"
-                style="background-image: url('/public/assets/media/images/product/v944cyfrwt851.webp')">
-                <div class="product__overlay poa flex-center">
-                    <div class="flex g12 in-stock__btn-set">
-                        <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
-                        <button class="icon-btn love-btn"><i class="fa fa-heart"></i></button>
-                        <button class="icon-btn"><i class="fal fa-shopping-cart"></i></button>
-                    </div>
-                    <!-- <div class="flex g12 sold-out__btn-set">
-                                <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
-                                <button class="icon-btn"><i class="fal fa-plus"></i></button>
-                                <button class="icon-btn"><i class="fal fa-arrow-right"></i></button>
-                            </div> -->
-                </div>
-            </a>
-            <a href="#" class="product__info">
-                <div class="product__info__name title-medium fw-smb">Lorem ipsum para desbaren</div>
-                <div class="product__info__price body-medium">289.000đ</div>
-            </a>
-            <div class="product__info flex-between width-full">
-                <div class="product__info__view body-medium">1,2m+ views</div>
-                <div class="product__info__rated flex g6 v-center body-medium">
-                    4.4 <i class="fa fa-star start"></i>
-                </div>
-            </div>
-        </div>
+        <?= renderCarouselProduct ($relatedProducts) ?>
     </div>
 </section>
 <!-- related products section end -->
@@ -535,252 +401,7 @@
         <span class="label-large">LEGOUS / SHOP / PRODUCT</span>
     </div>
     <div class="product__wrapper product__wrapper--normal product__wrapper--normal--slick__1 auto-grid g20 mt30">
-        <!-- single product start -->
-        <div class="product product__carousel">
-            <a href="#" class="product__banner oh banner-cover rounded-8 por"
-                style="background-image: url('/public/assets/media/images/product/v944cyfrwt851.webp')">
-                <div class="product__overlay poa flex-center">
-                    <div class="flex g12 in-stock__btn-set">
-                        <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
-                        <button class="icon-btn love-btn toggle-btn"><i class="fa fa-heart"></i></button>
-                        <button class="icon-btn"><i class="fal fa-shopping-cart"></i></button>
-                    </div>
-                    <!-- <div class="flex g12 sold-out__btn-set">
-                                <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
-                                <button class="icon-btn"><i class="fal fa-plus"></i></button>
-                                <button class="icon-btn"><i class="fal fa-arrow-right"></i></button>
-                            </div> -->
-                </div>
-            </a>
-            <a href="#" class="product__info">
-                <div class="product__info__name title-medium fw-smb">Lorem ipsum para desbaren</div>
-                <div class="product__info__price body-medium">289.000đ</div>
-            </a>
-            <div class="product__info flex-between width-full">
-                <div class="product__info__view body-medium">1,2m+ views</div>
-                <div class="product__info__rated flex g6 v-center body-medium">
-                    4.4 <i class="fa fa-star start"></i>
-                </div>
-            </div>
-        </div>
-        <!-- single product end -->
-
-        <div class="product product__carousel">
-            <a href="#" class="product__banner oh banner-cover rounded-8 por"
-                style="background-image: url('/public/assets/media/images/product/v944cyfrwt851.webp')">
-                <div class="product__overlay poa flex-center">
-                    <div class="flex g12 in-stock__btn-set">
-                        <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
-                        <button class="icon-btn love-btn"><i class="fa fa-heart"></i></button>
-                        <button class="icon-btn"><i class="fal fa-shopping-cart"></i></button>
-                    </div>
-                    <!-- <div class="flex g12 sold-out__btn-set">
-                                <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
-                                <button class="icon-btn"><i class="fal fa-plus"></i></button>
-                                <button class="icon-btn"><i class="fal fa-arrow-right"></i></button>
-                            </div> -->
-                </div>
-            </a>
-            <a href="#" class="product__info">
-                <div class="product__info__name title-medium fw-smb">Lorem ipsum para desbaren</div>
-                <div class="product__info__price body-medium">289.000đ</div>
-            </a>
-            <div class="product__info flex-between width-full">
-                <div class="product__info__view body-medium">1,2m+ views</div>
-                <div class="product__info__rated flex g6 v-center body-medium">
-                    4.4 <i class="fa fa-star start"></i>
-                </div>
-            </div>
-        </div>
-        <div class="product product__carousel">
-            <a href="#" class="product__banner oh banner-cover rounded-8 por"
-                style="background-image: url('/public/assets/media/images/product/v944cyfrwt851.webp')">
-                <div class="product__overlay poa flex-center">
-                    <div class="flex g12 in-stock__btn-set">
-                        <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
-                        <button class="icon-btn love-btn"><i class="fa fa-heart"></i></button>
-                        <button class="icon-btn"><i class="fal fa-shopping-cart"></i></button>
-                    </div>
-                    <!-- <div class="flex g12 sold-out__btn-set">
-                                <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
-                                <button class="icon-btn"><i class="fal fa-plus"></i></button>
-                                <button class="icon-btn"><i class="fal fa-arrow-right"></i></button>
-                            </div> -->
-                </div>
-            </a>
-            <a href="#" class="product__info">
-                <div class="product__info__name title-medium fw-smb">Lorem ipsum para desbaren</div>
-                <div class="product__info__price body-medium">289.000đ</div>
-            </a>
-            <div class="product__info flex-between width-full">
-                <div class="product__info__view body-medium">1,2m+ views</div>
-                <div class="product__info__rated flex g6 v-center body-medium">
-                    4.4 <i class="fa fa-star start"></i>
-                </div>
-            </div>
-        </div>
-        <div class="product product__carousel">
-            <a href="#" class="product__banner oh banner-cover rounded-8 por"
-                style="background-image: url('/public/assets/media/images/product/v944cyfrwt851.webp')">
-                <div class="product__overlay poa flex-center">
-                    <div class="flex g12 in-stock__btn-set">
-                        <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
-                        <button class="icon-btn love-btn"><i class="fa fa-heart"></i></button>
-                        <button class="icon-btn"><i class="fal fa-shopping-cart"></i></button>
-                    </div>
-                    <!-- <div class="flex g12 sold-out__btn-set">
-                                <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
-                                <button class="icon-btn"><i class="fal fa-plus"></i></button>
-                                <button class="icon-btn"><i class="fal fa-arrow-right"></i></button>
-                            </div> -->
-                </div>
-            </a>
-            <a href="#" class="product__info">
-                <div class="product__info__name title-medium fw-smb">Lorem ipsum para desbaren</div>
-                <div class="product__info__price body-medium">289.000đ</div>
-            </a>
-            <div class="product__info flex-between width-full">
-                <div class="product__info__view body-medium">1,2m+ views</div>
-                <div class="product__info__rated flex g6 v-center body-medium">
-                    4.4 <i class="fa fa-star start"></i>
-                </div>
-            </div>
-        </div>
-        <div class="product product__carousel">
-            <a href="#" class="product__banner oh banner-cover rounded-8 por"
-                style="background-image: url('/public/assets/media/images/product/v944cyfrwt851.webp')">
-                <div class="product__overlay poa flex-center">
-                    <div class="flex g12 in-stock__btn-set">
-                        <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
-                        <button class="icon-btn love-btn"><i class="fa fa-heart"></i></button>
-                        <button class="icon-btn"><i class="fal fa-shopping-cart"></i></button>
-                    </div>
-                    <!-- <div class="flex g12 sold-out__btn-set">
-                                <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
-                                <button class="icon-btn"><i class="fal fa-plus"></i></button>
-                                <button class="icon-btn"><i class="fal fa-arrow-right"></i></button>
-                            </div> -->
-                </div>
-            </a>
-            <a href="#" class="product__info">
-                <div class="product__info__name title-medium fw-smb">Lorem ipsum para desbaren</div>
-                <div class="product__info__price body-medium">289.000đ</div>
-            </a>
-            <div class="product__info flex-between width-full">
-                <div class="product__info__view body-medium">1,2m+ views</div>
-                <div class="product__info__rated flex g6 v-center body-medium">
-                    4.4 <i class="fa fa-star start"></i>
-                </div>
-            </div>
-        </div>
-        <div class="product product__carousel">
-            <a href="#" class="product__banner oh banner-cover rounded-8 por"
-                style="background-image: url('/public/assets/media/images/product/v944cyfrwt851.webp')">
-                <div class="product__overlay poa flex-center">
-                    <div class="flex g12 in-stock__btn-set">
-                        <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
-                        <button class="icon-btn love-btn"><i class="fa fa-heart"></i></button>
-                        <button class="icon-btn"><i class="fal fa-shopping-cart"></i></button>
-                    </div>
-                    <!-- <div class="flex g12 sold-out__btn-set">
-                                <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
-                                <button class="icon-btn"><i class="fal fa-plus"></i></button>
-                                <button class="icon-btn"><i class="fal fa-arrow-right"></i></button>
-                            </div> -->
-                </div>
-            </a>
-            <a href="#" class="product__info">
-                <div class="product__info__name title-medium fw-smb">Lorem ipsum para desbaren</div>
-                <div class="product__info__price body-medium">289.000đ</div>
-            </a>
-            <div class="product__info flex-between width-full">
-                <div class="product__info__view body-medium">1,2m+ views</div>
-                <div class="product__info__rated flex g6 v-center body-medium">
-                    4.4 <i class="fa fa-star start"></i>
-                </div>
-            </div>
-        </div>
-        <div class="product product__carousel">
-            <a href="#" class="product__banner oh banner-cover rounded-8 por"
-                style="background-image: url('/public/assets/media/images/product/v944cyfrwt851.webp')">
-                <div class="product__overlay poa flex-center">
-                    <div class="flex g12 in-stock__btn-set">
-                        <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
-                        <button class="icon-btn love-btn"><i class="fa fa-heart"></i></button>
-                        <button class="icon-btn"><i class="fal fa-shopping-cart"></i></button>
-                    </div>
-                    <!-- <div class="flex g12 sold-out__btn-set">
-                                <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
-                                <button class="icon-btn"><i class="fal fa-plus"></i></button>
-                                <button class="icon-btn"><i class="fal fa-arrow-right"></i></button>
-                            </div> -->
-                </div>
-            </a>
-            <a href="#" class="product__info">
-                <div class="product__info__name title-medium fw-smb">Lorem ipsum para desbaren</div>
-                <div class="product__info__price body-medium">289.000đ</div>
-            </a>
-            <div class="product__info flex-between width-full">
-                <div class="product__info__view body-medium">1,2m+ views</div>
-                <div class="product__info__rated flex g6 v-center body-medium">
-                    4.4 <i class="fa fa-star start"></i>
-                </div>
-            </div>
-        </div>
-        <div class="product product__carousel">
-            <a href="#" class="product__banner oh banner-cover rounded-8 por"
-                style="background-image: url('/public/assets/media/images/product/v944cyfrwt851.webp')">
-                <div class="product__overlay poa flex-center">
-                    <div class="flex g12 in-stock__btn-set">
-                        <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
-                        <button class="icon-btn love-btn"><i class="fa fa-heart"></i></button>
-                        <button class="icon-btn"><i class="fal fa-shopping-cart"></i></button>
-                    </div>
-                    <!-- <div class="flex g12 sold-out__btn-set">
-                                <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
-                                <button class="icon-btn"><i class="fal fa-plus"></i></button>
-                                <button class="icon-btn"><i class="fal fa-arrow-right"></i></button>
-                            </div> -->
-                </div>
-            </a>
-            <a href="#" class="product__info">
-                <div class="product__info__name title-medium fw-smb">Lorem ipsum para desbaren</div>
-                <div class="product__info__price body-medium">289.000đ</div>
-            </a>
-            <div class="product__info flex-between width-full">
-                <div class="product__info__view body-medium">1,2m+ views</div>
-                <div class="product__info__rated flex g6 v-center body-medium">
-                    4.4 <i class="fa fa-star start"></i>
-                </div>
-            </div>
-        </div>
-        <div class="product product__carousel">
-            <a href="#" class="product__banner oh banner-cover rounded-8 por"
-                style="background-image: url('/public/assets/media/images/product/v944cyfrwt851.webp')">
-                <div class="product__overlay poa flex-center">
-                    <div class="flex g12 in-stock__btn-set">
-                        <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
-                        <button class="icon-btn love-btn"><i class="fa fa-heart"></i></button>
-                        <button class="icon-btn"><i class="fal fa-shopping-cart"></i></button>
-                    </div>
-                    <!-- <div class="flex g12 sold-out__btn-set">
-                                <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
-                                <button class="icon-btn"><i class="fal fa-plus"></i></button>
-                                <button class="icon-btn"><i class="fal fa-arrow-right"></i></button>
-                            </div> -->
-                </div>
-            </a>
-            <a href="#" class="product__info">
-                <div class="product__info__name title-medium fw-smb">Lorem ipsum para desbaren</div>
-                <div class="product__info__price body-medium">289.000đ</div>
-            </a>
-            <div class="product__info flex-between width-full">
-                <div class="product__info__view body-medium">1,2m+ views</div>
-                <div class="product__info__rated flex g6 v-center body-medium">
-                    4.4 <i class="fa fa-star start"></i>
-                </div>
-            </div>
-        </div>
+        <?= renderCarouselProduct($randomProducts) ?>
     </div>
 </section>
 <!-- maybe you love section end -->
@@ -795,7 +416,7 @@
             </div>
             <button class="icon-btn fab box-shadow1"><i class="far fa-cart-plus"></i></button>
         </div>
-        <button class="btn primary-btn rounded-8"><i class="fal fa-arrow-right"></i>MUA NGAY</button>
+        <button class="btn primary-btn rounded-8"><i class="fal fa-arrow-right"></i><?= !empty($btnText) ? $btnText : 'Mua ngay' ?></button>
     </div>
 </div>
 <!-- single product bottom nav bar end -->

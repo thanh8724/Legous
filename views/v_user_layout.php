@@ -1,3 +1,17 @@
+<?php
+    require_once 'models/m_user.php';
+    if(isset($_SESSION['user']) && (is_array($_SESSION['user']) || is_object($_SESSION['user']) && count($_SESSION['user']) > 0)){
+        extract($_SESSION['user']);
+        foreach (get_userBy_email_password($email_user, $password_user) as $key) {
+            extract($key);
+            $_SESSION['id_user'] = $id;
+        }
+        $id_user = $_SESSION['id_user'];
+        if(is_array(checkAccount($id_user))) {
+            extract(checkAccount($id_user));
+        }
+    }
+?>
 <?php 
     /** header nav rendering */
     $subnavHtml = '';
@@ -41,12 +55,12 @@
         <<<HTML
             <a href="#" class="user-widget flex flex-center g6">
                 <i class="fal fa-user user-widget__icon"></i>
-                <div class="username">$name_user</div>
+                <div class="username">$username</div>
             </a>
             <div class="flex-between header__subnav__wrapper poa box-shadow1 p20 rounded-8" style="top: 100%; left: 0;">
                 <ul class="header__subnav flex-full flex-column g6">
                     <li class="header__nav__item header__subnav__item">
-                        <a href="#" class="header__nav__link header__subnav__link ttu">Account detail</a>
+                        <a href="?mod=user&act=general" class="header__nav__link header__subnav__link ttu">Account detail</a>
                     </li>
                     <li class="header__nav__item header__subnav__item">
                         <a href="#" class="header__nav__link header__subnav__link ttu error60">Log out</a>
@@ -273,11 +287,11 @@
         <!-- header end -->
 
         <!-- site content start -->
-        <?php 
-            require_once 'v_'. $view_name .'.php';
+        <?php
+            require_once 'v_'.$view_name.'.php';
         ?>
         <!-- site content end -->
-        
+
         <!-- footer start -->
         <footer class="footer section auto-grid g60">
             <div class="footer__infomation flex-column g30">
@@ -370,9 +384,11 @@
             <a href="#" class="footer--mini__link body-small">Support</a>
         </footer>
         <!-- footer end -->
+        <div class="form__address--container" style="display: none;"></div>
     </div>
 </body>
 
 </html>
 <script src="./public/assets/resources/js/main.js"></script>
+<script src="./public/assets/resources/js/user.js"></script>
 <script src="./public/assets/resources/js/slickEdit.js"></script>

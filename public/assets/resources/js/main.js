@@ -214,6 +214,33 @@ const app = {
         const addCouponeBtn = document.querySelector('add-coupon-btn');
 
 
+        /** product quantity change handler */
+        const plusBtn = document.querySelector('.plus-btn');
+        const minusBtn = document.querySelector('.minus-btn');
+        const qtyInput = document.querySelector('.qty__input');
+        const dataQtyInput = document.querySelector('#data-qty');
+        
+        if (qtyInput && plusBtn && minusBtn) {
+
+            // Decrease quantity on minus button click
+            minusBtn.addEventListener('click', function () {
+                var currentValue = parseInt(qtyInput.value);
+                if (currentValue > 0) {
+                    qtyInput.value = currentValue - 1;
+                    dataQtyInput.value = currentValue - 1;
+                }
+            });
+
+            // Increase quantity on plus button click
+            plusBtn.addEventListener('click', function () {
+                var currentValue = parseInt(qtyInput.value);
+                var maxValue = parseInt(qtyInput.getAttribute('max'));
+                if (currentValue < maxValue) {
+                    qtyInput.value = currentValue + 1;
+                    dataQtyInput.value = currentValue + 1;
+                }
+            });
+        }
     },
     functionalHandler() {
 
