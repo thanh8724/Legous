@@ -50,8 +50,10 @@
               </svg>
             </button>
             <ul class="dropdown-menu">
-              <li><a href="">Tên Danh mục</a></li>
-              <li><a href="">Cũ nhất</a></li>
+              <li><a href="?mod=admin&act=categories&page=1">Mới nhất</a></li>
+              <li><a href="?mod=admin&act=categories&page=1&sort=1">Cũ nhất</a></li>
+              <li><a href="?mod=admin&act=categories&page=1&sort=3">Tên A - Z</a></li>
+              <li><a href="?mod=admin&act=categories&page=1&sort=2">Tên Z - A</a></li>
             </ul>
           </div>
           
@@ -198,19 +200,19 @@
 
           <div class="options-number flex g16" >
               <?php for($i=1 ;$i <= $number_Page; $i++):?>
-              <a href="?mod=admin&act=categories&page=<?=$i?>" class="<?=($page_nows==$i)?'primary-btn':''?>" style="padding: 10px 15px;"><?=$i?></a>
-              <?php $page = $i; ?>
+              <a style="text-decoration:none; padding: 10px 12px ;border-radius:8px;" href="?mod=admin&act=categories&page=<?=$i?>" class="<?=($page_nows==$i)?'primary-btn':''?>" style="padding: 10px 15px;"><?=$i?></a>
+              <?php $page = $i;?>
               <?php endfor;?>
               <?php
               ?>
-                <a href="?mod=admin&act=categories&page=<?php
+                <a style="text-decoration:none;" href="?mod=admin&act=categories&page=<?php
                   if($number_Page == $page_nows){
                     echo '1';
                   }
                   else{
                     echo "$page";
                   }
-                ?>" class="flex-center g8"><i class="fa-solid fa-arrow-right"></i><span class="title-medium" >Next</span></a>
+                // ?>" class="flex-center g8"><i class="fa-solid fa-arrow-right"></i> </a>
           </div>
         </div>
       </div>

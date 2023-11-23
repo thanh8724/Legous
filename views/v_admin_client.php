@@ -2,7 +2,14 @@
   if(@$_POST['act_search']) {
     $inputSearch = $_POST['act_search'];
     $user_list = searchUser($inputSearch);
-  }else {
+  }elseif(isset($_GET['sort']) && $_GET['sort'] == 'old') {
+    $user_list = sortOldUser();
+  }elseif(isset($_GET['sort']) && $_GET['sort'] == 'atoz') {
+    $user_list = sortAToZUser();
+  }elseif(isset($_GET['sort']) && $_GET['sort'] == 'ztoa') {
+    $user_list = sortZToAUser();
+  }
+  else {
     $user_list = getUser();
   }
 ?>
@@ -58,8 +65,10 @@
               </svg>
             </button>
             <ul class="dropdown-menu">
-              <li><a href="">Tên Danh mục</a></li>
-              <li><a href="">Cũ nhất</a></li>
+              <li><a href="?mod=admin&act=client">Mới Nhất</a></li>
+              <li><a href="?mod=admin&act=client&sort=old">Cũ nhất</a></li>
+              <li><a href="?mod=admin&act=client&sort=atoz">Từ A - Z</a></li>
+              <li><a href="?mod=admin&act=client&sort=ztoa">Từ Z - A</a></li>
             </ul>
           </div>
         </div>
@@ -72,6 +81,7 @@
               </th>
               <th>ID</th>
               <th>Họ Và Tên</th>
+              <th>Ảnh</th>
               <th>Tài Khoản</th>
               <th>Mật Khẩu</th>
               <th>Email</th>
@@ -91,6 +101,7 @@
               </td>
               <td><?php echo $item['id']?></td>
               <td><?php echo $item['fullname']?></td>
+              <td><img style="width:50px; height: 50px; border-radius: 3px" src="./public/assets/media/images/users/<?php echo $item['img']?>" alt=""></td>
               <td><?php echo $item['username']?></td>
               <td><?php echo md5($item['id'])?></td>
               <td><?php echo $item['email']?></td>

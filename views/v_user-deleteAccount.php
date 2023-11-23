@@ -21,8 +21,14 @@
             }
         } else if($_POST['old_password'] == '') {
             $message_password = 'Nhập mật khẩu để xác nhận.';
+            if(!isset($_POST['confirm_delete'])) {
+                $message_checkbox = 'Cần xác nhận trước khi xóa.';
+            }
         } else if($_POST['old_password'] != $password) {
             $message_password = 'Mật khẩu xác nhận không đúng.';
+            if(!isset($_POST['confirm_delete'])) {
+                $message_checkbox = 'Cần xác nhận trước khi xóa.';
+            }
         }
     }
 ?>
@@ -150,7 +156,7 @@
             </div>
 
             <div class="main__inner--bottom-right">
-                <form action="" method="POST">
+                <form action="" method="POST" class="deleteAccount__form">
                     <span class="old_password" style="display: none;"><?= $password ?></span>
                     <div class="form__group">
                         <label for="username"
@@ -183,16 +189,25 @@
         </div>
     </div>
 </main>
+<script src="./public/assets/resources/js/validator.js"></script>
+<script>
+    Validator({
+        formSelector: '.deleteAccount__form',
+        formGroupSelector: '.form__group',
+        formMessage: '.form__message',
+        rules: [
+            Validator.isRequired('.password--input'),
+            Validator.isPassword('.password--input'),
+        ]
+    })
+</script>
 <script>
     let input_password =document.querySelector('.password--input');
     let old_password =document.querySelector('.old_password').innerText;
-    let placeholder = input_password.placeholder;
-    console.log(placeholder);
     document.querySelectorAll('.form__message').forEach(e => {
-        e.classList.add('error_formMessage');
         if(e.innerText != "") {
-            input_password.classList.toggle('error_input'); 
-            // input_password.placeholder.style.color = 'red';
+            e.classList.add('error_formMessage');
+            input_password.classList.add('error_input'); 
         }
     });
 

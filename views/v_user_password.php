@@ -1,19 +1,32 @@
 <?php
+    $value_old_password = '';
+    $message_oldPassword = '';
+    $message_newPassword = 'Mật khẩu phải có ít nhất 8 kí tự.';
+    $id_user = $_SESSION['id_user'];
+    $password_from_db = get_password($id_user);
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $id_user = $_SESSION['id_user'];
         $old_password = $_POST['old_password'];
         $new_password = $_POST['new_password'];
-        if (strlen($new_password) >= 6) {
-            // Lấy mật khẩu đã lưu trong cơ sở dữ liệu cho người dùng
-            $password_from_db = get_password($id_user);
+        if (strlen($new_password) >= 8) {
             if ($old_password == $password_from_db) {
                 update_password($new_password, $id_user);
-                echo '<script>alert("Cập nhật mật khẩu thành công.");</script>';
-            } else {
-                echo '<script>alert("Mật khẩu không đúng.");</script>';
+                $value_old_password = $new_password;
+                $message_oldPassword = 'Đã cập nhật mật khẩu thành công.';
+            } else if($old_password == "") {
+                $message_oldPassword = 'Vui lòng điền mật khẩu để xác nhận.';
+            }else if($old_password != $password_from_db) {
+                $message_oldPassword = 'Mật khẩu xác nhận không đúng.';
             }
-        } else {
-            echo '<script>alert("Mật khẩu mới phải có ít nhất 6 kí tự.");</script>';
+        } 
+        else {
+            $value_old_password = $old_password;
+            $message_newPassword = 'Mật khẩu phải có ít nhất 8 kí tự.';
+        }
+
+        if($_POST['new_password'] == $password_from_db) {
+            $value_old_password = $old_password;
+            $message_oldPassword = 'Cập nhật mật khẩu thất bại.';
+            $message_newPassword = 'Mật khẩu mới phải khác với mật khẩu cũ.';
         }
     }
 ?>
@@ -27,7 +40,7 @@
                 <div class="info__user--top">
                     <span class="user__name"><?=$username?></span>
                     <span>/</span>
-                    <span>Tổng quan</span>
+                    <span>Cập nhật mật khẩu</span>
                 </div>
                 <div class="info__user--bottom">
                     <span class="info__user--desc">
@@ -141,14 +154,14 @@
             </div>
 
             <div class="main__inner--bottom-right">
-                <form action="?mod=user&act=password" method="POST">
+                <form action="?mod=user&act=password" method="POST" class="register__form">
                     <!-- <input type="hidden" vak> -->
                     <!-- normal form group -->
                     <div class="form__group">
                         <span class="form__label">Mật khẩu cũ</span>
-                        <input type="password" class="form__input" name="old_password" placeholder="Nhập mật khẩu cũ">
+                        <input type="password" value="<?= $value_old_password ?>" class="form__input password--input old_password" name="old_password" placeholder="Nhập mật khẩu cũ">
                         <!-- <label for="" class="label__place">Nhập mật khẩu cũ</label> -->
-                        <span class="form__message"></span>
+                        <span class="form__message form__message-oldPassword"><?= $message_oldPassword ?></span>
                         <!-- button show-hidden password -->
                         <button class="hidden-show__password">
                             <i class="fal fa-eye-slash eye-icon eye-active"></i>
@@ -156,10 +169,12 @@
                         </button>
                     </div>
                     <div class="form__group">
-                        <span class="form__label">Mật khẩu</span>
-                        <input type="password" class="form__input" name="new_password"  placeholder="Nhập mật khẩu mới ">
+                        <span class="get_passworDb" style="display: none;"><?= $password_from_db ?></span>
+                        <span class="get_newPassword" style="display: none;"><?= $new_password ?></span>
+                        <span class="form__label">Mật khẩu mới</span>
+                        <input type="password" class="form__input password--input new_password" name="new_password"  placeholder="Nhập mật khẩu mới ">
                         <!-- <label for="" class="label__place">Nhập mật khẩu mới</label> -->
-                        <span class="form__message">Mật khẩu phải có ít nhất 6 kí tự.</span>
+                        <span class="form__message"><?= $message_newPassword ?></span>
                         <!-- button show-hidden password -->
                         <button name="btn_update" class="hidden-show__password">
                             <i class="fal fa-eye-slash eye-icon eye-active"></i>
@@ -176,3 +191,31 @@
     </div>
     <div class="form__address--container" style="display: none;"></div>
 </main>
+<script src="./public/assets/resources/js/validator.js"></script>
+<script>
+    Validator({
+        formSelector: '.register__form',
+        formGroupSelector: '.form__group',
+        formMessage: '.form__message',
+        rules: [
+            Validator.isRequired('.password--input'),
+            Validator.isPassword('.password--input'),
+        ]
+    });
+
+
+    let get_newPassword = document.querySelector('.get_newPassword');
+    let message_oldPassword =document.querySelector('.form__message-oldPassword').innerText;
+    if(message_oldPassword != "" && message_oldPassword != "Đã cập nhật mật khẩu thành công.") {
+        let old_password = document.querySelector('.old_password');
+        old_password.focus();
+        old_password.classList.add('error_input');
+        old_password.parentElement.children[2].classList.add('error_formMessage');
+    }
+
+    if(get_newPassword.innerText == "" || get_newPassword.innerText.length < 8 || get_newPassword.innerText == (get_newPassword.parentElement.children[0]).innerText) {
+        (get_newPassword.parentElement.children[3]).focus();
+        (get_newPassword.parentElement.children[3]).classList.add('error_input');
+        (get_newPassword.parentElement.children[4]).classList.add('error_formMessage');
+    }
+</script>

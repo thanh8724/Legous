@@ -81,7 +81,7 @@ Validator.isRequired = (selector , message) => {
     return {
         selector,
         test (value) {
-            return value.trim() ? undefined : message || 'Please fill in the blank'
+            return value.trim() ? undefined : message || 'Vui lòng điền thông tin.'
         }
     }
 }
@@ -103,11 +103,11 @@ Validator.isPhone = (selector , message) => {
         }
     }
 }
-Validator.isPassword = (selector , min = 6, message) => {
+Validator.isPassword = (selector , min = 8, message) => {
     return {
         selector,
         test (value) {
-            return value.length >= min ? undefined : message || `Password have at least ${min} charactors`
+            return value.length >= min ? undefined : message || `Mật khẩu phải có ít nhất ${min} kí tự`
         }
     }
 }
