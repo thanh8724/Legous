@@ -133,7 +133,7 @@
                               <div id="emailHelp" class="form-text"></div>
                               <div class="mb-3">
                                   <label class="form-label">Mô tả danh mục</label>
-                                  <textarea style="font-size: 16px;height:100px;margin-bottom:20px;" name="description_cg" class="form-control" placeholder="Nhập mô tả sản phẩm"><?=$getidCategories['description']?></textarea>
+                                  <textarea  id="tiny" cols="30" rows="10" style="font-size: 16px;height:100px;margin-bottom:20px;" name="description_cg" class="form-control" placeholder="Nhập mô tả sản phẩm"><?=$getidCategories['description']?></textarea>
                               </div>
                               <div class="Dropdowns_categogy">
                             <div class="row">
@@ -233,5 +233,8 @@
             modal.style.display = "none";
         });
     });
-
+    tinymce.init({
+  selector: 'textarea',  // change this value according to your HTML
+  menubar: 'file edit view'
+});
 </script>

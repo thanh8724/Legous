@@ -42,6 +42,7 @@
     <div class="width-full mb-3">
       <div class="content-filter dropdown-center width-full d-flex align-items-center justify-content-between">
         <button id="btn_addMore_admin" type="button" style="width:130px;height:45px;background-color:#6750a4;border-radius:10px"><a style="color: white; font-size: 14px; font-weight: 500; text-decoration: none; padding: 10px 5px;" href="?mod=admin&act=product-add">Thêm Sản Phẩm</a></button>
+        <div class="col-6">
           <button id="filter" class="flex-center g8" style="padding: 10px 16px;
                     border: 1px solid #79747E; border-radius: 100px;
                     margin-left: auto;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -56,19 +57,16 @@
                 <li><a href="?mod=admin&act=products-category-fil&id=<?=$item['id']?>"><?=$item['name']?></a></li>
                 <?php endforeach;?>
               </ul>
+        </div>
             
       </div>
-      <?php if (isset($_SESSION['thongbao'])) : ?>
-        <div class="alert alert-success" role="alert"><?= $_SESSION['thongbao'] ?></div>
-      <?php endif;
-      unset($_SESSION['thongbao']) ?>
-
     </div>
+      <?php if($getproductCategory < 0):?>
+        <span>Sản phẩm này đang cập nhật</span>
+      <?php endif;?>
     <div class="container-products width-full flex" style="flex-wrap: wrap; gap: 45px">
       <!--Cart-->
-        
-
-      <?php foreach ($getproductAdmin as $item) : ?>
+      <?php foreach ($getproductCategory as $item) : ?>
         <div class="cart trans-bounce flex-column p20" style="
                   border-radius: 12px;
                   border: 1px #DED8E1;
@@ -147,9 +145,8 @@
         </div>
       <?php endforeach; ?>
 
-
     </div>
-    <ul id="paging" class="pagination flex g16 mt30">
+    <!-- <ul id="paging" class="pagination flex g16 mt30">
       <?php for ($i = 1; $i <= $soTrang; $i++) : ?>
         <li class="pagination__item <?= (isset($_GET['page']) && $_GET['page'] == $i) ? 'active' : '' ?>">
           <a href="?mod=admin&act=products&page=<?= $i ?>" class="pagination__link"><?= $i ?></a>
@@ -158,7 +155,7 @@
       <li class="btn text-btn rounded-100">
         <a href="?mod=admin&act=products&page=<?= $page + 1 ?>"" class=" pagination__link"><i class="fal fa-arrow-right" style="margin-right: .6rem"></i>Next</a>
       </li>
-    </ul>
+    </ul> -->
 
 
     <!----======== End Body DashBoard ======== -->

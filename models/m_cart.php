@@ -6,9 +6,12 @@
     $batdau = ($page - 1)*9;
     return pdo_query("SELECT p.*, c.name AS category_name FROM product p LEFT JOIN category c ON p.id_category = c.id LIMIT $batdau,9 ");
   }
-  function productSearchAdmin($keyword, $page=1){
-    $batdau = ($page - 1) * 9;
-    return pdo_query("SELECT p.*, c.name AS category_name FROM product p LEFT JOIN category c ON p.id_category = c.id WHERE p.name LIKE '%$keyword%' LIMIT $batdau, 9");
+
+ 
+
+  function productSearchAdmin($keyword, $page=1, $perPage){
+    $batdau = ($page - 1) * $perPage;
+    return pdo_query("SELECT p.*, c.name AS category_name FROM product p LEFT JOIN category c ON p.id_category = c.id WHERE p.name LIKE '%$keyword%' LIMIT $batdau, $perPage");
 }
 
 function product_searchTotal($keyword){

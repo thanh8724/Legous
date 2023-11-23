@@ -21,7 +21,7 @@ if(isset($_POST['submit'])) {
     }
     if (isset($_FILES['file'])) {   
         //Thư mục chứa file upload
-        $upload_dir = './public/assets/media/images/users/';
+        $upload_dir = './public/assets/media/images/product/';
         //Đường dẫn của file sau khi upload
         $upload_file = $upload_dir . $_FILES['file']['name'];
         //Xử lý upload đúng file ảnh
@@ -237,7 +237,8 @@ if(isset($_POST['submit'])) {
                         </div>
                         <div class="describe-order_detail">
                             <label class="title-medium">Mô Tả</label>
-                            <textarea name="description" id="description" cols="30" rows="10" placeholder="Nhập mô tả sản phẩm"></textarea>
+                            <textarea name="description" id="tiny" cols="30" rows="10" placeholder="Nhập mô tả sản phẩm"></textarea>
+                            
                         </div>
                         <div class="Dropdowns_categogy">
                             <label class="title-medium">Danh mục</label>
@@ -283,23 +284,24 @@ if(isset($_POST['submit'])) {
                     <div class="col-5 col-md">
                         <div class="right-order-add-create p30 d-flex justify-content-center flex-column ">
                             <div class="img_order-add-create rounded-4">
-                                <img src="../assets/media/images/category/dragon ball/Gohan - ZBC Studio/ab0332c4e1a739a15332b87eca29d1c71afce4f8a289fbc786c188c0 (1).png" alt="">
+                            <img id="previewImage" src="">
                             </div>
                             <hr>
                             <div style="width: 100%;" id="drop-area">
                                 <label class="title-medium">Kéo thả ảnh ở đây</label>
                                 <br>
-                                <input type="file" id="img" name="file">
+                                <input type="file" id="fileInput" name="file">
                             </div>
 
                             <div style="width: 100%;" id="demo" class="demo .box-shadow1">
 
                             </div>
                             <div style="width: 100%;" id="deleteButtonImg" class="button_delete_img row">
-                            <div class="col-8 d-flex justify-content-between">
-                                        <button type="button " class="btn btn-primary ">Cập nhật</button>
-                                        <button type="button" id="deleteButtonAll" class="btn btn-danger">Xóa</button>
-                                        <button type="button" class="btn box-shadow1 ">Hủy</button>
+                            <div class="col-8"></div>
+                                    <div class="col-4 d-flex justify-content-between g12">
+                                        <button type="button " class="btn btn-primary p12">Cập nhật</button>
+                                        <button type="button" id="deleteButtonAll p12" class="btn btn-danger">Xóa</button>
+                                        <button type="button" class="btn box-shadow1 p12">Hủy</button>
                                     </div>
                             </div>
                         </div>
@@ -315,3 +317,19 @@ if(isset($_POST['submit'])) {
     <!----======== End Body DashBoard ======== -->
 
 </section>
+<script>
+  document.getElementById('fileInput').addEventListener('change', function() {
+    var file = this.files[0];
+    if (file) {
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        document.getElementById('previewImage').setAttribute('src', e.target.result);
+      }
+      reader.readAsDataURL(file);
+    }
+  });
+  tinymce.init({
+  selector: 'textarea',  // change this value according to your HTML
+  menubar: 'file edit view'
+});
+</script>

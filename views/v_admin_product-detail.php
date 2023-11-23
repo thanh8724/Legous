@@ -233,7 +233,7 @@ if(isset($_POST['submit'])) {
                                 </div>
                                 <div class="describe-order_detail">
                                     <h2>Mô Tả</h2>
-                                    <textarea name="description" id="" cols="30" rows="10"
+                                    <textarea name="description" id="tiny" cols="30" rows="10"
                                         placeholder="<?=$productdetail['description']?>"></textarea>
                                 </div>
                                 <div class="Dropdowns_categogy">
@@ -315,6 +315,11 @@ if(isset($_POST['submit'])) {
 
         </section>
         <script>
+            
+        tinymce.init({
+  selector: 'textarea',  // change this value according to your HTML
+  menubar: 'file edit view'
+});
         const dropArea = document.getElementById('drop-area');
         const fileInput = document.getElementById('fileInput');
         const demoDiv = document.getElementById('demo');
@@ -450,7 +455,5 @@ if(isset($_POST['submit'])) {
                 deleteButtonImg.style.display = 'none';
             });
         } removeAllImageContainers();
-
-
 
     </script>

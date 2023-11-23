@@ -94,7 +94,7 @@
                         -webkit-box-orient: vertical;
                         overflow: hidden;
                         text-overflow: ellipsis;
-                        word-break: break-word;">Nam tempor accumsan felis, mollis mollis semdapibus non.</p>
+                        word-break: break-word;"><?= $item['description'] ?></p>
               </div>
             </div>
             <!--INFO sales Qty -->
@@ -105,7 +105,7 @@
                 </div>
                 <div class="index flex-center" style="gap: 4px;">
                   <i class="fa-solid fa-arrow-up" style="color: #00C58A;"></i>
-                  <span class="fw-smb label-large-prominent" style="color: #00C58A;">1209</span>
+                  <span class="fw-smb label-large-prominent" style="color: #00C58A;"><?= $item['purchases'] ?></span>
                 </div>
               </div>
               <div class="flex-between">
@@ -118,7 +118,7 @@
                               align-self: stretch;"></span>
 
                   </div>
-                  <span class="fw-smb label-large-prominent" style="color: #00C58A;">1209</span>
+                  <span class="fw-smb label-large-prominent" style="color: #00C58A;"><?= $item['qty'] ?></span>
                 </div>
               </div>
 

@@ -239,6 +239,7 @@ if (isset($_GET['act'])) {
             break;
         case 'products':
             include_once 'models/m_cart.php';
+            include_once 'models/m_category.php';
             if (isset($_POST['page'])) {
                 // đổi từ phương thức POST sang GET
                 header("location: ?mod=products&act=product-detail&page=" . $_POST['page'] . "");
@@ -249,6 +250,7 @@ if (isset($_GET['act'])) {
             }
             $getproductAdmin = productAdmin($page);
             $soTrang = ceil(product_CountTotal() / 9);
+            $getAllCategory = getCategories();
 
             // hiển thị dữ liệu
             $view_name = 'admin_products';
@@ -309,6 +311,34 @@ if (isset($_GET['act'])) {
             $view_name = 'admin_product-search';
 
 
+            break;
+
+            case 'products-category-fil';
+            include_once 'models/m_category.php';
+            include_once 'models/m_cart.php';
+            if (isset($_POST['keyword'])) {
+                $inputSearch = $_POST['keyword'];
+                header("location: ?mod=admin&act=product-search&page=1&kw=" . $inputSearch);
+                exit; // Kết thúc việc chuyển hướng
+            }
+
+            // Lấy dữ liệu
+            // Lấy dữ liệu
+            $keyword = isset($_GET['kw']) ? $_GET['kw'] : ''; // Lấy từ khóa tìm kiếm từ URL
+            $page = 1;
+            if (isset($_GET['page'])) {
+                $page = $_GET['page'];
+            }
+
+            $perPage = 9; // Số kết quả muốn hiển thị trên mỗi trang
+            $totalResults = product_searchTotal($keyword);
+            $soTrang = ceil($totalResults / $perPage);
+
+            $batdau = ($page - 1) * $perPage;
+            $ketqua = productSearchAdmin($keyword, $page, $perPage);
+            $getproductCategory = getproductbyCategory($_GET['id']);
+            $getAllCategory = getCategories();
+            $view_name = 'admin_products-category-fil';
             break;
         default:
 
