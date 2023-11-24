@@ -13,6 +13,7 @@
             if(isset($_POST['confirm_delete'])) {
                 delete_bill_fromCart($id_bill);
                 delete_bill($id_user);
+                delete_address_byIduser($id_user);
                 delete_acccount($id_user);
                 session_destroy();
                 header('location: ?mod=page&act=home');
@@ -169,6 +170,10 @@
                         <input type="password" class="form__input password--input" name="old_password" placeholder="Nhập mật khẩu cũ">
                         <!-- <label for="" class="label__place">Nhập mật khẩu cũ</label> -->
                         <span class="form__message"><?= $message_password ?></span>
+                        <button name="btn_update" class="hidden-show__password">
+                            <i class="fal fa-eye-slash eye-icon eye-active"></i>
+                            <i class="fal fa-eye eye-icon"></i>
+                        </button>
                     </div>
                     <div class="form__group without-title">
                         <div class="flex g6">

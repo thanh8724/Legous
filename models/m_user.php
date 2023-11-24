@@ -95,8 +95,11 @@
         pdo_execute("UPDATE address SET username = ?, address=?, address_detail=?, phone = ?, is_default = ?  WHERE id = ?",$name_user, $address_user, $address_detail, $phone_user, $address_default, $id_address);
     }
 
-    function delete_address($id_address){
+    function delete_address($id_address) {
         pdo_execute("DELETE FROM address WHERE id = ?",$id_address);
+    }
+    function delete_address_byIduser($id_user) {
+        pdo_execute("DELETE FROM address WHERE id_user = ?",$id_user);
     }
 
     # password

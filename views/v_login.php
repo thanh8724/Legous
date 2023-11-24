@@ -1,3 +1,12 @@
+<?php
+    $check_ip_deviceUser = $_SERVER['HTTP_USER_AGENT'];
+    if(isset($_SESSION['account_user'.$check_ip_deviceUser])) {
+        foreach ($_SESSION['account_user'.$check_ip_deviceUser] as $key) {
+           extract($_SESSION['account_user'.$check_ip_deviceUser]);
+        }
+        echo $_SESSION['account_user'.$check_ip_deviceUser]['username'];
+    }
+?>
 <main class="main__login-register">
     <section id="register-section" class="oh section create-account__section banner-cover flex-center g60"
         style="background-image: url('./public/assets/media/images/banners/banner-login-1.svg')">

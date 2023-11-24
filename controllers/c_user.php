@@ -88,17 +88,13 @@
                     $id_user = $_GET['id-account'];
                     extract(checkAccount($id_user));
                 }
-                
-                // # lấy id thiết bị người dùng
-                // $id_deviceUser = $_SERVER['HTTP_USER_AGENT'];
-                // # tạo cookie
-                // $cookie_account = array(
-                //     'name' => 'remember_account',
-                //     'value' => json_encode(array('username' => $username, 'email' => $email, 'avatar' => $img)),
-                //     'name_device' => $id_deviceUser
-                //   );
-                // setcookie($cookie_account['name'], $cookie_account['value'], $cookie_account['name_device'], '/', '', true);
-                session_destroy();
+                $value_cookies['value'] .= $id_user;
+                # lấy ip máy người dùng
+                // $ip_address = $_SERVER['HTTP_USER_AGENT'];
+                setcookie('accounts_user',
+                    $value_cookies
+                );
+                unset($_SESSION['user']);
                 header('location: ?mod=page&act=login');
                 break;
 

@@ -1,19 +1,17 @@
 <?php
+    $id_user = $_SESSION['id_user'];
     // xử lí khi người dùng nhập form
     if(isset($_POST['button__submit'])) {
-        $id_user = $_POST['id_user'];
-        if(is_array($checkUses)) {
-            extract($checkUses);
-        }
+        $id_user = $_SESSION['id_user'];
         if($_POST['new_username'] != "") {
             $new_username = $_POST['new_username'];
         }else {
-            $new_username = $username;
+            $new_username = $checkUses['username'];
         }
         if($_POST['new_email'] != "") {
             $new_email = $_POST['new_email'];
         }else {
-            $new_email = $email;
+            $new_email = $checkUses['email'];
         }
         update_userName_email($new_username, $new_email, $id_user);
         header('location: ?mod=user&act=general');
@@ -27,7 +25,7 @@
             </div>
             <div class="info__user">
                 <div class="info__user--top">
-                    <span class="user__name"><?=$username?></span>
+                    <span class="user__name"><?=$checkUses['username']?></span>
                     <span>/</span>
                     <span>Tổng quan</span>
                 </div>
@@ -88,7 +86,7 @@
                     <li class="menu__destop--li "><a href="?mod=user&act=password">Mật khẩu</a></li>
                     <li class="menu__destop--li "><a href="?mod=user&act=address">Địa chỉ</a></li>
                     <li class="menu__destop--li "><a href="?mod=user&act=order-history">Lịch sử đơn hàng</a></li>
-                    <li class="menu__destop--li "><a href="?mod=user&act=logOut-account&id-account=<?=$id_user?>">Đăng xuất</a></li>
+                    <li class="menu__destop--li "><a href="?mod=user&act=logOut-account&id-account=<?=$_SESSION['id_user']?>">Đăng xuất</a></li>
                     <li class=" menu__destop--li delete__acccount"><a href="?mod=user&act=delete-account">Xóa tài khoản</a></li>
                 </ul>
                 
@@ -126,7 +124,7 @@
                             </a>
                         </li class="menu__mobile--li">
                         <li class="menu__mobile--li">
-                            <a href="?mod=user&act=logOut-account&id-account=<?=$id_user?>">
+                            <a href="?mod=user&act=logOut-account&id-account=<?=$_SESSION['id_user']?>">
                                 <i class="fas fa-sign-out-alt"></i>
                                 <span>Đăng xuất</span>
                             </a>
@@ -144,17 +142,16 @@
 
             <div class="main__inner--bottom-right">
                 <form action="" method="POST">
-                    <input type="hidden" name="id_user" value="<?=$id_user?>">
                     <!-- normal form group -->
                     <div class="form__group">
                         <span class="form__label">Tên đăng nhập</span>
-                        <input type="text" name="new_username" class="form__input" placeholder="<?=$username?>">
+                        <input type="text" name="new_username" class="form__input" placeholder="<?=$checkUses['username']?>">
                         <!-- <label for="" class="label__place">Tên đăng nhập</label> -->
                         <span class="form__message"></span>
                     </div>
                     <div class="form__group">
                         <span class="form__label">Email</span>
-                        <input type="email" name="new_email" class="form__input" placeholder="<?=$email?>">
+                        <input type="email" name="new_email" class="form__input" placeholder="<?=$checkUses['email']?>">
                         <!-- <label for="" class="label__place">Email</label> -->
                         <span class="form__message"></span>
                     </div>
