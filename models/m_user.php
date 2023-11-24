@@ -73,7 +73,7 @@
         return pdo_query("SELECT * FROM user WHERE id = {$id}"); 
     }
     function searchUser($inputSearch) {
-        return pdo_query("SELECT * FROM user WHERE fullname LIKE '%$inputSearch%'");
+        return pdo_query("SELECT * FROM user WHERE fullname LIKE '%$inputSearch%' OR username LIKE '%$inputSearch%' OR email LIKE '%$inputSearch%' or phone LIKE '%$inputSearch%'");
     }
 
     function get_addressByid($id_address) {

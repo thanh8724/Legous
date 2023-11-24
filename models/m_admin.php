@@ -55,5 +55,15 @@ function update_Category($id_category, $name_cg, $description_cg, $img_cg, $is_a
 function add_Category($add_name_cg, $add_img_cg, $add_description_cg, $add_color_cg) {
     pdo_execute("INSERT INTO category (name, img, description, bg_color) VALUES ('$add_name_cg', '$add_img_cg', '$add_description_cg', '$add_color_cg')");
 }  
+// -------------------------------- Phần orders --------------------------------
+function get_Order_bill(){
+    $sql = "SELECT bill.*, payment.name AS name_Payment, user.username AS order_user 
+            FROM bill 
+            INNER JOIN payment ON bill.id_payment = payment.id
+            INNER JOIN user ON bill.id_user = user.id";
+    return pdo_query($sql);
+}
+// -------------------------------- Phần orders kết thúc------------------------
 ?>  
+
 
