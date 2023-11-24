@@ -41,11 +41,7 @@
           <div class="flex g8">
             <span class="label-large">Admin /</span><a href="?mod=admin&act=client" class="label-large" style="text-decoration: none;">Khách Hàng</a>
           </div>
-          <div class="flex-center g8">
-            <span><i class="fa-solid fa-calendar-days"></i></span>
-            <input class="label-large-prominent" type="datetime-local" style="color: #625B71; border: none; font-size: 16px;
-                ">
-          </div>
+          
         </div>
       </div>
       <!----======== End Header DashBoard ======== -->
@@ -125,7 +121,6 @@
             <a href="" class="flex-center g8"><i class="fa-solid fa-arrow-right"></i><span class="title-medium" >Next</span></a>
           </div>
         </div> -->
-      </div>
       </div>
 
       <!----======== End Body DashBoard ======== -->
