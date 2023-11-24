@@ -2,7 +2,7 @@
     $value_old_password = '';
     $message_oldPassword = '';
     $message_newPassword = 'Mật khẩu phải có ít nhất 8 kí tự.';
-    $id_user = $_SESSION['id_user'];
+    $id_user = isset($_SESSION['userLogin']['id_user']) ? $_SESSION['userLogin']['id_user'] : $_SESSION['admin']['id_user'];
     $password_from_db = get_password($id_user);
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $old_password = $_POST['old_password'];

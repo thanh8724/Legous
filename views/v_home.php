@@ -179,62 +179,93 @@
             $products = getProductsByCategoryId($id);
             $productsHtml = '';
 
-            foreach ($products as $product) {
-                extract($product);
-                $imgPath = constant('PRODUCT_PATH') . $img;
-                $linkToDetail = "?mod=page&act=productDetail&idProduct=$id";
+            if (count($products) > 0) {
+                foreach ($products as $product) {
+                    extract($product);
+                    $imgPath = constant('PRODUCT_PATH') . $img;
+                    $linkToDetail = "?mod=page&act=productDetail&idProduct=$id";
 
-                $priceView = '';
-                $salePriceView = '';
-                $loveBtn = '<button class="icon-btn love-btn toggle-btn" data-product-id="' . $id . '"><i class="fal fa-heart"></i></button>';
-
-                if (isset($price) && $price > 0) {
-                    $priceView = '<div class="product__info__price body-medium">' . formatVND($price) . '</div>';
-                } else {
-                    $priceView = '<div class="product__info__price body-medium">Đang cập nhật</div>';
-                }
-
-                if (isset($promotion) and $promotion > 0) {
-                    $salePrice = $price - $price * $promotion / 100;
-                    $salePriceView = '<div class="product__info__sale-price body-medium">' . formatVND($salePrice) . '</div>';
-                    $priceView = '<del class="product__info__price body-small">' . formatVND($price) . '</del>';
-                } else {
+                    $priceView = '';
                     $salePriceView = '';
-                    $priceView = '<div class="product__info__price body-medium">' . formatVND($price) . '</div>';
-                }
-                
-                $productsHtml .= 
-                <<<HTML
-                    <!-- single product start -->
-                    <div class="product product__carousel">
-                        <a href="$linkToDetail" class="product__banner oh banner-contain rounded-8 por"
-                            style="background-image: url($imgPath)">
-                            <div class="product__overlay poa flex-center">
+                    $loveBtn = '<button class="icon-btn love-btn toggle-btn" data-product-id="' . $id . '"><i class="fal fa-heart"></i></button>';
+
+                    if (isset($price) && $price > 0) {
+                        $priceView = '<div class="product__info__price body-medium">' . formatVND($price) . '</div>';
+                    } else {
+                        $priceView = '<div class="product__info__price body-medium">Đang cập nhật</div>';
+                    }
+
+                    if (isset($promotion) and $promotion > 0) {
+                        $salePrice = $price - $price * $promotion / 100;
+                        $salePriceView = '<div class="product__info__sale-price body-medium">' . formatVND($salePrice) . '</div>';
+                        $priceView = '<del class="product__info__price body-small">' . formatVND($price) . '</del>';
+                    } else {
+                        $salePriceView = '';
+                        $priceView = '<div class="product__info__price body-medium">' . formatVND($price) . '</div>';
+                    }
+
+                    $productBtn = '';
+                    if ($qty > 0) {
+                        $productBtn = 
+                            <<<HTML
                                 <div class="flex g12 in-stock__btn-set">
                                     <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
                                     $loveBtn
-                                    <button class="icon-btn"><i class="fal fa-shopping-cart"></i></button>
+                                    <form action="?mod=cart&act=addCart" method="post" class="flex-column g12">
+                                        <a class="">
+                                            <i class="fal fa-shopping-cart-plus"></i>
+                                            <input class="icon-btn" name="addCart" type="submit">
+                                        </a>
+                                        <input type="hidden" name="name" value="$name">
+                                        <input type="hidden" name="price" value="$price">
+                                        <input type="hidden" name="img" value="$img">
+                                        <input type="hidden" name="id" value="$id">
+                                        <input type="hidden" name="qty" id="data-qty" value="1">
+                                    </form>
                                 </div>
-                                <!-- <div class="flex g12 sold-out__btn-set">
-                                            <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
-                                            <button class="icon-btn"><i class="fal fa-plus"></i></button>
-                                            <button class="icon-btn"><i class="fal fa-arrow-right"></i></button>
-                                        </div> -->
-                            </div>
-                        </a>
-                        <a href="#" class="product__info">
-                            <div class="product__info__name title-medium fw-smb">$name</div>
-                            $priceView
-                            $salePriceView
-                        </a>
-                        <div class="product__info flex-between width-full">
-                            <div class="product__info__view body-medium">1,2m+ views</div>
-                            <div class="product__info__rated flex g6 v-center body-medium">
-                                4.4 <i class="fa fa-star start"></i>
+                            HTML;
+                    } else {
+                        $productBtn = 
+                            <<<HTML
+                                <div class="flex g12 sold-out__btn-set">
+                                    <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
+                                    <button class="icon-btn"><i class="fal fa-plus"></i></button>
+                                    <button class="icon-btn"><i class="fal fa-arrow-right"></i></button>
+                                </div>
+                            HTML;
+                    }
+
+                    $productsHtml .=
+                        <<<HTML
+                        <!-- single product start -->
+                        <div class="product product__carousel">
+                            <a href="$linkToDetail" class="product__banner oh banner-contain display-block rounded-8 por"
+                                style="background-image: url($imgPath)">
+                                <div class="product__overlay poa flex-center">
+                                    <!-- overlay btn start     -->
+                                    $productBtn
+                                    <!-- overlay btn end     -->
+                                </div>
+                            </a>
+                            <a href="#" class="product__info">
+                                <div class="product__info__name title-medium fw-smb">$name</div>
+                                $priceView
+                                $salePriceView
+                            </a>
+                            <div class="product__info flex-between width-full">
+                                <div class="product__info__view body-medium">1,2m+ views</div>
+                                <div class="product__info__rated flex g6 v-center body-medium">
+                                    4.4 <i class="fa fa-star start"></i>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- single product end -->
+                        <!-- single product end -->
+                    HTML;
+                }
+            } else {
+                $productsHtml = 
+                <<<HTML
+                    <h2 class="fw-smb text-38 tac ttu mt30 mb30 primary-text">Danh mục hiện đang cập nhật</h2>
                 HTML;
             }
             
@@ -296,7 +327,6 @@
         HTML;
     }
 ?>
-
 
 <!-- header start -->
 <header class="header flex-full width-full flex-center pof">

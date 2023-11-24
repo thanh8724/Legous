@@ -276,3 +276,51 @@ $(document).ready(() => {
 })
 
 
+/** email validation  */
+// $(document).ready(function () {
+//     const emailInput = $('#email-input');
+//     const emailValidationStatus = $('#email-validation-status');
+//     const form = $('#register__form');
+
+//     form.on('submit', function (event) {
+//         const email = emailInput.val();
+//         const isValidEmail = validateEmail(email);
+
+//         if (!isValidEmail) {
+//             emailValidationStatus.text('Invalid email');
+//             emailValidationStatus.css('color', 'red');
+//             event.preventDefault(); // Prevent form submission
+//             return;
+//         }
+
+//         emailValidationStatus.text('Checking email availability...');
+//         emailValidationStatus.css('color', 'gray');
+
+//         checkEmailAvailability(email, function (isAvailable) {
+//             if (!isAvailable) {
+//                 emailValidationStatus.text('Email already exists');
+//                 emailValidationStatus.css('color', 'red');
+//                 event.preventDefault(); // Prevent form submission
+//             }
+//             // Form submission continues if email is valid and available
+//         });
+//     });
+
+//     function validateEmail(email) {
+//         // Regular expression for email validation
+//         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+//         return emailRegex.test(email);
+//     }
+
+//     function checkEmailAvailability(email, callback) {
+//         $.ajax({
+//             url: './views/libs/emailValidator.php',
+//             type: 'POST',
+//             data: { email: email },
+//             success: function (response) {
+//                 const isAvailable = (response === 'available');
+//                 callback(isAvailable);
+//             }
+//         });
+//     }
+// });

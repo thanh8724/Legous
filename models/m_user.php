@@ -10,6 +10,11 @@
         return pdo_query("SELECT * FROM user WHERE email = ? AND password = ?", $email_user, $password_user);
     }
 
+    function getUserById($idUser) {
+        $sql = "SELECT * FROM user WHERE id = $idUser";
+        return pdo_query_one($sql);
+    }
+
    // chỉnh sửa thông tin người dùng từ mã tài khoản
     function update_userName_email($new_username, $new_email, $id_user) {
         pdo_execute("UPDATE user SET username=?, email=? WHERE id = ?",$new_username, $new_email, $id_user);

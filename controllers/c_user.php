@@ -5,9 +5,12 @@
     // Hiển thị dữ liệu thông qua view
     include_once 'models/m_user.php';
     if(isset($_GET['act'])){
-        if(isset($_SESSION['user'])) {
-            extract($_SESSION['user']);
-            $id_user =  $_SESSION['id_user'];
+        if(isset($_SESSION['userLogin'])) {
+            extract($_SESSION['userLogin']);
+            $id_user =  $_SESSION['userLogin']['id_user'];
+        } else if(isset($_SESSION['admin'])) {
+            extract($_SESSION['admin']);
+            $id_user =  $_SESSION['admin']['id_user'];
         }
         $checkUses = checkAccount($id_user);
         $avatar_user = '';
@@ -45,7 +48,7 @@
                 include_once 'models/m_user.php';
                 // hiển thị dữ liệu
                 $view_name = 'address';
-               # qua v_address.php kiếm code đi fen....
+                # qua v_address.php kiếm code đi fen....
                 break;
 
             case 'edit-address':
@@ -56,7 +59,7 @@
             case 'delete-address':
                 include_once 'models/m_user.php';
                 $view_name = 'form-editAddress';
-               # xóa địa chỉ
+                # xóa địa chỉ
                 if(isset($_GET['id-address']) && ($_GET['id-address']) > 0) {
                     $id_address = $_GET['id-address'];
                     delete_address($id_address);
@@ -87,6 +90,10 @@
                 if(isset($_GET['id-account'])) {
                     $id_user = $_GET['id-account'];
                     extract(checkAccount($id_user));
+                } else {
+                    if (isset($_SESSION['userLogin'])) {
+                        $id_user = $_SESSION['userLogin']['id_user'];
+                    }
                 }
                 
                 // # lấy id thiết bị người dùng

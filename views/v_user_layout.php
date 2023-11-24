@@ -2,6 +2,7 @@
     require_once 'models/m_user.php';
     if(isset($_SESSION['user']) && (is_array($_SESSION['user']) || is_object($_SESSION['user']) && count($_SESSION['user']) > 0)){
         extract($_SESSION['user']);
+        // print_r($_SESSION['user']);
         $_SESSION['id_user'] = $id_user;
         if(is_array(checkAccount($id_user))) {
             extract(checkAccount($id_user));
@@ -44,15 +45,16 @@
 
     /** render user widget */
     $userWidgetHtml = '';
-    if (isset($_SESSION['user'])) {
-        $user = $_SESSION['user'];
+    if (isset($_SESSION['userLogin']) && !empty($_SESSION['userLogin'])) {
+        $id = $_SESSION['userLogin']['id_user'];
+        $user = getUserById($id);
+        // print_r($user);
         extract($user);
-        print_r($user);
         $userWidgetHtml =
         <<<HTML
             <a href="#" class="user-widget flex flex-center g6">
                 <i class="fal fa-user user-widget__icon"></i>
-                <div class="username">$name_user</div>
+                <div class="username">$username</div>
             </a>
             <div class="flex-between header__subnav__wrapper poa box-shadow1 p20 rounded-8" style="top: 100%; left: 0;">
                 <ul class="header__subnav flex-full flex-column g6">
