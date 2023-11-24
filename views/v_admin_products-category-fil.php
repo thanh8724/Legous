@@ -15,7 +15,7 @@
     <div class="img-cart flex" style="width: 120px; flex-shrink: 1;">
       <img src="./public/assets/media/images/product/'.$item['img'].'" style="max-width: 100%; height: 100px;object-fit: cover; border-radius: 8px; flex-shrink: 0;" alt="">
     </div>
-    <div class="text-info-cart flex-column" style="flex:1;gap: 12px; max-width: 160px;">
+    <div class="text-info-cart flex-column" style="flex:1;gap: 12px;">
       <h1 class="title-medium" style="
                  word-break: break-all;display:-webkit-box;
                 -webkit-line-clamp:3;

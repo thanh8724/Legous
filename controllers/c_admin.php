@@ -260,6 +260,7 @@ if (isset($_GET['act'])) {
             if (isset($_GET['page'])) {
                 $page = $_GET['page'];
             }
+            
             $getproductAdmin = productAdmin($page);
             $soTrang = ceil(product_CountTotal() / 9);
             $getAllCategory = getCategories();
