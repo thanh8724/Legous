@@ -222,6 +222,12 @@ if (isset($_GET['act'])) {
             break;
         case 'orders':
             // lấy dữ liệu
+            include_once 'models/m_admin.php';
+            $get_Order = get_Order_bill();  
+            if(isset($_GET['id'])){
+                $get_Id_Order = $_GET['id'];
+                
+            }    
             // hiển thị dữ liệu  
             $view_name = 'admin_orders';
             break;
