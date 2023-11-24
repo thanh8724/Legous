@@ -93,23 +93,29 @@ if (isset($_GET['act'])) {
                 include_once 'models/m_admin.php';
                 if (isset($_GET['page'])) {
                     $count_Categoris = count_Categoris()['soluong'];
-                    if(isset($_POST['kyw_cg'])){
+                    if (isset($_POST['kyw_cg'])) {
                         $get_kyw = $_POST['kyw_cg'];
-                    //
                         header('Location: ?mod=admin&act=categories&page=1&search_category=' . urlencode($get_kyw));
                         exit; // Đảm bảo chuyển hướng ngay lập tức sau khi gửi header
-                    //
                     } else if (isset($_GET['search_category'])) {
                         $kyw_cg = $_GET['search_category'];
-                        $get_Category = get_Categoris(($_GET['page'] - 1) * 4, 4, $kyw_cg);
+                        if (isset($_GET['sort'])) {
+                            $sort = $_GET['sort'];
+                            $get_Category = get_Categoris(($_GET['page'] - 1) * 4, 4, $kyw_cg, $sort);
+                        } else {
+                            $get_Category = get_Categoris(($_GET['page'] - 1) * 4, 4, $kyw_cg);
+                        }
                     } else {
-                        $get_Category = get_Categoris(($_GET['page'] - 1) * 4, 4);
+                        if (isset($_GET['sort'])) {
+                            $sort = $_GET['sort'];
+                            $get_Category = get_Categoris(($_GET['page'] - 1) * 4, 4, "", $sort);
+                        } else {
+                            $get_Category = get_Categoris(($_GET['page'] - 1) * 4, 4);
+                        }
                     }
                     $number_Page = ceil($count_Categoris / 4);
                     $page_nows = $_GET['page'];
-                }
-                
-                       
+                }        
                 // Cập nhật dữ liệu
                 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                     $id_category = $_GET['id'];
@@ -215,6 +221,12 @@ if (isset($_GET['act'])) {
             break;
         case 'orders':
             // lấy dữ liệu
+            include_once 'models/m_admin.php';
+            $get_Order = get_Order_bill();  
+            if(isset($_GET['id'])){
+                $get_Id_Order = $_GET['id'];
+                
+            }    
             // hiển thị dữ liệu  
             $view_name = 'admin_orders';
             break;
