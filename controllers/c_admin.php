@@ -314,6 +314,7 @@ if (isset($_GET['act'])) {
 
             $batdau = ($page - 1) * $perPage;
             $ketqua = productSearchAdmin($keyword, $page, $perPage);
+            $getAllCategory = getCategories();
             $view_name = 'admin_product-search';
 
 

@@ -1,3 +1,94 @@
+
+<?php 
+    $product = "";
+    if(count($getproductCategory) > 0){
+      foreach ($getproductCategory as $item){
+        $product .= '
+ <div class="cart trans-bounce flex-column p20" style="
+        border-radius: 12px;
+        border: 1px #DED8E1;
+        background:  #FFF;   
+        width: calc(100% / 3 - 30px);
+        ">
+  <div class="v-nav" style="gap: 22px; flex: 1;"> 
+  <div class="h-nav g12" style="justify-content: space-between;">
+    <div class="img-cart flex" style="width: 120px; flex-shrink: 1;">
+      <img src="./public/assets/media/images/product/'.$item['img'].'" style="max-width: 100%; height: 100px;object-fit: cover; border-radius: 8px; flex-shrink: 0;" alt="">
+    </div>
+    <div class="text-info-cart flex-column" style="flex:1;gap: 12px; max-width: 160px;">
+      <h1 class="title-medium" style="
+                 word-break: break-all;display:-webkit-box;
+                -webkit-line-clamp:3;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                word-break: break-word;">'.$item['name'].'</h1>
+
+      <p class="body-medium">Danh Mục: '.$item['category_name'].'</p>
+      <span class="title-medium"> '.number_format($item['price']).' VNĐ</span>
+
+    </div>
+    <div class="options">
+      <div class="flex-center dropdown" style="border-radius: 12px;background: #ECE6F0;">
+        <button type="button" data-bs-toggle="dropdown" aria-expanded="false" href=""><i class="fa-solid fa-ellipsis" style="padding: 8px; color: #6750a4;"></i></button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item label-large" href="?mod=admin&act=product-detail&id= '.$item['id'].'">Xem Chi Tiết</a></li>
+          <li><a href="?mod=admin&act=product-delete&page=<?=$page?>&id='.$item['id'].'"  class="dropdown-item label-large" style="cursor: pointer;" onclick="deleteProduct('.$item['id'].')">Xóa</a></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+  <div class="description flex-column g2" style="flex: 1;">
+    <div class="flex-column" style=" margin-top: auto;">
+      <h1 class="title-medium">Tóm Tắt</h1>
+      <p class="body-small" style="word-break: break-all;display:-webkit-box;
+              -webkit-line-clamp:3;
+              -webkit-box-orient: vertical;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              word-break: break-word;">'.$item['description'].'</p>
+    </div>
+  </div>
+  <!--INFO sales Qty -->
+  <div class="info-sales-qty flex-column" style="padding: 14px; gap: 10px; border-radius: 4px; background: rgba(73, 69, 79, 0.08);">
+    <div class="flex-between">
+      <div class="Sales">
+        <span class="title-medium">Đã Bán</span>
+      </div>
+      <div class="index flex-center" style="gap: 4px;">
+        <i class="fa-solid fa-arrow-up" style="color: #00C58A;"></i>
+        <span class="fw-smb label-large-prominent" style="color: #00C58A;">'.$item['purchases'].'</span>
+      </div>
+    </div>
+    <div class="flex-between">
+      <div class="Qty">
+        <span class="title-medium">Sản Phẩm Còn Lại</span>
+      </div>
+      <div class="index flex-center" style="gap: 4px;">
+        <div class="flex" style="width: 36px; height: 4px; background: black;border: none; border-radius: 8px;padding-right: 0px;">
+          <span class="flex" style="width: 70%; background: #00C58A; border-radius: 8px; flex-shrink: 0;
+                    align-self: stretch;"></span>
+
+        </div>
+        <span class="fw-smb label-large-prominent" style="color: #00C58A;">'.$item['qty'].'</span>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+        ';
+
+      }
+
+    } else{
+      $product .="<h1 class='flex-center flex-full mt-5'>Sản phẩm này đang cập nhật</h1>";
+    }
+    
+?>
+        
+
+
 <section class="dashboard">
   <!----======== Header DashBoard ======== -->
   <div class="top">
@@ -66,84 +157,7 @@
       <?php endif;?>
     <div class="container-products width-full flex" style="flex-wrap: wrap; gap: 45px">
       <!--Cart-->
-      <?php foreach ($getproductCategory as $item) : ?>
-        <div class="cart trans-bounce flex-column p20" style="
-                  border-radius: 12px;
-                  border: 1px #DED8E1;
-                  background:  #FFF;   
-                  width: calc(100% / 3 - 30px);
-                  ">
-          <div class="v-nav" style="gap: 22px; flex: 1;">
-            <div class="h-nav g12" style="justify-content: space-between;">
-              <div class="img-cart flex" style="width: 120px; flex-shrink: 1;">
-                <img src="./public/assets/media/images/product/<?= $item['img'] ?>" style="max-width: 100%; height: 100px;object-fit: cover; border-radius: 8px; flex-shrink: 0;" alt="">
-              </div>
-              <div class="text-info-cart flex-column" style="flex:1;gap: 12px; max-width: 160px;">
-                <h1 class="title-medium" style="
-                           word-break: break-all;display:-webkit-box;
-                          -webkit-line-clamp:3;
-                          -webkit-box-orient: vertical;
-                          overflow: hidden;
-                          text-overflow: ellipsis;
-                          word-break: break-word;"><?= $item['name'] ?></h1>
-
-                <p class="body-medium">Danh Mục: <?= $item['category_name'] ?></p>
-                <span class="title-medium"><?= number_format($item['price']) ?> VNĐ</span>
-
-              </div>
-              <div class="options">
-                <div class="flex-center dropdown" style="border-radius: 12px;background: #ECE6F0;">
-                  <button type="button" data-bs-toggle="dropdown" aria-expanded="false" href=""><i class="fa-solid fa-ellipsis" style="padding: 8px; color: #6750a4;"></i></button>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item label-large" href="?mod=admin&act=product-detail&id=<?= $item['id'] ?>">Xem Chi Tiết</a></li>
-                    <li><a href="?mod=admin&act=product-delete&page=<?=$page?>&id=<?= $item['id'] ?>"  class="dropdown-item label-large" style="cursor: pointer;" onclick="deleteProduct(<?=$item['id'] ?>)">Xóa</a></li>
-                  </ul>
-                </div>
-              </div>
-
-            </div>
-            <div class="description flex-column g2" style="flex: 1;">
-              <div class="flex-column" style=" margin-top: auto;">
-                <h1 class="title-medium">Tóm Tắt</h1>
-                <p class="body-small" style="word-break: break-all;display:-webkit-box;
-                        -webkit-line-clamp:3;
-                        -webkit-box-orient: vertical;
-                        overflow: hidden;
-                        text-overflow: ellipsis;
-                        word-break: break-word;"><?=$item['description']?></p>
-              </div>
-            </div>
-            <!--INFO sales Qty -->
-            <div class="info-sales-qty flex-column" style="padding: 14px; gap: 10px; border-radius: 4px; background: rgba(73, 69, 79, 0.08);">
-              <div class="flex-between">
-                <div class="Sales">
-                  <span class="title-medium">Đã Bán</span>
-                </div>
-                <div class="index flex-center" style="gap: 4px;">
-                  <i class="fa-solid fa-arrow-up" style="color: #00C58A;"></i>
-                  <span class="fw-smb label-large-prominent" style="color: #00C58A;"><?= $item['purchases'] ?></span>
-                </div>
-              </div>
-              <div class="flex-between">
-                <div class="Qty">
-                  <span class="title-medium">Sản Phẩm Còn Lại</span>
-                </div>
-                <div class="index flex-center" style="gap: 4px;">
-                  <div class="flex" style="width: 36px; height: 4px; background: black;border: none; border-radius: 8px;padding-right: 0px;">
-                    <span class="flex" style="width: 70%; background: #00C58A; border-radius: 8px; flex-shrink: 0;
-                              align-self: stretch;"></span>
-
-                  </div>
-                  <span class="fw-smb label-large-prominent" style="color: #00C58A;"><?= $item['qty'] ?></span>
-                </div>
-              </div>
-
-            </div>
-            <!--INFO sales Qty - END -->
-            <!--Cart-END-->
-          </div>
-        </div>
-      <?php endforeach; ?>
+     <?=$product?>
 
     </div>
     <!-- <ul id="paging" class="pagination flex g16 mt30">
