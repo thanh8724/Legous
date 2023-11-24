@@ -11,6 +11,13 @@
             extract(checkAccount($id_user));
         }
     }
+    if(isset($id_user)) {
+        #thêm cookies accounts_user nếu chưa có
+        if(!isset($_COOKIE['accounts_user'.$id_user])) {
+            setcookie('accounts_user'.$id_user, $id_user, time()+3600);
+        }
+    }
+   
 ?>
 <?php 
     /** header nav rendering */

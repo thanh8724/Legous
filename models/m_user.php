@@ -1,6 +1,11 @@
 <?php
     include_once 'models/m_pdo.php';
 
+    # Lấy account đã đnăg xuất
+    function get_accountUser($value) {
+        return pdo_query("SELECT * FROM user WHERE id = ?", $value);
+    }   
+
     # general - edit profile
    function checkAccount($id_user) {
        return pdo_query_one("SELECT * FROM user WHERE id = ?", $id_user);

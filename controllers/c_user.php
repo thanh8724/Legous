@@ -88,12 +88,9 @@
                     $id_user = $_GET['id-account'];
                     extract(checkAccount($id_user));
                 }
-                $value_cookies['value'] .= $id_user;
                 # lấy ip máy người dùng
                 // $ip_address = $_SERVER['HTTP_USER_AGENT'];
-                setcookie('accounts_user',
-                    $value_cookies
-                );
+
                 unset($_SESSION['user']);
                 header('location: ?mod=page&act=login');
                 break;

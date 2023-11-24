@@ -16,6 +16,27 @@
         update_userName_email($new_username, $new_email, $id_user);
         header('location: ?mod=user&act=general');
     }
+    $userList = [];
+    foreach ($_COOKIE as $name => $value) {
+        if (str_starts_with($name, "accounts_user")) {
+            $accounts_user = get_accountUser($value);
+            print_r($value);
+            $userList[$value] = $accounts_user;
+        }
+    }
+    print_r($userList);
+    $accounts_user_html = '';
+    // foreach ($accounts_user as $key) {
+    //     extract($key);
+    //     $accounts_user_html .= '<div class="box__listAccount--item account__notActive">
+    //                                 <div class="box__avatar--account">
+    //                                     <img srcset="upload/users/'.$img.' 2x" alt="">
+    //                                 </div>
+    //                                 <div class="box__info--account">
+    //                                     <span class="info--account_name">'.$username.'</span>
+    //                                     <span class="info--account_email">'.$email.'</span>
+    //                             </div>';
+    // }
 ?>
 <main class="main__user">
     <div class="main__inner">
@@ -40,6 +61,7 @@
 
                 <div class="box__changeAccount--content box-shadow4">
                     <div class="box__listAccount">
+                      
                         <div class="box__listAccount--item">
                             <div class="box__avatar--account">
                                 <img src="/public/assets/media/images/users/user-2.svg" alt="">
@@ -50,7 +72,8 @@
                             </div>
                         </div>
                         <hr class="hr__account">
-                        <div class="box__listAccount--item account__notActive">
+                        <?= $accounts_user_html ?>
+                        <!-- <div class="box__listAccount--item account__notActive">
                             <div class="box__avatar--account">
                                 <img src="/public/assets/media/images/users/user-2.svg" alt="">
                             </div>
@@ -67,7 +90,7 @@
                                 <span class="info--account_name">Nguyen Thanh</span>
                                 <span class="info--account_email">quocthanhn87@gmail.com</span>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="box__changeAccount--logOut">
                         <a hred="#" class="box__changeAccount--logOut__button">
