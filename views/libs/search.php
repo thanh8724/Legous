@@ -32,6 +32,7 @@ if (isset($_POST['search'])) {
         foreach ($productList as $item) {
             extract($item);
             $imgPath = "./public/assets/media/images/product/$img";
+            $linkToDetail = "?mod=page&act=productDetail&idProduct=$id";
             echo '
                     <!-- single search product start -->
                     <div class="search__product flex-between p20 rounded-8 width-full">
@@ -40,7 +41,7 @@ if (isset($_POST['search'])) {
                                 <img src="'. $imgPath .'" alt="">
                             </div>
                             <div class="search__product__info flex-column flex-between">
-                                <a href="" class="search__product__name title-large underline">'.$name.'</a>
+                                <a href="?mod=page&act=productDetail&idProduct='.$id.'" class="search__product__name title-large underline">'.$name.'</a>
                                 <div class="search__product__price title-medium">'.formatVND($price).'</div>
                             </div>
                         </div>

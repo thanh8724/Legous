@@ -214,33 +214,46 @@ const app = {
         const addCouponeBtn = document.querySelector('add-coupon-btn');
 
 
-        /** product quantity change handler */
-        const plusBtn = document.querySelector('.plus-btn');
-        const minusBtn = document.querySelector('.minus-btn');
-        const qtyInput = document.querySelector('.qty__input');
-        const dataQtyInput = document.querySelector('#data-qty');
         
-        if (qtyInput && plusBtn && minusBtn) {
 
-            // Decrease quantity on minus button click
-            minusBtn.addEventListener('click', function () {
-                var currentValue = parseInt(qtyInput.value);
-                if (currentValue > 0) {
-                    qtyInput.value = currentValue - 1;
-                    dataQtyInput.value = currentValue - 1;
+        // || quantity input start
+        const [...qtyInput] = document.querySelectorAll('.qty__input')
+        if (qtyInput) {
+            const dataQty = document.querySelector("#data-qty");
+            qtyInput.forEach((input, index) => {
+                const minusBtn = input.parentElement.querySelector('.minus__btn')
+                const plusBtn = input.parentElement.querySelector('.plus__btn')
+                const subTotal = minusBtn.parentElement.parentElement.querySelector('.cart__product__subtotal')
+                const [...cartProduct] = document.querySelectorAll('.cart__product')
+                minusBtn.onclick = e => {
+                    e.preventDefault()
+                    input.value <= 1 ? input.value = 1 : input.value--
+                    if (subTotal) {
+                        subTotal.innerText = `document.querySelectorAll{input.value * Number(subTotal.parentElement.parentElement.querySelector('.cart__product__price').innerText.split('').slice(1).join(''))}`
+                    }
+                    // this.calculatorCheck(cartProduct, input, index)
+                    if (dataQty) {
+                        document.querySelector("#data-qty").value = input.value;
+                    }
                 }
-            });
-
-            // Increase quantity on plus button click
-            plusBtn.addEventListener('click', function () {
-                var currentValue = parseInt(qtyInput.value);
-                var maxValue = parseInt(qtyInput.getAttribute('max'));
-                if (currentValue < maxValue) {
-                    qtyInput.value = currentValue + 1;
-                    dataQtyInput.value = currentValue + 1;
+                plusBtn.onclick = e => {
+                    e.preventDefault()
+                    input.value++
+                    if (subTotal) {
+                        subTotal.innerText = `document.querySelectorAll{input.value * Number(subTotal.parentElement.parentElement.querySelector('.cart__product__price').innerText.split('').slice(1).join(''))}`
+                    }
+                    // this.calculatorCheck(cartProduct, input, index)
+                    // || product quatity handler
+                    if (dataQty) {
+                        document.querySelector("#data-qty").value = input.value;
+                    }
+                }
+                input.oninput = () => {
+                    // this.calculatorCheck(cartProduct, input, index)
                 }
             });
         }
+        // || quantity input end
     },
     functionalHandler() {
 
@@ -284,7 +297,7 @@ const app = {
                     let newUrl = window.location.pathname;
 
                     if (existingParams.length > 0) {
-                        let queryString = existingParams.map(([param, value]) => `${param}=${value}`).join('&');
+                        let queryString = existingParams.map(([param, value]) => `document.querySelector{param}=document.querySelector{value}`).join('&');
                         newUrl += '?' + queryString;
                     }
 
@@ -333,11 +346,11 @@ const app = {
                     const urlParams = new URLSearchParams(window.location.search);
 
                     // Get the filter toggle list element
-                    const toggleFilterList = document.querySelector(`.${toggleFilterListClass}`);
+                    const toggleFilterList = document.querySelector(`.document.querySelector{toggleFilterListClass}`);
 
                     // Remove existing filter labels for the specified filter parameters
                     filterParams.forEach(filterParam => {
-                        const existingFilterLabels = toggleFilterList.querySelectorAll(`.filter-${filterParam}-label`);
+                        const existingFilterLabels = toggleFilterList.querySelectorAll(`.filter-document.querySelector{filterParam}-label`);
                         existingFilterLabels.forEach(label => {
                             toggleFilterList.removeChild(label);
                         });
@@ -350,7 +363,7 @@ const app = {
                         if (filterValue) {
                             // Create the filter label element
                             const filterLabel = document.createElement('li');
-                            filterLabel.classList.add('filter-toggle__list-item', `filter-${filterParam}-label`);
+                            filterLabel.classList.add('filter-toggle__list-item', `filter-document.querySelector{filterParam}-label`);
 
                             const filterLink = document.createElement('a');
                             filterLink.href = '#';
@@ -377,7 +390,7 @@ const app = {
                                 urlParams.delete(filterParam);
 
                                 // Generate the new URL without the filter parameter
-                                const newUrl = `${window.location.origin}${window.location.pathname}?${urlParams.toString()}${window.location.hash}`;
+                                const newUrl = `document.querySelector{window.location.origin}document.querySelector{window.location.pathname}?document.querySelector{urlParams.toString()}document.querySelector{window.location.hash}`;
 
                                 // Redirect to the new URL
                                 window.location.href = newUrl;
@@ -395,9 +408,9 @@ const app = {
                 const labelCustomization = (filterParam, filterValue) => {
                     // Customize the filter label content based on filterParam and filterValue
                     if (filterParam === 'minPrice') {
-                        return `Giá thấp nhất: ${formatCurrencyVND(filterValue)}`;
+                        return `Giá thấp nhất: document.querySelector{formatCurrencyVND(filterValue)}`;
                     } else if (filterParam === 'maxPrice') {
-                        return `Giá cao nhất: ${formatCurrencyVND(filterValue)}`;
+                        return `Giá cao nhất: document.querySelector{formatCurrencyVND(filterValue)}`;
                     } else if (filterParam === 'filterName') {
                         if (filterValue == 0) {
                             return `Tên: A - Z`;
@@ -420,7 +433,7 @@ const app = {
                             'lego'
                         ];
                         const categoryNames = cateIds.map((id) => categories[id - 1]);
-                        return `Danh mục: ${categoryNames.join(', ')}`; 
+                        return `Danh mục: document.querySelector{categoryNames.join(', ')}`; 
                     } else {
                         return `Danh mục: `;
                     }

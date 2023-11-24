@@ -1,4 +1,6 @@
 <?php
+session_start();
+ob_start();
 // Gữi/nhận dữ liệu thông qua model
 // Hiển thị dữ liệu thông qua view
 if (isset($_GET['act'])) {
@@ -54,6 +56,7 @@ if (isset($_GET['act'])) {
 
         case 'viewCart':
 
+
             $view_name = 'viewCart';
             break;
 
@@ -64,5 +67,5 @@ if (isset($_GET['act'])) {
 
             break;
     }
-    include_once 'view/v_home_layout.php';
+    include_once 'views/v_user_layout.php';
 }

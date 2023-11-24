@@ -121,8 +121,31 @@
             return $productsHtml;
         }
 
-        /** create cart product section */
-
+        /** comment render */
+        $comments = getProductCommentByProductId($idProduct);
+        $commentHtml = '';
+        foreach ($comments as $item) {
+            $commentHtml .=
+                <<<HTML
+                    <!-- single comment start -->
+                    <div class="comment__item mb30">
+                        <div class="flex g12 comment__user">
+                            <div class="user__avt avt"><img src="/public/assets/media/images/users/user-1.svg"
+                                    alt="user 1" class="imgcover"></div>
+                            <div class="flex-column flex-between">
+                                <div class="user__name title-medium fw-smb">Lorem ipsum</div>
+                                <div class="user-comment__date title-small">29/12/2023</div>
+                            </div>
+                        </div>
+                        <div class="comment__content body-medium fw-normal mt12">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt cum qui voluptate! Libero est
+                            vero sequi perspiciatis, ratione, praesentium, ipsam quisquam autem voluptates et minus
+                            animi voluptas saepe. Asperiores, modi!
+                        </div>
+                    </div>
+                    <!-- single comment end -->
+                HTML;
+        }
     }
 
     /** render gallery thumbnails */
@@ -267,6 +290,7 @@
                 </div>
 
                 <div class="mt30 comment__wrapper">
+                    <!-- product comments here  -->
                     <!-- single comment start -->
                     <div class="comment__item mb30">
                         <div class="flex g12 comment__user">
@@ -284,37 +308,6 @@
                         </div>
                     </div>
                     <!-- single comment end -->
-
-                    <div class="comment__item mb30">
-                        <div class="flex g12 comment__user">
-                            <div class="user__avt avt"><img src="/public/assets/media/images/users/user-1.svg"
-                                    alt="user 1" class="imgcover"></div>
-                            <div class="flex-column flex-between">
-                                <div class="user__name title-medium fw-smb">Lorem ipsum</div>
-                                <div class="user-comment__date title-small">29/12/2023</div>
-                            </div>
-                        </div>
-                        <div class="comment__content body-medium fw-normal mt12">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt cum qui voluptate! Libero est
-                            vero sequi perspiciatis, ratione, praesentium, ipsam quisquam autem voluptates et minus
-                            animi voluptas saepe. Asperiores, modi!
-                        </div>
-                    </div>
-                    <div class="comment__item mb30">
-                        <div class="flex g12 comment__user">
-                            <div class="user__avt avt"><img src="/public/assets/media/images/users/user-1.svg"
-                                    alt="user 1" class="imgcover"></div>
-                            <div class="flex-column flex-between">
-                                <div class="user__name title-medium fw-smb">Lorem ipsum</div>
-                                <div class="user-comment__date title-small">29/12/2023</div>
-                            </div>
-                        </div>
-                        <div class="comment__content body-medium fw-normal mt12">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt cum qui voluptate! Libero est
-                            vero sequi perspiciatis, ratione, praesentium, ipsam quisquam autem voluptates et minus
-                            animi voluptas saepe. Asperiores, modi!
-                        </div>
-                    </div>
                 </div>
             </div>
             <div class="panel__item">

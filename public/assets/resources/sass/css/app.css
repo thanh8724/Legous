@@ -48,6 +48,7 @@ html {
   font-size: 62.5%;
   box-sizing: border-box;
   font-family: "Quicksand", sans-serif;
+  scroll-behavior: smooth;
 }
 
 button {
@@ -4254,6 +4255,34 @@ html {
 }
 .dropdown-menu li a:hover {
   background-color: #f5eff7;
+}
+
+.cmt_img_item .cmt_img {
+  border-radius: 5px;
+}
+.cmt_img_item .cmt_img_amount {
+  right: 20px;
+  top: -5px;
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  background-color: #6750a4;
+  color: white;
+}
+
+#example1 tbody .reported {
+  background: #f8d7da;
+  border-color: #f5c6cb;
+}
+#example1 tbody .reported td {
+  color: #721c24;
+}
+#example1 tbody .notAppear {
+  background: #e2e3e5;
+  border-color: #d6d8db;
+}
+#example1 tbody .notAppear td {
+  color: #383d41;
 }
 
 table tbody tr td a {
