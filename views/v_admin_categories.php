@@ -106,7 +106,6 @@
             if(@$_GET['id']):
               $getidCategories = getidCategories($_GET['id'])
             ?>
-           
               <div style=" 
                   font-size: 16px;
                   display:block;
@@ -140,25 +139,25 @@
                               <div class="Dropdowns_categogy">
                             <div class="row">
                               <div class="custom-select col-6">
-                              <label>Cho xuất hiện danh mục</label>
-                                  <!-- Dropdown -->
-                                  <select id="id_category" name="is_appear">
-                                    <?php
-                                      if($get_appear == 1){
-                                        echo '
-                                        <option value="1">Có</option>
-                                        <option value="0">Không</option>
-                                        ';
-                                      }else{
-                                        echo'
-                                        <option value="0">Không</option>
-                                        <option value="1">Có</option>
-                                        ';
-                                      }
-                                    
-                                    ?>
-                                    
-                                  </select>
+                                <label>Cho xuất hiện danh mục</label>
+                                    <!-- Dropdown -->
+                                    <select id="id_category" name="is_appear">
+                                      <?php
+                                        if($get_appear == 1){
+                                          echo '
+                                          <option value="1">Có</option>
+                                          <option value="0">Không</option>
+                                          ';
+                                        }else{
+                                          echo'
+                                          <option value="0">Không</option>
+                                          <option value="1">Có</option>
+                                          ';
+                                        }
+                                      
+                                      ?>
+                                      
+                                    </select>
                               </div>
                               <div class="custom-select col-6">
                               <label>Danh mục đặt biệt</label>
