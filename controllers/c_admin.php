@@ -2,7 +2,7 @@
 ob_start();
 // Gữi/nhận dữ liệu thông qua model
 require_once './models/m_user.php';
-require_once './models/m_comments.php';
+require_once './models/m_comment.php';
 // Hiển thị dữ liệu thông qua view
 
 if (isset($_GET['act'])) {

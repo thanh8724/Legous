@@ -1421,11 +1421,22 @@ body.dark main {
   background-color: #15192a;
   transition: 0.5s;
 }
+body.dark main .logo_name,
+body.dark main span,
+body.dark main h1 {
+  color: #fff !important;
+}
 body.dark main .localDashboard .h2_dashboard {
   color: #ffffff !important;
 }
 body.dark main .localDashboard .aHref1 {
   color: #ffffff !important;
+}
+body.dark main .dashboard .containerAdmin .owl-carousel .slider_contain {
+  background-color: #1c2339 !important;
+}
+body.dark main .dashboard .containerAdmin .owl-carousel .slider_contain h5, body.dark main .dashboard .containerAdmin .owl-carousel .slider_contain h6, body.dark main .dashboard .containerAdmin .owl-carousel .slider_contain .fa-ellipsis-v, body.dark main .dashboard .containerAdmin .owl-carousel .slider_contain span {
+  color: #fff !important;
 }
 body.dark main .dashboard .top {
   background-color: #1c2339;
@@ -1504,7 +1515,7 @@ main nav .logo-name .logo-image img {
   object-fit: cover;
 }
 main nav .logo-name .logo_name {
-  color: #000000 !important;
+  color: #000000;
   font-family: "mainFont", sans-serif;
   margin-left: 14px;
   transition: 0.22s cubic-bezier(0.23, 1, 0.32, 1);
@@ -1652,7 +1663,7 @@ main .dashboard .top .sidebar-toggle {
   color: #000;
   cursor: pointer;
   background-color: #e8def8;
-  width: 48px;
+  width: 50px;
   height: 48px;
   line-height: 40px;
   display: flex;
@@ -4285,6 +4296,17 @@ html {
   color: #383d41;
 }
 
+#example1_filter {
+  display: none !important;
+}
+
+#example1_paginate .pagination #example1_previous .page-link {
+  font-size: 16px;
+}
+#example1_paginate .pagination .paginate_button .page-link {
+  font-size: 16px;
+}
+
 table tbody tr td a {
   text-decoration: none;
   color: #6750a4;
@@ -4745,6 +4767,10 @@ main .adminFooter ul li a {
   }
   main .dashboard .recentOrder .recentOrder_items,
   #adminDashboard .dashboard .recentOrder .recentOrder_items {
+    overflow-x: scroll;
+  }
+  main .dashboard .containerAdmin #example1_wrapper,
+  #adminDashboard .dashboard .containerAdmin #example1_wrapper {
     overflow-x: scroll;
   }
   .owl-carousel .owl-item {
