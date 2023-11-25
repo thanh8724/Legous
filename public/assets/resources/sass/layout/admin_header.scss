@@ -51,7 +51,7 @@ main {
         }
       }
       .logo_name {
-        color: $-black !important;
+        color: $-black;
         font-family: "mainFont", sans-serif;
         margin-left: 14px;
         transition: $trans-bounce;
@@ -246,7 +246,7 @@ main {
         color: #000;
         cursor: pointer;
         background-color: #e8def8;
-        width: 48px;
+        width: 50px;
         height: 48px;
         line-height: 40px;
         display: flex;

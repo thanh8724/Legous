@@ -1,6 +1,11 @@
 body {
 	&.dark {
 		main {
+			.logo_name,
+			span,
+			h1 {
+				color: #fff !important;
+			}
 			.localDashboard {
 				.h2_dashboard{
 					color: $-white !important;
@@ -13,6 +18,16 @@ body {
 			background-color: #15192a;
 			transition: 0.5s;
 			.dashboard {
+				.containerAdmin {
+					.owl-carousel {
+						.slider_contain {
+							background-color: #1c2339 !important;
+							h5,h6,.fa-ellipsis-v,span {
+								color: #fff !important;
+							}
+						}
+					}
+				}
 				.top {
 					background-color: #1c2339;
 					border-color: #1c2339;

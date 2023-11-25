@@ -160,7 +160,16 @@
             </div>
         HTML;
     }
-
+    if(isset($_POST['submitComment'])) {
+        if(!empty($_POST['inputComment'])) {
+            $inputCmt = $_POST['inputComment'];
+        }
+        $getIdUser = $_SESSION['userLogin']['id_user'];
+        $id_product = $_GET['idProduct'];
+        $getUsername = getUserInfo($getIdUser)[0]['username'];
+        $getEmail = getUserInfo($getIdUser)[0]['username'];
+        insertComment($getIdUser, $id_product, $getUsername, $getEmail, $inputCmt);
+    }
 ?>
 
 
@@ -284,29 +293,37 @@
                 <div class="block">
                     <div class="title-large fw-black">390 comments</div>
                     <form action="#" class="form comment__form flex-center" method="post">
-                        <input type="text" class="form__input comment__input" placeholder="Comment">
-                        <button class="icon-btn send-comment__btn"><i class="fal fa-paper-plane"></i></button>
+                        <input type="text" name="inputComment" class="form__input comment__input" placeholder="Comment">
+                        <button name="submitComment" type="submit" class="icon-btn send-comment__btn"><i class="fal fa-paper-plane"></i></button>
                     </form>
                 </div>
 
                 <div class="mt30 comment__wrapper">
                     <!-- product comments here  -->
                     <!-- single comment start -->
-                    <div class="comment__item mb30">
+                    <?php 
+                        $productId = $_GET['idProduct'];
+                        $productCmt = getProductCommentByProductId($productId);
+                        foreach ($productCmt as $item) {
+                            $getUserByID = getUserById($item['id_user']);
+                            ?>
+                            <div class="comment__item mb30">
                         <div class="flex g12 comment__user">
-                            <div class="user__avt avt"><img src="/public/assets/media/images/users/user-1.svg"
+                            <div class="user__avt avt"><img src="./public/assets/media/images/users/<?php echo $getUserByID['img'] ?>"
                                     alt="user 1" class="imgcover"></div>
                             <div class="flex-column flex-between">
-                                <div class="user__name title-medium fw-smb">Lorem ipsum</div>
-                                <div class="user-comment__date title-small">29/12/2023</div>
+                                <div class="user__name title-medium fw-smb"><?php echo $getUserByID['fullname']?></div>
+                                <div class="user-comment__date title-small"><?php echo $item['create_date']?></div>
                             </div>
                         </div>
                         <div class="comment__content body-medium fw-normal mt12">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt cum qui voluptate! Libero est
-                            vero sequi perspiciatis, ratione, praesentium, ipsam quisquam autem voluptates et minus
-                            animi voluptas saepe. Asperiores, modi!
+                           <?php echo $item['content']?>;
                         </div>
                     </div>
+                            <?php 
+                        }
+                            ?>
+                    
                     <!-- single comment end -->
                 </div>
             </div>

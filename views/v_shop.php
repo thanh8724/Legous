@@ -1,5 +1,5 @@
 <?php
-
+ 
 /** render regular product */
 $productHtml = '';
 

@@ -126,6 +126,25 @@
       }
     }
   }
+  
+}
+#example1_filter {
+  display: none !important;
+}
+#example1_paginate {
+  .pagination {
+    #example1_previous {
+      .page-link {
+        font-size: 16px;
+        
+      }
+    }
+    .paginate_button {
+.page-link {
+  font-size: 16px;
+}
+    }
+  }
 }
 table {
   tbody {
