@@ -20,7 +20,7 @@
     }
 
     function editCmtStatus($id, $value) {
-        pdo_execute("UPDATE comment SET is_appear = $value WHERE id_user = '$id'");
+        pdo_execute("UPDATE comment SET is_appear = {$value} WHERE id = {$id}");
     }
     function delCmt($id) {
         pdo_execute("DELETE FROM comment WHERE id_user = {$id}");

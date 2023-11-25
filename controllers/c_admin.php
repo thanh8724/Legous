@@ -329,16 +329,16 @@ if (isset($_GET['act'])) {
             break;
         case 'hiddenCmt':
             $id = $_GET['id'];
-            $hiddenCmt = editCmtStatus($id, 0);
+            editCmtStatus($id, 0);
             header("Location: ?mod=admin&act=comments");
             break;
         case 'showCmt':
             $id = $_GET['id'];
-            $hiddenCmt = editCmtStatus($id, 1);
+            editCmtStatus($id, 1);
             header("Location: ?mod=admin&act=comments");
             case 'delCmt':
                 $id = $_GET['id'];
-                $hiddenCmt = delCmt($id);
+                delCmt($id);
                 header("Location: ?mod=admin&act=comments");
         default:
 
