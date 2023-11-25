@@ -71,7 +71,7 @@
       <!--Cart-->
       <?php if(empty($ketqua)):?>
         <h1 class='flex-center flex-full mt-5'>Sản phẩm: "<?=$_GET['kw']?>" chưa tồn tại</h1>
-      <?php else:?>1
+      <?php else:?>
       <?php foreach ($ketqua as $item) : ?>
         <div class="cart trans-bounce flex-column p20" style="
                   border-radius: 12px;
