@@ -1,8 +1,7 @@
 <?php
-    $id_user = $_SESSION['id_user'];
     // xử lí khi người dùng nhập form
+    $id_user = $_SESSION['userLogin']['id_user'];
     if(isset($_POST['button__submit'])) {
-        $id_user = $_SESSION['id_user'];
         if($_POST['new_username'] != "") {
             $new_username = $_POST['new_username'];
         }else {
@@ -20,11 +19,11 @@
     foreach ($_COOKIE as $name => $value) {
         if (str_starts_with($name, "accounts_user")) {
             $accounts_user = get_accountUser($value);
-            print_r($value);
+            // print_r($value);
             $userList[$value] = $accounts_user;
         }
     }
-    print_r($userList);
+    // print_r($userList);
     $accounts_user_html = '';
     // foreach ($accounts_user as $key) {
     //     extract($key);

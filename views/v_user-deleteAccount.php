@@ -1,5 +1,5 @@
 <?php
-    $id_user = $_SESSION['id_user'];
+    $id_user = $_SESSION['userLogin']['id_user'];
     $id_bill = 0;
     $message_password = '';
     $message_checkbox = '';

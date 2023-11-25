@@ -83,6 +83,7 @@
 
     function get_addressByid($id_address) {
         $sql = "SELECT * FROM address WHERE id = '$id_address'";
+        return pdo_query($sql);
     }
 
     function check_addressDefault() {
