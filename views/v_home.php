@@ -239,12 +239,14 @@
                         <<<HTML
                         <!-- single product start -->
                         <div class="product product__carousel">
-                            <a href="$linkToDetail" class="product__banner oh banner-contain display-block rounded-8 por"
-                                style="background-image: url($imgPath)">
+                            <a 
+                            href="$linkToDetail" 
+                            class="product__banner oh banner-contain display-block rounded-8 por" 
+                            style="background-image: url($imgPath)">
                                 <div class="product__overlay poa flex-center">
-                                    <!-- overlay btn start     -->
+                                    <!-- overlay btn start -->
                                     $productBtn
-                                    <!-- overlay btn end     -->
+                                    <!-- overlay btn end -->
                                 </div>
                             </a>
                             <a href="#" class="product__info">
