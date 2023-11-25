@@ -95,18 +95,19 @@ if (!empty($_POST['password'])) {
         if(empty($error)) {
             if (move_uploaded_file($_FILES['file']['tmp_name'], $upload_file)) {
                 $image = $new_filename.$type;
+                addUserProfile($fullname, $username, $password, $email, $address, $image, $role, $bio, $phone);
+
                 header("Location: ?mod=admin&act=client");
             } else {
                 echo "Upload file thất bại";
             }
         }
     }
-    if (empty($error)) {
-        // addUserProfile($fullname, $username, $password, $email, $address, $image, $role, $bio, $phone);
-    } else {
+    // if (empty($error)) {
+    // } else {
 
-        $error = "Loi64";
-    }
+    //     $error = "Loi64";
+    // }
 }
 ?>
 <section class="dashboard">

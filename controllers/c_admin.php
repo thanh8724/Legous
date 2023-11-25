@@ -2,7 +2,7 @@
 ob_start();
 // Gữi/nhận dữ liệu thông qua model
 require_once './models/m_user.php';
-require_once './models/m_comments.php';
+require_once './models/m_comment.php';
 // Hiển thị dữ liệu thông qua view
 
 if (isset($_GET['act'])) {
@@ -362,16 +362,16 @@ if (isset($_GET['act'])) {
             break;
         case 'hiddenCmt':
             $id = $_GET['id'];
-            $hiddenCmt = editCmtStatus($id, 0);
+            editCmtStatus($id, 0);
             header("Location: ?mod=admin&act=comments");
             break;
         case 'showCmt':
             $id = $_GET['id'];
-            $hiddenCmt = editCmtStatus($id, 1);
+            editCmtStatus($id, 1);
             header("Location: ?mod=admin&act=comments");
             case 'delCmt':
                 $id = $_GET['id'];
-                $hiddenCmt = delCmt($id);
+                delCmt($id);
                 header("Location: ?mod=admin&act=comments");
         default:
 

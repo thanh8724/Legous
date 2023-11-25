@@ -1421,11 +1421,22 @@ body.dark main {
   background-color: #15192a;
   transition: 0.5s;
 }
+body.dark main .logo_name,
+body.dark main span,
+body.dark main h1 {
+  color: #fff !important;
+}
 body.dark main .localDashboard .h2_dashboard {
   color: #ffffff !important;
 }
 body.dark main .localDashboard .aHref1 {
   color: #ffffff !important;
+}
+body.dark main .dashboard .containerAdmin .owl-carousel .slider_contain {
+  background-color: #1c2339 !important;
+}
+body.dark main .dashboard .containerAdmin .owl-carousel .slider_contain h5, body.dark main .dashboard .containerAdmin .owl-carousel .slider_contain h6, body.dark main .dashboard .containerAdmin .owl-carousel .slider_contain .fa-ellipsis-v, body.dark main .dashboard .containerAdmin .owl-carousel .slider_contain span {
+  color: #fff !important;
 }
 body.dark main .dashboard .top {
   background-color: #1c2339;
@@ -1504,7 +1515,7 @@ main nav .logo-name .logo-image img {
   object-fit: cover;
 }
 main nav .logo-name .logo_name {
-  color: #000000 !important;
+  color: #000000;
   font-family: "mainFont", sans-serif;
   margin-left: 14px;
   transition: 0.22s cubic-bezier(0.23, 1, 0.32, 1);
@@ -1652,7 +1663,7 @@ main .dashboard .top .sidebar-toggle {
   color: #000;
   cursor: pointer;
   background-color: #e8def8;
-  width: 48px;
+  width: 50px;
   height: 48px;
   line-height: 40px;
   display: flex;
@@ -4285,6 +4296,17 @@ html {
   color: #383d41;
 }
 
+#example1_filter {
+  display: none !important;
+}
+
+#example1_paginate .pagination #example1_previous .page-link {
+  font-size: 16px;
+}
+#example1_paginate .pagination .paginate_button .page-link {
+  font-size: 16px;
+}
+
 table tbody tr td a {
   text-decoration: none;
   color: #6750a4;
@@ -4745,6 +4767,10 @@ main .adminFooter ul li a {
   }
   main .dashboard .recentOrder .recentOrder_items,
   #adminDashboard .dashboard .recentOrder .recentOrder_items {
+    overflow-x: scroll;
+  }
+  main .dashboard .containerAdmin #example1_wrapper,
+  #adminDashboard .dashboard .containerAdmin #example1_wrapper {
     overflow-x: scroll;
   }
   .owl-carousel .owl-item {
@@ -5616,6 +5642,22 @@ main .adminFooter ul li a {
 .comment__panel .comment__form .comment__input:focus {
   border-bottom-color: #6750a4;
 }
+.comment__panel .comment__wrapper .comment__item .user__avt img {
+  border-radius: 30px;
+}
+.comment__panel .comment__wrapper .comment__item .comment_media {
+  display: flex;
+  margin-top: 15px;
+}
+.comment__panel .comment__wrapper .comment__item .comment_media .comment_media_item {
+  margin: 0 10px;
+}
+.comment__panel .comment__wrapper .comment__item .comment_media .comment_media_item video,
+.comment__panel .comment__wrapper .comment__item .comment_media .comment_media_item img {
+  width: 100px;
+  height: 100px;
+  border-radius: 5px;
+}
 
 .bill-info__panel .bill-info__box {
   background: #ffffff;
@@ -5634,6 +5676,73 @@ main .adminFooter ul li a {
 }
 .single-product__bottom-bar .bottom-bar__inner {
   background: #ffffff;
+}
+
+.js .inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.inputfile + label {
+  max-width: 80%;
+  font-size: 1.25rem;
+  /* 20px */
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+  display: inline-block;
+  overflow: hidden;
+  padding: 0.625rem 1.25rem;
+  /* 10px 20px */
+}
+
+.no-js .inputfile + label {
+  display: none;
+}
+
+#file-1 {
+  display: none;
+}
+
+.inputfile:focus + label,
+.inputfile.has-focus + label {
+  outline: 1px dotted #000;
+  outline: -webkit-focus-ring-color auto 5px;
+}
+
+.inputfile + label * {
+  /* pointer-events: none; */
+  /* in case of FastClick lib use */
+}
+
+.inputfile + label svg {
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+  fill: currentColor;
+  margin-top: -0.25em;
+  /* 4px */
+  margin-right: 0.25em;
+  /* 4px */
+}
+
+/* style 1 */
+.inputfile-1 + label {
+  color: #f1e5e6;
+  background-color: #6750a4;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+
+.inputfile-1:focus + label,
+.inputfile-1.has-focus + label,
+.inputfile-1 + label:hover {
+  background-color: rgba(247, 242, 250, 0.507);
 }
 
 /* Mobile: with < 740px */

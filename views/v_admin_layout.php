@@ -61,11 +61,12 @@
                 <i class="fas fa-times"></i>
             </div>
             <ul>
-                <li><a class="title-large" href="#">Bảng Điều Khiển</a></li>
-                <li><a class="title-large" href="">Sản Phẩm</a></li>
-                <li><a class="title-large" href="#">Danh Mục</a></li>
-                <li><a class="title-large" href="#">Đơn Hàng</a></li>
-                <li><a class="title-large" href="#">Khách Hàng</a></li>
+                <li><a class="title-large" href="?mod=admin&act=home">Bảng Điều Khiển</a></li>
+                <li><a class="title-large" href="?mod=admin&act=products">Sản Phẩm</a></li>
+                <li><a class="title-large" href="?mod=admin&act=categories">Danh Mục</a></li>
+                <li><a class="title-large" href="?mod=admin&act=orders">Đơn Hàng</a></li>
+                <li><a class="title-large" href="?mod=admin&act=client">Khách Hàng</a></li>
+                <li><a class="title-large" href="?mod=admin&act=comments">Bình Luận</a></li>
                 <li><a class="title-large" href="#">Đăng Xuất</a></li>
             </ul>
         </div>
@@ -87,7 +88,7 @@
         <nav>
             <div class="logo-name">
                 <div class="logo-image">
-                    <img src="./public/assets/media/images/users/profile.jpg" alt="">
+                    <img src="./public/assets/media/images/logo.png" alt="">
                 </div>
 
                 <span class="logo_name display-small fw-black">LEGOUS</span>
@@ -118,7 +119,7 @@
                             <span class="link-name title-small">Khách Hàng</span>
                         </a></li>
                         <li class="<?= (strpos($view_name, 'comments')) ? 'active' : '' ?>"><a href="?mod=admin&act=comments">
-                            <i class="fal fa-user"></i>
+                            <i class="far fa-comments"></i>
                             <span class="link-name title-small">Bình luận</span>
                         </a></li>
 
