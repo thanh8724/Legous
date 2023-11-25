@@ -28,6 +28,7 @@
 </script>
 
 <?php 
+
     /** product rendering */
     extract($topLoveProduct[0]);
     $img_path = './public/assets/media/images/product/'.$img.'';

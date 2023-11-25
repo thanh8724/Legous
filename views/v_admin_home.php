@@ -1,3 +1,26 @@
+<?php 
+    $getTotalBill = getBill();
+    $getProduct = getProducts();
+    $getUser = getUser();
+    $getCmt = getAllComment();
+    $totalBill = 0;
+    $totalSales = 0;
+    $totalUser = 0;
+    $totalCmt = 0;
+    foreach ($getTotalBill as $item) {
+        $totalBill += $item['total'];
+    }
+    foreach($getProduct as $item) {
+        $totalSales += $item['purchases'];
+    }
+    foreach ($getUser as $item) {
+        $totalUser++;
+    }
+    foreach ($getCmt as $item) {
+        $totalCmt++;
+    }
+    
+?>
 <section class="dashboard">
             <!----======== Header DashBoard ======== -->
             
@@ -151,11 +174,7 @@
                     <div class="flex g8">
                         <span class="label-large">Admin /</span><a href="#" class="label-large" style="text-decoration: none;">Bảng Điều Khiển</a>
                     </div>
-                    <div class="flex-center g8">
-                        <span><i class="fa-solid fa-calendar-days"></i></span>
-                        <input class="label-large-prominent" type="datetime-local" style="color: #625B71; border: none; font-size: 16px;
-                            ">
-                    </div>
+                    
                     </div>
                 </div>
                 <!-- <div class="localDashboard p30">
@@ -190,7 +209,7 @@
                                 <div class="d-flex align-items-center">
                                     <button class="buttonWallet"><i class="far fa-wallet"
                                             style="color: #ffffff;"></i></button>
-                                    <p class="dashboard-moneyEarn title-medium"><span>12,250,980 VNĐ</span></p>
+                                    <p class="dashboard-moneyEarn title-medium"><span><?php echo number_format($totalBill, 3,',')?> VNĐ</span></p>
                                 </div>
                                 <div class="slider_items_stonks d-flex align-items-center">
                                     <i class="far fa-external-link-alt"></i>
@@ -206,7 +225,7 @@
                         <div class="slider_items p-4">
                             <div class="col-12 d-flex">
                                 <div class="col-6">
-                                    <h5 class="label-large">Tổng doanh thu</h5>
+                                    <h5 class="label-large">Sản Phẩm Đã Bán</h5>
                                 </div>
                                 <div class="col-6 d-flex justify-content-end align-content-center"><i
                                         class="far fa-ellipsis-v"></i></div>
@@ -215,7 +234,7 @@
                                 <div class="d-flex align-items-center">
                                     <button class="buttonWallet"><i class="far fa-wallet"
                                             style="color: #ffffff;"></i></button>
-                                    <p class="dashboard-moneyEarn title-medium"><span>12,250,980 VNĐ</span></p>
+                                    <p class="dashboard-moneyEarn title-medium"><span><?php echo $totalSales?></span></p>
                                 </div>
                                 <div class="slider_items_stonks d-flex align-items-center">
                                     <i class="far fa-external-link-alt"></i>
@@ -231,7 +250,7 @@
                         <div class="slider_items p-4">
                             <div class="col-12 d-flex">
                                 <div class="col-6">
-                                    <h5 class="label-large">Tổng doanh thu</h5>
+                                    <h5 class="label-large">Người dùng mới</h5>
                                 </div>
                                 <div class="col-6 d-flex justify-content-end align-content-center"><i
                                         class="far fa-ellipsis-v"></i></div>
@@ -240,7 +259,7 @@
                                 <div class="d-flex align-items-center">
                                     <button class="buttonWallet"><i class="far fa-wallet"
                                             style="color: #ffffff;"></i></button>
-                                    <p class="dashboard-moneyEarn title-medium"><span>12,250,980 VNĐ</span></p>
+                                    <p class="dashboard-moneyEarn title-medium"><span><?php echo $totalUser?></span></p>
                                 </div>
                                 <div class="slider_items_stonks d-flex align-items-center">
                                     <i class="far fa-external-link-alt"></i>
@@ -256,7 +275,7 @@
                         <div class="slider_items p-4">
                             <div class="col-12 d-flex">
                                 <div class="col-6">
-                                    <h5 class="label-large">Tổng doanh thu</h5>
+                                    <h5 class="label-large">Tổng Bình Luận</h5>
                                 </div>
                                 <div class="col-6 d-flex justify-content-end align-content-center"><i
                                         class="far fa-ellipsis-v"></i></div>
@@ -265,7 +284,7 @@
                                 <div class="d-flex align-items-center">
                                     <button class="buttonWallet"><i class="far fa-wallet"
                                             style="color: #ffffff;"></i></button>
-                                    <p class="dashboard-moneyEarn title-medium"><span>12,250,980 VNĐ</span></p>
+                                    <p class="dashboard-moneyEarn title-medium"><span><?php echo $totalCmt?></span></p>
                                 </div>
                                 <div class="slider_items_stonks d-flex align-items-center">
                                     <i class="far fa-external-link-alt"></i>
@@ -460,7 +479,7 @@
 
                 <!----======== Recent Order  ======== -->
                 <div id="recentOrder" class="recentOrder p30">
-                    <div class="recentOrder_items p30">
+                    <div class="recentOrder_items p30 box-shadow3">
                         <h2 class="title-medium">Đơn hàng gần đây</h2>
                         <div class="tableLine"></div>
                         <table>
@@ -512,8 +531,8 @@
                 <!----======== OverView DashBoard  ======== -->
                 <div id="overviewDashboard" class="overviewDashboard">
                     <div class="col-12 d-xxl-flex d-md-block d-sm-block">
-                        <div class="col-xxl-4 p30 col-sm-12 com-md-12">
-                            <div class="vitsitOverview">
+                        <div class="col-xxl-4 p30 col-sm-12 com-md-12 ">
+                            <div class="vitsitOverview box-shadow3">
                                 <div class="vitsitOverview_item">
                                     <div class="theadoverviewDashboard">
                                         <div class="col-12 d-flex justify-content-between align-items-center">
@@ -570,7 +589,7 @@
                             </div>
                         </div>
                         <div class="col-xxl-4 p30 col-sm-12 com-md-12">
-                            <div class="topProductSeller">
+                            <div class="topProductSeller box-shadow3">
                                 <div class="topProductSeller_item">
                                     <div class="theadoverviewDashboard">
                                         <div class="col-12 d-flex justify-content-between align-items-center">
@@ -664,7 +683,7 @@
                             </div>
                         </div>
                         <div class="col-xxl-4 p30 col-sm-12 com-md-12">
-                            <div class="totalProfit">
+                            <div class="totalProfit box-shadow3">
                                 <div class="totalProfit_items">
                                     <div class="theadoverviewDashboard">
                                         <div class="col-12 d-flex justify-content-between align-items-center">

@@ -35,7 +35,7 @@
                     $email = $_POST['email'];
                     $password = $_POST['password'];
                     // echo $name , $password;
-                    if ($email !== '' && $password !== '') {
+                    if ($email !== '' && $password !== '')   {
                         $user = checkUser($email, $password);
                         if ($user) {
                             extract($user);

@@ -164,7 +164,9 @@
     function delete_acccount($id_user) {
         pdo_execute("DELETE FROM user WHERE id = ?",$id_user);
     }
-
+    function getBill() {
+        return pdo_query("SELECT * FROM bill");
+    }
 
 
     function editUserProfile($id, $fullname, $username, $password, $email, $address, $image, $role, $bio, $phone) {

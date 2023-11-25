@@ -8,6 +8,8 @@ include_once 'config.php';
 include_once 'models/m_cart.php';
 include_once 'models/m_category.php';
 include_once 'models/m_product.php';
+// require_once 'models/m_comment.php';
+// require_once 'models/m_user.php';
 
 
 if (isset($_GET['mod'])) {
