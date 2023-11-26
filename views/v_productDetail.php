@@ -40,8 +40,7 @@ if (isset($_GET['idProduct']) && $_GET['idProduct']) {
                         <input type="hidden" name="id" value="$idProduct">
                         <input type="hidden" name="qty" id="data-qty" value="1">
                     </form>
-                HTML;
-        ;
+                HTML;;
     } else {
         $btnsHtml .=
             <<<HTML
@@ -230,7 +229,6 @@ if (isset($_POST['submitComment'])) {
                     }
                 }
             }
-
         }
     }
     header("Location: ?mod=page&act=productDetail&idProduct={$id_product}");
@@ -322,8 +320,7 @@ if (isset($_POST['submitComment'])) {
         <div class="qty__form flex v-center g12">
             Số lượng:
             <button class="minus-btn icon-btn outline-btn"><i class="fal fa-minus"></i></button>
-            <input type="number" min="0" max="<?= $qty ?>" class="qty__input form__input"
-                style="border: none; ouline: none; width: 3rem" value="1">
+            <input type="number" min="0" max="<?= $qty ?>" class="qty__input form__input" style="border: none; ouline: none; width: 3rem" value="1">
             <button class="plus-btn icon-btn outline-btn"><i class="fal fa-plus"></i></button>
         </div>
         <div class="flex g12 desktop">
@@ -362,24 +359,19 @@ if (isset($_POST['submitComment'])) {
                     <div class="title-large fw-black">309 comments</div>
                     <?php
                     if (isset($_SESSION['userLogin'])) {
-                        ?>
+                    ?>
                         <form enctype="multipart/form-data" action="" class="form comment__form" method="post">
-                            <input type="file" name="file[]" id="file-1" class="inputfile inputfile-1"
-                                data-multiple-caption="{count} đã chọn" multiple />
-                            <label for="file-1"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17"
-                                    viewBox="0 0 20 17">
-                                    <path
-                                        d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z" />
+                            <input type="file" name="file[]" id="file-1" class="inputfile inputfile-1" data-multiple-caption="{count} đã chọn" multiple />
+                            <label for="file-1"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17">
+                                    <path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z" />
                                 </svg> <span>Chọn ảnh&hellip;</span></label>
 
                             <div class="flex" style="align-items: center;">
-                                <input type="text" name="inputComment" class="form__input comment__input"
-                                    placeholder="Comment">
-                                <button name="submitComment" value="submitComment" type="submit" class="icon-btn send-comment__btn"><i
-                                        class="fal fa-paper-plane"></i></button>
+                                <input type="text" name="inputComment" class="form__input comment__input" placeholder="Comment">
+                                <button name="submitComment" value="submitComment" type="submit" class="icon-btn send-comment__btn"><i class="fal fa-paper-plane"></i></button>
                             </div>
                         </form>
-                        <?php
+                    <?php
                     }
                     ?>
 
@@ -395,12 +387,11 @@ if (isset($_POST['submitComment'])) {
                         $getUserByID = getUserById($item['id_user']);
                         $idCmt = $item['id'];
                         $productImgCmt = getImgCommentById($idCmt);
-                        ?>
+                        if($item['is_appear'] == 1) {
+                    ?>
                         <div class="comment__item mb30">
                             <div class="flex g12 comment__user">
-                                <div class="user__avt avt"><img
-                                        src="./public/assets/media/images/users/<?php echo $getUserByID['img'] ?>"
-                                        alt="user 1" class="imgcover"></div>
+                                <div class="user__avt avt"><img src="./public/assets/media/images/users/<?php echo $getUserByID['img'] ?>" alt="user 1" class="imgcover"></div>
                                 <div class="flex-column flex-between">
                                     <div class="user__name title-medium fw-smb">
                                         <?php echo $getUserByID['fullname'] ?>
@@ -417,17 +408,35 @@ if (isset($_POST['submitComment'])) {
                                 <?php
                                 if (!empty($productImgCmt)) {
                                     foreach ($productImgCmt as $result) {
-                                        ?>
+                                ?>
                                         <div class="comment_media_item">
-                                            <img src="./public/assets/media/images/users/<?php echo $result['src']?>" alt="">
+                                            <img src="./public/assets/media/images/users/<?php echo $result['src'] ?>" alt="">
                                         </div>
-                                    <?php
+                                <?php
                                     }
                                 }
                                 ?>
                             </div>
                         </div>
-                        <?php
+                    <?php
+                    }else {
+                        ?>
+                        <div class="comment__item mb30">
+                            <div class="flex g12 comment__user">
+                                <div class="user__avt avt"><img src="./public/assets/media/images/users/<?php echo $getUserByID['img'] ?>" alt="user 1" class="imgcover"></div>
+                                <div class="flex-column flex-between">
+                                    <div class="user__name title-medium fw-smb">
+                                        <p>Bình luận này đang vi phạm chính sách nên đã bị ẩn</p>
+                                    </div>
+                                    <div class="user-comment__date title-small">
+                                        <p>By Admin</p>
+                                    </div>
+                                </div>
+                            </div>
+                           
+                        </div>
+                        <?php 
+                    }
                     }
                     ?>
                     <!-- single comment end -->
@@ -494,9 +503,7 @@ if (isset($_POST['submitComment'])) {
         <div class="fw-black text-logo">Legous</div>
         <div class="flex g6 v-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 45 45" fill="none">
-                <path
-                    d="M22.275 17.1375C24.675 17.25 25.2938 19.2938 25.3313 20.25H28.6875C28.5375 16.5375 25.8938 14.2688 22.2188 14.2688C18.075 14.2688 15 16.875 15 22.7625C15 26.4 16.7438 30.7125 22.2 30.7125C26.3625 30.7125 28.5938 27.6187 28.65 25.1813H25.2937C25.2375 26.2875 24.45 27.7687 22.2375 27.8813C19.7812 27.8062 18.75 25.8938 18.75 22.7625C18.75 17.3438 21.15 17.175 22.275 17.1375ZM22.5 3.75C12.15 3.75 3.75 12.15 3.75 22.5C3.75 32.85 12.15 41.25 22.5 41.25C32.85 41.25 41.25 32.85 41.25 22.5C41.25 12.15 32.85 3.75 22.5 3.75ZM22.5 37.5C14.2313 37.5 7.5 30.7687 7.5 22.5C7.5 14.2313 14.2313 7.5 22.5 7.5C30.7687 7.5 37.5 14.2313 37.5 22.5C37.5 30.7687 30.7687 37.5 22.5 37.5Z"
-                    fill="white" />
+                <path d="M22.275 17.1375C24.675 17.25 25.2938 19.2938 25.3313 20.25H28.6875C28.5375 16.5375 25.8938 14.2688 22.2188 14.2688C18.075 14.2688 15 16.875 15 22.7625C15 26.4 16.7438 30.7125 22.2 30.7125C26.3625 30.7125 28.5938 27.6187 28.65 25.1813H25.2937C25.2375 26.2875 24.45 27.7687 22.2375 27.8813C19.7812 27.8062 18.75 25.8938 18.75 22.7625C18.75 17.3438 21.15 17.175 22.275 17.1375ZM22.5 3.75C12.15 3.75 3.75 12.15 3.75 22.5C3.75 32.85 12.15 41.25 22.5 41.25C32.85 41.25 41.25 32.85 41.25 22.5C41.25 12.15 32.85 3.75 22.5 3.75ZM22.5 37.5C14.2313 37.5 7.5 30.7687 7.5 22.5C7.5 14.2313 14.2313 7.5 22.5 7.5C30.7687 7.5 37.5 14.2313 37.5 22.5C37.5 30.7687 30.7687 37.5 22.5 37.5Z" fill="white" />
             </svg>/2023
         </div>
     </div>
@@ -545,13 +552,14 @@ if (isset($_POST['submitComment'])) {
 <script>
     'use strict';
 
-    ; (function (document, window, index) {
+    ;
+    (function(document, window, index) {
         var inputs = document.querySelectorAll('.inputfile');
-        Array.prototype.forEach.call(inputs, function (input) {
+        Array.prototype.forEach.call(inputs, function(input) {
             var label = input.nextElementSibling,
                 labelVal = label.innerHTML;
 
-            input.addEventListener('change', function (e) {
+            input.addEventListener('change', function(e) {
                 var fileName = '';
                 if (this.files && this.files.length > 1)
                     fileName = (this.getAttribute('data-multiple-caption') || '').replace('{count}', this.files.length);
@@ -565,8 +573,12 @@ if (isset($_POST['submitComment'])) {
             });
 
             // Firefox bug fix
-            input.addEventListener('focus', function () { input.classList.add('has-focus'); });
-            input.addEventListener('blur', function () { input.classList.remove('has-focus'); });
+            input.addEventListener('focus', function() {
+                input.classList.add('has-focus');
+            });
+            input.addEventListener('blur', function() {
+                input.classList.remove('has-focus');
+            });
         });
     }(document, window, 0));
 </script>
