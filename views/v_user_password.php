@@ -5,30 +5,29 @@
     $id_user = isset($_SESSION['userLogin']['id_user']) ? $_SESSION['userLogin']['id_user'] : $_SESSION['admin']['id_user'];
     $password_fromDB = get_password($id_user);
     if (isset($_POST['btn_change_password'])) {
-        print_r('this is change password');
-        // $old_password = $_POST['old_password'];
-        // $new_password = $_POST['new_password'];
-        // if (strlen($new_password) >= 8) {
-        //     if ($old_password == $password_fromDB) {
-        //         update_password($new_password, $id_user);
-        //         $value_old_password = $new_password;
-        //         $message_oldPassword = 'Đã cập nhật mật khẩu thành công.';
-        //     } else if($old_password == "") {
-        //         $message_oldPassword = 'Vui lòng điền mật khẩu để xác nhận.';
-        //     }else if($old_password != $password_fromDB) {
-        //         $message_oldPassword = 'Mật khẩu xác nhận không đúng.';
-        //     }
-        // } 
-        // else {
-        //     $value_old_password = $old_password;
-        //     $message_newPassword = 'Mật khẩu phải có ít nhất 8 kí tự.';
-        // }
+        $old_password = $_POST['old_password'];
+        $new_password = $_POST['new_password'];
+        if (strlen($new_password) >= 8) {
+            if ($old_password == $password_fromDB) {
+                update_password($new_password, $id_user);
+                $value_old_password = $new_password;
+                $message_oldPassword = 'Đã cập nhật mật khẩu thành công.';
+            } else if($old_password == "") {
+                $message_oldPassword = 'Vui lòng điền mật khẩu để xác nhận.';
+            }else if($old_password != $password_fromDB) {
+                $message_oldPassword = 'Mật khẩu xác nhận không đúng.';
+            }
+        } 
+        else {
+            $value_old_password = $old_password;
+            $message_newPassword = 'Mật khẩu phải có ít nhất 8 kí tự.';
+        }
 
-        // if($_POST['new_password'] == $password_fromDB) {
-        //     $value_old_password = $old_password;
-        //     $message_oldPassword = 'Cập nhật mật khẩu thất bại.';
-        //     $message_newPassword = 'Mật khẩu mới phải khác với mật khẩu cũ.';
-        // }
+        if($_POST['new_password'] == $password_fromDB) {
+            $value_old_password = $old_password;
+            $message_oldPassword = 'Cập nhật mật khẩu thất bại.';
+            $message_newPassword = 'Mật khẩu mới phải khác với mật khẩu cũ.';
+        }
     }
 ?>
 <main class="main__user">
@@ -198,6 +197,8 @@
         formSelector: '.register__form',
         formGroupSelector: '.form__group',
         formMessage: '.form__message',
+        submitUrl: '?mod=user&act=password',
+        redirectUrl: '?mod=user&act=password',
         rules: [
             Validator.isRequired('.password--input'),
             Validator.isPassword('.password--input'),

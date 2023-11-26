@@ -95,10 +95,8 @@
                         $id_user = $_SESSION['userLogin']['id_user'];
                     }
                 }
-                # lấy ip máy người dùng
-                // $ip_address = $_SERVER['HTTP_USER_AGENT'];
 
-                unset($_SESSION['user']);
+                unset($_SESSION['userLogin']);
                 header('location: ?mod=page&act=login');
                 break;
 

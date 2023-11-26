@@ -166,7 +166,7 @@
                     </div>
                     <!-- checkbox form group -->
                     <div class="form__group">
-                        <span class="form__label">Mật khẩu cũ</span>
+                        <label for="old_password" class="form__label">Mật khẩu cũ</label>
                         <input type="password" class="form__input password--input" name="old_password" placeholder="Nhập mật khẩu cũ">
                         <!-- <label for="" class="label__place">Nhập mật khẩu cũ</label> -->
                         <span class="form__message"><?= $message_password ?></span>
@@ -178,7 +178,7 @@
                     <div class="form__group without-title">
                         <div class="flex g6">
                             <input type="checkbox" name="confirm_delete" class="input input_checkbox">
-                            <div class="form__label">Tôi đã hiểu rõ, xóa tài khoản là quyết định của tôi</div>
+                            <label class="form__label">Tôi đã hiểu rõ, xóa tài khoản là quyết định của tôi</label>
                         </div>
                         <span class="form__message"><?= $message_checkbox ?></span>
                     </div>
@@ -194,12 +194,14 @@
         </div>
     </div>
 </main>
-<script src="./public/assets/resources/js/validator.js"></script>
+<script src="./public/assets/resources/js/validator.js"></script>   
 <script>
     Validator({
         formSelector: '.deleteAccount__form',
         formGroupSelector: '.form__group',
         formMessage: '.form__message',
+        submitUrl: '?mod=user&act=delete-account',
+        redirectUrl: '?mod=user&act=delete-account',
         rules: [
             Validator.isRequired('.password--input'),
             Validator.isPassword('.password--input'),
