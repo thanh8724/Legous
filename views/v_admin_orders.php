@@ -106,7 +106,8 @@
     <div class="containerAdmin">
 
         <div class="flex-column width-full">
-            <div class="content-filter flex-column dropdown-center">
+        <div class="content-filter dropdown-center width-full d-flex align-items-center justify-content-between">
+          <button id="btn_addMore_admin" type="button" style="width:130px;height:45px;background-color:#6750a4;border-radius:10px"><a style="color: white; font-size: 12px; text-decoration: none; padding: 10px 5px;" href="">Thêm Đơn Hàng</a></button>
                 <button id="filter" class="flex-center g8" style="padding: 10px 16px;
                 border: 1px solid #79747E; border-radius: 100px;
                 margin-left: auto;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -117,10 +118,13 @@
                     </svg>
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a href="">Tên Sản phẩm</a></li>
-                    <li><a href="">Giá</a></li>
-                    <li><a href="">Danh Mục</a></li>
-                    <li><a href="">Ngày - Tháng</a></li>
+                    <li><a href="?mod=admin&act=orders&filter=old">Mới Nhất</a></li>
+                    <li><a href="?mod=admin&act=orders&filter">Cũ Nhất</a></li>
+                    <li><a href="?mod=admin&act=orders&filter=status&status=1">Đang Chờ</a></li>
+                    <li><a href="?mod=admin&act=orders&filter=status&status=2">Đang Giao</a></li>
+                    <li><a href="?mod=admin&act=orders&filter=status&status=3">Đã Hủy</a></li>
+                    <li><a href="?mod=admin&act=orders&filter=status&status=4">Đã Giao</a></li>  
+                    <li><a href="">Đơn (1 Triệu >)</a></li>  
                 </ul>
             </div>
         </div>
@@ -186,22 +190,6 @@
             
             //number_format
             $formatted_number = number_format($value['total'], 0, ',', '.');
-            $status_Payment = '';
-                if($value['name_Payment'] == 1){
-                  $status_Payment = '<td>ZaloPay</td>';
-                }
-                elseif($value['name_Payment'] == 2){
-                  $status_Payment = '<td>Thanh Toán Khi nhận hàng</td>';
-                }
-                elseif($value['name_Payment'] == 3){
-                  $status_Payment = '<td>MoMo</td>';
-                }
-                elseif($value['name_Payment'] == 4){
-                  $status_Payment = '<td>Payfox</td>';
-                }
-                elseif($value['name_Payment'] == 5){
-                  $status_Payment = '<td>Viettel money</td>';
-                }
             $status_order = '';
                 if($value['status'] == 0){
                   $status_order = '<td style="color:#00C58A;">Đang Chờ</td>';
@@ -219,7 +207,14 @@
                   $status_order = '<td style="color:#00B3FF;">Đã Giao</td>';
                 }
               ?>
-                <tr>
+              <?php
+              $bill_cancel = '';
+                if($value['status'] == 3)
+                $bill_cancel = 'style = "background-color: rgba(128, 128, 128, 0.233);"';
+                elseif($value['status'] == 4)
+                $bill_cancel = 'style = "background-color:rgba(34,187,51, 0.3);"';
+              ?>
+                <tr <?=$bill_cancel?>>
                     <td style="text-align: start;">
                         <input type="checkbox" style="width: 18px; height: 18px;">
                         </input>
@@ -230,7 +225,10 @@
                     <td>
                         <?=$value['order_user']?>
                     </td>
-                    <?=$status_Payment?>
+                    <td>
+                      <!-- lỗi đầy buồi -->
+                    <?=$value['name_Payment']?>   
+                    </td>
                     <td>
                         <?=$value['create_date']?>
                     </td>
@@ -241,7 +239,8 @@
                     <td><a href="?mod=admin&act=orders&id=<?=$value['id']?>">Xem chi tiết</a></td>
                 </tr>
                 <?php endforeach;?>
-                <?php if(@$_GET['id']):?>
+                <?php if(@$_GET['id']):
+                  $get_Order_One = get_One_Order_bill($_GET['id'])?>
                 <div style=" 
                 font-size: 16px;
                 display:block;
@@ -263,32 +262,44 @@
                 width: 50%;" class="modal-content">
                         <a href="?mod=admin&act=orders" style="width:100%;"><span style="float: inline-end;font-size:20px; cursor: pointer;"
                                 class="close">&times;</span></a>
-                        <form action="" method="POST" enctype="multipart/form-data">
+                        <form action="?mod=admin&act=orders&id=<?=$_GET['id']?>" method="POST" enctype="multipart/form-data">
                           <div class="row d-flex">
-                            <div class="col-6">
+                            <div class="col-6" style="overflow: auto; height:600px;">
                               <h1 style="margin-bottom: 20px;">Người Đặt</h1>
                               <div style="margin-bottom: 20px;">
-                              <hr>
-                                <h4>Tên Người Mua</h4>
-                                <p>Naruto</p>
-                              </div>
+                                <hr>
+                                  <h4>Tên Người Mua</h4>
+                                  <p><?=$get_Order_One['order_user']?></p>
+                                </div>
                               <div style="margin-bottom: 20px;">
-                              <hr>
                                 <h4>Địa Chỉ Người Mua</h4>
-                                <p>Naruto</p>
+                                <p><?=$get_Order_One['address_user']?></p>
                               </div>
                               <div style="margin-bottom: 20px;">
                                 <h4>Email</h4>
-                                <p>Naruto@gmail.com</p>
+                                <p><?=$get_Order_One['email_user']?></p>
                               </div>
                               <div style="margin-bottom: 20px;">
                                 <h4>Số Điện Thoại</h4>
-                                <p>0348378112</p>
+                                <p><?=$get_Order_One['phone_user']?></p>
+                                <hr>
+                              </div>
+                              <h1 style="margin-bottom: 20px;">Người Nhận</h1>
+                              <div style="margin-bottom: 20px;">
+                                  <h4>Tên Người Nhận</h4>
+                                  <p><?=$get_Order_One['name_recipient']?></p>
                               </div>
                               <div style="margin-bottom: 20px;">
-                              <hr>
-                                <h4>Tên Người Nhận</h4>
-                                <p>Catchy</p>
+                                <h4>Địa Người Nhận</h4>
+                                <p><?=$get_Order_One['address_recipient']?></p>
+                              </div>
+                              <div style="margin-bottom: 20px;">
+                                <h4>Email</h4>
+                                <p><?=$get_Order_One['email_recipient']?></p>
+                              </div>
+                              <div style="margin-bottom: 20px;">
+                                <h4>Số Điện Thoại</h4>
+                                <p><?=$get_Order_One['phone_recipient']?></p>
                               </div>
                             </div>
                             <div class="col-6"> 
@@ -296,44 +307,96 @@
                             <div class="row d-flex">
                               <hr>
                               <div style="margin-bottom: 20px;">
-                                <h4>Tên Đơn Hàng:</h4>
-                                <p>Mô hình Naruto combo 6 nhân vật</p>
+                                <h4>Tên Đơn Hàng - Danh Mục:</h4>
+                                <?php foreach ($get_Cart_bill as $value):?>
+                                  
+                                  <div class="d-flex">
+                                    <p><?=$value['product_name']?></p> -
+                                    <p><?=$value['category_name']?></p>
+                                  </div>
+                                <?php endforeach;?>
                               </div>
-                              <div style="margin-bottom: 20px;" class="d-flex align-items-center">
-                                <h4 style="margin:0 5px 0 0 ;">Thuộc danh mục:</h4>
-                                <p>Naruto</p>
-                              </div>
+                              
                               <div style="margin-bottom: 20px;" class="d-flex align-items-center">
                                 <h4 style="margin:0 5px 0 0 ;">Cách Thức Giao Hàng:</h4>
-                                <p>Naruto</p>
+                                <p><?=$shippingName?></p>
                               </div>
                               <div style="margin-bottom: 20px;" class="d-flex align-items-center">
                                 <h4 style="margin:0 5px 0 0 ;">Áp Dụng Mã Giảm Giá:</h4>
                                 <p>MOMO</p>
                               </div>
                               <div style="margin-bottom: 20px;" class="d-flex align-items-center">
+                                <h4 style="margin:0 5px 0 0 ;">Phương thức thanh toán:</h4>
+                                <p> <?=$get_Order_One['name_Payment']?></p>
+                              </div>
+                              <div style="margin-bottom: 20px;" class="d-flex align-items-center">
                                 <h4 style="margin:0 5px 0 0 ;">Ngày Đặt Hàng: </h4>
-                                <p>2023-11-23 09:30:06</p>
+                                <p><?=$get_Order_One['create_date']?></p>
                               </div>
                               <div>
                                 <h4>Địa Chỉ Nhận hàng Hàng:</h4>
-                                <p>Ấp Chợ xếp xã Tân Thành Bình Huyện Mỏ Cày Bắc Tỉnh Bến Tre</p>
+                                <p><?=$get_Order_One['address_recipient']?></p>
                                 <hr>
                               </div>
                               <div  class="d-flex align-items-center">
                                 <h4 style="margin:0 5px 0 0 ;">Tổng Đơn Hàng: </h4>
-                                <p>1.000.000 đ</p>
+                                <?php
+                                  $formatted_number_id = number_format($get_Order_One['total'], 0, ',', '.');
+                                ?>
+                                <p><?=$formatted_number_id?>đ</p>
                               </div>
                               <div class="custom-select">
                                 <hr>
-                              <h4>Trạng Thái Đơn Hàng:</h4>
+                              <h4>Trạng Thái Đơn Hàng:(Hiện tại)</h4>
                                     <!-- Dropdown -->
-                                    <select id="id_category" name="is_appear">
-                                          <option value="0">Đang Chờ</option>
-                                          <option value="1">Chờ Lấy Hàng</option>
-                                          <option value="2">Dang Giao</option>
-                                          <option value="3">Hủy Đơn</option>
-                                          <option value="3">Đã Giao</option>
+                                    <select id="id_category" name="change_status">
+                                          <?php 
+                                          if($get_Order_One['status'] == 1) {
+                                            echo '
+                                            <option style="display:none;" value="1">Chờ Lấy Hàng</option>
+                                            <option value="2">Đang Giao</option>
+                                            <option value="3">Hủy Đơn</option>
+                                            <option value="4">Đã Giao</option>
+                                            <option value="0">Đang Chờ</option>
+                                            ';
+                                          }
+                                          elseif($get_Order_One['status'] == 2) {
+                                            echo '
+                                            <option style="display:none;" value="2">Đang Giao</option>
+                                            <option value="3">Hủy Đơn</option>
+                                            <option value="4">Đã Giao</option>
+                                            <option value="1">Chờ Lấy Hàng</option>
+                                            <option value="0">Đang Chờ</option>
+                                            ';
+                                          }
+                                          elseif($get_Order_One['status'] == 3) {
+                                            echo '
+                                            <option style="display:none;" value="3">Hủy Đơn</option>
+                                            <option value="4">Đã Giao</option>
+                                            <option value="2">Đang Giao</option>
+                                            <option value="1">Chờ Lấy Hàng</option>
+                                            <option value="0">Đang Chờ</option>
+                                            ';
+                                          }
+                                          elseif($get_Order_One['status'] == 4) {
+                                            echo '
+                                            <option style="display:none;" value="4">Đã Giao</option>
+                                            <option value="3">Hủy Đơn</option>
+                                            <option value="2">Đang Giao</option>
+                                            <option value="1">Chờ Lấy Hàng</option>
+                                            <option value="0">Đang Chờ</option>
+                                            ';
+                                          }
+                                          else{
+                                            echo '
+                                            <option style="display:none;" value="0">Đang Chờ</option>
+                                            <option value="4">Đã Giao</option>
+                                            <option value="3">Hủy Đơn</option>
+                                            <option value="2">Đang Giao</option>
+                                            <option value="1">Chờ Lấy Hàng</option>
+                                            ';
+                                          }
+                                          ?>
                                     </select>
                             </div>
                           </div>
