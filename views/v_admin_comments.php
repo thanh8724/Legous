@@ -112,7 +112,7 @@
                                         <p class="position-absolute cmt_img_amount label-large" style="width:20px;height:20px;background-color: #6750a4; border-radius:5px; color:white; top:-10px;right:0;">6</p>
                                     </div>
                                 </td>
-                                <td><a href="?mod=admin&act=hiddenCmt&id=<?php echo $comment['id_user']?>">Ẩn</a> / <a href="?mod=admin&act=delCmt&id=<?php echo $comment['id_user']?>">Xóa</a></td>
+                                <td><a href="?mod=admin&act=hiddenCmt&id=<?php echo $comment['id']?>">Ẩn</a> / <a href="?mod=admin&act=delCmt&id=<?php echo $comment['id']?>">Xóa</a></td>
                             </tr>
                                     <?php 
                                 }elseif($comment['is_appear'] == 0) {
@@ -147,7 +147,7 @@
                                         <p class="position-absolute cmt_img_amount label-large" style="width:20px;height:20px;background-color: #6750a4; border-radius:5px; color:white; top:-10px;right:0;">6</p>
                                     </div>
                                 </td>
-                                <td><a href="?mod=admin&act=showCmt&id=<?php echo $comment['id_user']?>">Hiện</a> / <a href="?mod=admin&act=delCmt&id=<?php echo $comment['id_user']?>">Xóa</a></td>
+                                <td><a href="?mod=admin&act=showCmt&id=<?php echo $comment['id']?>">Hiện</a> / <a href="?mod=admin&act=delCmt&id=<?php echo $comment['id']?>">Xóa</a></td>
                             </tr>
                                 <?php 
                                 }else {
@@ -182,7 +182,7 @@
                                         <p class="position-absolute cmt_img_amount label-large" style="width:20px;height:20px;background-color: #6750a4; border-radius:5px; color:white; top:-10px;right:0;">6</p>
                                     </div>
                                 </td>
-                                <td><a href="?mod=admin&act=hiddenCmt&id=<?php echo $comment['id_user']?>">Ẩn</a> / <a href="?mod=admin&act=delCmt&id=<?php echo $comment['id_user']?>">Xóa</a></td>
+                                <td><a href="?mod=admin&act=hiddenCmt&id=<?php echo $comment['id']?>">Ẩn</a> / <a href="?mod=admin&act=delCmt&id=<?php echo $comment['id']?>">Xóa</a></td>
                             </tr>
                                     <?php 
                                     

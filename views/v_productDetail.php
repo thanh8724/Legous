@@ -1,19 +1,19 @@
 <?php
-    if (isset($_GET['idProduct']) && $_GET['idProduct']) {
-        $idProduct = $_GET['idProduct'];
-        $product = getProductById($idProduct);
-        $productThumbnails = getThumbnailsById($idProduct);
-        // print_r($productThumbnails);
-        extract($product);
+if (isset($_GET['idProduct']) && $_GET['idProduct']) {
+    $idProduct = $_GET['idProduct'];
+    $product = getProductById($idProduct);
+    $productThumbnails = getThumbnailsById($idProduct);
+    // print_r($productThumbnails);
+    extract($product);
 
-        $btnsHtml = '';
-        $btnsHtmlMobile = '';
-        $btnText = '';
-        
-        if ($qty > 0) {
-            $btnText = 'MUA NGAY';
-            $btnsHtml .= 
-                <<<HTML
+    $btnsHtml = '';
+    $btnsHtmlMobile = '';
+    $btnText = '';
+
+    if ($qty > 0) {
+        $btnText = 'MUA NGAY';
+        $btnsHtml .=
+            <<<HTML
                     <form action="?mod=cart&act=addCart" method="post" class="flex-column g12">
                         <button class="btn elevated-btn rounded-100" type="submit">THÊM VÀO GIỎ HÀNG</button>
                         <input type="hidden" name="name" value="$name">
@@ -24,8 +24,8 @@
                     </form>
                     <button class="btn primary-btn rounded-100"><i class="fal fa-arrow-right"></i>MUA NGAY</button>
                 HTML;
-            $btnsHtmlMobile .= 
-                <<<HTML
+        $btnsHtmlMobile .=
+            <<<HTML
                     <form action="?mod=cart&act=addCart" method="post" class="flex-column g12">
                         <a href="" class="product__btn">
                             <i class="far fa-cart-plus"></i>
@@ -37,52 +37,52 @@
                         <input type="hidden" name="id" value="$idProduct">
                         <input type="hidden" name="qty" id="data-qty" value="1">
                     </form>
-                HTML;
-            ;
-        } else {
-            $btnsHtml .=
-                <<<HTML
+                HTML;;
+    } else {
+        $btnsHtml .=
+            <<<HTML
                     <button class="btn primary-btn rounded-100">MUA NGAY</button>
                 HTML;
-            $btnsHtmlMobile .= '';
-            $btnText = 'ĐẶT TRƯỚC';
-        }   
-        
+        $btnsHtmlMobile .= '';
+        $btnText = 'ĐẶT TRƯỚC';
+    }
 
-        $idCategory = getIdCategoryByIdProducts($idProduct);
-        $relatedProducts = getRelatedProduct($idCategory, 12);
-        $randomProducts = getProducts(12);
 
-        function renderCarouselProduct ($products) {
-            shuffle($products);
-            $productsHtml = '';
+    $idCategory = getIdCategoryByIdProducts($idProduct);
+    $relatedProducts = getRelatedProduct($idCategory, 12);
+    $randomProducts = getProducts(12);
 
-            foreach ($products as $product) {
-                extract($product);
-                $imgPath = constant('PRODUCT_PATH') . $img;
-                $linkToDetail = "?mod=page&act=productDetail&idProduct=$id";
+    function renderCarouselProduct($products)
+    {
+        shuffle($products);
+        $productsHtml = '';
 
-                $priceView = '';
+        foreach ($products as $product) {
+            extract($product);
+            $imgPath = constant('PRODUCT_PATH') . $img;
+            $linkToDetail = "?mod=page&act=productDetail&idProduct=$id";
+
+            $priceView = '';
+            $salePriceView = '';
+            $loveBtn = '<button class="icon-btn love-btn toggle-btn" data-product-id="' . $id . '"><i class="fal fa-heart"></i></button>';
+
+            if (isset($price) && $price > 0) {
+                $priceView = '<div class="product__info__price body-medium">' . formatVND($price) . '</div>';
+            } else {
+                $priceView = '<div class="product__info__price body-medium">Đang cập nhật</div>';
+            }
+
+            if (isset($promotion) and $promotion > 0) {
+                $salePrice = $price - $price * $promotion / 100;
+                $salePriceView = '<div class="product__info__sale-price body-medium">' . formatVND($salePrice) . '</div>';
+                $priceView = '<del class="product__info__price body-small">' . formatVND($price) . '</del>';
+            } else {
                 $salePriceView = '';
-                $loveBtn = '<button class="icon-btn love-btn toggle-btn" data-product-id="' . $id . '"><i class="fal fa-heart"></i></button>';
+                $priceView = '<div class="product__info__price body-medium">' . formatVND($price) . '</div>';
+            }
 
-                if (isset($price) && $price > 0) {
-                    $priceView = '<div class="product__info__price body-medium">' . formatVND($price) . '</div>';
-                } else {
-                    $priceView = '<div class="product__info__price body-medium">Đang cập nhật</div>';
-                }
-
-                if (isset($promotion) and $promotion > 0) {
-                    $salePrice = $price - $price * $promotion / 100;
-                    $salePriceView = '<div class="product__info__sale-price body-medium">' . formatVND($salePrice) . '</div>';
-                    $priceView = '<del class="product__info__price body-small">' . formatVND($price) . '</del>';
-                } else {
-                    $salePriceView = '';
-                    $priceView = '<div class="product__info__price body-medium">' . formatVND($price) . '</div>';
-                }
-
-                $productsHtml .=
-                    <<<HTML
+            $productsHtml .=
+                <<<HTML
                             <!-- single product start -->
                             <div class="product product__carousel">
                                 <a href="$linkToDetail" class="product__banner oh banner-contain rounded-8 por"
@@ -114,16 +114,16 @@
                             </div>
                             <!-- single product end -->
                         HTML;
-            }
-            return $productsHtml;
         }
+        return $productsHtml;
+    }
 
-        /** comment render */
-        $comments = getProductCommentByProductId($idProduct);
-        $commentHtml = '';
-        foreach ($comments as $item) {
-            $commentHtml .=
-                <<<HTML
+    /** comment render */
+    $comments = getProductCommentByProductId($idProduct);
+    $commentHtml = '';
+    foreach ($comments as $item) {
+        $commentHtml .=
+            <<<HTML
                     <!-- single comment start -->
                     <div class="comment__item mb30">
                         <div class="flex g12 comment__user">
@@ -142,31 +142,94 @@
                     </div>
                     <!-- single comment end -->
                 HTML;
-        }
     }
+}
 
-    /** render gallery thumbnails */
-    $galleryThumbnailsHtml = '';
-    foreach ($productThumbnails as $item) {
-        extract($item);
-        $imgPath = constant('PRODUCT_PATH') . $src;
-        $galleryThumbnailsHtml .= 
+/** render gallery thumbnails */
+$galleryThumbnailsHtml = '';
+foreach ($productThumbnails as $item) {
+    extract($item);
+    $imgPath = constant('PRODUCT_PATH') . $src;
+    $galleryThumbnailsHtml .=
         <<<HTML
             <div class="gallery__thumbnails__item">
                 <img src="$imgPath" alt="" class="img-cover">
             </div>
         HTML;
+}
+if (isset($_POST['submitComment'])) {
+    if (!empty($_POST['inputComment'])) {
+        $inputCmt = $_POST['inputComment'];
     }
-    if(isset($_POST['submitComment'])) {
-        if(!empty($_POST['inputComment'])) {
-            $inputCmt = $_POST['inputComment'];
+    $getIdUser = $_SESSION['userLogin']['id_user'];
+    $id_product = $_GET['idProduct'];
+    $getUsername = getUserInfo($getIdUser)[0]['username'];
+    $getEmail = getUserInfo($getIdUser)[0]['username'];
+    date_default_timezone_set('Asia/Ho_Chi_Minh');
+    $now = date("Y-m-d H:i:s");
+    $idCmt = insertComment($getIdUser, $id_product, $getUsername, $getEmail, $inputCmt, $now);
+    if (isset($_FILES['file'])) {
+        //Thư mục chứa file upload
+        $upload_dir = './public/assets/media/images/users/';
+
+        //Xử lý upload đúng file ảnh
+        $type_allow = array('png', 'jpg', 'jpeg', 'gif');
+
+        foreach ($_FILES['file']['name'] as $key => $value) {
+            //Đường dẫn của file sau khi upload
+            $upload_file = $upload_dir . $_FILES['file']['name'][$key];
+
+            //PATHINFO_EXTENSION lấy đuôi file
+            $type = pathinfo($_FILES['file']['name'][$key], PATHINFO_EXTENSION);
+
+            if (!in_array(strtolower($type), $type_allow)) {
+                $error['type'] = "Chỉ được upload file có đuôi PNG, JPG, GIF, JPEG";
+            }
+
+            #Upload file có kích thước cho phép (<20mb ~ 29.000.000BYTE)
+            $file_size = $_FILES['file']['size'][$key];
+            if ($file_size > 29000000) {
+                $error['file_size'] = "Chỉ được upload file bé hơn 20MB";
+            }
+            $filename = pathinfo($_FILES["file"]["name"][$key], PATHINFO_FILENAME);
+
+            #Kiểm tra trùng file trên hệ thống
+            if (file_exists($upload_file)) {
+                // Xử lý đổi tên file tự động
+
+                #Tạo file mới
+                // TênFile.ĐuôiFile
+                $new_filename = $filename . '- Copy.';
+                $new_upload_file = $upload_dir . $new_filename . $type;
+                $k = 1;
+                while (file_exists($new_upload_file)) {
+                    $new_filename = $filename . " - Copy({$k}).";
+                    $k++;
+                    $new_upload_file = $upload_dir . $new_filename . $type;
+                }
+                $upload_file = $new_upload_file;
+                if (empty($error)) {
+                    if (move_uploaded_file($_FILES['file']['tmp_name'][$key], $upload_file)) {
+                        $image = $new_filename . $type;
+                        addImgCmt($idCmt, $image);
+                    } else {
+                        echo "Upload file thất bại";
+                    }
+                }
+            } else {
+                if (empty($error)) {
+                    if (move_uploaded_file($_FILES['file']['tmp_name'][$key], $upload_file)) {
+                        $image = $filename . $type;
+                        addImgCmt($idCmt, $image);
+                    } else {
+                        echo "Upload file thất bại";
+                    }
+                }
+            }
         }
-        $getIdUser = $_SESSION['userLogin']['id_user'];
-        $id_product = $_GET['idProduct'];
-        $getUsername = getUserInfo($getIdUser)[0]['username'];
-        $getEmail = getUserInfo($getIdUser)[0]['username'];
-        insertComment($getIdUser, $id_product, $getUsername, $getEmail, $inputCmt);
     }
+    header("Location: ?mod=page&act=productDetail&idProduct={$id_product}");
+}
 ?>
 
 
@@ -247,7 +310,9 @@
         </div>
         <div class="flex-between v-center">
             <span class="text-38 fw-normal" style="font-family: inherit;">1.289.099 VND</span>
-            <span class="label-medium"><?= $qty ?> sản phẩm</span>
+            <span class="label-medium">
+                <?= $qty ?> sản phẩm
+            </span>
         </div>
         <div class="qty__form flex v-center g12">
             Số lượng:
@@ -288,39 +353,89 @@
             </div>
             <div class="panel__item comment__panel">
                 <div class="block">
-                    <div class="title-large fw-black">390 comments</div>
-                    <form action="#" class="form comment__form flex-center" method="post">
-                        <input type="text" name="inputComment" class="form__input comment__input" placeholder="Comment">
-                        <button name="submitComment" type="submit" class="icon-btn send-comment__btn"><i class="fal fa-paper-plane"></i></button>
-                    </form>
-                </div>
+                    <div class="title-large fw-black">309 comments</div>
+                    <?php
+                    if (isset($_SESSION['userLogin'])) {
+                    ?>
+                        <form enctype="multipart/form-data" action="" class="form comment__form" method="post">
+                            <input type="file" name="file[]" id="file-1" class="inputfile inputfile-1" data-multiple-caption="{count} đã chọn" multiple />
+                            <label for="file-1"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17">
+                                    <path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z" />
+                                </svg> <span>Chọn ảnh&hellip;</span></label>
 
+                            <div class="flex" style="align-items: center;">
+                                <input type="text" name="inputComment" class="form__input comment__input" placeholder="Comment">
+                                <button name="submitComment" value="submitComment" type="submit" class="icon-btn send-comment__btn"><i class="fal fa-paper-plane"></i></button>
+                            </div>
+                        </form>
+                    <?php
+                    }
+                    ?>
+
+                </div>
                 <div class="mt30 comment__wrapper">
                     <!-- product comments here  -->
                     <!-- single comment start -->
-                    <?php 
-                        $productId = $_GET['idProduct'];
-                        $productCmt = getProductCommentByProductId($productId);
-                        foreach ($productCmt as $item) {
-                            $getUserByID = getUserById($item['id_user']);
-                            ?>
-                            <div class="comment__item mb30">
-                        <div class="flex g12 comment__user">
-                            <div class="user__avt avt"><img src="./public/assets/media/images/users/<?php echo $getUserByID['img'] ?>"
-                                    alt="user 1" class="imgcover"></div>
-                            <div class="flex-column flex-between">
-                                <div class="user__name title-medium fw-smb"><?php echo $getUserByID['fullname']?></div>
-                                <div class="user-comment__date title-small"><?php echo $item['create_date']?></div>
+                    <?php
+
+                    $productId = $_GET['idProduct'];
+                    $productCmt = getProductCommentByProductId($productId);
+                    foreach ($productCmt as $item) {
+                        $getUserByID = getUserById($item['id_user']);
+                        $idCmt = $item['id'];
+                        $productImgCmt = getImgCommentById($idCmt);
+                        if($item['is_appear'] == 1) {
+                    ?>
+                        <div class="comment__item mb30">
+                            <div class="flex g12 comment__user">
+                                <div class="user__avt avt"><img src="./public/assets/media/images/users/<?php echo $getUserByID['img'] ?>" alt="user 1" class="imgcover"></div>
+                                <div class="flex-column flex-between">
+                                    <div class="user__name title-medium fw-smb">
+                                        <?php echo $getUserByID['fullname'] ?>
+                                    </div>
+                                    <div class="user-comment__date title-small">
+                                        <?php echo $item['create_date'] ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="comment__content body-medium fw-normal mt12">
+                                <?php echo $item['content'] ?>;
+                            </div>
+                            <div class="comment_media">
+                                <?php
+                                if (!empty($productImgCmt)) {
+                                    foreach ($productImgCmt as $result) {
+                                ?>
+                                        <div class="comment_media_item">
+                                            <img src="./public/assets/media/images/users/<?php echo $result['src'] ?>" alt="">
+                                        </div>
+                                <?php
+                                    }
+                                }
+                                ?>
                             </div>
                         </div>
-                        <div class="comment__content body-medium fw-normal mt12">
-                           <?php echo $item['content']?>;
+                    <?php
+                    }else {
+                        ?>
+                        <div class="comment__item mb30">
+                            <div class="flex g12 comment__user">
+                                <div class="user__avt avt"><img src="./public/assets/media/images/users/<?php echo $getUserByID['img'] ?>" alt="user 1" class="imgcover"></div>
+                                <div class="flex-column flex-between">
+                                    <div class="user__name title-medium fw-smb">
+                                        <p>Bình luận này đang vi phạm chính sách nên đã bị ẩn</p>
+                                    </div>
+                                    <div class="user-comment__date title-small">
+                                        <p>By Admin</p>
+                                    </div>
+                                </div>
+                            </div>
+                           
                         </div>
-                    </div>
-                            <?php 
-                        }
-                            ?>
-                    
+                        <?php 
+                    }
+                    }
+                    ?>
                     <!-- single comment end -->
                 </div>
             </div>
@@ -374,7 +489,7 @@
         <span class="label-large">LEGOUS / SHOP / PRODUCT</span>
     </div>
     <div class="product__wrapper product__wrapper--normal product__wrapper--normal--slick__1 auto-grid g20 mt30">
-        <?= renderCarouselProduct ($relatedProducts) ?>
+        <?= renderCarouselProduct($relatedProducts) ?>
     </div>
 </section>
 <!-- related products section end -->
@@ -385,9 +500,7 @@
         <div class="fw-black text-logo">Legous</div>
         <div class="flex g6 v-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 45 45" fill="none">
-                <path
-                    d="M22.275 17.1375C24.675 17.25 25.2938 19.2938 25.3313 20.25H28.6875C28.5375 16.5375 25.8938 14.2688 22.2188 14.2688C18.075 14.2688 15 16.875 15 22.7625C15 26.4 16.7438 30.7125 22.2 30.7125C26.3625 30.7125 28.5938 27.6187 28.65 25.1813H25.2937C25.2375 26.2875 24.45 27.7687 22.2375 27.8813C19.7812 27.8062 18.75 25.8938 18.75 22.7625C18.75 17.3438 21.15 17.175 22.275 17.1375ZM22.5 3.75C12.15 3.75 3.75 12.15 3.75 22.5C3.75 32.85 12.15 41.25 22.5 41.25C32.85 41.25 41.25 32.85 41.25 22.5C41.25 12.15 32.85 3.75 22.5 3.75ZM22.5 37.5C14.2313 37.5 7.5 30.7687 7.5 22.5C7.5 14.2313 14.2313 7.5 22.5 7.5C30.7687 7.5 37.5 14.2313 37.5 22.5C37.5 30.7687 30.7687 37.5 22.5 37.5Z"
-                    fill="white" />
+                <path d="M22.275 17.1375C24.675 17.25 25.2938 19.2938 25.3313 20.25H28.6875C28.5375 16.5375 25.8938 14.2688 22.2188 14.2688C18.075 14.2688 15 16.875 15 22.7625C15 26.4 16.7438 30.7125 22.2 30.7125C26.3625 30.7125 28.5938 27.6187 28.65 25.1813H25.2937C25.2375 26.2875 24.45 27.7687 22.2375 27.8813C19.7812 27.8062 18.75 25.8938 18.75 22.7625C18.75 17.3438 21.15 17.175 22.275 17.1375ZM22.5 3.75C12.15 3.75 3.75 12.15 3.75 22.5C3.75 32.85 12.15 41.25 22.5 41.25C32.85 41.25 41.25 32.85 41.25 22.5C41.25 12.15 32.85 3.75 22.5 3.75ZM22.5 37.5C14.2313 37.5 7.5 30.7687 7.5 22.5C7.5 14.2313 14.2313 7.5 22.5 7.5C30.7687 7.5 37.5 14.2313 37.5 22.5C37.5 30.7687 30.7687 37.5 22.5 37.5Z" fill="white" />
             </svg>/2023
         </div>
     </div>
@@ -423,7 +536,46 @@
             </div>
             <button class="icon-btn fab box-shadow1"><i class="far fa-cart-plus"></i></button>
         </div>
-        <button class="btn primary-btn rounded-8"><i class="fal fa-arrow-right"></i><?= !empty($btnText) ? $btnText : 'Mua ngay' ?></button>
+        <button class="btn primary-btn rounded-8"><i class="fal fa-arrow-right"></i>
+            <?= !empty($btnText) ? $btnText : 'Mua ngay' ?>
+        </button>
     </div>
 </div>
 <!-- single product bottom nav bar end -->
+
+
+
+
+<script>
+    'use strict';
+
+    ;
+    (function(document, window, index) {
+        var inputs = document.querySelectorAll('.inputfile');
+        Array.prototype.forEach.call(inputs, function(input) {
+            var label = input.nextElementSibling,
+                labelVal = label.innerHTML;
+
+            input.addEventListener('change', function(e) {
+                var fileName = '';
+                if (this.files && this.files.length > 1)
+                    fileName = (this.getAttribute('data-multiple-caption') || '').replace('{count}', this.files.length);
+                else
+                    fileName = e.target.value.split('\\').pop();
+
+                if (fileName)
+                    label.querySelector('span').innerHTML = fileName;
+                else
+                    label.innerHTML = labelVal;
+            });
+
+            // Firefox bug fix
+            input.addEventListener('focus', function() {
+                input.classList.add('has-focus');
+            });
+            input.addEventListener('blur', function() {
+                input.classList.remove('has-focus');
+            });
+        });
+    }(document, window, 0));
+</script>

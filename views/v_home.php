@@ -87,7 +87,7 @@
     $topProductHtml = 
     <<<HTML
         <div class="product product__spotlight">
-            <a href="'.$linkToDetail.'" class="product__banner product__spotlight__banner banner-contain rounded-8 por"
+            <a href="$linkToDetail" class="product__banner product__spotlight__banner banner-contain rounded-8 por"
                 style="background-image: url($img_path)">
                 <div class="product__overlay poa flex-center">
                     $productBtn
@@ -789,7 +789,7 @@
         <div class="light-devider" style="width: 10rem; height: .4rem"></div>
     </div>
     <div class="tab__container full oh">
-        <div class="tabs flex-center width-full">
+        <div class="tabs product-tabs flex-center width-full">
             <?= $tabsHtml ?>
         </div>
         <div class="panels">

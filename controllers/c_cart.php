@@ -53,7 +53,7 @@ if (isset($_GET['act'])) {
             break;
 
         case 'viewCart':
-            $view_name = 'viewCart';
+            $view_name = 'cart';
             break;
         default:
 

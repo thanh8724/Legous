@@ -221,8 +221,8 @@ const app = {
         if (qtyInput) {
             const dataQty = document.querySelector("#data-qty");
             qtyInput.forEach((input, index) => {
-                const minusBtn = input.parentElement.querySelector('.minus__btn')
-                const plusBtn = input.parentElement.querySelector('.plus__btn')
+                const minusBtn = input.parentElement.querySelector('.minus-btn')
+                const plusBtn = input.parentElement.querySelector('.plus-btn')
                 const subTotal = minusBtn.parentElement.parentElement.querySelector('.cart__product__subtotal')
                 const [...cartProduct] = document.querySelectorAll('.cart__product')
                 minusBtn.onclick = e => {

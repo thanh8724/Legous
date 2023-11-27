@@ -28,6 +28,7 @@
     @import 'components/featureProductItem.scss';
     @import 'components/mobileTopBar.scss';
     @import 'components/priceRange.scss';
+    @import 'components/cartProduct.scss';
     // import theme
     @import 'theme/darkModeAdmin.scss';
     
@@ -64,6 +65,9 @@
     .desktop {
         display: none !important;
     }
+    .tablet-mobile {
+        display: block !important;
+    }
     footer {
         display: none !important;
     }
@@ -73,14 +77,22 @@
     .mobile {
         display: none !important;
     }
+    .tablet-mobile {
+        display: block !important;
+    }
 }
 /* Mobile and Tablet: width < 1024px */
 @media only screen and (max-width: 63.9375em){
-    
+    .tablet-mobile {
+        display: block !important;
+    }
 }
 /* PC: width >= 1024px */
 @media only screen and (min-width: 64em){
     .mobile {
+        display: none !important;
+    }
+    .tablet-mobile {
         display: none !important;
     }
 }
@@ -214,6 +226,12 @@
 
     // || common spacing styles start
         // margin spacing classes
+            .mi12 {
+                margin-inline: 1.2rem;
+            }
+            .mi20 {
+                margin-inline: 1.2rem;
+            }
             .mb6 {
                 margin-bottom: .6rem;
             }
@@ -461,7 +479,7 @@
 
     // || commone grid classes start
     .auto-grid {
-        display: grid !important;
+        display: grid;
         width: 100%;
         grid-template-columns: repeat(auto-fit, minmax(min(18em, 100%), 1fr));
     }

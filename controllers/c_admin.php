@@ -251,7 +251,8 @@ if (isset($_GET['act'])) {
 
             break;
         case 'products':
-            include_once 'models/m_cart.php';
+            include_once 'models/m_admin.php';
+            include_once 'models/m_category.php';
             if (isset($_POST['page'])) {
                 // đổi từ phương thức POST sang GET
                 header("location: ?mod=products&act=product-detail&page=" . $_POST['page'] . "");
@@ -260,14 +261,16 @@ if (isset($_GET['act'])) {
             if (isset($_GET['page'])) {
                 $page = $_GET['page'];
             }
+            
             $getproductAdmin = productAdmin($page);
             $soTrang = ceil(product_CountTotal() / 9);
+            $getAllCategory = getCategories();
 
             // hiển thị dữ liệu
             $view_name = 'admin_products';
             break;
         case 'product-detail':
-            include_once 'models/m_cart.php';
+            include_once 'models/m_admin.php';
             // lấy dữ liệu
             $productdetail = product_getById($_GET['id']);
 
@@ -275,7 +278,7 @@ if (isset($_GET['act'])) {
             $view_name = 'admin_product-detail';
             break;
         case 'product-add':
-            include_once 'models/m_cart.php';
+            include_once 'models/m_admin.php';
 
             // lấy dữ liệu
 
@@ -285,7 +288,7 @@ if (isset($_GET['act'])) {
             break;
 
         case 'product-delete':
-            include_once 'models/m_cart.php';
+            include_once 'models/m_admin.php';
             if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                 $product_id = $_GET['id'];
                 remove_product($product_id);
@@ -298,7 +301,7 @@ if (isset($_GET['act'])) {
             break;
 
         case 'product-search':
-            include_once 'models/m_cart.php';
+            include_once 'models/m_admin.php';
             if (isset($_POST['keyword'])) {
                 $inputSearch = $_POST['keyword'];
                 header("location: ?mod=admin&act=product-search&page=1&kw=" . $inputSearch);
@@ -319,26 +322,56 @@ if (isset($_GET['act'])) {
 
             $batdau = ($page - 1) * $perPage;
             $ketqua = productSearchAdmin($keyword, $page, $perPage);
+            $getAllCategory = getCategories();
             $view_name = 'admin_product-search';
 
 
             break;
+
+        case 'products-category-fil';
+            include_once 'models/m_category.php';
+            include_once 'models/m_admin.php';
+            if (isset($_POST['keyword'])) {
+                $inputSearch = $_POST['keyword'];
+                header("location: ?mod=admin&act=product-search&page=1&kw=" . $inputSearch);
+                exit; // Kết thúc việc chuyển hướng
+            }
+
+            // Lấy dữ liệu
+            // Lấy dữ liệu
+            $keyword = isset($_GET['kw']) ? $_GET['kw'] : ''; // Lấy từ khóa tìm kiếm từ URL
+            $page = 1;
+            if (isset($_GET['page'])) {
+                $page = $_GET['page'];
+            }
+
+            $perPage = 9; // Số kết quả muốn hiển thị trên mỗi trang
+            $totalResults = product_searchTotal($keyword);
+            $soTrang = ceil($totalResults / $perPage);
+
+            $batdau = ($page - 1) * $perPage;
+            $ketqua = productSearchAdmin($keyword, $page, $perPage);
+            $getproductCategory = getproductbyCategory($_GET['id']);
+            $getAllCategory = getCategories();
+            $view_name = 'admin_products-category-fil';
+            break;
+            
         case 'comments':
             $getComment = getComment();
             $view_name = 'admin_comments';
             break;
         case 'hiddenCmt':
             $id = $_GET['id'];
-            $hiddenCmt = editCmtStatus($id, 0);
+            editCmtStatus($id, 0);
             header("Location: ?mod=admin&act=comments");
             break;
         case 'showCmt':
             $id = $_GET['id'];
-            $hiddenCmt = editCmtStatus($id, 1);
+            editCmtStatus($id, 1);
             header("Location: ?mod=admin&act=comments");
             case 'delCmt':
                 $id = $_GET['id'];
-                $hiddenCmt = delCmt($id);
+                delCmt($id);
                 header("Location: ?mod=admin&act=comments");
         default:
 

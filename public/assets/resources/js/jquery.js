@@ -185,7 +185,7 @@ $(document).ready(function() {
             $('.tabs').slick('unslick');
         }
     });
-    $('.tabs').slick({
+    $('.product-tabs').slick({
         slidesToShow: 4,
         slidesToScroll: 1,
 

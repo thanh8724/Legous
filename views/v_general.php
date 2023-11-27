@@ -1,23 +1,41 @@
 <?php
     // xử lí khi người dùng nhập form
+    $id_user = $_SESSION['userLogin']['id_user'];
     if(isset($_POST['button__submit'])) {
-        $id_user = $_POST['id_user'];
-        if(is_array($checkUses)) {
-            extract($checkUses);
-        }
         if($_POST['new_username'] != "") {
             $new_username = $_POST['new_username'];
         }else {
-            $new_username = $username;
+            $new_username = $checkUses['username'];
         }
         if($_POST['new_email'] != "") {
             $new_email = $_POST['new_email'];
         }else {
-            $new_email = $email;
+            $new_email = $checkUses['email'];
         }
         update_userName_email($new_username, $new_email, $id_user);
         header('location: ?mod=user&act=general');
     }
+    $userList = [];
+    foreach ($_COOKIE as $name => $value) {
+        if (str_starts_with($name, "accounts_user")) {
+            $accounts_user = get_accountUser($value);
+            // print_r($value);
+            $userList[$value] = $accounts_user;
+        }
+    }
+    // print_r($userList);
+    $accounts_user_html = '';
+    // foreach ($accounts_user as $key) {
+    //     extract($key);
+    //     $accounts_user_html .= '<div class="box__listAccount--item account__notActive">
+    //                                 <div class="box__avatar--account">
+    //                                     <img srcset="upload/users/'.$img.' 2x" alt="">
+    //                                 </div>
+    //                                 <div class="box__info--account">
+    //                                     <span class="info--account_name">'.$username.'</span>
+    //                                     <span class="info--account_email">'.$email.'</span>
+    //                             </div>';
+    // }
 ?>
 <main class="main__user">
     <div class="main__inner">
@@ -27,7 +45,7 @@
             </div>
             <div class="info__user">
                 <div class="info__user--top">
-                    <span class="user__name"><?=$username?></span>
+                    <span class="user__name"><?=$checkUses['username']?></span>
                     <span>/</span>
                     <span>Tổng quan</span>
                 </div>
@@ -42,6 +60,7 @@
 
                 <div class="box__changeAccount--content box-shadow4">
                     <div class="box__listAccount">
+                      
                         <div class="box__listAccount--item">
                             <div class="box__avatar--account">
                                 <img src="/public/assets/media/images/users/user-2.svg" alt="">
@@ -52,7 +71,8 @@
                             </div>
                         </div>
                         <hr class="hr__account">
-                        <div class="box__listAccount--item account__notActive">
+                        <?= $accounts_user_html ?>
+                        <!-- <div class="box__listAccount--item account__notActive">
                             <div class="box__avatar--account">
                                 <img src="/public/assets/media/images/users/user-2.svg" alt="">
                             </div>
@@ -69,7 +89,7 @@
                                 <span class="info--account_name">Nguyen Thanh</span>
                                 <span class="info--account_email">quocthanhn87@gmail.com</span>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="box__changeAccount--logOut">
                         <a hred="#" class="box__changeAccount--logOut__button">
@@ -87,17 +107,16 @@
 
             <div class="main__inner--bottom-right">
                 <form action="" method="POST">
-                    <input type="hidden" name="id_user" value="<?=$id_user?>">
                     <!-- normal form group -->
                     <div class="form__group">
                         <span class="form__label">Tên đăng nhập</span>
-                        <input type="text" name="new_username" class="form__input" placeholder="<?=$username?>">
+                        <input type="text" name="new_username" class="form__input" placeholder="<?=$checkUses['username']?>">
                         <!-- <label for="" class="label__place">Tên đăng nhập</label> -->
                         <span class="form__message"></span>
                     </div>
                     <div class="form__group">
                         <span class="form__label">Email</span>
-                        <input type="email" name="new_email" class="form__input" placeholder="<?=$email?>">
+                        <input type="email" name="new_email" class="form__input" placeholder="<?=$checkUses['email']?>">
                         <!-- <label for="" class="label__place">Email</label> -->
                         <span class="form__message"></span>
                     </div>

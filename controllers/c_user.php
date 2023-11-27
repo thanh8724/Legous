@@ -95,17 +95,8 @@
                         $id_user = $_SESSION['userLogin']['id_user'];
                     }
                 }
-                
-                // # lấy id thiết bị người dùng
-                // $id_deviceUser = $_SERVER['HTTP_USER_AGENT'];
-                // # tạo cookie
-                // $cookie_account = array(
-                //     'name' => 'remember_account',
-                //     'value' => json_encode(array('username' => $username, 'email' => $email, 'avatar' => $img)),
-                //     'name_device' => $id_deviceUser
-                //   );
-                // setcookie($cookie_account['name'], $cookie_account['value'], $cookie_account['name_device'], '/', '', true);
-                session_destroy();
+
+                unset($_SESSION['userLogin']);
                 header('location: ?mod=page&act=login');
                 break;
 
