@@ -270,7 +270,7 @@ if(isset($_POST['submit'])) {
                         </div>
                         <div class="row">
                             <div class="rol-6 mt-3">
-                                <input style="color: #fff ;padding: 10px 15px; font-size: 14px; font-weight: 500;" class="btn btn-primary" type="submit" name="submit" value="Tạo Sản Phẩm">
+                                <input style="background-color:#6750a4;color: #fff ;padding: 10px 15px; font-size: 14px; font-weight: 500;" class="btn btn-primary" type="submit" name="submit" value="Tạo Sản Phẩm">
 
                             </div>
 
@@ -294,7 +294,7 @@ if(isset($_POST['submit'])) {
                             <div style="width: 100%;" id="deleteButtonImg" class="button_delete_img row">
                             <div class="col-8"></div>
                                     <div class="col-4 d-flex justify-content-between g12">
-                                        <button type="button " class="btn btn-primary p12">Cập nhật</button>
+                                        <button type="button " class="btn p12" style="background-color:#6750a4; color:#fff;">Cập nhật</button>
                                         <button type="button" id="deleteButtonAll p12" class="btn btn-danger">Xóa</button>
                                         <button type="button" class="btn box-shadow1 p12">Hủy</button>
                                     </div>

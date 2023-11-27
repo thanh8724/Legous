@@ -228,13 +228,13 @@ if(isset($_POST['submit'])) {
                         <div class="col-7">
                                 <div class="left-order-add-create">
                                     <h2>Tên Sản Phẩm</h2>
-                                    <input class="" type="text" name="name" placeholder="<?=$productdetail['name']?>"
+                                    <input class="" type="text" name="name" value="<?=$productdetail['name']?>" placeholder="<?=$productdetail['name']?>"
                                         aria-label="default input example">
                                 </div>
                                 <div class="describe-order_detail">
                                     <h2>Mô Tả</h2>
-                                    <textarea name="description" id="tiny" cols="30" rows="10"
-                                        placeholder="<?=$productdetail['description']?>"></textarea>
+                                    <textarea name="description" id="tiny" cols="30" rows="10" 
+                                        placeholder="<?=$productdetail['description']?>"><?=$productdetail['description']?></textarea>
                                 </div>
                                 <div class="Dropdowns_categogy">
                                     <h2>Danh mục</h2>
@@ -250,7 +250,7 @@ if(isset($_POST['submit'])) {
                                 <div class="row">
                                     <div class="col-12" style="margin-bottom: 30px;">
                                         <h2>Sản phẩm còn lại</h2>
-                                        <input style="" class="" name="qty" type="text" placeholder="1000"
+                                        <input style="" class="" name="qty" type="text" value="<?=$productdetail['qty']?>" placeholder="1000"
                                             aria-label="default input example">
                                     </div>
                                     
@@ -258,7 +258,7 @@ if(isset($_POST['submit'])) {
                                 <div class="row">
                                     <div class="col-6">
                                         <h2>Giá</h2>
-                                        <input class="" name="price" type="text" placeholder="<?=number_format($productdetail['price'])?> VNĐ"
+                                        <input class="" name="price" value="<?=$productdetail['price']?>" type="text" placeholder="<?=number_format($productdetail['price'])?> VNĐ"
                                             aria-label="default input example">
                                     </div>
                                     <div class="col-6">
@@ -288,11 +288,11 @@ if(isset($_POST['submit'])) {
                                     
                                 </div>
                                 <div style="width: 100%;" id="deleteButtonImg" class="button_delete_img row">
-                                    <div class="col-4"></div>
-                                    <div class="col-8 d-flex justify-content-between">
-                                        <input type="submit" name="submit" value="Cập nhật" class="btn btn-primary ">
-                                        <button type="button" id="deleteButtonAll" class="btn btn-danger">Xóa</button>
-                                        <button type="button" class="btn box-shadow1 ">Hủy</button>
+                                <div class="col-8"></div>
+                                    <div class="col-4 d-flex justify-content-between g12">
+                                        <button type="button "style="background-color:#6750a4; color:#fff;" class="btn p12">Cập nhật</button>
+                                        <button type="button" id="deleteButtonAll p12" class="btn btn-danger">Xóa</button>
+                                        <button type="button" class="btn box-shadow1 p12">Hủy</button>
                                     </div>
                                 </div>
                             </div>

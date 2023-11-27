@@ -154,7 +154,7 @@
   <?php if($page <= $soTrang && $page > 0): ?>
     <?php for ($i = 1; $i <= $soTrang; $i++) : ?>
       <li class="pagination__item <?= (isset($_GET['page']) && $_GET['page'] == $i) ? 'active' : '' ?>">
-        <a href="?mod=admin&act=products&page=<?= $i ?>" class="body-small pagination__link"><?= $i ?></a>
+        <a href="?mod=admin&act=products&page=<?= $i ?>" class="btn body-small pagination__link"><?= $i ?></a>
       </li>
     <?php endfor; ?>
     <li class="btn text-btn rounded-100 label-medium d-flex <?= $page >= $soTrang ? 'disabled' : '' ?>">

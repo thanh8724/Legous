@@ -217,7 +217,7 @@
           <?php if($page <= $number_Page && $page > 0): ?>
             <?php for ($i = 1; $i <= $number_Page; $i++) : ?>
               <li class="pagination__item <?=($page_nows==$i) ? 'active' : '' ?>">
-                <a href="?mod=admin&act=categories&page=<?=$i?>" class="body-small pagination__link"><?= $i ?></a>
+                <a href="?mod=admin&act=categories&page=<?=$i?>" class="btn body-small pagination__link"><?= $i ?></a>
               </li>
             <?php endfor; ?>
             <li class="btn text-btn rounded-100 label-medium d-flex <?= $page_nows >= $number_Page ? 'disabled' : '' ?>">
