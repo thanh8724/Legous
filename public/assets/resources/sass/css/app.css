@@ -1732,6 +1732,7 @@ main .dashboard .top .search-box i {
 main .dashboard .top .info-user {
   display: flex;
   align-items: center;
+  margin-right: 20px;
 }
 main .dashboard .top .info-user i {
   margin: 0 25px;
@@ -1791,9 +1792,9 @@ main .dashboard .top .info-user .imgUserAdmin:hover .showFeatureAdminHeader {
   display: block;
 }
 main .dashboard .top .info-user .imgUserAdmin img {
-  width: 40px;
+  width: 60px;
   border-radius: 50%;
-  margin-left: 10px;
+  margin: 10px;
 }
 
 ul {
@@ -4433,6 +4434,15 @@ main .dashboard .containerAdmin .owl-carousel .slider_contain-4 .slider_items_st
 main .dashboard .containerAdmin .owl-carousel .slider_contain-4 .slider_items .buttonWallet {
   background-color: #ff6acc !important;
 }
+main .dashboard .containerAdmin .owl-carousel .slider_contain-5 .slider_items_stonks p {
+  color: #FF6651 !important;
+}
+main .dashboard .containerAdmin .owl-carousel .slider_contain-5 .slider_items_stonks i {
+  color: #FF6651 !important;
+}
+main .dashboard .containerAdmin .owl-carousel .slider_contain-5 .slider_items .buttonWallet {
+  background-color: #FF6651 !important;
+}
 main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .orderStatistics {
   background-color: #ffffff;
   margin-right: 20px;
@@ -4582,8 +4592,17 @@ main .dashboard .containerAdmin .recentOrder .recentOrder_items table .dotTable.
 main .dashboard .containerAdmin .recentOrder .recentOrder_items table .dotTable.orange {
   background-color: #FF6651;
 }
+main .dashboard .containerAdmin .recentOrder .recentOrder_items table .dotTable.blue {
+  background-color: #2cccff;
+}
 main .dashboard .containerAdmin .recentOrder .recentOrder_items table .dotTable.red {
-  background-color: #FF6651;
+  background-color: #b3261e;
+}
+main .dashboard .containerAdmin .recentOrder .recentOrder_items table .dotTable.black {
+  background-color: #000000;
+}
+main .dashboard .containerAdmin .recentOrder .recentOrder_items table .dotTable.gray {
+  background-color: gray;
 }
 main .dashboard .containerAdmin .overviewDashboard .col-12 .lineDashboard {
   width: 100%;
@@ -4591,7 +4610,7 @@ main .dashboard .containerAdmin .overviewDashboard .col-12 .lineDashboard {
   background-color: rgba(0, 0, 0, 0.349);
 }
 main .dashboard .containerAdmin .overviewDashboard .col-12 .theadoverviewDashboard {
-  padding: 5px 20px;
+  padding: 10px 20px;
   display: flex;
   align-items: center;
   position: relative;
@@ -4600,14 +4619,14 @@ main .dashboard .containerAdmin .overviewDashboard .col-12 .theadoverviewDashboa
   color: #1d192b;
 }
 main .dashboard .containerAdmin .overviewDashboard .col-12 .theadoverviewDashboard button {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   border-radius: 9999px;
-  line-height: 40px;
+  line-height: 30px;
   background-color: rgba(73, 69, 79, 0.12);
 }
 main .dashboard .containerAdmin .overviewDashboard .col-12 .theadoverviewDashboard button i {
-  font-size: 16px;
+  font-size: 12px;
 }
 main .dashboard .containerAdmin .overviewDashboard .col-12 .theadoverviewDashboard .showMoreInfoAdminDashboard {
   display: none;
@@ -4734,15 +4753,14 @@ main .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .to
   background-color: #4f378b;
   padding: 15px;
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .topProductSeller_item .ordertopProduct .ordertopProduct_items .ordertopProduct_item .nameCategories p {
-  color: #1d192b;
-}
+main .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .topProductSeller_item .ordertopProduct .ordertopProduct_items .ordertopProduct_item .nameCategories p,
 main .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .topProductSeller_item .ordertopProduct .ordertopProduct_items .ordertopProduct_item .nameCategories h2 {
   color: #ffffff;
 }
 main .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .topProductSeller_item .ordertopProduct .ordertopProduct_items .ordertopProduct_item .priceProduct {
   text-align: end;
 }
+main .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .topProductSeller_item .ordertopProduct .ordertopProduct_items .ordertopProduct_item .priceProduct p,
 main .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .topProductSeller_item .ordertopProduct .ordertopProduct_items .ordertopProduct_item .priceProduct h2 {
   color: #ffffff;
 }

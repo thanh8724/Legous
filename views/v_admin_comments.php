@@ -10,9 +10,81 @@
             </div>
         </form>
         <div class="info-user">
-            <i class="far fa-comment-alt"></i>
-            <i class="fal fa-bell"></i>
-            <img src="/public/assets/media/images/users/user-1.svg" alt="">
+            <div class="notifiComment">
+                <i class="far fa-comment-alt btnShowFeature"></i>
+                <ul class="showFeatureAdminHeader box-shadow1">
+                    <?php
+                    $getCmt = getAllComment();
+                    arsort($getCmt);
+                    $getCmt = array_slice($getCmt, 0, 6, true);
+                    foreach ($getCmt as $item) {
+                       
+                        $getUser = getUserById($item['id_user']);
+                        $getProduct = getProductById($item['id_product']);
+                        ?>
+                        <li>
+                            <div class="col-12 d-flex">
+                                <div class="col-2">
+                                    <img class="notifiAdminImg"
+                                        src="./public/assets/media/images/users/<?php echo $getUser['img'] ?>" alt="">
+                                </div>
+                                <div class="col-10">
+                                    <p class="notifiAdminText body-small"><strong>
+                                            <?php echo $getUser['fullname'] ?>
+                                        </strong><span> đã bình luận ở sản phẩm <strong><a href="">
+                                                    <?php echo $getProduct['name'] ?>
+                                                </a></strong></span></p>
+                                </div>
+                            </div>
+                        </li>
+                        <?php
+                    }
+                    ?>
+                </ul>
+            </div>
+            <div class="notifiBell">
+                <i class="fal fa-bell btnShowFeature"></i>
+                <ul class="showFeatureAdminHeader box-shadow1">
+                <?php
+                    $getBill = getBill();
+                    arsort($getBill);
+                    $getBill = array_slice($getBill, 0, 6, true);
+                    foreach ($getBill as $item) {
+                       
+                        $getUser = getUserById($item['id_user']);
+                        ?>
+                        <li>
+                        <div class="col-12 d-flex">
+                            <div class="col-2">
+                                <img class="notifiAdminImg" src="./public/assets/media/images/users/profile.jpg" alt="">
+                            </div>
+                            <div class="col-10">
+                                <p class="notifiAdminText body-small"><strong><?php echo $getUser['fullname']?></strong><span> vừa mua
+                                        một mô hình với mã đơn hàng <strong><?php echo $item['id']?></strong></span></p>
+                            </div>
+                        </div>
+                    </li>
+                        <?php
+                    }
+                    ?>
+                    
+                </ul>
+            </div>
+            <div class="imgUserAdmin">
+                <?php
+                $getID = $_SESSION['admin']['id_user'];
+                $getUser = getUserById($getID);
+                ?>
+                <img style="" class="btnShowFeature"
+                    src="./public/assets/media/images/users/<?php echo $getUser['img'] ?>" alt="">
+                <ul class="showFeatureAdminHeader box-shadow1">
+
+                    <li><a class="body-small" href="#statisticalChart">Thống kê đơn hàng</a></li>
+                    <li><a class="body-small" href="#recentOrder">Đơn Hàng Gần Đây</a></li>
+                    <li><a class="body-small" href="#overviewDashboard">Tổng quan</a></li>
+                    <li><a class="body-small" href="?mod=user&act=logOut-account">Đăng Xuất</a></li>
+                </ul>
+            </div>
         </div>
     </div>
     <div class="flex-column p30 g30" style="align-self: stretch; align-items: flex-start;">
@@ -68,7 +140,7 @@
                     <th>Email</th>
                     <th>Bị Tố cáo</th>
                     <th>Bình Luận</th>
-                    <th>Ảnh</th>
+                    <th>Tạo Ngày</th>
                     <th>Khác</th>
                 </tr>
             </thead>
@@ -105,12 +177,9 @@
                                     </p>
                                 </td>
                                 <td>
-                                    <div
-                                        class="col-12 d-flex flex-wrap justify-content-center position-relative align-items-center cmt_img_item">
-                                        <img class="position-relative cmt_img" style="width: 50px; height: 50px; border-radius: 5px;"
-                                            src="../assets/media/images/users/profile.jpg" alt="">
-                                        <p class="position-absolute cmt_img_amount label-large" style="width:20px;height:20px;background-color: #6750a4; border-radius:5px; color:white; top:-10px;right:0;">6</p>
-                                    </div>
+                                    <p>
+                                        <?php echo $comment['create_date']?>
+                                    </p>
                                 </td>
                                 <td><a href="?mod=admin&act=hiddenCmt&id=<?php echo $comment['id']?>">Ẩn</a> / <a href="?mod=admin&act=delCmt&id=<?php echo $comment['id']?>">Xóa</a></td>
                             </tr>
@@ -140,12 +209,9 @@
                                     </p>
                                 </td>
                                 <td>
-                                    <div
-                                        class="col-12 d-flex flex-wrap justify-content-center position-relative align-items-center cmt_img_item">
-                                        <img class="position-relative cmt_img" style="width: 50px; height: 50px; border-radius: 5px;"
-                                            src="../assets/media/images/users/profile.jpg" alt="">
-                                        <p class="position-absolute cmt_img_amount label-large" style="width:20px;height:20px;background-color: #6750a4; border-radius:5px; color:white; top:-10px;right:0;">6</p>
-                                    </div>
+                                    <p>
+                                        <?php echo $comment['create_date']?>
+                                    </p>
                                 </td>
                                 <td><a href="?mod=admin&act=showCmt&id=<?php echo $comment['id']?>">Hiện</a> / <a href="?mod=admin&act=delCmt&id=<?php echo $comment['id']?>">Xóa</a></td>
                             </tr>
@@ -175,12 +241,9 @@
                                     </p>
                                 </td>
                                 <td>
-                                    <div
-                                        class="col-12 d-flex flex-wrap justify-content-center position-relative align-items-center cmt_img_item">
-                                        <img class="position-relative cmt_img" style="width: 50px; height: 50px; border-radius: 5px;"
-                                            src="../assets/media/images/users/profile.jpg" alt="">
-                                        <p class="position-absolute cmt_img_amount label-large" style="width:20px;height:20px;background-color: #6750a4; border-radius:5px; color:white; top:-10px;right:0;">6</p>
-                                    </div>
+                                    <p>
+                                        <?php echo $comment['create_date']?>
+                                    </p>
                                 </td>
                                 <td><a href="?mod=admin&act=hiddenCmt&id=<?php echo $comment['id']?>">Ẩn</a> / <a href="?mod=admin&act=delCmt&id=<?php echo $comment['id']?>">Xóa</a></td>
                             </tr>
