@@ -15,10 +15,7 @@ if (isset($_GET['idProduct']) && $_GET['idProduct']) {
         $btnsHtml .=
             <<<HTML
                     <form action="?mod=cart&act=addCart" method="post" class="flex-column g12">
-                        <a class="">
-                            <i class="fal fa-shopping-cart-plus"></i>
-                            <input class="btn elevated-btn rounded-100" name="addCart" type="submit" value="THÊM VÀO GIỎ HÀNG" style="border: transparent">   
-                        </a>
+                        <button class="btn elevated-btn rounded-100" type="submit">THÊM VÀO GIỎ HÀNG</button>
                         <input type="hidden" name="name" value="$name">
                         <input type="hidden" name="price" value="$price">
                         <input type="hidden" name="img" value="$img">

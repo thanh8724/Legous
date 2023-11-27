@@ -1,10 +1,14 @@
 <?php
+session_start();
 ob_start();
 // Gữi/nhận dữ liệu thông qua model
 require_once './models/m_user.php';
 require_once './models/m_comment.php';
 // Hiển thị dữ liệu thông qua view
-
+if($_SESSION['role'] == 0 || !empty($_SESSION['userLogin'])) {
+    header("Location: ?mod=page&act=home");
+    exit();
+}
 if (isset($_GET['act'])) {
     switch ($_GET['act']) {
         case 'home':
@@ -223,11 +227,23 @@ if (isset($_GET['act'])) {
         case 'orders':
             // lấy dữ liệu
             include_once 'models/m_admin.php';
-            $get_Order = get_Order_bill();  
+            $get_Order = get_Order_bill(); 
+            if(isset($_GET['filter'])){
+                $get_Order = get_Order_bill($_GET['filter']); 
+                if(isset($_GET['status'])){
+                $get_Order = get_Order_bill($_GET['filter'], $_GET['status']); 
+                }
+            }
             if(isset($_GET['id'])){
-                $get_Id_Order = $_GET['id'];
-                
-            }    
+                $get_Cart_bill = get_Cart_bill($_GET['id']);
+                $shippingResult = shipping($_GET['id']);
+                $shippingName = $shippingResult[0]['name'];
+                if (isset($_POST['submit'])) {
+                    $change_status = $_POST['change_status'];
+                    update_Change_status($change_status, $_GET['id']);
+                    header('Location:?mod=admin&act=orders');
+                }
+            }
             // hiển thị dữ liệu  
             $view_name = 'admin_orders';
             break;

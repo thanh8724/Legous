@@ -34,26 +34,69 @@
     $img_path = './public/assets/media/images/product/'.$img.'';
     $linkToDetail = "?mod=page&act=productDetail&idProduct=$id";
 
-    $topProductHtml = '
+    $priceView = '';
+    $salePriceView = '';
+
+    if (isset($price) && $price > 0) {
+        $priceView = '<div class="product__info__price title-large fw-bold primary-text">' . formatVND($price) . '</div>';
+    } else {
+        $priceView = '<div class="product__info__price title-large fw-bold primary-text">Đang cập nhật</div>';
+    }
+
+    if (isset($promotion) and $promotion > 0) {
+        $salePrice = $price - $price * $promotion / 100;
+        $salePriceView = '<div class="product__info__sale-price title-large fw-bold primary-text">' . formatVND($salePrice) . '</div>';
+        $priceView = '<del class="product__info__price title-large fw-bold primary-text">' . formatVND($price) . '</del>';
+    } else {
+        $salePriceView = '';
+        $priceView = '<div class="product__info__price title-large fw-bold primary-text">' . formatVND($price) . '</div>';
+    }
+
+    $productBtn = '';
+    if ($qty > 0) {
+        $productBtn =
+            <<<HTML
+                <div class="flex g12 in-stock__btn-set">
+                    <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
+                    <button class="icon-btn love-btn toggle-btn" data-product-id="$id">
+                        <i class="fal fa-heart"></i>
+                    </button>
+                    <form action="?mod=cart&act=addCart" method="post" class="flex-column g12">
+                        <button type="submit" class="icon-btn">
+                            <i class="fal fa-cart-plus"></i>
+                        </button>
+                        <input type="hidden" name="name" value="$name">
+                        <input type="hidden" name="price" value="$price">
+                        <input type="hidden" name="img" value="$img">
+                        <input type="hidden" name="id" value="$id">
+                        <input type="hidden" name="qty" id="data-qty" value="1">
+                    </form>
+                </div>
+            HTML;
+    } else {
+        $productBtn =
+            <<<HTML
+                <div class="flex g12 sold-out__btn-set">
+                    <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
+                    <button class="icon-btn"><i class="fal fa-plus"></i></button>
+                    <button class="icon-btn"><i class="fal fa-arrow-right"></i></button>
+                </div>
+            HTML;
+    }
+    
+    $topProductHtml = 
+    <<<HTML
         <div class="product product__spotlight">
-            <a href="'.$linkToDetail.'" class="product__banner product__spotlight__banner banner-contain rounded-8 por"
-                style="background-image: url('.$img_path.')">
+            <a href="$linkToDetail" class="product__banner product__spotlight__banner banner-contain rounded-8 por"
+                style="background-image: url($img_path)">
                 <div class="product__overlay poa flex-center">
-                    <div class="flex g12 in-stock__btn-set">
-                        <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
-                        <button class="icon-btn love-btn toggle-btn"  data-product-id="'.$id.'"><i class="fal fa-heart"></i></button>
-                        <button class="icon-btn"><i class="fal fa-shopping-cart"></i></button>
-                    </div>
-                    <!-- <div class="flex g12 sold-out__btn-set">
-                                <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
-                                <button class="icon-btn"><i class="fal fa-plus"></i></button>
-                                <button class="icon-btn"><i class="fal fa-arrow-right"></i></button>
-                            </div> -->
+                    $productBtn
                 </div>
             </a>
             <a href="#" class="product__info">
-                <div class="product__info__name headline-medium fw-smb">'.$name.'</div>
-                <div class="product__info__price title-large">'.formatVND($price).'</div>
+                <div class="product__info__name headline-medium fw-smb">$name</div>
+                $priceView
+                $salePriceView
             </a>
             <div class="product__info flex-between width-full">
                 <div class="product__info__view title-large">1,2m+ views</div>
@@ -62,7 +105,7 @@
                 </div>
             </div>
         </div>
-    ';
+    HTML;
 
     
     function renderLoveProducts($products, $productsPerWrapper) {
@@ -94,40 +137,64 @@
 
                 $priceView = '';
                 $salePriceView = '';
-                $loveBtn = '<button class="icon-btn love-btn toggle-btn" data-product-id="'.$id.'"><i class="fal fa-heart"></i></button>';
 
                 if (isset($price) && $price > 0) {
-                    $priceView = '<div class="product__info__price body-medium">' . formatVND($price) . '</div>';
+                    $priceView = '<div class="product__info__price body-large primary-text fw-bold">' . formatVND($price) . '</div>';
                 } else {
-                    $priceView = '<div class="product__info__price body-medium">Đang cập nhật</div>';
+                    $priceView = '<div class="product__info__price body-large primary-text fw-bold">Đang cập nhật</div>';
                 }
                 
                 if (isset($promotion) and $promotion > 0) {
                     $salePrice = $price - $price * $promotion / 100;
-                    $salePriceView = '<div class="product__info__sale-price body-medium">' . formatVND($salePrice) . '</div>';
-                    $priceView = '<del class="product__info__price body-small">' . formatVND($price) . '</del>';
+                    $salePriceView = '<div class="product__info__sale-price body-large primary-text fw-bold">' . formatVND($salePrice) . '</div>';
+                    $priceView = '<del class="product__info__price body-large primary-text fw-bold">' . formatVND($price) . '</del>';
                 } else {
                     $salePriceView = '';
-                    $priceView = '<div class="product__info__price body-medium">' . formatVND($price) . '</div>';
+                    $priceView = '<div class="product__info__price body-large primary-text fw-bold">' . formatVND($price) . '</div>';
                 }
-                
-                $html .= <<<HTML
+
+                $productBtn = '';
+                if ($qty > 0) {
+                    $productBtn =
+                        <<<HTML
+                                    <div class="flex g12 in-stock__btn-set">
+                                        <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
+                                        <button class="icon-btn love-btn toggle-btn" data-product-id="$id">
+                                            <i class="fal fa-heart"></i>
+                                        </button>
+                                        <form action="?mod=cart&act=addCart" method="post" class="flex-column g12">
+                                            <button type="submit" class="icon-btn">
+                                                <i class="fal fa-cart-plus"></i>
+                                            </button>
+                                            <input type="hidden" name="name" value="$name">
+                                            <input type="hidden" name="price" value="$price">
+                                            <input type="hidden" name="img" value="$img">
+                                            <input type="hidden" name="id" value="$id">
+                                            <input type="hidden" name="qty" id="data-qty" value="1">
+                                        </form>
+                                    </div>
+                                HTML;
+                } else {
+                    $productBtn =
+                        <<<HTML
+                                    <div class="flex g12 sold-out__btn-set">
+                                        <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
+                                        <button class="icon-btn"><i class="fal fa-plus"></i></button>
+                                        <button class="icon-btn"><i class="fal fa-arrow-right"></i></button>
+                                    </div>
+                                HTML;
+                }
+
+
+            $html .= 
+            <<<HTML
                     <div class="product product__carousel">
                         <!-- single product start -->
                         <div class="product product__carousel">
                             <a href="$linkToDetail" class="product__banner banner-contain rounded-8 por"
                                 style="background-image: url('$imgPath')">
                                 <div class="product__overlay poa flex-center">
-                                    <div class="flex g12 in-stock__btn-set">
-                                        <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
-                                        $loveBtn
-                                        <button class="icon-btn"><i class="fal fa-shopping-cart"></i></button>
-                                    </div>
-                                    <!-- <div class="flex g12 sold-out__btn-set">
-                                        <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
-                                        <button class="icon-btn"><i class="fal fa-plus"></i></button>
-                                        <button class="icon-btn"><i class="fal fa-arrow-right"></i></button>
-                                    </div> -->
+                                    $productBtn
                                 </div>
                             </a>
                             <a href="#" class="product__info">
@@ -167,6 +234,7 @@
         $i = 1;
         foreach ($categories as $item) {
             extract($item);
+            $linkToCategory = "?mod=page&category&idCategory=$item[id]";
             $collectionItemTitle = '<h2 class="text-46 ttu">'.$item['name'].'</h2>';
             
             $tabsHtml .= 
@@ -188,21 +256,20 @@
 
                     $priceView = '';
                     $salePriceView = '';
-                    $loveBtn = '<button class="icon-btn love-btn toggle-btn" data-product-id="' . $id . '"><i class="fal fa-heart"></i></button>';
 
                     if (isset($price) && $price > 0) {
-                        $priceView = '<div class="product__info__price body-medium">' . formatVND($price) . '</div>';
+                        $priceView = '<div class="product__info__price body-large primary-text fw-bold">' . formatVND($price) . '</div>';
                     } else {
-                        $priceView = '<div class="product__info__price body-medium">Đang cập nhật</div>';
+                        $priceView = '<div class="product__info__price body-large primary-text fw-bold">Đang cập nhật</div>';
                     }
 
                     if (isset($promotion) and $promotion > 0) {
                         $salePrice = $price - $price * $promotion / 100;
-                        $salePriceView = '<div class="product__info__sale-price body-medium">' . formatVND($salePrice) . '</div>';
-                        $priceView = '<del class="product__info__price body-small">' . formatVND($price) . '</del>';
+                        $salePriceView = '<div class="product__info__sale-price body-large primary-text fw-bold">' . formatVND($salePrice) . '</div>';
+                        $priceView = '<del class="product__info__price body-large primary-text fw-bold">' . formatVND($price) . '</del>';
                     } else {
                         $salePriceView = '';
-                        $priceView = '<div class="product__info__price body-medium">' . formatVND($price) . '</div>';
+                        $priceView = '<div class="product__info__price body-large primary-text fw-bold">' . formatVND($price) . '</div>';
                     }
 
                     $productBtn = '';
@@ -211,12 +278,13 @@
                             <<<HTML
                                 <div class="flex g12 in-stock__btn-set">
                                     <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
-                                    $loveBtn
+                                    <button class="icon-btn love-btn toggle-btn" data-product-id="$id">
+                                        <i class="fal fa-heart"></i>
+                                    </button>
                                     <form action="?mod=cart&act=addCart" method="post" class="flex-column g12">
-                                        <a class="">
-                                            <i class="fal fa-shopping-cart-plus"></i>
-                                            <input class="icon-btn" name="addCart" type="submit">
-                                        </a>
+                                        <button type="submit" class="icon-btn">
+                                            <i class="fal fa-cart-plus"></i>
+                                        </button>
                                         <input type="hidden" name="name" value="$name">
                                         <input type="hidden" name="price" value="$price">
                                         <input type="hidden" name="img" value="$img">
@@ -240,12 +308,14 @@
                         <<<HTML
                         <!-- single product start -->
                         <div class="product product__carousel">
-                            <a href="$linkToDetail" class="product__banner oh banner-contain display-block rounded-8 por"
-                                style="background-image: url($imgPath)">
+                            <a 
+                            href="$linkToDetail" 
+                            class="product__banner oh banner-contain display-block rounded-8 por" 
+                            style="background-image: url($imgPath)">
                                 <div class="product__overlay poa flex-center">
-                                    <!-- overlay btn start     -->
+                                    <!-- overlay btn start -->
                                     $productBtn
-                                    <!-- overlay btn end     -->
+                                    <!-- overlay btn end -->
                                 </div>
                             </a>
                             <a href="#" class="product__info">
@@ -278,7 +348,7 @@
                         <!-- /*collection item title*/ -->
                         <div class="flex-between">
                             $collectionItemTitle 
-                            <a href="#" class="btn rounded-100 text-btn"><i class="fal fa-arrow-right"></i>Xem nhiều hơn</a>
+                            <a href="$linkToCategory" class="btn rounded-100 text-btn"><i class="fal fa-arrow-right"></i>Xem nhiều hơn</a>
                         </div>
                         <div class="product__wrapper product__wrapper--normal product__wrapper--normal--slick__1 auto-grid g20">
                             $productsHtml
@@ -719,7 +789,7 @@
         <div class="light-devider" style="width: 10rem; height: .4rem"></div>
     </div>
     <div class="tab__container full oh">
-        <div class="tabs flex-center width-full">
+        <div class="tabs product-tabs flex-center width-full">
             <?= $tabsHtml ?>
         </div>
         <div class="panels">

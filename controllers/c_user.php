@@ -86,15 +86,17 @@
 
             case 'logOut-account':
                 include_once 'models/m_user.php';
-                if(isset($_GET['id-account'])) {
-                    $id_user = $_GET['id-account'];
-                    extract(checkAccount($id_user));
-                } else {
-                    if (isset($_SESSION['userLogin'])) {
-                        $id_user = $_SESSION['userLogin']['id_user'];
-                    }
-                }
+                // if(isset($_GET['id-account'])) {
+                //     $id_user = $_GET['id-account'];
+                //     extract(checkAccount($id_user));
+                // } else {
+                //     if (isset($_SESSION['userLogin'])) {
+                //         $id_user = $_SESSION['userLogin']['id_user'];
+                //     }
+                // }
+
                 unset($_SESSION['userLogin']);
+                unset($_SESSION['admin']);
                 header('location: ?mod=page&act=login');
                 break;
             

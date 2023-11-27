@@ -74,7 +74,7 @@
                     header('Location: ?mod=page&act=home');
                     exit();
                 } else if (isset($_SESSION['admin'])) {
-                    header('Location: ?mod=admin&act=dashboard');
+                    header('Location: ?mod=admin&act=home');
                     exit();
                 }
                 // hiển thị dữ liệu
