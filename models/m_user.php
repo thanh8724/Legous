@@ -167,7 +167,9 @@
     function getBill() {
         return pdo_query("SELECT * FROM bill");
     }
-
+    function getBillByID($id) {
+        return pdo_query("SELECT * FROM bill WHERE id = {$id}");
+    }
 
     function editUserProfile($id, $fullname, $username, $password, $email, $address, $image, $role, $bio, $phone) {
         pdo_execute("UPDATE user SET fullname = '$fullname', username = '$username', email = '$email', password = '$password', address = '$address', img = '$image', role = '$role', bio = '$bio', phone = '$phone' WHERE id = ".$id);

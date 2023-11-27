@@ -1,10 +1,14 @@
 <?php
+session_start();
 ob_start();
 // Gữi/nhận dữ liệu thông qua model
 require_once './models/m_user.php';
 require_once './models/m_comment.php';
 // Hiển thị dữ liệu thông qua view
-
+if($_SESSION['role'] == 0 || !empty($_SESSION['userLogin'])) {
+    header("Location: ?mod=page&act=home");
+    exit();
+}
 if (isset($_GET['act'])) {
     switch ($_GET['act']) {
         case 'home':
