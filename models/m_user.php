@@ -1,14 +1,24 @@
 <?php
     include_once 'models/m_pdo.php';
 
+    # Lấy account đã đnăg xuất
+    function get_accountUser($value) {
+        return pdo_query("SELECT * FROM user WHERE id = ?", $value);
+    }   
+
     # general - edit profile
-   function checkAccount($id_user) {
-       return pdo_query_one("SELECT * FROM user WHERE id = ?", $id_user);
-   }
-   
-   function get_userBy_email_password($email_user, $password_user) {
+    function checkAccount($id_user) {
+        return pdo_query_one("SELECT * FROM user WHERE id = ?", $id_user);
+    }
+    
+    function get_userBy_email_password($email_user, $password_user) {
         return pdo_query("SELECT * FROM user WHERE email = ? AND password = ?", $email_user, $password_user);
-   }
+    }
+
+    function getUserById($idUser) {
+        $sql = "SELECT * FROM user WHERE id = $idUser";
+        return pdo_query_one($sql);
+    }
 
    // chỉnh sửa thông tin người dùng từ mã tài khoản
     function update_userName_email($new_username, $new_email, $id_user) {
@@ -33,6 +43,7 @@
     function get_address($id_user) {
         return pdo_query("SELECT * FROM address WHERE id_user = ?", $id_user);
     }
+
     function insertUser($username, $email, $password) {
         $sql = "INSERT INTO user (username, email, password) VALUES (?, ?, ?)"; // Use parameterized query
         $userId = pdo_execute($sql, $username, $email, $password);
@@ -67,11 +78,12 @@
         return pdo_query("SELECT * FROM user WHERE id = {$id}"); 
     }
     function searchUser($inputSearch) {
-        return pdo_query("SELECT * FROM user WHERE fullname LIKE '%$inputSearch%'");
+        return pdo_query("SELECT * FROM user WHERE fullname LIKE '%$inputSearch%' OR username LIKE '%$inputSearch%' OR email LIKE '%$inputSearch%' or phone LIKE '%$inputSearch%'");
     }
 
     function get_addressByid($id_address) {
         $sql = "SELECT * FROM address WHERE id = '$id_address'";
+        return pdo_query($sql);
     }
 
     function check_addressDefault() {
@@ -95,8 +107,11 @@
         pdo_execute("UPDATE address SET username = ?, address=?, address_detail=?, phone = ?, is_default = ?  WHERE id = ?",$name_user, $address_user, $address_detail, $phone_user, $address_default, $id_address);
     }
 
-    function delete_address($id_address){
+    function delete_address($id_address) {
         pdo_execute("DELETE FROM address WHERE id = ?",$id_address);
+    }
+    function delete_address_byIduser($id_user) {
+        pdo_execute("DELETE FROM address WHERE id_user = ?",$id_user);
     }
 
     # password
@@ -149,7 +164,9 @@
     function delete_acccount($id_user) {
         pdo_execute("DELETE FROM user WHERE id = ?",$id_user);
     }
-
+    function getBill() {
+        return pdo_query("SELECT * FROM bill");
+    }
 
 
     function editUserProfile($id, $fullname, $username, $password, $email, $address, $image, $role, $bio, $phone) {

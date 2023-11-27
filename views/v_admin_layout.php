@@ -30,6 +30,7 @@
     <script src="./public/assets/resources/js/jquery.js"></script>
     <!-- Include Chart.js library -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
     <title>Admin Dashboard Panel</title>
 </head>
 
@@ -42,14 +43,16 @@
                 <a href="#">
                     <div class="logo-name d-flex justify-content-center align-items-center">
                         <div class="logo-image">
-                            <img style="width: 20px; height: 20px;" src="./public/assets/media/images/users/images/logo.png" alt="">
+                            <img style="width: 20px; height: 20px;"
+                                src="./public/assets/media/images/users/images/logo.png" alt="">
                         </div>
-    
+
                         <span class="logo_name title-large fw-black" style="color: black;">LEGOUS</span>
                     </div>
                 </a>
             </div>
-            <div id="searchButtonBar" class="col-4 text-end" style="margin-right: 30px;"><i  class="far fa-search "></i></div>
+            <div id="searchButtonBar" class="col-4 text-end" style="margin-right: 30px;"><i class="far fa-search "></i>
+            </div>
         </div>
     </div>
     <div class="navBarMobile">
@@ -58,11 +61,12 @@
                 <i class="fas fa-times"></i>
             </div>
             <ul>
-                <li><a class="title-large" href="#">Bảng Điều Khiển</a></li>
-                <li><a class="title-large" href="">Sản Phẩm</a></li>
-                <li><a class="title-large" href="#">Danh Mục</a></li>
-                <li><a class="title-large" href="#">Đơn Hàng</a></li>
-                <li><a class="title-large" href="#">Khách Hàng</a></li>
+                <li><a class="title-large" href="?mod=admin&act=home">Bảng Điều Khiển</a></li>
+                <li><a class="title-large" href="?mod=admin&act=products">Sản Phẩm</a></li>
+                <li><a class="title-large" href="?mod=admin&act=categories">Danh Mục</a></li>
+                <li><a class="title-large" href="?mod=admin&act=orders">Đơn Hàng</a></li>
+                <li><a class="title-large" href="?mod=admin&act=client">Khách Hàng</a></li>
+                <li><a class="title-large" href="?mod=admin&act=comments">Bình Luận</a></li>
                 <li><a class="title-large" href="#">Đăng Xuất</a></li>
             </ul>
         </div>
@@ -70,7 +74,7 @@
     <div class="searchBarMobile">
         <div class="close-button" id="closeButton1"> <!-- Add the close button here -->
             <i class="fas fa-times"></i>
-            
+
         </div>
         <div class="search-box">
             <input type="text" placeholder="Tìm Kiếm Tại Đây...">
@@ -84,7 +88,7 @@
         <nav>
             <div class="logo-name">
                 <div class="logo-image">
-                    <img src="./public/assets/media/images/users/profile.jpg" alt="">
+                    <img src="./public/assets/media/images/logo.png" alt="">
                 </div>
 
                 <span class="logo_name display-small fw-black">LEGOUS</span>
@@ -92,26 +96,33 @@
 
             <div class="menu-items">
                 <ul class="nav-links">
-                    <li  class="<?=(strpos($view_name,'home'))?'active':''?>"><a href="?mod=admin&act=home">
+                    <li class="<?= (strpos($view_name, 'home')) ? 'active' : '' ?>"><a href="?mod=admin&act=home">
                             <i class="far fa-chart-line"></i>
                             <span class="link-name title-small">Bảng Điều Khiển</span>
                         </a></li>
-                    <li class="<?=(strpos($view_name,'products'))?'active':''?>"><a href="?mod=admin&act=products&page=1">
+                    <li class="<?= (strpos($view_name, 'products')) ? 'active' : '' ?>"><a
+                            href="?mod=admin&act=products&page=1">
                             <i class="far fa-store"></i>
                             <span class="link-name title-small">Sản Phẩm</span>
                         </a></li>
-                    <li class="<?=(strpos($view_name,'categories'))?'active':''?>"><a href="?mod=admin&act=categories&page=1">
+                    <li class="<?= (strpos($view_name, 'categories')) ? 'active' : '' ?>"><a
+                            href="?mod=admin&act=categories&page=1">
                             <i class="fal fa-clipboard-list-check"></i>
                             <span class="link-name title-small">Danh Mục</span>
                         </a></li>
-                    <li class="<?=(strpos($view_name,'orders'))?'active':''?>"><a href="?mod=admin&act=orders">
+                    <li class="<?= (strpos($view_name, 'orders')) ? 'active' : '' ?>"><a href="?mod=admin&act=orders">
                             <i class="fal fa-shopping-bag"></i>
                             <span class="link-name title-small">Đơn Hàng</span>
                         </a></li>
-                    <li class="<?=(strpos($view_name,'client'))?'active':''?>"><a href="?mod=admin&act=client">
+                    <li class="<?= (strpos($view_name, 'client')) ? 'active' : '' ?>"><a href="?mod=admin&act=client">
                             <i class="fal fa-user"></i>
                             <span class="link-name title-small">Khách Hàng</span>
                         </a></li>
+                        <li class="<?= (strpos($view_name, 'comments')) ? 'active' : '' ?>"><a href="?mod=admin&act=comments">
+                            <i class="far fa-comments"></i>
+                            <span class="link-name title-small">Bình luận</span>
+                        </a></li>
+
 
                 </ul>
 
@@ -135,10 +146,10 @@
             </div>
         </nav>
 
-        <?php 
-                require_once 'v_'.$view_name .'.php';
-                // require_once 'v_admin_home.php';
-            ?>  
+        <?php
+        require_once 'v_' . $view_name . '.php';
+        // require_once 'v_admin_home.php';
+        ?>
 
     </main>
 
@@ -150,42 +161,46 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
         
+        
+
 
     </script>
     <script>
         $('.owl-carousel').owlCarousel({
             margin: 10,
             nav: true,
-            responsive:{
-                0:{
-                    items:1
+            responsive: {
+                0: {
+                    items: 1
                 },
-                600:{
-                    items:2
+                600: {
+                    items: 2
                 },
-                1100:{
-                    items:3 
+                1100: {
+                    items: 3
                 },
-                1440:{
-                    items:4
+                1440: {
+                    items: 4
                 }
-                
+
             }
         })
     </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="./public/assets/resources/js/jquery.dataTables.min.js"></script>
-<script src="./public/assets/resources/js/dataTables.bootstrap4.min.js"></script>
-<script>
-$(function() {
-    $("#example1").DataTable({
-        "responsive": true,
-        "lengthChange": false,
-        "autoWidth": false,
-        "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-});
-</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
+        integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./public/assets/resources/js/jquery.dataTables.min.js"></script>
+    <script src="./public/assets/resources/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+        $(function () {
+            $("#example1").DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+        });
+    </script>
 </body>
 
 </html>

@@ -16,12 +16,14 @@
 section{
   .containerAdmin{
     .pagination{
-      .pagination__item{
-        .pagination__link{
-          text-decoration: none;
+     
+        li{
+          a{
+            text-decoration: none !important;
+          }
           
         }
-      }
+      
   }
 }
 }

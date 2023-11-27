@@ -60,11 +60,11 @@
             <div class="main__inner--bottom-container flex-column rounded-2 p30 g30 ">
                 <?php
                     foreach ($order as $item) {
-                       extract($item);
-                       $name_payment = get_namePayment($id_payment);
-                       $name_shipping = get_nameShipping($id_shipping);
-                       $fullname = get_fullname($id_user);
-                       echo'
+                        extract($item);
+                        $name_payment = get_namePayment($id_payment);
+                        $name_shipping = get_nameShipping($id_shipping);
+                        $fullname = get_fullname($id_user);
+                        echo'
                             <div class="main__inner--bottom  fist--container flex-column">
                                 Mã đơn hàng :  '.$id.'
                                 <div class="fist--container date  center ">
