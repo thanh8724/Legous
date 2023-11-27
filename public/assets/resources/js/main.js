@@ -221,8 +221,8 @@ const app = {
         if (qtyInput) {
             const dataQty = document.querySelector("#data-qty");
             qtyInput.forEach((input, index) => {
-                const minusBtn = input.parentElement.querySelector('.minus__btn')
-                const plusBtn = input.parentElement.querySelector('.plus__btn')
+                const minusBtn = input.parentElement.querySelector('.minus-btn')
+                const plusBtn = input.parentElement.querySelector('.plus-btn')
                 const subTotal = minusBtn.parentElement.parentElement.querySelector('.cart__product__subtotal')
                 const [...cartProduct] = document.querySelectorAll('.cart__product')
                 minusBtn.onclick = e => {
@@ -257,57 +257,54 @@ const app = {
     },
     functionalHandler() {
 
-        // filter by category
         let filterInputs = document.querySelectorAll('.filter__input');
 
-        if (filterInputs) {
-            filterInputs.forEach(function (input) {
-                let id = input.getAttribute('data-id-category');
-                let urlParams = new URLSearchParams(window.location.search);
-                let existingParams = Array.from(urlParams.entries());
+        filterInputs.forEach(function (input) {
+            let id = input.getAttribute('data-id-category');
+            let urlParams = new URLSearchParams(window.location.search);
+            let existingParams = Array.from(urlParams.entries());
 
-                let filterCategory = urlParams.get('filterCategory');
-                if (filterCategory) {
-                    filterCategory = filterCategory.split(',');
-                    if (filterCategory.includes(id)) {
-                        input.checked = true;
+            let filterCategory = urlParams.get('filterCategory');
+            if (filterCategory) {
+                filterCategory = filterCategory.split(',');
+                if (filterCategory.includes(id)) {
+                    input.checked = true;
+                }
+            } else {
+                filterCategory = [];
+            }
+
+            input.addEventListener('click', function () {
+                if (input.checked) {
+                    if (!filterCategory.includes(id)) {
+                        filterCategory.push(id);
                     }
                 } else {
-                    filterCategory = [];
+                    filterCategory = filterCategory.filter(item => item !== id);
                 }
 
-                input.addEventListener('click', function () {
-                    if (input.checked) {
-                        if (!filterCategory.includes(id)) {
-                            filterCategory.push(id);
-                        }
-                    } else {
-                        filterCategory = filterCategory.filter(item => item !== id);
-                    }
+                // Remove existing filterCategory parameter
+                existingParams = existingParams.filter(([param, value]) => param !== 'filterCategory');
 
-                    // Remove existing filterCategory parameter
-                    existingParams = existingParams.filter(([param, value]) => param !== 'filterCategory');
+                // Append updated filterCategory parameter
+                if (filterCategory.length > 0) {
+                    existingParams.push(['filterCategory', filterCategory.join(',')]);
+                }
 
-                    // Append updated filterCategory parameter
-                    if (filterCategory.length > 0) {
-                        existingParams.push(['filterCategory', filterCategory.join(',')]);
-                    }
+                // Construct the new URL
+                let newUrl = window.location.pathname;
 
-                    // Construct the new URL
-                    let newUrl = window.location.pathname;
+                if (existingParams.length > 0) {
+                    let queryString = existingParams.map(([param, value]) => `${param}=${value}`).join('&');
+                    newUrl += '?' + queryString;
+                }
 
-                    if (existingParams.length > 0) {
-                        let queryString = existingParams.map(([param, value]) => `document.querySelector{param}=document.querySelector{value}`).join('&');
-                        newUrl += '?' + queryString;
-                    }
+                newUrl += window.location.hash;
 
-                    newUrl += window.location.hash;
-
-                    // Redirect to the new URL
-                    window.location.href = newUrl;
-                });
+                // Redirect to the new URL
+                window.location.href = newUrl;
             });
-        }
+        });
 
         // filter by name
         let filterNameInputs = document.querySelectorAll('.filter__input--name');
@@ -346,11 +343,11 @@ const app = {
                     const urlParams = new URLSearchParams(window.location.search);
 
                     // Get the filter toggle list element
-                    const toggleFilterList = document.querySelector(`.document.querySelector{toggleFilterListClass}`);
+                    const toggleFilterList = document.querySelector(`.${toggleFilterListClass}`);
 
                     // Remove existing filter labels for the specified filter parameters
                     filterParams.forEach(filterParam => {
-                        const existingFilterLabels = toggleFilterList.querySelectorAll(`.filter-document.querySelector{filterParam}-label`);
+                        const existingFilterLabels = toggleFilterList.querySelectorAll(`.filter-${filterParam}-label`);
                         existingFilterLabels.forEach(label => {
                             toggleFilterList.removeChild(label);
                         });
@@ -363,11 +360,11 @@ const app = {
                         if (filterValue) {
                             // Create the filter label element
                             const filterLabel = document.createElement('li');
-                            filterLabel.classList.add('filter-toggle__list-item', `filter-document.querySelector{filterParam}-label`);
+                            filterLabel.classList.add('filter-toggle__list-item', `filter-${filterParam}-label`);
 
                             const filterLink = document.createElement('a');
                             filterLink.href = '#';
-                            filterLink.classList.add('filter-toggle__list-item', 'outline-btn', 'btn', 'rounded-100', 'v-center' , 'ttc');
+                            filterLink.classList.add('filter-toggle__list-item', 'outline-btn', 'btn', 'rounded-100', 'v-center', 'ttc');
 
                             // Customize the filter label content based on the labelCustomization function
                             const filterText = document.createTextNode(labelCustomization(filterParam, filterValue));
@@ -390,7 +387,7 @@ const app = {
                                 urlParams.delete(filterParam);
 
                                 // Generate the new URL without the filter parameter
-                                const newUrl = `document.querySelector{window.location.origin}document.querySelector{window.location.pathname}?document.querySelector{urlParams.toString()}document.querySelector{window.location.hash}`;
+                                const newUrl = `${window.location.origin}${window.location.pathname}?${urlParams.toString()}${window.location.hash}`;
 
                                 // Redirect to the new URL
                                 window.location.href = newUrl;
@@ -406,11 +403,10 @@ const app = {
                 const filters = ['filterName', 'minPrice', 'maxPrice', 'filterCategory'];
                 const toggleFilterListClass = 'filter-toggle__list';
                 const labelCustomization = (filterParam, filterValue) => {
-                    // Customize the filter label content based on filterParam and filterValue
                     if (filterParam === 'minPrice') {
-                        return `Giá thấp nhất: document.querySelector{formatCurrencyVND(filterValue)}`;
+                        return `Giá thấp nhất: ${formatCurrencyVND(filterValue)}`;
                     } else if (filterParam === 'maxPrice') {
-                        return `Giá cao nhất: document.querySelector{formatCurrencyVND(filterValue)}`;
+                        return `Giá cao nhất: ${formatCurrencyVND(filterValue)}`;
                     } else if (filterParam === 'filterName') {
                         if (filterValue == 0) {
                             return `Tên: A - Z`;
@@ -418,22 +414,19 @@ const app = {
                             return `Tên: Z - A`;
                         }
                     } else if (filterParam === 'filterCategory') {
-                        const cateIds = filterValue.split(',')
-                        const categories = 
-                        [
-                            'naruto',
+                        const cateIds = filterValue.split(',');
+                        const categories = [
+                            'Ninja Go',
+                            'Naruto',
                             'dragon ball',
-                            'jujustsu kaisen',
-                            'demon slayer',
-                            'gundam',
-                            'genshin impact',
-                            'one piece',
-                            'pack card',
-                            'car',
-                            'lego'
+                            'Marvel & DC',
+                            'One Piece',
+                            'Car',
+                            'Gundam',
+                            'Kimetsu no Yaiba'
                         ];
                         const categoryNames = cateIds.map((id) => categories[id - 1]);
-                        return `Danh mục: document.querySelector{categoryNames.join(', ')}`; 
+                        return `Danh mục: ${categoryNames.join(', ')}`;
                     } else {
                         return `Danh mục: `;
                     }

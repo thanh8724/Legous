@@ -4,7 +4,7 @@
     $address_default = '';
     $set_defaultButton = '';
      #code
-     $id_user = $_SESSION['id_user'];
+    $id_user = $_SESSION['userLogin']['id_user'];
      $list_addressUser = get_address($id_user);
 
      # lấy ra địa chỉ được set là mặc định

@@ -1,6 +1,11 @@
 <?php
     include_once 'models/m_pdo.php';
 
+    # Lấy account đã đnăg xuất
+    function get_accountUser($value) {
+        return pdo_query("SELECT * FROM user WHERE id = ?", $value);
+    }   
+
     # general - edit profile
     function checkAccount($id_user) {
         return pdo_query_one("SELECT * FROM user WHERE id = ?", $id_user);
@@ -78,6 +83,7 @@
 
     function get_addressByid($id_address) {
         $sql = "SELECT * FROM address WHERE id = '$id_address'";
+        return pdo_query($sql);
     }
 
     function check_addressDefault() {
@@ -101,8 +107,11 @@
         pdo_execute("UPDATE address SET username = ?, address=?, address_detail=?, phone = ?, is_default = ?  WHERE id = ?",$name_user, $address_user, $address_detail, $phone_user, $address_default, $id_address);
     }
 
-    function delete_address($id_address){
+    function delete_address($id_address) {
         pdo_execute("DELETE FROM address WHERE id = ?",$id_address);
+    }
+    function delete_address_byIduser($id_user) {
+        pdo_execute("DELETE FROM address WHERE id_user = ?",$id_user);
     }
 
     # password
@@ -158,10 +167,12 @@
     function getBill() {
         return pdo_query("SELECT * FROM bill");
     }
+    function getBillByID($id) {
+        return pdo_query("SELECT * FROM bill WHERE id = {$id}");
+    }
 
-
-    function editUserProfile($id, $fullname, $username, $password, $email, $address, $image, $role, $bio, $phone) {
-        pdo_execute("UPDATE user SET fullname = '$fullname', username = '$username', email = '$email', password = '$password', address = '$address', img = '$image', role = '$role', bio = '$bio', phone = '$phone' WHERE id = ".$id);
+    function editUserProfile($id, $fullname, $username, $password, $email, $image, $role, $bio, $phone) {
+        pdo_execute("UPDATE user SET fullname = '$fullname', username = '$username', email = '$email', password = '$password', img = '$image', role = '$role', bio = '$bio', phone = '$phone' WHERE id = ".$id);
     }
     function addUserProfile($fullname, $username, $password, $email, $address, $image, $role, $bio, $phone) {
         pdo_execute("INSERT INTO user (fullname, username, email, password, address, img, role, bio, phone) VALUES ('$fullname', '$username', '$email', '$password', '$address', '$image', '$role', '$bio', '$phone') ");

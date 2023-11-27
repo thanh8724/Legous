@@ -87,25 +87,17 @@
 
             case 'logOut-account':
                 include_once 'models/m_user.php';
-                if(isset($_GET['id-account'])) {
-                    $id_user = $_GET['id-account'];
-                    extract(checkAccount($id_user));
-                } else {
-                    if (isset($_SESSION['userLogin'])) {
-                        $id_user = $_SESSION['userLogin']['id_user'];
-                    }
-                }
-                
-                // # lấy id thiết bị người dùng
-                // $id_deviceUser = $_SERVER['HTTP_USER_AGENT'];
-                // # tạo cookie
-                // $cookie_account = array(
-                //     'name' => 'remember_account',
-                //     'value' => json_encode(array('username' => $username, 'email' => $email, 'avatar' => $img)),
-                //     'name_device' => $id_deviceUser
-                //   );
-                // setcookie($cookie_account['name'], $cookie_account['value'], $cookie_account['name_device'], '/', '', true);
-                session_destroy();
+                // if(isset($_GET['id-account'])) {
+                //     $id_user = $_GET['id-account'];
+                //     extract(checkAccount($id_user));
+                // } else {
+                //     if (isset($_SESSION['userLogin'])) {
+                //         $id_user = $_SESSION['userLogin']['id_user'];
+                //     }
+                // }
+
+                unset($_SESSION['userLogin']);
+                unset($_SESSION['admin']);
                 header('location: ?mod=page&act=login');
                 break;
 

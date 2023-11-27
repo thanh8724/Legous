@@ -32,6 +32,8 @@ include_once 'models/m_pdo.php';
         $sql = "SELECT id_category FROM product WHERE id = $idProduct";
         return pdo_query_value($sql);
     }
+
+    
 ?>
 
     

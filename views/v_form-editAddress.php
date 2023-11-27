@@ -2,19 +2,19 @@
     $address_html = '';
     $address_default = '';
     $set_defaultButton = '';
-    if(isset($_SESSION['user']) && (is_array($_SESSION['user']) || is_object($_SESSION['user']) && count($_SESSION['user']) > 0)){
-        extract($_SESSION['user']);
+    if(isset($_SESSION['userLogin']) && (is_array($_SESSION['userLogin']) || is_object($_SESSION['userLogin']) && count($_SESSION['userLogin']) > 0)){
+        extract($_SESSION['userLogin']);
     }
     
      # cập nhật lại địa chỉ
      if(isset($_GET['id-address']) && ($_GET['id-address']) > 0) {
-        $id_address = $_GET['id-address'];
-        #lấy address để kiểm tra có là địa chỉ mặc định không
-        foreach (check_addressDefault() as $key) {
-            extract($key);
-            $id_addressDefault = $id;
-            $is_addressDefault = $is_default;
-        }
+         $id_address = $_GET['id-address'];
+         #lấy address để kiểm tra có là địa chỉ mặc định không
+         foreach (check_addressDefault() as $key) {
+             extract($key);
+             $id_addressDefault = $id;
+             $is_addressDefault = $is_default;
+         }
         # lấy địa chỉ từ db
         foreach (get_addressByid($id_address) as $key) {
             extract($key);
@@ -43,7 +43,9 @@
             }
             if(isset($_POST['set_defaultAddress'])) {
                 $address_default = 1;
-                un_addressDefault($id_addressDefault);
+                if(isset($id_addressDefault)) {
+                    un_addressDefault($id_addressDefault);
+                }
             }else {
                 $address_default = 0;
             }

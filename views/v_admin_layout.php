@@ -67,7 +67,7 @@
                 <li><a class="title-large" href="?mod=admin&act=orders">Đơn Hàng</a></li>
                 <li><a class="title-large" href="?mod=admin&act=client">Khách Hàng</a></li>
                 <li><a class="title-large" href="?mod=admin&act=comments">Bình Luận</a></li>
-                <li><a class="title-large" href="#">Đăng Xuất</a></li>
+  
             </ul>
         </div>
     </div>
@@ -127,7 +127,7 @@
                 </ul>
 
                 <ul class="logout-mode">
-                    <li><a href="#">
+                    <li><a href="?mod=user&act=logOut-account">
                             <i class="far fa-sign-out-alt"></i>
                             <span class="link-name title-small">Logout</span>
                         </a></li>
