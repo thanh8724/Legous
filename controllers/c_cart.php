@@ -7,10 +7,10 @@ if (isset($_GET['act'])) {
     switch ($_GET['act']) {
         case 'addCart':
             // lấy dữ liệu
-            include_once 'model/m_cart.php';
+            include_once 'models/m_cart.php';
             // lấy sách theo chủ đề
 
-            if (isset($_POST['addCart']) && $_POST['addCart']) {
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $name = $_POST['name'];
                 $price = $_POST['price'];
                 $img = $_POST['img'];
@@ -48,21 +48,13 @@ if (isset($_GET['act'])) {
                     $_SESSION['cart'][$id] = $product;
                 }
 
-                header('location: ?mod=cart&act=viewCart');
+                header('Location: ?mod=cart&act=viewCart');
             }
-            // hiển thị dữ liệu
-            // $view_name = 'addCart';
             break;
 
         case 'viewCart':
-
-
             $view_name = 'viewCart';
             break;
-
-
-
-
         default:
 
             break;
