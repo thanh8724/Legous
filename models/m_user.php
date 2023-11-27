@@ -10,6 +10,9 @@
     function checkAccount($id_user) {
         return pdo_query_one("SELECT * FROM user WHERE id = ?", $id_user);
     }
+    function checkAccounts($id_account) {
+        return pdo_query_one("SELECT * FROM user WHERE id = ?", $id_account);
+    }
     
     function get_userBy_email_password($email_user, $password_user) {
         return pdo_query("SELECT * FROM user WHERE email = ? AND password = ?", $email_user, $password_user);

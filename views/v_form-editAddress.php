@@ -212,7 +212,7 @@
             <!-- normal form group -->
             <div class="form__group without-title">
                 <!-- <span class="form__label"></span> -->
-                <input type="text" name="full_userName" class="form__input" placeholder=" ">
+                <input type="text" id="name" name="full_userName" class="form__input" placeholder=" ">
                 <label for="" class="label__place">Họ và tên</label>
                 <span class="form__message">this is massage</span>
             </div>
@@ -257,3 +257,21 @@
         </div>
     </form>
 </section>
+
+<script>
+    // Lấy phần tử input có id là name
+    var input = document.getElementById("name");
+
+    // Thêm sự kiện blur cho input
+    input.addEventListener("blur", function() {
+    // Lấy giá trị của input
+    var value = input.value;
+
+    // Kiểm tra nếu giá trị rỗng
+    if (value == "") {
+        // Hiện thông báo
+        alert("Vui lòng nhập họ và tên!");
+    }
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>

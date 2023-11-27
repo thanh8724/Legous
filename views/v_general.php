@@ -1,41 +1,14 @@
 <?php
     // xử lí khi người dùng nhập form
-    $id_user = $_SESSION['userLogin']['id_user'];
-    if(isset($_POST['button__submit'])) {
-        if($_POST['new_username'] != "") {
-            $new_username = $_POST['new_username'];
-        }else {
-            $new_username = $checkUses['username'];
-        }
-        if($_POST['new_email'] != "") {
-            $new_email = $_POST['new_email'];
-        }else {
-            $new_email = $checkUses['email'];
-        }
-        update_userName_email($new_username, $new_email, $id_user);
-        header('location: ?mod=user&act=general');
-    }
-    $userList = [];
-    foreach ($_COOKIE as $name => $value) {
-        if (str_starts_with($name, "accounts_user")) {
-            $accounts_user = get_accountUser($value);
-            // print_r($value);
-            $userList[$value] = $accounts_user;
+    if($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if($_POST['username'] != "" && $_POST['email'] != "") {
+            $new_username = $_POST['username'];
+            $new_email = $_POST['email'];
+            update_userName_email($new_username, $new_email, $id_user);
+            header('location: ?mod=user&act=general');
+            exit();
         }
     }
-    // print_r($userList);
-    $accounts_user_html = '';
-    // foreach ($accounts_user as $key) {
-    //     extract($key);
-    //     $accounts_user_html .= '<div class="box__listAccount--item account__notActive">
-    //                                 <div class="box__avatar--account">
-    //                                     <img srcset="upload/users/'.$img.' 2x" alt="">
-    //                                 </div>
-    //                                 <div class="box__info--account">
-    //                                     <span class="info--account_name">'.$username.'</span>
-    //                                     <span class="info--account_email">'.$email.'</span>
-    //                             </div>';
-    // }
 ?>
 <main class="main__user">
     <div class="main__inner">
@@ -55,50 +28,7 @@
                     </span>
                 </div>
             </div>
-            <div class="box__changeAccount">
-                <svg viewBox="0 0 20 20" fill="currentColor" class="x1lliihq x1k90msu x2h7rmj x1qfuztq xfuq9xy x10w6t97 x1td3qas"><g fill-rule="evenodd" transform="translate(-446 -398)"><g fill-rule="nonzero"><path d="M96.628 206.613A7.97 7.97 0 0 1 96 203.5a7.967 7.967 0 0 1 2.343-5.657A7.978 7.978 0 0 1 104 195.5a7.978 7.978 0 0 1 5.129 1.86.75.75 0 0 0 .962-1.15A9.479 9.479 0 0 0 104 194a9.478 9.478 0 0 0-6.717 2.783A9.467 9.467 0 0 0 94.5 203.5a9.47 9.47 0 0 0 .747 3.698.75.75 0 1 0 1.381-.585zm14.744-6.226A7.97 7.97 0 0 1 112 203.5a7.967 7.967 0 0 1-2.343 5.657A7.978 7.978 0 0 1 104 211.5a7.978 7.978 0 0 1-5.128-1.86.75.75 0 0 0-.962 1.152A9.479 9.479 0 0 0 104 213a9.478 9.478 0 0 0 6.717-2.783 9.467 9.467 0 0 0 2.783-6.717 9.47 9.47 0 0 0-.747-3.698.75.75 0 1 0-1.381.585z" transform="translate(352 204.5)"></path><path d="M109.5 197h-2.25a.75.75 0 1 0 0 1.5h3a.75.75 0 0 0 .75-.75v-3a.75.75 0 1 0-1.5 0V197zm-11 13h2.25a.75.75 0 1 0 0-1.5h-3a.75.75 0 0 0-.75.75v3a.75.75 0 1 0 1.5 0V210z" transform="translate(352 204.5)"></path></g></g></svg>
-
-                <div class="box__changeAccount--content box-shadow4">
-                    <div class="box__listAccount">
-                      
-                        <div class="box__listAccount--item">
-                            <div class="box__avatar--account">
-                                <img src="/public/assets/media/images/users/user-2.svg" alt="">
-                            </div>
-                            <div class="box__info--account">
-                                <span class="info--account_name">Nguyen ThanhNguyen ThanhNguyen Thanh</span>
-                                <span class="info--account_email">quocthanhn87@gmail.com</span>
-                            </div>
-                        </div>
-                        <hr class="hr__account">
-                        <?= $accounts_user_html ?>
-                        <!-- <div class="box__listAccount--item account__notActive">
-                            <div class="box__avatar--account">
-                                <img src="/public/assets/media/images/users/user-2.svg" alt="">
-                            </div>
-                            <div class="box__info--account">
-                                <span class="info--account_name">Nguyen Thanh</span>
-                                <span class="info--account_email">quocthanhn87@gmail.com</span>
-                            </div>
-                        </div>
-                        <div class="box__listAccount--item account__notActive">
-                            <div class="box__avatar--account">
-                                <img src="/public/assets/media/images/users/user-2.svg" alt="">
-                            </div>
-                            <div class="box__info--account">
-                                <span class="info--account_name">Nguyen Thanh</span>
-                                <span class="info--account_email">quocthanhn87@gmail.com</span>
-                            </div>
-                        </div> -->
-                    </div>
-                    <div class="box__changeAccount--logOut">
-                        <a hred="#" class="box__changeAccount--logOut__button">
-                            <i class="fas fa-sign-out-alt"></i>
-                            <span>Đăng xuất</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
+            <?php require_once 'views/box_changeAccountUser.php'; ?>
         </div>
         <div class="main__inner--bottom">
             <!-- user side bar start -->
@@ -106,17 +36,17 @@
             <!-- user side bar end -->
 
             <div class="main__inner--bottom-right">
-                <form action="" method="POST">
+                <form action="?mod=user&act=general" method="POST" class="general_form">
                     <!-- normal form group -->
                     <div class="form__group">
                         <span class="form__label">Tên đăng nhập</span>
-                        <input type="text" name="new_username" class="form__input" placeholder="<?=$checkUses['username']?>">
+                        <input type="text" name="username" class="form__input username--input" placeholder="<?=$checkUses['username']?>">
                         <!-- <label for="" class="label__place">Tên đăng nhập</label> -->
                         <span class="form__message"></span>
                     </div>
                     <div class="form__group">
                         <span class="form__label">Email</span>
-                        <input type="email" name="new_email" class="form__input" placeholder="<?=$checkUses['email']?>">
+                        <input type="email" name="email" class="form__input email--input" placeholder="<?=$checkUses['email']?>">
                         <!-- <label for="" class="label__place">Email</label> -->
                         <span class="form__message"></span>
                     </div>
@@ -129,3 +59,20 @@
     </div>
     <div class="form__address--container" style="display: none;"></div>
 </main>
+<script src="./public/assets/resources/js/validator.js"></script>
+<script>
+    Validator({
+        formSelector: '.general_form',
+        formGroupSelector: '.form__group',
+        formMessage: '.form__message',
+        submitUrl: '?mod=user&act=general',
+        redirectUrl: '?mod=user&act=general',
+        rules: [
+            Validator.isRequired('.username--input'),
+            Validator.isUsername('.username--input', 'Vui lòng điền tên đăng nhập' , './views/libs/usernameValidator.php'),
+            Validator.isRequired('.email--input' , 'Vui lòng nhập email của bạn.'),
+            Validator.isEmail('.email--input'),
+            Validator.isEmailAlreadyExist('.email--input' , 'Email này đã tồn tại trên hệ thống' , './views/libs/emailValidator.php'),
+        ]
+    })
+</script>

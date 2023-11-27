@@ -829,11 +829,13 @@ a {
   transition: 0.22s cubic-bezier(0.23, 1, 0.32, 1);
 }
 .form__group textarea {
-  width: 100%;
   height: 20rem;
-  border-radius: 4px;
-  padding: 1.2rem 2rem;
-  color: black;
+  border-radius: 0.4rem;
+  padding: 0 2rem;
+  border: 1px solid #ded8e1;
+  transition: 0.22s cubic-bezier(0.23, 1, 0.32, 1);
+  color: #3b383e;
+  outline: none;
 }
 .form__group textarea:focus,
 .form__group input:focus {
@@ -2517,6 +2519,7 @@ html {
   border-radius: 1rem;
   cursor: pointer;
   transition: 0.22s cubic-bezier(0.23, 1, 0.32, 1);
+  color: #000000;
 }
 .main__user .main__inner .box__changeAccount--content .box__changeAccount--logOut .box__changeAccount--logOut__button i {
   width: 3.5rem;
@@ -2998,10 +3001,20 @@ html {
   gap: 2rem;
 }
 .form__address--container .form__address--content .label__place {
-  top: -15%;
+  top: 20%;
+  transform: translateY(-20%);
   font-size: clamp(1.2rem, 1.057rem + 0.381vw, 1.4rem);
   font-weight: 400;
   line-height: clamp(1.8rem, 1.657rem + 0.381vw, 2rem);
+}
+.form__address--container .form__address--content input:not(:placeholder-shown) + .label__place,
+.form__address--container .form__address--content input:focus + .label__place {
+  top: -25%;
+  transform: translateY(50%);
+  left: 1rem;
+  background-color: #f7f7f7;
+  padding: 0 1rem;
+  color: #6750a4;
 }
 .form__address--container .form__address--content-rows1 {
   display: flex;

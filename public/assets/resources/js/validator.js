@@ -207,7 +207,7 @@ Validator.isConfirm = (selector , confirm , message) => {
     return {
         selector,
         test (value) {
-            return value == confirm() ? undefined : message || `Mật khẩu xác nhận sai! Vui lòng nhập lại`
+            return value == confirm() ? undefined : message || `Mật khẩu xác nhận sai! Vui lòng nhập lại.`
         }
     }
 }

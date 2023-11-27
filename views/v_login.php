@@ -47,13 +47,13 @@
             <input type="hidden" name="login_form" value="true">
             <div class="form__group without-title">
                 <!-- <label for="username">Email</label> -->
-                <input type="text" name="email" class="form__input email--input" placeholder=" " value="">
+                <input type="email" name="email" class="form__input email--input" placeholder=" " value="">
                 <label for="" class="label__place">Email</label>
                 <span class="form__message"></span>
             </div>
             <div class="form__group without-title">
                 <!-- <label for="username">Mật khẩu</label> -->
-                <input type="text" name="password" class="form__input password--input" placeholder=" " value="">
+                <input type="password" name="password" class="form__input password--input" placeholder=" " value="">
                 <label for="" class="label__place">Mật khẩu</label>
                 <span class="form__message"></span>
             </div>

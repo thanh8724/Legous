@@ -47,6 +47,13 @@
                             if ($role == 0) {
                                 $_SESSION['role'] = $role;
                                 $_SESSION['userLogin'] = $loginInfo;
+                                #thêm cookies accounts_user nếu chưa có
+                                if(!isset($_COOKIE['accounts_user'.$loginInfo['id_user']])) {
+                                    setcookie('accounts_user'.$loginInfo['id_user'], $loginInfo['id_user'], time() + (60 * 60 * 24 * 30));
+                                }
+                                if(isset($_SESSION['id_account'])) {
+                                    unset($_SESSION['id_account']);
+                                }
                                 header('Location: ?mod=page&act=home&idUser=' . $id);
                                 exit();
                             } else if ($role == 2023) {
