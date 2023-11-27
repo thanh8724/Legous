@@ -1,4 +1,4 @@
-<section class="dashboard">
+    <section class="dashboard">
     <!----======== Header DashBoard ======== -->
     <div class="top">
         <i class="fas fa-angle-left sidebar-toggle"></i>

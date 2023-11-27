@@ -208,7 +208,7 @@ if(isset($_POST['submit'])) {
                         <h2>Thêm Sản Phẩm</h2>
                     </div>
                     <div class="col-12">
-                        <span class="label-large">Admin /</span><a href="?mod=admin&act=products&page=1" class="label-large" style="text-decoration: none;"> Sản Phẩm</a>
+                        <span class="label-large">Admin /</span><a href="?mod=admin&act=products&page=1" class="label-large" style="text-decoration: none;"> Sản Phẩm</a> / <a href="?mod=admin&act=product-add" class="label-large" style="text-decoration: none;"> Thêm Sản Phẩm</a>
                     </div>
                     <div>
 
@@ -245,14 +245,9 @@ if(isset($_POST['submit'])) {
                             <div class="custom-select">
                                 <!-- Dropdown -->
                                 <select id="id_category" name="id_category">
-                                    <option value="1">Ninja Go</option>
-                                    <option value="2">Naruto</option>
-                                    <option value="3">dragon ball</option>
-                                    <option value="4">Marvel & DC</option>
-                                    <option value="5">One Piece</option>
-                                    <option value="6">Car</option>
-                                    <option value="7">Gundam</option>
-                                    <option value="8">Kimetsu no Yaiba</option>
+                                    <?php foreach($getAllCategory as $item):?>
+                                    <option value="<?=$item['id']?>"><?=$item['name']?></option>
+                                    <?php endforeach;?>
                                 </select>
                             </div>
                         </div>

@@ -241,14 +241,9 @@ if(isset($_POST['submit'])) {
                                     <div class="custom-select">
                                         <!-- Dropdown -->
                                         <select id="dropdown" onchange="updateInput()" name="id_category">
-                                            <option value="1" <?=($productdetail['id_category'] == 1)?'selected':''?>>Ninja Go</option>
-                                            <option value="2" <?=($productdetail['id_category'] == 2)?'selected':''?>>Naruto</option>
-                                            <option value="3" <?=($productdetail['id_category'] == 3)?'selected':''?>>dragon ball</option>
-                                            <option value="4" <?=($productdetail['id_category'] == 4)?'selected':''?>>Marvel & DC</option>
-                                            <option value="5" <?=($productdetail['id_category'] == 5)?'selected':''?>>One Piece</option>
-                                            <option value="6" <?=($productdetail['id_category'] == 6)?'selected':''?>>Car</option>
-                                            <option value="7" <?=($productdetail['id_category'] == 7)?'selected':''?>>Gundam</option>
-                                            <option value="8" <?=($productdetail['id_category'] == 8)?'selected':''?>>Kimetsu no Yaiba</option>
+                                        <<?php foreach($getAllCategory as $item):?>
+                                            <option value="<?=$item['id']?>" <?=($productdetail['id_category'] == $item['id'])?'selected':''?>><?=$item['name']?></option>
+                                        <?php endforeach;?>
                                         </select>
                                     </div>
                                 </div>

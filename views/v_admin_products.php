@@ -157,8 +157,8 @@
         <a href="?mod=admin&act=products&page=<?= $i ?>" class="body-small pagination__link"><?= $i ?></a>
       </li>
     <?php endfor; ?>
-    <li class="btn text-btn rounded-100 label-medium flex-center <?= $page >= $soTrang ? 'disabled' : '' ?>">
-      <a href="?mod=admin&act=products&page=<?= $page + 1 ?>" class="pagination__link"><i class="fal fa-arrow-right" style="margin-right: .6rem;text-decoration: none; "></i>Next</a>
+    <li class="btn text-btn rounded-100 label-medium d-flex <?= $page >= $soTrang ? 'disabled' : '' ?>">
+      <a href="?mod=admin&act=products&page=<?= $page + 1 ?>" class="pagination__link"><i class="fal label-medium fa-arrow-right" style="margin-right: .6rem;text-decoration: none;"></i>Next</a>
     </li>
   <?php else: ?>
     <h1 class='flex-center flex-full mt-5'>Trang này chưa tồn tại</h1>

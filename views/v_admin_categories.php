@@ -197,7 +197,7 @@
         <!-- <div class="flex mb30 " style="<?//php if(isset($_GET['search_category']))'display:none':''?>"> -->
         <div class="flex mb30" style="<?php if(isset($_GET['search_category'])): ?>display:none;<?php endif; ?>">
 
-          <div class="options-number flex g16" >
+          <!-- <div class="options-number flex g16" >
               <?php for($i=1 ;$i <= $number_Page; $i++):?>
               <a style="text-decoration:none; padding: 10px 12px ;border-radius:8px;" href="?mod=admin&act=categories&page=<?=$i?>" class="<?=($page_nows==$i)?'primary-btn':''?>" style="padding: 10px 15px;"><?=$i?></a>
               <?php $page = $i;?>
@@ -212,7 +212,22 @@
                     echo "$page";
                   }
                 // ?>" class="flex-center g8"><i class="fa-solid fa-arrow-right"></i> </a>
-          </div>
+          </div> -->
+          <ul id="paging" class="pagination flex g16 mt30">
+          <?php if($page <= $number_Page && $page > 0): ?>
+            <?php for ($i = 1; $i <= $number_Page; $i++) : ?>
+              <li class="pagination__item <?=($page_nows==$i) ? 'active' : '' ?>">
+                <a href="?mod=admin&act=categories&page=<?=$i?>" class="body-small pagination__link"><?= $i ?></a>
+              </li>
+            <?php endfor; ?>
+            <li class="btn text-btn rounded-100 label-medium d-flex <?= $page_nows >= $number_Page ? 'disabled' : '' ?>">
+              <a href="?mod=admin&act=categories&page=<?= $page_nows + 1 ?>" class="pagination__link"><i class="fal label-medium fa-arrow-right" style="margin-right: .6rem;text-decoration: none;"></i>Next</a>
+            </li>
+          <?php else: ?>
+            <h1 class='flex-center flex-full mt-5'>Trang này chưa tồn tại</h1>
+          <?php endif; ?>
+          </ul>
+
         </div>
       </div>
       </div>

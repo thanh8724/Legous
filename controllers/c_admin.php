@@ -271,15 +271,21 @@ if (isset($_GET['act'])) {
             break;
         case 'product-detail':
             include_once 'models/m_admin.php';
+            include_once 'models/m_category.php';
+
             // lấy dữ liệu
             $productdetail = product_getById($_GET['id']);
+            $getAllCategory = getCategories();
+
 
             // hiển thị dữ liệu  
             $view_name = 'admin_product-detail';
             break;
         case 'product-add':
             include_once 'models/m_admin.php';
+            include_once 'models/m_category.php';
 
+            $getAllCategory = getCategories();
             // lấy dữ liệu
 
 
