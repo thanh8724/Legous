@@ -1,20 +1,12 @@
 <?php
     require_once 'models/m_user.php';
-    if(isset($_SESSION['user']) && (is_array($_SESSION['user']) || is_object($_SESSION['user']) && count($_SESSION['user']) > 0)){
-        extract($_SESSION['user']);
-        // print_r($_SESSION['user']);
+    if(isset($_SESSION['userLogin']['id_user']) && (is_array($_SESSION['userLogin']['id_user']) || is_object($_SESSION['userLogin']['id_user']) && count($_SESSION['userLogin']['id_user']) > 0)){
+        extract($_SESSION['userLogin']['id_user']);
         $_SESSION['id_user'] = $id_user;
         if(is_array(checkAccount($id_user))) {
             extract(checkAccount($id_user));
         }
     }
-    if(isset($id_user)) {
-        #thêm cookies accounts_user nếu chưa có
-        if(!isset($_COOKIE['accounts_user'.$id_user])) {
-            setcookie('accounts_user'.$id_user, $id_user, time()+3600);
-        }
-    }
-   
 ?>
 <?php 
     /** header nav rendering */
@@ -69,7 +61,7 @@
                         <a href="?mod=user&act=general" class="header__nav__link header__subnav__link ttu">Account detail</a>
                     </li>
                     <li class="header__nav__item header__subnav__item">
-                        <a href="#" class="header__nav__link header__subnav__link ttu error60">Log out</a>
+                        <a href="?mod=user&act=logOut-account&id-account=$id" class="header__nav__link header__subnav__link ttu error60">Log out</a>
                     </li>
                 </ul>
             </div>
