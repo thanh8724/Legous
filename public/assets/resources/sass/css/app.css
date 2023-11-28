@@ -5076,6 +5076,10 @@ main .adminFooter ul li a {
   font-size: 2rem;
 }
 
+.text-error {
+  margin-top: 15px;
+}
+
 .content_order-detail h3 {
   margin: 8px;
 }
@@ -5110,7 +5114,7 @@ main .adminFooter ul li a {
 }
 
 .sliderDashboard_order-add-create .body_sliderDashboard_order-add-create .col-7 .left-order-add-create {
-  margin-bottom: 60px;
+  margin-bottom: 40px;
 }
 
 .body_sliderDashboard_order-add-create .col-7 input {
@@ -5172,7 +5176,7 @@ main .adminFooter ul li a {
 }
 .right-order-add-create .img_order-add-create img {
   height: 100%;
-  width: 100%;
+  width: 1000px;
   border-radius: 10px;
 }
 .right-order-add-create .button_delete_img {

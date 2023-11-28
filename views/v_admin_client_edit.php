@@ -1,41 +1,39 @@
 <?php
+
 if (@isset($_POST['btn_update'])) {
     $error = array();
+    // Validation for each input field
     if (!empty($_POST['fullname'])) {
         $fullname = $_POST['fullname'];
     } else {
-        $error['fullname'] = "Không được để trống tên đăng nhập";
+        $error['fullname'] = "Không được để trống Họ Và Tên";
     }
     if (!empty($_POST['username'])) {
         $username = $_POST['username'];
     } else {
         $error['username'] = "Không được để trống tên đăng nhập";
     }
-
     if (!empty($_POST['password'])) {
         $password = $_POST['password'];
     } else {
         $error['password'] = "Không được để trống mật khẩu";
     }
-
     if (!empty($_POST['phone'])) {
         $phone = $_POST['phone'];
     } else {
         $error['phone'] = "Không được để trống số điện thoại";
     }
-
     if (!empty($_POST['email'])) {
         $email = $_POST['email'];
     } else {
         $error['email'] = "Không được để trống số điện thoại";
     }
-
     $role = $_POST['role'];
     $id = $_GET['id'];
     $bio = $_POST['bio'];
-    $id = $_GET['id'];
 
-    if (isset($_FILES['file'])) {
+    // Check if a file was uploaded
+    if (isset($_FILES['file']) && $_FILES['file']['error'] == 0) {
         //Thư mục chứa file upload
         $upload_dir = './public/assets/media/images/users/';
         //Đường dẫn của file sau khi upload
@@ -77,31 +75,31 @@ if (@isset($_POST['btn_update'])) {
                     echo "Upload file thất bại";
                 }
             }
-        }else {
+        } else {
             if (empty($error)) {
                 if (move_uploaded_file($_FILES['file']['tmp_name'], $upload_file)) {
-                    $image = $filename .'.'. $type;
+                    $image = $filename . '.' . $type;
                 } else {
                     echo "Upload file thất bại";
                 }
             }
         }
-    }else {
+    } else {
+        // If no file was uploaded, use the existing image
         $image = $userInfo[0]['img'];
     }
+
     if (empty($error)) {
-        $id = $_GET['id'];
-        //Thư mục chứa file Delete
-        $delete_dir = './public/assets/media/images/users/';
-        //Đường dẫn của file sau khi Delete
-        if($image != $userInfo[0]['img']) {
-            $delete_file = $delete_dir . $userInfo[0]['img'];
+        // Only delete the old image file if a new image was uploaded
+        if (isset($_FILES['file']) && $_FILES['file']['error'] == 0 && $image != $userInfo[0]['img']) {
+            $delete_file = './public/assets/media/images/users/' . $userInfo[0]['img'];
+            unlink($delete_file);
         }
-        unlink($delete_file);
+
         editUserProfile($id, $fullname, $username, $password, $email, $image, $role, $bio, $phone);
         header("Location: ?mod=admin&act=client");
     } else {
-        $error = "Loi64";
+        $error['upload'] = "Upload ảnh thất bại";
     }
 }
 if (@isset($_POST['btn_delete'])) {
@@ -244,35 +242,58 @@ if (@isset($_POST['btn_cancelled'])) {
                                     <input name="fullname" class="" type="text"
                                         value="<?php echo $userInfo[0]['fullname'] ?>" placeholder="Nhập Họ Và Tên"
                                         aria-label="default input example">
+                                    <?php
+                                    if (isset($error['fullname']) && !empty($error['fullname']))
+                                        echo "<p class='text-danger text-error'>{$error['fullname']}</p>";
+                                    ?>
                                 </div>
-                                
                                 <div class="left-order-add-create">
                                     <h2>Tên Đăng Nhập</h2>
                                     <input name="username" class="" type="text"
                                         value="<?php echo $userInfo[0]['username'] ?>" placeholder="Nhập Tên Đăng Nhập"
                                         aria-label="default input example">
+                                    <?php
+                                    if (isset($error['username']) && !empty($error['username']))
+                                        echo "<p class='text-danger text-error'>{$error['username']}</p>";
+                                    ?>
                                 </div>
-                               
+
                                 <div class="left-order-add-create">
                                     <h2>Mật Khẩu</h2>
                                     <input name="password" class="" type="text"
                                         value="<?php echo $userInfo[0]['password'] ?>" placeholder="Nhập Mật Khẩu"
                                         aria-label="default input example">
+                                    <?php
+                                    if (isset($error['password']) && !empty($error['password']))
+                                        echo "<p class='text-danger text-error'>{$error['password']}</p>";
+                                    ?>
                                 </div>
                                 <div class="left-order-add-create">
                                     <h2>Email</h2>
                                     <input name="email" class="" type="text" value="<?php echo $userInfo[0]['email'] ?>"
                                         placeholder="Email" aria-label="default input example">
+                                    <?php
+                                    if (isset($error['email']) && !empty($error['email']))
+                                        echo "<p class='text-danger text-error'>{$error['email']}</p>";
+                                    ?>
                                 </div>
                                 <div class="left-order-add-create">
                                     <h2>Số điện thoại</h2>
                                     <input name="phone" class="" type="text" value="<?php echo $userInfo[0]['phone'] ?>"
                                         placeholder="Nhập Số Điện Thoại" aria-label="default input example">
+                                    <?php
+                                    if (isset($error['phone']) && !empty($error['phone']))
+                                        echo "<p class='text-danger text-error'>{$error['phone']}</p>";
+                                    ?>
                                 </div>
                                 <div class="describe-order_detail">
                                     <h2>Mô Tả</h2>
                                     <textarea name="bio" id="" cols="30" rows="10" placeholder="Nhập mô tả người dùng"
                                         value="<?php echo $userInfo[0]['bio'] ?>"><?php echo $userInfo[0]['bio'] ?></textarea>
+                                    <?php
+                                    if (isset($error['bio']) && !empty($error['bio']))
+                                        echo "<p class='text-danger text-error'>{$error['bio']}</p>";
+                                    ?>
                                 </div>
 
                                 <div class="Dropdowns_categogy">
@@ -280,8 +301,12 @@ if (@isset($_POST['btn_cancelled'])) {
                                     <div class="custom-select">
                                         <!-- Dropdown -->
                                         <select name="role" id="dropdown" onchange="updateInput()">
-                                            <option value="0">User thường</option>
-                                            <option value="2023">Admin</option>
+                                            <option
+                                                selected="<?php echo ($userInfo[0]['role'] == 0) ? 'checked' : ''; ?>"
+                                                value="0">User thường</option>
+                                            <option
+                                                selected="<?php echo ($userInfo[0]['role'] == 2023) ? 'checked' : ''; ?>"
+                                                value="2023">Admin</option>
                                         </select>
                                     </div>
                                 </div>
@@ -289,16 +314,22 @@ if (@isset($_POST['btn_cancelled'])) {
                             <div class="col-5 col-md">
                                 <div class="right-order-add-create p30 d-flex justify-content-center flex-column ">
                                     <div class="img_order-add-create rounded-4">
-                                        <?php 
-                                        if(!empty($userInfo[0]['img']) && $userInfo[0]['img'] != NULL) {
+                                        <?php
+                                        $upload_dir = './public/assets/media/images/users/';
+                                        //Đường dẫn của file sau khi upload
+                                        $upload_file = $upload_dir . $userInfo[0]['img'];
+                                        if (empty($userInfo[0]['img']) || $userInfo[0]['img'] == NULL || !file_exists($upload_file)) {
                                             ?>
-                                        <img src="./public/assets/media/images/users/<?php echo $userInfo[0]['img'] ?>">
-                                            <?php 
-                                        }else {
+                                            <td><img src="./public/assets/media/images/users/anonyUser.png"></td>
+                                            <?php
+                                        } else {
                                             ?>
-                                        <img style="width: 800px;" src="./public/assets/media/images/users/anonyUser.png">
-                                            <?php 
+                                            <td><img
+                                                    src="./public/assets/media/images/users/<?php echo $userInfo[0]['img'] ?>">
+                                            </td>
+                                            <?php
                                         }
+
                                         ?>
                                     </div>
                                     <hr>

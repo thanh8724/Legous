@@ -353,7 +353,19 @@ if (isset($_POST['submitComment'])) {
             </div>
             <div class="panel__item comment__panel">
                 <div class="block">
-                    <div class="title-large fw-black">309 comments</div>
+                    <div class="title-large fw-black">
+                        <?php 
+                        $productId = $_GET['idProduct'];
+                        $productCmt = getProductCommentByProductId($productId);
+                        $i = 0;
+                        foreach ($productCmt as $item) {
+                           if($item['id_product'] == $productId) {
+                            $i++;
+                           }
+                        }
+                        ?>
+                        <?php echo $i ?> comments
+                    </div>
                     <?php
                     if (isset($_SESSION['userLogin'])) {
                     ?>
