@@ -436,32 +436,32 @@ foreach ($getCmt as $item) {
                         <td class="label-large"><?php echo $getAllBill[0]['create_date']?></td>
                         <td class="label-large"><?php echo $getIdUser['fullname']?></td>
                         <?php 
-                        if($getAllBill[0]['status'] == 5) {
+                        if($getAllBill[0]['status'] == 6) {
                         ?>
                             <td class="label-large tableLargeItems" style="justify-content: center;"><span
                                 class="dotTable red"></span>Đã Hủy</td>
                                 <?php 
-                        }elseif($getAllBill[0]['status'] == 4) {
+                        }elseif($getAllBill[0]['status'] == 5) {
                             ?>
                             <td class="label-large tableLargeItems" style="justify-content: center;"><span
                                 class="dotTable green"></span>Đã Giao</td>
                             <?php 
-                        }elseif($getAllBill[0]['status'] == 3) {
+                        }elseif($getAllBill[0]['status'] == 4) {
                             ?>
                             <td class="label-large tableLargeItems" style="justify-content: center;"><span
                                 class="dotTable orange"></span>Hoàn đơn</td>
                             <?php 
-                        }elseif($getAllBill[0]['status'] == 2) {
+                        }elseif($getAllBill[0]['status'] == 3) {
                             ?>
                             <td class="label-large tableLargeItems" style="justify-content: center;"><span
                                 class="dotTable blue"></span>Đang giao hàng</td>
                             <?php 
-                        }elseif($getAllBill[0]['status'] == 1) {
+                        }elseif($getAllBill[0]['status'] == 2) {
                             ?>
                             <td class="label-large tableLargeItems" style="justify-content: center;"><span
                                 class="dotTable black"></span>Chờ Lấy Hàng</td>
                             <?php 
-                        }elseif($getAllBill[0]['status'] == 0) {
+                        }elseif($getAllBill[0]['status'] == 1) {
                             ?>
                             <td class="label-large tableLargeItems" style="justify-content: center;"><span
                                 class="dotTable gray"></span>Chờ Xác Nhận</td>

@@ -86,13 +86,17 @@ if (@isset($_POST['btn_update'])) {
                 }
             }
         }
+    }else {
+        $image = $userInfo[0]['img'];
     }
     if (empty($error)) {
         $id = $_GET['id'];
         //Thư mục chứa file Delete
         $delete_dir = './public/assets/media/images/users/';
         //Đường dẫn của file sau khi Delete
-        $delete_file = $delete_dir . $userInfo[0]['img'];
+        if($image != $userInfo[0]['img']) {
+            $delete_file = $delete_dir . $userInfo[0]['img'];
+        }
         unlink($delete_file);
         editUserProfile($id, $fullname, $username, $password, $email, $image, $role, $bio, $phone);
         header("Location: ?mod=admin&act=client");
@@ -120,12 +124,6 @@ if (@isset($_POST['btn_cancelled'])) {
     <!----======== Header DashBoard ======== -->
     <div class="top">
         <i class="fas fa-angle-left sidebar-toggle"></i>
-        <div class="search-box">
-            <form action="" method="post">
-                <i class="far fa-search"></i>
-                <input type="text" placeholder="Search here...">
-            </form>
-        </div>
         <form style="width: 100%;display:flex; justify-content: center;" action="" method="post">
             <div class="search-box">
                 <i class="far fa-search"></i>
@@ -247,12 +245,14 @@ if (@isset($_POST['btn_cancelled'])) {
                                         value="<?php echo $userInfo[0]['fullname'] ?>" placeholder="Nhập Họ Và Tên"
                                         aria-label="default input example">
                                 </div>
+                                
                                 <div class="left-order-add-create">
                                     <h2>Tên Đăng Nhập</h2>
                                     <input name="username" class="" type="text"
                                         value="<?php echo $userInfo[0]['username'] ?>" placeholder="Nhập Tên Đăng Nhập"
                                         aria-label="default input example">
                                 </div>
+                               
                                 <div class="left-order-add-create">
                                     <h2>Mật Khẩu</h2>
                                     <input name="password" class="" type="text"
@@ -289,7 +289,17 @@ if (@isset($_POST['btn_cancelled'])) {
                             <div class="col-5 col-md">
                                 <div class="right-order-add-create p30 d-flex justify-content-center flex-column ">
                                     <div class="img_order-add-create rounded-4">
+                                        <?php 
+                                        if(!empty($userInfo[0]['img']) && $userInfo[0]['img'] != NULL) {
+                                            ?>
                                         <img src="./public/assets/media/images/users/<?php echo $userInfo[0]['img'] ?>">
+                                            <?php 
+                                        }else {
+                                            ?>
+                                        <img style="width: 800px;" src="./public/assets/media/images/users/anonyUser.png">
+                                            <?php 
+                                        }
+                                        ?>
                                     </div>
                                     <hr>
                                     <div style="width: 100%;" id="drop-area">
