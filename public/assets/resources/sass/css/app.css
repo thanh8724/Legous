@@ -2232,6 +2232,70 @@ ul {
   }
 }
 /* PC: width >= 1024px */
+.panels .comment__panel .comment__wrapper .comment__item {
+  background-color: #f7f7f7;
+  border-radius: 30px;
+}
+.panels .comment__panel .comment__wrapper .comment__item .comment__hidden {
+  justify-content: unset !important;
+}
+.panels .comment__panel .comment__wrapper .comment__item .comment__user {
+  justify-content: space-between;
+}
+.panels .comment__panel .comment__wrapper .comment__item .comment__user .moreFeatureComment .ulDadMoreFeatureComment {
+  width: 30px;
+  height: 30px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  list-style: none;
+  position: relative;
+}
+.panels .comment__panel .comment__wrapper .comment__item .comment__user .moreFeatureComment .ulDadMoreFeatureComment .liDadMoreFeatureComment {
+  cursor: pointer;
+}
+.panels .comment__panel .comment__wrapper .comment__item .comment__user .moreFeatureComment .ulDadMoreFeatureComment .liDadMoreFeatureComment:hover .divMoreFeatureComment {
+  display: block;
+}
+.panels .comment__panel .comment__wrapper .comment__item .comment__user .moreFeatureComment .ulDadMoreFeatureComment .liDadMoreFeatureComment .ellipsisBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+}
+.panels .comment__panel .comment__wrapper .comment__item .comment__user .moreFeatureComment .ulDadMoreFeatureComment .liDadMoreFeatureComment .divMoreFeatureComment {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.panels .comment__panel .comment__wrapper .comment__item .comment__user .moreFeatureComment .ulDadMoreFeatureComment .liDadMoreFeatureComment .divMoreFeatureComment .ulSonMoreFeatureComment .liSonMoreFeatureComment {
+  padding: 10px 30px;
+  margin-bottom: 10px;
+  transition: 0.22s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.panels .comment__panel .comment__wrapper .comment__item .comment__user .moreFeatureComment .ulDadMoreFeatureComment .liDadMoreFeatureComment .divMoreFeatureComment .ulSonMoreFeatureComment .liSonMoreFeatureComment:last-child {
+  margin-bottom: 0;
+}
+.panels .comment__panel .comment__wrapper .comment__item .comment__user .moreFeatureComment .ulDadMoreFeatureComment .liDadMoreFeatureComment .divMoreFeatureComment .ulSonMoreFeatureComment .liSonMoreFeatureComment:hover {
+  background-color: #ccc;
+  border-radius: 10px;
+}
+.panels .comment__panel .comment__wrapper .comment__item .comment__user .moreFeatureComment .ulDadMoreFeatureComment .liDadMoreFeatureComment .divMoreFeatureComment .ulSonMoreFeatureComment .liSonMoreFeatureComment a {
+  display: block;
+  width: 100px;
+  color: #1d192b;
+  font-size: 1.6rem;
+  font-weight: 600;
+  transition: 0.22s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.panels .comment__panel .comment__wrapper .comment__item .comment__user .moreFeatureComment .ulDadMoreFeatureComment .liDadMoreFeatureComment .divMoreFeatureComment .ulSonMoreFeatureComment .liSonMoreFeatureComment a:hover {
+  opacity: 0.6;
+}
+
 /* Mobile: with < 740px */
 @media only screen and (max-width: 46.1875em) {
   .product__wrapper--without-carousel {

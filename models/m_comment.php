@@ -23,10 +23,14 @@
         pdo_execute("UPDATE comment SET is_appear = {$value} WHERE id = {$id}");
     }
     function delCmt($id) {
-        pdo_execute("DELETE FROM comment WHERE id_user = {$id}");
+        pdo_execute("DELETE FROM comment WHERE id = {$id}");
     }
 
     function addImgCmt($id_bill,$src) {
         pdo_execute("INSERT INTO comment_img (`id_comment`,`src`) VALUES(?,?)",$id_bill,$src);
+    }
+
+    function reported($id, $value) {
+        pdo_execute("UPDATE comment SET reported = {$value} WHERE id = {$id}");
     }
 ?>
