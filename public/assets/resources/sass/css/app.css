@@ -4263,7 +4263,10 @@ html {
   color: #1d192b;
 }
 .container-full main .detailOrders .detailerOrders_bottom .detailOrders-right .listProductCart .listProductCart_item {
-  margin: 15px 0;
+  margin: 30px 0;
+}
+.container-full main .detailOrders .detailerOrders_bottom .detailOrders-right .listProductCart .listProductCart_item .cart-item-name {
+  margin-bottom: 10px;
 }
 .container-full main .detailOrders .detailerOrders_bottom .detailOrders-right .listProductCart .listProductCart_item img {
   width: 130px;
@@ -4290,6 +4293,11 @@ html {
   color: #ffffff;
   padding: 15px;
   border-radius: 10px;
+  margin: 15px 0;
+}
+
+.totalAmountConfirm {
+  margin: 15px 0;
 }
 
 /* Mobile: with < 740px */
