@@ -204,8 +204,11 @@
                             <i class="far fa-search"></i>
                         </button>
                     </li>
-                    <li class="header__nav__item flex-center"><button class="icon-btn" data-elm-function=""><i
-                                class="far fa-shopping-cart"></i></button></li>
+                    <li class="header__nav__item flex-center">
+                        <a href="?mod=cart&act=viewCart" class="icon-btn">
+                            <i class="far fa-shopping-cart"></i>
+                        </a>
+                    </li>
                     <li class="header__nav__item por flex-center">
                         <?= $userWidgetHtml ?>
                     </li>
@@ -214,7 +217,7 @@
                 <!-- header respon nav start -->
                 <ul class="header__nav header__nav-respon">
                     <li class="header__nav__item header__nav-respon__item">
-                        <button class="icon-btn open-respon-btn"><i class="fal fa-shopping-cart"></i></button>
+                        <a href="?mod=cart&act=viewCart" class="icon-btn open-respon-btn"><i class="fal fa-shopping-cart"></i></a>
                     </li>
                 </ul>
                 <!-- header respon nav end -->
@@ -389,4 +392,3 @@
 </html>
 <script src="./public/assets/resources/js/main.js"></script>
 <script src="./public/assets/resources/js/user.js"></script>
-<script src="./public/assets/resources/js/slickEdit.js"></script>

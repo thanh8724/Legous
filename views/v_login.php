@@ -57,6 +57,7 @@
                 <label for="" class="label__place">Mật khẩu</label>
                 <span class="form__message"></span>
             </div>
+            <?= $loginMessage ?>
             <input type="submit" name="login" class="btn form__btn" style="background: black; color: white; border-radius: .8rem;" value="ĐĂNG NHẬP NGAY">
             <div class="label-large">Bạn quên mật khẩu? <a href="#register-section" class="click">Nhấp vào đây!</a></div>
         </form>

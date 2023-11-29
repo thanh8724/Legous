@@ -3,115 +3,136 @@ session_start();
 ob_start();
 // unset($_SESSION['admin']);
 
-// Gữi/nhận dữ liệu thông qua models
-// Hiển thị dữ liệu thông qua view
-if (isset($_GET['act'])) {
-    switch ($_GET['act']) {
-        case 'home':
-            // lấy dữ liệu
-            include_once 'models/m_cart.php';
-            include_once 'models/m_product.php';
-            include_once 'models/m_category.php';
-            include_once 'models/m_partner.php';
-            include_once 'models/m_user.php';
-            $topLoveProduct = getProductsByLove(1);
-            $loveProducts = getProductsByLove(12);
-            $categories = getCategories();
-            $partner = getPartner();
-            $upcommingProduct = getFeatureProduct();
-            // if(isset($_SESSION['user'])) {
-            //     print_r($_SESSION['user']);
-            // }
+    // Gữi/nhận dữ liệu thông qua models
+    // Hiển thị dữ liệu thông qua view
+    if(isset($_GET['act'])){
+        switch ($_GET['act']){
+            case 'home':
+                // lấy dữ liệu
+                include_once 'models/m_cart.php';
+                include_once 'models/m_product.php';
+                include_once 'models/m_category.php';
+                include_once 'models/m_partner.php';
+                include_once 'models/m_user.php';
+                $topLoveProduct = getProductsByLove(1);
+                $loveProducts = getProductsByLove(12);
+                $categories = getCategories();
+                $partner = getPartner();
+                $upcommingProduct = getFeatureProduct();
+                // if(isset($_SESSION['user'])) {
+                //     print_r($_SESSION['user']);
+                // }
+                
+                // hiển thị dữ liệu
+                $view_name = 'home';
+                break;
+            case 'login':
+                $loginMessage = '';
+                include_once('models/m_user.php');
+                /** login */
+                // if (isset($_POST['login']) && $_POST['login']) {
+                if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                    $email = $_POST['email'];
+                    $password = $_POST['password'];
+                    // echo $name , $password;
+                    if ($email !== '' && $password !== '')   {
+                        $user = checkUser($email, $password);
+                        if ($user) {
+                            extract($user);
+                            $loginInfo = [
+                                "email_user" => $email,
+                                "password_user" => $password,
+                                "id_user" => $id
+                            ];
 
-            // hiển thị dữ liệu
-            $view_name = 'home';
-            break;
-        case 'login':
-            include_once('models/m_user.php');
-            /** login */
-            // if (isset($_POST['login']) && $_POST['login']) {
-            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                $email = $_POST['email'];
-                $password = $_POST['password'];
-                // echo $name , $password;
-                if ($email !== '' && $password !== '') {
-                    $user = checkUser($email, $password);
-                    if ($user) {
-                        extract($user);
-                        $loginInfo = [
-                            "email_user" => $email,
-                            "password_user" => $password,
-                            "id_user" => $id
-                        ];
-                        if ($role == 0) {
-                            $_SESSION['role'] = $role;
-                            $_SESSION['userLogin'] = $loginInfo;
-                            #thêm cookies accounts_user nếu chưa có
-                            if (!isset($_COOKIE['accounts_user' . $loginInfo['id_user']])) {
-                                setcookie('accounts_user' . $loginInfo['id_user'], $loginInfo['id_user'], time() + (60 * 60 * 24 * 30));
+                            // Check if a session cart exists for the user
+                            if (isset($_SESSION['cart']) && is_array($_SESSION['cart'])) {
+                                // Transfer products from the session cart to the cart table
+
+                                // Retrieve the products from the session cart
+                                $cartProducts = $_SESSION['cart'];
+
+                                // Loop through the session cart products and insert them into the cart table
+                                foreach ($cartProducts as $productId => $product) {
+                                    $name = $product['name'];
+                                    $price = $product['price'];
+                                    $img = $product['img'];
+                                    $qty = $product['qty'];
+                                    $totalCost = $price * $qty;
+
+                                    // Call a function to insert the product into the cart table
+                                    insertCart ($id, $productId, $name, $price, $img, $qty, $totalCost);
+                                }
+
+                                // Clear the session cart
+                                // $_SESSION['cart'] = [];
+
+                                // redirect
+                                header('Location: ?mod=cart&act=viewCart');
                             }
-                            if (isset($_SESSION['id_account'])) {
-                                unset($_SESSION['id_account']);
+                            
+                            if ($role == 0) {
+                                $_SESSION['role'] = $role;
+                                $_SESSION['userLogin'] = $loginInfo;
+                                header('Location: ?mod=page&act=home&idUser=' . $id);
+                                exit();
+                            } else if ($role == 2023) {
+                                $_SESSION['role'] = $role;
+                                $_SESSION['admin'] = $loginInfo;
+                                header('Location: ?mod=admin&act=general');
+                                exit();
                             }
-                            header('Location: ?mod=page&act=home&idUser=' . $id);
-                            exit();
-                        } else if ($role == 2023) {
-                            $_SESSION['role'] = $role;
-                            $_SESSION['admin'] = $loginInfo;
-                            header('Location: ?mod=admin&act=general');
+                        } else {
+                            $loginMessage = '<span class="primary-text form__message fw-smb label-medium"></span>';
+                            header('Location: ?mod=page&act=login#login-section');
                             exit();
                         }
-                    } else {
-                        header('Location: ?mod=page&act=login#login-section');
-                        exit();
                     }
                 }
-            }
-            if (isset($_SESSION['userLogin'])) {
-                extract($_SESSION['userLogin']);
-                $_SESSION['role'] = $role;
-                header('Location: ?mod=page&act=home');
-                exit();
-            } else if (isset($_SESSION['admin'])) {
-                header('Location: ?mod=admin&act=home');
-                exit();
-            }
-            // hiển thị dữ liệu
-            $view_name = 'login';
-            break;
-        case 'register':
-            // lấy dữ liệu
-            /** register */
-            include_once 'models/m_user.php';
+                if (isset($_SESSION['userLogin'])) {
+                    extract($_SESSION['userLogin']);
+                    $_SESSION['role'] = $role;
+                    header('Location: ?mod=page&act=home');
+                    exit();
+                } else if (isset($_SESSION['admin'])) {
+                    header('Location: ?mod=admin&act=home');
+                    exit();
+                }
+                // hiển thị dữ liệu
+                $view_name = 'login';
+                break;
+            case 'register':
+                // lấy dữ liệu
+                /** register */
+                include_once 'models/m_user.php';
 
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $username = $_POST['username'];
                 $email = $_POST['email'];
                 $password = $_POST['password'];
 
-                if ($username !== '' && $email !== '' && $password !== '') {
-                    $userId = insertUser($username, $email, $password);
-                    $list_infoUser = [
-                        "id_user" => $userId,
-                        "name_user" => $username,
-                        "password_user" => $password,
-                        "email_user" => $email
-                    ];
-                    $_SESSION['user'] = $list_infoUser;
+                    if ($username !== '' && $email !== '' && $password !== '') {
+                        $userId = insertUser($username, $email, $password);
+                        $list_infoUser = [
+                            "id_user" => $userId,
+                            "name_user" => $username,
+                            "password_user" => $password,
+                            "email_user" => $email
+                        ];
+                        $_SESSION['user'] = $list_infoUser;
+                    }
                 }
-            }
-            if (isset($_SESSION['user'])) {
-                $emailView = $email_user;
-                $passwordView = $password_user;
-                header("Location: ?mod=page&act=login#login-section");
-                exit();
-            }
-            ;
-            break;
-        case 'category':
-            // lấy dữ liệu
-            include_once 'models/m_product.php';
-            include_once 'models/m_category.php';
+                if (isset($_SESSION['user'])) {
+                    $emailView = $email_user;
+                    $passwordView = $password_user;
+                    header("Location: ?mod=page&act=login#login-section");
+                    exit();
+                };
+                break;
+            case 'category':
+                 // lấy dữ liệu
+                include_once 'models/m_product.php';
+                include_once 'models/m_category.php';
 
             $maxPrice = getMaxProductPrice();
             $minPrice = getMinProductPrice();
@@ -160,14 +181,14 @@ if (isset($_GET['act'])) {
             $view_name = 'general';
             break;
 
-        // case 'filter':
-        //     include_once 'models/m_product.php';
-        //     include_once 'models/m_category.php';
-        case 'shop':
-            include_once 'models/m_product.php';
-            include_once 'models/m_category.php';
-            $maxPrice = getMaxProductPrice();
-            $minPrice = getMinProductPrice();
+            // case 'filter':
+            //     include_once 'models/m_product.php';
+            //     include_once 'models/m_category.php';
+            case 'shop':
+                include_once 'models/m_product.php';
+                include_once 'models/m_category.php';
+                $maxPrice = getMaxProductPrice();
+                $minPrice = getMinProductPrice();
 
             $manualMin = $minPrice;
             $manualMax = $maxPrice;
@@ -207,13 +228,12 @@ if (isset($_GET['act'])) {
 
             $view_name = 'productDetail';
 
-
-            break;
-
-        default:
-
-            break;
+                
+                break;
+            default:
+                
+                break;
+        }
+        require_once 'views/v_user_layout.php';
     }
-    require_once 'views/v_user_layout.php';
-}
 ?>

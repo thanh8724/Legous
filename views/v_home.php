@@ -188,31 +188,30 @@
 
             $html .= 
             <<<HTML
+                <div class="product product__carousel">
+                    <!-- single product start -->
                     <div class="product product__carousel">
-                        <!-- single product start -->
-                        <div class="product product__carousel">
-                            <a href="$linkToDetail" class="product__banner banner-contain rounded-8 por"
-                                style="background-image: url('$imgPath')">
-                                <div class="product__overlay poa flex-center">
-                                    $productBtn
-                                </div>
-                            </a>
-                            <a href="#" class="product__info">
-                                <div class="product__info__name title-medium fw-smb">$name</div>
-                                $priceView
-                                $salePriceView
-                            </a>
-                            <div class="product__info flex-between width-full">
-                                <div class="product__info__view body-medium">1,2m+ views</div>
-                                <div class="product__info__rated flex g6 v-center body-medium">
-                                    4.4 <i class="fa fa-star start"></i>
-                                </div>
+                        <a href="$linkToDetail" class="product__banner banner-contain rounded-8 por"
+                            style="background-image: url('$imgPath')">
+                            <div class="product__overlay poa flex-center">
+                                $productBtn
+                            </div>
+                        </a>
+                        <a href="#" class="product__info">
+                            <div class="product__info__name title-medium fw-smb">$name</div>
+                            $priceView
+                            $salePriceView
+                        </a>
+                        <div class="product__info flex-between width-full">
+                            <div class="product__info__view body-medium">1,2m+ views</div>
+                            <div class="product__info__rated flex g6 v-center body-medium">
+                                4.4 <i class="fa fa-star start"></i>
                             </div>
                         </div>
-                        <!-- single product end -->
                     </div>
-                HTML;
-
+                    <!-- single product end -->
+                </div>
+            HTML;
                 $productIndex++;
             }
 
@@ -234,7 +233,7 @@
         $i = 1;
         foreach ($categories as $item) {
             extract($item);
-            $linkToCategory = "?mod=page&category&idCategory=$item[id]";
+            $linkToCategory = "?mod=page&act=category&idCategory=$item[id]";
             $collectionItemTitle = '<h2 class="text-46 ttu">'.$item['name'].'</h2>';
             
             $tabsHtml .= 

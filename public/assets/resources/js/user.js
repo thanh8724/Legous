@@ -61,15 +61,15 @@ function select__order()
 {
     const checkboxes = document.querySelectorAll("input[type='checkbox']");
     checkboxes[0].addEventListener("click", function() {
-      for (const checkbox of checkboxes) {
-        if(!checkbox.checked) {
-            checkboxes[0].checked = true;
-            checkbox.checked = true;
-        }else {
-            checkboxes[0].checked = false;
-            checkbox.checked = false;
+        for (const checkbox of checkboxes) {
+            if(!checkbox.checked) {
+                checkboxes[0].checked = true;
+                checkbox.checked = true;
+            }else {
+                checkboxes[0].checked = false;
+                checkbox.checked = false;
+            }
         }
-      }
     });
 }
 
@@ -86,4 +86,4 @@ if(button_switchAccount) {
 
 slider_menuMobile();
 input_typeCheckbox();
-select__order();
+// select__order();

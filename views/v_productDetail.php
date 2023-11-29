@@ -27,10 +27,16 @@ if (isset($_GET['idProduct']) && $_GET['idProduct']) {
         $btnsHtmlMobile .=
             <<<HTML
                     <form action="?mod=cart&act=addCart" method="post" class="flex-column g12">
-                        <a href="" class="product__btn">
-                            <i class="far fa-cart-plus"></i>
+                        <button class="product__btn flex-center por">
+                            <i class="far fa-cart-plus" style="
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%,-50%);
+                            color: black;
+                            z-index: 1"></i>
                             <input class="icon-btn fab box-shadow1" name="addCart" type="submit" value="">
-                        </a>
+                        </button>
                         <input type="hidden" name="name" value="$name">
                         <input type="hidden" name="price" value="$price">
                         <input type="hidden" name="img" value="$img">
@@ -39,12 +45,12 @@ if (isset($_GET['idProduct']) && $_GET['idProduct']) {
                     </form>
                 HTML;;
     } else {
+        $btnText = 'ĐẶT TRƯỚC';
         $btnsHtml .=
             <<<HTML
-                    <button class="btn primary-btn rounded-100">MUA NGAY</button>
-                HTML;
+                <button class="btn primary-btn rounded-100">$btnText</button>
+            HTML;
         $btnsHtmlMobile .= '';
-        $btnText = 'ĐẶT TRƯỚC';
     }
 
 
@@ -52,8 +58,7 @@ if (isset($_GET['idProduct']) && $_GET['idProduct']) {
     $relatedProducts = getRelatedProduct($idCategory, 12);
     $randomProducts = getProducts(12);
 
-    function renderCarouselProduct($products)
-    {
+    function renderCarouselProduct($products) {
         shuffle($products);
         $productsHtml = '';
 
@@ -382,7 +387,7 @@ if (isset($_POST['editComment'])) {
             <button class="icon-btn love-btn toggle-btn mobile transparent"><i class="fal fa-heart"></i></button>
         </div>
         <div class="flex-between v-center">
-            <span class="text-38 fw-normal" style="font-family: inherit;">1.289.099 VND</span>
+            <span class="text-38 fw-normal" style="font-family: inherit;"><?= formatVND($price) ?></span>
             <span class="label-medium">
                 <?= $qty ?> sản phẩm
             </span>
@@ -390,7 +395,7 @@ if (isset($_POST['editComment'])) {
         <div class="qty__form flex v-center g12">
             Số lượng:
             <button class="minus-btn icon-btn outline-btn"><i class="fal fa-minus"></i></button>
-            <input type="number" min="0" max="<?= $qty ?>" class="qty__input form__input" style="border: none; ouline: none; width: 3rem" value="1">
+            <input type="number" min="0" max="<?= $qty ?>" class="qty__input form__input tac" style="border: none; ouline: none; width: 3rem" value="1" readonly>
             <button class="plus-btn icon-btn outline-btn"><i class="fal fa-plus"></i></button>
         </div>
         <div class="flex g12 desktop">
@@ -692,10 +697,10 @@ if (isset($_POST['editComment'])) {
     <div class="bottom-bar__inner flex-full p10 flex-column g12 rounded-12 box-shadow1">
         <div class="flex-between">
             <div class="flex-column flex-between">
-                <h4 class="title-large fw-black">1.268.099 VNĐ</h4>
+                <h4 class="title-large fw-black"><?= formatVND($price) ?></h4>
                 <a href="" class="add-coupon-btn primary-text label-large fw-black">Thêm phiếu giảm giá</a>
             </div>
-            <button class="icon-btn fab box-shadow1"><i class="far fa-cart-plus"></i></button>
+            <?= $btnsHtmlMobile ?>
         </div>
         <button class="btn primary-btn rounded-8"><i class="fal fa-arrow-right"></i>
             <?= !empty($btnText) ? $btnText : 'Mua ngay' ?>
