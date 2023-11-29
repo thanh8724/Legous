@@ -37,6 +37,36 @@ function slider_menuMobile()
         });
     })
 }
+<<<<<<< HEAD
+=======
+
+// tạo input[checkbox] để ẩn lỗi ở trang không có input[checkbox]
+function input_typeCheckbox()
+{
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.setAttribute("style", "display: none;");
+    document.body.appendChild(checkbox);
+}
+
+//  select check box
+function select__order()
+{
+    const checkboxes = document.querySelectorAll("input[type='checkbox']");
+    checkboxes[0].addEventListener("click", function() {
+        for (const checkbox of checkboxes) {
+            if(!checkbox.checked) {
+                checkboxes[0].checked = true;
+                checkbox.checked = true;
+            }else {
+                checkboxes[0].checked = false;
+                checkbox.checked = false;
+            }
+        }
+    });
+}
+
+>>>>>>> c6cdf0a044bae3265cd7829a2fd8f1d84f402310
 // show - hidden switch account
 const button_switchAccount = document.querySelector('.box__changeAccount svg');
 // let type_switchAccount = 
@@ -47,4 +77,10 @@ if(button_switchAccount) {
     });
 }
 
+<<<<<<< HEAD
 slider_menuMobile();
+=======
+slider_menuMobile();
+input_typeCheckbox();
+// select__order();
+>>>>>>> c6cdf0a044bae3265cd7829a2fd8f1d84f402310

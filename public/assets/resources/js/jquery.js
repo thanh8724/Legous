@@ -2,19 +2,23 @@
 /** home page slick initialized */
 $(document).ready(function () {
     // hero banner
-    $('.hero-banner__wrapper').slick({
-        prevArrow: false,
-        nextArrow: false,
-        dots: true,
-        speed: 400,
-        autoplay: false,
-    });
+    if ($('.hero-banner__wrapper')) {
+        $('.hero-banner__wrapper').slick({
+            prevArrow: '<button class="icon-btn prev-btn" style="background: rgba(255, 255 , 255 , .2); color: black; left: 5%"><i class="fal fa-chevron-left"></i></button>',
+            nextArrow: '<button class="icon-btn next-btn" style="background: rgba(255, 255 , 255 , .2); color: black; right: 5%"><i class="fal fa-chevron-right"></i></button>',
+            dots: true,
+            speed: 400,
+            autoplay: false,
+        }); 
+    }
 
     //sale banner 
-    $('.sale-banner__wrapper').slick( {
-        prevArrow: false,
-        nextArrow: false,
-    });
+    if ($('.sale-banner__wrapper')) {
+        $('.sale-banner__wrapper').slick( {
+            prevArrow: false,
+            nextArrow: false,
+        });
+    }
 
     // normal product carousel
     const slidesToShow = 4;
@@ -42,7 +46,7 @@ $(document).ready(function () {
             // Add more breakpoints and settings as needed
         ]
     }
-    const numberOfProductCarousel = 4;
+    const numberOfProductCarousel = 1;
     slickInit('.product__wrapper--normal--slick__', numberOfProductCarousel, productCarouselConfig);
 
     function slickInit (className, numberOfCarousel, config) {
@@ -119,26 +123,30 @@ $(document).ready(function () {
 
 /** shop page slick initialized */
 $(document).ready(function () {
-    $('.feature-category__wrapper').slick({
-        arrows: false,
-        dots: false,
-        variableWidth: true,
-        swipeToSlide: true
-    });
-    $('.feature-product__wrapper').slick({
-        infinite: false,
-        dots: true,
-        variableWidth: true,
-        swipeToSlide: true,
-        prevArrow: '<button class="icon-btn prev-btn box-shadow1" style="background: white; color: black"><i class="fal fa-chevron-left"></i></button>',
-        nextArrow: '<button class="icon-btn next-btn box-shadow1" style="background: white; color: black"><i class="fal fa-chevron-right"></i></button>',
-    });
+    if ($('.feature-category__wrapper')) {
+        $('.feature-category__wrapper').slick({
+            arrows: false,
+            dots: false,
+            variableWidth: true,
+            swipeToSlide: true
+        });
+    }
+    if ($('.feature-product__wrapper')) {
+        $('.feature-product__wrapper').slick({
+            infinite: false,
+            dots: true,
+            variableWidth: true,
+            swipeToSlide: true,
+            prevArrow: '<button class="icon-btn prev-btn box-shadow1" style="background: white; color: black"><i class="fal fa-chevron-left"></i></button>',
+            nextArrow: '<button class="icon-btn next-btn box-shadow1" style="background: white; color: black"><i class="fal fa-chevron-right"></i></button>',
+        });
+    }
 });
 
 /** accordion handler */
 $(document).ready(function () {
     (function ($) {
-
+        
         var allPanels = $('.accordion > .accordion__content').hide();
 
         $('.accordion > .accordion__top').click(function () {
@@ -212,55 +220,89 @@ $(document).ready(function() {
             // Add more breakpoints and settings as needed
         ]
     });
+    if ($(document).width() < 1300) {
+        $('.tabs').slick({
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            infinite: false,
+            arrows: false,
+            prevArrow: false,
+            nextArrow: false,
+            swipeToSlide: true,
+            variableWidth: true,
+            swipe: true,
+            responsive: [
+                {
+                    breakpoint: 768, // Define a breakpoint where the configuration changes
+                    settings: {
+                        slidesToShow: 2, // Adjust slidesToShow for screens narrower than 768px
+                    }
+                },
+                {
+                    breakpoint: 992, // Define another breakpoint if needed
+                    settings: {
+                        slidesToShow: 3, // Adjust slidesToShow for screens narrower than 992px
+                    }
+                },
+                // Add more breakpoints and settings as needed
+            ]
+        });
+    }
 });
 
 /** product gallery handler */
 $(document).ready(function () {
-    $('.gallery__thumbnails').slick({
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        swipeToSlide: true,
-        swipe: true,
-        infinite: false,
-        arrowns: false,
-        prevArrow: '<button class="icon-btn prev-btn box-shadow1" style="background: white; color: black"><i class="fal fa-chevron-left"></i></button>',
-        nextArrow: '<button class="icon-btn next-btn box-shadow1" style="background: white; color: black"><i class="fal fa-chevron-right"></i></button>',
-    });
+    if ($('.gallery__thumbnails')){
+        $('.gallery__thumbnails').slick({
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            swipeToSlide: true,
+            swipe: true,
+            infinite: false,
+            arrowns: false,
+            prevArrow: '<button class="icon-btn prev-btn box-shadow1" style="background: white; color: black"><i class="fal fa-chevron-left"></i></button>',
+            nextArrow: '<button class="icon-btn next-btn box-shadow1" style="background: white; color: black"><i class="fal fa-chevron-right"></i></button>',
+        });
+    }
 });
 
 /** mobile keyword */
 $(document).ready(function () {
-    $('.keyword__wrapper ').slick({
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        infinite: false,
-        arrows: false,
-        prevArrow: false,
-        nextArrow: false,
-        swipeToSlide: true,
-        variableWidth: true,
-        swipe: true,
-        responsive: [
-            {
-                breakpoint: 768, // Define a breakpoint where the configuration changes
-                settings: {
-                    slidesToShow: 2, // Adjust slidesToShow for screens narrower than 768px
-                }
-            },
-            {
-                breakpoint: 992, // Define another breakpoint if needed
-                settings: {
-                    slidesToShow: 3, // Adjust slidesToShow for screens narrower than 992px
-                }
-            },
-            // Add more breakpoints and settings as needed
-        ]
-    });
+    if ($('.keyword__wrapper')) {
+        $('.keyword__wrapper').slick({
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            infinite: false,
+            arrows: false,
+            prevArrow: false,
+            nextArrow: false,
+            swipeToSlide: true,
+            variableWidth: true,
+            swipe: true,
+            responsive: [
+                {
+                    breakpoint: 768, // Define a breakpoint where the configuration changes
+                    settings: {
+                        slidesToShow: 2, // Adjust slidesToShow for screens narrower than 768px
+                    }
+                },
+                {
+                    breakpoint: 992, // Define another breakpoint if needed
+                    settings: {
+                        slidesToShow: 3, // Adjust slidesToShow for screens narrower than 992px
+                    }
+                },
+                // Add more breakpoints and settings as needed
+            ]
+        });
+    }
 });
 
 /** search handler */
 $(document).ready(() => {
-    $('.search__product__wrapper').hide();
+    if ($('.search__product__wrapper')) {
+        $('.search__product__wrapper').hide();
+    }
     $('.search__form__input').keyup(() => {
         let val = $('.search__form__input').val();
         if (val == "") {
