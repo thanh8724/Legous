@@ -174,7 +174,7 @@ if (isset($_POST['submitComment'])) {
     $idCmt = insertComment($getIdUser, $id_product, $getUsername, $getEmail, $inputCmt, $now);
     if (isset($_FILES['file'])) {
         //Thư mục chứa file upload
-        $upload_dir = './public/assets/media/images/comment/';
+        $upload_dir = './upload/users/';
 
         //Xử lý upload đúng file ảnh
         $type_allow = array('png', 'jpg', 'jpeg', 'gif');
@@ -248,7 +248,7 @@ if (isset($_POST['editComment'])) {
 
     editCommentById($getIDCmt, $inputEditCmt);
     foreach ($getAllCmtImg as $item) {
-        $delete_dir = "./public/assets/media/images/comment/{$item['src']}";
+        $delete_dir = "./upload/users/{$item['src']}";
         if (file_exists($delete_dir)) {
             unlink($delete_dir);
         }
@@ -256,7 +256,7 @@ if (isset($_POST['editComment'])) {
     }
     if (isset($_FILES['file']) && !empty($_FILES['file'])) {
         //Thư mục chứa file upload
-        $upload_dir = './public/assets/media/images/comment/';
+        $upload_dir = './upload/users/';
         //Xử lý upload đúng file ảnh
         $type_allow = array('png', 'jpg', 'jpeg', 'gif');
 
@@ -469,7 +469,7 @@ if (isset($_POST['editComment'])) {
                                         foreach ($imgImtById as $item) {
                                         ?>
                                             <div class="comment_media_item">
-                                                <img src="./public/assets/media/images/comment/<?php echo $item['src'] ?>" alt="">
+                                                <img src="./upload/users/<?php echo $item['src'] ?>" alt="">
                                             </div>
                                     <?php
                                         }
@@ -573,7 +573,7 @@ if (isset($_POST['editComment'])) {
                                         foreach ($productImgCmt as $result) {
                                     ?>
                                             <div class="comment_media_item">
-                                                <img src="./public/assets/media/images/comment/<?php echo $result['src'] ?>" alt="">
+                                                <img src="./upload/users/<?php echo $result['src'] ?>" alt="">
                                             </div>
                                     <?php
                                         }
