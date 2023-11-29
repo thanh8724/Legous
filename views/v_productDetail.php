@@ -540,10 +540,15 @@ if (isset($_POST['editComment'])) {
                                                                 <li class="liSonMoreFeatureComment"><a href="?mod=page&act=delCmt&reportId=<?php echo $item['id'] ?>&idProduct=<?php echo $productId ?>">Xóa</a>
                                                                 </li>
                                                             <?php
+                                                            }else {
+                                                                ?>
+                                                                <li class="liSonMoreFeatureComment"><a href="?mod=page&act=reportCmt&reportId=<?php echo $item['id'] ?>&reported=<?php echo $item['reported'] ?>&idProduct=<?php echo $productId ?>">Tố
+                                                                    Cáo</a></li>
+                                                               <?php 
                                                             }
                                                             ?>
-                                                            <li class="liSonMoreFeatureComment"><a href="?mod=page&act=reportCmt&reportId=<?php echo $item['id'] ?>&reported=<?php echo $item['reported'] ?>&idProduct=<?php echo $productId ?>">Tố
-                                                                    Cáo</a></li>
+                                                            
+                                                            
                                                             <!-- Note: Xóa ảnh cũ khi xóa comment -->
                                                         </ul>
                                                     </div>
