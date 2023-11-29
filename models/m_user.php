@@ -19,6 +19,10 @@
         $sql = "SELECT * FROM user WHERE id = $idUser";
         return pdo_query_one($sql);
     }
+    function getAddress() {
+        $sql = "SELECT * FROM address";
+        return pdo_query_one($sql);
+    }
 
    // chỉnh sửa thông tin người dùng từ mã tài khoản
     function update_userName_email($new_username, $new_email, $id_user) {
