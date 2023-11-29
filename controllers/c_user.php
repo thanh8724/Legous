@@ -81,7 +81,6 @@
                     $id_order = ($_GET['id']);
                     $order = get_order($id_order);
                     $product_order = get_product_order($id_order);
-                    // var_dump($product_order);
                 }
                 break;
 
@@ -100,7 +99,23 @@
                 unset($_SESSION['admin']);
                 header('location: ?mod=page&act=login');
                 break;
-
+            
+            case 'change_account':
+               // lấy dữ liệu
+               include_once 'models/m_user.php';
+                if(isset($_GET['id'])) {
+                    $id_account = $_GET['id'];
+                    extract(checkAccounts($id_account));
+                    $loginInfo = [
+                        "email_user" => $email,
+                        "password_user" => $password,
+                        "id_user" => $id
+                    ];
+                    $_SESSION['userLogin'] = $loginInfo;
+                    header('location:?mod=user&act=general');
+                }
+                break;
+            
             case 'delete-account':
                 include_once 'models/m_user.php';
                 $view_name = 'user-deleteAccount';

@@ -1,8 +1,7 @@
-<?php 
-    session_start();
-    ob_start();
-
-    // unset($_SESSION['admin']);
+<?php
+session_start();
+ob_start();
+// unset($_SESSION['admin']);
 
     // Gữi/nhận dữ liệu thông qua models
     // Hiển thị dữ liệu thông qua view
@@ -107,10 +106,10 @@
                 /** register */
                 include_once 'models/m_user.php';
 
-                if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                    $username = $_POST['username'];
-                    $email = $_POST['email'];
-                    $password = $_POST['password'];
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $username = $_POST['username'];
+                $email = $_POST['email'];
+                $password = $_POST['password'];
 
                     if ($username !== '' && $email !== '' && $password !== '') {
                         $userId = insertUser($username, $email, $password);
@@ -135,52 +134,52 @@
                 include_once 'models/m_product.php';
                 include_once 'models/m_category.php';
 
-                $maxPrice = getMaxProductPrice();
-                $minPrice = getMinProductPrice();
+            $maxPrice = getMaxProductPrice();
+            $minPrice = getMinProductPrice();
 
-                $manualMin = $minPrice;
-                $manualMax = $maxPrice;
+            $manualMin = $minPrice;
+            $manualMax = $maxPrice;
+            if (isset($_GET['minPrice']) && isset($_GET['maxPrice'])) {
+                $manualMin = $_GET['minPrice'];
+                $manualMax = $_GET['maxPrice'];
+            }
+
+            if (isset($_GET['idCategory'])) {
+                $idCategory = $_GET['idCategory'];
+                $category = getCategoryById($idCategory);
+                $featureProducts = getFeatureProductOfCategory($idCategory, $limit = 0);
+                $categoryProducts = getProductsByCategoryId($idCategory);
+
+                /** filter handler */
+                if (isset($_POST['priceFilter']) && $_POST['priceFilter']) {
+                    $min = $_POST['minPrice'];
+                    $max = $_POST['maxPrice'];
+
+                    $categoryProducts = getCategoryProductsByPriceFilter($min, $max, $idCategory);
+                }
+
+                // Check if the 'minPrice' and 'maxPrice' values are set in the POST data
                 if (isset($_GET['minPrice']) && isset($_GET['maxPrice'])) {
-                    $manualMin = $_GET['minPrice'];
-                    $manualMax = $_GET['maxPrice'];
+                    $min = $_GET['minPrice'];
+                    $max = $_GET['maxPrice'];
+
+                    // Use the $min and $max values to filter the category products
+                    $categoryProducts = getCategoryProductsByPriceFilter($min, $max, $idCategory);
                 }
-                
-                if (isset($_GET['idCategory'])) {
-                    $idCategory = $_GET['idCategory'];
-                    $category = getCategoryById($idCategory);
-                    $featureProducts = getFeatureProductOfCategory ($idCategory , $limit = 0);
-                    $categoryProducts = getProductsByCategoryId($idCategory);
 
-                    /** filter handler */
-                    if (isset($_POST['priceFilter']) && $_POST['priceFilter']) {
-                        $min = $_POST['minPrice'];
-                        $max = $_POST['maxPrice'];
-                        
-                        $categoryProducts = getCategoryProductsByPriceFilter($min , $max , $idCategory);
-                    }
-
-                    // Check if the 'minPrice' and 'maxPrice' values are set in the POST data
-                    if (isset($_GET['minPrice']) && isset($_GET['maxPrice'])) {
-                        $min = $_GET['minPrice'];
-                        $max = $_GET['maxPrice'];
-
-                        // Use the $min and $max values to filter the category products
-                        $categoryProducts = getCategoryProductsByPriceFilter($min, $max, $idCategory);
-                    }
-
-                    // name filter approach
-                    if (isset($_GET['filterName']) and $_GET['filterName'] != '') {
-                        $order = $_GET['filterName'];
-                        $categoryProducts = getProductsByCategoryId($idCategory, $order);
-                    }
+                // name filter approach
+                if (isset($_GET['filterName']) and $_GET['filterName'] != '') {
+                    $order = $_GET['filterName'];
+                    $categoryProducts = getProductsByCategoryId($idCategory, $order);
                 }
-                // hiển thị dữ liệu
-                $view_name = 'category';
-                break;
-            case'general':
-                include_once 'models/m_user.php';
-                $view_name = 'general';
-                break;
+            }
+            // hiển thị dữ liệu
+            $view_name = 'category';
+            break;
+        case 'general':
+            include_once 'models/m_user.php';
+            $view_name = 'general';
+            break;
 
             // case 'filter':
             //     include_once 'models/m_product.php';
@@ -191,18 +190,43 @@
                 $maxPrice = getMaxProductPrice();
                 $minPrice = getMinProductPrice();
 
-                $manualMin = $minPrice;
-                $manualMax = $maxPrice;
-                
-                $view_name = 'shop';
-                break;
-            case 'productDetail';
-                include_once 'models/m_product.php';
-                include_once 'models/m_category.php';
-                include_once 'models/m_img.php';
-                include_once 'models/m_comment.php';
-                
-                $view_name = 'productDetail';
+            $manualMin = $minPrice;
+            $manualMax = $maxPrice;
+
+            $view_name = 'shop';
+            break;
+        case 'editCmt':
+            
+            break;
+        case 'reportCmt':
+            include_once 'models/m_comment.php';
+            $getID = $_GET['reportId'];
+            $getReported = $_GET['reported'];
+            $getIdProduct = $_GET['idProduct'];
+            $reported = (int)$getReported + 1;
+            reported($getID, $reported);
+            header("Location: ?mod=page&act=productDetail&idProduct={$getIdProduct}");
+            break;
+        case 'delCmt':
+            include_once 'models/m_comment.php';
+            $getID = (int)$_GET['reportId'];
+            $getIdProduct = $_GET['idProduct'];
+            $getAllCmtImg = getAllCmtImg($getID);
+            foreach ($getAllCmtImg as $item) {
+                $delete_file = './public/assets/media/images/comment/' . $item['src'];
+                unlink($delete_file);
+                delImgCmt($item['id']);
+            }
+            delCmt($getID);
+            header("Location: ?mod=page&act=productDetail&idProduct={$getIdProduct}");
+            break;
+        case 'productDetail';
+            include_once 'models/m_product.php';
+            include_once 'models/m_category.php';
+            include_once 'models/m_img.php';
+            include_once 'models/m_comment.php';
+
+            $view_name = 'productDetail';
 
                 
                 break;

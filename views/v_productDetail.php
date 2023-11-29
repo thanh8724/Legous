@@ -149,7 +149,6 @@ if (isset($_GET['idProduct']) && $_GET['idProduct']) {
                 HTML;
     }
 }
-
 /** render gallery thumbnails */
 $galleryThumbnailsHtml = '';
 foreach ($productThumbnails as $item) {
@@ -175,7 +174,7 @@ if (isset($_POST['submitComment'])) {
     $idCmt = insertComment($getIdUser, $id_product, $getUsername, $getEmail, $inputCmt, $now);
     if (isset($_FILES['file'])) {
         //Thư mục chứa file upload
-        $upload_dir = './public/assets/media/images/users/';
+        $upload_dir = './public/assets/media/images/comment/';
 
         //Xử lý upload đúng file ảnh
         $type_allow = array('png', 'jpg', 'jpeg', 'gif');
@@ -224,7 +223,7 @@ if (isset($_POST['submitComment'])) {
             } else {
                 if (empty($error)) {
                     if (move_uploaded_file($_FILES['file']['tmp_name'][$key], $upload_file)) {
-                        $image = $filename . $type;
+                        $image = $filename . '.' . $type;
                         addImgCmt($idCmt, $image);
                     } else {
                         echo "Upload file thất bại";
@@ -235,8 +234,82 @@ if (isset($_POST['submitComment'])) {
     }
     header("Location: ?mod=page&act=productDetail&idProduct={$id_product}");
 }
-?>
 
+if (isset($_POST['editComment'])) {
+    if (!empty($_POST['inputEditComment'])) {
+        $inputEditCmt = $_POST['inputEditComment'];
+    } else {
+        $error['inputEditCmt'] = "Bình luận này không được để trống";
+        exit();
+    }
+    $id_product = $_GET['idProduct'];
+    $getIDCmt = (int) $_GET['editCmt'];
+    $getAllCmtImg = getImgCommentById($getIDCmt);
+
+    editCommentById($getIDCmt, $inputEditCmt);
+    foreach ($getAllCmtImg as $item) {
+        $delete_dir = "./public/assets/media/images/comment/{$item['src']}";
+        if (file_exists($delete_dir)) {
+            unlink($delete_dir);
+        }
+        delImgByIdCmt($getIDCmt);
+    }
+    if (isset($_FILES['file']) && !empty($_FILES['file'])) {
+        //Thư mục chứa file upload
+        $upload_dir = './public/assets/media/images/comment/';
+        //Xử lý upload đúng file ảnh
+        $type_allow = array('png', 'jpg', 'jpeg', 'gif');
+
+        foreach ($_FILES['file']['name'] as $key => $value) {
+            //Đường dẫn của file sau khi upload
+            $upload_file = $upload_dir . $_FILES['file']['name'][$key];
+            //PATHINFO_EXTENSION lấy đuôi file
+            $type = pathinfo($_FILES['file']['name'][$key], PATHINFO_EXTENSION);
+
+            if (!in_array(strtolower($type), $type_allow)) {
+                $error['type'] = "Chỉ được upload file có đuôi PNG, JPG, GIF, JPEG";
+            }
+
+            #Upload file có kích thước cho phép (<20mb ~ 29.000.000BYTE)
+            $file_size = $_FILES['file']['size'][$key];
+
+            if ($file_size > 29000000) {
+                $error['file_size'] = "Chỉ được upload file bé hơn 20MB";
+            }
+
+            $filename = pathinfo($_FILES["file"]["name"][$key], PATHINFO_FILENAME);
+
+            #Kiểm tra trùng file trên hệ thống
+            if (file_exists($upload_file)) {
+                // Xử lý đổi tên file tự động
+
+                #Tạo file mới
+                // TênFile.ĐuôiFile
+                $new_filename = $filename . '- Copy';
+                $new_upload_file = $upload_dir . $new_filename . $type;
+                $k = 1;
+
+                while (file_exists($new_upload_file)) {
+                    $new_filename = $filename . " - Copy({$k})";
+                    $k++;
+                    $new_upload_file = $upload_dir . $new_filename . $type;
+                }
+                $filename = $new_filename;
+                $upload_file = $new_upload_file;
+            }
+            if (empty($error)) {
+                if (move_uploaded_file($_FILES['file']['tmp_name'][$key], $upload_file)) {
+                    $image = $filename . '.' . $type;
+                    addImgCmt($getIDCmt, $image);
+                } else {
+                    echo "Upload file thất bại";
+                }
+            }
+        }
+    }
+    header("Location: ?mod=page&act=productDetail&idProduct={$id_product}");
+}
+?>
 
 <!-- shop mobile top navigation bar start -->
 <div class="mobile-top__bar mobile-top__bar--shop p12 flex-center">
@@ -358,22 +431,71 @@ if (isset($_POST['submitComment'])) {
             </div>
             <div class="panel__item comment__panel">
                 <div class="block">
-                    <div class="title-large fw-black">309 comments</div>
+                    <div class="title-large fw-black">
+                        <?php
+                        $productId = $_GET['idProduct'];
+                        $productCmt = getProductCommentByProductId($productId);
+                        $i = 0;
+                        foreach ($productCmt as $item) {
+                            if ($item['id_product'] == $productId) {
+                                $i++;
+                            }
+                        }
+                        ?>
+                        <?php echo $i ?> comments
+                    </div>
                     <?php
                     if (isset($_SESSION['userLogin'])) {
+                        if (isset($_GET['editCmt'])) {
+                            $editCmtById = getCommentById($_GET['editCmt']);
+                            $imgImtById = getImgCommentById($_GET['editCmt']);
                     ?>
-                        <form enctype="multipart/form-data" action="" class="form comment__form" method="post">
-                            <input type="file" name="file[]" id="file-1" class="inputfile inputfile-1" data-multiple-caption="{count} đã chọn" multiple />
-                            <label for="file-1"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17">
-                                    <path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z" />
-                                </svg> <span>Chọn ảnh&hellip;</span></label>
+                            <form enctype="multipart/form-data" action="" class="form comment__form" method="post">
+                                <input type="file" name="file[]" id="file-1" class="inputfile inputfile-1" data-multiple-caption="{count} đã chọn" multiple />
+                                <label for="file-1"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17">
+                                        <path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z" />
+                                    </svg> <span>Chọn ảnh&hellip;</span></label>
 
-                            <div class="flex" style="align-items: center;">
-                                <input type="text" name="inputComment" class="form__input comment__input" placeholder="Comment">
-                                <button name="submitComment" value="submitComment" type="submit" class="icon-btn send-comment__btn"><i class="fal fa-paper-plane"></i></button>
-                            </div>
-                        </form>
+                                <div class="flex" style="align-items: center;">
+                                    <input type="text" name="inputEditComment" class="form__input comment__input" placeholder="Comment" value="<?php if (!empty($editCmtById))
+                                                                                                                                                    print_r($editCmtById[0]['content']) ?>">
+                                    <button name="editComment" value="submitComment" type="submit" class="icon-btn send-comment__btn"><i class="fal fa-paper-plane"></i></button>
+                                </div>
+                                <?php
+                                if (!empty($imgImtById)) {
+                                ?>
+                                    <div class="comment_media">
+                                        <?php
+                                        foreach ($imgImtById as $item) {
+                                        ?>
+                                            <div class="comment_media_item">
+                                                <img src="./public/assets/media/images/comment/<?php echo $item['src'] ?>" alt="">
+                                            </div>
+                                    <?php
+                                        }
+                                        echo "</div>";
+                                    }
+                                    ?>
+                                    <?php
+                                    ?>
+
+                            </form>
+                        <?php
+                        } else {
+                        ?>
+                            <form enctype="multipart/form-data" action="" class="form comment__form" method="post">
+                                <input type="file" name="file[]" id="file-1" class="inputfile inputfile-1" data-multiple-caption="{count} đã chọn" multiple />
+                                <label for="file-1"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17">
+                                        <path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z" />
+                                    </svg> <span>Chọn ảnh&hellip;</span></label>
+
+                                <div class="flex" style="align-items: center;">
+                                    <input type="text" name="inputComment" class="form__input comment__input" placeholder="Comment">
+                                    <button name="submitComment" value="submitComment" type="submit" class="icon-btn send-comment__btn"><i class="fal fa-paper-plane"></i></button>
+                                </div>
+                            </form>
                     <?php
+                        }
                     }
                     ?>
 
@@ -389,56 +511,95 @@ if (isset($_POST['submitComment'])) {
                         $getUserByID = getUserById($item['id_user']);
                         $idCmt = $item['id'];
                         $productImgCmt = getImgCommentById($idCmt);
-                        if($item['is_appear'] == 1) {
+                        if ($item['is_appear'] == 1) {
                     ?>
-                        <div class="comment__item mb30">
-                            <div class="flex g12 comment__user">
-                                <div class="user__avt avt"><img src="./public/assets/media/images/users/<?php echo $getUserByID['img'] ?>" alt="user 1" class="imgcover"></div>
-                                <div class="flex-column flex-between">
-                                    <div class="user__name title-medium fw-smb">
-                                        <?php echo $getUserByID['fullname'] ?>
-                                    </div>
-                                    <div class="user-comment__date title-small">
-                                        <?php echo $item['create_date'] ?>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="comment__content body-medium fw-normal mt12">
-                                <?php echo $item['content'] ?>;
-                            </div>
-                            <div class="comment_media">
-                                <?php
-                                if (!empty($productImgCmt)) {
-                                    foreach ($productImgCmt as $result) {
-                                ?>
-                                        <div class="comment_media_item">
-                                            <img src="./public/assets/media/images/users/<?php echo $result['src'] ?>" alt="">
+                            <div class="comment__item mb30 p30">
+                                <div class="flex comment__user">
+                                    <div class="flex g12">
+                                        <div class="user__avt avt"><img src="./public/assets/media/images/users/<?php echo $getUserByID['img'] ?>" alt="user 1" class="imgcover"></div>
+                                        <div class="flex-column flex-between">
+                                            <div class="user__name title-medium fw-smb">
+                                                <?php echo $getUserByID['fullname'] ?>
+                                            </div>
+                                            <div class="user-comment__date title-small">
+                                                <?php echo $item['create_date'] ?>
+                                            </div>
                                         </div>
-                                <?php
+                                    </div>
+                                    <?php
+                                    if (isset($_SESSION['userLogin'])) {
+                                    ?>
+                                        <div class="moreFeatureComment">
+                                            <ul class="ulDadMoreFeatureComment">
+                                                <li class="liDadMoreFeatureComment">
+                                                    <div class="ellipsisBtn">
+                                                        <i class="fas fa-ellipsis-v"></i>
+                                                    </div>
+                                                    <div class="divMoreFeatureComment box-shadow1">
+                                                        <ul class="ulSonMoreFeatureComment p10">
+                                                            <?php
+                                                            if ($_SESSION['userLogin']['id_user'] == $item['id_user']) {
+                                                            ?>
+                                                                <li class="liSonMoreFeatureComment"><a href="?mod=page&act=productDetail&idProduct=<?php echo $productId ?>&editCmt=<?php echo $item['id'] ?>">Chỉnh
+                                                                        Sửa</a></li>
+                                                                <li class="liSonMoreFeatureComment"><a href="?mod=page&act=delCmt&reportId=<?php echo $item['id'] ?>&idProduct=<?php echo $productId ?>">Xóa</a>
+                                                                </li>
+                                                            <?php
+                                                            }else {
+                                                                ?>
+                                                                <li class="liSonMoreFeatureComment"><a href="?mod=page&act=reportCmt&reportId=<?php echo $item['id'] ?>&reported=<?php echo $item['reported'] ?>&idProduct=<?php echo $productId ?>">Tố
+                                                                    Cáo</a></li>
+                                                               <?php 
+                                                            }
+                                                            ?>
+                                                            
+                                                            
+                                                            <!-- Note: Xóa ảnh cũ khi xóa comment -->
+                                                        </ul>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    <?php
                                     }
-                                }
-                                ?>
-                            </div>
-                        </div>
-                    <?php
-                    }else {
-                        ?>
-                        <div class="comment__item mb30">
-                            <div class="flex g12 comment__user">
-                                <div class="user__avt avt"><img src="./public/assets/media/images/users/<?php echo $getUserByID['img'] ?>" alt="user 1" class="imgcover"></div>
-                                <div class="flex-column flex-between">
-                                    <div class="user__name title-medium fw-smb">
-                                        <p>Bình luận này đang vi phạm chính sách nên đã bị ẩn</p>
-                                    </div>
-                                    <div class="user-comment__date title-small">
-                                        <p>By Admin</p>
-                                    </div>
+                                    ?>
+                                </div>
+                                <div class="comment__content body-medium fw-normal mt12">
+                                    <?php echo $item['content'] ?>
+                                </div>
+                                <div class="comment_media">
+                                    <?php
+                                    if (!empty($productImgCmt)) {
+                                        foreach ($productImgCmt as $result) {
+                                    ?>
+                                            <div class="comment_media_item">
+                                                <img src="./public/assets/media/images/comment/<?php echo $result['src'] ?>" alt="">
+                                            </div>
+                                    <?php
+                                        }
+                                    }
+                                    ?>
                                 </div>
                             </div>
-                           
-                        </div>
-                        <?php 
-                    }
+                        <?php
+                        } else {
+                        ?>
+                            <div class="comment__item mb30 p30">
+                                <div class="flex g12 comment__user comment__hidden">
+                                    <div class="user__avt avt"><img src="./public/assets/media/images/users/anonyUser.png" alt="user 1" class="imgcover"></div>
+                                    <div class="flex-column flex-between">
+                                        <div class="user__name title-medium fw-smb">
+                                            <p>Bình luận này đang vi phạm chính sách nên đã bị ẩn</p>
+                                        </div>
+                                        <div class="user-comment__date title-small">
+                                            <p>By Admin</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                    <?php
+                        }
                     }
                     ?>
                     <!-- single comment end -->
