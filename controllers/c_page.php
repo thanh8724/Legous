@@ -174,6 +174,9 @@ if (isset($_GET['act'])) {
 
             $view_name = 'shop';
             break;
+        case 'editCmt':
+            
+            break;
         case 'reportCmt':
             include_once 'models/m_comment.php';
             $getID = $_GET['reportId'];
@@ -184,8 +187,15 @@ if (isset($_GET['act'])) {
             header("Location: ?mod=page&act=productDetail&idProduct={$getIdProduct}");
             break;
         case 'delCmt':
+            include_once 'models/m_comment.php';
             $getID = (int)$_GET['reportId'];
             $getIdProduct = $_GET['idProduct'];
+            $getAllCmtImg = getAllCmtImg($getID);
+            foreach ($getAllCmtImg as $item) {
+                $delete_file = './public/assets/media/images/comment/' . $item['src'];
+                unlink($delete_file);
+                delImgCmt($item['id']);
+            }
             delCmt($getID);
             header("Location: ?mod=page&act=productDetail&idProduct={$getIdProduct}");
             break;
