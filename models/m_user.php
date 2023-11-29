@@ -10,6 +10,9 @@
     function checkAccount($id_user) {
         return pdo_query_one("SELECT * FROM user WHERE id = ?", $id_user);
     }
+    function checkAccounts($id_account) {
+        return pdo_query_one("SELECT * FROM user WHERE id = ?", $id_account);
+    }
     
     function get_userBy_email_password($email_user, $password_user) {
         return pdo_query("SELECT * FROM user WHERE email = ? AND password = ?", $email_user, $password_user);
@@ -171,10 +174,12 @@
     function getBill() {
         return pdo_query("SELECT * FROM bill");
     }
+    function getBillByID($id) {
+        return pdo_query("SELECT * FROM bill WHERE id = {$id}");
+    }
 
-
-    function editUserProfile($id, $fullname, $username, $password, $email, $address, $image, $role, $bio, $phone) {
-        pdo_execute("UPDATE user SET fullname = '$fullname', username = '$username', email = '$email', password = '$password', address = '$address', img = '$image', role = '$role', bio = '$bio', phone = '$phone' WHERE id = ".$id);
+    function editUserProfile($id, $fullname, $username, $password, $email, $image, $role, $bio, $phone) {
+        pdo_execute("UPDATE user SET fullname = '$fullname', username = '$username', email = '$email', password = '$password', img = '$image', role = '$role', bio = '$bio', phone = '$phone' WHERE id = ".$id);
     }
     function addUserProfile($fullname, $username, $password, $email, $address, $image, $role, $bio, $phone) {
         pdo_execute("INSERT INTO user (fullname, username, email, password, address, img, role, bio, phone) VALUES ('$fullname', '$username', '$email', '$password', '$address', '$image', '$role', '$bio', '$phone') ");

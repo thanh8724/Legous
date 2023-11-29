@@ -185,6 +185,7 @@ html {
                         border-radius: 1rem;
                         cursor: pointer;
                         transition: $trans-bounce;
+                        color: $-black;
 
                         i {
                             width: 3.5rem;
@@ -787,12 +788,22 @@ html {
         gap: 2rem;
 
         .label__place {
-            top: -15%;
+            top: 20%;
+            transform: translateY(-20%);
             font-size: clamp(1.2rem, 1.057rem + 0.381vw, 1.4rem);
             font-weight: 400;
             line-height: clamp(1.8rem, 1.657rem + 0.381vw, 2rem);
         }
 
+        input:not(:placeholder-shown) + .label__place,
+        input:focus + .label__place {
+            top: -25%;
+            transform: translateY(50%);
+            left: 1rem;
+            background-color: #f7f7f7;
+            padding: 0 1rem;
+            color: $light-primary;
+        }
         &-rows1 {
             display: flex;
             gap: 1.8rem;

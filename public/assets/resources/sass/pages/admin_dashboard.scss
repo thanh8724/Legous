@@ -143,6 +143,23 @@ main {
             }
           }
         }
+        .slider_contain-5 {
+          .slider_items_stonks {
+            p {
+              color: $-orange !important;
+            }
+
+            i {
+              color: $-orange !important;
+            }
+          }
+
+          .slider_items {
+            .buttonWallet {
+              background-color: $-orange !important;
+            }
+          }
+        }
       }
 
       //      <!----======== End Owl Carousel ======== -->
@@ -327,8 +344,15 @@ main {
               &.orange {
                 background-color: $-orange;
               }
+              &.blue {
+                background-color: $-blue;
+              } 
               &.red {
-                background-color: $-orange;
+                background-color: $light-error;
+              }&.black {
+                background-color: $-black;
+              }&.gray {
+                background-color: $-gray;
               }
             }
           }
@@ -346,7 +370,7 @@ main {
             background-color: rgba(0, 0, 0, 0.349);
           }
           .theadoverviewDashboard {
-            padding: 5px 20px;
+            padding: 10px 20px;
             display: flex;
             align-items: center;
             position: relative;
@@ -354,13 +378,13 @@ main {
               color: $light-on-container;
             }
             button {
-              width: 40px;
-              height: 40px;
+              width: 30px;
+              height: 30px;
               border-radius: 9999px;
-              line-height: 40px;
+              line-height: 30px;
               background-color: rgba(73, 69, 79, 0.12);
               i {
-                font-size: 16px;
+                font-size: 12px;
               }
             }
             .showMoreInfoAdminDashboard {
@@ -496,15 +520,14 @@ main {
                     background-color: $light-on-fixed-variant;
                     padding: 15px;
                     .nameCategories {
-                      p {
-                        color: $light-on-container;
-                      }
+                      p,
                       h2 {
                         color: $-white;
                       }
                     }
                     .priceProduct {
                       text-align: end;
+                      p,
                       h2 {
                         color: $-white;
                       }

@@ -10,131 +10,80 @@
             <div class="notifiComment">
                 <i class="far fa-comment-alt btnShowFeature"></i>
                 <ul class="showFeatureAdminHeader box-shadow1">
-                    <li>
-                        <div class="col-12 d-flex">
-                            <div class="col-2">
-                                <img class="notifiAdminImg" src="../assets/media/images/users/profile.jpg" alt="">
+                    <?php
+                    $getCmt = getAllComment();
+                    arsort($getCmt);
+                    $getCmt = array_slice($getCmt, 0, 6, true);
+                    foreach ($getCmt as $item) {
+
+                        $getUser = getUserById($item['id_user']);
+                        $getProduct = getProductById($item['id_product']);
+                        ?>
+                        <li>
+                            <div class="col-12 d-flex">
+                                <div class="col-2">
+                                    <img class="notifiAdminImg"
+                                        src="./public/assets/media/images/users/<?php echo $getUser['img'] ?>" alt="">
+                                </div>
+                                <div class="col-10">
+                                    <p class="notifiAdminText body-small"><strong>
+                                            <?php echo $getUser['fullname'] ?>
+                                        </strong><span> đã bình luận ở sản phẩm <strong><a href="">
+                                                    <?php echo $getProduct['name'] ?>
+                                                </a></strong></span></p>
+                                </div>
                             </div>
-                            <div class="col-10">
-                                <p class="notifiAdminText body-small"><strong>Trần Thị Hồng Ngọc</strong><span> vừa mua
-                                        một mô hình với mã đơn hàng <strong>#999</strong></span></p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="col-12 d-flex">
-                            <div class="col-2">
-                                <img class="notifiAdminImg" src="../assets/media/images/users/profile.jpg" alt="">
-                            </div>
-                            <div class="col-10">
-                                <p class="notifiAdminText body-small"><strong>Trần Thị Hồng Ngọc</strong><span> vừa mua
-                                        một mô hình với mã đơn hàng <strong>#999</strong></span></p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="col-12 d-flex">
-                            <div class="col-2">
-                                <img class="notifiAdminImg" src="../assets/media/images/users/profile.jpg" alt="">
-                            </div>
-                            <div class="col-10">
-                                <p class="notifiAdminText body-small"><strong>Trần Thị Hồng Ngọc</strong><span> vừa mua
-                                        một mô hình với mã đơn hàng <strong>#999</strong></span></p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="col-12 d-flex">
-                            <div class="col-2">
-                                <img class="notifiAdminImg" src="../assets/media/images/users/profile.jpg" alt="">
-                            </div>
-                            <div class="col-10">
-                                <p class="notifiAdminText body-small"><strong>Trần Thị Hồng Ngọc</strong><span> vừa mua
-                                        một mô hình với mã đơn hàng <strong>#999</strong></span></p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="col-12 d-flex">
-                            <div class="col-2">
-                                <img class="notifiAdminImg" src="../assets/media/images/users/profile.jpg" alt="">
-                            </div>
-                            <div class="col-10">
-                                <p class="notifiAdminText body-small"><strong>Trần Thị Hồng Ngọc</strong><span> vừa mua
-                                        một mô hình với mã đơn hàng <strong>#999</strong></span></p>
-                            </div>
-                        </div>
-                    </li>
+                        </li>
+                        <?php
+                    }
+                    ?>
                 </ul>
             </div>
             <div class="notifiBell">
                 <i class="fal fa-bell btnShowFeature"></i>
                 <ul class="showFeatureAdminHeader box-shadow1">
-                    <li>
-                        <div class="col-12 d-flex">
-                            <div class="col-2">
-                                <img class="notifiAdminImg" src="../assets/media/images/users/profile.jpg" alt="">
+                    <?php
+                    $getBill = getBill();
+                    arsort($getBill);
+                    $getBill = array_slice($getBill, 0, 6, true);
+                    foreach ($getBill as $item) {
+
+                        $getUser = getUserById($item['id_user']);
+                        ?>
+                        <li>
+                            <div class="col-12 d-flex">
+                                <div class="col-2">
+                                    <img class="notifiAdminImg" src="./public/assets/media/images/users/profile.jpg" alt="">
+                                </div>
+                                <div class="col-10">
+                                    <p class="notifiAdminText body-small"><strong>
+                                            <?php echo $getUser['fullname'] ?>
+                                        </strong><span> vừa mua
+                                            một mô hình với mã đơn hàng <strong>
+                                                <?php echo $item['id'] ?>
+                                            </strong></span></p>
+                                </div>
                             </div>
-                            <div class="col-10">
-                                <p class="notifiAdminText body-small"><strong>Trần Thị Hồng Ngọc</strong><span> vừa mua
-                                        một mô hình với mã đơn hàng <strong>#999</strong></span></p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="col-12 d-flex">
-                            <div class="col-2">
-                                <img class="notifiAdminImg" src="../assets/media/images/users/profile.jpg" alt="">
-                            </div>
-                            <div class="col-10">
-                                <p class="notifiAdminText body-small"><strong>Trần Thị Hồng Ngọc</strong><span> vừa mua
-                                        một mô hình với mã đơn hàng <strong>#999</strong></span></p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="col-12 d-flex">
-                            <div class="col-2">
-                                <img class="notifiAdminImg" src="../assets/media/images/users/profile.jpg" alt="">
-                            </div>
-                            <div class="col-10">
-                                <p class="notifiAdminText body-small"><strong>Trần Thị Hồng Ngọc</strong><span> vừa mua
-                                        một mô hình với mã đơn hàng <strong>#999</strong></span></p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="col-12 d-flex">
-                            <div class="col-2">
-                                <img class="notifiAdminImg" src="../assets/media/images/users/profile.jpg" alt="">
-                            </div>
-                            <div class="col-10">
-                                <p class="notifiAdminText body-small"><strong>Trần Thị Hồng Ngọc</strong><span> vừa mua
-                                        một mô hình với mã đơn hàng <strong>#999</strong></span></p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="col-12 d-flex">
-                            <div class="col-2">
-                                <img class="notifiAdminImg" src="../assets/media/images/users/profile.jpg" alt="">
-                            </div>
-                            <div class="col-10">
-                                <p class="notifiAdminText body-small"><strong>Trần Thị Hồng Ngọc</strong><span> vừa mua
-                                        một mô hình với mã đơn hàng <strong>#999</strong></span></p>
-                            </div>
-                        </div>
-                    </li>
+                        </li>
+                        <?php
+                    }
+                    ?>
+
                 </ul>
             </div>
             <div class="imgUserAdmin">
-                <img class="btnShowFeature" src="../assets/media/images/users/profile.jpg" alt="">
+                <?php
+                $getID = $_SESSION['admin']['id_user'];
+                $getUser = getUserById($getID);
+                ?>
+                <img style="" class="btnShowFeature"
+                    src="./public/assets/media/images/users/<?php echo $getUser['img'] ?>" alt="">
                 <ul class="showFeatureAdminHeader box-shadow1">
 
                     <li><a class="body-small" href="#statisticalChart">Thống kê đơn hàng</a></li>
                     <li><a class="body-small" href="#recentOrder">Đơn Hàng Gần Đây</a></li>
                     <li><a class="body-small" href="#overviewDashboard">Tổng quan</a></li>
-                    <li><a class="body-small" href="#">Đăng Xuất</a></li>
+                    <li><a class="body-small" href="?mod=user&act=logOut-account">Đăng Xuất</a></li>
                 </ul>
             </div>
         </div>
@@ -147,13 +96,14 @@
             <div class="col-12 d-flex">
                 <div class="col-6">
                     <div class="col-12">
-                        <h2>Chi tiết sản phẩm</h2>
+                        <h2>Thêm Sản Phẩm</h2>
                     </div>
-                            <div class="col-12">
-                                <span class="label-large">Admin /</span><a href="#" class="label-large"
-                                    style="text-decoration: none;">Sản Phẩm</a>
-                            </div>
-                        <div>
+                    <div class="col-12">
+                        <span class="label-large">Admin /</span><a href="?mod=admin&act=products" class="label-large"
+                            style="text-decoration: none;"> Sản Phẩm</a>
+                    </div>
+                    <div>
+
                     </div>
                 </div>
             </div>

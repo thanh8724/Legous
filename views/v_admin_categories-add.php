@@ -9,9 +9,81 @@
             </form> -->
         </div>
         <div class="info-user">
-            <i class="far fa-comment-alt"></i>
-            <i class="fal fa-bell"></i>
-            <img src="/public/assets/media/images/users/user-1.svg" alt="">
+            <div class="notifiComment">
+                <i class="far fa-comment-alt btnShowFeature"></i>
+                <ul class="showFeatureAdminHeader box-shadow1">
+                    <?php
+                    $getCmt = getAllComment();
+                    arsort($getCmt);
+                    $getCmt = array_slice($getCmt, 0, 6, true);
+                    foreach ($getCmt as $item) {
+                       
+                        $getUser = getUserById($item['id_user']);
+                        $getProduct = getProductById($item['id_product']);
+                        ?>
+                        <li>
+                            <div class="col-12 d-flex">
+                                <div class="col-2">
+                                    <img class="notifiAdminImg"
+                                        src="./public/assets/media/images/users/<?php echo $getUser['img'] ?>" alt="">
+                                </div>
+                                <div class="col-10">
+                                    <p class="notifiAdminText body-small"><strong>
+                                            <?php echo $getUser['fullname'] ?>
+                                        </strong><span> đã bình luận ở sản phẩm <strong><a href="">
+                                                    <?php echo $getProduct['name'] ?>
+                                                </a></strong></span></p>
+                                </div>
+                            </div>
+                        </li>
+                        <?php
+                    }
+                    ?>
+                </ul>
+            </div>
+            <div class="notifiBell">
+                <i class="fal fa-bell btnShowFeature"></i>
+                <ul class="showFeatureAdminHeader box-shadow1">
+                <?php
+                    $getBill = getBill();
+                    arsort($getBill);
+                    $getBill = array_slice($getBill, 0, 6, true);
+                    foreach ($getBill as $item) {
+                       
+                        $getUser = getUserById($item['id_user']);
+                        ?>
+                        <li>
+                        <div class="col-12 d-flex">
+                            <div class="col-2">
+                                <img class="notifiAdminImg" src="./public/assets/media/images/users/profile.jpg" alt="">
+                            </div>
+                            <div class="col-10">
+                                <p class="notifiAdminText body-small"><strong><?php echo $getUser['fullname']?></strong><span> vừa mua
+                                        một mô hình với mã đơn hàng <strong><?php echo $item['id']?></strong></span></p>
+                            </div>
+                        </div>
+                    </li>
+                        <?php
+                    }
+                    ?>
+                    
+                </ul>
+            </div>
+            <div class="imgUserAdmin">
+                <?php
+                $getID = $_SESSION['admin']['id_user'];
+                $getUser = getUserById($getID);
+                ?>
+                <img style="" class="btnShowFeature"
+                    src="./public/assets/media/images/users/<?php echo $getUser['img'] ?>" alt="">
+                <ul class="showFeatureAdminHeader box-shadow1">
+
+                    <li><a class="body-small" href="#statisticalChart">Thống kê đơn hàng</a></li>
+                    <li><a class="body-small" href="#recentOrder">Đơn Hàng Gần Đây</a></li>
+                    <li><a class="body-small" href="#overviewDashboard">Tổng quan</a></li>
+                    <li><a class="body-small" href="?mod=user&act=logOut-account">Đăng Xuất</a></li>
+                </ul>
+            </div>
         </div>
     </div>
     <div class="flex-column p30 g30" style="align-self: stretch; align-items: flex-start;">

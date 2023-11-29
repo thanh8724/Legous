@@ -1,5 +1,5 @@
 <?php
- 
+
 /** render regular product */
 $productHtml = '';
 
@@ -39,11 +39,43 @@ foreach ($products as $item) {
 
     if (isset($promotion) and $promotion > 0) {
         $salePrice = $price - $price * $promotion / 100;
-        $salePriceView = '<div class="product__info__sale-price body-medium">' . formatVND($salePrice) . '</div>';
-        $priceView = '<del class="product__info__price body-small">' . formatVND($price) . '</del>';
+        $salePriceView = '<div class="product__info__sale-price body-large primary-text fw-bold">' . formatVND($salePrice) . '</div>';
+        $priceView = '<del class="product__info__price body-large primary-text fw-bold">' . formatVND($price) . '</del>';
     } else {
         $salePriceView = '';
-        $priceView = '<div class="product__info__price body-medium">' . formatVND($price) . '</div>';
+        $priceView = '<div class="product__info__price body-large primary-text fw-bold">' . formatVND($price) . '</div>';
+    }
+
+    $productBtn = '';
+    if ($qty > 0) {
+        $productBtn =
+            <<<HTML
+                <div class="flex g12 in-stock__btn-set">
+                    <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
+                    <button class="icon-btn love-btn toggle-btn" data-product-id="$id">
+                        <i class="fal fa-heart"></i>
+                    </button>
+                    <form action="?mod=cart&act=addCart" method="post" class="flex-column g12">
+                        <button type="submit" class="icon-btn">
+                            <i class="fal fa-cart-plus"></i>
+                        </button>
+                        <input type="hidden" name="name" value="$name">
+                        <input type="hidden" name="price" value="$price">
+                        <input type="hidden" name="img" value="$img">
+                        <input type="hidden" name="id" value="$id">
+                        <input type="hidden" name="qty" id="data-qty" value="1">
+                    </form>
+                </div>
+            HTML;
+    } else {
+        $productBtn =
+            <<<HTML
+                <div class="flex g12 sold-out__btn-set">
+                    <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
+                    <button class="icon-btn"><i class="fal fa-plus"></i></button>
+                    <button class="icon-btn"><i class="fal fa-arrow-right"></i></button>
+                </div>
+            HTML;
     }
 
     $productHtml .=
@@ -53,16 +85,7 @@ foreach ($products as $item) {
                 <a href="$productLink" class="product__banner oh banner-contain rounded-8 por"
                     style="background-image: url($imgPath)">
                     <div class="product__overlay poa flex-center">
-                        <div class="flex g12 product-btns stock__btn-set">
-                            <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
-                            $loveBtn
-                            <button class="icon-btn"><i class="fal fa-shopping-cart"></i></button>
-                        </div>
-                        <!-- <div class="flex g12 product-btns sold-out__btn-set">
-                                    <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
-                                    <button class="icon-btn"><i class="fal fa-plus"></i></button>
-                                    <button class="icon-btn"><i class="fal fa-arrow-right"></i></button>
-                                </div> -->
+                        $productBtn
                     </div>
                 </a>
                 <a href="#" class="product__info">

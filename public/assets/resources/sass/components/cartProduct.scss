@@ -1,0 +1,28 @@
+.cart__product {
+    color: $light-on-container-4;
+    &__banner {
+        width: 13rem;
+        height: 15rem;
+        flex-shrink: 0;
+    }
+    &__name {
+        width: clamp(20rem, 5.714rem + 38.095vw, 40rem);
+        display:-webkit-box;
+        -webkit-line-clamp:1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-break: break-word;
+    }
+    &__qty__form {
+        .form__input {
+            width: 4rem;
+            text-align: center;
+            border: .1rem solid $light-primary;
+            border-radius: 10rem;
+        }
+    }
+    .auto-grid {
+        grid-template-columns: repeat(auto-fit, minmax(min(16em, 100%), 1fr));
+    }
+}

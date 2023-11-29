@@ -7,11 +7,17 @@ $totalBill = 0;
 $totalSales = 0;
 $totalUser = 0;
 $totalCmt = 0;
+$totalQuan = 0;
 foreach ($getTotalBill as $item) {
-    $totalBill += $item['total'];
+    if ($item['status'] == 4) {
+        $totalBill += $item['total'];
+    }
 }
 foreach ($getProduct as $item) {
     $totalSales += $item['purchases'];
+}
+foreach ($getProduct as $item) {
+    $totalQuan += $item['qty'];
 }
 foreach ($getUser as $item) {
     $totalUser++;
@@ -36,131 +42,80 @@ foreach ($getCmt as $item) {
             <div class="notifiComment">
                 <i class="far fa-comment-alt btnShowFeature"></i>
                 <ul class="showFeatureAdminHeader box-shadow1">
-                    <li>
-                        <div class="col-12 d-flex">
-                            <div class="col-2">
-                                <img class="notifiAdminImg" src="../assets/media/images/users/profile.jpg" alt="">
+                    <?php
+                    $getCmt = getAllComment();
+                    arsort($getCmt);
+                    $getCmt = array_slice($getCmt, 0, 6, true);
+                    foreach ($getCmt as $item) {
+
+                        $getUser = getUserById($item['id_user']);
+                        $getProduct = getProductById($item['id_product']);
+                        ?>
+                        <li>
+                            <div class="col-12 d-flex">
+                                <div class="col-2">
+                                    <img class="notifiAdminImg"
+                                        src="./public/assets/media/images/users/<?php echo $getUser['img'] ?>" alt="">
+                                </div>
+                                <div class="col-10">
+                                    <p class="notifiAdminText body-small"><strong>
+                                            <?php echo $getUser['fullname'] ?>
+                                        </strong><span> đã bình luận ở sản phẩm <strong><a href="">
+                                                    <?php echo $getProduct['name'] ?>
+                                                </a></strong></span></p>
+                                </div>
                             </div>
-                            <div class="col-10">
-                                <p class="notifiAdminText body-small"><strong>Trần Thị Hồng Ngọc</strong><span> vừa mua
-                                        một mô hình với mã đơn hàng <strong>#999</strong></span></p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="col-12 d-flex">
-                            <div class="col-2">
-                                <img class="notifiAdminImg" src="../assets/media/images/users/profile.jpg" alt="">
-                            </div>
-                            <div class="col-10">
-                                <p class="notifiAdminText body-small"><strong>Trần Thị Hồng Ngọc</strong><span> vừa mua
-                                        một mô hình với mã đơn hàng <strong>#999</strong></span></p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="col-12 d-flex">
-                            <div class="col-2">
-                                <img class="notifiAdminImg" src="../assets/media/images/users/profile.jpg" alt="">
-                            </div>
-                            <div class="col-10">
-                                <p class="notifiAdminText body-small"><strong>Trần Thị Hồng Ngọc</strong><span> vừa mua
-                                        một mô hình với mã đơn hàng <strong>#999</strong></span></p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="col-12 d-flex">
-                            <div class="col-2">
-                                <img class="notifiAdminImg" src="../assets/media/images/users/profile.jpg" alt="">
-                            </div>
-                            <div class="col-10">
-                                <p class="notifiAdminText body-small"><strong>Trần Thị Hồng Ngọc</strong><span> vừa mua
-                                        một mô hình với mã đơn hàng <strong>#999</strong></span></p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="col-12 d-flex">
-                            <div class="col-2">
-                                <img class="notifiAdminImg" src="../assets/media/images/users/profile.jpg" alt="">
-                            </div>
-                            <div class="col-10">
-                                <p class="notifiAdminText body-small"><strong>Trần Thị Hồng Ngọc</strong><span> vừa mua
-                                        một mô hình với mã đơn hàng <strong>#999</strong></span></p>
-                            </div>
-                        </div>
-                    </li>
+                        </li>
+                        <?php
+                    }
+                    ?>
                 </ul>
             </div>
             <div class="notifiBell">
                 <i class="fal fa-bell btnShowFeature"></i>
                 <ul class="showFeatureAdminHeader box-shadow1">
-                    <li>
-                        <div class="col-12 d-flex">
-                            <div class="col-2">
-                                <img class="notifiAdminImg" src="../assets/media/images/users/profile.jpg" alt="">
+                    <?php
+                    $getBill = getBill();
+                    arsort($getBill);
+                    $getBill = array_slice($getBill, 0, 6, true);
+                    foreach ($getBill as $item) {
+
+                        $getUser = getUserById($item['id_user']);
+                        ?>
+                        <li>
+                            <div class="col-12 d-flex">
+                                <div class="col-2">
+                                    <img class="notifiAdminImg" src="./public/assets/media/images/users/profile.jpg" alt="">
+                                </div>
+                                <div class="col-10">
+                                    <p class="notifiAdminText body-small"><strong>
+                                            <?php echo $getUser['fullname'] ?>
+                                        </strong><span> vừa mua
+                                            một mô hình với mã đơn hàng <strong>
+                                                <?php echo $item['id'] ?>
+                                            </strong></span></p>
+                                </div>
                             </div>
-                            <div class="col-10">
-                                <p class="notifiAdminText body-small"><strong>Trần Thị Hồng Ngọc</strong><span> vừa mua
-                                        một mô hình với mã đơn hàng <strong>#999</strong></span></p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="col-12 d-flex">
-                            <div class="col-2">
-                                <img class="notifiAdminImg" src="../assets/media/images/users/profile.jpg" alt="">
-                            </div>
-                            <div class="col-10">
-                                <p class="notifiAdminText body-small"><strong>Trần Thị Hồng Ngọc</strong><span> vừa mua
-                                        một mô hình với mã đơn hàng <strong>#999</strong></span></p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="col-12 d-flex">
-                            <div class="col-2">
-                                <img class="notifiAdminImg" src="../assets/media/images/users/profile.jpg" alt="">
-                            </div>
-                            <div class="col-10">
-                                <p class="notifiAdminText body-small"><strong>Trần Thị Hồng Ngọc</strong><span> vừa mua
-                                        một mô hình với mã đơn hàng <strong>#999</strong></span></p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="col-12 d-flex">
-                            <div class="col-2">
-                                <img class="notifiAdminImg" src="../assets/media/images/users/profile.jpg" alt="">
-                            </div>
-                            <div class="col-10">
-                                <p class="notifiAdminText body-small"><strong>Trần Thị Hồng Ngọc</strong><span> vừa mua
-                                        một mô hình với mã đơn hàng <strong>#999</strong></span></p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="col-12 d-flex">
-                            <div class="col-2">
-                                <img class="notifiAdminImg" src="../assets/media/images/users/profile.jpg" alt="">
-                            </div>
-                            <div class="col-10">
-                                <p class="notifiAdminText body-small"><strong>Trần Thị Hồng Ngọc</strong><span> vừa mua
-                                        một mô hình với mã đơn hàng <strong>#999</strong></span></p>
-                            </div>
-                        </div>
-                    </li>
+                        </li>
+                        <?php
+                    }
+                    ?>
+
                 </ul>
             </div>
             <div class="imgUserAdmin">
-                <img class="btnShowFeature" src="../assets/media/images/users/profile.jpg" alt="">
+                <?php
+                $getID = $_SESSION['admin']['id_user'];
+                $getUser = getUserById($getID);
+                ?>
+                <img style="" class="btnShowFeature"
+                    src="./public/assets/media/images/users/<?php echo $getUser['img'] ?>" alt="">
                 <ul class="showFeatureAdminHeader box-shadow1">
 
                     <li><a class="body-small" href="#statisticalChart">Thống kê đơn hàng</a></li>
                     <li><a class="body-small" href="#recentOrder">Đơn Hàng Gần Đây</a></li>
                     <li><a class="body-small" href="#overviewDashboard">Tổng quan</a></li>
-                    <li><a class="body-small" href="#">Đăng Xuất</a></li>
+                    <li><a class="body-small" href="?mod=user&act=logOut-account">Đăng Xuất</a></li>
                 </ul>
             </div>
         </div>
@@ -206,7 +161,7 @@ foreach ($getCmt as $item) {
                     </div>
                 </div> -->
         <div class="owl-carousel owl-theme p30">
-            <div class="item box-shadow4 slider_contain">
+            <div class="item box-shadow1 slider_contain">
                 <div class="slider_items p-4">
                     <div class="col-12 d-flex">
                         <div class="col-6">
@@ -220,7 +175,7 @@ foreach ($getCmt as $item) {
                         <div class="d-flex align-items-center">
                             <button class="buttonWallet"><i class="far fa-wallet" style="color: #ffffff;"></i></button>
                             <p class="dashboard-moneyEarn title-medium"><span>
-                                    <?php echo number_format($totalBill, 3, ',') ?> VNĐ
+                                    <?php echo number_format($totalBill, 0, ',') ?> VNĐ
                                 </span></p>
                         </div>
                         <div class="slider_items_stonks d-flex align-items-center">
@@ -233,7 +188,7 @@ foreach ($getCmt as $item) {
                     </div>
                 </div>
             </div>
-            <div class="item box-shadow4 slider_contain slider_contain-2">
+            <div class="item box-shadow1 slider_contain slider_contain-2">
                 <div class="slider_items p-4">
                     <div class="col-12 d-flex">
                         <div class="col-6">
@@ -259,7 +214,7 @@ foreach ($getCmt as $item) {
                     </div>
                 </div>
             </div>
-            <div class="item box-shadow4 slider_contain slider_contain-3">
+            <div class="item box-shadow1 slider_contain slider_contain-3">
                 <div class="slider_items p-4">
                     <div class="col-12 d-flex">
                         <div class="col-6">
@@ -285,7 +240,33 @@ foreach ($getCmt as $item) {
                     </div>
                 </div>
             </div>
-            <div class="item box-shadow4 slider_contain slider_contain-4">
+            <div class="item box-shadow1 slider_contain slider_contain-5">
+                <div class="slider_items p-4">
+                    <div class="col-12 d-flex">
+                        <div class="col-6">
+                            <h5 class="label-large">Sản Phẩm còn lại</h5>
+                        </div>
+                        <div class="col-6 d-flex justify-content-end align-content-center"><i
+                                class="far fa-ellipsis-v"></i></div>
+                    </div>
+                    <div class="col-12 d-flex justify-content-between align-items-center my-3">
+                        <div class="d-flex align-items-center">
+                            <button class="buttonWallet"><i class="far fa-wallet" style="color: #ffffff;"></i></button>
+                            <p class="dashboard-moneyEarn title-medium"><span>
+                                    <?php echo $totalQuan ?>
+                                </span></p>
+                        </div>
+                        <div class="slider_items_stonks d-flex align-items-center">
+                            <i class="far fa-external-link-alt"></i>
+                            <p class="dashboard-percent body-medium">34.7%</p>
+                        </div>
+                    </div>
+                    <div class="col-12 text-end">
+                        <p class="label-medium">So với tháng 10 - 2023</p>
+                    </div>
+                </div>
+            </div>
+            <div class="item box-shadow1 slider_contain slider_contain-4">
                 <div class="slider_items p-4">
                     <div class="col-12 d-flex">
                         <div class="col-6">
@@ -318,7 +299,7 @@ foreach ($getCmt as $item) {
         <div id="statisticalChart" class="statisticalChart p30">
             <div class="statisticalChartItems">
                 <div class="col-12 d-xxl-flex customerOrderStatistics d-md-block d-sm-block">
-                    <div class="col-xxl-7  col-lg-12 col-md-12 col-sm-12 p20 box-shadow3 orderStatistics">
+                    <div class="col-xxl-7  col-lg-12 col-md-12 col-sm-12 p20 box-shadow1 orderStatistics">
                         <div class="col-12 d-flex">
                             <div class="col-6">
                                 <p class="title-medium">Thống Kê Đơn Hàng</p>
@@ -358,7 +339,7 @@ foreach ($getCmt as $item) {
                         </div>
                     </div>
                     <div
-                        class="col-xxl-5 col-lg-12 col-md-12 col-sm-12 p20 box-shadow3 topUsers mt-xxl-0 mt-md-5 mt-sm-5 mt-5">
+                        class="col-xxl-5 col-lg-12 col-md-12 col-sm-12 p20 box-shadow1 topUsers mt-xxl-0 mt-md-5 mt-sm-5 mt-5">
                         <div class="headerTopUser d-flex justify-content-between align-items-center">
                             <p class="title-medium">Người Dùng Hàng Đầu</p>
                             <button class="btnShowMoreInfoAdminDashboard">
@@ -385,7 +366,6 @@ foreach ($getCmt as $item) {
                                     $totalByUser[$item['id_user']] += $item['total'];
                                     $orderCountByUser[$item['id_user']]++;
                                 }
-
                                 // Sắp xếp mảng theo thứ tự giảm dần
                                 arsort($totalByUser);
 
@@ -393,14 +373,28 @@ foreach ($getCmt as $item) {
                                 $totalByUser = array_slice($totalByUser, 0, 5, true);
 
                                 foreach ($totalByUser as $userId => $total) {
+                                    
                                     $user = getUserById($userId);
                                     ?>
                                     <div class="topUserOder_items">
                                         <div class="col-12 d-flex justify-content-between align-content-center">
                                             <div class="col-6 d-flex ">
                                                 <div class="topUserOrder__image mr6">
-                                                    <img src="./public/assets/media/images/users/<?php echo $user['img'] ?>"
-                                                        alt="">
+                                                    <?php
+                                                    $upload_dir = './public/assets/media/images/users/';
+                                                    //Đường dẫn của file sau khi upload
+                                                    $upload_file = $upload_dir . $user['img'];
+                                                    if (empty($user['img']) || $user['img'] == NULL || !file_exists($upload_file)) {
+                                                        ?>
+                                                        <img src="./public/assets/media/images/users/anonyUser.png" alt="">
+                                                        <?php
+                                                    } else {
+                                                        ?>
+                                                        <img src="./public/assets/media/images/users/<?php echo $user['img'] ?>"
+                                                            alt="">
+                                                        <?php
+                                                    }
+                                                    ?>
                                                 </div>
                                                 <div class="topUserOrder__info">
                                                     <div class="topUserOrder__name body-large">
@@ -424,96 +418,6 @@ foreach ($getCmt as $item) {
                                     <?php
                                 }
                                 ?>
-
-
-                                <!-- <div class="topUserOder_items">
-                                            <div class="col-12 d-flex justify-content-between align-content-center">
-                                                <div class="col-6 d-flex ">
-                                                    <div class="topUserOrder__image mr6">
-                                                        <img src="../assets/media/images/users/profile.jpg" alt="">
-                                                    </div>
-                                                    <div class="topUserOrder__info">
-                                                        <div class="topUserOrder__name body-large">Tâm và Gia Huy</div>
-                                                        <div class="topUserOrder__role label-medium">Thành Viên Vip
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-6 text-end">
-                                                    <div class="topUserOrder_Spend">
-                                                        <div class="topUserOrder_totalPayed title-medium">12.389.900 VNĐ
-                                                        </div>
-                                                        <div class="topUserOrder_totalOrdered label-medium">5 orders
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="topUserOder_items">
-                                            <div class="col-12 d-flex justify-content-between align-content-center">
-                                                <div class="col-6 d-flex ">
-                                                    <div class="topUserOrder__image mr6">
-                                                        <img src="../assets/media/images/users/profile.jpg" alt="">
-                                                    </div>
-                                                    <div class="topUserOrder__info">
-                                                        <div class="topUserOrder__name body-large">Tâm và Gia Huy</div>
-                                                        <div class="topUserOrder__role label-medium">Thành Viên Vip
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-6 text-end">
-                                                    <div class="topUserOrder_Spend">
-                                                        <div class="topUserOrder_totalPayed title-medium">12.389.900 VNĐ
-                                                        </div>
-                                                        <div class="topUserOrder_totalOrdered label-medium">5 orders
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="topUserOder_items">
-                                            <div class="col-12 d-flex justify-content-between align-content-center">
-                                                <div class="col-6 d-flex ">
-                                                    <div class="topUserOrder__image mr6">
-                                                        <img src="../assets/media/images/users/profile.jpg" alt="">
-                                                    </div>
-                                                    <div class="topUserOrder__info">
-                                                        <div class="topUserOrder__name body-large">Tâm và Gia Huy</div>
-                                                        <div class="topUserOrder__role label-medium">Thành Viên Vip
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-6 text-end">
-                                                    <div class="topUserOrder_Spend">
-                                                        <div class="topUserOrder_totalPayed title-medium">12.389.900 VNĐ
-                                                        </div>
-                                                        <div class="topUserOrder_totalOrdered label-medium">5 orders
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="topUserOder_items">
-                                            <div class="col-12 d-flex justify-content-between align-content-center">
-                                                <div class="col-6 d-flex ">
-                                                    <div class="topUserOrder__image mr6">
-                                                        <img src="../assets/media/images/users/profile.jpg" alt="">
-                                                    </div>
-                                                    <div class="topUserOrder__info">
-                                                        <div class="topUserOrder__name body-large">Tâm và Gia Huy</div>
-                                                        <div class="topUserOrder__role label-medium">Thành Viên Vip
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-6 text-end">
-                                                    <div class="topUserOrder_Spend">
-                                                        <div class="topUserOrder_totalPayed title-medium">12.389.900 VNĐ
-                                                        </div>
-                                                        <div class="topUserOrder_totalOrdered label-medium">5 orders
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div> -->
                             </div>
                         </div>
                     </div>
@@ -524,7 +428,7 @@ foreach ($getCmt as $item) {
 
         <!----======== Recent Order  ======== -->
         <div id="recentOrder" class="recentOrder p30">
-            <div class="recentOrder_items p30 box-shadow3">
+            <div class="recentOrder_items p30 box-shadow1">
                 <h2 class="title-medium">Đơn hàng gần đây</h2>
                 <div class="tableLine"></div>
                 <table>
@@ -537,36 +441,67 @@ foreach ($getCmt as $item) {
                         <th class="label-large">Tổng</th>
                         <th class="label-large">Khác</th>
                     </tr>
-                    <tr>
-                        <td class="label-large tableLargeItems"><input type="checkbox">#2039124</td>
-                        <td class="label-large">Iphone 11 pro max</td>
-                        <td class="label-large">Feb 29,2023</td>
-                        <td class="label-large">Trần Thị Hồng Ngọc</td>
-                        <td class="label-large tableLargeItems" style="justify-content: center;"><span
-                                class="dotTable green"></span>Đã Giao</td>
-                        <td class="label-large">30.999.000 VNĐ</td>
-                        <td class="label-large"><button><i class="far fa-ellipsis-h"></i></button></td>
-                    </tr>
-                    <tr>
-                        <td class="label-large tableLargeItems"><input type="checkbox">#2039124</td>
-                        <td class="label-large">Iphone 14 pro max</td>
-                        <td class="label-large">Feb 29,2023</td>
-                        <td class="label-large">Trần Thị Hồng Ngọc</td>
-                        <td class="label-large tableLargeItems" style="justify-content: center;"><span
-                                class="dotTable orange"></span>Đang Giao</td>
-                        <td class="label-large">30.999.000 VNĐ</td>
-                        <td class="label-large"><button><i class="far fa-ellipsis-h"></i></button></td>
-                    </tr>
-                    <tr>
-                        <td class="label-large tableLargeItems"><input type="checkbox">#2039124</td>
-                        <td class="label-large">Iphone 15 pro max</td>
-                        <td class="label-large">Feb 29,2023</td>
-                        <td class="label-large">Trần Thị Hồng Ngọc</td>
-                        <td class="label-large tableLargeItems" style="justify-content: center;"><span
-                                class="dotTable red"></span>Đã Hủy</td>
-                        <td class="label-large">30.999.000 VNĐ</td>
-                        <td class="label-large"><button><i class="far fa-ellipsis-h"></i></button></td>
-                    </tr>
+                    <?php
+                    $getAllCart = getAllCart();
+                    foreach ($getAllCart as $item) {
+                        $getAllBill = getBillByID($item['id_bill']);
+                        $getIdUser = getUserById($getAllBill[0]['id_user']);
+                        ?>
+                        <tr>
+                            <td class="label-large tableLargeItems"><input type="checkbox">
+                                <?php echo $item['id'] ?>
+                            </td>
+                            <td class="label-large">
+                                <?php echo $item['product_name'] ?>
+                            </td>
+                            <td class="label-large">
+                                <?php echo $getAllBill[0]['create_date'] ?>
+                            </td>
+                            <td class="label-large">
+                                <?php echo $getIdUser['fullname'] ?>
+                            </td>
+                            <?php
+                            if ($getAllBill[0]['status'] == 6) {
+                                ?>
+                                <td class="label-large tableLargeItems" style="justify-content: center;"><span
+                                        class="dotTable red"></span>Đã Hủy</td>
+                                <?php
+                            } elseif ($getAllBill[0]['status'] == 5) {
+                                ?>
+                                <td class="label-large tableLargeItems" style="justify-content: center;"><span
+                                        class="dotTable green"></span>Đã Giao</td>
+                                <?php
+                            } elseif ($getAllBill[0]['status'] == 4) {
+                                ?>
+                                <td class="label-large tableLargeItems" style="justify-content: center;"><span
+                                        class="dotTable orange"></span>Hoàn đơn</td>
+                                <?php
+                            } elseif ($getAllBill[0]['status'] == 3) {
+                                ?>
+                                <td class="label-large tableLargeItems" style="justify-content: center;"><span
+                                        class="dotTable blue"></span>Đang giao hàng</td>
+                                <?php
+                            } elseif ($getAllBill[0]['status'] == 2) {
+                                ?>
+                                <td class="label-large tableLargeItems" style="justify-content: center;"><span
+                                        class="dotTable black"></span>Chờ Lấy Hàng</td>
+                                <?php
+                            } elseif ($getAllBill[0]['status'] == 1) {
+                                ?>
+                                <td class="label-large tableLargeItems" style="justify-content: center;"><span
+                                        class="dotTable gray"></span>Chờ Xác Nhận</td>
+                                <?php
+                            }
+                            ?>
+                            <td class="label-large">
+                                <?php echo number_format($item['total_cost'], 0, ',') ?>VNĐ
+                            </td>
+                            <td class="label-large"><button><i class="far fa-ellipsis-h"></i></button></td>
+                        </tr>
+                        <?php
+
+                    }
+                    ?>
                 </table>
             </div>
 
@@ -577,7 +512,7 @@ foreach ($getCmt as $item) {
         <div id="overviewDashboard" class="overviewDashboard">
             <div class="col-12 d-xxl-flex d-md-block d-sm-block">
                 <div class="col-xxl-4 p30 col-sm-12 com-md-12 ">
-                    <div class="vitsitOverview box-shadow3">
+                    <div class="vitsitOverview box-shadow1">
                         <div class="vitsitOverview_item">
                             <div class="theadoverviewDashboard">
                                 <div class="col-12 d-flex justify-content-between align-items-center">
@@ -634,7 +569,7 @@ foreach ($getCmt as $item) {
                     </div>
                 </div>
                 <div class="col-xxl-4 p30 col-sm-12 com-md-12">
-                    <div class="topProductSeller box-shadow3">
+                    <div class="topProductSeller box-shadow1">
                         <div class="topProductSeller_item">
                             <div class="theadoverviewDashboard">
                                 <div class="col-12 d-flex justify-content-between align-items-center">
@@ -703,7 +638,7 @@ foreach ($getCmt as $item) {
                     </div>
                 </div>
                 <div class="col-xxl-4 p30 col-sm-12 com-md-12">
-                    <div class="totalProfit box-shadow3">
+                    <div class="totalProfit box-shadow1">
                         <div class="totalProfit_items">
                             <div class="theadoverviewDashboard">
                                 <div class="col-12 d-flex justify-content-between align-items-center">
