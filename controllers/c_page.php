@@ -28,6 +28,7 @@
                 $view_name = 'home';
                 break;
             case 'login':
+                $loginMessage = '';
                 include_once('models/m_user.php');
                 /** login */
                 // if (isset($_POST['login']) && $_POST['login']) {
@@ -44,6 +45,33 @@
                                 "password_user" => $password,
                                 "id_user" => $id
                             ];
+
+                            // Check if a session cart exists for the user
+                            if (isset($_SESSION['cart']) && is_array($_SESSION['cart'])) {
+                                // Transfer products from the session cart to the cart table
+
+                                // Retrieve the products from the session cart
+                                $cartProducts = $_SESSION['cart'];
+
+                                // Loop through the session cart products and insert them into the cart table
+                                foreach ($cartProducts as $productId => $product) {
+                                    $name = $product['name'];
+                                    $price = $product['price'];
+                                    $img = $product['img'];
+                                    $qty = $product['qty'];
+                                    $totalCost = $price * $qty;
+
+                                    // Call a function to insert the product into the cart table
+                                    insertCart ($id, $productId, $name, $price, $img, $qty, $totalCost);
+                                }
+
+                                // Clear the session cart
+                                // $_SESSION['cart'] = [];
+
+                                // redirect
+                                header('Location: ?mod=cart&act=viewCart');
+                            }
+                            
                             if ($role == 0) {
                                 $_SESSION['role'] = $role;
                                 $_SESSION['userLogin'] = $loginInfo;
@@ -56,6 +84,7 @@
                                 exit();
                             }
                         } else {
+                            $loginMessage = '<span class="primary-text form__message fw-smb label-medium"></span>';
                             header('Location: ?mod=page&act=login#login-section');
                             exit();
                         }
