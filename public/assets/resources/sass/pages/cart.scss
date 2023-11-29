@@ -69,6 +69,8 @@
     }
   }
 .summary__main {
+  // background:$-white;
+  border: .2rem solid $neutral90;
   .summary__product {
     &__name {
       width: 30rem;
@@ -122,6 +124,15 @@
     margin-right: 20px;
   }
 
+  .coupon__form {
+    display: none;
+    .form__group {
+      flex-direction: row !important;
+    }
+  }
+  .coupon__form.active {
+    display: block;
+  }
 }
 .cart__bottom-bar {
   position: fixed;
@@ -299,6 +310,7 @@
   
   
   // || Responsive 
+// || Responsive 
 /* Mobile: with < 740px */
 @media only screen and (max-width: 46.1875em){
   

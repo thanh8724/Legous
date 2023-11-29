@@ -1,5 +1,12 @@
 const app = {
     eventsHandler() {
+        /** back button */
+        const backBtns = document.querySelectorAll('.back-btn');
+        backBtns.forEach(btn => {
+            btn.onclick = () => {
+                window.history.back();
+            }
+        });
         /* header onscroll */
         // const heroBanner = document.querySelector('.hero-banner__wrapper')
         const headers = document.querySelectorAll('.header')
@@ -28,6 +35,10 @@ const app = {
         const openBtn = document.querySelector('.open-respon-btn');
         const closeBtn = document.querySelector('.close-respon-btn');
         const responNav = document.querySelector('.header__nav-respon-full');
+        // console.log(openBtn, closeBtn, responNav)
+        // openBtn.onclick = () => {
+        //     console.log('this button is clicked', openBtn)
+        // }
         if (responNav && openBtn) {
             openBtn.addEventListener('click', () => {
                 responNav.classList.toggle('open');
@@ -196,7 +207,6 @@ const app = {
 
         /** product gallery handler  */
         const galleries = document.querySelectorAll('.product__gallery');
-        console.log(galleries);
 
         if (galleries) {
             galleries.forEach(gallery => {
@@ -254,6 +264,43 @@ const app = {
             });
         }
         // || quantity input end
+
+        
+        // || coupon form show / hide hanlder start
+        const couponBtn = document.querySelector('.coupon__open--toggle-btn')
+        const couponForm = document.querySelector('.coupon__form')
+        if (couponBtn && couponForm) {
+            couponBtn.onclick = () => {
+                couponForm.classList.toggle('active');
+            }
+        }
+        // || coupon form show / hide hanlder end
+        if (document.getElementById("checkAll")) {
+            document.getElementById("checkAll").addEventListener("change", function () {
+                var checkboxes = document.querySelectorAll('input[name^="product"]');
+                for (var i = 0; i < checkboxes.length; i++) {
+                    checkboxes[i].checked = this.checked;
+                }
+            });
+        }
+
+
+        var productCheckboxes = document.querySelectorAll('input[name^="product"]');
+        for (var i = 0; i < productCheckboxes.length; i++) {
+            productCheckboxes[i].addEventListener("change", function () {
+                var checkAllCheckbox = document.getElementById("checkAll");
+                var allChecked = true;
+
+                for (var j = 0; j < productCheckboxes.length; j++) {
+                    if (productCheckboxes[j] !== checkAllCheckbox && !productCheckboxes[j].checked) {
+                        allChecked = false;
+                        break;
+                    }
+                }
+                checkAllCheckbox.checked = allChecked;
+            });
+        }
+
     },
     functionalHandler() {
 

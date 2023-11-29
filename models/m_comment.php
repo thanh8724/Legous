@@ -14,22 +14,34 @@
     function getComment() {
         return pdo_query("SELECT * FROM comment ORDER BY reported DESC, is_appear");
     }
+    function getCommentById($id) {
+        return pdo_query("SELECT * FROM comment WHERE id = {$id}");
+    }
     function getImgCommentById($id) {
         $sql = "SELECT * FROM comment_img WHERE id_comment = $id ORDER BY id DESC";
         return pdo_query($sql);
     }
-
+    function editCommentById($id,$value) {
+        pdo_execute("UPDATE comment SET content = '$value' WHERE id = {$id}");
+    }
     function editCmtStatus($id, $value) {
         pdo_execute("UPDATE comment SET is_appear = {$value} WHERE id = {$id}");
     }
     function delCmt($id) {
         pdo_execute("DELETE FROM comment WHERE id = {$id}");
     }
-
-    function addImgCmt($id_bill,$src) {
-        pdo_execute("INSERT INTO comment_img (`id_comment`,`src`) VALUES(?,?)",$id_bill,$src);
+    function getAllCmtImg($id) {
+        return pdo_query("SELECT * FROM comment_img WHERE id_comment = {$id} ORDER BY id DESC");
     }
-
+    function addImgCmt($id_Cmt,$value) {
+        pdo_execute("INSERT INTO comment_img (`id_comment`,`src`) VALUES(?,?)",$id_Cmt,$value);
+    }
+    function delImgCmt($id_Cmt) {
+        pdo_execute("DELETE From comment_img where id = {$id_Cmt}");
+    }
+    function delImgByIdCmt($id_Cmt) {
+        pdo_execute("DELETE From comment_img where id_comment = {$id_Cmt}");
+    }
     function reported($id, $value) {
         pdo_execute("UPDATE comment SET reported = {$value} WHERE id = {$id}");
     }

@@ -271,8 +271,9 @@ foreach($featureCategories as $item) {
             </button>
         </div>
         <ul class="filter-toggle__list desktop flex g20 flex-full">
-            <!-- filter tonggle list item here -->
+            <!-- filter toggle list item here -->
         </ul>
+        <ul class="filter-toggle__list--mobile tablet-mobile flex g12 flex-full"></ul>
         <ul class="filter__list open flex g12 flex-full j-end">
             <!-- price filter start -->
             <li class="filter__list__item por">

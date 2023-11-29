@@ -35,6 +35,14 @@
     }
     &__carousel {
         padding: 1rem;
+        .product__info__name {
+            display:-webkit-box;
+            -webkit-line-clamp:2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            word-break: break-word;
+        }
     }
     &__banner {
         display: block;
