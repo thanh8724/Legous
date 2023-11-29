@@ -32,8 +32,8 @@
       <div class="flex-center dropdown" style="border-radius: 12px;background: #ECE6F0;">
         <button type="button" data-bs-toggle="dropdown" aria-expanded="false" href=""><i class="fa-solid fa-ellipsis" style="padding: 8px; color: #6750a4;"></i></button>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item label-large" href="?mod=admin&act=product-detail&id= '.$item['id'].'">Xem Chi Tiết</a></li>
-          <li><a href="?mod=admin&act=product-delete&page=<?=$page?>&id='.$item['id'].'"  class="dropdown-item label-large" style="cursor: pointer;" onclick="deleteProduct('.$item['id'].')">Xóa</a></li>
+          <li><a class="dropdown-item label-large" href="?mod=admin&act=products-detail&id= '.$item['id'].'">Xem Chi Tiết</a></li>
+          <li><a href="?mod=admin&act=products-delete&page=<?=$page?>&id='.$item['id'].'" class="dropdown-item label-large" style="cursor: pointer;" onclick="deleteProduct('.$item['id'].')">Xóa</a></li>
         </ul>
       </div>
     </div>
@@ -93,7 +93,7 @@
   <!----======== Header DashBoard ======== -->
   <div class="top">
     <i class="fas fa-angle-left sidebar-toggle"></i>
-    <form action="?mod=admin&act=product-search" method="post" style="width: 100%;display:flex; justify-content: center;">
+    <form action="?mod=admin&act=products-search" method="post" style="width: 100%;display:flex; justify-content: center;">
     <div class="search-box">
             <input type="submit" value=""><i class="far fa-search"></i>
             <input name="keyword" value="" type="text" placeholder="Search here...">
@@ -250,9 +250,9 @@
 <script src="/public/assets/resources/js/pagination.js"></script>
 <script>
   function deleteProduct(id) {
-    var kq = confirm("Bạn chắc là có muốn xóa sản phẩm này không ?")
+    var kq = confirm("Bạn chắc là có muốn xóa sản phẩm này không ?");
     if (kq) {
-      window.location = '?mod=admin&act=product-delete=' + id;
+      window.location = '?mod=admin&act=products-delete&id=' + id; // Sửa thành 'id=' thay vì '='
     }
   }
 </script>

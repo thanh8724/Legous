@@ -2,7 +2,7 @@
   <!----======== Header DashBoard ======== -->
   <div class="top">
     <i class="fas fa-angle-left sidebar-toggle"></i>
-    <form action="?mod=admin&act=product-search" method="post" style="width: 100%;display:flex; justify-content: center;">
+    <form action="?mod=admin&act=products-search" method="post" style="width: 100%;display:flex; justify-content: center;">
     <div class="search-box">
             <input type="submit" value=""><i class="far fa-search"></i>
             <input name="keyword" value="" type="text" placeholder="Search here...">
@@ -113,7 +113,7 @@
   <div class="containerAdmin">
     <div class="width-full mb-3">
       <div class="content-filter dropdown-center width-full d-flex align-items-center justify-content-between">
-        <button id="btn_addMore_admin" type="button" style="width:130px;height:45px;background-color:#6750a4;border-radius:10px"><a style="color: white; font-size: 14px; font-weight: 500; text-decoration: none; padding: 10px 5px;" href="?mod=admin&act=product-add">Thêm Sản Phẩm</a></button>
+        <button id="btn_addMore_admin" type="button" style="width:130px;height:45px;background-color:#6750a4;border-radius:10px"><a style="color: white; font-size: 14px; font-weight: 500; text-decoration: none; padding: 10px 5px;" href="?mod=admin&act=products-add">Thêm Sản Phẩm</a></button>
           <button id="filter" class="flex-center g8" style="padding: 10px 16px;
                     border: 1px solid #79747E; border-radius: 100px;
                     margin-left: auto;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -169,8 +169,8 @@
                 <div class="flex-center dropdown" style="border-radius: 12px;background: #ECE6F0;">
                   <button type="button" data-bs-toggle="dropdown" aria-expanded="false" href=""><i class="fa-solid fa-ellipsis" style="padding: 8px; color: #6750a4;"></i></button>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item label-large" href="?mod=admin&act=product-detail&id=<?= $item['id'] ?>">Xem Chi Tiết</a></li>
-                    <li><a href="?mod=admin&act=product-delete&page=<?=$page?>&id=<?= $item['id'] ?>"  class="dropdown-item label-large" style="cursor: pointer;" onclick="deleteProduct(<?=$item['id'] ?>)">Xóa</a></li>
+                    <li><a class="dropdown-item label-large" href="?mod=admin&act=products-detail&id=<?= $item['id'] ?>">Xem Chi Tiết</a></li>
+                    <li><a href="?mod=admin&act=products-delete&page=<?=$page?>&id=<?= $item['id'] ?>" class="dropdown-item label-large" style="cursor: pointer;" onclick="deleteProduct(<?=$item['id'] ?>)">Xóa</a></li>
                   </ul>
                 </div>
               </div>
@@ -221,21 +221,31 @@
 
 
     </div>
-    
+<?php if ($page > $soTrang || $page < 1): ?>
+    <h1 class='flex-center flex-full mt-5'>Trang này không tồn tại</h1>
+<?php elseif ($totalProducts > 0 && $soTrang > 1): ?>
     <ul id="paging" class="pagination flex g16 mt30">
-  <?php if($page <= $soTrang && $page > 0): ?>
-    <?php for ($i = 1; $i <= $soTrang; $i++) : ?>
-      <li class="pagination__item <?= (isset($_GET['page']) && $_GET['page'] == $i) ? 'active' : '' ?>">
-        <a href="?mod=admin&act=products&page=<?= $i ?>" class="btn body-small pagination__link"><?= $i ?></a>
-      </li>
-    <?php endfor; ?>
-    <li class="btn text-btn rounded-100 label-medium d-flex <?= $page >= $soTrang ? 'disabled' : '' ?>">
-      <a href="?mod=admin&act=products&page=<?= $page + 1 ?>" class="pagination__link"><i class="fal label-medium fa-arrow-right" style="margin-right: .6rem;text-decoration: none;"></i>Next</a>
-    </li>
-  <?php else: ?>
-    <h1 class='flex-center flex-full mt-5'>Trang này chưa tồn tại</h1>
-  <?php endif; ?>
-</ul>
+        <?php if ($page > 1): ?>
+            <li class="pagination__item">
+                <a href="?mod=admin&act=products&page=<?= $page - 1 ?>" class="btn body-small pagination__link"><i class="fal fa-arrow-left" style="margin-right: .6rem"></i>Previous</a>
+            </li>
+        <?php endif; ?>
+
+        <?php for ($i = $startPage; $i <= $endPage; $i++): ?>
+            <li class="pagination__item <?= ($page == $i) ? 'active' : '' ?>">
+                <a href="?mod=admin&act=products&page=<?= $i ?>" class="btn body-small pagination__link"><?= $i ?></a>
+            </li>
+        <?php endfor; ?>
+
+        <?php if ($page < $soTrang): ?>
+            <li class="pagination__item">
+                <a href="?mod=admin&act=products&page=<?= $page + 1 ?>" class="btn body-small pagination__link">Next<i class="fal fa-arrow-right" style="margin-left: .6rem"></i></a>
+            </li>
+        <?php endif; ?>
+    </ul>
+<?php endif; ?>
+
+
 
 
 
@@ -245,10 +255,10 @@
 </section>
 <script src="/public/assets/resources/js/pagination.js"></script>
 <script>
-  function deleteProduct(id) {
-    var kq = confirm("Bạn chắc là có muốn xóa sản phẩm này không ?")
+ function deleteProduct(id) {
+    var kq = confirm("Bạn chắc là có muốn xóa sản phẩm này không ?");
     if (kq) {
-      window.location = '?mod=admin&act=product-delete=' + id;
+      window.location = '?mod=admin&act=products-delete&id=' + id; // Sửa thành 'id=' thay vì '='
     }
   }
 </script>

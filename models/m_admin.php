@@ -112,9 +112,11 @@ function get_One_Order_bill($id){
 }
 
 function product_searchTotal($keyword){
-  return pdo_query_value("SELECT COUNT(*) FROM product p WHERE p.name LIKE '%$keyword'");
+  $keyword = strtolower($keyword); // Chuyển đổi từ khóa tìm kiếm về chữ thường
+  $query = "SELECT COUNT(*) FROM product p WHERE LOWER(p.name) LIKE '%" . $keyword . "%'";
+  return pdo_query_value($query);
 }
-  
+
   // hàm đếm tấc cả các product trong database
   function product_CountTotal(){
     return pdo_query_value('SELECT COUNT(*) FROM product ');
@@ -127,8 +129,9 @@ function product_searchTotal($keyword){
 
   // xóa product theo id
   function remove_product($id){
-    pdo_execute("DELETE FROM product WHERE id = ?", $id);
+    pdo_execute("DELETE FROM product WHERE id = ?", [$id]);
 }
+
 
   // hàm thêm product bên admin
 function product_add($name,$id_category,$description,$price, $img, $qty){
@@ -142,6 +145,11 @@ function product_checkName($name){
 // hàm chỉnh sửa product bên admin
 function product_edit($id,$name,$id_category,$description,$price, $img, $qty){
   pdo_execute("UPDATE product SET name=?, id_category=?, description=?, price=? , img=?, qty=? WHERE id = ?",$name,$id_category,$description,$price, $img, $qty,$id);
+}
+
+// hàm cập nhật hình ảnh của trang product-details
+function updateImg($img , $id){
+    pdo_execute("UPDATE product SET img = ? WHERE id = ?",$img,$id);
 }
 ?>  
 

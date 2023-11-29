@@ -111,7 +111,7 @@
       <div class="containerAdmin">
         <div class="width-full ">
           <div class="content-filter dropdown-center width-full d-flex align-items-center justify-content-between">
-          <button id="btn_addMore_admin" type="button" style="width:130px;height:45px;background-color:#6750a4;border-radius:10px"><a style="color: white; font-size: 12px; text-decoration: none; padding: 10px 5px;" href="?mod=admin&act=categories-add">Thêm danh mục</a></button>
+          <button id="btn_addMore_admin" type="button" style="width:130px;height:45px;background-color:#6750a4;border-radius:10px"><a style="color: white;font-size: 14px; font-weight: 500; text-decoration: none; padding: 10px 5px;" href="?mod=admin&act=categories-add">Thêm danh mục</a></button>
             <button id="filter" class="flex-center g8" style="padding: 10px 16px;
                   border: 1px solid #79747E; border-radius: 100px;
                   margin-left: auto;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -285,20 +285,30 @@
                   }
                 // ?>" class="flex-center g8"><i class="fa-solid fa-arrow-right"></i> </a>
           </div> -->
-          <ul id="paging" class="pagination flex g16 mt30">
-          <?php if($page <= $number_Page && $page > 0): ?>
-            <?php for ($i = 1; $i <= $number_Page; $i++) : ?>
-              <li class="pagination__item <?=($page_nows==$i) ? 'active' : '' ?>">
-                <a href="?mod=admin&act=categories&page=<?=$i?>" class="btn body-small pagination__link"><?= $i ?></a>
-              </li>
-            <?php endfor; ?>
-            <li class="btn text-btn rounded-100 label-medium d-flex <?= $page_nows >= $number_Page ? 'disabled' : '' ?>">
-              <a href="?mod=admin&act=categories&page=<?= $page_nows + 1 ?>" class="pagination__link"><i class="fal label-medium fa-arrow-right" style="margin-right: .6rem;text-decoration: none;"></i>Next</a>
+        
+  <?php if ($page_nows > $number_Page || $page_nows < 1): ?>
+    <h1 class='flex-center flex-full mt-5'>Danh mục này không tồn tại</h1>
+<?php elseif ($count_Categoris > 0 && $number_Page > 1): ?>
+    <ul id="paging" class="pagination flex g16 mt30">
+        <?php if ($page_nows > 1): ?>
+            <li class="pagination__item">
+                <a href="?mod=admin&act=categories&page=<?= $page_nows - 1 ?>" class="btn body-small pagination__link"><i class="fal fa-arrow-left" style="margin-right: .6rem"></i>Previous</a>
             </li>
-          <?php else: ?>
-            <h1 class='flex-center flex-full mt-5'>Trang này chưa tồn tại</h1>
-          <?php endif; ?>
-          </ul>
+        <?php endif; ?>
+
+        <?php for ($i = $startPage; $i <= $endPage; $i++): ?>
+            <li class="pagination__item <?= ($page_nows == $i) ? 'active' : '' ?>">
+                <a href="?mod=admin&act=categories&page=<?=$i?>" class="btn body-small pagination__link"><?= $i ?></a>
+            </li>
+        <?php endfor; ?>
+
+        <?php if ($page_nows < $number_Page): ?>
+            <li class="pagination__item">
+                <a href="?mod=admin&act=categories&page=<?= $page_nows + 1 ?>" class="btn body-small pagination__link">Next<i class="fal fa-arrow-right" style="margin-left: .6rem"></i></a>
+            </li>
+        <?php endif; ?>
+    </ul>
+<?php endif; ?>
 
         </div>
       </div>

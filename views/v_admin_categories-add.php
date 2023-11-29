@@ -86,29 +86,25 @@
             </div>
         </div>
     </div>
-    <div class="flex-column p30 g30" style="align-self: stretch; align-items: flex-start;">
-        <div class="text">
-            <h1 class="label-large-prominent" style="font-size: 24px;
-            line-height: 32px;">Thêm Danh Mục</h1>
-        </div>
-        <!--DateTimelocal-->
-        <div class="flex-between width-full" style="gap: 8px;
-          align-items: center;">
-            <div class="flex g8">
-                <span class="label-large">Admin /</span><a href="#" class="label-large"
-                    style="text-decoration: none;">Danh Mục</a>
-            </div>
-            <!-- <div class="flex-center g8">
-                <span><i class="fa-solid fa-calendar-days"></i></span>
-                <input class="label-large-prominent" type="datetime-local" style="color: #625B71; border: none; font-size: 16px;
-              ">
-            </div> -->
-        </div>
-    </div>
+    
     <!----======== End Header DashBoard ======== -->
     
     <div class="containerAdmin_order-detail p30">
-        
+    <div class="localDashboard">
+            <div class="col-12 d-flex">
+                <div class="col-6">
+                    <div class="col-12">
+                        <h2>Thêm Danh Mục</h2>
+                    </div>
+                    <div class="col-12">
+                        <span class="label-large">Admin /</span><a href="?mod=admin&act=products&page=1" class="label-large" style="text-decoration: none;"> Danh Mục</a> / <a href="#!" class="label-large" style="text-decoration: none;"> Thêm Danh Mục</a>
+                    </div>
+                    <div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
         <form enctype="multipart/form-data" action="" method="POST">
             <div class="sliderDashboard_order-add-create sliderDashboard_order-detail rounded-4">
             <?=@$error?>
