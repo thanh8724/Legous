@@ -78,11 +78,13 @@
     }
 
     textarea {
-        width: 100%;
         height: 20rem;
-        border-radius: 4px;
-        padding: 1.2rem 2rem;
-        color: black;
+        border-radius: 0.4rem;
+        padding: 0 2rem;
+        border: 1px solid $neutral87;
+        transition: $trans-bounce;
+        color: $neutral24;
+        outline: none;
     }
     textarea:focus,
     input:focus {

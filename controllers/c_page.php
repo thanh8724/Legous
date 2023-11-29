@@ -1,186 +1,209 @@
-<?php 
-    session_start();
-    ob_start();
+<?php
+session_start();
+ob_start();
+// unset($_SESSION['admin']);
 
-    // unset($_SESSION['admin']);
+// Gữi/nhận dữ liệu thông qua models
+// Hiển thị dữ liệu thông qua view
+if (isset($_GET['act'])) {
+    switch ($_GET['act']) {
+        case 'home':
+            // lấy dữ liệu
+            include_once 'models/m_cart.php';
+            include_once 'models/m_product.php';
+            include_once 'models/m_category.php';
+            include_once 'models/m_partner.php';
+            include_once 'models/m_user.php';
+            $topLoveProduct = getProductsByLove(1);
+            $loveProducts = getProductsByLove(12);
+            $categories = getCategories();
+            $partner = getPartner();
+            $upcommingProduct = getFeatureProduct();
+            // if(isset($_SESSION['user'])) {
+            //     print_r($_SESSION['user']);
+            // }
 
-    // Gữi/nhận dữ liệu thông qua models
-    // Hiển thị dữ liệu thông qua view
-    if(isset($_GET['act'])){
-        switch ($_GET['act']){
-            case 'home':
-                // lấy dữ liệu
-                include_once 'models/m_cart.php';
-                include_once 'models/m_product.php';
-                include_once 'models/m_category.php';
-                include_once 'models/m_partner.php';
-                include_once 'models/m_user.php';
-                $topLoveProduct = getProductsByLove(1);
-                $loveProducts = getProductsByLove(12);
-                $categories = getCategories();
-                $partner = getPartner();
-                $upcommingProduct = getFeatureProduct();
-                // if(isset($_SESSION['user'])) {
-                //     print_r($_SESSION['user']);
-                // }
-                
-                // hiển thị dữ liệu
-                $view_name = 'home';
-                break;
-            case 'login':
-                include_once('models/m_user.php');
-                /** login */
-                // if (isset($_POST['login']) && $_POST['login']) {
-                if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                    $email = $_POST['email'];
-                    $password = $_POST['password'];
-                    // echo $name , $password;
-                    if ($email !== '' && $password !== '')   {
-                        $user = checkUser($email, $password);
-                        if ($user) {
-                            extract($user);
-                            $loginInfo = [
-                                "email_user" => $email,
-                                "password_user" => $password,
-                                "id_user" => $id
-                            ];
-                            if ($role == 0) {
-                                $_SESSION['role'] = $role;
-                                $_SESSION['userLogin'] = $loginInfo;
-                                header('Location: ?mod=page&act=home&idUser=' . $id);
-                                exit();
-                            } else if ($role == 2023) {
-                                $_SESSION['role'] = $role;
-                                $_SESSION['admin'] = $loginInfo;
-                                header('Location: ?mod=admin&act=general');
-                                exit();
+            // hiển thị dữ liệu
+            $view_name = 'home';
+            break;
+        case 'login':
+            include_once('models/m_user.php');
+            /** login */
+            // if (isset($_POST['login']) && $_POST['login']) {
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $email = $_POST['email'];
+                $password = $_POST['password'];
+                // echo $name , $password;
+                if ($email !== '' && $password !== '') {
+                    $user = checkUser($email, $password);
+                    if ($user) {
+                        extract($user);
+                        $loginInfo = [
+                            "email_user" => $email,
+                            "password_user" => $password,
+                            "id_user" => $id
+                        ];
+                        if ($role == 0) {
+                            $_SESSION['role'] = $role;
+                            $_SESSION['userLogin'] = $loginInfo;
+                            #thêm cookies accounts_user nếu chưa có
+                            if (!isset($_COOKIE['accounts_user' . $loginInfo['id_user']])) {
+                                setcookie('accounts_user' . $loginInfo['id_user'], $loginInfo['id_user'], time() + (60 * 60 * 24 * 30));
                             }
-                        } else {
-                            header('Location: ?mod=page&act=login#login-section');
+                            if (isset($_SESSION['id_account'])) {
+                                unset($_SESSION['id_account']);
+                            }
+                            header('Location: ?mod=page&act=home&idUser=' . $id);
+                            exit();
+                        } else if ($role == 2023) {
+                            $_SESSION['role'] = $role;
+                            $_SESSION['admin'] = $loginInfo;
+                            header('Location: ?mod=admin&act=general');
                             exit();
                         }
+                    } else {
+                        header('Location: ?mod=page&act=login#login-section');
+                        exit();
                     }
                 }
-                if (isset($_SESSION['userLogin'])) {
-                    extract($_SESSION['userLogin']);
-                    $_SESSION['role'] = $role;
-                    header('Location: ?mod=page&act=home');
-                    exit();
-                } else if (isset($_SESSION['admin'])) {
-                    header('Location: ?mod=admin&act=home');
-                    exit();
+            }
+            if (isset($_SESSION['userLogin'])) {
+                extract($_SESSION['userLogin']);
+                $_SESSION['role'] = $role;
+                header('Location: ?mod=page&act=home');
+                exit();
+            } else if (isset($_SESSION['admin'])) {
+                header('Location: ?mod=admin&act=home');
+                exit();
+            }
+            // hiển thị dữ liệu
+            $view_name = 'login';
+            break;
+        case 'register':
+            // lấy dữ liệu
+            /** register */
+            include_once 'models/m_user.php';
+
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $username = $_POST['username'];
+                $email = $_POST['email'];
+                $password = $_POST['password'];
+
+                if ($username !== '' && $email !== '' && $password !== '') {
+                    $userId = insertUser($username, $email, $password);
+                    $list_infoUser = [
+                        "id_user" => $userId,
+                        "name_user" => $username,
+                        "password_user" => $password,
+                        "email_user" => $email
+                    ];
+                    $_SESSION['user'] = $list_infoUser;
                 }
-                // hiển thị dữ liệu
-                $view_name = 'login';
-                break;
-            case 'register':
-                // lấy dữ liệu
-                /** register */
-                include_once 'models/m_user.php';
+            }
+            if (isset($_SESSION['user'])) {
+                $emailView = $email_user;
+                $passwordView = $password_user;
+                header("Location: ?mod=page&act=login#login-section");
+                exit();
+            }
+            ;
+            break;
+        case 'category':
+            // lấy dữ liệu
+            include_once 'models/m_product.php';
+            include_once 'models/m_category.php';
 
-                if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                    $username = $_POST['username'];
-                    $email = $_POST['email'];
-                    $password = $_POST['password'];
+            $maxPrice = getMaxProductPrice();
+            $minPrice = getMinProductPrice();
 
-                    if ($username !== '' && $email !== '' && $password !== '') {
-                        $userId = insertUser($username, $email, $password);
-                        $list_infoUser = [
-                            "id_user" => $userId,
-                            "name_user" => $username,
-                            "password_user" => $password,
-                            "email_user" => $email
-                        ];
-                        $_SESSION['user'] = $list_infoUser;
-                    }
+            $manualMin = $minPrice;
+            $manualMax = $maxPrice;
+            if (isset($_GET['minPrice']) && isset($_GET['maxPrice'])) {
+                $manualMin = $_GET['minPrice'];
+                $manualMax = $_GET['maxPrice'];
+            }
+
+            if (isset($_GET['idCategory'])) {
+                $idCategory = $_GET['idCategory'];
+                $category = getCategoryById($idCategory);
+                $featureProducts = getFeatureProductOfCategory($idCategory, $limit = 0);
+                $categoryProducts = getProductsByCategoryId($idCategory);
+
+                /** filter handler */
+                if (isset($_POST['priceFilter']) && $_POST['priceFilter']) {
+                    $min = $_POST['minPrice'];
+                    $max = $_POST['maxPrice'];
+
+                    $categoryProducts = getCategoryProductsByPriceFilter($min, $max, $idCategory);
                 }
-                if (isset($_SESSION['user'])) {
-                    $emailView = $email_user;
-                    $passwordView = $password_user;
-                    header("Location: ?mod=page&act=login#login-section");
-                    exit();
-                };
-                break;
-            case 'category':
-                 // lấy dữ liệu
-                include_once 'models/m_product.php';
-                include_once 'models/m_category.php';
 
-                $maxPrice = getMaxProductPrice();
-                $minPrice = getMinProductPrice();
-
-                $manualMin = $minPrice;
-                $manualMax = $maxPrice;
+                // Check if the 'minPrice' and 'maxPrice' values are set in the POST data
                 if (isset($_GET['minPrice']) && isset($_GET['maxPrice'])) {
-                    $manualMin = $_GET['minPrice'];
-                    $manualMax = $_GET['maxPrice'];
+                    $min = $_GET['minPrice'];
+                    $max = $_GET['maxPrice'];
+
+                    // Use the $min and $max values to filter the category products
+                    $categoryProducts = getCategoryProductsByPriceFilter($min, $max, $idCategory);
                 }
-                
-                if (isset($_GET['idCategory'])) {
-                    $idCategory = $_GET['idCategory'];
-                    $category = getCategoryById($idCategory);
-                    $featureProducts = getFeatureProductOfCategory ($idCategory , $limit = 0);
-                    $categoryProducts = getProductsByCategoryId($idCategory);
 
-                    /** filter handler */
-                    if (isset($_POST['priceFilter']) && $_POST['priceFilter']) {
-                        $min = $_POST['minPrice'];
-                        $max = $_POST['maxPrice'];
-                        
-                        $categoryProducts = getCategoryProductsByPriceFilter($min , $max , $idCategory);
-                    }
-
-                    // Check if the 'minPrice' and 'maxPrice' values are set in the POST data
-                    if (isset($_GET['minPrice']) && isset($_GET['maxPrice'])) {
-                        $min = $_GET['minPrice'];
-                        $max = $_GET['maxPrice'];
-
-                        // Use the $min and $max values to filter the category products
-                        $categoryProducts = getCategoryProductsByPriceFilter($min, $max, $idCategory);
-                    }
-
-                    // name filter approach
-                    if (isset($_GET['filterName']) and $_GET['filterName'] != '') {
-                        $order = $_GET['filterName'];
-                        $categoryProducts = getProductsByCategoryId($idCategory, $order);
-                    }
+                // name filter approach
+                if (isset($_GET['filterName']) and $_GET['filterName'] != '') {
+                    $order = $_GET['filterName'];
+                    $categoryProducts = getProductsByCategoryId($idCategory, $order);
                 }
-                // hiển thị dữ liệu
-                $view_name = 'category';
-                break;
-            case'general':
-                include_once 'models/m_user.php';
-                $view_name = 'general';
-                break;
+            }
+            // hiển thị dữ liệu
+            $view_name = 'category';
+            break;
+        case 'general':
+            include_once 'models/m_user.php';
+            $view_name = 'general';
+            break;
 
-            // case 'filter':
-            //     include_once 'models/m_product.php';
-            //     include_once 'models/m_category.php';
-            case 'shop':
-                include_once 'models/m_product.php';
-                include_once 'models/m_category.php';
-                $maxPrice = getMaxProductPrice();
-                $minPrice = getMinProductPrice();
+        // case 'filter':
+        //     include_once 'models/m_product.php';
+        //     include_once 'models/m_category.php';
+        case 'shop':
+            include_once 'models/m_product.php';
+            include_once 'models/m_category.php';
+            $maxPrice = getMaxProductPrice();
+            $minPrice = getMinProductPrice();
 
-                $manualMin = $minPrice;
-                $manualMax = $maxPrice;
-                
-                $view_name = 'shop';
-                break;
-            case 'productDetail';
-                include_once 'models/m_product.php';
-                include_once 'models/m_category.php';
-                include_once 'models/m_img.php';
-                include_once 'models/m_comment.php';
-                
-                $view_name = 'productDetail';
+            $manualMin = $minPrice;
+            $manualMax = $maxPrice;
 
-                
-                break;
-            default:
-                
-                break;
-        }
-        require_once 'views/v_user_layout.php';
+            $view_name = 'shop';
+            break;
+        case 'reportCmt':
+            include_once 'models/m_comment.php';
+            $getID = $_GET['reportId'];
+            $getReported = $_GET['reported'];
+            $getIdProduct = $_GET['idProduct'];
+            $reported = (int)$getReported + 1;
+            reported($getID, $reported);
+            header("Location: ?mod=page&act=productDetail&idProduct={$getIdProduct}");
+            break;
+        case 'delCmt':
+            $getID = (int)$_GET['reportId'];
+            $getIdProduct = $_GET['idProduct'];
+            delCmt($getID);
+            header("Location: ?mod=page&act=productDetail&idProduct={$getIdProduct}");
+            break;
+        case 'productDetail';
+            include_once 'models/m_product.php';
+            include_once 'models/m_category.php';
+            include_once 'models/m_img.php';
+            include_once 'models/m_comment.php';
+
+            $view_name = 'productDetail';
+
+
+            break;
+
+        default:
+
+            break;
     }
+    require_once 'views/v_user_layout.php';
+}
 ?>
