@@ -1,10 +1,3 @@
-// let form_address = document.querySelector('.form__address--container');
-// let form_hidden = true;
-// if(form_address) {
-//     form_address.style.opacity = '0';
-//     form_address.style.visibility = 'hidden';
-// }
-
 let form_addAddress = document.querySelector('#form_add-address');
 // let form_editAddress = document.querySelector('#form_edit-address');
 let btn_add_address = document.querySelector('#button_add-address');
@@ -12,8 +5,6 @@ let btn_add_address = document.querySelector('#button_add-address');
 if(form_addAddress) {
     form_addAddress.style.opacity = '0';
     form_addAddress.style.visibility = 'hidden';
-    // form_editAddress.style.opacity = '0';
-    // form_editAddress.style.visibility = 'hidden';
 }
 function btn_addAddress()
 {
@@ -46,35 +37,7 @@ function slider_menuMobile()
         });
     })
 }
-
-// tạo input[checkbox] để ẩn lỗi ở trang không có input[checkbox]
-function input_typeCheckbox()
-{
-    const checkbox = document.createElement("input");
-    checkbox.type = "checkbox";
-    checkbox.setAttribute("style", "display: none;");
-    document.body.appendChild(checkbox);
-}
-
-//  select check box
-function select__order()
-{
-    const checkboxes = document.querySelectorAll("input[type='checkbox']");
-    checkboxes[0].addEventListener("click", function() {
-      for (const checkbox of checkboxes) {
-        if(!checkbox.checked) {
-            checkboxes[0].checked = true;
-            checkbox.checked = true;
-        }else {
-            checkboxes[0].checked = false;
-            checkbox.checked = false;
-        }
-      }
-    });
-}
-
 // show - hidden switch account
-
 const button_switchAccount = document.querySelector('.box__changeAccount svg');
 // let type_switchAccount = 
 if(button_switchAccount) {
@@ -85,5 +48,3 @@ if(button_switchAccount) {
 }
 
 slider_menuMobile();
-input_typeCheckbox();
-select__order();
