@@ -60,11 +60,10 @@ function add_Category($add_name_cg, $add_img_cg, $add_description_cg, $add_color
 }  
 // -------------------------------- Phần orders --------------------------------
 function get_Order_bill($filter = "", $status = 0){
-  $sql = "SELECT * FROM bill";
-  
+  $sql = "SELECT * FROM bill ";
   if($filter == "old"){
       $sql .= " ORDER BY id DESC";
-  }
+  } 
   elseif($filter == "price"){
     $sql .= " WHERE total >=   1000000 ORDER BY total";
 }
@@ -73,6 +72,14 @@ function get_Order_bill($filter = "", $status = 0){
   }
   return pdo_query($sql);
 }
+function search_Order_bill($id_user = 0){
+  $sql = "SELECT * FROM bill ";
+  if($id_user > 0){
+    $sql .= " WHERE id_user = {$id_user}";
+  }
+  return pdo_query($sql);
+}
+
 function get_OneOrder_bill($id){
   $sql = "SELECT * FROM bill";
   if($id > 0){

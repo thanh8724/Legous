@@ -3,8 +3,17 @@
     <div class="top">
         <i class="fas fa-angle-left sidebar-toggle"></i>
         <div class="search-box">
+        <form action="" method="post">
             <i class="far fa-search"></i>
-            <input type="text" placeholder="Search here...">
+            <input type="text" name="kyw_order" placeholder="Tìm đơn hàng...">
+            <button type="submit" name="btn_search" ></button>
+            </form>
+            <!-- <form action="" method="post">
+                <i class="far fa-search"></i>
+                <input type="text" name="kyw_order" placeholder="Tìm đơn hàng...">
+                <button type="submit" name="btn_search"></button>
+            </form> -->
+
         </div>
         <div class="info-user">
             <div class="notifiComment">
@@ -104,7 +113,6 @@
 
     <!----======== Body DashBoard ======== -->
     <div class="containerAdmin">
-
         <div class="flex-column width-full">
         <div class="content-filter dropdown-center width-full d-flex align-items-center justify-content-between">
           <button id="btn_addMore_admin" type="button" style="width:130px;height:45px;background-color:#6750a4;border-radius:10px"><a style="color: white; font-size: 12px; text-decoration: none; padding: 10px 5px;" href="?mod=admin&act=orders-add">Thêm Đơn Hàng</a></button>
@@ -193,8 +201,8 @@
             <td>12.289.090 đ</td>
             <td><a href="">Xem chi tiết</a></td>
           </tr> -->
-         
                 <?php foreach ($get_Order as $value):?>
+                  
                 <?php
                 $getUser = getUserById($value['id_user']);
                 $getPayment = payment($value['id_user']);
@@ -254,7 +262,6 @@
                 </tr>
                 <?php endforeach;?>
                 <?php if(@$_GET['id']):?>
-                 
                 <div style=" 
                 font-size: 16px;
                 display:block;
@@ -266,7 +273,7 @@
                 width: 100%; /* Full width */
                 height: 100%; /* Full height */
                 overflow: auto; /* Enable scroll if needed */
-                 /* Black w/ opacity */" id="myModal" class="modal">
+                background-color: rgba(0,0,0,0.4); /* Black w/ opacity */" id="myModal" class="modal">
                     <!-- Modal content -->
                     <div style=" background-color: #fefefe;
                 margin: auto;
@@ -447,7 +454,7 @@
     </div>
 <!-- Popup thông báo -->
 <form action="" method="post">
-<div style="" class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+<div style="background-color: rgba(128, 128, 128, 0.99);" class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
                                 <div  class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
                                     <div class="modal-header justify-content-center ">

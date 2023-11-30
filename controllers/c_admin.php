@@ -228,7 +228,7 @@ if (isset($_GET['act'])) {
             // lấy dữ liệu
             include_once 'models/m_admin.php';
             include_once 'models/m_user.php';
-            $get_Order = get_Order_bill(); 
+            
 
             if(isset($_GET['filter'])){
                 $get_Order = get_Order_bill($_GET['filter']); 
@@ -255,7 +255,27 @@ if (isset($_GET['act'])) {
                 del_bill($_GET['id']);
                 header('Location:?mod=admin&act=orders'); 
             }
-            // hiển thị dữ liệu  
+            if(isset($_POST['btn_search'])) {
+                $kyw_order = $_POST['kyw_order'];
+                $get_Order = get_Order_bill($kyw_order); 
+            }else{
+                $get_Order = get_Order_bill(); 
+            }
+            if(isset($_POST['btn_search'])) {
+                $kyw_order = $_POST['kyw_order'];
+                $search_us_bill = searchUser($kyw_order);
+                if(empty($search_us_bill)){
+                     // không làm gì hết
+                     $get_Order = [];
+                }else{
+                    $get_us_bill = $search_us_bill[0]['id'];
+                    $get_Order = search_Order_bill($get_us_bill);
+                }
+            } else {
+                $get_Order = get_Order_bill(); 
+            }
+            
+            //hiển thị dữ liệu  
             $view_name = 'admin_orders';
             break;
 
@@ -280,7 +300,7 @@ if (isset($_GET['act'])) {
                     header('Location:?mod=admin&act=orders'); 
                 }
             }
-          
+            
             // hiển thị dữ liệu  
             $view_name = 'admin_orders-add';
             break;
