@@ -1459,6 +1459,9 @@ body.dark main {
   background-color: #15192a;
   transition: 0.5s;
 }
+body.dark main .notifiAdminText span {
+  color: black !important;
+}
 body.dark main .logo_name,
 body.dark main span,
 body.dark main h1 {
