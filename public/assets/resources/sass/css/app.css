@@ -5282,7 +5282,7 @@ main .adminFooter ul li a {
 }
 .right-order-add-create .img_order-add-create img {
   height: 100%;
-  width: 1000px;
+  width: 20px;
   border-radius: 10px;
 }
 .right-order-add-create .button_delete_img {
@@ -5909,6 +5909,110 @@ section .containerAdmin .pagination li a {
   }
 }
 /* PC: width >= 1024px */
+.containerAdmin .manageCoupon .manageCoupon_items {
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+.containerAdmin .manageCoupon .manageCoupon_items a {
+  text-decoration: none;
+}
+.containerAdmin .manageCoupon .manageCoupon_items .manageCoupon_itemsSetting i {
+  font-size: 60px;
+  background: -webkit-linear-gradient(60deg, #ff79ea, #a93cff, #6791ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.containerAdmin .manageCoupon .manageCoupon_items .manageCoupon_itemsText {
+  margin-left: 20px;
+}
+.containerAdmin .manageCoupon .manageCoupon_items .manageCoupon_itemsText h2 {
+  color: #1d192b;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+.containerAdmin .createCoupon .createCoupon_left {
+  background-color: #ffffff;
+}
+.containerAdmin .createCoupon .createCoupon_left .createCoupon_items {
+  margin-top: 25px;
+}
+.containerAdmin .createCoupon .createCoupon_left .createCoupon_items .col-6 {
+  width: calc(50% - 10px) !important;
+}
+.containerAdmin .createCoupon .createCoupon_left .createCoupon_items .col-6:last-child {
+  margin-left: 20px;
+}
+.containerAdmin .createCoupon .createCoupon_left .createCoupon_items .col-6 input {
+  width: 100%;
+  border: unset;
+  border-radius: 10px;
+  background-color: #e6e0e9;
+  padding: 20px 30px 20px 15px;
+  color: #49454f;
+  margin-top: 10px;
+}
+.containerAdmin .createCoupon .createCoupon_left .createCoupon_items .infoCoupon input {
+  width: 100%;
+  border: unset;
+  border-radius: 10px;
+  background-color: #e6e0e9;
+  padding: 20px 30px 20px 15px;
+  color: #49454f;
+  margin-top: 10px;
+}
+.containerAdmin .createCoupon .createCoupon_left .createCouponSubmit {
+  width: 100%;
+  border: unset;
+  border-radius: 10px;
+  background-color: #6750a4;
+  padding: 20px 30px 20px 15px;
+  color: #ffffff;
+  margin-top: 25px;
+}
+.containerAdmin .createCoupon .createCoupon_right {
+  background-color: #ffffff;
+}
+.containerAdmin .createCoupon .createCoupon_right .listCouponHead h4 {
+  color: #1d192b;
+}
+.containerAdmin .createCoupon .createCoupon_right .listCouponHead i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: rgba(128, 128, 128, 0.1);
+}
+.containerAdmin .createCoupon .createCoupon_right .listCoupon_items .col-3 .saleListCoupon {
+  width: 60px;
+  height: 60px;
+  line-height: 55px;
+  background-color: rgba(182, 109, 255, 0.368627451);
+  color: #21005d;
+  display: flex;
+  justify-content: center;
+  border-radius: 10px;
+}
+.containerAdmin .createCoupon .createCoupon_right .listCoupon_items .col-9 .titleSaleListCoupon {
+  margin-bottom: 15px;
+}
+.containerAdmin .createCoupon .createCoupon_right .listCoupon_items .buttonShowFeatureCoupon {
+  display: flex;
+  align-items: center;
+}
+.containerAdmin .createCoupon .createCoupon_right .listCoupon_items .buttonShowFeatureCoupon i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: rgba(128, 128, 128, 0.1);
+}
+
 /* Mobile: with < 740px */
 @media only screen and (max-width: 46.1875em) {
   .mobile {

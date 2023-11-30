@@ -227,34 +227,85 @@ if (isset($_GET['act'])) {
         case 'orders':
             // lấy dữ liệu
             include_once 'models/m_admin.php';
-            $get_Order = get_Order_bill(); 
+            include_once 'models/m_user.php';
+            
+
             if(isset($_GET['filter'])){
                 $get_Order = get_Order_bill($_GET['filter']); 
                 if(isset($_GET['status'])){
-                $get_Order = get_Order_bill($_GET['filter'], $_GET['status']); 
+                    $get_Order = get_Order_bill($_GET['filter'],$_GET['status']); 
                 }
             }
             if(isset($_GET['id'])){
-                $get_Cart_bill = get_Cart_bill($_GET['id']);
-                $shippingResult = shipping($_GET['id']);
-                $shippingName = $shippingResult[0]['name'];
-                if (isset($_POST['submit'])) {
-                    $change_status = $_POST['change_status'];
-                    update_Change_status($change_status, $_GET['id']);
-                    header('Location:?mod=admin&act=orders');
-                }
+            $Get_Id_Order = $_GET['id'];
+            $Id_bill = get_OneOrder_bill($Get_Id_Order);
+            $id_User = $Id_bill[0]['id_user']; 
+            $name_user = getUserById($id_User);
+            $getAddress = getAddress($name_user['id']); 
+            $get_product_order = get_product_order($Id_bill[0]['id'] );
+            $shipping = shipping($Id_bill[0]['id_shipping']);
+            $payment = payment($Id_bill[0]['id_payment']);
+            if (isset($_POST['submit'])) {
+                $change_status = $_POST['change_status'];
+                update_Change_status($change_status,$Get_Id_Order);
+                header('Location:?mod=admin&act=orders'); 
             }
-            // hiển thị dữ liệu  
+            }
+            if(isset($_POST['delete_bill'])){
+                del_bill($_GET['id']);
+                header('Location:?mod=admin&act=orders'); 
+            }
+            if(isset($_POST['btn_search'])) {
+                $kyw_order = $_POST['kyw_order'];
+                $get_Order = get_Order_bill($kyw_order); 
+            }else{
+                $get_Order = get_Order_bill(); 
+            }
+            if(isset($_POST['btn_search'])) {
+                $kyw_order = $_POST['kyw_order'];
+                $search_us_bill = searchUser($kyw_order);
+                if(empty($search_us_bill)){
+                     // không làm gì hết
+                     $get_Order = [];
+                }else{
+                    $get_us_bill = $search_us_bill[0]['id'];
+                    $get_Order = search_Order_bill($get_us_bill);
+                }
+            } else {
+                $get_Order = get_Order_bill(); 
+            }
+            
+            //hiển thị dữ liệu  
             $view_name = 'admin_orders';
             break;
 
         case 'orders-add':
+            include_once 'models/m_admin.php';
             // lấy dữ liệu
+            if(isset($_POST['btn_update_order'])) {
+                $name_us_order = $_POST['name_us_order'];
+                $location_us_order = $_POST['location_us_order'];
+                $email_us_order = $_POST['email_us_order'];
+                $phone_us_order = $_POST['phone_us_order'];
+                $method_order = $_POST['method_order'];
+                $method_order1 = intval($method_order);
+                $total_order = $_POST['total_order'];
+                $total_order1 = intval($total_order);
+                $status_order = $_POST['status_order'];
+                $error = "";
+                if(empty($name_us_order) || empty($location_us_order) || empty($phone_us_order) || empty($method_order) || empty($total_order) || empty($status_order)){
+                    $error = '<div style="position:relative; top:25px;" class="alert alert-danger" role="alert">Bạn còn thiếu một số thông tin chưa điền</div>';
+                } else {
+                    order_add($name_us_order, $location_us_order, $email_us_order, $phone_us_order, $total_order1, $status_order, $method_order1);
+                    header('Location:?mod=admin&act=orders'); 
+                }
+            }
+            
             // hiển thị dữ liệu  
             $view_name = 'admin_orders-add';
             break;
         case 'orders-edit':
-            // lấy dữ liệu
+            // lấy dữ liệu  
             // hiển thị dữ liệu  
             $view_name = 'admin_orders-edit';
             break;
