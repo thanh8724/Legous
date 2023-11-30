@@ -293,13 +293,14 @@
         ]
     })
 </script>
-<script>
+<!-- <script>
     var inputs = document.querySelectorAll(".form__inputAddress");
     for (var i = 0; i < inputs.length; i++) {
-        if(inputs[i].parentElement.children[2].innerText === "") {
+        // console.log(inputs[i].parentElement.children[2].innerText);
+        if((inputs[i].parentElement.children[2]).innerText == "") {
             inputs[i].classList.remove("error_input");
             inputs[i].parentElement.children[1].classList.remove('error_formMessage');
             inputs[i].parentElement.children[2].classList.remove('error_message');
         }
     }
-</script>
+</script> -->
