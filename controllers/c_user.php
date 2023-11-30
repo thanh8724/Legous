@@ -68,21 +68,27 @@
                 }
                 break;
             
-            case 'order-history':
-                include_once 'models/m_user.php';
-                $view_name = 'user_orderHistory';
-                $id_user = $_SESSION['id_user'];
-                $order_history = get_orderHistory($id_user);
-                break;
-        
-            case 'order-detail':
-                include_once 'models/m_user.php';
-                $view_name = 'user_orderDetail';
-                if (isset($_GET['id'])) {
-                    $id_order = ($_GET['id']);
-                    $order = get_order($id_order);
-                    $product_order = get_product_order($id_order);
-                }
+                case 'order-history':
+                    include_once 'models/m_user.php';
+                    $view_name = 'user_orderHistory';
+                    $title = 'Lịch sử đơn hàng';
+                    $itemsPage = '';
+                    $itemsPage = 10; // số bill mỗi trang
+                    if (isset($_SESSION['userLogin']['id_user'])) {
+                        $id_user = $_SESSION['userLogin']['id_user'];
+                    }
+                break;     
+
+                case 'order-detail':
+                    include_once 'models/m_user.php';
+                    $view_name = 'user_orderDetail';
+                    $title = 'Lịch sử đơn hàng';
+                    if (isset($_GET['id'])) {
+                        $id_order = ($_GET['id']);
+                        $order = get_order($id_order);
+                        $product_order = get_product_order($id_order);
+                        
+                    }
                 break;
 
             case 'logOut-account':
