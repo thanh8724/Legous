@@ -150,10 +150,10 @@
         <div class="main__inner--bottom">
             <div class="main__inner--bottom-left">
                 <ul class="menu__destop--ul">
-                    <li class="menu__destop--li menu__active"><a href="?mod=user&act=general">Tổng Quan</a></li>
+                    <li class="menu__destop--li"><a href="?mod=user&act=general">Tổng Quan</a></li>
                     <li class="menu__destop--li "><a href="?mod=user&act=editprofile">Chỉnh sửa thông tin</a></li>
                     <li class="menu__destop--li "><a href="?mod=user&act=password">Mật khẩu</a></li>
-                    <li class="menu__destop--li "><a href="?mod=user&act=address">Địa chỉ</a></li>
+                    <li class="menu__destop--li menu__active"><a href="?mod=user&act=address">Địa chỉ</a></li>
                     <li class="menu__destop--li "><a href="?mod=user&act=order-history">Lịch sử đơn hàng</a></li>
                     <li class="menu__destop--li "><a href="">Đăng xuất</a></li>
                     <li class=" menu__destop--li delete__acccount"><a href="user-deleteAccount.html">Xóa tài khoản</a></li>

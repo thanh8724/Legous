@@ -1,14 +1,12 @@
-
-
 <div class="main__inner--bottom-left">
     <ul class="menu__destop--ul">
-        <li class="menu__destop--li menu__active"><a href="?mod=user&act=general">Tổng Quan</a></li>
-        <li class="menu__destop--li "><a href="?mod=user&act=editprofile">Chỉnh sửa thông tin</a></li>
-        <li class="menu__destop--li "><a href="?mod=user&act=password">Mật khẩu</a></li>
-        <li class="menu__destop--li "><a href="?mod=user&act=address">Địa chỉ</a></li>
-        <li class="menu__destop--li "><a href="?mod=user&act=order-history">Lịch sử đơn hàng</a></li>
-        <li class="menu__destop--li "><a href="?mod=user&act=logOut-account&id-account=<?= $id_user ?>">Đăng xuất</a></li>
-        <li class=" menu__destop--li delete__acccount"><a href="?mod=user&act=delete-account">Xóa tài khoản</a></li>
+        <li class="menu__destop--li <?=$active__general?>"><a href="?mod=user&act=general">Tổng Quan</a></li>
+        <li class="menu__destop--li <?=$active__profile?>"><a href="?mod=user&act=editprofile">Chỉnh sửa thông tin</a></li>
+        <li class="menu__destop--li <?=$active__password?>"><a href="?mod=user&act=password">Mật khẩu</a></li>
+        <li class="menu__destop--li <?=$active__address?>"><a href="?mod=user&act=address">Địa chỉ</a></li>
+        <li class="menu__destop--li <?=$active__order?>"><a href="?mod=user&act=order-history">Lịch sử đơn hàng</a></li>
+        <li class="menu__destop--li"><a href="?mod=user&act=logOut-account&id-account=<?= $id_user ?>">Đăng xuất</a></li>
+        <li class=" menu__destop--li delete__acccount <?=$active__deleteAccount?>"><a href="?mod=user&act=delete-account">Xóa tài khoản</a></li>
     </ul>
 
     <!-- menu mobile start -->
