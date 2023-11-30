@@ -54,8 +54,17 @@ foreach ($getCmt as $item) {
                         <li>
                             <div class="col-12 d-flex">
                                 <div class="col-2">
-                                    <img class="notifiAdminImg"
-                                        src="./public/assets/media/images/users/<?php echo $getUser['img'] ?>" alt="">
+                                    <?php
+                                    if ($getUser['img'] == NULL && !empty($getUser['img'])) {
+                                        ?>
+                                        <img class="notifiAdminImg" src="./upload/users/<?php echo $getUser['img'] ?>" alt="">
+                                    <?php
+                                    } else {
+                                        ?>
+                                        <img class="notifiAdminImg" src="./upload/users/avatar-none.png" alt="">
+                                    <?php
+                                    }
+                                    ?>
                                 </div>
                                 <div class="col-10">
                                     <p class="notifiAdminText body-small"><strong>
@@ -85,7 +94,17 @@ foreach ($getCmt as $item) {
                         <li>
                             <div class="col-12 d-flex">
                                 <div class="col-2">
-                                    <img class="notifiAdminImg" src="./public/assets/media/images/users/profile.jpg" alt="">
+                                <?php
+                                    if ($getUser['img'] == NULL && !empty($getUser['img'])) {
+                                        ?>
+                                        <img class="notifiAdminImg" src="./upload/users/<?php echo $item['img'] ?>" alt="">
+                                    <?php
+                                    } else {
+                                        ?>
+                                        <img class="notifiAdminImg" src="./upload/users/avatar-none.png" alt="">
+                                    <?php
+                                    }
+                                    ?>
                                 </div>
                                 <div class="col-10">
                                     <p class="notifiAdminText body-small"><strong>
@@ -107,9 +126,16 @@ foreach ($getCmt as $item) {
                 <?php
                 $getID = $_SESSION['admin']['id_user'];
                 $getUser = getUserById($getID);
+                if (!empty($getUser['img']) && $getUser != NULL) {
+                    ?>
+                    <img style="" class="btnShowFeature" src="./upload/users/<?php echo $getUser['img'] ?>" alt="">
+                    <?php
+                } else {
+                    ?>
+                    <img style="" class="btnShowFeature" src="./upload/users/avatar-none.png" alt="">
+                    <?php
+                }
                 ?>
-                <img style="" class="btnShowFeature"
-                    src="./public/assets/media/images/users/<?php echo $getUser['img'] ?>" alt="">
                 <ul class="showFeatureAdminHeader box-shadow1">
 
                     <li><a class="body-small" href="#statisticalChart">Thống kê đơn hàng</a></li>
@@ -359,12 +385,14 @@ foreach ($getCmt as $item) {
                                 $orderCountByUser = array();
 
                                 foreach ($bill as $item) {
-                                    if (!isset($totalByUser[$item['id_user']])) {
-                                        $totalByUser[$item['id_user']] = 0;
-                                        $orderCountByUser[$item['id_user']] = 0;
+                                    if ($item['status'] == 5) {
+                                        if (!isset($totalByUser[$item['id_user']])) {
+                                            $totalByUser[$item['id_user']] = 0;
+                                            $orderCountByUser[$item['id_user']] = 0;
+                                        }
+                                        $totalByUser[$item['id_user']] += $item['total'];
+                                        $orderCountByUser[$item['id_user']]++;
                                     }
-                                    $totalByUser[$item['id_user']] += $item['total'];
-                                    $orderCountByUser[$item['id_user']]++;
                                 }
                                 // Sắp xếp mảng theo thứ tự giảm dần
                                 arsort($totalByUser);
@@ -373,7 +401,7 @@ foreach ($getCmt as $item) {
                                 $totalByUser = array_slice($totalByUser, 0, 5, true);
 
                                 foreach ($totalByUser as $userId => $total) {
-                                    
+
                                     $user = getUserById($userId);
                                     ?>
                                     <div class="topUserOder_items">
@@ -381,24 +409,27 @@ foreach ($getCmt as $item) {
                                             <div class="col-6 d-flex ">
                                                 <div class="topUserOrder__image mr6">
                                                     <?php
-                                                    $upload_dir = './public/assets/media/images/users/';
+                                                    $upload_dir = './upload/users/';
                                                     //Đường dẫn của file sau khi upload
                                                     $upload_file = $upload_dir . $user['img'];
                                                     if (empty($user['img']) || $user['img'] == NULL || !file_exists($upload_file)) {
                                                         ?>
-                                                        <img src="./public/assets/media/images/users/anonyUser.png" alt="">
+                                                        <img src="./upload/users/avatar-none.png" alt="">
                                                         <?php
                                                     } else {
                                                         ?>
-                                                        <img src="./public/assets/media/images/users/<?php echo $user['img'] ?>"
-                                                            alt="">
+                                                        <img src="./upload/users/<?php echo $user['img'] ?>" alt="">
                                                         <?php
                                                     }
                                                     ?>
                                                 </div>
                                                 <div class="topUserOrder__info">
                                                     <div class="topUserOrder__name body-large">
-                                                        <?php echo $user['fullname'] ?>
+                                                        <?php if ($user['fullname'] == NULL && !empty($user['fullname'])) {
+                                                            echo $user['username'];
+                                                        } else {
+                                                            echo $user['fullname'];
+                                                        } ?>
                                                     </div>
                                                     <div class="topUserOrder__role label-medium">Thành Viên Vip</div>
                                                 </div>
