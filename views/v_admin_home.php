@@ -308,12 +308,12 @@ foreach ($getCmt as $item) {
         <div id="statisticalChart" class="statisticalChart p30">
             <div class="statisticalChartItems">
                 <div class="col-12 d-xxl-flex customerOrderStatistics d-md-block d-sm-block">
-                    <div class="col-xxl-7  col-lg-12 col-md-12 col-sm-12 p20 box-shadow1 orderStatistics">
-                        <div class="col-12 d-flex">
-                            <div class="col-6">
-                                <p class="title-medium">Thống Kê Đơn Hàng</p>
+                    <div class="col-xxl-7  col-lg-12 col-md-12 col-sm-12 p20 box-shadow1 orderStatistics me-0 me-xxl-5 me-xl-5 me-lg-5">
+                        <div class="col-12 d-block d-xxl-flex d-xl-flex d-lg-flex">
+                            <div class="col-12 col-xxl-6 col-xl-6 col-lg-6">
+                                <p class="title-medium text-xxl-start text-xl-center text-lg-center text-center">Thống Kê Đơn Hàng</p>
                             </div>
-                            <div class="col-6">
+                            <div class="col-12 col-xxl-6 col-xl-6 col-lg-6 mt-3 mt-xxl-0 mt-xl-0 mt-lg-0">
                                 <ul class="nav nav-tabs myNavTabs" id="myTab" role="tablist">
                                     <li class="nav-item myNavItem" role="presentation" style="width: 50%;">
                                         <button style="width: 100%;" class="nav-link active" id="statistical"
@@ -347,8 +347,7 @@ foreach ($getCmt as $item) {
                             </div>
                         </div>
                     </div>
-                    <div
-                        class="col-xxl-5 col-lg-12 col-md-12 col-sm-12 p20 box-shadow1 topUsers mt-xxl-0 mt-md-5 mt-sm-5 mt-5">
+                    <div class="col-xxl-5 col-lg-12 col-md-12 col-sm-12 p20 box-shadow1 topUsers mt-xxl-0 mt-md-5 mt-sm-5 mt-5">
                         <div class="headerTopUser d-flex justify-content-between align-items-center">
                             <p class="title-medium">Người Dùng Hàng Đầu</p>
                             <button class="btnShowMoreInfoAdminDashboard">
@@ -693,7 +692,6 @@ foreach ($getCmt as $item) {
             </div>
         </div>
     </footer>
-    </div>
 
 
     <!----======== End Body DashBoard ======== -->

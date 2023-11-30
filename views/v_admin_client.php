@@ -233,3 +233,8 @@ if (@$_POST['act_search']) {
   <!----======== End Body DashBoard ======== -->
 
 </section>
+<script>
+if (window.innerWidth < 1300) {
+  document.querySelector('nav').classList.add("close");
+}
+</script>

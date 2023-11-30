@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./public/assets/resources/sass/css/app.css">
-    <link rel="icon" type="image/x-icon" href="./views/public/assets/media/images/favicon/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="./public/assets/media/images/favicon/favicon.svg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -44,7 +44,7 @@
                     <div class="logo-name d-flex justify-content-center align-items-center">
                         <div class="logo-image">
                             <img style="width: 20px; height: 20px;"
-                                src="./public/assets/media/images/users/images/logo.png" alt="">
+                                src="./public/assets/media/images/logo.png" alt="">
                         </div>
 
                         <span class="logo_name title-large fw-black" style="color: black;">LEGOUS</span>
@@ -69,6 +69,7 @@
                 <li><a class="title-large" href="?mod=admin&act=comments">Bình Luận</a></li>
                 <li><a class="title-large" href="?mod=admin&act=banner">Banner</a></li>
                 <li><a class="title-large" href="?mod=admin&act=coupon">Mã Giảm Giá</a></li>
+                <li><a class="title-large" href="?mod=user&act=logOut-account">Đăng Xuất</a></li>
             </ul>
         </div>
     </div>
