@@ -150,10 +150,10 @@
         <div class="main__inner--bottom">
             <div class="main__inner--bottom-left">
                 <ul class="menu__destop--ul">
-                    <li class="menu__destop--li menu__active"><a href="?mod=user&act=general">Tổng Quan</a></li>
+                    <li class="menu__destop--li"><a href="?mod=user&act=general">Tổng Quan</a></li>
                     <li class="menu__destop--li "><a href="?mod=user&act=editprofile">Chỉnh sửa thông tin</a></li>
                     <li class="menu__destop--li "><a href="?mod=user&act=password">Mật khẩu</a></li>
-                    <li class="menu__destop--li "><a href="?mod=user&act=address">Địa chỉ</a></li>
+                    <li class="menu__destop--li menu__active"><a href="?mod=user&act=address">Địa chỉ</a></li>
                     <li class="menu__destop--li "><a href="?mod=user&act=order-history">Lịch sử đơn hàng</a></li>
                     <li class="menu__destop--li "><a href="">Đăng xuất</a></li>
                     <li class=" menu__destop--li delete__acccount"><a href="user-deleteAccount.html">Xóa tài khoản</a></li>
@@ -293,13 +293,14 @@
         ]
     })
 </script>
-<script>
+<!-- <script>
     var inputs = document.querySelectorAll(".form__inputAddress");
     for (var i = 0; i < inputs.length; i++) {
-        if(inputs[i].parentElement.children[2].innerText === "") {
+        // console.log(inputs[i].parentElement.children[2].innerText);
+        if((inputs[i].parentElement.children[2]).innerText == "") {
             inputs[i].classList.remove("error_input");
             inputs[i].parentElement.children[1].classList.remove('error_formMessage');
             inputs[i].parentElement.children[2].classList.remove('error_message');
         }
     }
-</script>
+</script> -->

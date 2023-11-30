@@ -3040,12 +3040,6 @@ html {
 .main__user .main__inner .main__inner--bottom .main__inner--bottom-right--content .bottom-right--content_main {
   min-height: 10rem;
 }
-.main__user .main__inner .main__inner--bottom .main__inner--bottom-right--content .bottom-right--content_bottom .btn-next,
-.main__user .main__inner .main__inner--bottom .main__inner--bottom-right--content .bottom-right--content_bottom .btn-back {
-  color: #6750a4;
-  cursor: pointer;
-  font-weight: 700;
-}
 .main__user .main__inner .main__inner--bottom .main__inner--info-order span {
   font-size: 1.3rem;
   font-weight: 600;
@@ -3061,6 +3055,22 @@ html {
 .main__user .main__inner .main__inner--bottom .main__inner--info-order .main__inner--info-orderBottom {
   color: #6750a4;
   cursor: pointer;
+}
+
+.list__dots--item {
+  width: 4rem !important;
+  height: 4rem !important;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #625b71;
+}
+
+.dots-active {
+  background-color: #6750a4;
+}
+.dots-active a {
+  color: white !important;
 }
 
 .error_input {

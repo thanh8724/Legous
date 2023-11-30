@@ -130,11 +130,8 @@
     }
 
     #order
-    function get_orderHistory($id_user){
-        return pdo_query("SELECT * FROM bill WHERE id_user = ?", $id_user);
-    }
     function get_order($id_order){
-        return pdo_query("SELECT * FROM bill WHERE id = ?", $id_order);
+        return pdo_query("SELECT * FROM bill WHERE id = ? ", $id_order);
     }
     function get_namePayment($id_payment) {
         return pdo_query_value("SELECT name FROM payment WHERE id = ?", $id_payment);
@@ -148,9 +145,22 @@
     function get_product_order($id_order){
         return pdo_query("SELECT * FROM cart WHERE id_bill = ?", $id_order);
     }
+    function get_orderHistory($id_user, $current_page, $itemsPage) {
+        $startItem = ($current_page - 1) * $itemsPage;
+        $query = "SELECT * FROM bill WHERE id_user = $id_user ORDER BY id DESC LIMIT $startItem, $itemsPage";
+        return pdo_query($query);
+    }
 
+    function get_total_orders($id_user){
+        return pdo_query_value("SELECT COUNT(*) FROM bill WHERE id_user = ?", $id_user);
+    }
 
-
+    function get_priceShipping($id_shipping) {
+        return pdo_query_value("SELECT price FROM shipping WHERE id = ?", $id_shipping);
+    }
+    function get_priceCoupon($id_coupon) {
+        return pdo_query_value("SELECT price FROM coupon WHERE id = ?",$id_coupon);
+    }
 
     # delete account
     function  get_allBill($id_user) {
@@ -177,7 +187,7 @@
     function getBillByID($id) {
         return pdo_query("SELECT * FROM bill WHERE id = {$id}");
     }
-
+    
     function editUserProfile($id, $fullname, $username, $password, $email, $image, $role, $bio, $phone) {
         pdo_execute("UPDATE user SET fullname = '$fullname', username = '$username', email = '$email', password = '$password', img = '$image', role = '$role', bio = '$bio', phone = '$phone' WHERE id = ".$id);
     }
