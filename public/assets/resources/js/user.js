@@ -37,8 +37,6 @@ function slider_menuMobile()
         });
     })
 }
-<<<<<<< HEAD
-=======
 
 // tạo input[checkbox] để ẩn lỗi ở trang không có input[checkbox]
 function input_typeCheckbox()
@@ -66,7 +64,6 @@ function select__order()
     });
 }
 
->>>>>>> c6cdf0a044bae3265cd7829a2fd8f1d84f402310
 // show - hidden switch account
 const button_switchAccount = document.querySelector('.box__changeAccount svg');
 // let type_switchAccount = 
@@ -77,10 +74,7 @@ if(button_switchAccount) {
     });
 }
 
-<<<<<<< HEAD
 slider_menuMobile();
-=======
 slider_menuMobile();
 input_typeCheckbox();
 // select__order();
->>>>>>> c6cdf0a044bae3265cd7829a2fd8f1d84f402310
