@@ -230,7 +230,7 @@ if(isset($_POST['submit'])) {
                     <div class="col-5 col-md">
                         <div class="right-order-add-create p30 d-flex justify-content-center flex-column ">
                             <div class="img_order-add-create rounded-4">
-                            <img id="previewImage" src="">
+                                <img id="previewImage" src="">
                             </div>
                             <hr>
                             <div style="width: 100%;" id="drop-area">

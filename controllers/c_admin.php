@@ -5,10 +5,7 @@ ob_start();
 require_once './models/m_user.php';
 require_once './models/m_comment.php';
 // Hiển thị dữ liệu thông qua view
-if($_SESSION['role'] == 0 || !empty($_SESSION['userLogin'])) {
-    header("Location: ?mod=page&act=home");
-    exit();
-}
+
 if (isset($_GET['act'])) {
     switch ($_GET['act']) {
         case 'home':
@@ -279,9 +276,10 @@ if (isset($_GET['act'])) {
             include_once 'models/m_category.php';
             if (isset($_POST['page'])) {
                 $redirectPage = $_POST['page'];
-                header("Location: index.php?mod=products&act=products-detail&page=$redirectPage");
+                header("Location: ?mod=products&act=products-detail&page=$redirectPage");
                 exit; // Kết thúc kịch bản sau khi chuyển hướng
-            }
+                
+            } 
             
             $page = isset($_GET['page']) ? $_GET['page'] : 1;
             
@@ -391,7 +389,7 @@ if (isset($_GET['act'])) {
                 delCmt($id);
                 header("Location: ?mod=admin&act=comments");
         default:
-
+                header("location: ?mod=admin&act=home");
             break;
     }
     include_once 'views/v_admin_layout.php';

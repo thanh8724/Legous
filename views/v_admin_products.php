@@ -150,7 +150,7 @@
           <div class="v-nav" style="gap: 22px; flex: 1;">
             <div class="h-nav g12" style="justify-content: space-between;">
               <div class="img-cart flex" style="width: 120px; flex-shrink: 1;">
-                <img src="./public/assets/media/images/product/<?= $item['img'] ?>" style="max-width: 100%; height: 100px;object-fit: cover; border-radius: 8px; flex-shrink: 0;" alt="">
+                <img src="./public/assets/media/images/product/<?= $item['img'] ?>" style="max-width: 100%; height: 100px;object-fit: contain; border-radius: 8px; flex-shrink: 0;" alt="">
               </div>
               <div class="text-info-cart flex-column" style="flex:1;gap: 12px;">
                 <h1 class="title-medium" style="
