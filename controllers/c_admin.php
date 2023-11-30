@@ -294,12 +294,14 @@ if (isset($_GET['act'])) {
                 $total_order = $_POST['total_order'];
                 $total_order1 = intval($total_order);
                 $status_order = $_POST['status_order'];
+                date_default_timezone_set('Asia/Ho_Chi_Minh');
+                $now = date("Y-m-d H:i:s");
                 $error = "";
                 if (empty($name_us_order) || empty($location_us_order) || empty($phone_us_order) || empty($method_order) || empty($total_order) || empty($status_order)) {
                     $error = '<div style="position:relative; top:25px;" class="alert alert-danger" role="alert">Bạn còn thiếu một số thông tin chưa điền</div>';
                 } else {
-                    order_add($name_us_order, $location_us_order, $email_us_order, $phone_us_order, $total_order1, $status_order, $method_order1);
-                    header('Location:?mod=admin&act=orders');
+                    order_add($name_us_order, $location_us_order, $email_us_order, $phone_us_order, $total_order1, $status_order, $method_order1, $now);
+                    header('Location:?mod=admin&act=orders'); 
                 }
             }
 
@@ -450,7 +452,7 @@ if (isset($_GET['act'])) {
             $view_name = 'create_coupon';
             break;
         default:
-
+                
             break;
     }
     include_once 'views/v_admin_layout.php';
