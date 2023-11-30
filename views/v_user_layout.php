@@ -47,7 +47,6 @@
     if (isset($_SESSION['userLogin']) && !empty($_SESSION['userLogin'])) {
         $id = $_SESSION['userLogin']['id_user'];
         $user = getUserById($id);
-        // print_r($user);
         extract($user);
         $userWidgetHtml =
         <<<HTML
