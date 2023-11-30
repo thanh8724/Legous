@@ -67,7 +67,8 @@
                 <li><a class="title-large" href="?mod=admin&act=orders">Đơn Hàng</a></li>
                 <li><a class="title-large" href="?mod=admin&act=client">Khách Hàng</a></li>
                 <li><a class="title-large" href="?mod=admin&act=comments">Bình Luận</a></li>
-  
+                <li><a class="title-large" href="?mod=admin&act=banner">Banner</a></li>
+                <li><a class="title-large" href="?mod=admin&act=coupon">Mã Giảm Giá</a></li>
             </ul>
         </div>
     </div>
@@ -83,7 +84,7 @@
     </div>
 
     <!--===== End Header Responsive Mobile =====-->
-    <main id="adminDashboard">
+    <main id="mainAdmin">
 
         <nav>
             <div class="logo-name">
@@ -118,11 +119,19 @@
                             <i class="fal fa-user"></i>
                             <span class="link-name title-small">Khách Hàng</span>
                         </a></li>
-                        <li class="<?= (strpos($view_name, 'comments')) ? 'active' : '' ?>"><a href="?mod=admin&act=comments">
+                    <li class="<?= (strpos($view_name, 'comments')) ? 'active' : '' ?>"><a
+                            href="?mod=admin&act=comments">
                             <i class="far fa-comments"></i>
                             <span class="link-name title-small">Bình luận</span>
                         </a></li>
-
+                    <li class="<?= (strpos($view_name, 'banner')) ? 'active' : '' ?>"><a href="?mod=admin&act=banner">
+                            <i class="fal fa-images"></i>
+                            <span class="link-name title-small">Banner</span>
+                        </a></li>
+                    <li class="<?= (strpos($view_name, 'coupon')) ? 'active' : '' ?>"><a href="?mod=admin&act=coupon">
+                            <i class="far fa-ticket"></i>
+                            <span class="link-name title-small">Mã Giảm Giá</span>
+                        </a></li>
 
                 </ul>
 
@@ -160,8 +169,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
-        
-        
+
+
 
 
     </script>
