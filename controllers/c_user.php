@@ -4,6 +4,7 @@
     // Gữi/nhận dữ liệu thông qua models
     // Hiển thị dữ liệu thông qua view
     include_once 'models/m_user.php';
+    include_once 'config.php';
     if(isset($_GET['act'])){
         if(isset($_SESSION['userLogin'])) {
             extract($_SESSION['userLogin']);
@@ -17,9 +18,9 @@
         if(is_array($checkUses)) {
             extract($checkUses);
             if($img == "") {
-                $avatarImage_user = 'avatar-none.png';
+                $avatarImage_user = USER_PATH.'avatar-none.png';
             }else if($img != '') {
-                $avatarImage_user = $img;
+                $avatarImage_user = USER_PATH.$img;
             }
         }
         switch ($_GET['act']){

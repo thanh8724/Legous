@@ -6,7 +6,16 @@
         extract($_SESSION['userLogin']);
     }
     
+    $id_user = $_SESSION['userLogin']['id_user'];
+    # get user name account
+    extract(checkAccount($id_user));
+    $name_userAccount = $username;
      # cập nhật lại địa chỉ
+    $message_phoneError = '';
+    $class_add = '';
+    $error_message = '';
+    $error_input = '';
+    $phone_errorInput = '';
      if(isset($_GET['id-address']) && ($_GET['id-address']) > 0) {
          $id_address = $_GET['id-address'];
          #lấy address để kiểm tra có là địa chỉ mặc định không
@@ -18,6 +27,11 @@
         # lấy địa chỉ từ db
         foreach (get_addressByid($id_address) as $key) {
             extract($key);
+            if($is_default == '0') {
+                $checked_html = '<input type="checkbox" name="set_defaultAddress">';
+            }else {
+                $checked_html = '<input type="checkbox" name="set_defaultAddress" checked>';
+            }
         }
         #kiểm tra nếu bấm cập nhật thì thực hiện
         if(isset($_POST['btn_edit-address'])) {
@@ -49,10 +63,21 @@
             }else {
                 $address_default = 0;
             }
-
-            upadate_address($name_user, $phone_user, $address_detail, $address_user, $address_default, $id_address);
-
-            header('location: ?mod=user&act=address');
+            # kiểm tra số điện thoại có thỏa mãn điều kiện hay không
+            $phone_input = $_POST["phoneUser"];
+            $pattern =  "/^0[2|3|5|6|7|8|9][0-9]{8}$/";
+            if (preg_match($pattern, $phone_input) ||  $_POST["phoneUser"] == "") {
+                $phone_user = $phone;
+                upadate_address($name_user, $phone_user, $address_detail, $address_user, $address_default, $id_address);
+                header('location: ?mod=user&act=address');
+                exit;
+            } else {
+                $error_message = 'error_formMessage';
+                $error_input = 'error_input';
+                $class_add = 'show';
+                $message_phoneError = 'Số điện thoại không hợp lệ.';
+                $phone_errorInput = $phone_input;
+            }
         }
     }
 
@@ -65,11 +90,11 @@
     <div class="main__inner">
         <div class="main__inner--top">
             <div class="avatar__image">
-                <img srcset="upload/users/<?=$avatarImage_user?> 2x" alt="" class="avatar__image--user">
+                <img srcset="<?=$avatarImage_user?> 2x" alt="" class="avatar__image--user">
             </div>
             <div class="info__user">
                 <div class="info__user--top">
-                    <span class="user__name"><?=$username?></span>
+                    <span class="user__name"><?=$name_userAccount?></span>
                     <span>/</span>
                     <span>Địa chỉ</span>
                 </div>
@@ -205,40 +230,40 @@
     </div>
 </main>
 
-<section  class="form__address--container full" id="form_edit-address">
+<section  class="form__address--container full <?=$class_add?>" id="form_edit-address">
     <form action="" method="POST" class="form__address--content">
         <!-- <input type="hidden" name="id-address" value=""> -->
         <div class="form__address--content-rows1 flex">
             <!-- normal form group -->
             <div class="form__group without-title">
                 <!-- <span class="form__label"></span> -->
-                <input type="text" id="name" name="full_userName" class="form__input" placeholder=" ">
-                <label for="" class="label__place">Họ và tên</label>
-                <span class="form__message">this is massage</span>
+                <input type="text" id="name" name="full_userName" class="form__input input--name form__inputAddress" placeholder="<?=$username?>">
+                <!-- <label for="" class="label__place">Họ và tên</label> -->
+                <span class="form__message"></span>
             </div>
             <!-- normal form group -->
             <div class="form__group without-title">
                 <!-- <span class="form__label"></span> -->
-                <input type="number" name="phoneUser" class="form__input" placeholder=" ">
-                <label for="" class="label__place">Số điện thoại</label>
-                <span class="form__message">this is massage</span>
-            </div>
-        </div>
-        <div class="form__address--content-rows2">
-            <!-- normal form group -->
-            <div class="form__group without-title">
-                <!-- <span class="form__label"></span> -->
-                <input type="text" name="address" class="form__input" placeholder=" ">
-                <label for="" class="label__place">Tỉnh/Thành phố, Quận/Huyện, Phường/Xã</label>
-                <span class="form__message">this is massage</span>
+                <input type="number" name="phoneUser" class="form__input input--phone form__inputAddress <?=$error_input?>" placeholder="<?=$phone?>" value="<?=$phone_errorInput?>">
+                <!-- <label for="" class="label__place">Số điện thoại</label> -->
+                <span class="form__message <?=$error_message?>"><?=$message_phoneError?></span>
             </div>
         </div>
         <div class="form__address--content-rows2">
             <!-- normal form group -->
             <div class="form__group without-title">
                 <!-- <span class="form__label"></span> -->
-                <input type="text" name="address-detail" class="form__input" placeholder=" ">
-                <label for="" class="label__place">Địa chỉ cụ thể</label>
+                <input type="text" name="address" class="form__input input--address_top form__inputAddress" placeholder="<?=$address?>">
+                <!-- <label for="" class="label__place">Tỉnh/Thành phố, Quận/Huyện, Phường/Xã</label> -->
+                <span class="form__message"></span>
+            </div>
+        </div>
+        <div class="form__address--content-rows2">
+            <!-- normal form group -->
+            <div class="form__group without-title">
+                <!-- <span class="form__label"></span> -->
+                <input type="text" name="address-detail" class="form__input input--address_bottom form__inputAddress" placeholder="<?=$address_detail?>">
+                <!-- <label for="" class="label__place">Địa chỉ cụ thể</label> -->
                 <span class="form__message"></span>
             </div>
         </div>
@@ -246,7 +271,7 @@
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3822.266122569526!2d105.8491695157099!3d21.02255898954545!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135a49315938351%3A0x641317b16f65f28c!2sVăn%20phòng%20Google%20Việt%20Nam!5e0!3m2!1svi!2svn!4v1649056555625!5m2!1svi!2svn" style="border:0; width: 100%; height: 100%;" allowfullscreen="" loading="lazy"></iframe>
         </div>
         <div class="form__address--content-rows4">
-            <input type="checkbox" name="set_defaultAddress">
+            <?=$checked_html?>
             <label for="" class="label-large">Đặt làm địa chỉ mặc định</label>
         </div>
         <div class="form__address--content-rows5">
@@ -257,21 +282,24 @@
         </div>
     </form>
 </section>
-
+<script src="./public/assets/resources/js/validator_ofNQT.js"></script>
 <script>
-    // Lấy phần tử input có id là name
-    var input = document.getElementById("name");
-
-    // Thêm sự kiện blur cho input
-    input.addEventListener("blur", function() {
-    // Lấy giá trị của input
-    var value = input.value;
-
-    // Kiểm tra nếu giá trị rỗng
-    if (value == "") {
-        // Hiện thông báo
-        alert("Vui lòng nhập họ và tên!");
-    }
-    });
+    Validator({
+        formSelector: '.form__address--content',
+        formGroupSelector: '.form__group',
+        formMessage: '.form__message',
+        rules: [
+            // Validator.isPhone('.input--phone', 'Số điện thoại không hợp lệ.'),
+        ]
+    })
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+<script>
+    var inputs = document.querySelectorAll(".form__inputAddress");
+    for (var i = 0; i < inputs.length; i++) {
+        if(inputs[i].parentElement.children[2].innerText === "") {
+            inputs[i].classList.remove("error_input");
+            inputs[i].parentElement.children[1].classList.remove('error_formMessage');
+            inputs[i].parentElement.children[2].classList.remove('error_message');
+        }
+    }
+</script>

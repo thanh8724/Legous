@@ -74,13 +74,13 @@
     <div class="main__inner">
         <div class="main__inner--top">
             <div class="avatar__image">
-                <img srcset="upload/users/<?=$avatarImage_user?> 2x" alt="" class="avatar__image--user">
+                <img srcset="<?=$avatarImage_user?> 2x" alt="" class="avatar__image--user">
             </div>
             <div class="info__user">
                 <div class="info__user--top">
                     <span class="user__name"><?=$username?></span>
                     <span>/</span>
-                    <span>Tổng quan</span>
+                    <span>Chỉnh sửa thông tin</span>
                 </div>
                 <div class="info__user--bottom">
                     <span class="info__user--desc">
@@ -101,7 +101,7 @@
                     <div class="form__group--uploadImage">
                         <div class="form__upload-image">
                             <div class="box__image--user">
-                                <img srcset="upload/users/<?=$avatarImage_user?> 2x" alt="" class="image__user--upload">
+                                <img srcset="<?=$avatarImage_user?> 2x" alt="" class="image__user--upload">
                             </div>
                             <div class="box__btn">
                                 <input type="file" name="avatar__user" class="input_file">

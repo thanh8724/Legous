@@ -34,7 +34,7 @@
     <div class="main__inner">
         <div class="main__inner--top">
             <div class="avatar__image">
-                <img srcset="upload/users/<?=$avatarImage_user?> 2x" alt="" class="avatar__image--user">
+                <img srcset="<?=$avatarImage_user?> 2x" alt="" class="avatar__image--user">
             </div>
             <div class="info__user">
                 <div class="info__user--top">
@@ -115,7 +115,7 @@
         old_password.parentElement.children[2].classList.add('error_formMessage');
     }
 
-    if(get_newPassword.innerText == "" || get_newPassword.innerText.length < 8 || get_newPassword.innerText == (get_newPassword.parentElement.children[0]).innerText) {
+    if(get_newPassword.innerText == "" || get_newPassword.innerText.length < 8 || get_newPassword.  == (get_newPassword.parentElement.children[0]).innerText) {
         (get_newPassword.parentElement.children[3]).focus();
         (get_newPassword.parentElement.children[3]).classList.add('error_input');
         (get_newPassword.parentElement.children[4]).classList.add('error_formMessage');

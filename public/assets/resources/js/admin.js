@@ -37,6 +37,19 @@ btnsShowMore.forEach((btn, index) => {
     }
   });
 });
+if (document.querySelector(".showmanageCoupon")) {
+  document
+    .querySelector(".showmanageCoupon")
+    .addEventListener("click", function () {
+      var table = document.getElementById("example1");
+      if (table.style.display === "none") {
+        table.style.display = "inline-table";
+      } else {
+        table.style.display = "none";
+      }
+    });
+}
+
 // <=======  End Show More    ========>
 // <=======  SideBar    ========>
 
