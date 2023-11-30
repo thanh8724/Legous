@@ -839,7 +839,7 @@ a {
 .form__group textarea {
   height: 20rem;
   border-radius: 0.4rem;
-  padding: 0 2rem;
+  padding: 1rem 2rem;
   border: 1px solid #ded8e1;
   transition: 0.22s cubic-bezier(0.23, 1, 0.32, 1);
   color: #3b383e;
@@ -1459,6 +1459,9 @@ body.dark main {
   background-color: #15192a;
   transition: 0.5s;
 }
+body.dark main .notifiAdminText span {
+  color: black !important;
+}
 body.dark main .logo_name,
 body.dark main span,
 body.dark main h1 {
@@ -1523,10 +1526,10 @@ html {
   scroll-behavior: smooth;
 }
 
-main {
+#mainAdmin {
   background-color: #f7f7f7;
 }
-main nav {
+#mainAdmin nav {
   position: fixed;
   top: 0;
   left: 0;
@@ -1537,38 +1540,38 @@ main nav {
   border-right: 1px solid #e6e5e5;
   transition: all 0.5s ease;
 }
-main nav .logo-name {
+#mainAdmin nav .logo-name {
   display: flex;
   align-items: center;
   transition: 0.5s;
   color: #fff;
 }
-main nav .logo-name .logo-image {
+#mainAdmin nav .logo-name .logo-image {
   display: flex;
   justify-content: center;
   min-width: 45px;
 }
-main nav .logo-name .logo-image img {
+#mainAdmin nav .logo-name .logo-image img {
   width: 40px;
   object-fit: cover;
 }
-main nav .logo-name .logo_name {
+#mainAdmin nav .logo-name .logo_name {
   color: #000000;
   font-family: "mainFont", sans-serif;
   margin-left: 14px;
   transition: 0.22s cubic-bezier(0.23, 1, 0.32, 1);
 }
-main nav .menu-items {
+#mainAdmin nav .menu-items {
   margin-top: 40px;
   height: calc(100% - 90px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-main nav .menu-items li {
+#mainAdmin nav .menu-items li {
   list-style: none;
 }
-main nav .menu-items li a {
+#mainAdmin nav .menu-items li a {
   display: flex;
   align-items: center;
   height: 50px;
@@ -1577,7 +1580,7 @@ main nav .menu-items li a {
   padding-left: 25px;
   transition: 0.5s;
 }
-main nav .menu-items li a i {
+#mainAdmin nav .menu-items li a i {
   font-size: 24px;
   min-width: 45px;
   height: 100%;
@@ -1586,20 +1589,20 @@ main nav .menu-items li a i {
   justify-content: center;
   color: #625b71;
 }
-main nav .menu-items li a .link-name {
+#mainAdmin nav .menu-items li a .link-name {
   color: #625b71;
   transition: all 0.5s ease;
 }
-main nav .menu-items .logout-mode {
+#mainAdmin nav .menu-items .logout-mode {
   padding-top: 10px;
   border-top: 1px solid #e6e5e5;
 }
-main nav .menu-items .logout-mode .mode {
+#mainAdmin nav .menu-items .logout-mode .mode {
   display: flex;
   align-items: center;
   white-space: nowrap;
 }
-main nav .menu-items .logout-mode .mode .mode-toggle {
+#mainAdmin nav .menu-items .logout-mode .mode .mode-toggle {
   position: absolute;
   right: 14px;
   height: 50px;
@@ -1609,7 +1612,7 @@ main nav .menu-items .logout-mode .mode .mode-toggle {
   justify-content: center;
   cursor: pointer;
 }
-main nav .menu-items .logout-mode .mode .mode-toggle .switch {
+#mainAdmin nav .menu-items .logout-mode .mode .mode-toggle .switch {
   position: relative;
   display: inline-block;
   height: 22px;
@@ -1617,7 +1620,7 @@ main nav .menu-items .logout-mode .mode .mode-toggle .switch {
   border-radius: 25px;
   background-color: #000;
 }
-main nav .menu-items .logout-mode .mode .mode-toggle .switch:before {
+#mainAdmin nav .menu-items .logout-mode .mode .mode-toggle .switch:before {
   content: "";
   position: absolute;
   left: 5px;
@@ -1629,64 +1632,64 @@ main nav .menu-items .logout-mode .mode .mode-toggle .switch:before {
   border-radius: 50%;
   transition: all 0.3s ease;
 }
-main nav .menu-items .nav-links li {
+#mainAdmin nav .menu-items .nav-links li {
   text-align: center;
   margin: 5px 0;
 }
-main nav .menu-items .nav-links li:hover {
+#mainAdmin nav .menu-items .nav-links li:hover {
   background-color: #6750a4;
   border-radius: 10px;
   color: #fff;
 }
-main nav .menu-items .nav-links li:hover a span {
+#mainAdmin nav .menu-items .nav-links li:hover a span {
   color: #fff;
 }
-main nav .menu-items .nav-links li:hover a i {
+#mainAdmin nav .menu-items .nav-links li:hover a i {
   color: #fff;
 }
-main nav .menu-items .nav-links li.active {
+#mainAdmin nav .menu-items .nav-links li.active {
   background-color: #6750a4;
   border-radius: 10px;
   color: #fff;
 }
-main nav .menu-items .nav-links li.active a i {
+#mainAdmin nav .menu-items .nav-links li.active a i {
   color: #fff;
 }
-main nav .menu-items .nav-links li.active a span {
+#mainAdmin nav .menu-items .nav-links li.active a span {
   color: #fff;
 }
-main nav.close {
+#mainAdmin nav.close {
   width: 73px;
 }
-main nav.close .logo_name {
+#mainAdmin nav.close .logo_name {
   opacity: 0;
   pointer-events: none;
 }
-main nav.close li a .link-name {
+#mainAdmin nav.close li a .link-name {
   opacity: 0;
   pointer-events: none;
 }
-main nav.close ~ .dashboard {
+#mainAdmin nav.close ~ .dashboard {
   left: 73px;
   width: calc(100% - 73px);
 }
-main nav.close .logo-name {
+#mainAdmin nav.close .logo-name {
   padding-left: 0px;
 }
-main nav.close .menu-items li a {
+#mainAdmin nav.close .menu-items li a {
   padding-left: 0px;
 }
-main nav.close .dashboard .top .sidebar-toggle {
+#mainAdmin nav.close .dashboard .top .sidebar-toggle {
   transform: rotateZ(170deg) !important;
 }
-main .dashboard {
+#mainAdmin .dashboard {
   position: relative;
   left: 250px;
   min-height: 100vh;
   width: calc(100% - 250px);
   transition: all 0.5s ease;
 }
-main .dashboard .top {
+#mainAdmin .dashboard .top {
   display: flex;
   width: 100%;
   justify-content: space-between;
@@ -1696,7 +1699,7 @@ main .dashboard .top {
   transition: all 0.5s ease;
   z-index: 10;
 }
-main .dashboard .top .sidebar-toggle {
+#mainAdmin .dashboard .top .sidebar-toggle {
   font-size: 20px;
   color: #000;
   cursor: pointer;
@@ -1711,14 +1714,14 @@ main .dashboard .top .sidebar-toggle {
   flex-direction: row-reverse;
   transition: 0.5s;
 }
-main .dashboard .top .search-box {
+#mainAdmin .dashboard .top .search-box {
   position: relative;
   height: 45px;
   max-width: 400px;
   width: 100%;
   margin: 0 30px;
 }
-main .dashboard .top .search-box input {
+#mainAdmin .dashboard .top .search-box input {
   position: absolute;
   border: 1px solid #e6e5e5;
   background-color: #fff;
@@ -1731,7 +1734,7 @@ main .dashboard .top .search-box input {
   font-weight: 400;
   outline: none;
 }
-main .dashboard .top .search-box i {
+#mainAdmin .dashboard .top .search-box i {
   position: absolute;
   left: 15px;
   font-size: 22px;
@@ -1740,16 +1743,16 @@ main .dashboard .top .search-box i {
   transform: translateY(-50%);
   color: #707070;
 }
-main .dashboard .top .info-user {
+#mainAdmin .dashboard .top .info-user {
   display: flex;
   align-items: center;
   margin-right: 20px;
 }
-main .dashboard .top .info-user i {
+#mainAdmin .dashboard .top .info-user i {
   margin: 0 25px;
   font-size: 22px;
 }
-main .dashboard .top .info-user .showFeatureAdminHeader {
+#mainAdmin .dashboard .top .info-user .showFeatureAdminHeader {
   display: none;
   position: absolute;
   width: 300px;
@@ -1758,7 +1761,7 @@ main .dashboard .top .info-user .showFeatureAdminHeader {
   border-radius: 10px;
   z-index: 99;
 }
-main .dashboard .top .info-user .showFeatureAdminHeader li {
+#mainAdmin .dashboard .top .info-user .showFeatureAdminHeader li {
   list-style: none;
   padding: 10px;
   margin: 10px;
@@ -1766,43 +1769,43 @@ main .dashboard .top .info-user .showFeatureAdminHeader li {
   cursor: pointer;
   text-align: center;
 }
-main .dashboard .top .info-user .showFeatureAdminHeader li .notifiAdminText {
+#mainAdmin .dashboard .top .info-user .showFeatureAdminHeader li .notifiAdminText {
   margin-left: 15px;
 }
-main .dashboard .top .info-user .showFeatureAdminHeader li:hover {
+#mainAdmin .dashboard .top .info-user .showFeatureAdminHeader li:hover {
   background-color: rgba(112, 112, 112, 0.1294117647);
 }
-main .dashboard .top .info-user .showFeatureAdminHeader li a {
+#mainAdmin .dashboard .top .info-user .showFeatureAdminHeader li a {
   text-decoration: none;
   color: #1d192b;
 }
-main .dashboard .top .info-user .showFeatureAdminHeader img {
+#mainAdmin .dashboard .top .info-user .showFeatureAdminHeader img {
   width: 40px;
   border-radius: 50%;
   margin-left: 10px;
 }
-main .dashboard .top .info-user .notifiComment {
+#mainAdmin .dashboard .top .info-user .notifiComment {
   position: relative;
   cursor: pointer;
 }
-main .dashboard .top .info-user .notifiComment:hover .showFeatureAdminHeader {
+#mainAdmin .dashboard .top .info-user .notifiComment:hover .showFeatureAdminHeader {
   display: block;
 }
-main .dashboard .top .info-user .notifiBell {
+#mainAdmin .dashboard .top .info-user .notifiBell {
   position: relative;
   cursor: pointer;
 }
-main .dashboard .top .info-user .notifiBell:hover .showFeatureAdminHeader {
+#mainAdmin .dashboard .top .info-user .notifiBell:hover .showFeatureAdminHeader {
   display: block;
 }
-main .dashboard .top .info-user .imgUserAdmin {
+#mainAdmin .dashboard .top .info-user .imgUserAdmin {
   position: relative;
   cursor: pointer;
 }
-main .dashboard .top .info-user .imgUserAdmin:hover .showFeatureAdminHeader {
+#mainAdmin .dashboard .top .info-user .imgUserAdmin:hover .showFeatureAdminHeader {
   display: block;
 }
-main .dashboard .top .info-user .imgUserAdmin img {
+#mainAdmin .dashboard .top .info-user .imgUserAdmin img {
   width: 60px;
   border-radius: 50%;
   margin: 10px;
@@ -3037,12 +3040,6 @@ html {
 .main__user .main__inner .main__inner--bottom .main__inner--bottom-right--content .bottom-right--content_main {
   min-height: 10rem;
 }
-.main__user .main__inner .main__inner--bottom .main__inner--bottom-right--content .bottom-right--content_bottom .btn-next,
-.main__user .main__inner .main__inner--bottom .main__inner--bottom-right--content .bottom-right--content_bottom .btn-back {
-  color: #6750a4;
-  cursor: pointer;
-  font-weight: 700;
-}
 .main__user .main__inner .main__inner--bottom .main__inner--info-order span {
   font-size: 1.3rem;
   font-weight: 600;
@@ -3060,12 +3057,28 @@ html {
   cursor: pointer;
 }
 
+.list__dots--item {
+  width: 4rem !important;
+  height: 4rem !important;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #625b71;
+}
+
+.dots-active {
+  background-color: #6750a4;
+}
+.dots-active a {
+  color: white !important;
+}
+
 .error_input {
-  border: 1px solid #b3261e !important;
+  border: 1px solid #dc362e !important;
 }
 
 .error_formMessage {
-  color: #b3261e !important;
+  color: #dc362e !important;
 }
 
 .show {
@@ -5622,7 +5635,7 @@ main .adminFooter ul li a {
 }
 .right-order-add-create .img_order-add-create img {
   height: 100%;
-  width: 1000px;
+  width: 20px;
   border-radius: 10px;
 }
 .right-order-add-create .button_delete_img {
@@ -6249,67 +6262,146 @@ section .containerAdmin .pagination li a {
   }
 }
 /* PC: width >= 1024px */
-section .containerAdmin .box-banner .container-banner_admin .banner_admin_right .content_banner_right .img_banner_admin {
-  width: 307px;
-  height: 344px;
-}
-section .containerAdmin .box-banner .container-banner_admin .banner_admin_right .content_banner_right .img_banner_adminimg {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: cover;
-}
-section .containerAdmin .box-banner .container-banner_admin .banner_admin_right .banner_admin {
-  background: linear-gradient(107deg, #B3261E 0%, rgba(239, 49, 38, 0.6) 82.62%);
-}
-section .containerAdmin .box-banner .container-banner_admin .banner_admin_right .banner_admin .content_banner_left {
-  width: 50%;
-}
-section .containerAdmin .box-banner .container-banner_admin .banner_admin_right .banner_admin .content_banner_left .text_right_banner .text_bottom {
-  color: #ffffff;
-}
-section .containerAdmin .box-banner .container-banner_admin .banner_admin_right .banner_admin .content_banner_left .text_right_banner .text_main_banner {
-  max-width: 290px;
-}
-section .containerAdmin .box-banner .container-banner_admin .banner_admin_right .banner_admin .content_banner_left .text_right_banner .text_main_banner span {
-  color: #ffffff;
-  font-size: 36px;
-  font-style: normal;
-  font-weight: 300;
-  line-height: normal;
-  letter-spacing: 0.5px;
-}
-section .containerAdmin .box-banner .container-banner_admin .banner_admin_right .banner_admin .content_banner_left .text_right_banner .content_btn_banner_admin .btn-banner_left button {
-  padding: 10px 24px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 100px;
-  background: #6750a4;
-  cursor: pointer;
-  color: #ffffff;
-}
-section .containerAdmin .box-banner .container-banner_admin .banner_admin_right .banner_admin .content_banner_left .text_right_banner .content_btn_banner_admin .btn-banner_right button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 16px;
-  padding: 10px 24px;
-  border-radius: 100px;
+.containerAdmin .manageCoupon .manageCoupon_items {
   background-color: #ffffff;
+  border-radius: 10px;
 }
-section .containerAdmin .box-banner .container-banner_admin .banner_admin_right .banner_admin .content_banner_left .text_right_banner .content_btn_banner_admin .btn-banner_right button i, section .containerAdmin .box-banner .container-banner_admin .banner_admin_right .banner_admin .content_banner_left .text_right_banner .content_btn_banner_admin .btn-banner_right button span {
-  color: #6750a4;
+.containerAdmin .manageCoupon .manageCoupon_items a {
+  text-decoration: none;
+}
+.containerAdmin .manageCoupon .manageCoupon_items .manageCoupon_itemsSetting i {
+  font-size: 60px;
+  background: -webkit-linear-gradient(60deg, #ff79ea, #a93cff, #6791ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.containerAdmin .manageCoupon .manageCoupon_items .manageCoupon_itemsText {
+  margin-left: 20px;
+}
+.containerAdmin .manageCoupon .manageCoupon_items .manageCoupon_itemsText h2 {
+  color: #1d192b;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+.containerAdmin .createCoupon .createCoupon_left {
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+.containerAdmin .createCoupon .createCoupon_left .createCoupon_items {
+  margin-top: 25px;
+}
+.containerAdmin .createCoupon .createCoupon_left .createCoupon_items .col-6 {
+  width: calc(50% - 10px) !important;
+}
+.containerAdmin .createCoupon .createCoupon_left .createCoupon_items .col-6:last-child {
+  margin-left: 20px;
+}
+.containerAdmin .createCoupon .createCoupon_left .createCoupon_items .col-6 input {
+  width: 100%;
+  border: unset;
+  border-radius: 10px;
+  background-color: #e6e0e9;
+  padding: 20px 30px 20px 15px;
+  color: #49454f;
+  margin-top: 10px;
+}
+.containerAdmin .createCoupon .createCoupon_left .createCoupon_items .infoCoupon input {
+  width: 100%;
+  border: unset;
+  border-radius: 10px;
+  background-color: #e6e0e9;
+  padding: 20px 30px 20px 15px;
+  color: #49454f;
+  margin-top: 10px;
+}
+.containerAdmin .createCoupon .createCoupon_left .createCouponSubmit {
+  width: 100%;
+  border: unset;
+  border-radius: 10px;
+  background-color: #6750a4;
+  padding: 20px 30px 20px 15px;
+  color: #ffffff;
+  margin-top: 25px;
+}
+.containerAdmin .createCoupon .createCoupon_right {
+  background-color: #ffffff;
+  border-radius: 10px;
+  transition: 0.22s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.containerAdmin .createCoupon .createCoupon_right .listCouponHead h4 {
+  color: #1d192b;
+}
+.containerAdmin .createCoupon .createCoupon_right .listCouponHead i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: rgba(128, 128, 128, 0.1);
+}
+.containerAdmin .createCoupon .createCoupon_right .listCoupon_items {
+  margin-top: 20px;
+  border-radius: 10px;
+}
+.containerAdmin .createCoupon .createCoupon_right .listCoupon_items .col-3 .saleListCoupon {
+  width: 60px;
+  height: 60px;
+  line-height: 55px;
+  background-color: rgba(182, 109, 255, 0.368627451);
+  color: #21005d;
+  display: flex;
+  justify-content: center;
+  border-radius: 10px;
+  transition: 0.22s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.containerAdmin .createCoupon .createCoupon_right .listCoupon_items .col-9 .titleSaleListCoupon {
+  margin-bottom: 15px;
+}
+.containerAdmin .createCoupon .createCoupon_right .listCoupon_items .buttonShowFeatureCoupon {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.containerAdmin .createCoupon .createCoupon_right .listCoupon_items .buttonShowFeatureCoupon i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: rgba(128, 128, 128, 0.1);
+}
+.containerAdmin .createCoupon .createCoupon_right .listCoupon_items .buttonShowFeatureCoupon .hiddenFeatureCoupon {
+  display: none;
+  position: absolute;
+  bottom: -50px;
+  right: 5px;
+}
+.containerAdmin .createCoupon .createCoupon_right .listCoupon_items .buttonShowFeatureCoupon .hiddenFeatureCoupon ul {
+  background-color: #f7f7f7;
+  width: 120px;
+  border-radius: 10px;
+}
+.containerAdmin .createCoupon .createCoupon_right .listCoupon_items .buttonShowFeatureCoupon .hiddenFeatureCoupon ul li {
   text-align: center;
+  padding: 10px 15px;
+  border-radius: 10px;
 }
-section .containerAdmin .box-banner .container-banner_admin .banner_admin_right .options_banner_admin .container-options_banner .options_banner {
-  width: 200px;
-  height: 125px;
-  cursor: pointer;
+.containerAdmin .createCoupon .createCoupon_right .listCoupon_items .buttonShowFeatureCoupon .hiddenFeatureCoupon ul li:hover {
+  background-color: rgba(234, 221, 255, 0.5411764706);
 }
-section .containerAdmin .box-banner .container-banner_admin .banner_admin_right .options_banner_admin .container-options_banner .options_bannerimg {
-  max-width: 100%;
-  height: 100%;
-  object-fit: contain;
+.containerAdmin .createCoupon .createCoupon_right .listCoupon_items .buttonShowFeatureCoupon .hiddenFeatureCoupon ul li a {
+  text-decoration: none;
+  color: #000000;
+}
+.containerAdmin .createCoupon .createCoupon_right .listCoupon_items:hover {
+  background-color: #f7f4ff;
+}
+.containerAdmin .createCoupon .createCoupon_right .listCoupon_items:hover .col-3 .saleListCoupon {
+  background-color: #eaddff;
 }
 
 /* Mobile: with < 740px */

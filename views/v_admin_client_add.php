@@ -55,7 +55,7 @@ if (!empty($_POST['password'])) {
     $bio = $_POST['bio'];
     if (isset($_FILES['file'])) {
         //Thư mục chứa file upload
-        $upload_dir = './public/assets/media/images/users/';
+        $upload_dir = './upload/users/';
         //Đường dẫn của file sau khi upload
         $upload_file = $upload_dir . $_FILES['file']['name'];
         //Xử lý upload đúng file ảnh
@@ -137,7 +137,7 @@ if (!empty($_POST['password'])) {
                             <div class="col-12 d-flex">
                                 <div class="col-2">
                                     <img class="notifiAdminImg"
-                                        src="./public/assets/media/images/users/<?php echo $getUser['img'] ?>" alt="">
+                                        src="./upload/users/<?php echo $getUser['img'] ?>" alt="">
                                 </div>
                                 <div class="col-10">
                                     <p class="notifiAdminText body-small"><strong>
@@ -167,7 +167,7 @@ if (!empty($_POST['password'])) {
                         <li>
                         <div class="col-12 d-flex">
                             <div class="col-2">
-                                <img class="notifiAdminImg" src="./public/assets/media/images/users/profile.jpg" alt="">
+                                <img class="notifiAdminImg" srcupload/users/profile.jpg" alt="">
                             </div>
                             <div class="col-10">
                                 <p class="notifiAdminText body-small"><strong><?php echo $getUser['fullname']?></strong><span> vừa mua
@@ -187,7 +187,7 @@ if (!empty($_POST['password'])) {
                 $getUser = getUserById($getID);
                 ?>
                 <img style="" class="btnShowFeature"
-                    src="./public/assets/media/images/users/<?php echo $getUser['img'] ?>" alt="">
+                    src="./upload/users/<?php echo $getUser['img'] ?>" alt="">
                 <ul class="showFeatureAdminHeader box-shadow1">
 
                     <li><a class="body-small" href="#statisticalChart">Thống kê đơn hàng</a></li>
@@ -276,7 +276,7 @@ if (!empty($_POST['password'])) {
                         <div class="right-order-add-create p30 d-flex justify-content-center flex-column ">
                             <div class="img_order-add-create rounded-4">
                                 <!-- <img src="../public/assets/media/images/product/00e8115d9521e69a31f8ee479cb7814e6cdb0b49550b8f06d49a21fd.jpg" alt=""> -->
-                                <img src="./public/assets/media/images/users/<?php echo $userInfo[0]['img'] ?>">
+                                <img src="./upload/users/<?php echo $userInfo[0]['img'] ?>">
 
                             </div>
                             <hr>

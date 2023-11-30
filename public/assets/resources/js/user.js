@@ -1,10 +1,3 @@
-// let form_address = document.querySelector('.form__address--container');
-// let form_hidden = true;
-// if(form_address) {
-//     form_address.style.opacity = '0';
-//     form_address.style.visibility = 'hidden';
-// }
-
 let form_addAddress = document.querySelector('#form_add-address');
 // let form_editAddress = document.querySelector('#form_edit-address');
 let btn_add_address = document.querySelector('#button_add-address');
@@ -12,8 +5,6 @@ let btn_add_address = document.querySelector('#button_add-address');
 if(form_addAddress) {
     form_addAddress.style.opacity = '0';
     form_addAddress.style.visibility = 'hidden';
-    // form_editAddress.style.opacity = '0';
-    // form_editAddress.style.visibility = 'hidden';
 }
 function btn_addAddress()
 {
@@ -74,7 +65,6 @@ function select__order()
 }
 
 // show - hidden switch account
-
 const button_switchAccount = document.querySelector('.box__changeAccount svg');
 // let type_switchAccount = 
 if(button_switchAccount) {
@@ -84,6 +74,7 @@ if(button_switchAccount) {
     });
 }
 
+slider_menuMobile();
 slider_menuMobile();
 input_typeCheckbox();
 // select__order();

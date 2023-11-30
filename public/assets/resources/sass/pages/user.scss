@@ -693,33 +693,6 @@ html {
                 .bottom-right--content_main {
                     min-height: 10rem;
                 }
-
-                .bottom-right--content_bottom {
-
-                    // .list__dots {
-
-                    //     .list__dots--item {
-                    //         width: 4rem;
-                    //         height: 4rem;
-                    //         cursor: pointer;
-                    //         font-size: 1.4rem;
-                    //         font-weight: 600;
-                    //         color: $light-secondary;
-                    //     }
-
-                    //     .dots-active {
-                    //         background-color: $light-primary;
-                    //         color: white;
-                    //     }
-                    // }
-
-                    .btn-next,
-                    .btn-back {
-                        color: $light-primary;
-                        cursor: pointer;
-                        font-weight: 700;
-                    }
-                }
             }
 
             .main__inner--info-order {
@@ -747,12 +720,31 @@ html {
         }
     }
 }
+// claas of dots in v_userHistory
 
+
+    .list__dots--item {
+        width: 4rem !important;
+        height: 4rem !important;
+        cursor: pointer;
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: $light-secondary;
+    }
+    .dots-active {
+        background-color: $light-primary;
+        a {
+            color: white !important;
+        }
+    }
+
+
+// class add js
 .error_input {
-    border: 1px solid $light-error !important;
+    border: 1px solid #dc362e !important;
 }
 .error_formMessage {
-    color: $light-error !important;
+    color: #dc362e !important;
 }
 .show {
     opacity: 1 !important;

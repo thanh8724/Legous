@@ -1,6 +1,11 @@
 body {
 	&.dark {
 		main {
+			.notifiAdminText  {
+				span {
+					color:  black !important;
+				}
+			}
 			.logo_name,
 			span,
 			h1 {

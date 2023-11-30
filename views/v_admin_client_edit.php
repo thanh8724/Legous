@@ -35,7 +35,7 @@ if (@isset($_POST['btn_update'])) {
     // Check if a file was uploaded
     if (isset($_FILES['file']) && $_FILES['file']['error'] == 0) {
         //Thư mục chứa file upload
-        $upload_dir = './public/assets/media/images/users/';
+        $upload_dir = './upload/libs/';
         //Đường dẫn của file sau khi upload
         $upload_file = $upload_dir . $_FILES['file']['name'];
         //Xử lý upload đúng file ảnh
@@ -92,7 +92,7 @@ if (@isset($_POST['btn_update'])) {
     if (empty($error)) {
         // Only delete the old image file if a new image was uploaded
         if (isset($_FILES['file']) && $_FILES['file']['error'] == 0 && $image != $userInfo[0]['img']) {
-            $delete_file = './public/assets/media/images/users/' . $userInfo[0]['img'];
+            $delete_file = './upload/libs/' . $userInfo[0]['img'];
             unlink($delete_file);
         }
 
@@ -105,7 +105,7 @@ if (@isset($_POST['btn_update'])) {
 if (@isset($_POST['btn_delete'])) {
     $id = $_GET['id'];
     //Thư mục chứa file Delete
-    $delete_dir = './public/assets/media/images/users/';
+    $delete_dir = './upload/libs/';
     //Đường dẫn của file sau khi Delete
     $delete_file = $delete_dir . $userInfo[0]['img'];
     echo $delete_file;
@@ -145,7 +145,7 @@ if (@isset($_POST['btn_cancelled'])) {
                             <div class="col-12 d-flex">
                                 <div class="col-2">
                                     <img class="notifiAdminImg"
-                                        src="./public/assets/media/images/users/<?php echo $getUser['img'] ?>" alt="">
+                                        src="./upload/libs/<?php echo $getUser['img'] ?>" alt="">
                                 </div>
                                 <div class="col-10">
                                     <p class="notifiAdminText body-small"><strong>
@@ -175,7 +175,7 @@ if (@isset($_POST['btn_cancelled'])) {
                         <li>
                             <div class="col-12 d-flex">
                                 <div class="col-2">
-                                    <img class="notifiAdminImg" src="./public/assets/media/images/users/profile.jpg" alt="">
+                                    <img class="notifiAdminImg" src="./upload/libs/profile.jpg" alt="">
                                 </div>
                                 <div class="col-10">
                                     <p class="notifiAdminText body-small"><strong>
@@ -199,7 +199,7 @@ if (@isset($_POST['btn_cancelled'])) {
                 $getUser = getUserById($getID);
                 ?>
                 <img style="" class="btnShowFeature"
-                    src="./public/assets/media/images/users/<?php echo $getUser['img'] ?>" alt="">
+                    src="./upload/libs/<?php echo $getUser['img'] ?>" alt="">
                 <ul class="showFeatureAdminHeader box-shadow1">
 
                     <li><a class="body-small" href="#statisticalChart">Thống kê đơn hàng</a></li>
@@ -315,17 +315,17 @@ if (@isset($_POST['btn_cancelled'])) {
                                 <div class="right-order-add-create p30 d-flex justify-content-center flex-column ">
                                     <div class="img_order-add-create rounded-4">
                                         <?php
-                                        $upload_dir = './public/assets/media/images/users/';
+                                        $upload_dir = './upload/libs/';
                                         //Đường dẫn của file sau khi upload
                                         $upload_file = $upload_dir . $userInfo[0]['img'];
                                         if (empty($userInfo[0]['img']) || $userInfo[0]['img'] == NULL || !file_exists($upload_file)) {
                                             ?>
-                                            <td><img src="./public/assets/media/images/users/anonyUser.png"></td>
+                                            <td><img src="./upload/libs/anonyUser.png"></td>
                                             <?php
                                         } else {
                                             ?>
                                             <td><img
-                                                    src="./public/assets/media/images/users/<?php echo $userInfo[0]['img'] ?>">
+                                                    src="./upload/libs/<?php echo $userInfo[0]['img'] ?>">
                                             </td>
                                             <?php
                                         }

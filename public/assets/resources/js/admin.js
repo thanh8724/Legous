@@ -23,6 +23,7 @@ if (btnShowMore) {
     }
   });
 }
+
 btnsShowMore.forEach((btn, index) => {
   btn.addEventListener("click", function () {
     // Tìm phần tử cha (theadoverviewDashboard) của nút được bấm
@@ -37,6 +38,7 @@ btnsShowMore.forEach((btn, index) => {
     }
   });
 });
+
 // <=======  End Show More    ========>
 // <=======  SideBar    ========>
 
@@ -68,7 +70,22 @@ modeToggle.addEventListener("click", () => {
     localStorage.setItem("mode", "light");
   }
 });
-
+    if (document.querySelector(".showmanageCoupon")) {
+  document
+    .querySelector(".showmanageCoupon")
+    .addEventListener("click", function () {
+      var table = document.getElementById("example1");
+      if (table.style.display === "none") {
+        table.style.display = "inline-table";
+        document.querySelector("#example1_paginate").style.display = "block";
+        document.querySelector("#example1_info").style.display = "block";
+      } else {
+        table.style.display = "none";
+        document.querySelector("#example1_paginate").style.display = "none";
+        document.querySelector("#example1_info").style.display = "none";
+      }
+    });
+}
 // <======= Chart JS ========>
 
 if (document.getElementById("myChart")) {

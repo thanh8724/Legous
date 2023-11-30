@@ -4,6 +4,7 @@
     // Gữi/nhận dữ liệu thông qua models
     // Hiển thị dữ liệu thông qua view
     include_once 'models/m_user.php';
+    include_once 'config.php';
     if(isset($_GET['act'])){
         if(isset($_SESSION['userLogin'])) {
             extract($_SESSION['userLogin']);
@@ -17,17 +18,25 @@
         if(is_array($checkUses)) {
             extract($checkUses);
             if($img == "") {
-                $avatarImage_user = 'avatar-none.png';
+                $avatarImage_user = USER_PATH.'avatar-none.png';
             }else if($img != '') {
-                $avatarImage_user = $img;
+                $avatarImage_user = USER_PATH.$img;
             }
         }
+        $active__general = '';
+        $active__profile = '';
+        $active__password = '';
+        $active__address = '';
+        $active__order = '';
+        $active__deleteAccount = '';
         switch ($_GET['act']){
             case 'general':
                 // lấy dữ liệu
                 include_once 'models/m_user.php';
                 // hiển thị dữ liệu
                 $view_name = 'general';
+                #add class
+                $active__general = 'menu__active';
                 # code bên trang v_general.php nha... <3
                 break;
 
@@ -36,18 +45,24 @@
                 include_once 'models/m_user.php';
                 // hiển thị dữ liệu
                 $view_name = 'editprofile';
+                #add class
+                $active__profile = 'menu__active';
                 # code bên trang v_editprofile.php nha... <3
                 break;
 
             case 'password':
                 include_once 'models/m_user.php';
                 $view_name = 'user_password';
+                # add class
+                $active__password = 'menu__active';
                 break;
 
             case 'address':
                 include_once 'models/m_user.php';
                 // hiển thị dữ liệu
                 $view_name = 'address';
+                #add class
+                $active__address = 'menu__active';
                 # qua v_address.php kiếm code đi fen....
                 break;
 
@@ -67,21 +82,29 @@
                 }
                 break;
             
-            case 'order-history':
-                include_once 'models/m_user.php';
-                $view_name = 'user_orderHistory';
-                $id_user = $_SESSION['id_user'];
-                $order_history = get_orderHistory($id_user);
-                break;
-        
-            case 'order-detail':
-                include_once 'models/m_user.php';
-                $view_name = 'user_orderDetail';
-                if (isset($_GET['id'])) {
-                    $id_order = ($_GET['id']);
-                    $order = get_order($id_order);
-                    $product_order = get_product_order($id_order);
-                }
+                case 'order-history':
+                    include_once 'models/m_user.php';
+                    $view_name = 'user_orderHistory';
+                    #add class
+                    $active__order = 'menu__active';
+                    $title = 'Lịch sử đơn hàng';
+                    $itemsPage = '';
+                    $itemsPage = 10; // số bill mỗi trang
+                    if (isset($_SESSION['userLogin']['id_user'])) {
+                        $id_user = $_SESSION['userLogin']['id_user'];
+                    }
+                break;     
+
+                case 'order-detail':
+                    include_once 'models/m_user.php';
+                    $view_name = 'user_orderDetail';
+                    $title = 'Lịch sử đơn hàng';
+                    if (isset($_GET['id'])) {
+                        $id_order = ($_GET['id']);
+                        $order = get_order($id_order);
+                        $product_order = get_product_order($id_order);
+                        
+                    }
                 break;
 
             case 'logOut-account':
@@ -119,6 +142,8 @@
             case 'delete-account':
                 include_once 'models/m_user.php';
                 $view_name = 'user-deleteAccount';
+                #add class
+                $active__deleteAccount = 'menu__active';
                 break;
             default:
                 break;

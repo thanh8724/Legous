@@ -14,14 +14,14 @@
             foreach ($item as $key) {
                 extract($key);
                 if($img == "") {
-                    $avatar_account = 'avatar-none.png';
+                    $avatar_account = USER_PATH.'avatar-none.png';
                 }else {
-                    $avatar_account = $img;
+                    $avatar_account = USER_PATH.$img;
                 }
                 if($id == $_SESSION['userLogin']['id_user']) {
                     $accounts_user_active_html ='<div class="box__listAccount--item">
                                                     <div class="box__avatar--account">
-                                                        <img srcset="upload/users/'.$avatar_account.' 2x" alt="">
+                                                        <img srcset="'.$avatar_account.' 2x" alt="">
                                                     </div>
                                                     <div class="box__info--account">
                                                         <span class="info--account_name">'.$username.'</span>
@@ -33,7 +33,7 @@
                     $accounts_user_html .= '<a href="?mod=user&act=change_account&id='.$id.'" style="color: black;">
                                                 <div class="box__listAccount--item account__notActive">
                                                     <div class="box__avatar--account">
-                                                        <img srcset="upload/users/'.$avatar_account.' 2x" alt="">
+                                                        <img srcset="'.$avatar_account.' 2x" alt="">
                                                     </div>
                                                     <div class="box__info--account">
                                                         <span class="info--account_name">'.$username.'</span>
