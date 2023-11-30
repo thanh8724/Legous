@@ -28,6 +28,7 @@
   .createCoupon {
     .createCoupon_left {
       background-color: $-white;
+      border-radius: 10px;
       .createCoupon_items {
         margin-top: 25px;
         .col-6 {
@@ -70,6 +71,8 @@
 
     .createCoupon_right {
       background-color: $-white;
+      border-radius: 10px;
+      transition: $trans-bounce;
       .listCouponHead {
         h4 {
           color: $light-on-container;
@@ -86,27 +89,31 @@
         }
       }
       .listCoupon_items {
+        margin-top: 20px;
+      border-radius: 10px;
+
         .col-3 {
-            
-            .saleListCoupon {
-                width: 60px;
-                height: 60px;
-                line-height: 55px;
-                background-color: #b66dff5e;
-                color: $light-on-container-4;
-                display: flex;
-                justify-content: center;
-                border-radius: 10px;
-            }
+          .saleListCoupon {
+            width: 60px;
+            height: 60px;
+            line-height: 55px;
+            background-color: #b66dff5e;
+            color: $light-on-container-4;
+            display: flex;
+            justify-content: center;
+            border-radius: 10px;
+            transition: $trans-bounce;
+          }
         }
         .col-9 {
-            .titleSaleListCoupon {
-                margin-bottom: 15px;
-            }
+          .titleSaleListCoupon {
+            margin-bottom: 15px;
+          }
         }
         .buttonShowFeatureCoupon {
-            display: flex;
-            align-items: center;
+          display: flex;
+          align-items: center;
+          position: relative;
           i {
             display: flex;
             align-items: center;
@@ -116,6 +123,38 @@
             height: 25px;
             border-radius: 50%;
             background-color: rgba(128, 128, 128, 0.1);
+          }
+          .hiddenFeatureCoupon {
+            display: none;
+            position: absolute;
+            bottom: -50px;
+            right: 5px;
+            ul {
+              background-color: #f7f7f7;
+              width: 120px;
+              border-radius: 10px;
+              li {
+                text-align: center;
+                padding: 10px 15px;
+                border-radius: 10px;
+                &:hover {
+                  background-color: #eaddff8a;
+                }
+                a {
+                  text-decoration: none;
+                  color: $-black;
+                }
+              }
+            }
+          }
+        }
+        &:hover {
+          background-color: #f7f4ff;
+
+          .col-3 {
+            .saleListCoupon {
+              background-color: $primary90;
+            }
           }
         }
       }

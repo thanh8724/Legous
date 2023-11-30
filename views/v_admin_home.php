@@ -169,23 +169,6 @@ foreach ($getCmt as $item) {
 
             </div>
         </div>
-        <!-- <div class="localDashboard p30">
-                    <div class="col-12 d-flex mt-5 pt-5">
-                        <div class="col-6">
-                            <div class="col-12">
-                                <h2 class="headline-small h2_dashboard">Bảng Điều Khiển</h2>
-                            </div>
-                            <div class="col-12">
-                                <a class="body-medium aHref1" href="#">Admin</a> / <a href="#"
-                                    class="body-medium aHref2">Bảng Điều Khiển</a>
-                            </div>
-                        </div>
-                        <div class="col-6 d-flex justify-content-end">
-                            <section><i class="fal fa-calendar-alt calenderColor"></i> <span
-                                    class="dateCalender label-medium ml12">Aug 21, 2023 - Aug 28, 2023</span></section>
-                        </div>
-                    </div>
-                </div> -->
         <div class="owl-carousel owl-theme p30">
             <div class="item box-shadow1 slider_contain">
                 <div class="slider_items p-4">
