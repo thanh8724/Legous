@@ -16,4 +16,8 @@ include_once 'models/m_pdo.php';
     function editCoupon($getEditID, $namecoupon, $discountpercent, $description, $expiredDate) {
         pdo_execute("UPDATE coupon SET name = '$namecoupon', discount = '$discountpercent', description = '$description', expired_date = '$expiredDate' WHERE id = {$getEditID}");
     }
+
+    function delCoupon($id) {
+        pdo_execute("DELETE From coupon where id = {$id}");
+    }
 ?>

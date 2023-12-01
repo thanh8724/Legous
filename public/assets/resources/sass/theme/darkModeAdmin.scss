@@ -119,7 +119,24 @@ body {
 				}
 			}
 		}
-		
+		.headMobie {
+			background-color: #1c2339;
+			#menuButton {
+				i {
+					color: $-white;
+				}
+			}
+			.logo-name {
+				.logo_name {
+					color: $-white !important;
+				}
+			}
+			#searchButtonBar {
+				i {
+					color: $-white;
+				}
+			}
+		}
 		
 	}
 }

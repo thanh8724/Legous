@@ -165,9 +165,7 @@
       //      <!----======== End Owl Carousel ======== -->
 
       //      <!----======== Statistical Chart ======== -->
-#example1_wrapper {
-  overflow-x: scroll;
-}
+
       .statisticalChart {
         .statisticalChartItems {
           .customerOrderStatistics {
@@ -584,6 +582,9 @@
 
 
 @media only screen and (max-width: 46.1875em){
+  #example1_wrapper {
+    overflow-x: scroll;
+  }
   main,
   #adminDashboard {
           nav{

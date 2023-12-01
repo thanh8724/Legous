@@ -1517,6 +1517,18 @@ body.dark .dashboard .top .info-user i {
 body.dark li a:hover:before {
   background-color: #ccc;
 }
+body.dark .headMobie {
+  background-color: #1c2339;
+}
+body.dark .headMobie #menuButton i {
+  color: #ffffff;
+}
+body.dark .headMobie .logo-name .logo_name {
+  color: #ffffff !important;
+}
+body.dark .headMobie #searchButtonBar i {
+  color: #ffffff;
+}
 
 p {
   margin-bottom: 0px !important;
@@ -4553,9 +4565,6 @@ table tbody tr td a {
 #mainAdmin .dashboard .containerAdmin .owl-carousel .slider_contain-5 .slider_items .buttonWallet {
   background-color: #FF6651 !important;
 }
-#mainAdmin .dashboard .containerAdmin #example1_wrapper {
-  overflow-x: scroll;
-}
 #mainAdmin .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .orderStatistics {
   background-color: #ffffff;
   border-radius: 10px;
@@ -4901,6 +4910,9 @@ table tbody tr td a {
 }
 
 @media only screen and (max-width: 46.1875em) {
+  #example1_wrapper {
+    overflow-x: scroll;
+  }
   main nav,
   #adminDashboard nav {
     display: none !important;

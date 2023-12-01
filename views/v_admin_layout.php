@@ -43,8 +43,7 @@
                 <a href="#">
                     <div class="logo-name d-flex justify-content-center align-items-center">
                         <div class="logo-image">
-                            <img style="width: 20px; height: 20px;"
-                                src="./public/assets/media/images/logo.png" alt="">
+                            <img style="width: 20px; height: 20px;" src="./public/assets/media/images/logo.png" alt="">
                         </div>
 
                         <span class="logo_name title-large fw-black" style="color: black;">LEGOUS</span>

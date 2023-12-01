@@ -440,11 +440,11 @@ if (isset($_GET['act'])) {
             delCmt($id);
             header("Location: ?mod=admin&act=comments");
         case 'coupon':
-            $view_name = 'coupon';
+            $view_name = 'admin_coupon';
             break;
 
         case 'createcoupon':
-            $view_name = 'create_coupon';
+            $view_name = 'admin_coupon-create';
             break;
         default:
                 
