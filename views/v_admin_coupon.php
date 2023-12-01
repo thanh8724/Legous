@@ -1,32 +1,3 @@
-<?php
-$getTotalBill = getBill();
-$getProduct = getProducts();
-$getUser = getUser();
-$getCmt = getAllComment();
-$totalBill = 0;
-$totalSales = 0;
-$totalUser = 0;
-$totalCmt = 0;
-$totalQuan = 0;
-foreach ($getTotalBill as $item) {
-    if ($item['status'] == 4) {
-        $totalBill += $item['total'];
-    }
-}
-foreach ($getProduct as $item) {
-    $totalSales += $item['purchases'];
-}
-foreach ($getProduct as $item) {
-    $totalQuan += $item['qty'];
-}
-foreach ($getUser as $item) {
-    $totalUser++;
-}
-foreach ($getCmt as $item) {
-    $totalCmt++;
-}
-
-?>
 <section class="dashboard">
     <!----======== Header DashBoard ======== -->
 
@@ -157,7 +128,7 @@ foreach ($getCmt as $item) {
         <div class="flex-column p30 g30" style="align-self: stretch; align-items: flex-start;">
             <div class="text">
                 <h1 class="label-large-prominent" style="font-size: 24px;
-                        line-height: 32px;">Bảng Điều Khiển</h1>
+                        line-height: 32px;">Mã Giảm Giá</h1>
             </div>
             <!--DateTimelocal-->
             <div class="flex-between width-full" style="gap: 8px;

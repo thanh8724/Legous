@@ -5,13 +5,17 @@ ob_start();
 require_once './models/m_user.php';
 require_once './models/m_comment.php';
 require_once './models/m_coupon.php';
-
 // Hiển thị dữ liệu thông qua view
 
 
 if ($_SESSION['role'] == 0 || !empty($_SESSION['userLogin'])) {
     header("Location: ?mod=page&act=home");
     exit();
+}
+foreach (getAllCoupon() as $item) {
+    if ($item['expired_date'] <= date('Y-m-d 00:00:00')) {
+        delCoupon($item['id']);
+    }
 }
 if (isset($_GET['act'])) {
     switch ($_GET['act']) {
@@ -247,10 +251,10 @@ if (isset($_GET['act'])) {
                     $get_Order = [];
                 } else {
                     $get_us_bill = $search_us_bill[0]['id'];
-                    $get_Order = get_Order_bill("","", $get_us_bill);
+                    $get_Order = get_Order_bill("", "", $get_us_bill);
                 }
-              
-            } 
+
+            }
             if (isset($_GET['id'])) {
                 $Get_Id_Order = $_GET['id'];
                 $Id_bill = get_OneOrder_bill($Get_Id_Order);
@@ -270,7 +274,7 @@ if (isset($_GET['act'])) {
                 del_bill($_GET['id']);
                 header('Location:?mod=admin&act=orders');
             }
-           
+
 
             //hiển thị dữ liệu  
             $view_name = 'admin_orders';
@@ -296,7 +300,7 @@ if (isset($_GET['act'])) {
                     $error = '<div style="position:relative; top:25px;" class="alert alert-danger" role="alert">Bạn còn thiếu một số thông tin chưa điền</div>';
                 } else {
                     order_add($name_us_order, $location_us_order, $email_us_order, $phone_us_order, $total_order1, $status_order, $method_order1, $now);
-                    header('Location:?mod=admin&act=orders'); 
+                    header('Location:?mod=admin&act=orders');
                 }
             }
 
@@ -453,7 +457,7 @@ if (isset($_GET['act'])) {
             header("Location: ?mod=admin&act=createcoupon");
             break;
         default:
-                
+
             break;
     }
     include_once 'views/v_admin_layout.php';

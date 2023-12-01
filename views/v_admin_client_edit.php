@@ -116,20 +116,31 @@ if (@isset($_POST['btn_delete'])) {
     foreach ($getAllBilById as $item) {
         if ($item['status'] == 1 || $item['status'] == 2 || $item['status'] == 3) {
             $error['status'] = "Không thể xóa User này vì hiện đang có đơn hàng đang chuẩn bị hoặc đang giao";
-        } else {
-
         }
     }
 
-    if (isset($error['status']) && $error['status']) {
-
+    if (isset($error['status']) && !empty($error['status'])) {
+        $error['status'] = "Không thể xóa User này vì hiện đang có đơn hàng đang chuẩn bị hoặc đang giao";
     } else {
-        $delete_dir = './upload/users/';
-        //Đường dẫn của file sau khi Delete
-        $delete_file = $delete_dir . $userInfo[0]['img'];
-        echo $delete_file;
+        // Xóa hình ảnh của user
+        foreach (getCommentByIdUser($id) as $comment) {
+            foreach (getAllCmtImg($comment['id']) as $item) {
+                $delete_dir = './upload/users/';
+                $delete_file = $delete_dir . $item['src'];
+                unlink($delete_file);
+            }
+        }
+        foreach (getCommentByIdUser($id) as $comment) {
+            foreach (getAllCmtImg($comment['id']) as $item) {
+                
+                delImgByIdCmt($comment['id']);
+            }
+            delCmt($comment['id']);
+        }
+
+        // Xóa user
         deleteUser($id);
-        unlink($delete_file);
+        // Chuyển hướng người dùng
         header("Location: ?mod=admin&act=client");
     }
 

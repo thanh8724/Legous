@@ -17,6 +17,9 @@
     function getCommentById($id) {
         return pdo_query("SELECT * FROM comment WHERE id = {$id}");
     }
+    function getCommentByIdUser($id) {
+        return pdo_query("SELECT * FROM comment WHERE id_user = {$id}");
+    }
     function getImgCommentById($id) {
         $sql = "SELECT * FROM comment_img WHERE id_comment = $id ORDER BY id DESC";
         return pdo_query($sql);
@@ -39,6 +42,7 @@
     function delImgCmt($id_Cmt) {
         pdo_execute("DELETE From comment_img where id = {$id_Cmt}");
     }
+   
     function delImgByIdCmt($id_Cmt) {
         pdo_execute("DELETE From comment_img where id_comment = {$id_Cmt}");
     }
