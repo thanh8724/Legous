@@ -8,6 +8,13 @@ if (@isset($_POST['btn_update'])) {
     } else {
         $error['fullname'] = "Không được để trống Họ Và Tên";
     }
+    foreach (getUser() as $item) {
+        if($item['username'] == $_POST['username']) {
+            $error['username'] = "Tên đăng nhập này đã được sử dụng";
+        }elseif($item['email'] == $_POST['email']) {
+            $error['email'] = "Email này đã được sử dụng";
+        }
+    }
     if (!empty($_POST['username'])) {
         $username = $_POST['username'];
     } else {
@@ -35,7 +42,7 @@ if (@isset($_POST['btn_update'])) {
     // Check if a file was uploaded
     if (isset($_FILES['file']) && $_FILES['file']['error'] == 0) {
         //Thư mục chứa file upload
-        $upload_dir = './upload/libs/';
+        $upload_dir = './upload/users/';
         //Đường dẫn của file sau khi upload
         $upload_file = $upload_dir . $_FILES['file']['name'];
         //Xử lý upload đúng file ảnh
@@ -92,7 +99,7 @@ if (@isset($_POST['btn_update'])) {
     if (empty($error)) {
         // Only delete the old image file if a new image was uploaded
         if (isset($_FILES['file']) && $_FILES['file']['error'] == 0 && $image != $userInfo[0]['img']) {
-            $delete_file = './upload/libs/' . $userInfo[0]['img'];
+            $delete_file = './upload/users/' . $userInfo[0]['img'];
             unlink($delete_file);
         }
 
@@ -105,7 +112,7 @@ if (@isset($_POST['btn_update'])) {
 if (@isset($_POST['btn_delete'])) {
     $id = $_GET['id'];
     //Thư mục chứa file Delete
-    $delete_dir = './upload/libs/';
+    $delete_dir = './upload/users/';
     //Đường dẫn của file sau khi Delete
     $delete_file = $delete_dir . $userInfo[0]['img'];
     echo $delete_file;
@@ -145,7 +152,7 @@ if (@isset($_POST['btn_cancelled'])) {
                             <div class="col-12 d-flex">
                                 <div class="col-2">
                                     <img class="notifiAdminImg"
-                                        src="./upload/libs/<?php echo $getUser['img'] ?>" alt="">
+                                        src="./upload/users/<?php echo $getUser['img'] ?>" alt="">
                                 </div>
                                 <div class="col-10">
                                     <p class="notifiAdminText body-small"><strong>
@@ -175,7 +182,7 @@ if (@isset($_POST['btn_cancelled'])) {
                         <li>
                             <div class="col-12 d-flex">
                                 <div class="col-2">
-                                    <img class="notifiAdminImg" src="./upload/libs/profile.jpg" alt="">
+                                    <img class="notifiAdminImg" src="./upload/users/profile.jpg" alt="">
                                 </div>
                                 <div class="col-10">
                                     <p class="notifiAdminText body-small"><strong>
@@ -199,7 +206,7 @@ if (@isset($_POST['btn_cancelled'])) {
                 $getUser = getUserById($getID);
                 ?>
                 <img style="" class="btnShowFeature"
-                    src="./upload/libs/<?php echo $getUser['img'] ?>" alt="">
+                    src="./upload/users/<?php echo $getUser['img'] ?>" alt="">
                 <ul class="showFeatureAdminHeader box-shadow1">
 
                     <li><a class="body-small" href="#statisticalChart">Thống kê đơn hàng</a></li>
@@ -315,17 +322,17 @@ if (@isset($_POST['btn_cancelled'])) {
                                 <div class="right-order-add-create p30 d-flex justify-content-center flex-column ">
                                     <div class="img_order-add-create rounded-4">
                                         <?php
-                                        $upload_dir = './upload/libs/';
+                                        $upload_dir = './upload/users/';
                                         //Đường dẫn của file sau khi upload
                                         $upload_file = $upload_dir . $userInfo[0]['img'];
                                         if (empty($userInfo[0]['img']) || $userInfo[0]['img'] == NULL || !file_exists($upload_file)) {
                                             ?>
-                                            <td><img src="./upload/libs/anonyUser.png"></td>
+                                            <td><img src="./upload/users/anonyUser.png"></td>
                                             <?php
                                         } else {
                                             ?>
                                             <td><img
-                                                    src="./upload/libs/<?php echo $userInfo[0]['img'] ?>">
+                                                    src="./upload/users/<?php echo $userInfo[0]['img'] ?>">
                                             </td>
                                             <?php
                                         }

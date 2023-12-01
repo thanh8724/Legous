@@ -1,4 +1,4 @@
-main {
+#mainAdmin {
   .dashboard {
     .containerAdmin {
       width: 95%;
@@ -165,13 +165,14 @@ main {
       //      <!----======== End Owl Carousel ======== -->
 
       //      <!----======== Statistical Chart ======== -->
-
+#example1_wrapper {
+  overflow-x: scroll;
+}
       .statisticalChart {
         .statisticalChartItems {
           .customerOrderStatistics {
             .orderStatistics {
               background-color: $-white;
-              margin-right: 20px;
               border-radius: 10px;
               .myNavTabs {
                 .myNavItem {

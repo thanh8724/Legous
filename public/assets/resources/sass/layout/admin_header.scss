@@ -610,6 +610,13 @@ ul {
 
 
 @media only screen and (max-width: 46.1875em){
+  #mainAdmin {
+    .dashboard {
+      .top {
+        display: none;
+      }
+    }
+  }
   .headMobie {
       display: block;
       .col-12 {
