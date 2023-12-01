@@ -446,6 +446,12 @@ if (isset($_GET['act'])) {
         case 'createcoupon':
             $view_name = 'admin_coupon-create';
             break;
+
+        case 'delcoupon':
+            $getid = $_GET['editId'];
+            delCoupon($getid);
+            header("Location: ?mod=admin&act=createcoupon");
+            break;
         default:
                 
             break;

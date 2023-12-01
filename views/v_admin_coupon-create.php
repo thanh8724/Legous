@@ -404,8 +404,8 @@ if (isset($_POST['editCouponsubmit'])) {
                                             <li><i class="fas fa-ellipsis-v"></i>
                                                 <div class="hiddenFeatureCoupon">
                                                     <ul>
-                                                        <li class="title-small"><a href="">Sửa</a></li>
-                                                        <li class="title-small"><a href="">Xóa</a></li>
+                                                        <li class="title-small"><a href="?mod=admin&act=createcoupon&editId=<?php echo $item['id']?>">Sửa</a></li>
+                                                        <li class="title-small"><a href="?mod=admin&act=delcoupon&editId=<?php echo $item['id']?>">Xóa</a></li>
                                                     </ul>
                                                 </div>
                                             </li>
