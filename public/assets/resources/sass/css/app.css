@@ -2280,9 +2280,6 @@ ul {
 .panels .comment__panel .comment__wrapper .comment__item .comment__user .moreFeatureComment .ulDadMoreFeatureComment .liDadMoreFeatureComment {
   cursor: pointer;
 }
-.panels .comment__panel .comment__wrapper .comment__item .comment__user .moreFeatureComment .ulDadMoreFeatureComment .liDadMoreFeatureComment:hover .divMoreFeatureComment {
-  display: block;
-}
 .panels .comment__panel .comment__wrapper .comment__item .comment__user .moreFeatureComment .ulDadMoreFeatureComment .liDadMoreFeatureComment .ellipsisBtn {
   display: flex;
   align-items: center;
