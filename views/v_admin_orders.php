@@ -357,16 +357,21 @@
                                 <h4 style="margin:0 5px 0 0 ;">Ngày Đặt Hàng: </h4>
                                 <p><?=$Id_bill[0]['create_date']?></p>
                               </div>
+                              <?php
+                                  $tax = $Id_bill[0]['total'] * 0.1;
+                                  $total = $Id_bill[0]['total'] - $tax;
+                                  $formatted_number_id = number_format($total, 0, ',', '.');
+                                ?>
                               <div>
                                 <h4>Địa Chỉ Nhận hàng Hàng:</h4>
                                 <p><?=$Id_bill[0]['address_recipient']?></p>
                                 <hr>
                               </div>
+                              <div><h5 style="margin:0 5px 0 0 ;">(Thuế 10%):-<?=number_format($tax, 0, ',', '.')?>đ</h5></div>
                               <div  class="d-flex align-items-center">
                                 <h4 style="margin:0 5px 0 0 ;">Tổng Đơn Hàng: </h4>
-                                <?php
-                                  $formatted_number_id = number_format($Id_bill[0]['total'], 0, ',', '.');
-                                ?>
+                                
+                                
                                 <p><?=$formatted_number_id?>đ</p>
                               </div>
                               <div class="custom-select">
