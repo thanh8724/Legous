@@ -5152,13 +5152,19 @@ table tbody tr td a {
     align-items: center !important;
   }
 }
+.dashboard a.label-large {
+  color: #6750a4;
+}
+
 .containerAdmin_order-detail {
   font-size: 1.3rem;
   background-color: white;
+  width: 100%;
+  border-radius: 10px;
 }
 .containerAdmin_order-detail a {
   text-decoration: none;
-  color: blue;
+  color: #6750a4;
 }
 .containerAdmin_order-detail .admin-black {
   color: black;
@@ -5296,10 +5302,14 @@ table tbody tr td a {
 }
 .right-order-add-create .img_order-add-create {
   min-width: 410px;
+  max-width: 410px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .right-order-add-create .img_order-add-create img {
-  height: 100%;
-  width: 100%;
+  height: 80%;
+  width: 80%;
   border-radius: 10px;
 }
 .right-order-add-create .button_delete_img {
@@ -6070,6 +6080,15 @@ section .containerAdmin .pagination li a {
 }
 .containerAdmin .createCoupon .createCoupon_right .listCoupon_item .listCoupon_items:hover .col-3 .saleListCoupon {
   background-color: #eaddff;
+}
+
+.pagination .paginate_button.page-item.active a {
+  border-color: #6750a4;
+  background-color: #6750a4;
+  color: #ffffff;
+}
+.pagination .paginate_button.page-item a {
+  color: #6750a4;
 }
 
 /* Mobile: with < 740px */

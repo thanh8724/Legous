@@ -165,3 +165,17 @@
     }
   }
 }
+.pagination {
+  .paginate_button.page-item.active {
+    a {
+      border-color: #6750a4;
+      background-color: #6750a4;
+      color: $-white;
+    }
+  }
+  .paginate_button.page-item {
+    a {
+      color: #6750a4;
+    }
+  }  
+}
