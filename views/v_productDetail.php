@@ -469,8 +469,7 @@ if (isset($_POST['editComment'])) {
 
                                     <div class="flex" style="align-items: center;">
                                         <input type="text" name="inputEditComment" class="form__input comment__input"
-                                            placeholder="Comment"
-                                            value="<?php if (!empty($editCmtById))
+                                            placeholder="Comment" value="<?php if (!empty($editCmtById))
                                                 print_r($editCmtById[0]['content']) ?>">
                                             <button name="editComment" value="submitComment" type="submit"
                                                 class="icon-btn send-comment__btn"><i class="fal fa-paper-plane"></i></button>
@@ -541,12 +540,17 @@ if (isset($_POST['editComment'])) {
                             <div class="comment__item mb30 p30">
                                 <div class="flex comment__user">
                                     <div class="flex g12">
-                                        <div class="user__avt avt"><img
-                                                src="./upload/users/<?php echo $getUserByID['img'] ?>"
+                                        <div class="user__avt avt"><img src="./upload/users/<?php echo $getUserByID['img'] ?>"
                                                 alt="user 1" class="imgcover"></div>
                                         <div class="flex-column flex-between">
                                             <div class="user__name title-medium fw-smb">
-                                                <?php echo $getUserByID['fullname'] ?>
+                                                <?php
+                                                if (!empty($getUserByID['fullname']) || $getUserByID['fullname'] != null) {
+                                                    echo $getUserByID['fullname'];
+                                                } else {
+                                                    echo "Người dùng ẩn danh";
+                                                }
+                                                ?>
                                             </div>
                                             <div class="user-comment__date title-small">
                                                 <?php echo $item['create_date'] ?>
@@ -579,7 +583,7 @@ if (isset($_POST['editComment'])) {
                                                                 <li class="liSonMoreFeatureComment"><a
                                                                         href="?mod=page&act=reportCmt&reportId=<?php echo $item['id'] ?>&reported=<?php echo $item['reported'] ?>&idProduct=<?php echo $productId ?>">Tố
                                                                         Cáo</a></li>
-                                                            <?php
+                                                                <?php
                                                             }
                                                             ?>
 
@@ -616,8 +620,8 @@ if (isset($_POST['editComment'])) {
                             ?>
                             <div class="comment__item mb30 p30">
                                 <div class="flex g12 comment__user comment__hidden">
-                                    <div class="user__avt avt"><img src="./upload/users/anonyUser.png"
-                                            alt="user 1" class="imgcover"></div>
+                                    <div class="user__avt avt"><img src="./upload/users/anonyUser.png" alt="user 1"
+                                            class="imgcover"></div>
                                     <div class="flex-column flex-between">
                                         <div class="user__name title-medium fw-smb">
                                             <p>Bình luận này đang vi phạm chính sách nên đã bị ẩn</p>
@@ -749,7 +753,6 @@ if (isset($_POST['editComment'])) {
 
 <script>
     'use strict';
-
     ;
     (function (document, window, index) {
         var inputs = document.querySelectorAll('.inputfile');
@@ -779,4 +782,17 @@ if (isset($_POST['editComment'])) {
             });
         });
     }(document, window, 0));
+
+    if(document.querySelectorAll('.moreFeatureComment')) {
+        document.querySelectorAll('.moreFeatureComment').forEach(function(button) {
+    button.addEventListener('click', function() {
+        var divMoreFeatureComment = this.querySelector('.divMoreFeatureComment');
+        if (divMoreFeatureComment.style.display === 'none') {
+            divMoreFeatureComment.style.display = 'block';
+        } else {
+            divMoreFeatureComment.style.display = 'none';
+        }
+    });
+});
+    }
 </script>

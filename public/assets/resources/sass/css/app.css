@@ -1455,54 +1455,54 @@ table th {
   grid-template-columns: repeat(auto-fit, minmax(min(16em, 100%), 1fr));
 }
 
-body.dark main {
+body.dark #mainAdmin {
   background-color: #15192a;
   transition: 0.5s;
 }
-body.dark main .notifiAdminText span {
+body.dark #mainAdmin .notifiAdminText span {
   color: black !important;
 }
-body.dark main .logo_name,
-body.dark main span,
-body.dark main h1 {
+body.dark #mainAdmin .logo_name,
+body.dark #mainAdmin span,
+body.dark #mainAdmin h1 {
   color: #fff !important;
 }
-body.dark main .localDashboard .h2_dashboard {
+body.dark #mainAdmin .localDashboard .h2_dashboard {
   color: #ffffff !important;
 }
-body.dark main .localDashboard .aHref1 {
+body.dark #mainAdmin .localDashboard .aHref1 {
   color: #ffffff !important;
 }
-body.dark main .dashboard .containerAdmin .owl-carousel .slider_contain {
+body.dark #mainAdmin .dashboard .containerAdmin .owl-carousel .slider_contain {
   background-color: #1c2339 !important;
 }
-body.dark main .dashboard .containerAdmin .owl-carousel .slider_contain h5, body.dark main .dashboard .containerAdmin .owl-carousel .slider_contain h6, body.dark main .dashboard .containerAdmin .owl-carousel .slider_contain .fa-ellipsis-v, body.dark main .dashboard .containerAdmin .owl-carousel .slider_contain span {
+body.dark #mainAdmin .dashboard .containerAdmin .owl-carousel .slider_contain h5, body.dark #mainAdmin .dashboard .containerAdmin .owl-carousel .slider_contain h6, body.dark #mainAdmin .dashboard .containerAdmin .owl-carousel .slider_contain .fa-ellipsis-v, body.dark #mainAdmin .dashboard .containerAdmin .owl-carousel .slider_contain span {
   color: #fff !important;
 }
-body.dark main .dashboard .top {
+body.dark #mainAdmin .dashboard .top {
   background-color: #1c2339;
   border-color: #1c2339;
 }
-body.dark main nav {
+body.dark #mainAdmin nav {
   background-color: #1c2339;
   border-color: #1c2339;
 }
-body.dark main nav .logo-name .logo_name {
+body.dark #mainAdmin nav .logo-name .logo_name {
   color: #fff;
 }
-body.dark main nav .menu-items li span {
+body.dark #mainAdmin nav .menu-items li span {
   color: #fff;
 }
-body.dark main nav .menu-items li i {
+body.dark #mainAdmin nav .menu-items li i {
   color: #fff;
 }
-body.dark main nav .menu-items .nav-links li a:hover i {
+body.dark #mainAdmin nav .menu-items .nav-links li a:hover i {
   color: #ccc;
 }
-body.dark main nav .menu-items .nav-links li a:hover .link-name {
+body.dark #mainAdmin nav .menu-items .nav-links li a:hover .link-name {
   color: #ccc;
 }
-body.dark main nav .menu-items .logout-mode .mode .mode-toggle .switch:before {
+body.dark #mainAdmin nav .menu-items .logout-mode .mode .mode-toggle .switch:before {
   left: 20px !important;
 }
 body.dark::-webkit-scrollbar-thumb:hover {
@@ -1517,6 +1517,18 @@ body.dark .dashboard .top .info-user i {
 body.dark li a:hover:before {
   background-color: #ccc;
 }
+body.dark .headMobie {
+  background-color: #1c2339;
+}
+body.dark .headMobie #menuButton i {
+  color: #ffffff;
+}
+body.dark .headMobie .logo-name .logo_name {
+  color: #ffffff !important;
+}
+body.dark .headMobie #searchButtonBar i {
+  color: #ffffff;
+}
 
 p {
   margin-bottom: 0px !important;
@@ -1526,10 +1538,10 @@ html {
   scroll-behavior: smooth;
 }
 
-main {
+#mainAdmin {
   background-color: #f7f7f7;
 }
-main nav {
+#mainAdmin nav {
   position: fixed;
   top: 0;
   left: 0;
@@ -1540,38 +1552,38 @@ main nav {
   border-right: 1px solid #e6e5e5;
   transition: all 0.5s ease;
 }
-main nav .logo-name {
+#mainAdmin nav .logo-name {
   display: flex;
   align-items: center;
   transition: 0.5s;
   color: #fff;
 }
-main nav .logo-name .logo-image {
+#mainAdmin nav .logo-name .logo-image {
   display: flex;
   justify-content: center;
   min-width: 45px;
 }
-main nav .logo-name .logo-image img {
+#mainAdmin nav .logo-name .logo-image img {
   width: 40px;
   object-fit: cover;
 }
-main nav .logo-name .logo_name {
+#mainAdmin nav .logo-name .logo_name {
   color: #000000;
   font-family: "mainFont", sans-serif;
   margin-left: 14px;
   transition: 0.22s cubic-bezier(0.23, 1, 0.32, 1);
 }
-main nav .menu-items {
+#mainAdmin nav .menu-items {
   margin-top: 40px;
   height: calc(100% - 90px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-main nav .menu-items li {
+#mainAdmin nav .menu-items li {
   list-style: none;
 }
-main nav .menu-items li a {
+#mainAdmin nav .menu-items li a {
   display: flex;
   align-items: center;
   height: 50px;
@@ -1580,7 +1592,7 @@ main nav .menu-items li a {
   padding-left: 25px;
   transition: 0.5s;
 }
-main nav .menu-items li a i {
+#mainAdmin nav .menu-items li a i {
   font-size: 24px;
   min-width: 45px;
   height: 100%;
@@ -1589,20 +1601,20 @@ main nav .menu-items li a i {
   justify-content: center;
   color: #625b71;
 }
-main nav .menu-items li a .link-name {
+#mainAdmin nav .menu-items li a .link-name {
   color: #625b71;
   transition: all 0.5s ease;
 }
-main nav .menu-items .logout-mode {
+#mainAdmin nav .menu-items .logout-mode {
   padding-top: 10px;
   border-top: 1px solid #e6e5e5;
 }
-main nav .menu-items .logout-mode .mode {
+#mainAdmin nav .menu-items .logout-mode .mode {
   display: flex;
   align-items: center;
   white-space: nowrap;
 }
-main nav .menu-items .logout-mode .mode .mode-toggle {
+#mainAdmin nav .menu-items .logout-mode .mode .mode-toggle {
   position: absolute;
   right: 14px;
   height: 50px;
@@ -1612,7 +1624,7 @@ main nav .menu-items .logout-mode .mode .mode-toggle {
   justify-content: center;
   cursor: pointer;
 }
-main nav .menu-items .logout-mode .mode .mode-toggle .switch {
+#mainAdmin nav .menu-items .logout-mode .mode .mode-toggle .switch {
   position: relative;
   display: inline-block;
   height: 22px;
@@ -1620,7 +1632,7 @@ main nav .menu-items .logout-mode .mode .mode-toggle .switch {
   border-radius: 25px;
   background-color: #000;
 }
-main nav .menu-items .logout-mode .mode .mode-toggle .switch:before {
+#mainAdmin nav .menu-items .logout-mode .mode .mode-toggle .switch:before {
   content: "";
   position: absolute;
   left: 5px;
@@ -1632,64 +1644,64 @@ main nav .menu-items .logout-mode .mode .mode-toggle .switch:before {
   border-radius: 50%;
   transition: all 0.3s ease;
 }
-main nav .menu-items .nav-links li {
+#mainAdmin nav .menu-items .nav-links li {
   text-align: center;
   margin: 5px 0;
 }
-main nav .menu-items .nav-links li:hover {
+#mainAdmin nav .menu-items .nav-links li:hover {
   background-color: #6750a4;
   border-radius: 10px;
   color: #fff;
 }
-main nav .menu-items .nav-links li:hover a span {
+#mainAdmin nav .menu-items .nav-links li:hover a span {
   color: #fff;
 }
-main nav .menu-items .nav-links li:hover a i {
+#mainAdmin nav .menu-items .nav-links li:hover a i {
   color: #fff;
 }
-main nav .menu-items .nav-links li.active {
+#mainAdmin nav .menu-items .nav-links li.active {
   background-color: #6750a4;
   border-radius: 10px;
   color: #fff;
 }
-main nav .menu-items .nav-links li.active a i {
+#mainAdmin nav .menu-items .nav-links li.active a i {
   color: #fff;
 }
-main nav .menu-items .nav-links li.active a span {
+#mainAdmin nav .menu-items .nav-links li.active a span {
   color: #fff;
 }
-main nav.close {
+#mainAdmin nav.close {
   width: 73px;
 }
-main nav.close .logo_name {
+#mainAdmin nav.close .logo_name {
   opacity: 0;
   pointer-events: none;
 }
-main nav.close li a .link-name {
+#mainAdmin nav.close li a .link-name {
   opacity: 0;
   pointer-events: none;
 }
-main nav.close ~ .dashboard {
+#mainAdmin nav.close ~ .dashboard {
   left: 73px;
   width: calc(100% - 73px);
 }
-main nav.close .logo-name {
+#mainAdmin nav.close .logo-name {
   padding-left: 0px;
 }
-main nav.close .menu-items li a {
+#mainAdmin nav.close .menu-items li a {
   padding-left: 0px;
 }
-main nav.close .dashboard .top .sidebar-toggle {
+#mainAdmin nav.close .dashboard .top .sidebar-toggle {
   transform: rotateZ(170deg) !important;
 }
-main .dashboard {
+#mainAdmin .dashboard {
   position: relative;
   left: 250px;
   min-height: 100vh;
   width: calc(100% - 250px);
   transition: all 0.5s ease;
 }
-main .dashboard .top {
+#mainAdmin .dashboard .top {
   display: flex;
   width: 100%;
   justify-content: space-between;
@@ -1699,7 +1711,7 @@ main .dashboard .top {
   transition: all 0.5s ease;
   z-index: 10;
 }
-main .dashboard .top .sidebar-toggle {
+#mainAdmin .dashboard .top .sidebar-toggle {
   font-size: 20px;
   color: #000;
   cursor: pointer;
@@ -1714,14 +1726,14 @@ main .dashboard .top .sidebar-toggle {
   flex-direction: row-reverse;
   transition: 0.5s;
 }
-main .dashboard .top .search-box {
+#mainAdmin .dashboard .top .search-box {
   position: relative;
   height: 45px;
   max-width: 400px;
   width: 100%;
   margin: 0 30px;
 }
-main .dashboard .top .search-box input {
+#mainAdmin .dashboard .top .search-box input {
   position: absolute;
   border: 1px solid #e6e5e5;
   background-color: #fff;
@@ -1734,7 +1746,7 @@ main .dashboard .top .search-box input {
   font-weight: 400;
   outline: none;
 }
-main .dashboard .top .search-box i {
+#mainAdmin .dashboard .top .search-box i {
   position: absolute;
   left: 15px;
   font-size: 22px;
@@ -1743,16 +1755,16 @@ main .dashboard .top .search-box i {
   transform: translateY(-50%);
   color: #707070;
 }
-main .dashboard .top .info-user {
+#mainAdmin .dashboard .top .info-user {
   display: flex;
   align-items: center;
   margin-right: 20px;
 }
-main .dashboard .top .info-user i {
+#mainAdmin .dashboard .top .info-user i {
   margin: 0 25px;
   font-size: 22px;
 }
-main .dashboard .top .info-user .showFeatureAdminHeader {
+#mainAdmin .dashboard .top .info-user .showFeatureAdminHeader {
   display: none;
   position: absolute;
   width: 300px;
@@ -1761,7 +1773,7 @@ main .dashboard .top .info-user .showFeatureAdminHeader {
   border-radius: 10px;
   z-index: 99;
 }
-main .dashboard .top .info-user .showFeatureAdminHeader li {
+#mainAdmin .dashboard .top .info-user .showFeatureAdminHeader li {
   list-style: none;
   padding: 10px;
   margin: 10px;
@@ -1769,43 +1781,43 @@ main .dashboard .top .info-user .showFeatureAdminHeader li {
   cursor: pointer;
   text-align: center;
 }
-main .dashboard .top .info-user .showFeatureAdminHeader li .notifiAdminText {
+#mainAdmin .dashboard .top .info-user .showFeatureAdminHeader li .notifiAdminText {
   margin-left: 15px;
 }
-main .dashboard .top .info-user .showFeatureAdminHeader li:hover {
+#mainAdmin .dashboard .top .info-user .showFeatureAdminHeader li:hover {
   background-color: rgba(112, 112, 112, 0.1294117647);
 }
-main .dashboard .top .info-user .showFeatureAdminHeader li a {
+#mainAdmin .dashboard .top .info-user .showFeatureAdminHeader li a {
   text-decoration: none;
   color: #1d192b;
 }
-main .dashboard .top .info-user .showFeatureAdminHeader img {
+#mainAdmin .dashboard .top .info-user .showFeatureAdminHeader img {
   width: 40px;
   border-radius: 50%;
   margin-left: 10px;
 }
-main .dashboard .top .info-user .notifiComment {
+#mainAdmin .dashboard .top .info-user .notifiComment {
   position: relative;
   cursor: pointer;
 }
-main .dashboard .top .info-user .notifiComment:hover .showFeatureAdminHeader {
+#mainAdmin .dashboard .top .info-user .notifiComment:hover .showFeatureAdminHeader {
   display: block;
 }
-main .dashboard .top .info-user .notifiBell {
+#mainAdmin .dashboard .top .info-user .notifiBell {
   position: relative;
   cursor: pointer;
 }
-main .dashboard .top .info-user .notifiBell:hover .showFeatureAdminHeader {
+#mainAdmin .dashboard .top .info-user .notifiBell:hover .showFeatureAdminHeader {
   display: block;
 }
-main .dashboard .top .info-user .imgUserAdmin {
+#mainAdmin .dashboard .top .info-user .imgUserAdmin {
   position: relative;
   cursor: pointer;
 }
-main .dashboard .top .info-user .imgUserAdmin:hover .showFeatureAdminHeader {
+#mainAdmin .dashboard .top .info-user .imgUserAdmin:hover .showFeatureAdminHeader {
   display: block;
 }
-main .dashboard .top .info-user .imgUserAdmin img {
+#mainAdmin .dashboard .top .info-user .imgUserAdmin img {
   width: 60px;
   border-radius: 50%;
   margin: 10px;
@@ -2007,6 +2019,9 @@ ul {
   }
 }
 @media only screen and (max-width: 46.1875em) {
+  #mainAdmin .dashboard .top {
+    display: none;
+  }
   .headMobie {
     display: block;
   }
@@ -2264,9 +2279,6 @@ ul {
 }
 .panels .comment__panel .comment__wrapper .comment__item .comment__user .moreFeatureComment .ulDadMoreFeatureComment .liDadMoreFeatureComment {
   cursor: pointer;
-}
-.panels .comment__panel .comment__wrapper .comment__item .comment__user .moreFeatureComment .ulDadMoreFeatureComment .liDadMoreFeatureComment:hover .divMoreFeatureComment {
-  display: block;
 }
 .panels .comment__panel .comment__wrapper .comment__item .comment__user .moreFeatureComment .ulDadMoreFeatureComment .liDadMoreFeatureComment .ellipsisBtn {
   display: flex;
@@ -4488,122 +4500,121 @@ table tbody tr td a {
   color: #6750a4;
 }
 
-main .dashboard .containerAdmin {
+#mainAdmin .dashboard .containerAdmin {
   width: 95%;
   margin: 0 30px;
 }
-main .dashboard .containerAdmin .localDashboard .col-12 .h2_dashboard {
+#mainAdmin .dashboard .containerAdmin .localDashboard .col-12 .h2_dashboard {
   color: #1d192b;
 }
-main .dashboard .containerAdmin .localDashboard .col-12 .aHref1 {
+#mainAdmin .dashboard .containerAdmin .localDashboard .col-12 .aHref1 {
   color: #000000;
   text-decoration: unset;
 }
-main .dashboard .containerAdmin .localDashboard .col-12 .aHref2 {
+#mainAdmin .dashboard .containerAdmin .localDashboard .col-12 .aHref2 {
   color: #6750a4;
   text-decoration: unset;
 }
-main .dashboard .containerAdmin .localDashboard .col-12 .calenderColor {
+#mainAdmin .dashboard .containerAdmin .localDashboard .col-12 .calenderColor {
   color: #6750a4;
   font-size: 14px;
 }
-main .dashboard .containerAdmin .localDashboard .col-12 .dateCalender {
+#mainAdmin .dashboard .containerAdmin .localDashboard .col-12 .dateCalender {
   color: #6750a4;
 }
-main .dashboard .containerAdmin .owl-carousel .slider_contain {
+#mainAdmin .dashboard .containerAdmin .owl-carousel .slider_contain {
   background-color: #ffffff !important;
   border-radius: 5px;
 }
-main .dashboard .containerAdmin .owl-carousel .slider_contain .date-dashboard {
+#mainAdmin .dashboard .containerAdmin .owl-carousel .slider_contain .date-dashboard {
   color: #625b71;
 }
-main .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items .label .fa-ellipsis-v {
+#mainAdmin .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items .label .fa-ellipsis-v {
   font-size: 24px;
 }
-main .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items .label-large {
+#mainAdmin .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items .label-large {
   color: #1d192b;
 }
-main .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items span {
-  color: #1d192b;
-  font-size: 1.25rem;
-  font-weight: bold;
-}
-main .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items h5 {
+#mainAdmin .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items span {
   color: #1d192b;
   font-size: 1.25rem;
   font-weight: bold;
 }
-main .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items .buttonWallet {
+#mainAdmin .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items h5 {
+  color: #1d192b;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+#mainAdmin .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items .buttonWallet {
   border: transparent;
   background-color: #00c58a;
   width: 45px;
   height: 45px;
   border-radius: 5px;
 }
-main .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items .buttonWallet .fa-wallet {
+#mainAdmin .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items .buttonWallet .fa-wallet {
   font-size: 20px;
 }
-main .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items .slider_items_stonks p {
+#mainAdmin .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items .slider_items_stonks p {
   color: #00c58a;
 }
-main .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items .slider_items_stonks i {
+#mainAdmin .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items .slider_items_stonks i {
   margin-right: 5px;
   color: #00c58a;
   font-size: 18px;
 }
-main .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items .dashboard-moneyEarn {
+#mainAdmin .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items .dashboard-moneyEarn {
   margin-left: 10px;
   color: #1d192b;
 }
-main .dashboard .containerAdmin .owl-carousel .slider_contain-2 .slider_items_stonks p {
+#mainAdmin .dashboard .containerAdmin .owl-carousel .slider_contain-2 .slider_items_stonks p {
   color: #00b3ff !important;
 }
-main .dashboard .containerAdmin .owl-carousel .slider_contain-2 .slider_items_stonks i {
+#mainAdmin .dashboard .containerAdmin .owl-carousel .slider_contain-2 .slider_items_stonks i {
   color: #00b3ff !important;
 }
-main .dashboard .containerAdmin .owl-carousel .slider_contain-2 .slider_items .buttonWallet {
+#mainAdmin .dashboard .containerAdmin .owl-carousel .slider_contain-2 .slider_items .buttonWallet {
   background-color: #00b3ff !important;
 }
-main .dashboard .containerAdmin .owl-carousel .slider_contain-3 .slider_items_stonks p {
+#mainAdmin .dashboard .containerAdmin .owl-carousel .slider_contain-3 .slider_items_stonks p {
   color: #6750a4 !important;
 }
-main .dashboard .containerAdmin .owl-carousel .slider_contain-3 .slider_items_stonks i {
+#mainAdmin .dashboard .containerAdmin .owl-carousel .slider_contain-3 .slider_items_stonks i {
   color: #6750a4 !important;
 }
-main .dashboard .containerAdmin .owl-carousel .slider_contain-3 .slider_items .buttonWallet {
+#mainAdmin .dashboard .containerAdmin .owl-carousel .slider_contain-3 .slider_items .buttonWallet {
   background-color: #6750a4 !important;
 }
-main .dashboard .containerAdmin .owl-carousel .slider_contain-4 .slider_items_stonks p {
+#mainAdmin .dashboard .containerAdmin .owl-carousel .slider_contain-4 .slider_items_stonks p {
   color: #ff6acc !important;
 }
-main .dashboard .containerAdmin .owl-carousel .slider_contain-4 .slider_items_stonks i {
+#mainAdmin .dashboard .containerAdmin .owl-carousel .slider_contain-4 .slider_items_stonks i {
   color: #ff6acc !important;
 }
-main .dashboard .containerAdmin .owl-carousel .slider_contain-4 .slider_items .buttonWallet {
+#mainAdmin .dashboard .containerAdmin .owl-carousel .slider_contain-4 .slider_items .buttonWallet {
   background-color: #ff6acc !important;
 }
-main .dashboard .containerAdmin .owl-carousel .slider_contain-5 .slider_items_stonks p {
+#mainAdmin .dashboard .containerAdmin .owl-carousel .slider_contain-5 .slider_items_stonks p {
   color: #FF6651 !important;
 }
-main .dashboard .containerAdmin .owl-carousel .slider_contain-5 .slider_items_stonks i {
+#mainAdmin .dashboard .containerAdmin .owl-carousel .slider_contain-5 .slider_items_stonks i {
   color: #FF6651 !important;
 }
-main .dashboard .containerAdmin .owl-carousel .slider_contain-5 .slider_items .buttonWallet {
+#mainAdmin .dashboard .containerAdmin .owl-carousel .slider_contain-5 .slider_items .buttonWallet {
   background-color: #FF6651 !important;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .orderStatistics {
+#mainAdmin .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .orderStatistics {
   background-color: #ffffff;
-  margin-right: 20px;
   border-radius: 10px;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .orderStatistics .myNavTabs .myNavItem .nav-link {
+#mainAdmin .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .orderStatistics .myNavTabs .myNavItem .nav-link {
   position: relative !important;
   color: #49454f;
   font-size: 14px;
   font-weight: 600;
   background-color: #fef7ff;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .orderStatistics .myNavTabs .myNavItem .nav-link:after {
+#mainAdmin .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .orderStatistics .myNavTabs .myNavItem .nav-link:after {
   content: "";
   position: absolute;
   background-color: #6750a4;
@@ -4613,33 +4624,33 @@ main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .custom
   bottom: 0px;
   transition: 0.22s linear;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .orderStatistics .myNavTabs .myNavItem .nav-link.active {
+#mainAdmin .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .orderStatistics .myNavTabs .myNavItem .nav-link.active {
   color: #6750a4;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .orderStatistics .myNavTabs .myNavItem .nav-link.active:after {
+#mainAdmin .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .orderStatistics .myNavTabs .myNavItem .nav-link.active:after {
   content: "";
   width: 100%;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers {
+#mainAdmin .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers {
   background-color: #ffffff;
   border-radius: 10px;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .headerTopUser {
+#mainAdmin .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .headerTopUser {
   position: relative;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .headerTopUser p {
+#mainAdmin .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .headerTopUser p {
   color: #1d192b;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .headerTopUser button {
+#mainAdmin .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .headerTopUser button {
   width: 40px;
   height: 40px;
   background-color: rgba(73, 69, 79, 0.12);
   border-radius: 9999px;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .headerTopUser button i {
+#mainAdmin .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .headerTopUser button i {
   font-size: 16px;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .headerTopUser .showMoreInfoAdminDashboard {
+#mainAdmin .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .headerTopUser .showMoreInfoAdminDashboard {
   display: none;
   position: absolute;
   bottom: -60px;
@@ -4648,135 +4659,135 @@ main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .custom
   border-radius: 10px;
   text-align: center;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .headerTopUser .showMoreInfoAdminDashboard li {
+#mainAdmin .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .headerTopUser .showMoreInfoAdminDashboard li {
   list-style: none;
   padding: 10px 20px;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .headerTopUser .showMoreInfoAdminDashboard li a {
+#mainAdmin .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .headerTopUser .showMoreInfoAdminDashboard li a {
   text-decoration: none;
   color: #000000;
   text-align: center;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .bodyTopUser .topUserOder .topUserOder_items {
+#mainAdmin .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .bodyTopUser .topUserOder .topUserOder_items {
   margin: 15px 0;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .bodyTopUser .topUserOder .topUserOder_items .topUserOrder__image img {
+#mainAdmin .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .bodyTopUser .topUserOder .topUserOder_items .topUserOrder__image img {
   width: 45px;
   height: 45px;
   border-radius: 9999px;
   margin-right: 15px;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .bodyTopUser .topUserOder .topUserOder_items .topUserOrder__info .topUserOrder__name {
+#mainAdmin .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .bodyTopUser .topUserOder .topUserOder_items .topUserOrder__info .topUserOrder__name {
   color: #ffd8e4;
   color: #1d192b !important;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .bodyTopUser .topUserOder .topUserOder_items .topUserOrder__info .topUserOrder__role {
+#mainAdmin .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .bodyTopUser .topUserOder .topUserOder_items .topUserOrder__info .topUserOrder__role {
   color: #625b71;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .bodyTopUser .topUserOder .topUserOder_items .topUserOrder_Spend .topUserOrder_totalPayed {
+#mainAdmin .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .bodyTopUser .topUserOder .topUserOder_items .topUserOrder_Spend .topUserOrder_totalPayed {
   color: #ffd8e4;
   color: #1d192b !important;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .bodyTopUser .topUserOder .topUserOder_items .topUserOrder_Spend .topUserOrder_totalOrdered {
+#mainAdmin .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .bodyTopUser .topUserOder .topUserOder_items .topUserOrder_Spend .topUserOrder_totalOrdered {
   color: #625b71;
 }
-main .dashboard .containerAdmin .recentOrder .recentOrder_items {
+#mainAdmin .dashboard .containerAdmin .recentOrder .recentOrder_items {
   background-color: #ffffff !important;
   border-radius: 10px;
 }
-main .dashboard .containerAdmin .recentOrder .recentOrder_items .title-medium {
+#mainAdmin .dashboard .containerAdmin .recentOrder .recentOrder_items .title-medium {
   color: #1d192b;
   color: #1d192b;
 }
-main .dashboard .containerAdmin .recentOrder .recentOrder_items .tableLine {
+#mainAdmin .dashboard .containerAdmin .recentOrder .recentOrder_items .tableLine {
   width: 100%;
   height: 1px;
   background-color: rgba(0, 0, 0, 0.247);
   margin: 15px 0;
 }
-main .dashboard .containerAdmin .recentOrder .recentOrder_items table tbody {
+#mainAdmin .dashboard .containerAdmin .recentOrder .recentOrder_items table tbody {
   border: transparent !important;
   color: #000000;
 }
-main .dashboard .containerAdmin .recentOrder .recentOrder_items table td {
+#mainAdmin .dashboard .containerAdmin .recentOrder .recentOrder_items table td {
   border: transparent !important;
   color: #000000;
 }
-main .dashboard .containerAdmin .recentOrder .recentOrder_items table tfoot {
+#mainAdmin .dashboard .containerAdmin .recentOrder .recentOrder_items table tfoot {
   border: transparent !important;
   color: #000000;
 }
-main .dashboard .containerAdmin .recentOrder .recentOrder_items table th {
+#mainAdmin .dashboard .containerAdmin .recentOrder .recentOrder_items table th {
   border: transparent !important;
   background-color: transparent !important;
   color: #79747e;
   color: #000000;
 }
-main .dashboard .containerAdmin .recentOrder .recentOrder_items table thead {
+#mainAdmin .dashboard .containerAdmin .recentOrder .recentOrder_items table thead {
   border: transparent !important;
 }
-main .dashboard .containerAdmin .recentOrder .recentOrder_items table tr {
+#mainAdmin .dashboard .containerAdmin .recentOrder .recentOrder_items table tr {
   border: transparent !important;
   background-color: transparent !important;
 }
-main .dashboard .containerAdmin .recentOrder .recentOrder_items table tr .tableLargeItems {
+#mainAdmin .dashboard .containerAdmin .recentOrder .recentOrder_items table tr .tableLargeItems {
   display: flex;
   align-items: center;
 }
-main .dashboard .containerAdmin .recentOrder .recentOrder_items table tr .tableLargeItems input {
+#mainAdmin .dashboard .containerAdmin .recentOrder .recentOrder_items table tr .tableLargeItems input {
   margin-right: 10px;
 }
-main .dashboard .containerAdmin .recentOrder .recentOrder_items table tr .tableLargeItems span {
+#mainAdmin .dashboard .containerAdmin .recentOrder .recentOrder_items table tr .tableLargeItems span {
   margin-right: 10px;
 }
-main .dashboard .containerAdmin .recentOrder .recentOrder_items table .dotTable {
+#mainAdmin .dashboard .containerAdmin .recentOrder .recentOrder_items table .dotTable {
   width: 8px;
   height: 8px;
   border-radius: 9999px;
 }
-main .dashboard .containerAdmin .recentOrder .recentOrder_items table .dotTable.green {
+#mainAdmin .dashboard .containerAdmin .recentOrder .recentOrder_items table .dotTable.green {
   background-color: #00c58a;
 }
-main .dashboard .containerAdmin .recentOrder .recentOrder_items table .dotTable.orange {
+#mainAdmin .dashboard .containerAdmin .recentOrder .recentOrder_items table .dotTable.orange {
   background-color: #FF6651;
 }
-main .dashboard .containerAdmin .recentOrder .recentOrder_items table .dotTable.blue {
+#mainAdmin .dashboard .containerAdmin .recentOrder .recentOrder_items table .dotTable.blue {
   background-color: #2cccff;
 }
-main .dashboard .containerAdmin .recentOrder .recentOrder_items table .dotTable.red {
+#mainAdmin .dashboard .containerAdmin .recentOrder .recentOrder_items table .dotTable.red {
   background-color: #b3261e;
 }
-main .dashboard .containerAdmin .recentOrder .recentOrder_items table .dotTable.black {
+#mainAdmin .dashboard .containerAdmin .recentOrder .recentOrder_items table .dotTable.black {
   background-color: #000000;
 }
-main .dashboard .containerAdmin .recentOrder .recentOrder_items table .dotTable.gray {
+#mainAdmin .dashboard .containerAdmin .recentOrder .recentOrder_items table .dotTable.gray {
   background-color: gray;
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .lineDashboard {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .lineDashboard {
   width: 100%;
   height: 1px;
   background-color: rgba(0, 0, 0, 0.349);
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .theadoverviewDashboard {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .theadoverviewDashboard {
   padding: 10px 20px;
   display: flex;
   align-items: center;
   position: relative;
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .theadoverviewDashboard p {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .theadoverviewDashboard p {
   color: #1d192b;
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .theadoverviewDashboard button {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .theadoverviewDashboard button {
   width: 30px;
   height: 30px;
   border-radius: 9999px;
   line-height: 30px;
   background-color: rgba(73, 69, 79, 0.12);
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .theadoverviewDashboard button i {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .theadoverviewDashboard button i {
   font-size: 12px;
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .theadoverviewDashboard .showMoreInfoAdminDashboard {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .theadoverviewDashboard .showMoreInfoAdminDashboard {
   display: none;
   position: absolute;
   bottom: -60px;
@@ -4785,29 +4796,29 @@ main .dashboard .containerAdmin .overviewDashboard .col-12 .theadoverviewDashboa
   border-radius: 10px;
   text-align: center;
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .theadoverviewDashboard .showMoreInfoAdminDashboard li {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .theadoverviewDashboard .showMoreInfoAdminDashboard li {
   list-style: none;
   padding: 10px 20px;
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .theadoverviewDashboard .showMoreInfoAdminDashboard li a {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .theadoverviewDashboard .showMoreInfoAdminDashboard li a {
   text-decoration: none;
   color: #000000;
   text-align: center;
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview {
   background-color: #ffffff;
   border-radius: 10px;
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart {
   display: flex;
   justify-content: center;
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart .wekkyChart_item .loader {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart .wekkyChart_item .loader {
   width: 200px;
   position: relative;
   transform: rotate(-90deg);
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart .wekkyChart_item .loader .loading {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart .wekkyChart_item .loader .loading {
   margin: 25px 0 0;
   position: relative;
   width: 100%;
@@ -4815,7 +4826,7 @@ main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vits
   background-color: #e8edf2;
   border-radius: 10px;
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart .wekkyChart_item .loader .loading .lineLoading {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart .wekkyChart_item .loader .loading .lineLoading {
   display: block;
   position: absolute;
   width: 30%;
@@ -4824,7 +4835,7 @@ main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vits
   box-shadow: 10px;
   border-radius: 10px;
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart .wekkyChart_item .loader .loading .lineLoading2 {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart .wekkyChart_item .loader .loading .lineLoading2 {
   display: block;
   position: absolute;
   width: 40%;
@@ -4833,7 +4844,7 @@ main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vits
   box-shadow: 10px;
   border-radius: 10px;
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart .wekkyChart_item .loader .loading .lineLoading3 {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart .wekkyChart_item .loader .loading .lineLoading3 {
   display: block;
   position: absolute;
   width: 50%;
@@ -4842,7 +4853,7 @@ main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vits
   box-shadow: 10px;
   border-radius: 10px;
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart .wekkyChart_item .loader .loading .lineLoading4 {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart .wekkyChart_item .loader .loading .lineLoading4 {
   display: block;
   position: absolute;
   width: 65%;
@@ -4851,7 +4862,7 @@ main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vits
   box-shadow: 10px;
   border-radius: 10px;
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart .wekkyChart_item .loader .loading .lineLoading5 {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart .wekkyChart_item .loader .loading .lineLoading5 {
   display: block;
   position: absolute;
   width: 70%;
@@ -4860,7 +4871,7 @@ main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vits
   box-shadow: 10px;
   border-radius: 10px;
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart .wekkyChart_item .loader .loading .lineLoading6 {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart .wekkyChart_item .loader .loading .lineLoading6 {
   display: block;
   position: absolute;
   width: 90%;
@@ -4869,7 +4880,7 @@ main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vits
   box-shadow: 10px;
   border-radius: 10px;
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart .wekkyChart_item .loader .loading .lineLoading7 {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart .wekkyChart_item .loader .loading .lineLoading7 {
   display: block;
   position: absolute;
   width: 75%;
@@ -4878,65 +4889,68 @@ main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vits
   box-shadow: 10px;
   border-radius: 10px;
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .sevenDayOfWeek {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .sevenDayOfWeek {
   align-items: center;
   justify-content: center;
   padding: 10px 0;
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .sevenDayOfWeek p {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .sevenDayOfWeek p {
   margin: 0 14px;
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller {
   background-color: #ffffff;
   border-radius: 10px;
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .lineDashboard {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .lineDashboard {
   margin: 15px 0 0;
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .topProductSeller_item .ordertopProduct .ordertopProduct_items {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .topProductSeller_item .ordertopProduct .ordertopProduct_items {
   height: 320px;
   overflow-y: scroll;
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .topProductSeller_item .ordertopProduct .ordertopProduct_items .ordertopProduct_item {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .topProductSeller_item .ordertopProduct .ordertopProduct_items .ordertopProduct_item {
   background-color: #4f378b;
   padding: 15px;
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .topProductSeller_item .ordertopProduct .ordertopProduct_items .ordertopProduct_item .nameCategories p,
-main .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .topProductSeller_item .ordertopProduct .ordertopProduct_items .ordertopProduct_item .nameCategories h2 {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .topProductSeller_item .ordertopProduct .ordertopProduct_items .ordertopProduct_item .nameCategories p,
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .topProductSeller_item .ordertopProduct .ordertopProduct_items .ordertopProduct_item .nameCategories h2 {
   color: #ffffff;
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .topProductSeller_item .ordertopProduct .ordertopProduct_items .ordertopProduct_item .priceProduct {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .topProductSeller_item .ordertopProduct .ordertopProduct_items .ordertopProduct_item .priceProduct {
   text-align: end;
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .topProductSeller_item .ordertopProduct .ordertopProduct_items .ordertopProduct_item .priceProduct p,
-main .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .topProductSeller_item .ordertopProduct .ordertopProduct_items .ordertopProduct_item .priceProduct h2 {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .topProductSeller_item .ordertopProduct .ordertopProduct_items .ordertopProduct_item .priceProduct p,
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .topProductSeller_item .ordertopProduct .ordertopProduct_items .ordertopProduct_item .priceProduct h2 {
   color: #ffffff;
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .totalProfit {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .totalProfit {
   background-color: #ffffff;
   border-radius: 10px;
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .totalProfit .totalProfit_items p {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .totalProfit .totalProfit_items p {
   color: #1d192b;
 }
-main .adminFooter .col-6 p {
+#mainAdmin .adminFooter .col-6 p {
   color: #958da5;
 }
-main .adminFooter ul {
+#mainAdmin .adminFooter ul {
   display: flex;
   justify-content: end;
 }
-main .adminFooter ul li {
+#mainAdmin .adminFooter ul li {
   color: #958da5;
   margin: 0 15px;
   list-style: none;
 }
-main .adminFooter ul li a {
+#mainAdmin .adminFooter ul li a {
   text-decoration: none;
   color: #958da5;
 }
 
 @media only screen and (max-width: 46.1875em) {
+  #example1_wrapper {
+    overflow-x: scroll;
+  }
   main nav,
   #adminDashboard nav {
     display: none !important;
@@ -5176,13 +5190,19 @@ main .adminFooter ul li a {
     align-items: center !important;
   }
 }
+.dashboard a.label-large {
+  color: #6750a4;
+}
+
 .containerAdmin_order-detail {
   font-size: 1.3rem;
   background-color: white;
+  width: 100%;
+  border-radius: 10px;
 }
 .containerAdmin_order-detail a {
   text-decoration: none;
-  color: blue;
+  color: #6750a4;
 }
 .containerAdmin_order-detail .admin-black {
   color: black;
@@ -5319,11 +5339,15 @@ main .adminFooter ul li a {
   align-items: center;
 }
 .right-order-add-create .img_order-add-create {
-  background-color: #D9D9D9;
+  min-width: 410px;
+  max-width: 410px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .right-order-add-create .img_order-add-create img {
-  height: 100%;
-  width: 20px;
+  height: 80%;
+  width: 80%;
   border-radius: 10px;
 }
 .right-order-add-create .button_delete_img {
@@ -5973,6 +5997,7 @@ section .containerAdmin .pagination li a {
 }
 .containerAdmin .createCoupon .createCoupon_left {
   background-color: #ffffff;
+  border-radius: 10px;
 }
 .containerAdmin .createCoupon .createCoupon_left .createCoupon_items {
   margin-top: 25px;
@@ -6012,6 +6037,8 @@ section .containerAdmin .pagination li a {
 }
 .containerAdmin .createCoupon .createCoupon_right {
   background-color: #ffffff;
+  border-radius: 10px;
+  transition: 0.22s cubic-bezier(0.23, 1, 0.32, 1);
 }
 .containerAdmin .createCoupon .createCoupon_right .listCouponHead h4 {
   color: #1d192b;
@@ -6026,7 +6053,15 @@ section .containerAdmin .pagination li a {
   border-radius: 50%;
   background-color: rgba(128, 128, 128, 0.1);
 }
-.containerAdmin .createCoupon .createCoupon_right .listCoupon_items .col-3 .saleListCoupon {
+.containerAdmin .createCoupon .createCoupon_right .listCoupon_item {
+  height: 420px;
+  overflow-y: scroll;
+}
+.containerAdmin .createCoupon .createCoupon_right .listCoupon_item .listCoupon_items {
+  margin-top: 20px;
+  border-radius: 10px;
+}
+.containerAdmin .createCoupon .createCoupon_right .listCoupon_item .listCoupon_items .col-3 .saleListCoupon {
   width: 60px;
   height: 60px;
   line-height: 55px;
@@ -6035,15 +6070,17 @@ section .containerAdmin .pagination li a {
   display: flex;
   justify-content: center;
   border-radius: 10px;
+  transition: 0.22s cubic-bezier(0.23, 1, 0.32, 1);
 }
-.containerAdmin .createCoupon .createCoupon_right .listCoupon_items .col-9 .titleSaleListCoupon {
+.containerAdmin .createCoupon .createCoupon_right .listCoupon_item .listCoupon_items .col-9 .titleSaleListCoupon {
   margin-bottom: 15px;
 }
-.containerAdmin .createCoupon .createCoupon_right .listCoupon_items .buttonShowFeatureCoupon {
+.containerAdmin .createCoupon .createCoupon_right .listCoupon_item .listCoupon_items .buttonShowFeatureCoupon {
   display: flex;
   align-items: center;
+  position: relative;
 }
-.containerAdmin .createCoupon .createCoupon_right .listCoupon_items .buttonShowFeatureCoupon i {
+.containerAdmin .createCoupon .createCoupon_right .listCoupon_item .listCoupon_items .buttonShowFeatureCoupon i {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -6052,6 +6089,44 @@ section .containerAdmin .pagination li a {
   height: 25px;
   border-radius: 50%;
   background-color: rgba(128, 128, 128, 0.1);
+}
+.containerAdmin .createCoupon .createCoupon_right .listCoupon_item .listCoupon_items .buttonShowFeatureCoupon .hiddenFeatureCoupon {
+  display: none;
+  position: absolute;
+  bottom: -50px;
+  right: 5px;
+}
+.containerAdmin .createCoupon .createCoupon_right .listCoupon_item .listCoupon_items .buttonShowFeatureCoupon .hiddenFeatureCoupon ul {
+  background-color: #f7f7f7;
+  width: 120px;
+  border-radius: 10px;
+}
+.containerAdmin .createCoupon .createCoupon_right .listCoupon_item .listCoupon_items .buttonShowFeatureCoupon .hiddenFeatureCoupon ul li {
+  text-align: center;
+  padding: 10px 15px;
+  border-radius: 10px;
+}
+.containerAdmin .createCoupon .createCoupon_right .listCoupon_item .listCoupon_items .buttonShowFeatureCoupon .hiddenFeatureCoupon ul li:hover {
+  background-color: rgba(234, 221, 255, 0.5411764706);
+}
+.containerAdmin .createCoupon .createCoupon_right .listCoupon_item .listCoupon_items .buttonShowFeatureCoupon .hiddenFeatureCoupon ul li a {
+  text-decoration: none;
+  color: #000000;
+}
+.containerAdmin .createCoupon .createCoupon_right .listCoupon_item .listCoupon_items:hover {
+  background-color: #f7f4ff;
+}
+.containerAdmin .createCoupon .createCoupon_right .listCoupon_item .listCoupon_items:hover .col-3 .saleListCoupon {
+  background-color: #eaddff;
+}
+
+.pagination .paginate_button.page-item.active a {
+  border-color: #6750a4;
+  background-color: #6750a4;
+  color: #ffffff;
+}
+.pagination .paginate_button.page-item a {
+  color: #6750a4;
 }
 
 /* Mobile: with < 740px */

@@ -22,7 +22,7 @@ p {
 html {
   scroll-behavior: smooth;
 }
-main {
+#mainAdmin  {
   background-color: #f7f7f7;
 
   nav {
@@ -610,6 +610,13 @@ ul {
 
 
 @media only screen and (max-width: 46.1875em){
+  #mainAdmin {
+    .dashboard {
+      .top {
+        display: none;
+      }
+    }
+  }
   .headMobie {
       display: block;
       .col-12 {

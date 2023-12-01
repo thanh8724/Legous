@@ -1,4 +1,4 @@
-main {
+#mainAdmin {
   .dashboard {
     .containerAdmin {
       width: 95%;
@@ -171,7 +171,6 @@ main {
           .customerOrderStatistics {
             .orderStatistics {
               background-color: $-white;
-              margin-right: 20px;
               border-radius: 10px;
               .myNavTabs {
                 .myNavItem {
@@ -583,6 +582,9 @@ main {
 
 
 @media only screen and (max-width: 46.1875em){
+  #example1_wrapper {
+    overflow-x: scroll;
+  }
   main,
   #adminDashboard {
           nav{
