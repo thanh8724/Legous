@@ -211,7 +211,15 @@ Validator.isConfirm = (selector , confirm , message) => {
         }
     }
 }
-Validator.isUsername = function (selector, message, url) {
+Validator.isUsername = (selector, limit , message) => {
+    return {
+        selector,
+        test (value) {
+            return value < limit ? undefined : message || `Tên đăng nhập phải có độ dài dưới ${limit} kí tự`
+        }
+    }
+}
+Validator.isUsernameAlreadyExist = function (selector, message, url) {
     return {
         selector: selector,
         async test(value) {
@@ -219,11 +227,11 @@ Validator.isUsername = function (selector, message, url) {
                 return message || 'Vui lòng nhập tên đăng nhập của bạn!';
             }
 
-            const checkEmailUrl = url; // Replace with your server-side script URL
+            const checkUsernameUrl = url; // Replace with your server-side script URL
             
             return new Promise(function (resolve, reject) {
                 $.ajax({
-                    url: checkEmailUrl,
+                    url: checkUsernameUrl,
                     method: 'POST',
                     data: { username: value },
                     success: function (response) {

@@ -16,13 +16,13 @@
 
     if (isset($_SESSION['cart']) && count($_SESSION['cart']) > 0 || $userCart) {
 
-        if (isset($_SESSION['userLogin']) && $_SESSION['userLogin']) {
-            $btnLink = "?mod=cart&act=checkout";
-            $btnText = 'Thanh toán ngay';
-        } else {
-            $btnText = 'Đăng nhập để thanh toán';
-            $btnLink = "?mod=page&act=login";
-        }
+        $btnLink = "?mod=cart&act=checkout";
+        $btnText = 'Tiếp tục';
+        // if (isset($_SESSION['userLogin']) && $_SESSION['userLogin']) {
+        // } else {
+        //     $btnText = 'Đăng nhập để thanh toán';
+        //     $btnLink = "?mod=page&act=login";
+        // }
 
         $cartProducts = [];
         if (!empty($userCart)) {
@@ -218,7 +218,7 @@
                     <?= formatVND($cartTotal + $tax) ?>
                 </div>
             </div>
-            <a href="<?= $btnLink ?>" class="btn primary-btn rounded-8 ttu summary-btn" style="background: black; color: white;">
+            <a href="<?= $btnLink ?>" class="btn primary-btn rounded-8 ttu summary-btn" id="summary-btn1" style="background: black; color: white;">
                 <i class="fal fa-arrow-right"></i>
                 <?= $btnText ?>
             </a>
@@ -235,7 +235,6 @@
         <div class="light-devider" style="width: 10rem; height: .4rem;"></div>
         <div class="label-large ttu">legous / giỏ hàng</div>
     </div>
-    
 </section> -->
 <!-- cart summary end -->
 
@@ -261,7 +260,7 @@
                 <?= formatVND($cartTotal + $tax) ?>
             </div>
         </div>
-        <a href="<?= $btnLink ?>" class="btn bar-btn rounded-8 ttu mt12 width-full summary-btn" style="background: black; color: white;">
+        <a href="<?= $btnLink ?>" class="btn bar-btn rounded-8 ttu mt12 width-full summary-btn" id="summary-btn1" style="background: black; color: white;">
             <i class="fal fa-arrow-right"></i>
             <?= $btnText ?>
         </a>

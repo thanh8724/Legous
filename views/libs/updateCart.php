@@ -9,23 +9,26 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["action"]) && isset($_
     // Retrieve the action and product ID from the AJAX request
     $action = $_POST['action'];
     $productID = $_POST['product_id'];
-    if (isset($_SESSION['userLogin'])) {
-        $idUser = $_SESSION['userLogin']['id_user'];
-    }
 
     if ($action === "increase") {
         // Increase quantity in session cart
         $_SESSION["cart"][$product_id]["qty"]++;
 
         // Update quantity in database cart table
-        updateQuantityInDatabase($product_id, $_SESSION["cart"][$product_id]["qty"], $idUser);
+        if (isset($_SESSION['userLogin'])) {
+            $idUser = $_SESSION['userLogin']['id_user'];
+            updateQuantityInDatabase($product_id, $_SESSION["cart"][$product_id]["qty"], $idUser);
+        }
     } elseif ($action === "decrease") {
         // Decrease quantity in session cart, but ensure it doesn't go below 0
         if ($_SESSION["cart"][$product_id]["qty"] > 0) {
             $_SESSION["cart"][$product_id]["qty"]--;
 
             // Update quantity in database cart table
-            updateQuantityInDatabase($product_id, $_SESSION["cart"][$product_id]["qty"], $idUser);
+            if (isset($_SESSION['userLogin'])) {
+                $idUser = $_SESSION['userLogin']['id_user'];
+                updateQuantityInDatabase($product_id, $_SESSION["cart"][$product_id]["qty"], $idUser);
+            }
         } else {
             $_SESSION["cart"][$product_id]["qty"] = 1;
         }
