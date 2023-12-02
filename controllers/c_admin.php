@@ -439,6 +439,7 @@ if (isset($_GET['act'])) {
             $id = $_GET['id'];
             editCmtStatus($id, 1);
             header("Location: ?mod=admin&act=comments");
+            break;
         case 'delCmt':
             $id = $_GET['id'];
             delCmt($id);
