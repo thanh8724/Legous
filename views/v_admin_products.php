@@ -5,7 +5,7 @@
     <form action="?mod=admin&act=product-search" method="post" style="width: 100%;display:flex; justify-content: center;">
     <div class="search-box">
             <input type="submit" value=""><i class="far fa-search"></i>
-            <input name="keyword" value="" type="text" placeholder="Search here...">
+            <input name="keyword" value="" type="text" placeholder="Tìm kiếm...">
           </div>
     </form>
     <div class="info-user">

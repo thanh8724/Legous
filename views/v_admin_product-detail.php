@@ -68,7 +68,7 @@ if(isset($_POST['submit'])) {
                 <i class="fas fa-angle-left sidebar-toggle"></i>
                 <div class="search-box">
                     <i class="far fa-search"></i>
-                    <input type="text" placeholder="Tìm Kiếm Tại Đây...">
+                    <input type="text" placeholder="Tìm kiếm...">
                 </div>
                 <div class="info-user">
             <div class="notifiComment">

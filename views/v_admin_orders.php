@@ -5,7 +5,7 @@
         <div class="search-box">
         <form action="" method="post">
             <i class="far fa-search"></i>
-            <input type="text" name="kyw_order" placeholder="Tìm đơn hàng...">
+            <input type="text" name="kyw_order" placeholder="Tìm kiếm...">
             <button type="submit" name="btn_search" ></button>
             </form>
             <!-- <form action="" method="post">

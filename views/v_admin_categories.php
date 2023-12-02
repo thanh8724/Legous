@@ -5,7 +5,7 @@
         <div class="search-box">
         <form action="?mod=admin&act=categories&page=<?=$page_nows?>&search_category" method="post">
           <i class="far fa-search"></i>
-          <input name="kyw_cg" type="text" placeholder="Tìm danh mục">
+          <input name="kyw_cg" type="text" placeholder="Tìm kiếm...">
           <button name="search_cg" type="submit"></button>
         </form>
         </div>
@@ -138,10 +138,6 @@
         <table class="content-table width-full">
           <thead>
             <tr>
-              <th style="text-align: start;">
-                <input type="checkbox" style="width: 18px; height: 18px;">
-                </input>
-              </th>
               <th>ID</th>
               <th>Tên Danh Mục</th>
               <th>Hình danh mục</th>
@@ -155,9 +151,6 @@
             <!-- Thêm các hàng dữ liệu vào đây -->
             <?php foreach ($get_Category as $item): ?> 
                 <tr>
-                    <td style="text-align: start;">
-                        <input type="checkbox" style="width: 18px; height: 18px;"></input>
-                    </td>
                     <td>#<?= $item['id'] ?></td>
                     <td><?= $item['name'] ?></td>
                     <td style="width:100px;"><img style="width: 100%;

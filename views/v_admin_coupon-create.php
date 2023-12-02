@@ -105,7 +105,7 @@ if (isset($_POST['editCouponsubmit'])) {
         <form style="width: 100%;display:flex; justify-content: center;" action="" method="post">
             <div class="search-box">
                 <i class="far fa-search"></i>
-                <input type="text" placeholder="Search here...">
+                <input type="text" placeholder="Tìm kiếm...">
             </div>
         </form>
         <div class="info-user">

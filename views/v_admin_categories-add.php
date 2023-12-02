@@ -3,10 +3,10 @@
     <div class="top">
         <i class="fas fa-angle-left sidebar-toggle"></i>
         <div class="search-box">
-            <!-- <form action="" method="post">
+            <form action="" method="post">
                 <i class="far fa-search"></i>
-                <input type="text" placeholder="Search here...">
-            </form> -->
+                <input type="text" placeholder="Tìm kiếm...">
+            </form>
         </div>
         <div class="info-user">
             <div class="notifiComment">
