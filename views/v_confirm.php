@@ -6,7 +6,7 @@
         /** get bill information */
         $billInfo = getBillInfoById($idBill);
         extract($billInfo);
-        print_r($billInfo);
+        // print_r($billInfo);
 
         
         $user = getUserById($id_user);
@@ -29,10 +29,10 @@
         $paymentMethodName = getPaymentMethodById($id_payment)['name'];
 
         $shipping = getShippingMethodByPrice($id_shipping);
-        print_r($shipping);
-        // $shippingMethodName = getShippingMethodById($id_shipping)['name'];
-        // $shippingMethodDesc = getShippingMethodById($id_shipping)['description'];
-        // $shippingMethodPrice = formatVND(getShippingMethodById($id_shipping)['price']);
+        // print_r($shipping);
+        $shippingMethodName = getShippingMethodByPrice($id_shipping)['name'];
+        $shippingMethodDesc = getShippingMethodByPrice($id_shipping)['description'];
+        $shippingMethodPrice = formatVND(getShippingMethodByPrice($id_shipping)['price']);
     } else {
         header("Location: ?mod=cart&act=viewCart");
     }

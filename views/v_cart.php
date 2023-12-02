@@ -187,19 +187,6 @@
                     </div>
                 </form>
             </div>
-            <!-- summary shipping method start -->
-            <!-- <div class="title-medium fw-smb">Phương thức vận chuyển</div>
-            <div class="body-medium">Dựa trên phương thức vận chuyển mà bạn lựa chọn ở bước tiếp theo, chúng tôi sẽ tính
-                thêm khoản phí tương ứng vào đơn hàng của bạn.</div> -->
-            <!-- summary shipping method end -->
-            <!-- <div class="light-devider flex-full mt12 mb12" style="height: .1rem"></div> -->
-            <!-- summary payment method start -->
-            <!-- <div class="title-medium fw-smb">Phương thức thanh toán</div>
-            <div class="body-medium">Dựa trên phương thức thanh toán mà bạn lựa chọn ở bước tiếp theo, đơn hàng
-                sẽ được thanh toán nhanh nhất có thể dựa trên lựa chọn của bạn.</div> -->
-            <!-- summary payment method end -->
-
-            <!-- summary total start -->
             <div class="flex mt12 v-center g12">
                 <div class="title-medium">Thuế: </div>
                 <div class="title medium primary-text fw-bold">10%</div>

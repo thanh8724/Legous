@@ -109,13 +109,7 @@ if (isset($_GET['act'])) {
             $cart = [];
             if (isset($_SESSION['userLogin']) && is_array($_SESSION['userLogin'])) {
                 extract($_SESSION['userLogin']);
-                $userCart = getCartByUserId($id_user);
-                $cart = $userCart;
-                // if (count($userCart) <= 0) {
-                //     header("Location: ?mod=cart&act=viewCart");
-                // }
-            } else if (!isset($_SESSION['cart']) && empty($_SESSION['cart'])) {
-                // header("Location: ?mod=cart&act=viewCart");
+                $cart = getCartByUserId($id_user);
             } else if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
                 $cart = $_SESSION['cart'];
             }

@@ -118,8 +118,6 @@ if (isset($_SESSION['userLogin']) && is_array($_SESSION['userLogin'])) {
     $phoneView = $userAddress['phone'];
 }
 
-
-
 ?>
 
 <!-- cart top bar start -->
@@ -406,3 +404,9 @@ if (isset($_SESSION['userLogin']) && is_array($_SESSION['userLogin'])) {
         });
     }
 </script>
+
+<?php 
+    if (count($cart) <= 0) {
+        header("Location: ?mod=cart&act=viewCart");
+    }
+?>
