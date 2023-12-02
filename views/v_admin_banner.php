@@ -1,162 +1,108 @@
-<!DOCTYPE html>
-<!--=== Coding by CodingLab | www.codinglabweb.com === -->
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/public/assets/resources/sass/css/app.css">
-    <link rel="icon" type="image/x-icon" href="/views/public/assets/media/images/favicon/favicon.svg">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css" rel="stylesheet"
-        type="text/css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Space+Mono&display=swap"
-        rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
-        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <link rel="stylesheet" href="../assets/resources/sass/css/owl.carousel.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <script src="/public/assets/resources/js/jquery.js"></script>
-    <!-- Include Chart.js library -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <title>Admin Banner</title>
-</head>
-
-<body>
-  <div class="headMobie">
-    <div class="col-12 d-flex justify-content-around align-items-center">
-        <div id="menuButton" style="padding-left: 30px;" class="col-4"><i class="fas fa-bars"></i></div>
-        <div class="col-4">
-            <a href="#">
-                <div class="logo-name d-flex justify-content-center align-items-center">
-                    <div class="logo-image">
-                        <img style="width: 20px; height: 20px;" src="../assets/media/images/logo.png" alt="">
-                    </div>
-
-                    <span class="logo_name title-large fw-black" style="color: black;">LEGOUS</span>
-                </div>
-            </a>
-        </div>
-        <div id="searchButtonBar" class="col-4 text-end" style="margin-right: 30px;"><i  class="far fa-search "></i></div>
-    </div>
-</div>
-<div class="navBarMobile">
-    <div class="navBarMobile_item">
-        <div class="close-button" id="closeButton"> <!-- Add the close button here -->
-            <i class="fas fa-times"></i>
-        </div>
-        <ul>
-            <li><a class="title-large" href="#">Bảng Điều Khiển</a></li>
-            <li><a class="title-large" href="#">Sản Phẩm</a></li>
-            <li><a class="title-large" href="#">Danh Mục</a></li>
-            <li><a class="title-large" href="#">Đơn Hàng</a></li>
-            <li><a class="title-large" href="#">Khách Hàng</a></li>
-            <li><a class="title-large" href="#">Đăng Xuất</a></li>
-        </ul>
-    </div>
-</div>
-<div class="searchBarMobile">
-    <div class="close-button" id="closeButton1"> <!-- Add the close button here -->
-        <i class="fas fa-times"></i>
-        
-    </div>
-    <div class="search-box">
-        <input type="text" placeholder="Tìm Kiếm Tại Đây...">
-        <i class="far fa-search"></i>
-    </div>
-</div>
-  <main id="mainAdmin">
-
-    <nav>
-      <div class="logo-name">
-          <div class="logo-image">
-              <img src="../assets/media/images/logo.png" alt="">
-          </div>
-
-          <span class="logo_name display-small fw-black">LEGOUS</span>
-      </div>
-
-      <div class="menu-items">
-          <ul class="nav-links">
-              <li><a href="#">
-                      <i class="far fa-chart-line"></i>
-                      <span class="link-name title-small">Bảng Điều Khiển</span>
-                  </a></li>
-              <li><a href="#">
-                      <i class="far fa-store"></i>
-                      <span class="link-name title-small">Sản Phẩm</span>
-                  </a></li>
-              <li class="active"><a href="#">
-                      <i class="fal fa-clipboard-list-check"></i>
-                      <span class="link-name title-small">Danh Mục</span>
-                  </a></li>
-              <li><a href="#">
-                      <i class="fal fa-shopping-bag"></i>
-                      <span class="link-name title-small">Đơn Hàng</span>
-                  </a></li>
-              <li><a href="#">
-                      <i class="fal fa-user"></i>
-                      <span class="link-name title-small">Khách Hàng</span>
-                  </a></li>
-
-          </ul>
-
-          <ul class="logout-mode">
-              <li><a href="#">
-                      <i class="far fa-sign-out-alt"></i>
-                      <span class="link-name title-small">Logout</span>
-                  </a></li>
-
-              <li class="mode">
-                  <a href="#">
-                      <i class="far fa-moon-stars"></i>
-                      <span class="link-name title-small">Dark Mode</span>
-                  </a>
-
-                  <div class="mode-toggle">
-                      <span class="switch"></span>
-                  </div>
-              </li>
-          </ul>
-      </div>
-  </nav>
-
-    <section class="dashboard">
+<section class="dashboard">
       <!----======== Header DashBoard ======== -->
       <div class="top">
         <i class="fas fa-angle-left sidebar-toggle"></i>
         <div class="search-box">
+        <form action="?mod=admin&act=categories&page=<?=$page_nows?>&search_category" method="post">
           <i class="far fa-search"></i>
-          <input type="text" placeholder="Search here...">
+          <input name="kyw_cg" type="text" placeholder="Tìm danh mục">
+          <button name="search_cg" type="submit"></button>
+        </form>
         </div>
         <div class="info-user">
-          <i class="far fa-comment-alt"></i>
-          <i class="fal fa-bell"></i>
-          <img src="/public/assets/media/images/users/user-1.svg" alt="">
+            <div class="notifiComment">
+                <i class="far fa-comment-alt btnShowFeature"></i>
+                <ul class="showFeatureAdminHeader box-shadow1">
+                    <?php
+                    $getCmt = getAllComment();
+                    arsort($getCmt);
+                    $getCmt = array_slice($getCmt, 0, 6, true);
+                    foreach ($getCmt as $item) {
+                       
+                        $getUser = getUserById($item['id_user']);
+                        $getProduct = getProductById($item['id_product']);
+                        ?>
+                        <li>
+                            <div class="col-12 d-flex">
+                                <div class="col-2">
+                                    <img class="notifiAdminImg"
+                                        src="./public/assets/media/images/users/<?php echo $getUser['img'] ?>" alt="">
+                                </div>
+                                <div class="col-10">
+                                    <p class="notifiAdminText body-small"><strong>
+                                            <?php echo $getUser['fullname'] ?>
+                                        </strong><span> đã bình luận ở sản phẩm <strong><a href="">
+                                                    <?php echo $getProduct['name'] ?>
+                                                </a></strong></span></p>
+                                </div>
+                            </div>
+                        </li>
+                        <?php
+                    }
+                    ?>
+                </ul>
+            </div>
+            <div class="notifiBell">
+                <i class="fal fa-bell btnShowFeature"></i>
+                <ul class="showFeatureAdminHeader box-shadow1">
+                <?php
+                    $getBill = getBill();
+                    arsort($getBill);
+                    $getBill = array_slice($getBill, 0, 6, true);
+                    foreach ($getBill as $item) {
+                       
+                        $getUser = getUserById($item['id_user']);
+                        ?>
+                        <li>
+                        <div class="col-12 d-flex">
+                            <div class="col-2">
+                                <img class="notifiAdminImg" src="./public/assets/media/images/users/profile.jpg" alt="">
+                            </div>
+                            <div class="col-10">
+                                <p class="notifiAdminText body-small"><strong><?php echo $getUser['fullname']?></strong><span> vừa mua
+                                        một mô hình với mã đơn hàng <strong><?php echo $item['id']?></strong></span></p>
+                            </div>
+                        </div>
+                    </li>
+                        <?php
+                    }
+                    ?>
+                    
+                </ul>
+            </div>
+            <div class="imgUserAdmin">
+                <?php
+                $getID = $_SESSION['admin']['id_user'];
+                $getUser = getUserById($getID);
+                ?>
+                <img style="" class="btnShowFeature"
+                    src="./public/assets/media/images/users/<?php echo $getUser['img'] ?>" alt="">
+                <ul class="showFeatureAdminHeader box-shadow1">
+
+                    <li><a class="body-small" href="#statisticalChart">Thống kê đơn hàng</a></li>
+                    <li><a class="body-small" href="#recentOrder">Đơn Hàng Gần Đây</a></li>
+                    <li><a class="body-small" href="#overviewDashboard">Tổng quan</a></li>
+                    <li><a class="body-small" href="?mod=user&act=logOut-account">Đăng Xuất</a></li>
+                </ul>
+            </div>
         </div>
       </div>
       <div class="flex-column p30 g30" style="align-self: stretch; align-items: flex-start;">
         <div class="text">
           <h1 class="label-large-prominent" style="font-size: 24px;
-              line-height: 32px;">Banner</h1>
+              line-height: 32px;">Danh Mục</h1>
         </div>
         <!--DateTimelocal-->
-        <div class="flex-between width-full g8" style="align-items: center;">
+        <div class="flex-between width-full" style="gap: 8px;
+            align-items: center;">
           <div class="flex g8">
-            <span class="label-large">Admin /</span><a href="#" class="label-large" style="text-decoration: none;">Banner</a>
+            <span class="label-large">Admin /</span><a href="#" class="label-large" style="text-decoration: none;">Danh Mục</a>
           </div>
-        
+          <!-- <div class="flex-center g8">
+            <span><i class="fa-solid fa-calendar-days"></i></span>
+            <input class="label-large-prominent" type="datetime-local" style="color: #625B71; border: none; font-size: 16px;
+                ">
+          </div> -->
         </div>
       </div>
       <!----======== End Header DashBoard ======== -->
@@ -168,13 +114,13 @@
 
             <div class="banner_admin_left flex-column g20 col-2">
               <div id="img_banner" class="img_banner_admin-options active trans-bounce col-12">
-                <img src="/public/assets/media/images/banners/carousel itachi.png" alt="banner">
+                <img src="./public/assets/media/images/banners/carousel itachi.png" alt="banner">
               </div>
               <div id="img_banner" class="img_banner_admin-options trans-bounce col-12">
-                <img src="/public/assets/media/images/banners/carouselsasuke.png" alt="banner">
+                <img src="./public/assets/media/images/banners/carouselsasuke.png" alt="banner">
               </div>
               <div id="img_banner" class="img_banner_admin-options trans-bounce col-12">
-                <img src="/public/assets/media/images/banners/carousel luffy.png" alt="banner">
+                <img src="./public/assets/media/images/banners/carousel luffy.png" alt="banner">
               </div>
 
               <a href="#!" class="width-full">
@@ -210,7 +156,7 @@
                 </div>
                 <div class="content_banner_right col-4">
                   <div class="img_banner_admin trans-bounce">
-                    <img src="/public/assets/media/images/banners/itachi-susano_banner.svg" alt="">
+                    <img src="./public/assets/media/images/banners/itachi-susano_banner.svg" alt="">
                   </div>
                 </div>
               </div>
@@ -239,7 +185,7 @@
                 </div>
                 <div class="content_banner_right col-4">
                   <div class="img_banner_admin">
-                    <img src="/public/assets/media/images/banners/sasuke-susano_banner.svg" alt="">
+                    <img src="./public/assets/media/images/banners/sasuke-susano_banner.svg" alt="">
                   </div>
                 </div>
               </div>
@@ -268,7 +214,7 @@
                 </div>
                 <div class="content_banner_right col-4">
                   <div class="img_banner_admin">
-                    <img src="/public/assets/media/images/banners/luffy_banner.svg" alt="">
+                    <img src="./public/assets/media/images/banners/luffy_banner.svg" alt="">
                   </div>
                 </div>
               </div>
@@ -279,13 +225,13 @@
                 </div>
                 <div class="container-options_banner d-inline-flex g20 col-12">
                   <div class="options_banner active col-4 trans-bounce">
-                    <img src="/public/assets/media/images/banners/bannerselect1.png" alt="">
+                    <img src="./public/assets/media/images/banners/bannerselect1.png" alt="">
                   </div>
                   <div class="options_banner col-4 trans-bounce">
-                    <img src="/public/assets/media/images/banners/bannerselect2.png" alt="">
+                    <img src="./public/assets/media/images/banners/bannerselect2.png" alt="">
                   </div>
                   <div class="options_banner col-4 trans-bounce">
-                    <img src="/public/assets/media/images/banners/bannerselect3.png" alt="">
+                    <img src="./public/assets/media/images/banners/bannerselect3.png" alt="">
                   </div>
                 </div>
               </div>
@@ -293,18 +239,11 @@
           </div>
         </div>
       </div>
+      </div>
 
       <!----======== End Body DashBoard ======== -->
 
     </section>
-  </main>
-
-  <!-- <script src="/public/assets/resources/js/admin.js"></script> -->
-  <!----======== Bootstrap ======== -->
-  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-    crossorigin="anonymous"></script> -->
-
     <script>
       const $ = document.querySelector.bind(document)
       const $$ = document.querySelectorAll.bind(document)
@@ -328,7 +267,7 @@
           }
           if(index == 2 ){
             $('#text-description').style.color = 'black';
-            $('#textmainproduct').style.color = 'black';
+            $('#textmainproduct').style.color = '#5E007E';
             bannerselect.style.background = 'white';
             
           }
@@ -345,6 +284,3 @@
 
       
     </script>
-</body>
-
-</html>

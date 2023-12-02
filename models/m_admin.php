@@ -121,7 +121,7 @@ function del_bill($id){
 
   function productSearchAdmin($keyword, $page=1, $perPage){
     $batdau = ($page - 1) * $perPage;
-    pdo_execute("INSERT INTO bill (id_user, id_coupon, id_shipping, id_payment, email_user, phone_user, address_user, email_recipient, name_recipient, phone_recipient, address_recipient, total,status) VALUES ('1','1','$method_order','1','admin@123', '123',, 'HCM' '$email_us_order', '$name_us_order', '$phone_us_order', '$location_us_order', '$total_order','$status_order')");    return pdo_query("SELECT p.*, c.name AS category_name FROM product p LEFT JOIN category c ON p.id_category = c.id WHERE p.name LIKE '%$keyword%' LIMIT $batdau, $perPage");
+     return pdo_query("SELECT p.*, c.name AS category_name FROM product p LEFT JOIN category c ON p.id_category = c.id WHERE p.name LIKE '%$keyword%' LIMIT $batdau, $perPage");
 }
 
 function product_searchTotal($keyword){

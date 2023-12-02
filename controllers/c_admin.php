@@ -120,8 +120,17 @@ if (isset($_GET['act'])) {
                         $get_Category = get_Categoris(($_GET['page'] - 1) * 4, 4);
                     }
                 }
+                $perPage = 4;
                 $number_Page = ceil($count_Categoris / 4);
-                $page_nows = $_GET['page'];
+                $page_nows = $_GET['page']; 
+
+                $soTrang = ceil($count_Categoris / $perPage);
+                $startPage = max(1, $page_nows - 2);
+                $endPage = min($startPage + 5, $soTrang);
+    
+                if ($endPage - $startPage < 5) {
+                    $startPage = max(1, $endPage - 5);
+                }
             }
             // Cập nhật dữ liệu
             if (isset($_GET['id']) && is_numeric($_GET['id'])) {
@@ -324,13 +333,18 @@ if (isset($_GET['act'])) {
         case 'products':
             include_once 'models/m_admin.php';
             include_once 'models/m_category.php';
+            
+            
             if (isset($_POST['page'])) {
-                // đổi từ phương thức POST sang GET
-                header("location: ?mod=products&act=product-detail&page=" . $_POST['page'] . "");
-            }
-            $page = 1;
-            if (isset($_GET['page'])) {
+                // Chuyển từ phương thức POST sang GET
+                header("location: ?mod=admin&act=products&page=" . $_POST['page'] . "");
+            } else {
+                $page = 1;
+                if (isset($_GET['page']) && is_numeric($_GET['page'])) {
                 $page = $_GET['page'];
+            } else {
+                header("location: ?mod=admin&act=products&page=1");
+            }
             }
 
             $getproductAdmin = productAdmin($page);
@@ -353,6 +367,20 @@ if (isset($_GET['act'])) {
             include_once 'models/m_category.php';
 
             // lấy dữ liệu
+
+            if (isset($_POST['id'])) {
+                // Chuyển từ phương thức POST sang GET
+                header("location: ?mod=admin&act=products-category-fil&id=" . $_POST['id'] . "");
+            } else {
+                $id = 1;
+                if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+                    $id = $_GET['id'];
+                } else {
+                    header("location: ?mod=admin&act=products-category-fil&id=1");
+                }
+            }
+            
+          
             $productdetail = product_getById($_GET['id']);
             $getAllCategory = getCategories();
 
@@ -390,7 +418,8 @@ if (isset($_GET['act'])) {
                 $inputSearch = $_POST['keyword'];
                 header("location: index.php?mod=admin&act=products-search&page=1&kw=" . urlencode($inputSearch));
                 exit; // Kết thúc việc chuyển hướng
-            }
+            } 
+            
             
             // Lấy dữ liệu
             $keyword = isset($_GET['kw']) ? $_GET['kw'] : ''; // Lấy từ khóa tìm kiếm từ URL
@@ -445,8 +474,13 @@ if (isset($_GET['act'])) {
         case 'createcoupon':
             $view_name = 'create_coupon';
             break;
+
+        case 'banner':
+            
+            $view_name = 'admin_banner';
+            break;
         default:
-                
+            header("Location: ?mod=admin&act=home");
             break;
     }
     include_once 'views/v_admin_layout.php';

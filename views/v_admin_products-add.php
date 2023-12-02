@@ -64,7 +64,7 @@ if(isset($_POST['submit'])) {
         <i class="fas fa-angle-left sidebar-toggle"></i>
         <div class="search-box">
             <form action="?mod=admin&act=products-search" method="post" style="width: 100%;display:flex; justify-content: center;">
-    <div class="search-box">
+            <div class="search-box">
             <input type="submit" value=""><i class="far fa-search"></i>
             <input name="keyword" value="" type="text" placeholder="Search here...">
           </div>

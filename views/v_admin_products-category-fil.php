@@ -1,10 +1,10 @@
 
 <?php 
     $product = "";
-    if(count($getproductCategory) > 0){
+    if(count($getproductCategory) > 0 ){
       foreach ($getproductCategory as $item){
         $product .= '
- <div class="cart trans-bounce flex-column p20" style="
+        <div class="cart trans-bounce flex-column p20" style="
         border-radius: 12px;
         border: 1px #DED8E1;
         background:  #FFF;   
