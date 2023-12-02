@@ -21,10 +21,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if (isset($_SESSION['userLogin'])) {
             $idUser = $_SESSION['userLogin']['id_user'];
+            // Remove the products from the database
+            removeProductsFromDatabase($productIds, $idUser);
         }
 
-        // Remove the products from the database
-        removeProductsFromDatabase($productIds, $idUser);
 
         // Loop through the cart to find the product by its unique identifier (e.g., product ID)
         foreach ($productIds as $productId) {
@@ -142,7 +142,7 @@ function generateCartHtml($cart)
             $deleteLink = "?mod=cart&act=deleteProduct&idProduct=$id_product";
 
             $imgPath = constant('PRODUCT_PATH') . $img;
-            $categoryName = getCategoryById(getIdCategoryByIdProducts($id))['name'];
+            $categoryName = getCategoryById(getIdCategoryByIdProducts($id_product))['name'];
             $price = formatVND($item['price'] * $qty);
 
             $html .=
@@ -151,9 +151,9 @@ function generateCartHtml($cart)
                     <div class="cart__product flex-between v-center g12">
                         <div class="flex g12 v-center">
                             <div class="mobile">
-                                <input type="checkbox" name="product$id" id="product$id" value="$id">
+                                <input type="checkbox" name="product$id_product" id="product$id_product" value="$id_product">
                             </div>
-                            <label for="product$id" class="cart__product__banner">
+                            <label for="product$id_product" class="cart__product__banner">
                                 <img src="$imgPath" alt="" class="img-cover">
                             </label>
                         </div>
@@ -165,12 +165,12 @@ function generateCartHtml($cart)
                             </div>
                             <div class="title-medium cart__product__price" data-price="$item[price]">$price</div>
                             <div class="cart__product__qty__form flex g12">
-                                <button class="minus-btn icon-btn"><i class="fa-solid fa-minus" data-product-id="$id"></i></button>
+                                <button class="minus-btn icon-btn"><i class="fa-solid fa-minus" data-product-id="$id_product"></i></button>
                                 <input class="fw-smb primary-text qty__input form__input" type="number" name="amount" id="amount" value="$qty"
                                     min="1" max="100" readonly>
-                                <button class="plus-btn icon-btn"><i class="fa-solid fa-plus" data-product-id="$id"></i></button>
+                                <button class="plus-btn icon-btn"><i class="fa-solid fa-plus" data-product-id="$id_product"></i></button>
                             </div>
-                            <a href="$deleteLink" class="icon-btn desktop remove-btn" data-product-id="$id"><i class="fal fa-times"> </i></a>
+                            <a href="$deleteLink" class="icon-btn desktop remove-btn" data-product-id="$id_product"><i class="fal fa-times"> </i></a>
                         </a>
                     </div>
                     <!-- single cart product end -->
