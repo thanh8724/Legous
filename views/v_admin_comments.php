@@ -1,4 +1,4 @@
-<section class="dashboard">
+    <section class="dashboard">
     <!----======== Header DashBoard ======== -->
     <div class="top">
         <i class="fas fa-angle-left sidebar-toggle"></i>
@@ -6,7 +6,7 @@
             <div class="search-box">
                 <input type="submit" value=""><i class="far fa-search"></i>
 
-                <input name="act_search" value="" type="text" placeholder="Search here...">
+                <input name="act_search" value="" type="text" placeholder="Tìm kiếm...">
             </div>
         </form>
         <div class="info-user">

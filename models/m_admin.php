@@ -117,13 +117,15 @@ function del_bill($id){
 
   function productSearchAdmin($keyword, $page=1, $perPage){
     $batdau = ($page - 1) * $perPage;
-    pdo_execute("INSERT INTO bill (id_user, id_coupon, id_shipping, id_payment, email_user, phone_user, address_user, email_recipient, name_recipient, phone_recipient, address_recipient, total,status) VALUES ('1','1','$method_order','1','admin@123', '123',, 'HCM' '$email_us_order', '$name_us_order', '$phone_us_order', '$location_us_order', '$total_order','$status_order')");    return pdo_query("SELECT p.*, c.name AS category_name FROM product p LEFT JOIN category c ON p.id_category = c.id WHERE p.name LIKE '%$keyword%' LIMIT $batdau, $perPage");
+     return pdo_query("SELECT p.*, c.name AS category_name FROM product p LEFT JOIN category c ON p.id_category = c.id WHERE p.name LIKE '%$keyword%' LIMIT $batdau, $perPage");
 }
 
 function product_searchTotal($keyword){
-  return pdo_query_value("SELECT COUNT(*) FROM product p WHERE p.name LIKE '%$keyword'");
+  $keyword = strtolower($keyword); // Chuyển đổi từ khóa tìm kiếm về chữ thường
+  $query = "SELECT COUNT(*) FROM product p WHERE LOWER(p.name) LIKE '%" . $keyword . "%'";
+  return pdo_query_value($query);
 }
-  
+
   // hàm đếm tấc cả các product trong database
   function product_CountTotal(){
     return pdo_query_value('SELECT COUNT(*) FROM product ');
@@ -136,8 +138,9 @@ function product_searchTotal($keyword){
 
   // xóa product theo id
   function remove_product($id){
-    pdo_execute("DELETE FROM product WHERE id = ?", $id);
+    pdo_execute("DELETE FROM product WHERE id = ?", [$id]);
 }
+
 
   // hàm thêm product bên admin
 function product_add($name,$id_category,$description,$price, $img, $qty){
@@ -151,6 +154,11 @@ function product_checkName($name){
 // hàm chỉnh sửa product bên admin
 function product_edit($id,$name,$id_category,$description,$price, $img, $qty){
   pdo_execute("UPDATE product SET name=?, id_category=?, description=?, price=? , img=?, qty=? WHERE id = ?",$name,$id_category,$description,$price, $img, $qty,$id);
+}
+
+// hàm cập nhật hình ảnh của trang product-details
+function updateImg($img , $id){
+    pdo_execute("UPDATE product SET img = ? WHERE id = ?",$img,$id);
 }
 ?>  
 

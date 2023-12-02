@@ -5,7 +5,7 @@
         <div class="search-box">
         <form action="?mod=admin&act=categories&page=<?=$page_nows?>&search_category" method="post">
           <i class="far fa-search"></i>
-          <input name="kyw_cg" type="text" placeholder="Tìm danh mục">
+          <input name="kyw_cg" type="text" placeholder="Tìm kiếm...">
           <button name="search_cg" type="submit"></button>
         </form>
         </div>
@@ -111,7 +111,7 @@
       <div class="containerAdmin">
         <div class="width-full ">
           <div class="content-filter dropdown-center width-full d-flex align-items-center justify-content-between">
-          <button id="btn_addMore_admin" type="button" style="width:130px;height:45px;background-color:#6750a4;border-radius:10px"><a style="color: white; font-size: 12px; text-decoration: none; padding: 10px 5px;" href="?mod=admin&act=categories-add">Thêm danh mục</a></button>
+          <button id="btn_addMore_admin" type="button" style="width:130px;height:45px;background-color:#6750a4;border-radius:10px"><a style="color: white;font-size: 14px; font-weight: 500; text-decoration: none; padding: 10px 5px;" href="?mod=admin&act=categories-add">Thêm danh mục</a></button>
             <button id="filter" class="flex-center g8" style="padding: 10px 16px;
                   border: 1px solid #79747E; border-radius: 100px;
                   margin-left: auto;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -138,10 +138,6 @@
         <table class="content-table width-full">
           <thead>
             <tr>
-              <th style="text-align: start;">
-                <input type="checkbox" style="width: 18px; height: 18px;">
-                </input>
-              </th>
               <th>ID</th>
               <th>Tên Danh Mục</th>
               <th>Hình danh mục</th>
@@ -155,9 +151,6 @@
             <!-- Thêm các hàng dữ liệu vào đây -->
             <?php foreach ($get_Category as $item): ?> 
                 <tr>
-                    <td style="text-align: start;">
-                        <input type="checkbox" style="width: 18px; height: 18px;"></input>
-                    </td>
                     <td>#<?= $item['id'] ?></td>
                     <td><?= $item['name'] ?></td>
                     <td style="width:100px;"><img style="width: 100%;
@@ -269,7 +262,7 @@
         <!-- <div class="flex mb30 " style="<?//php if(isset($_GET['search_category']))'display:none':''?>"> -->
         <div class="flex mb30" style="<?php if(isset($_GET['search_category'])): ?>display:none;<?php endif; ?>">
 
-          <div class="options-number flex g16" >
+          <!-- <div class="options-number flex g16" >
               <?php for($i=1 ;$i <= $number_Page; $i++):?>
               <a style="text-decoration:none; padding: 10px 12px ;border-radius:8px;" href="?mod=admin&act=categories&page=<?=$i?>" class="<?=($page_nows==$i)?'primary-btn':''?>" style="padding: 10px 15px;"><?=$i?></a>
               <?php $page = $i;?>
@@ -284,7 +277,32 @@
                     echo "$page";
                   }
                 // ?>" class="flex-center g8"><i class="fa-solid fa-arrow-right"></i> </a>
-          </div>
+          </div> -->
+        
+  <?php if ($page_nows > $number_Page || $page_nows < 1): ?>
+    <h1 class='flex-center flex-full mt-5'>Danh mục này không tồn tại</h1>
+<?php elseif ($count_Categoris > 0 && $number_Page > 1): ?>
+    <ul id="paging" class="pagination flex g16 mt30">
+        <?php if ($page_nows > 1): ?>
+            <li class="pagination__item">
+                <a href="?mod=admin&act=categories&page=<?= $page_nows - 1 ?>" class="btn body-small pagination__link"><i class="fal fa-arrow-left" style="margin-right: .6rem"></i>Previous</a>
+            </li>
+        <?php endif; ?>
+
+        <?php for ($i = $startPage; $i <= $endPage; $i++): ?>
+            <li class="pagination__item <?= ($page_nows == $i) ? 'active' : '' ?>">
+                <a href="?mod=admin&act=categories&page=<?=$i?>" class="btn body-small pagination__link"><?= $i ?></a>
+            </li>
+        <?php endfor; ?>
+
+        <?php if ($page_nows < $number_Page): ?>
+            <li class="pagination__item">
+                <a href="?mod=admin&act=categories&page=<?= $page_nows + 1 ?>" class="btn body-small pagination__link">Next<i class="fal fa-arrow-right" style="margin-left: .6rem"></i></a>
+            </li>
+        <?php endif; ?>
+    </ul>
+<?php endif; ?>
+
         </div>
       </div>
       </div>

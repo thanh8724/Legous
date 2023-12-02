@@ -126,8 +126,17 @@ if (isset($_GET['act'])) {
                         $get_Category = get_Categoris(($_GET['page'] - 1) * 4, 4);
                     }
                 }
+                $perPage = 4;
                 $number_Page = ceil($count_Categoris / 4);
-                $page_nows = $_GET['page'];
+                $page_nows = $_GET['page']; 
+
+                $soTrang = ceil($count_Categoris / $perPage);
+                $startPage = max(1, $page_nows - 2);
+                $endPage = min($startPage + 5, $soTrang);
+    
+                if ($endPage - $startPage < 5) {
+                    $startPage = max(1, $endPage - 5);
+                }
             }
             // Cập nhật dữ liệu
             if (isset($_GET['id']) && is_numeric($_GET['id'])) {
@@ -323,41 +332,73 @@ if (isset($_GET['act'])) {
         case 'products':
             include_once 'models/m_admin.php';
             include_once 'models/m_category.php';
+            
+            
             if (isset($_POST['page'])) {
-                // đổi từ phương thức POST sang GET
-                header("location: ?mod=products&act=product-detail&page=" . $_POST['page'] . "");
-            }
-            $page = 1;
-            if (isset($_GET['page'])) {
+                // Chuyển từ phương thức POST sang GET
+                header("location: ?mod=admin&act=products&page=" . $_POST['page'] . "");
+            } else {
+                $page = 1;
+                if (isset($_GET['page']) && is_numeric($_GET['page'])) {
                 $page = $_GET['page'];
+            } else {
+                header("location: ?mod=admin&act=products&page=1");
+            }
             }
 
             $getproductAdmin = productAdmin($page);
-            $soTrang = ceil(product_CountTotal() / 9);
+            $totalProducts = product_CountTotal();
             $getAllCategory = getCategories();
+            $perPage = 9;
+            $soTrang = ceil($totalProducts / $perPage);
+            $startPage = max(1, $page - 2);
+            $endPage = min($startPage + 5, $soTrang);
+
+            if ($endPage - $startPage < 5) {
+                $startPage = max(1, $endPage - 5);
+            }
 
             // hiển thị dữ liệu
             $view_name = 'admin_products';
             break;
-        case 'product-detail':
+        case 'products-detail':
             include_once 'models/m_admin.php';
+            include_once 'models/m_category.php';
+
             // lấy dữ liệu
+
+            if (isset($_POST['id'])) {
+                // Chuyển từ phương thức POST sang GET
+                header("location: ?mod=admin&act=products-category-fil&id=" . $_POST['id'] . "");
+            } else {
+                $id = 1;
+                if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+                    $id = $_GET['id'];
+                } else {
+                    header("location: ?mod=admin&act=products-category-fil&id=1");
+                }
+            }
+            
+          
             $productdetail = product_getById($_GET['id']);
+            $getAllCategory = getCategories();
 
             // hiển thị dữ liệu  
-            $view_name = 'admin_product-detail';
+            $view_name = 'admin_products-detail';
             break;
-        case 'product-add':
+        case 'products-add':
             include_once 'models/m_admin.php';
+            include_once 'models/m_category.php';
 
+            $getAllCategory = getCategories();
             // lấy dữ liệu
 
 
             // hiển thị dữ liệu  
-            $view_name = 'admin_product-add';
+            $view_name = 'admin_products-add';
             break;
 
-        case 'product-delete':
+        case 'products-delete':
             include_once 'models/m_admin.php';
             if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                 $product_id = $_GET['id'];
@@ -366,63 +407,45 @@ if (isset($_GET['act'])) {
             } else {
                 // Xử lý khi không có hoặc id không hợp lệ
                 echo "ID sản phẩm không hợp lệ";
-            }
+            }            
 
             break;
 
-        case 'product-search':
+        case 'products-search':
             include_once 'models/m_admin.php';
             if (isset($_POST['keyword'])) {
                 $inputSearch = $_POST['keyword'];
-                header("location: ?mod=admin&act=product-search&page=1&kw=" . $inputSearch);
+                header("location: index.php?mod=admin&act=products-search&page=1&kw=" . urlencode($inputSearch));
                 exit; // Kết thúc việc chuyển hướng
-            }
-
-            // Lấy dữ liệu
+            } 
+            
+            
             // Lấy dữ liệu
             $keyword = isset($_GET['kw']) ? $_GET['kw'] : ''; // Lấy từ khóa tìm kiếm từ URL
-            $page = 1;
-            if (isset($_GET['page'])) {
-                $page = $_GET['page'];
-            }
-
+            $page = isset($_GET['page']) ? $_GET['page'] : 1;
             $perPage = 9; // Số kết quả muốn hiển thị trên mỗi trang
             $totalResults = product_searchTotal($keyword);
             $soTrang = ceil($totalResults / $perPage);
-
-            $batdau = ($page - 1) * $perPage;
+            $startPage = max(1, $page - 2);
+            $endPage = min($startPage + 5, $soTrang);
+            
+            if ($endPage - $startPage < 5) {
+                $startPage = max(1, $endPage - 5);
+            }
+            
             $ketqua = productSearchAdmin($keyword, $page, $perPage);
             $getAllCategory = getCategories();
-            $view_name = 'admin_product-search';
-
-
+            
+            $view_name = 'admin_products-search';
             break;
 
         case 'products-category-fil';
             include_once 'models/m_category.php';
             include_once 'models/m_admin.php';
-            if (isset($_POST['keyword'])) {
-                $inputSearch = $_POST['keyword'];
-                header("location: ?mod=admin&act=product-search&page=1&kw=" . $inputSearch);
-                exit; // Kết thúc việc chuyển hướng
-            }
-
-            // Lấy dữ liệu
-            // Lấy dữ liệu
-            $keyword = isset($_GET['kw']) ? $_GET['kw'] : ''; // Lấy từ khóa tìm kiếm từ URL
-            $page = 1;
-            if (isset($_GET['page'])) {
-                $page = $_GET['page'];
-            }
-
-            $perPage = 9; // Số kết quả muốn hiển thị trên mỗi trang
-            $totalResults = product_searchTotal($keyword);
-            $soTrang = ceil($totalResults / $perPage);
-
-            $batdau = ($page - 1) * $perPage;
-            $ketqua = productSearchAdmin($keyword, $page, $perPage);
+            
             $getproductCategory = getproductbyCategory($_GET['id']);
             $getAllCategory = getCategories();
+        
             $view_name = 'admin_products-category-fil';
             break;
 
@@ -457,7 +480,13 @@ if (isset($_GET['act'])) {
             delCoupon($getid);
             header("Location: ?mod=admin&act=createcoupon");
             break;
+
+        case 'banner':
+            
+            $view_name = 'admin_banner';
+            break;
         default:
+            header("Location: ?mod=admin&act=home");
 
             break;
     }

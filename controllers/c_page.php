@@ -64,9 +64,6 @@ ob_start();
                                     insertCart ($id, $productId, $name, $price, $img, $qty, $totalCost);
                                 }
 
-                                // Clear the session cart
-                                // $_SESSION['cart'] = [];
-
                                 // redirect
                                 header('Location: ?mod=cart&act=viewCart');
                             }
@@ -74,6 +71,9 @@ ob_start();
                             if ($role == 0) {
                                 $_SESSION['role'] = $role;
                                 $_SESSION['userLogin'] = $loginInfo;
+                                // setcookie('accounts_user' . $_SESSION['userLogin']['id_user'],
+                                //                                                 $loginInfo['id_user'], 
+                                //                                                 (time() + (60 * 60 * 24 * 30)));
                                 setcookie('accounts_user'.$_SESSION['userLogin']['id_user'], $loginInfo['id_user'], (time() + (60 * 60 * 24 * 30)));
                                 header('Location: ?mod=page&act=home&idUser=' . $id);
                                 exit();

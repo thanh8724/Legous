@@ -20,7 +20,7 @@ if (@$_POST['act_search']) {
       <div class="search-box">
         <input type="submit" value=""><i class="far fa-search"></i>
 
-        <input name="act_search" value="" type="text" placeholder="Search here...">
+        <input name="act_search" value="" type="text" placeholder="Tìm kiếm...">
       </div>
     </form>
     <div class="info-user">
@@ -150,10 +150,6 @@ if (@$_POST['act_search']) {
     <table id="example1" class="content-table width-full">
       <thead>
         <tr>
-          <th style="text-align: start;">
-            <input type="checkbox" style="width: 18px; height: 18px;">
-            </input>
-          </th>
           <th>ID</th>
           <th>Họ Và Tên</th>
           <th>Ảnh</th>
@@ -170,10 +166,6 @@ if (@$_POST['act_search']) {
         foreach ($user_list as $item) {
           ?>
           <tr>
-            <td style="text-align: start;">
-              <input type="checkbox" style="width: 18px; height: 18px;">
-              </input>
-            </td>
             <td>
               <?php echo $item['id'] ?>
             </td>
