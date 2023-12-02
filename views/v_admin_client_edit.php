@@ -8,6 +8,13 @@ if (@isset($_POST['btn_update'])) {
     } else {
         $error['fullname'] = "Không được để trống Họ Và Tên";
     }
+    foreach (getUser() as $item) {
+        if ($item['username'] == $_POST['username']) {
+            $error['username'] = "Tên đăng nhập này đã được sử dụng";
+        } elseif ($item['email'] == $_POST['email']) {
+            $error['email'] = "Email này đã được sử dụng";
+        }
+    }
     if (!empty($_POST['username'])) {
         $username = $_POST['username'];
     } else {
@@ -35,7 +42,7 @@ if (@isset($_POST['btn_update'])) {
     // Check if a file was uploaded
     if (isset($_FILES['file']) && $_FILES['file']['error'] == 0) {
         //Thư mục chứa file upload
-        $upload_dir = './upload/libs/';
+        $upload_dir = './upload/users/';
         //Đường dẫn của file sau khi upload
         $upload_file = $upload_dir . $_FILES['file']['name'];
         //Xử lý upload đúng file ảnh
@@ -92,7 +99,7 @@ if (@isset($_POST['btn_update'])) {
     if (empty($error)) {
         // Only delete the old image file if a new image was uploaded
         if (isset($_FILES['file']) && $_FILES['file']['error'] == 0 && $image != $userInfo[0]['img']) {
-            $delete_file = './upload/libs/' . $userInfo[0]['img'];
+            $delete_file = './upload/users/' . $userInfo[0]['img'];
             unlink($delete_file);
         }
 
@@ -105,13 +112,38 @@ if (@isset($_POST['btn_update'])) {
 if (@isset($_POST['btn_delete'])) {
     $id = $_GET['id'];
     //Thư mục chứa file Delete
-    $delete_dir = './upload/libs/';
-    //Đường dẫn của file sau khi Delete
-    $delete_file = $delete_dir . $userInfo[0]['img'];
-    echo $delete_file;
-    deleteUser($id);
-    unlink($delete_file);
-    header("Location: ?mod=admin&act=client");
+    $getAllBilById = get_allBill($id);
+    foreach ($getAllBilById as $item) {
+        if ($item['status'] == 1 || $item['status'] == 2 || $item['status'] == 3) {
+            $error['status'] = "Không thể xóa User này vì hiện đang có đơn hàng đang chuẩn bị hoặc đang giao";
+        }
+    }
+
+    if (isset($error['status']) && !empty($error['status'])) {
+        $error['status'] = "Không thể xóa User này vì hiện đang có đơn hàng đang chuẩn bị hoặc đang giao";
+    } else {
+        // Xóa hình ảnh của user
+        foreach (getCommentByIdUser($id) as $comment) {
+            foreach (getAllCmtImg($comment['id']) as $item) {
+                $delete_dir = './upload/users/';
+                $delete_file = $delete_dir . $item['src'];
+                unlink($delete_file);
+            }
+        }
+        foreach (getCommentByIdUser($id) as $comment) {
+            foreach (getAllCmtImg($comment['id']) as $item) {
+                
+                delImgByIdCmt($comment['id']);
+            }
+            delCmt($comment['id']);
+        }
+
+        // Xóa user
+        deleteUser($id);
+        // Chuyển hướng người dùng
+        header("Location: ?mod=admin&act=client");
+    }
+
 
 }
 if (@isset($_POST['btn_cancelled'])) {
@@ -144,8 +176,7 @@ if (@isset($_POST['btn_cancelled'])) {
                         <li>
                             <div class="col-12 d-flex">
                                 <div class="col-2">
-                                    <img class="notifiAdminImg"
-                                        src="./upload/libs/<?php echo $getUser['img'] ?>" alt="">
+                                    <img class="notifiAdminImg" src="./upload/users/<?php echo $getUser['img'] ?>" alt="">
                                 </div>
                                 <div class="col-10">
                                     <p class="notifiAdminText body-small"><strong>
@@ -175,7 +206,7 @@ if (@isset($_POST['btn_cancelled'])) {
                         <li>
                             <div class="col-12 d-flex">
                                 <div class="col-2">
-                                    <img class="notifiAdminImg" src="./upload/libs/profile.jpg" alt="">
+                                    <img class="notifiAdminImg" src="./upload/users/profile.jpg" alt="">
                                 </div>
                                 <div class="col-10">
                                     <p class="notifiAdminText body-small"><strong>
@@ -198,8 +229,7 @@ if (@isset($_POST['btn_cancelled'])) {
                 $getID = $_SESSION['admin']['id_user'];
                 $getUser = getUserById($getID);
                 ?>
-                <img style="" class="btnShowFeature"
-                    src="./upload/libs/<?php echo $getUser['img'] ?>" alt="">
+                <img style="" class="btnShowFeature" src="./upload/users/<?php echo $getUser['img'] ?>" alt="">
                 <ul class="showFeatureAdminHeader box-shadow1">
 
                     <li><a class="body-small" href="#statisticalChart">Thống kê đơn hàng</a></li>
@@ -235,7 +265,7 @@ if (@isset($_POST['btn_cancelled'])) {
                 </div>
                 <form enctype="multipart/form-data" action="" method="POST">
                     <div class="sliderDashboard_order-add-create sliderDashboard_order-detail rounded-4">
-                        <div class="body_sliderDashboard_order-add-create p20 row">
+                        <div class="body_sliderDashboard_order-add-create p20 row col-12">
                             <div class="col-7">
                                 <div class="left-order-add-create">
                                     <h2>Họ Và Tên</h2>
@@ -244,7 +274,7 @@ if (@isset($_POST['btn_cancelled'])) {
                                         aria-label="default input example">
                                     <?php
                                     if (isset($error['fullname']) && !empty($error['fullname']))
-                                        echo "<p class='text-danger text-error'>{$error['fullname']}</p>";
+                                        echo "<p class='text-danger text-error title-medium'>{$error['fullname']}</p>";
                                     ?>
                                 </div>
                                 <div class="left-order-add-create">
@@ -254,7 +284,7 @@ if (@isset($_POST['btn_cancelled'])) {
                                         aria-label="default input example">
                                     <?php
                                     if (isset($error['username']) && !empty($error['username']))
-                                        echo "<p class='text-danger text-error'>{$error['username']}</p>";
+                                        echo "<p class='text-danger text-error title-medium'>{$error['username']}</p>";
                                     ?>
                                 </div>
 
@@ -265,7 +295,7 @@ if (@isset($_POST['btn_cancelled'])) {
                                         aria-label="default input example">
                                     <?php
                                     if (isset($error['password']) && !empty($error['password']))
-                                        echo "<p class='text-danger text-error'>{$error['password']}</p>";
+                                        echo "<p class='text-danger text-error title-medium'>{$error['password']}</p>";
                                     ?>
                                 </div>
                                 <div class="left-order-add-create">
@@ -274,7 +304,7 @@ if (@isset($_POST['btn_cancelled'])) {
                                         placeholder="Email" aria-label="default input example">
                                     <?php
                                     if (isset($error['email']) && !empty($error['email']))
-                                        echo "<p class='text-danger text-error'>{$error['email']}</p>";
+                                        echo "<p class='text-danger text-error title-medium'>{$error['email']}</p>";
                                     ?>
                                 </div>
                                 <div class="left-order-add-create">
@@ -283,7 +313,7 @@ if (@isset($_POST['btn_cancelled'])) {
                                         placeholder="Nhập Số Điện Thoại" aria-label="default input example">
                                     <?php
                                     if (isset($error['phone']) && !empty($error['phone']))
-                                        echo "<p class='text-danger text-error'>{$error['phone']}</p>";
+                                        echo "<p class='text-danger text-error title-medium'>{$error['phone']}</p>";
                                     ?>
                                 </div>
                                 <div class="describe-order_detail">
@@ -292,7 +322,7 @@ if (@isset($_POST['btn_cancelled'])) {
                                         value="<?php echo $userInfo[0]['bio'] ?>"><?php echo $userInfo[0]['bio'] ?></textarea>
                                     <?php
                                     if (isset($error['bio']) && !empty($error['bio']))
-                                        echo "<p class='text-danger text-error'>{$error['bio']}</p>";
+                                        echo "<p class='text-danger text-error title-medium'>{$error['bio']}</p>";
                                     ?>
                                 </div>
 
@@ -315,17 +345,16 @@ if (@isset($_POST['btn_cancelled'])) {
                                 <div class="right-order-add-create p30 d-flex justify-content-center flex-column ">
                                     <div class="img_order-add-create rounded-4">
                                         <?php
-                                        $upload_dir = './upload/libs/';
+                                        $upload_dir = './upload/users/';
                                         //Đường dẫn của file sau khi upload
                                         $upload_file = $upload_dir . $userInfo[0]['img'];
                                         if (empty($userInfo[0]['img']) || $userInfo[0]['img'] == NULL || !file_exists($upload_file)) {
                                             ?>
-                                            <td><img src="./upload/libs/anonyUser.png"></td>
+                                            <td><img src="./upload/users/anonyUser.png"></td>
                                             <?php
                                         } else {
                                             ?>
-                                            <td><img
-                                                    src="./upload/libs/<?php echo $userInfo[0]['img'] ?>">
+                                            <td><img src="./upload/users/<?php echo $userInfo[0]['img'] ?>">
                                             </td>
                                             <?php
                                         }
@@ -352,6 +381,10 @@ if (@isset($_POST['btn_cancelled'])) {
                                                 class="btn_cancelled">
                                         </div>
                                     </div>
+                                    <?php
+                                    if (isset($error['status']) && !empty($error['status']))
+                                        echo "<p class='text-danger text-error title-medium'>{$error['status']}</p>";
+                                    ?>
                                 </div>
                             </div>
                         </div>

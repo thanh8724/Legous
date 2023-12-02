@@ -121,6 +121,7 @@
         pdo_execute("DELETE FROM address WHERE id_user = ?",$id_user);
     }
 
+
     # password
     function get_password($id_user) {
         return pdo_query_value("SELECT password FROM user WHERE id = ?", $id_user);
@@ -163,6 +164,9 @@
     }
 
     # delete account
+    function get_id_comments($id_user) {
+        return pdo_query("SELECT id FROM comment WHERE id_user = ?", $id_user);
+    }
     function  get_allBill($id_user) {
         return pdo_query("SELECT * FROM bill WHERE id_user = ?", $id_user);
     }
@@ -172,11 +176,20 @@
     function  get_id_bill($id_user) {
         return pdo_query("SELECT id FROM bill WHERE id_user = ?", $id_user);
     }
-    function delete_bill_fromCart($id_bill) {
-        pdo_execute("DELETE FROM cart WHERE id_bill = {$id_bill}");
+    function delete_bill_fromCart($id_user) {
+        pdo_execute("DELETE FROM cart WHERE id_user = {$id_user}");
     }
     function delete_bill($id_user) {
         pdo_execute("DELETE FROM bill WHERE id_user = {$id_user}");
+    }
+    function delete_blogComnent_byIduser($id_user) {
+        pdo_execute("DELETE FROM blog_comment WHERE id_user = {$id_user}");
+    }
+    function delete_comments_byIduser($id_user) {
+        pdo_execute("DELETE FROM comment WHERE id_user = {$id_user}");
+    }
+    function delete_Imgcomments($id_comment) {
+        pdo_execute("DELETE FROM comment_img WHERE id_comment = {$id_comment}");
     }
     function delete_acccount($id_user) {
         pdo_execute("DELETE FROM user WHERE id = ?",$id_user);

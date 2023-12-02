@@ -57,10 +57,17 @@
             <div class="flex-between header__subnav__wrapper poa box-shadow1 p20 rounded-8" style="top: 100%; left: 0;">
                 <ul class="header__subnav flex-full flex-column g6">
                     <li class="header__nav__item header__subnav__item">
-                        <a href="?mod=user&act=general" class="header__nav__link header__subnav__link ttu">Account detail</a>
+                        <a href="?mod=user&act=general" class="header__nav__link header__subnav__link ttu">Thông tin tài khoản</a>
                     </li>
                     <li class="header__nav__item header__subnav__item">
-                        <a href="?mod=user&act=logOut-account&id-account=$id" class="header__nav__link header__subnav__link ttu error60">Log out</a>
+                        <a href="?mod=user&act=logOut-account&id-account=$id" class="header__nav__link header__subnav__link ttu error60">Đăng xuất</a>
+                    </li>
+                    <li class="" style="padding: 0.4rem 0.8rem;">
+                        <button id="dark-light__mode" onclick="dark_lightMod()">
+                            <i class="fas fa-clouds-sun" id="icon_sun"></i>
+                            <i class="fas fa-moon-cloud" id="icon_moon"></i>
+                            <span id="color__dark-light"></span>
+                        </button>
                     </li>
                 </ul>
             </div>
@@ -391,3 +398,4 @@
 </html>
 <script src="./public/assets/resources/js/main.js"></script>
 <script src="./public/assets/resources/js/user.js"></script>
+<script src="./public/assets/resources/js/dark-light_mode.js"></script>

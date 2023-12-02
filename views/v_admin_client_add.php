@@ -19,15 +19,15 @@ if (isset($_POST['btn_update'])) {
         $error['username'] = "Không được để trống tên đăng nhập";
     }
     $patternPassword = "/^.{6,}$/";
-if (!empty($_POST['password'])) {
-    if (preg_match($patternPassword, $_POST['password'])) {
-        $password = $_POST['password'];
+    if (!empty($_POST['password'])) {
+        if (preg_match($patternPassword, $_POST['password'])) {
+            $password = $_POST['password'];
+        } else {
+            $error['password'] = "Mật khẩu phải có ít nhất 6 ký tự";
+        }
     } else {
-        $error['password'] = "Mật khẩu phải có ít nhất 6 ký tự";
+        $error['phone'] = "Không được để trống mật khẩu";
     }
-} else {
-    $error['phone'] = "Không được để trống mật khẩu";
-}
     $paternPhone = "/^(0[2|3|5|6|7|8|9])+([0-9]{8})$/";
     if (!empty($_POST['phone'])) {
         if (preg_match($paternPhone, $_POST['phone'])) {
@@ -63,38 +63,38 @@ if (!empty($_POST['password'])) {
         //PATHINFO_EXTENSION lấy đuôi file
         $type = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
         // echo $type;
-        if(!in_array(strtolower($type), $type_allow)) {
+        if (!in_array(strtolower($type), $type_allow)) {
             $error['type'] = "Chỉ được upload file có đuôi PNG, JPG, GIF, JPEG";
         }
 
         #Upload file có kích thước cho phép (<20mb ~ 29.000.000BYTE)
         $file_size = $_FILES['file']['size'];
-        if($file_size > 29000000) {
+        if ($file_size > 29000000) {
             $error['file_size'] = "Chỉ được upload file bé hơn 20MB";
         }
         #Kiểm tra trùng file trên hệ thống
-        if(file_exists($upload_file)) {
+        if (file_exists($upload_file)) {
             // $error['file_exists'] = "File đã tồn tại trên hệ thống";
             // Xử lý đổi tên file tự động
 
             #Tạo file mới
             // TênFile.ĐuôiFile
             $filename = pathinfo($_FILES["file"]["name"], PATHINFO_FILENAME);
-            $new_filename = $filename.'- Copy.';
-            $new_upload_file = $upload_dir.$new_filename.$type;
-            $k=1;
-            while(file_exists($new_upload_file)) {
-                $new_filename = $filename." - Copy({$k}).";
+            $new_filename = $filename . '- Copy.';
+            $new_upload_file = $upload_dir . $new_filename . $type;
+            $k = 1;
+            while (file_exists($new_upload_file)) {
+                $new_filename = $filename . " - Copy({$k}).";
                 $k++;
-                $new_upload_file = $upload_dir.$new_filename.$type;
+                $new_upload_file = $upload_dir . $new_filename . $type;
             }
             $upload_file = $new_upload_file;
         }
 
 
-        if(empty($error)) {
+        if (empty($error)) {
             if (move_uploaded_file($_FILES['file']['tmp_name'], $upload_file)) {
-                $image = $new_filename.$type;
+                $image = $new_filename . $type;
                 addUserProfile($fullname, $username, $password, $email, $address, $image, $role, $bio, $phone);
 
                 header("Location: ?mod=admin&act=client");
@@ -108,6 +108,9 @@ if (!empty($_POST['password'])) {
 
     //     $error = "Loi64";
     // }
+}
+if (@isset($_POST['btn_cancelled'])) {
+    header("Location: ?mod=admin&act=client");
 }
 ?>
 <section class="dashboard">
@@ -129,26 +132,25 @@ if (!empty($_POST['password'])) {
                     arsort($getCmt);
                     $getCmt = array_slice($getCmt, 0, 6, true);
                     foreach ($getCmt as $item) {
-                       
+
                         $getUser = getUserById($item['id_user']);
                         $getProduct = getProductById($item['id_product']);
                         ?>
-                        <li>
-                            <div class="col-12 d-flex">
-                                <div class="col-2">
-                                    <img class="notifiAdminImg"
-                                        src="./upload/users/<?php echo $getUser['img'] ?>" alt="">
-                                </div>
-                                <div class="col-10">
-                                    <p class="notifiAdminText body-small"><strong>
-                                            <?php echo $getUser['fullname'] ?>
-                                        </strong><span> đã bình luận ở sản phẩm <strong><a href="">
-                                                    <?php echo $getProduct['name'] ?>
-                                                </a></strong></span></p>
-                                </div>
+                    <li>
+                        <div class="col-12 d-flex">
+                            <div class="col-2">
+                                <img class="notifiAdminImg" src="./upload/users/<?php echo $getUser['img'] ?>" alt="">
                             </div>
-                        </li>
-                        <?php
+                            <div class="col-10">
+                                <p class="notifiAdminText body-small"><strong>
+                                        <?php echo $getUser['fullname'] ?>
+                                    </strong><span> đã bình luận ở sản phẩm <strong><a href="">
+                                                <?php echo $getProduct['name'] ?>
+                                            </a></strong></span></p>
+                            </div>
+                        </div>
+                    </li>
+                    <?php
                     }
                     ?>
                 </ul>
@@ -156,29 +158,33 @@ if (!empty($_POST['password'])) {
             <div class="notifiBell">
                 <i class="fal fa-bell btnShowFeature"></i>
                 <ul class="showFeatureAdminHeader box-shadow1">
-                <?php
+                    <?php
                     $getBill = getBill();
                     arsort($getBill);
                     $getBill = array_slice($getBill, 0, 6, true);
                     foreach ($getBill as $item) {
-                       
+
                         $getUser = getUserById($item['id_user']);
                         ?>
-                        <li>
+                    <li>
                         <div class="col-12 d-flex">
                             <div class="col-2">
                                 <img class="notifiAdminImg" srcupload/users/profile.jpg" alt="">
                             </div>
                             <div class="col-10">
-                                <p class="notifiAdminText body-small"><strong><?php echo $getUser['fullname']?></strong><span> vừa mua
-                                        một mô hình với mã đơn hàng <strong><?php echo $item['id']?></strong></span></p>
+                                <p class="notifiAdminText body-small"><strong>
+                                        <?php echo $getUser['fullname'] ?>
+                                    </strong><span> vừa mua
+                                        một mô hình với mã đơn hàng <strong>
+                                            <?php echo $item['id'] ?>
+                                        </strong></span></p>
                             </div>
                         </div>
                     </li>
-                        <?php
+                    <?php
                     }
                     ?>
-                    
+
                 </ul>
             </div>
             <div class="imgUserAdmin">
@@ -186,8 +192,7 @@ if (!empty($_POST['password'])) {
                 $getID = $_SESSION['admin']['id_user'];
                 $getUser = getUserById($getID);
                 ?>
-                <img style="" class="btnShowFeature"
-                    src="./upload/users/<?php echo $getUser['img'] ?>" alt="">
+                <img style="" class="btnShowFeature" src="./upload/users/<?php echo $getUser['img'] ?>" alt="">
                 <ul class="showFeatureAdminHeader box-shadow1">
 
                     <li><a class="body-small" href="#statisticalChart">Thống kê đơn hàng</a></li>
@@ -228,36 +233,64 @@ if (!empty($_POST['password'])) {
                             <h2>Họ Và Tên</h2>
                             <input name="fullname" class="" type="text" placeholder="Nhập Họ Và Tên"
                                 aria-label="default input example">
+                            <?php
+                            if (isset($error['fullname']) && !empty($error['fullname']))
+                                echo "<p class='text-danger text-error title-medium'>{$error['fullname']}</p>";
+                            ?>
                         </div>
                         <div class="left-order-add-create">
                             <h2>Tên Đăng Nhập</h2>
                             <input name="username" class="" type="text" placeholder="Nhập Tên Đăng Nhập"
                                 aria-label="default input example">
+                            <?php
+                                    if (isset($error['username']) && !empty($error['username']))
+                                        echo "<p class='text-danger text-error title-medium'>{$error['username']}</p>";
+                                    ?>
                         </div>
                         <div class="left-order-add-create">
                             <h2>Mật Khẩu</h2>
                             <input name="password" class="" type="password" placeholder="Nhập Mật Khẩu"
                                 aria-label="default input example">
+                            <?php
+                                    if (isset($error['password']) && !empty($error['password']))
+                                        echo "<p class='text-danger text-error title-medium'>{$error['password']}</p>";
+                                    ?>
                         </div>
                         <div class="left-order-add-create">
                             <h2>Email</h2>
                             <input name="email" class="" type="email" placeholder="Email"
                                 aria-label="default input example">
+                                <?php
+                                    if (isset($error['email']) && !empty($error['email']))
+                                        echo "<p class='text-danger text-error title-medium'>{$error['email']}</p>";
+                                    ?>
                         </div>
                         <div class="left-order-add-create">
                             <h2>Số điện thoại</h2>
                             <input name="phone" class="" type="number" placeholder="Nhập Số Điện Thoại"
                                 aria-label="default input example">
+                                <?php
+                                    if (isset($error['phone']) && !empty($error['phone']))
+                                        echo "<p class='text-danger text-error title-medium'>{$error['phone']}</p>";
+                                    ?>
                         </div>
                         <div class="left-order-add-create">
                             <h2>Địa Chỉ</h2>
                             <input name="address" class="" type="text" placeholder="Nhập Địa chỉ"
                                 aria-label="default input example">
+                                <?php
+                                    if (isset($error['address']) && !empty($error['address']))
+                                        echo "<p class='text-danger text-error title-medium'>{$error['address']}</p>";
+                                    ?>
                         </div>
                         <div class="describe-order_detail">
                             <h2>Mô Tả</h2>
                             <textarea name="bio" id="" cols="30" rows="10"
                                 placeholder="Nhập mô tả người dùng"></textarea>
+                                <?php
+                                    if (isset($error['bio']) && !empty($error['bio']))
+                                        echo "<p class='text-danger text-error title-medium'>{$error['bio']}</p>";
+                                    ?>
                         </div>
 
                         <div class="Dropdowns_categogy">
@@ -293,7 +326,7 @@ if (!empty($_POST['password'])) {
                                 <div class="col-8 d-flex flex-end">
                                     <input name="btn_update" value="Cập Nhật" type="submit"
                                         class="btn btn-primary "></input>
-                                    <button type="button" class="btn box-shadow1 ">Hủy</button>
+                                    <input name="btn_cancelled" type="submit" value="Thoát" class="btn_cancelled">
                                 </div>
                             </div>
                         </div>

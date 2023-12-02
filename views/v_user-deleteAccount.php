@@ -8,16 +8,25 @@
         extract($key);
         $id_bill = $id;
     }
+    // print_r(get_id_comments($id_user));
+    
     if(isset($_POST['deleteAccount'])) {
         if($_POST['old_password'] == $password) {
             if(isset($_POST['confirm_delete'])) {
-                delete_bill_fromCart($id_bill);
+                delete_bill_fromCart($id_user);
                 delete_bill($id_user);
                 delete_address_byIduser($id_user);
+                delete_blogComnent_byIduser($id_user);
+                foreach (get_id_comments($id_user) as $key) {
+                    extract($key);
+                    $id_comment = $id;
+                    delete_Imgcomments($id_comment);
+                }
+                delete_comments_byIduser($id_user);
                 delete_acccount($id_user);
                 session_destroy();
-                setcookie('accounts_user'.$_SESSION['userLogin']['id_user'], $loginInfo['id_user'], (time() - (60 * 60 * 24 * 30)));
                 header('location: ?mod=page&act=home');
+                setcookie('accounts_user'.$_SESSION['userLogin']['id_user'], $loginInfo['id_user'], (time() - (60 * 60 * 24 * 30)));
             }else {
                 $message_password = 'Vui lòng nhập lại mật khẩu và xác nhận để xóa.';
                 $message_checkbox = 'Cần xác nhận trước khi xóa.';
