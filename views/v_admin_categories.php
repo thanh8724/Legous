@@ -149,6 +149,17 @@
           </thead>
           <tbody>
             <!-- Thêm các hàng dữ liệu vào đây -->
+            <?php if(empty($get_Category)):?>\
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>"<?=$_GET['search_category']?>" không tồn tại</td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <?php else:?>
             <?php foreach ($get_Category as $item): ?> 
                 <tr>
                     <td>#<?= $item['id'] ?></td>
@@ -163,6 +174,7 @@
                     <td><a href="?mod=admin&act=categories&page=<?= $page_nows?>&id=<?=$item['id']?>" id="myButton"><i style="font-size:20px;" class="fa-solid fa-gear"></i></a></td>
                 </tr>
             <?php endforeach; ?>  
+            <?php endif;?>
           </tbody>
         </table>
           
