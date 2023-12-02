@@ -81,7 +81,31 @@ function getUserByInfo($email, $password)
     return pdo_query_one($sql);
 }
 
+function generateRandomUsername($length)
+{
+    $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    $username = '';
 
+    $charactersLength = strlen($characters);
+    for ($i = 0; $i < $length; $i++) {
+        $username .= $characters[rand(0, $charactersLength - 1)];
+    }
+
+    return $username;
+}
+
+function generateRandomPassword($length)
+{
+    $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()';
+    $password = '';
+
+    $charactersLength = strlen($characters);
+    for ($i = 0; $i < $length; $i++) {
+        $password .= $characters[rand(0, $charactersLength - 1)];
+    }
+
+    return $password;
+}
 
 
 function getUser()
