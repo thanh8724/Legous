@@ -32,12 +32,12 @@ foreach ($getCmt as $item) {
 
     <div class="top">
         <i class="fas fa-angle-left sidebar-toggle"></i>
-        <form style="width: 100%;display:flex; justify-content: center;" action="" method="post">
-            <div class="search-box">
+        <div class="search-box">
+                <form style="width: 100%;display:flex; justify-content: center;" action="" method="post">
                 <i class="far fa-search"></i>
                 <input type="text" placeholder="Tìm kiếm...">
+            </form>
             </div>
-        </form>
         <div class="info-user">
             <div class="notifiComment">
                 <i class="far fa-comment-alt btnShowFeature"></i>
