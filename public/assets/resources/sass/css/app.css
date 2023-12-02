@@ -839,7 +839,7 @@ a {
 .form__group textarea {
   height: 20rem;
   border-radius: 0.4rem;
-  padding: 0 2rem;
+  padding: 1rem 2rem;
   border: 1px solid #ded8e1;
   transition: 0.22s cubic-bezier(0.23, 1, 0.32, 1);
   color: #3b383e;
@@ -1462,6 +1462,7 @@ table th {
   grid-template-columns: repeat(auto-fit, minmax(min(16em, 100%), 1fr));
 }
 
+<<<<<<< HEAD
 .summary__product__name {
   width: 30rem;
   display: -webkit-box;
@@ -1473,50 +1474,56 @@ table th {
 }
 
 body.dark main {
+=======
+body.dark #mainAdmin {
+>>>>>>> 4a910ef2bb8d38d352126684d30efc505421f0f6
   background-color: #15192a;
   transition: 0.5s;
 }
-body.dark main .logo_name,
-body.dark main span,
-body.dark main h1 {
+body.dark #mainAdmin .notifiAdminText span {
+  color: black !important;
+}
+body.dark #mainAdmin .logo_name,
+body.dark #mainAdmin span,
+body.dark #mainAdmin h1 {
   color: #fff !important;
 }
-body.dark main .localDashboard .h2_dashboard {
+body.dark #mainAdmin .localDashboard .h2_dashboard {
   color: #ffffff !important;
 }
-body.dark main .localDashboard .aHref1 {
+body.dark #mainAdmin .localDashboard .aHref1 {
   color: #ffffff !important;
 }
-body.dark main .dashboard .containerAdmin .owl-carousel .slider_contain {
+body.dark #mainAdmin .dashboard .containerAdmin .owl-carousel .slider_contain {
   background-color: #1c2339 !important;
 }
-body.dark main .dashboard .containerAdmin .owl-carousel .slider_contain h5, body.dark main .dashboard .containerAdmin .owl-carousel .slider_contain h6, body.dark main .dashboard .containerAdmin .owl-carousel .slider_contain .fa-ellipsis-v, body.dark main .dashboard .containerAdmin .owl-carousel .slider_contain span {
+body.dark #mainAdmin .dashboard .containerAdmin .owl-carousel .slider_contain h5, body.dark #mainAdmin .dashboard .containerAdmin .owl-carousel .slider_contain h6, body.dark #mainAdmin .dashboard .containerAdmin .owl-carousel .slider_contain .fa-ellipsis-v, body.dark #mainAdmin .dashboard .containerAdmin .owl-carousel .slider_contain span {
   color: #fff !important;
 }
-body.dark main .dashboard .top {
+body.dark #mainAdmin .dashboard .top {
   background-color: #1c2339;
   border-color: #1c2339;
 }
-body.dark main nav {
+body.dark #mainAdmin nav {
   background-color: #1c2339;
   border-color: #1c2339;
 }
-body.dark main nav .logo-name .logo_name {
+body.dark #mainAdmin nav .logo-name .logo_name {
   color: #fff;
 }
-body.dark main nav .menu-items li span {
+body.dark #mainAdmin nav .menu-items li span {
   color: #fff;
 }
-body.dark main nav .menu-items li i {
+body.dark #mainAdmin nav .menu-items li i {
   color: #fff;
 }
-body.dark main nav .menu-items .nav-links li a:hover i {
+body.dark #mainAdmin nav .menu-items .nav-links li a:hover i {
   color: #ccc;
 }
-body.dark main nav .menu-items .nav-links li a:hover .link-name {
+body.dark #mainAdmin nav .menu-items .nav-links li a:hover .link-name {
   color: #ccc;
 }
-body.dark main nav .menu-items .logout-mode .mode .mode-toggle .switch:before {
+body.dark #mainAdmin nav .menu-items .logout-mode .mode .mode-toggle .switch:before {
   left: 20px !important;
 }
 body.dark::-webkit-scrollbar-thumb:hover {
@@ -1531,6 +1538,18 @@ body.dark .dashboard .top .info-user i {
 body.dark li a:hover:before {
   background-color: #ccc;
 }
+body.dark .headMobie {
+  background-color: #1c2339;
+}
+body.dark .headMobie #menuButton i {
+  color: #ffffff;
+}
+body.dark .headMobie .logo-name .logo_name {
+  color: #ffffff !important;
+}
+body.dark .headMobie #searchButtonBar i {
+  color: #ffffff;
+}
 
 p {
   margin-bottom: 0px !important;
@@ -1540,7 +1559,14 @@ html {
   scroll-behavior: smooth;
 }
 
+<<<<<<< HEAD
 main nav {
+=======
+#mainAdmin {
+  background-color: #f7f7f7;
+}
+#mainAdmin nav {
+>>>>>>> 4a910ef2bb8d38d352126684d30efc505421f0f6
   position: fixed;
   top: 0;
   left: 0;
@@ -1551,38 +1577,38 @@ main nav {
   border-right: 1px solid #e6e5e5;
   transition: all 0.5s ease;
 }
-main nav .logo-name {
+#mainAdmin nav .logo-name {
   display: flex;
   align-items: center;
   transition: 0.5s;
   color: #fff;
 }
-main nav .logo-name .logo-image {
+#mainAdmin nav .logo-name .logo-image {
   display: flex;
   justify-content: center;
   min-width: 45px;
 }
-main nav .logo-name .logo-image img {
+#mainAdmin nav .logo-name .logo-image img {
   width: 40px;
   object-fit: cover;
 }
-main nav .logo-name .logo_name {
+#mainAdmin nav .logo-name .logo_name {
   color: #000000;
   font-family: "mainFont", sans-serif;
   margin-left: 14px;
   transition: 0.22s cubic-bezier(0.23, 1, 0.32, 1);
 }
-main nav .menu-items {
+#mainAdmin nav .menu-items {
   margin-top: 40px;
   height: calc(100% - 90px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-main nav .menu-items li {
+#mainAdmin nav .menu-items li {
   list-style: none;
 }
-main nav .menu-items li a {
+#mainAdmin nav .menu-items li a {
   display: flex;
   align-items: center;
   height: 50px;
@@ -1591,7 +1617,7 @@ main nav .menu-items li a {
   padding-left: 25px;
   transition: 0.5s;
 }
-main nav .menu-items li a i {
+#mainAdmin nav .menu-items li a i {
   font-size: 24px;
   min-width: 45px;
   height: 100%;
@@ -1600,20 +1626,20 @@ main nav .menu-items li a i {
   justify-content: center;
   color: #625b71;
 }
-main nav .menu-items li a .link-name {
+#mainAdmin nav .menu-items li a .link-name {
   color: #625b71;
   transition: all 0.5s ease;
 }
-main nav .menu-items .logout-mode {
+#mainAdmin nav .menu-items .logout-mode {
   padding-top: 10px;
   border-top: 1px solid #e6e5e5;
 }
-main nav .menu-items .logout-mode .mode {
+#mainAdmin nav .menu-items .logout-mode .mode {
   display: flex;
   align-items: center;
   white-space: nowrap;
 }
-main nav .menu-items .logout-mode .mode .mode-toggle {
+#mainAdmin nav .menu-items .logout-mode .mode .mode-toggle {
   position: absolute;
   right: 14px;
   height: 50px;
@@ -1623,7 +1649,7 @@ main nav .menu-items .logout-mode .mode .mode-toggle {
   justify-content: center;
   cursor: pointer;
 }
-main nav .menu-items .logout-mode .mode .mode-toggle .switch {
+#mainAdmin nav .menu-items .logout-mode .mode .mode-toggle .switch {
   position: relative;
   display: inline-block;
   height: 22px;
@@ -1631,7 +1657,7 @@ main nav .menu-items .logout-mode .mode .mode-toggle .switch {
   border-radius: 25px;
   background-color: #000;
 }
-main nav .menu-items .logout-mode .mode .mode-toggle .switch:before {
+#mainAdmin nav .menu-items .logout-mode .mode .mode-toggle .switch:before {
   content: "";
   position: absolute;
   left: 5px;
@@ -1643,64 +1669,64 @@ main nav .menu-items .logout-mode .mode .mode-toggle .switch:before {
   border-radius: 50%;
   transition: all 0.3s ease;
 }
-main nav .menu-items .nav-links li {
+#mainAdmin nav .menu-items .nav-links li {
   text-align: center;
   margin: 5px 0;
 }
-main nav .menu-items .nav-links li:hover {
+#mainAdmin nav .menu-items .nav-links li:hover {
   background-color: #6750a4;
   border-radius: 10px;
   color: #fff;
 }
-main nav .menu-items .nav-links li:hover a span {
+#mainAdmin nav .menu-items .nav-links li:hover a span {
   color: #fff;
 }
-main nav .menu-items .nav-links li:hover a i {
+#mainAdmin nav .menu-items .nav-links li:hover a i {
   color: #fff;
 }
-main nav .menu-items .nav-links li.active {
+#mainAdmin nav .menu-items .nav-links li.active {
   background-color: #6750a4;
   border-radius: 10px;
   color: #fff;
 }
-main nav .menu-items .nav-links li.active a i {
+#mainAdmin nav .menu-items .nav-links li.active a i {
   color: #fff;
 }
-main nav .menu-items .nav-links li.active a span {
+#mainAdmin nav .menu-items .nav-links li.active a span {
   color: #fff;
 }
-main nav.close {
+#mainAdmin nav.close {
   width: 73px;
 }
-main nav.close .logo_name {
+#mainAdmin nav.close .logo_name {
   opacity: 0;
   pointer-events: none;
 }
-main nav.close li a .link-name {
+#mainAdmin nav.close li a .link-name {
   opacity: 0;
   pointer-events: none;
 }
-main nav.close ~ .dashboard {
+#mainAdmin nav.close ~ .dashboard {
   left: 73px;
   width: calc(100% - 73px);
 }
-main nav.close .logo-name {
+#mainAdmin nav.close .logo-name {
   padding-left: 0px;
 }
-main nav.close .menu-items li a {
+#mainAdmin nav.close .menu-items li a {
   padding-left: 0px;
 }
-main nav.close .dashboard .top .sidebar-toggle {
+#mainAdmin nav.close .dashboard .top .sidebar-toggle {
   transform: rotateZ(170deg) !important;
 }
-main .dashboard {
+#mainAdmin .dashboard {
   position: relative;
   left: 250px;
   min-height: 100vh;
   width: calc(100% - 250px);
   transition: all 0.5s ease;
 }
-main .dashboard .top {
+#mainAdmin .dashboard .top {
   display: flex;
   width: 100%;
   justify-content: space-between;
@@ -1710,7 +1736,7 @@ main .dashboard .top {
   transition: all 0.5s ease;
   z-index: 10;
 }
-main .dashboard .top .sidebar-toggle {
+#mainAdmin .dashboard .top .sidebar-toggle {
   font-size: 20px;
   color: #000;
   cursor: pointer;
@@ -1725,14 +1751,14 @@ main .dashboard .top .sidebar-toggle {
   flex-direction: row-reverse;
   transition: 0.5s;
 }
-main .dashboard .top .search-box {
+#mainAdmin .dashboard .top .search-box {
   position: relative;
   height: 45px;
   max-width: 400px;
   width: 100%;
   margin: 0 30px;
 }
-main .dashboard .top .search-box input {
+#mainAdmin .dashboard .top .search-box input {
   position: absolute;
   border: 1px solid #e6e5e5;
   background-color: #fff;
@@ -1745,7 +1771,7 @@ main .dashboard .top .search-box input {
   font-weight: 400;
   outline: none;
 }
-main .dashboard .top .search-box i {
+#mainAdmin .dashboard .top .search-box i {
   position: absolute;
   left: 15px;
   font-size: 22px;
@@ -1754,16 +1780,16 @@ main .dashboard .top .search-box i {
   transform: translateY(-50%);
   color: #707070;
 }
-main .dashboard .top .info-user {
+#mainAdmin .dashboard .top .info-user {
   display: flex;
   align-items: center;
   margin-right: 20px;
 }
-main .dashboard .top .info-user i {
+#mainAdmin .dashboard .top .info-user i {
   margin: 0 25px;
   font-size: 22px;
 }
-main .dashboard .top .info-user .showFeatureAdminHeader {
+#mainAdmin .dashboard .top .info-user .showFeatureAdminHeader {
   display: none;
   position: absolute;
   width: 300px;
@@ -1772,7 +1798,7 @@ main .dashboard .top .info-user .showFeatureAdminHeader {
   border-radius: 10px;
   z-index: 99;
 }
-main .dashboard .top .info-user .showFeatureAdminHeader li {
+#mainAdmin .dashboard .top .info-user .showFeatureAdminHeader li {
   list-style: none;
   padding: 10px;
   margin: 10px;
@@ -1780,43 +1806,43 @@ main .dashboard .top .info-user .showFeatureAdminHeader li {
   cursor: pointer;
   text-align: center;
 }
-main .dashboard .top .info-user .showFeatureAdminHeader li .notifiAdminText {
+#mainAdmin .dashboard .top .info-user .showFeatureAdminHeader li .notifiAdminText {
   margin-left: 15px;
 }
-main .dashboard .top .info-user .showFeatureAdminHeader li:hover {
+#mainAdmin .dashboard .top .info-user .showFeatureAdminHeader li:hover {
   background-color: rgba(112, 112, 112, 0.1294117647);
 }
-main .dashboard .top .info-user .showFeatureAdminHeader li a {
+#mainAdmin .dashboard .top .info-user .showFeatureAdminHeader li a {
   text-decoration: none;
   color: #1d192b;
 }
-main .dashboard .top .info-user .showFeatureAdminHeader img {
+#mainAdmin .dashboard .top .info-user .showFeatureAdminHeader img {
   width: 40px;
   border-radius: 50%;
   margin-left: 10px;
 }
-main .dashboard .top .info-user .notifiComment {
+#mainAdmin .dashboard .top .info-user .notifiComment {
   position: relative;
   cursor: pointer;
 }
-main .dashboard .top .info-user .notifiComment:hover .showFeatureAdminHeader {
+#mainAdmin .dashboard .top .info-user .notifiComment:hover .showFeatureAdminHeader {
   display: block;
 }
-main .dashboard .top .info-user .notifiBell {
+#mainAdmin .dashboard .top .info-user .notifiBell {
   position: relative;
   cursor: pointer;
 }
-main .dashboard .top .info-user .notifiBell:hover .showFeatureAdminHeader {
+#mainAdmin .dashboard .top .info-user .notifiBell:hover .showFeatureAdminHeader {
   display: block;
 }
-main .dashboard .top .info-user .imgUserAdmin {
+#mainAdmin .dashboard .top .info-user .imgUserAdmin {
   position: relative;
   cursor: pointer;
 }
-main .dashboard .top .info-user .imgUserAdmin:hover .showFeatureAdminHeader {
+#mainAdmin .dashboard .top .info-user .imgUserAdmin:hover .showFeatureAdminHeader {
   display: block;
 }
-main .dashboard .top .info-user .imgUserAdmin img {
+#mainAdmin .dashboard .top .info-user .imgUserAdmin img {
   width: 60px;
   border-radius: 50%;
   margin: 10px;
@@ -2018,6 +2044,9 @@ ul {
   }
 }
 @media only screen and (max-width: 46.1875em) {
+  #mainAdmin .dashboard .top {
+    display: none;
+  }
   .headMobie {
     display: block;
   }
@@ -2275,9 +2304,6 @@ ul {
 }
 .panels .comment__panel .comment__wrapper .comment__item .comment__user .moreFeatureComment .ulDadMoreFeatureComment .liDadMoreFeatureComment {
   cursor: pointer;
-}
-.panels .comment__panel .comment__wrapper .comment__item .comment__user .moreFeatureComment .ulDadMoreFeatureComment .liDadMoreFeatureComment:hover .divMoreFeatureComment {
-  display: block;
 }
 .panels .comment__panel .comment__wrapper .comment__item .comment__user .moreFeatureComment .ulDadMoreFeatureComment .liDadMoreFeatureComment .ellipsisBtn {
   display: flex;
@@ -3051,12 +3077,6 @@ html {
 .main__user .main__inner .main__inner--bottom .main__inner--bottom-right--content .bottom-right--content_main {
   min-height: 10rem;
 }
-.main__user .main__inner .main__inner--bottom .main__inner--bottom-right--content .bottom-right--content_bottom .btn-next,
-.main__user .main__inner .main__inner--bottom .main__inner--bottom-right--content .bottom-right--content_bottom .btn-back {
-  color: #6750a4;
-  cursor: pointer;
-  font-weight: 700;
-}
 .main__user .main__inner .main__inner--bottom .main__inner--info-order span {
   font-size: 1.3rem;
   font-weight: 600;
@@ -3074,12 +3094,69 @@ html {
   cursor: pointer;
 }
 
+.list__dots--item {
+  width: 4rem !important;
+  height: 4rem !important;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #625b71;
+}
+
+.dots-active {
+  background-color: #6750a4;
+}
+.dots-active a {
+  color: white !important;
+}
+
+#dark-light__mode {
+  width: 50px !important;
+  height: 22px;
+  padding: 0 5px;
+  background-color: #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 20px;
+  border: none;
+  /* border: 1px solid #c7c6c6; */
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+}
+
+#color__dark-light {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  /* background-color: #0285c5; */
+  background-color: orange;
+  left: 2px;
+  z-index: -1;
+  transition: all 0.3s ease;
+}
+
+#icon_sun {
+  color: white;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+#icon_moon {
+  color: gray;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
 .error_input {
-  border: 1px solid #b3261e !important;
+  border: 1px solid #dc362e !important;
 }
 
 .error_formMessage {
-  color: #b3261e !important;
+  color: #dc362e !important;
 }
 
 .show {
@@ -4330,122 +4407,121 @@ table tbody tr td a {
   color: #6750a4;
 }
 
-main .dashboard .containerAdmin {
+#mainAdmin .dashboard .containerAdmin {
   width: 95%;
   margin: 0 30px;
 }
-main .dashboard .containerAdmin .localDashboard .col-12 .h2_dashboard {
+#mainAdmin .dashboard .containerAdmin .localDashboard .col-12 .h2_dashboard {
   color: #1d192b;
 }
-main .dashboard .containerAdmin .localDashboard .col-12 .aHref1 {
+#mainAdmin .dashboard .containerAdmin .localDashboard .col-12 .aHref1 {
   color: #000000;
   text-decoration: unset;
 }
-main .dashboard .containerAdmin .localDashboard .col-12 .aHref2 {
+#mainAdmin .dashboard .containerAdmin .localDashboard .col-12 .aHref2 {
   color: #6750a4;
   text-decoration: unset;
 }
-main .dashboard .containerAdmin .localDashboard .col-12 .calenderColor {
+#mainAdmin .dashboard .containerAdmin .localDashboard .col-12 .calenderColor {
   color: #6750a4;
   font-size: 14px;
 }
-main .dashboard .containerAdmin .localDashboard .col-12 .dateCalender {
+#mainAdmin .dashboard .containerAdmin .localDashboard .col-12 .dateCalender {
   color: #6750a4;
 }
-main .dashboard .containerAdmin .owl-carousel .slider_contain {
+#mainAdmin .dashboard .containerAdmin .owl-carousel .slider_contain {
   background-color: #ffffff !important;
   border-radius: 5px;
 }
-main .dashboard .containerAdmin .owl-carousel .slider_contain .date-dashboard {
+#mainAdmin .dashboard .containerAdmin .owl-carousel .slider_contain .date-dashboard {
   color: #625b71;
 }
-main .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items .label .fa-ellipsis-v {
+#mainAdmin .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items .label .fa-ellipsis-v {
   font-size: 24px;
 }
-main .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items .label-large {
+#mainAdmin .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items .label-large {
   color: #1d192b;
 }
-main .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items span {
-  color: #1d192b;
-  font-size: 1.25rem;
-  font-weight: bold;
-}
-main .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items h5 {
+#mainAdmin .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items span {
   color: #1d192b;
   font-size: 1.25rem;
   font-weight: bold;
 }
-main .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items .buttonWallet {
+#mainAdmin .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items h5 {
+  color: #1d192b;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+#mainAdmin .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items .buttonWallet {
   border: transparent;
   background-color: #00c58a;
   width: 45px;
   height: 45px;
   border-radius: 5px;
 }
-main .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items .buttonWallet .fa-wallet {
+#mainAdmin .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items .buttonWallet .fa-wallet {
   font-size: 20px;
 }
-main .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items .slider_items_stonks p {
+#mainAdmin .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items .slider_items_stonks p {
   color: #00c58a;
 }
-main .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items .slider_items_stonks i {
+#mainAdmin .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items .slider_items_stonks i {
   margin-right: 5px;
   color: #00c58a;
   font-size: 18px;
 }
-main .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items .dashboard-moneyEarn {
+#mainAdmin .dashboard .containerAdmin .owl-carousel .slider_contain .slider_items .dashboard-moneyEarn {
   margin-left: 10px;
   color: #1d192b;
 }
-main .dashboard .containerAdmin .owl-carousel .slider_contain-2 .slider_items_stonks p {
+#mainAdmin .dashboard .containerAdmin .owl-carousel .slider_contain-2 .slider_items_stonks p {
   color: #00b3ff !important;
 }
-main .dashboard .containerAdmin .owl-carousel .slider_contain-2 .slider_items_stonks i {
+#mainAdmin .dashboard .containerAdmin .owl-carousel .slider_contain-2 .slider_items_stonks i {
   color: #00b3ff !important;
 }
-main .dashboard .containerAdmin .owl-carousel .slider_contain-2 .slider_items .buttonWallet {
+#mainAdmin .dashboard .containerAdmin .owl-carousel .slider_contain-2 .slider_items .buttonWallet {
   background-color: #00b3ff !important;
 }
-main .dashboard .containerAdmin .owl-carousel .slider_contain-3 .slider_items_stonks p {
+#mainAdmin .dashboard .containerAdmin .owl-carousel .slider_contain-3 .slider_items_stonks p {
   color: #6750a4 !important;
 }
-main .dashboard .containerAdmin .owl-carousel .slider_contain-3 .slider_items_stonks i {
+#mainAdmin .dashboard .containerAdmin .owl-carousel .slider_contain-3 .slider_items_stonks i {
   color: #6750a4 !important;
 }
-main .dashboard .containerAdmin .owl-carousel .slider_contain-3 .slider_items .buttonWallet {
+#mainAdmin .dashboard .containerAdmin .owl-carousel .slider_contain-3 .slider_items .buttonWallet {
   background-color: #6750a4 !important;
 }
-main .dashboard .containerAdmin .owl-carousel .slider_contain-4 .slider_items_stonks p {
+#mainAdmin .dashboard .containerAdmin .owl-carousel .slider_contain-4 .slider_items_stonks p {
   color: #ff6acc !important;
 }
-main .dashboard .containerAdmin .owl-carousel .slider_contain-4 .slider_items_stonks i {
+#mainAdmin .dashboard .containerAdmin .owl-carousel .slider_contain-4 .slider_items_stonks i {
   color: #ff6acc !important;
 }
-main .dashboard .containerAdmin .owl-carousel .slider_contain-4 .slider_items .buttonWallet {
+#mainAdmin .dashboard .containerAdmin .owl-carousel .slider_contain-4 .slider_items .buttonWallet {
   background-color: #ff6acc !important;
 }
-main .dashboard .containerAdmin .owl-carousel .slider_contain-5 .slider_items_stonks p {
+#mainAdmin .dashboard .containerAdmin .owl-carousel .slider_contain-5 .slider_items_stonks p {
   color: #FF6651 !important;
 }
-main .dashboard .containerAdmin .owl-carousel .slider_contain-5 .slider_items_stonks i {
+#mainAdmin .dashboard .containerAdmin .owl-carousel .slider_contain-5 .slider_items_stonks i {
   color: #FF6651 !important;
 }
-main .dashboard .containerAdmin .owl-carousel .slider_contain-5 .slider_items .buttonWallet {
+#mainAdmin .dashboard .containerAdmin .owl-carousel .slider_contain-5 .slider_items .buttonWallet {
   background-color: #FF6651 !important;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .orderStatistics {
+#mainAdmin .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .orderStatistics {
   background-color: #ffffff;
-  margin-right: 20px;
   border-radius: 10px;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .orderStatistics .myNavTabs .myNavItem .nav-link {
+#mainAdmin .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .orderStatistics .myNavTabs .myNavItem .nav-link {
   position: relative !important;
   color: #49454f;
   font-size: 14px;
   font-weight: 600;
   background-color: #fef7ff;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .orderStatistics .myNavTabs .myNavItem .nav-link:after {
+#mainAdmin .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .orderStatistics .myNavTabs .myNavItem .nav-link:after {
   content: "";
   position: absolute;
   background-color: #6750a4;
@@ -4455,33 +4531,33 @@ main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .custom
   bottom: 0px;
   transition: 0.22s linear;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .orderStatistics .myNavTabs .myNavItem .nav-link.active {
+#mainAdmin .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .orderStatistics .myNavTabs .myNavItem .nav-link.active {
   color: #6750a4;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .orderStatistics .myNavTabs .myNavItem .nav-link.active:after {
+#mainAdmin .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .orderStatistics .myNavTabs .myNavItem .nav-link.active:after {
   content: "";
   width: 100%;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers {
+#mainAdmin .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers {
   background-color: #ffffff;
   border-radius: 10px;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .headerTopUser {
+#mainAdmin .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .headerTopUser {
   position: relative;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .headerTopUser p {
+#mainAdmin .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .headerTopUser p {
   color: #1d192b;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .headerTopUser button {
+#mainAdmin .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .headerTopUser button {
   width: 40px;
   height: 40px;
   background-color: rgba(73, 69, 79, 0.12);
   border-radius: 9999px;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .headerTopUser button i {
+#mainAdmin .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .headerTopUser button i {
   font-size: 16px;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .headerTopUser .showMoreInfoAdminDashboard {
+#mainAdmin .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .headerTopUser .showMoreInfoAdminDashboard {
   display: none;
   position: absolute;
   bottom: -60px;
@@ -4490,135 +4566,135 @@ main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .custom
   border-radius: 10px;
   text-align: center;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .headerTopUser .showMoreInfoAdminDashboard li {
+#mainAdmin .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .headerTopUser .showMoreInfoAdminDashboard li {
   list-style: none;
   padding: 10px 20px;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .headerTopUser .showMoreInfoAdminDashboard li a {
+#mainAdmin .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .headerTopUser .showMoreInfoAdminDashboard li a {
   text-decoration: none;
   color: #000000;
   text-align: center;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .bodyTopUser .topUserOder .topUserOder_items {
+#mainAdmin .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .bodyTopUser .topUserOder .topUserOder_items {
   margin: 15px 0;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .bodyTopUser .topUserOder .topUserOder_items .topUserOrder__image img {
+#mainAdmin .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .bodyTopUser .topUserOder .topUserOder_items .topUserOrder__image img {
   width: 45px;
   height: 45px;
   border-radius: 9999px;
   margin-right: 15px;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .bodyTopUser .topUserOder .topUserOder_items .topUserOrder__info .topUserOrder__name {
+#mainAdmin .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .bodyTopUser .topUserOder .topUserOder_items .topUserOrder__info .topUserOrder__name {
   color: #ffd8e4;
   color: #1d192b !important;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .bodyTopUser .topUserOder .topUserOder_items .topUserOrder__info .topUserOrder__role {
+#mainAdmin .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .bodyTopUser .topUserOder .topUserOder_items .topUserOrder__info .topUserOrder__role {
   color: #625b71;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .bodyTopUser .topUserOder .topUserOder_items .topUserOrder_Spend .topUserOrder_totalPayed {
+#mainAdmin .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .bodyTopUser .topUserOder .topUserOder_items .topUserOrder_Spend .topUserOrder_totalPayed {
   color: #ffd8e4;
   color: #1d192b !important;
 }
-main .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .bodyTopUser .topUserOder .topUserOder_items .topUserOrder_Spend .topUserOrder_totalOrdered {
+#mainAdmin .dashboard .containerAdmin .statisticalChart .statisticalChartItems .customerOrderStatistics .topUsers .bodyTopUser .topUserOder .topUserOder_items .topUserOrder_Spend .topUserOrder_totalOrdered {
   color: #625b71;
 }
-main .dashboard .containerAdmin .recentOrder .recentOrder_items {
+#mainAdmin .dashboard .containerAdmin .recentOrder .recentOrder_items {
   background-color: #ffffff !important;
   border-radius: 10px;
 }
-main .dashboard .containerAdmin .recentOrder .recentOrder_items .title-medium {
+#mainAdmin .dashboard .containerAdmin .recentOrder .recentOrder_items .title-medium {
   color: #1d192b;
   color: #1d192b;
 }
-main .dashboard .containerAdmin .recentOrder .recentOrder_items .tableLine {
+#mainAdmin .dashboard .containerAdmin .recentOrder .recentOrder_items .tableLine {
   width: 100%;
   height: 1px;
   background-color: rgba(0, 0, 0, 0.247);
   margin: 15px 0;
 }
-main .dashboard .containerAdmin .recentOrder .recentOrder_items table tbody {
+#mainAdmin .dashboard .containerAdmin .recentOrder .recentOrder_items table tbody {
   border: transparent !important;
   color: #000000;
 }
-main .dashboard .containerAdmin .recentOrder .recentOrder_items table td {
+#mainAdmin .dashboard .containerAdmin .recentOrder .recentOrder_items table td {
   border: transparent !important;
   color: #000000;
 }
-main .dashboard .containerAdmin .recentOrder .recentOrder_items table tfoot {
+#mainAdmin .dashboard .containerAdmin .recentOrder .recentOrder_items table tfoot {
   border: transparent !important;
   color: #000000;
 }
-main .dashboard .containerAdmin .recentOrder .recentOrder_items table th {
+#mainAdmin .dashboard .containerAdmin .recentOrder .recentOrder_items table th {
   border: transparent !important;
   background-color: transparent !important;
   color: #79747e;
   color: #000000;
 }
-main .dashboard .containerAdmin .recentOrder .recentOrder_items table thead {
+#mainAdmin .dashboard .containerAdmin .recentOrder .recentOrder_items table thead {
   border: transparent !important;
 }
-main .dashboard .containerAdmin .recentOrder .recentOrder_items table tr {
+#mainAdmin .dashboard .containerAdmin .recentOrder .recentOrder_items table tr {
   border: transparent !important;
   background-color: transparent !important;
 }
-main .dashboard .containerAdmin .recentOrder .recentOrder_items table tr .tableLargeItems {
+#mainAdmin .dashboard .containerAdmin .recentOrder .recentOrder_items table tr .tableLargeItems {
   display: flex;
   align-items: center;
 }
-main .dashboard .containerAdmin .recentOrder .recentOrder_items table tr .tableLargeItems input {
+#mainAdmin .dashboard .containerAdmin .recentOrder .recentOrder_items table tr .tableLargeItems input {
   margin-right: 10px;
 }
-main .dashboard .containerAdmin .recentOrder .recentOrder_items table tr .tableLargeItems span {
+#mainAdmin .dashboard .containerAdmin .recentOrder .recentOrder_items table tr .tableLargeItems span {
   margin-right: 10px;
 }
-main .dashboard .containerAdmin .recentOrder .recentOrder_items table .dotTable {
+#mainAdmin .dashboard .containerAdmin .recentOrder .recentOrder_items table .dotTable {
   width: 8px;
   height: 8px;
   border-radius: 9999px;
 }
-main .dashboard .containerAdmin .recentOrder .recentOrder_items table .dotTable.green {
+#mainAdmin .dashboard .containerAdmin .recentOrder .recentOrder_items table .dotTable.green {
   background-color: #00c58a;
 }
-main .dashboard .containerAdmin .recentOrder .recentOrder_items table .dotTable.orange {
+#mainAdmin .dashboard .containerAdmin .recentOrder .recentOrder_items table .dotTable.orange {
   background-color: #FF6651;
 }
-main .dashboard .containerAdmin .recentOrder .recentOrder_items table .dotTable.blue {
+#mainAdmin .dashboard .containerAdmin .recentOrder .recentOrder_items table .dotTable.blue {
   background-color: #2cccff;
 }
-main .dashboard .containerAdmin .recentOrder .recentOrder_items table .dotTable.red {
+#mainAdmin .dashboard .containerAdmin .recentOrder .recentOrder_items table .dotTable.red {
   background-color: #b3261e;
 }
-main .dashboard .containerAdmin .recentOrder .recentOrder_items table .dotTable.black {
+#mainAdmin .dashboard .containerAdmin .recentOrder .recentOrder_items table .dotTable.black {
   background-color: #000000;
 }
-main .dashboard .containerAdmin .recentOrder .recentOrder_items table .dotTable.gray {
+#mainAdmin .dashboard .containerAdmin .recentOrder .recentOrder_items table .dotTable.gray {
   background-color: gray;
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .lineDashboard {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .lineDashboard {
   width: 100%;
   height: 1px;
   background-color: rgba(0, 0, 0, 0.349);
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .theadoverviewDashboard {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .theadoverviewDashboard {
   padding: 10px 20px;
   display: flex;
   align-items: center;
   position: relative;
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .theadoverviewDashboard p {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .theadoverviewDashboard p {
   color: #1d192b;
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .theadoverviewDashboard button {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .theadoverviewDashboard button {
   width: 30px;
   height: 30px;
   border-radius: 9999px;
   line-height: 30px;
   background-color: rgba(73, 69, 79, 0.12);
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .theadoverviewDashboard button i {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .theadoverviewDashboard button i {
   font-size: 12px;
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .theadoverviewDashboard .showMoreInfoAdminDashboard {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .theadoverviewDashboard .showMoreInfoAdminDashboard {
   display: none;
   position: absolute;
   bottom: -60px;
@@ -4627,29 +4703,29 @@ main .dashboard .containerAdmin .overviewDashboard .col-12 .theadoverviewDashboa
   border-radius: 10px;
   text-align: center;
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .theadoverviewDashboard .showMoreInfoAdminDashboard li {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .theadoverviewDashboard .showMoreInfoAdminDashboard li {
   list-style: none;
   padding: 10px 20px;
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .theadoverviewDashboard .showMoreInfoAdminDashboard li a {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .theadoverviewDashboard .showMoreInfoAdminDashboard li a {
   text-decoration: none;
   color: #000000;
   text-align: center;
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview {
   background-color: #ffffff;
   border-radius: 10px;
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart {
   display: flex;
   justify-content: center;
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart .wekkyChart_item .loader {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart .wekkyChart_item .loader {
   width: 200px;
   position: relative;
   transform: rotate(-90deg);
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart .wekkyChart_item .loader .loading {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart .wekkyChart_item .loader .loading {
   margin: 25px 0 0;
   position: relative;
   width: 100%;
@@ -4657,7 +4733,7 @@ main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vits
   background-color: #e8edf2;
   border-radius: 10px;
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart .wekkyChart_item .loader .loading .lineLoading {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart .wekkyChart_item .loader .loading .lineLoading {
   display: block;
   position: absolute;
   width: 30%;
@@ -4666,7 +4742,7 @@ main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vits
   box-shadow: 10px;
   border-radius: 10px;
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart .wekkyChart_item .loader .loading .lineLoading2 {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart .wekkyChart_item .loader .loading .lineLoading2 {
   display: block;
   position: absolute;
   width: 40%;
@@ -4675,7 +4751,7 @@ main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vits
   box-shadow: 10px;
   border-radius: 10px;
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart .wekkyChart_item .loader .loading .lineLoading3 {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart .wekkyChart_item .loader .loading .lineLoading3 {
   display: block;
   position: absolute;
   width: 50%;
@@ -4684,7 +4760,7 @@ main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vits
   box-shadow: 10px;
   border-radius: 10px;
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart .wekkyChart_item .loader .loading .lineLoading4 {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart .wekkyChart_item .loader .loading .lineLoading4 {
   display: block;
   position: absolute;
   width: 65%;
@@ -4693,7 +4769,7 @@ main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vits
   box-shadow: 10px;
   border-radius: 10px;
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart .wekkyChart_item .loader .loading .lineLoading5 {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart .wekkyChart_item .loader .loading .lineLoading5 {
   display: block;
   position: absolute;
   width: 70%;
@@ -4702,7 +4778,7 @@ main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vits
   box-shadow: 10px;
   border-radius: 10px;
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart .wekkyChart_item .loader .loading .lineLoading6 {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart .wekkyChart_item .loader .loading .lineLoading6 {
   display: block;
   position: absolute;
   width: 90%;
@@ -4711,7 +4787,7 @@ main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vits
   box-shadow: 10px;
   border-radius: 10px;
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart .wekkyChart_item .loader .loading .lineLoading7 {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .weekyChart .wekkyChart_item .loader .loading .lineLoading7 {
   display: block;
   position: absolute;
   width: 75%;
@@ -4720,65 +4796,68 @@ main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vits
   box-shadow: 10px;
   border-radius: 10px;
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .sevenDayOfWeek {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .sevenDayOfWeek {
   align-items: center;
   justify-content: center;
   padding: 10px 0;
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .sevenDayOfWeek p {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .vitsitOverview .vitsitOverview_item .sevenDayOfWeek p {
   margin: 0 14px;
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller {
   background-color: #ffffff;
   border-radius: 10px;
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .lineDashboard {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .lineDashboard {
   margin: 15px 0 0;
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .topProductSeller_item .ordertopProduct .ordertopProduct_items {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .topProductSeller_item .ordertopProduct .ordertopProduct_items {
   height: 320px;
   overflow-y: scroll;
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .topProductSeller_item .ordertopProduct .ordertopProduct_items .ordertopProduct_item {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .topProductSeller_item .ordertopProduct .ordertopProduct_items .ordertopProduct_item {
   background-color: #4f378b;
   padding: 15px;
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .topProductSeller_item .ordertopProduct .ordertopProduct_items .ordertopProduct_item .nameCategories p,
-main .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .topProductSeller_item .ordertopProduct .ordertopProduct_items .ordertopProduct_item .nameCategories h2 {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .topProductSeller_item .ordertopProduct .ordertopProduct_items .ordertopProduct_item .nameCategories p,
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .topProductSeller_item .ordertopProduct .ordertopProduct_items .ordertopProduct_item .nameCategories h2 {
   color: #ffffff;
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .topProductSeller_item .ordertopProduct .ordertopProduct_items .ordertopProduct_item .priceProduct {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .topProductSeller_item .ordertopProduct .ordertopProduct_items .ordertopProduct_item .priceProduct {
   text-align: end;
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .topProductSeller_item .ordertopProduct .ordertopProduct_items .ordertopProduct_item .priceProduct p,
-main .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .topProductSeller_item .ordertopProduct .ordertopProduct_items .ordertopProduct_item .priceProduct h2 {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .topProductSeller_item .ordertopProduct .ordertopProduct_items .ordertopProduct_item .priceProduct p,
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .topProductSeller .topProductSeller_item .ordertopProduct .ordertopProduct_items .ordertopProduct_item .priceProduct h2 {
   color: #ffffff;
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .totalProfit {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .totalProfit {
   background-color: #ffffff;
   border-radius: 10px;
 }
-main .dashboard .containerAdmin .overviewDashboard .col-12 .totalProfit .totalProfit_items p {
+#mainAdmin .dashboard .containerAdmin .overviewDashboard .col-12 .totalProfit .totalProfit_items p {
   color: #1d192b;
 }
-main .adminFooter .col-6 p {
+#mainAdmin .adminFooter .col-6 p {
   color: #958da5;
 }
-main .adminFooter ul {
+#mainAdmin .adminFooter ul {
   display: flex;
   justify-content: end;
 }
-main .adminFooter ul li {
+#mainAdmin .adminFooter ul li {
   color: #958da5;
   margin: 0 15px;
   list-style: none;
 }
-main .adminFooter ul li a {
+#mainAdmin .adminFooter ul li a {
   text-decoration: none;
   color: #958da5;
 }
 
 @media only screen and (max-width: 46.1875em) {
+  #example1_wrapper {
+    overflow-x: scroll;
+  }
   main nav,
   #adminDashboard nav {
     display: none !important;
@@ -4826,10 +4905,66 @@ main .adminFooter ul li a {
   -webkit-text-fill-color: transparent;
 }
 
-.summary__main {
+.info {
+  align-items: flex-end;
+}
+
+.text-large {
+  color: #000000;
+  font-size: 54px;
+  font-weight: bold;
+  line-height: 86px;
+  /* 126.471% */
+  letter-spacing: -1.25px;
+}
+
+.cart {
+  width: 100%;
+  justify-content: space-between;
+  /* Mobile: with < 740px */
+  /* Tablet: width >= 740px and width < 1024px */
+  /* Mobile and Tablet: width < 1024px */
+}
+.cart .info-cart-start .contain-select .img-cart {
+  width: 130px;
+  height: 150px;
+}
+.cart .info-cart-start .contain-select .img-cart img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.cart .info-cart-start .contain-select .select {
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+}
+.cart .info-cart-start .contain-select .select input[type=checkbox] {
+  width: 18px;
+  height: 18px;
+}
+.cart .info-cart-start .contain-select .select input[type=checkbox]:checked {
+  width: 18px;
+  height: 18px;
+  background-color: #6750a4;
+}
+.cart .info-cart-start .prize-rep {
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+}
+.cart .text-cart {
+  max-width: 250px;
+}
+.cart .text-cart h1 {
+  word-break: break-all;
+}
+.cart .summary__main {
   border: 0.2rem solid #e6e0e9;
 }
-.summary__main .summary__product__name {
+.cart .summary__main .summary__product__name {
   width: 30rem;
   display: -webkit-box;
   -webkit-line-clamp: 1;
@@ -4838,27 +4973,324 @@ main .adminFooter ul li a {
   text-overflow: ellipsis;
   word-break: break-word;
 }
-.summary__main .coupon__form {
+.cart .summary__main .quality {
+  display: flex;
+  gap: 23px;
+}
+.cart .summary__main .quality input {
+  border: 1px solid #49454f;
+}
+.cart .summary__main .quality #amount {
+  width: 40px;
+  text-align: center;
+  color: #6750a4;
+  border-radius: 20px;
+  outline: none;
+}
+.cart .summary__main .quality button {
+  width: 25px;
+  height: 25px;
+  outline: none;
+  background: none;
+  border-radius: 8px;
+}
+.cart .summary__main .quality button:hover {
+  background-color: #ececec;
+}
+.cart .summary__main .priceProduct span {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 32px;
+}
+.cart .summary__main .btn-close {
+  margin-right: 20px;
+}
+.cart .summary__main .coupon__form {
   display: none;
 }
-.summary__main .coupon__form .form__group {
+.cart .summary__main .coupon__form .form__group {
   flex-direction: row !important;
 }
-.summary__main .coupon__form.active {
+.cart .summary__main .coupon__form.active {
   display: block;
 }
-
-.cart__bottom-bar {
+.cart .cart__bottom-bar {
   position: fixed;
   right: 0;
   left: 0;
   bottom: 0;
 }
-.cart__bottom-bar__inner {
+.cart .cart__bottom-bar__inner {
   background: #ffffff;
 }
+.cart .toltal-money {
+  background: linear-gradient(88deg, rgba(66, 0, 255, 0.6) 24.54%, #6A00F2 66.17%, rgba(255, 40, 169, 0.4) 117.27%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 0.1px;
+  text-transform: uppercase;
+}
+.cart .detele-all {
+  display: none;
+}
+.cart .detele-all .delete-size {
+  padding: 12px;
+  border-radius: 100%;
+  border: 2px solid #aea9b1;
+}
+.cart .bill-checkout-rep {
+  display: none !important;
+  opacity: 0;
+  visibility: hidden;
+  gap: 16px;
+  border-radius: 8px;
+}
+.cart .bill-checkout-rep .contain-bill-rep {
+  padding: 15px;
+}
+.cart .bill-checkout-rep .contain-bill-rep .text-top-bill-rep .text-check-bill input, .cart .bill-checkout-rep .contain-bill-rep .text-top-bill-rep .text-check-bill span {
+  color: #6750a4;
+  font-weight: bold;
+}
+.cart .bill-checkout-rep .contain-bill-rep .text-top-bill-rep .text-icon-coupon i, .cart .bill-checkout-rep .contain-bill-rep .text-top-bill-rep .text-icon-coupon span {
+  color: #6750a4;
+  font-weight: bold;
+}
+.cart .bill-checkout-rep .contain-bill-rep .total-bill-rep .line-rep {
+  width: 50% !important;
+  height: 2px !important;
+  background: #CAC4D0 !important;
+  border-radius: 8px !important;
+}
+.cart .bill-checkout-rep .contain-bill-rep button {
+  background-color: black;
+  color: white;
+}
+.cart .section .top-rep {
+  width: 100%;
+  justify-content: space-between;
+  background-color: #fffbfe;
+  height: 60px;
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+}
+.cart .section .top-rep .search-container {
+  position: relative;
+  display: inline-block;
+}
+.cart .section .top-rep .search-container input[type=text] {
+  padding: 10px;
+  padding-left: 40px;
+  border: 1px solid #9a82db;
+  border-radius: 5px;
+  width: 270px;
+  box-sizing: border-box;
+  font-size: 16px;
+  color: #000000;
+}
+.cart .section .top-rep .search-container button {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.cart .section .top-rep .search-container button i {
+  color: #000000;
+}
+.cart .check-box-cart {
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+}
+.cart .bill-checkout .bill-text-right button {
+  background-color: black;
+  color: white;
+}
+.cart .bill-checkout .bill-text-right .info_tex_products .line_bar {
+  width: 50%;
+}
+.cart .bill-checkout .bill-text-right .info_tex_products .line_bar .line_item {
+  width: 100%;
+  height: 2px;
+  background-color: #CAC4D0;
+  border-radius: 8px;
+}
+.cart .cart .info-cart-start .quality-reponsive {
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+  gap: 23px;
+}
+.cart .cart .info-cart-start .quality-reponsive input {
+  border: 1px solid #49454f;
+}
+.cart .cart .info-cart-start .quality-reponsive #amount {
+  width: 40px;
+  text-align: center;
+  color: #6750a4;
+  border-radius: 20px;
+  outline: none;
+}
+.cart .cart .info-cart-start .quality-reponsive button {
+  width: 25px;
+  height: 25px;
+  outline: none;
+  background: none;
+  border-radius: 8px;
+}
+.cart .cart .info-cart-start .quality-reponsive button:hover {
+  background-color: #ececec;
+}
+@media only screen and (min-width: 46.25em) and (max-width: 63.9375em) {
+  .cart .cart .img-cart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px !important;
+    height: 120px !important;
+    object-fit: cover;
+    flex-shrink: 0;
+    transition: 0.2s all ease-in-out;
+  }
+  .cart .bill-checkout .bill-text-right .flex-column .info_tex_products .line_bar {
+    width: 25%;
+  }
+}
+@media only screen and (max-width: 63.9375em) {
+  .cart .section {
+    width: 100% !important;
+  }
+  .cart .section .top-rep {
+    width: 100% !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    opacity: 1;
+    visibility: visible;
+  }
+  .cart .section .container_info_car .main_info-cart {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .cart .section .container_info_car .main_info-cart .info {
+    gap: 0;
+    align-items: flex-start;
+  }
+  .cart .section .container_info_car .main_info-cart .info span {
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+  }
+  .cart .section .container_info_car .detele-all {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .cart .section .container-cart {
+    margin-top: 30px;
+  }
+  .cart .section .container-cart .cart {
+    padding: 10px;
+  }
+  .cart .section .bill-checkout,
+  .cart .section .heart,
+  .cart .section .delete-cart {
+    opacity: 0;
+    display: none;
+    visibility: hidden;
+    transition: all 0.2s ease;
+  }
+  .cart .section .bill-checkout-rep {
+    display: block !important;
+    opacity: 1;
+    visibility: visible;
+  }
+  .cart .cart .info-cart-start {
+    width: 100% !important;
+  }
+  .cart .cart .info-cart-start .quality-reponsive {
+    display: flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  .cart .cart .info-cart-start .contain-select .select {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    visibility: visible;
+  }
+  .cart .cart .info-cart-start .contain-select .select input[type=checkbox] {
+    width: 20px;
+    height: 20px;
+  }
+  .cart .cart .info-cart-start .contain-select .select input[type=checkbox]:checked {
+    width: 20px;
+    height: 20px;
+    background-color: #6750a4;
+  }
+  .cart .cart .info-cart-start .check-box-cart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    visibility: visible;
+    padding-left: 20px;
+  }
+  .cart .cart .info-cart-start .check-box-cart .check-box {
+    width: 18px;
+    height: 18px;
+  }
+  .cart .cart .info-cart-start .img-cart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px !important;
+    height: 120px !important;
+    object-fit: cover;
+    flex-shrink: 0;
+    transition: 0.2s all ease-in-out;
+  }
+  .cart .cart .info-cart-start .text-cart {
+    margin-right: auto;
+    gap: 10px;
+  }
+  .cart .cart .info-cart-start .text-cart .prize-rep {
+    width: 100% !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+    opacity: 1;
+    visibility: visible;
+  }
+  .cart .cart .priceProduct,
+  .cart .cart .quality,
+  .cart .cart .heart {
+    opacity: 0;
+    display: none;
+    visibility: hidden;
+    transition: all 0.2s ease;
+  }
+  .cart .cart .delete_cart {
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+  }
+  .cart .bill-checkout .bill-text-right .flex-column .info_tex_products .line_bar {
+    width: 25%;
+  }
+}
 
-/* Mobile: with < 740px */
 /* Tablet: width >= 740px and width < 1024px */
 /* Mobile and Tablet: width < 1024px */
 /* PC: width >= 1024px */
@@ -5018,13 +5450,19 @@ main .adminFooter ul li a {
     align-items: center !important;
   }
 }
+.dashboard a.label-large {
+  color: #6750a4;
+}
+
 .containerAdmin_order-detail {
   font-size: 1.3rem;
   background-color: white;
+  width: 100%;
+  border-radius: 10px;
 }
 .containerAdmin_order-detail a {
   text-decoration: none;
-  color: blue;
+  color: #6750a4;
 }
 .containerAdmin_order-detail .admin-black {
   color: black;
@@ -5161,11 +5599,15 @@ main .adminFooter ul li a {
   align-items: center;
 }
 .right-order-add-create .img_order-add-create {
-  background-color: #D9D9D9;
+  min-width: 410px;
+  max-width: 410px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .right-order-add-create .img_order-add-create img {
-  height: 100%;
-  width: 1000px;
+  height: 80%;
+  width: 80%;
   border-radius: 10px;
 }
 .right-order-add-create .button_delete_img {
@@ -5792,6 +6234,255 @@ section .containerAdmin .pagination li a {
   }
 }
 /* PC: width >= 1024px */
+section .containerAdmin .box-banner .container-banner_admin .banner_admin_left .img_banner_admin-options {
+  border: 2px solid #ffffff;
+  cursor: pointer;
+}
+section .containerAdmin .box-banner .container-banner_admin .banner_admin_left .img_banner_admin-options.active {
+  border: 2px solid #2cccff;
+}
+section .containerAdmin .box-banner .container-banner_admin .banner_admin_left a {
+  text-decoration: none;
+}
+section .containerAdmin .box-banner .container-banner_admin .banner_admin_left a .img_banner_admin_add {
+  height: 100px;
+  background-color: #938f96;
+}
+section .containerAdmin .box-banner .container-banner_admin .banner_admin_left a .img_banner_admin_add i {
+  color: #ffffff;
+}
+section .containerAdmin .box-banner .banner_admin_right .content_banner_right .img_banner_admin {
+  width: 307px;
+  height: 344px;
+}
+section .containerAdmin .box-banner .banner_admin_right .content_banner_right .img_banner_adminimg {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
+section .containerAdmin .box-banner .banner_admin_right .banner_admin {
+  background: linear-gradient(107deg, #B3261E 0%, rgba(239, 49, 38, 0.6) 82.62%);
+  display: none !important;
+  transform: translateY(100%);
+  opacity: 0;
+}
+section .containerAdmin .box-banner .banner_admin_right .banner_admin.active {
+  opacity: 1;
+  display: flex !important;
+  transform: translateY(0);
+}
+section .containerAdmin .box-banner .banner_admin_right .banner_admin .content_banner_left {
+  width: 50%;
+}
+section .containerAdmin .box-banner .banner_admin_right .banner_admin .content_banner_left .text_right_banner .text_bottom {
+  color: #ffffff;
+}
+section .containerAdmin .box-banner .banner_admin_right .banner_admin .content_banner_left .text_right_banner .text_main_banner {
+  max-width: 350px;
+}
+section .containerAdmin .box-banner .banner_admin_right .banner_admin .content_banner_left .text_right_banner .text_main_banner span {
+  color: #ffffff;
+  font-size: 36px;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.5px;
+}
+section .containerAdmin .box-banner .banner_admin_right .banner_admin .content_banner_left .text_right_banner .content_btn_banner_admin .btn-banner_left button {
+  padding: 10px 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100px;
+  background: #6750a4;
+  cursor: pointer;
+  color: #ffffff;
+}
+section .containerAdmin .box-banner .banner_admin_right .banner_admin .content_banner_left .text_right_banner .content_btn_banner_admin .btn-banner_right button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 24px;
+  border-radius: 100px;
+  background-color: #ffffff;
+}
+section .containerAdmin .box-banner .banner_admin_right .banner_admin .content_banner_left .text_right_banner .content_btn_banner_admin .btn-banner_right button i, section .containerAdmin .box-banner .banner_admin_right .banner_admin .content_banner_left .text_right_banner .content_btn_banner_admin .btn-banner_right button span {
+  color: #6750a4;
+  text-align: center;
+}
+section .containerAdmin .box-banner .banner_admin_right .options_banner_admin .container-options_banner {
+  display: inline-block;
+}
+section .containerAdmin .box-banner .banner_admin_right .options_banner_admin .container-options_banner .options_banner {
+  width: 200px;
+  height: 125px;
+  cursor: pointer;
+  border: 2px solid #cac5cd;
+}
+section .containerAdmin .box-banner .banner_admin_right .options_banner_admin .container-options_banner .options_banner.active {
+  border: 2px solid #2cccff;
+}
+section .containerAdmin .box-banner .banner_admin_right .options_banner_admin .container-options_banner .options_bannerimg {
+  max-width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.containerAdmin .manageCoupon .manageCoupon_items {
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+.containerAdmin .manageCoupon .manageCoupon_items a {
+  text-decoration: none;
+}
+.containerAdmin .manageCoupon .manageCoupon_items .manageCoupon_itemsSetting i {
+  font-size: 60px;
+  background: -webkit-linear-gradient(60deg, #ff79ea, #a93cff, #6791ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.containerAdmin .manageCoupon .manageCoupon_items .manageCoupon_itemsText {
+  margin-left: 20px;
+}
+.containerAdmin .manageCoupon .manageCoupon_items .manageCoupon_itemsText h2 {
+  color: #1d192b;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+.containerAdmin .createCoupon .createCoupon_left {
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+.containerAdmin .createCoupon .createCoupon_left .createCoupon_items {
+  margin-top: 25px;
+}
+.containerAdmin .createCoupon .createCoupon_left .createCoupon_items .col-6 {
+  width: calc(50% - 10px) !important;
+}
+.containerAdmin .createCoupon .createCoupon_left .createCoupon_items .col-6:last-child {
+  margin-left: 20px;
+}
+.containerAdmin .createCoupon .createCoupon_left .createCoupon_items .col-6 input {
+  width: 100%;
+  border: unset;
+  border-radius: 10px;
+  background-color: #e6e0e9;
+  padding: 20px 30px 20px 15px;
+  color: #49454f;
+  margin-top: 10px;
+}
+.containerAdmin .createCoupon .createCoupon_left .createCoupon_items .infoCoupon input {
+  width: 100%;
+  border: unset;
+  border-radius: 10px;
+  background-color: #e6e0e9;
+  padding: 20px 30px 20px 15px;
+  color: #49454f;
+  margin-top: 10px;
+}
+.containerAdmin .createCoupon .createCoupon_left .createCouponSubmit {
+  width: 100%;
+  border: unset;
+  border-radius: 10px;
+  background-color: #6750a4;
+  padding: 20px 30px 20px 15px;
+  color: #ffffff;
+  margin-top: 25px;
+}
+.containerAdmin .createCoupon .createCoupon_right {
+  background-color: #ffffff;
+  border-radius: 10px;
+  transition: 0.22s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.containerAdmin .createCoupon .createCoupon_right .listCouponHead h4 {
+  color: #1d192b;
+}
+.containerAdmin .createCoupon .createCoupon_right .listCouponHead i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: rgba(128, 128, 128, 0.1);
+}
+.containerAdmin .createCoupon .createCoupon_right .listCoupon_item {
+  height: 420px;
+  overflow-y: scroll;
+}
+.containerAdmin .createCoupon .createCoupon_right .listCoupon_item .listCoupon_items {
+  margin-top: 20px;
+  border-radius: 10px;
+}
+.containerAdmin .createCoupon .createCoupon_right .listCoupon_item .listCoupon_items .col-3 .saleListCoupon {
+  width: 60px;
+  height: 60px;
+  line-height: 55px;
+  background-color: rgba(182, 109, 255, 0.368627451);
+  color: #21005d;
+  display: flex;
+  justify-content: center;
+  border-radius: 10px;
+  transition: 0.22s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.containerAdmin .createCoupon .createCoupon_right .listCoupon_item .listCoupon_items .col-9 .titleSaleListCoupon {
+  margin-bottom: 15px;
+}
+.containerAdmin .createCoupon .createCoupon_right .listCoupon_item .listCoupon_items .buttonShowFeatureCoupon {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.containerAdmin .createCoupon .createCoupon_right .listCoupon_item .listCoupon_items .buttonShowFeatureCoupon i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: rgba(128, 128, 128, 0.1);
+}
+.containerAdmin .createCoupon .createCoupon_right .listCoupon_item .listCoupon_items .buttonShowFeatureCoupon .hiddenFeatureCoupon {
+  display: none;
+  position: absolute;
+  bottom: -50px;
+  right: 5px;
+}
+.containerAdmin .createCoupon .createCoupon_right .listCoupon_item .listCoupon_items .buttonShowFeatureCoupon .hiddenFeatureCoupon ul {
+  background-color: #f7f7f7;
+  width: 120px;
+  border-radius: 10px;
+}
+.containerAdmin .createCoupon .createCoupon_right .listCoupon_item .listCoupon_items .buttonShowFeatureCoupon .hiddenFeatureCoupon ul li {
+  text-align: center;
+  padding: 10px 15px;
+  border-radius: 10px;
+}
+.containerAdmin .createCoupon .createCoupon_right .listCoupon_item .listCoupon_items .buttonShowFeatureCoupon .hiddenFeatureCoupon ul li:hover {
+  background-color: rgba(234, 221, 255, 0.5411764706);
+}
+.containerAdmin .createCoupon .createCoupon_right .listCoupon_item .listCoupon_items .buttonShowFeatureCoupon .hiddenFeatureCoupon ul li a {
+  text-decoration: none;
+  color: #000000;
+}
+.containerAdmin .createCoupon .createCoupon_right .listCoupon_item .listCoupon_items:hover {
+  background-color: #f7f4ff;
+}
+.containerAdmin .createCoupon .createCoupon_right .listCoupon_item .listCoupon_items:hover .col-3 .saleListCoupon {
+  background-color: #eaddff;
+}
+
+.pagination .paginate_button.page-item.active a {
+  border-color: #6750a4;
+  background-color: #6750a4;
+  color: #ffffff;
+}
+.pagination .paginate_button.page-item a {
+  color: #6750a4;
+}
+
 /* Mobile: with < 740px */
 @media only screen and (max-width: 46.1875em) {
   .mobile {

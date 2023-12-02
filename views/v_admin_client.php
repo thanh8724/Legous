@@ -20,7 +20,7 @@ if (@$_POST['act_search']) {
       <div class="search-box">
         <input type="submit" value=""><i class="far fa-search"></i>
 
-        <input name="act_search" value="" type="text" placeholder="Search here...">
+        <input name="act_search" value="" type="text" placeholder="Tìm kiếm...">
       </div>
     </form>
     <div class="info-user">
@@ -39,7 +39,7 @@ if (@$_POST['act_search']) {
             <li>
               <div class="col-12 d-flex">
                 <div class="col-2">
-                  <img class="notifiAdminImg" src="./public/assets/media/images/users/<?php echo $getUser['img'] ?>"
+                  <img class="notifiAdminImg" src="./upload/users/<?php echo $getUser['img'] ?>"
                     alt="">
                 </div>
                 <div class="col-10">
@@ -70,7 +70,7 @@ if (@$_POST['act_search']) {
             <li>
               <div class="col-12 d-flex">
                 <div class="col-2">
-                  <img class="notifiAdminImg" src="./public/assets/media/images/users/profile.jpg" alt="">
+                  <img class="notifiAdminImg" src="./upload/users/profile.jpg" alt="">
                 </div>
                 <div class="col-10">
                   <p class="notifiAdminText body-small"><strong>
@@ -93,7 +93,7 @@ if (@$_POST['act_search']) {
         $getID = $_SESSION['admin']['id_user'];
         $getUser = getUserById($getID);
         ?>
-        <img style="" class="btnShowFeature" src="./public/assets/media/images/users/<?php echo $getUser['img'] ?>"
+        <img style="" class="btnShowFeature" src="./upload/users/<?php echo $getUser['img'] ?>"
           alt="">
         <ul class="showFeatureAdminHeader box-shadow1">
 
@@ -150,10 +150,6 @@ if (@$_POST['act_search']) {
     <table id="example1" class="content-table width-full">
       <thead>
         <tr>
-          <th style="text-align: start;">
-            <input type="checkbox" style="width: 18px; height: 18px;">
-            </input>
-          </th>
           <th>ID</th>
           <th>Họ Và Tên</th>
           <th>Ảnh</th>
@@ -170,10 +166,6 @@ if (@$_POST['act_search']) {
         foreach ($user_list as $item) {
           ?>
           <tr>
-            <td style="text-align: start;">
-              <input type="checkbox" style="width: 18px; height: 18px;">
-              </input>
-            </td>
             <td>
               <?php echo $item['id'] ?>
             </td>
@@ -181,18 +173,18 @@ if (@$_POST['act_search']) {
               <?php echo $item['fullname'] ?>
             </td>
             <?php
-            $upload_dir = './public/assets/media/images/users/';
+            $upload_dir = './upload/users/';
             //Đường dẫn của file sau khi upload
             $upload_file = $upload_dir . $item['img'];
             if (empty($item['img']) || $item['img'] == NULL || !file_exists($upload_file)) {
               ?>
               <td><img style="width:50px; height: 50px; border-radius: 3px"
-                  src="./public/assets/media/images/users/anonyUser.png" alt=""></td>
+                  src="./upload/users/anonyUser.png" alt=""></td>
             <?php
             } else {
               ?>
               <td><img style="width:50px; height: 50px; border-radius: 3px"
-                  src="./public/assets/media/images/users/<?php echo $item['img'] ?>" alt=""></td>
+                  src="./upload/users/<?php echo $item['img'] ?>" alt=""></td>
             <?php
             }
             ?>
@@ -233,3 +225,8 @@ if (@$_POST['act_search']) {
   <!----======== End Body DashBoard ======== -->
 
 </section>
+<script>
+if (window.innerWidth < 1300) {
+  document.querySelector('nav').classList.add("close");
+}
+</script>

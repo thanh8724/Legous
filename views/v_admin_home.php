@@ -35,7 +35,7 @@ foreach ($getCmt as $item) {
         <form style="width: 100%;display:flex; justify-content: center;" action="" method="post">
             <div class="search-box">
                 <i class="far fa-search"></i>
-                <input type="text" placeholder="Search here...">
+                <input type="text" placeholder="Tìm kiếm...">
             </div>
         </form>
         <div class="info-user">
@@ -54,8 +54,17 @@ foreach ($getCmt as $item) {
                         <li>
                             <div class="col-12 d-flex">
                                 <div class="col-2">
-                                    <img class="notifiAdminImg"
-                                        src="./public/assets/media/images/users/<?php echo $getUser['img'] ?>" alt="">
+                                    <?php
+                                    if ($getUser['img'] == NULL && !empty($getUser['img'])) {
+                                        ?>
+                                        <img class="notifiAdminImg" src="./upload/users/<?php echo $getUser['img'] ?>" alt="">
+                                    <?php
+                                    } else {
+                                        ?>
+                                        <img class="notifiAdminImg" src="./upload/users/avatar-none.png" alt="">
+                                    <?php
+                                    }
+                                    ?>
                                 </div>
                                 <div class="col-10">
                                     <p class="notifiAdminText body-small"><strong>
@@ -85,7 +94,17 @@ foreach ($getCmt as $item) {
                         <li>
                             <div class="col-12 d-flex">
                                 <div class="col-2">
-                                    <img class="notifiAdminImg" src="./public/assets/media/images/users/profile.jpg" alt="">
+                                <?php
+                                    if ($getUser['img'] == NULL && !empty($getUser['img'])) {
+                                        ?>
+                                        <img class="notifiAdminImg" src="./upload/users/<?php echo $item['img'] ?>" alt="">
+                                    <?php
+                                    } else {
+                                        ?>
+                                        <img class="notifiAdminImg" src="./upload/users/avatar-none.png" alt="">
+                                    <?php
+                                    }
+                                    ?>
                                 </div>
                                 <div class="col-10">
                                     <p class="notifiAdminText body-small"><strong>
@@ -107,9 +126,16 @@ foreach ($getCmt as $item) {
                 <?php
                 $getID = $_SESSION['admin']['id_user'];
                 $getUser = getUserById($getID);
+                if (!empty($getUser['img']) && $getUser != NULL) {
+                    ?>
+                    <img style="" class="btnShowFeature" src="./upload/users/<?php echo $getUser['img'] ?>" alt="">
+                    <?php
+                } else {
+                    ?>
+                    <img style="" class="btnShowFeature" src="./upload/users/avatar-none.png" alt="">
+                    <?php
+                }
                 ?>
-                <img style="" class="btnShowFeature"
-                    src="./public/assets/media/images/users/<?php echo $getUser['img'] ?>" alt="">
                 <ul class="showFeatureAdminHeader box-shadow1">
 
                     <li><a class="body-small" href="#statisticalChart">Thống kê đơn hàng</a></li>
@@ -143,23 +169,6 @@ foreach ($getCmt as $item) {
 
             </div>
         </div>
-        <!-- <div class="localDashboard p30">
-                    <div class="col-12 d-flex mt-5 pt-5">
-                        <div class="col-6">
-                            <div class="col-12">
-                                <h2 class="headline-small h2_dashboard">Bảng Điều Khiển</h2>
-                            </div>
-                            <div class="col-12">
-                                <a class="body-medium aHref1" href="#">Admin</a> / <a href="#"
-                                    class="body-medium aHref2">Bảng Điều Khiển</a>
-                            </div>
-                        </div>
-                        <div class="col-6 d-flex justify-content-end">
-                            <section><i class="fal fa-calendar-alt calenderColor"></i> <span
-                                    class="dateCalender label-medium ml12">Aug 21, 2023 - Aug 28, 2023</span></section>
-                        </div>
-                    </div>
-                </div> -->
         <div class="owl-carousel owl-theme p30">
             <div class="item box-shadow1 slider_contain">
                 <div class="slider_items p-4">
@@ -299,12 +308,12 @@ foreach ($getCmt as $item) {
         <div id="statisticalChart" class="statisticalChart p30">
             <div class="statisticalChartItems">
                 <div class="col-12 d-xxl-flex customerOrderStatistics d-md-block d-sm-block">
-                    <div class="col-xxl-7  col-lg-12 col-md-12 col-sm-12 p20 box-shadow1 orderStatistics">
-                        <div class="col-12 d-flex">
-                            <div class="col-6">
-                                <p class="title-medium">Thống Kê Đơn Hàng</p>
+                    <div class="col-xxl-7  col-lg-12 col-md-12 col-sm-12 p20 box-shadow1 orderStatistics me-0 me-xxl-5 me-xl-5 me-lg-5">
+                        <div class="col-12 d-block d-xxl-flex d-xl-flex d-lg-flex">
+                            <div class="col-12 col-xxl-6 col-xl-6 col-lg-6">
+                                <p class="title-medium text-xxl-start text-xl-center text-lg-center text-center">Thống Kê Đơn Hàng</p>
                             </div>
-                            <div class="col-6">
+                            <div class="col-12 col-xxl-6 col-xl-6 col-lg-6 mt-3 mt-xxl-0 mt-xl-0 mt-lg-0">
                                 <ul class="nav nav-tabs myNavTabs" id="myTab" role="tablist">
                                     <li class="nav-item myNavItem" role="presentation" style="width: 50%;">
                                         <button style="width: 100%;" class="nav-link active" id="statistical"
@@ -338,8 +347,7 @@ foreach ($getCmt as $item) {
                             </div>
                         </div>
                     </div>
-                    <div
-                        class="col-xxl-5 col-lg-12 col-md-12 col-sm-12 p20 box-shadow1 topUsers mt-xxl-0 mt-md-5 mt-sm-5 mt-5">
+                    <div class="col-xxl-5 col-lg-12 col-md-12 col-sm-12 p20 box-shadow1 topUsers mt-xxl-0 mt-md-5 mt-sm-5 mt-5">
                         <div class="headerTopUser d-flex justify-content-between align-items-center">
                             <p class="title-medium">Người Dùng Hàng Đầu</p>
                             <button class="btnShowMoreInfoAdminDashboard">
@@ -359,12 +367,14 @@ foreach ($getCmt as $item) {
                                 $orderCountByUser = array();
 
                                 foreach ($bill as $item) {
-                                    if (!isset($totalByUser[$item['id_user']])) {
-                                        $totalByUser[$item['id_user']] = 0;
-                                        $orderCountByUser[$item['id_user']] = 0;
+                                    if ($item['status'] == 5) {
+                                        if (!isset($totalByUser[$item['id_user']])) {
+                                            $totalByUser[$item['id_user']] = 0;
+                                            $orderCountByUser[$item['id_user']] = 0;
+                                        }
+                                        $totalByUser[$item['id_user']] += $item['total'];
+                                        $orderCountByUser[$item['id_user']]++;
                                     }
-                                    $totalByUser[$item['id_user']] += $item['total'];
-                                    $orderCountByUser[$item['id_user']]++;
                                 }
                                 // Sắp xếp mảng theo thứ tự giảm dần
                                 arsort($totalByUser);
@@ -373,7 +383,7 @@ foreach ($getCmt as $item) {
                                 $totalByUser = array_slice($totalByUser, 0, 5, true);
 
                                 foreach ($totalByUser as $userId => $total) {
-                                    
+
                                     $user = getUserById($userId);
                                     ?>
                                     <div class="topUserOder_items">
@@ -381,24 +391,27 @@ foreach ($getCmt as $item) {
                                             <div class="col-6 d-flex ">
                                                 <div class="topUserOrder__image mr6">
                                                     <?php
-                                                    $upload_dir = './public/assets/media/images/users/';
+                                                    $upload_dir = './upload/users/';
                                                     //Đường dẫn của file sau khi upload
                                                     $upload_file = $upload_dir . $user['img'];
                                                     if (empty($user['img']) || $user['img'] == NULL || !file_exists($upload_file)) {
                                                         ?>
-                                                        <img src="./public/assets/media/images/users/anonyUser.png" alt="">
+                                                        <img src="./upload/users/avatar-none.png" alt="">
                                                         <?php
                                                     } else {
                                                         ?>
-                                                        <img src="./public/assets/media/images/users/<?php echo $user['img'] ?>"
-                                                            alt="">
+                                                        <img src="./upload/users/<?php echo $user['img'] ?>" alt="">
                                                         <?php
                                                     }
                                                     ?>
                                                 </div>
                                                 <div class="topUserOrder__info">
                                                     <div class="topUserOrder__name body-large">
-                                                        <?php echo $user['fullname'] ?>
+                                                        <?php if ($user['fullname'] == NULL && !empty($user['fullname'])) {
+                                                            echo $user['username'];
+                                                        } else {
+                                                            echo $user['fullname'];
+                                                        } ?>
                                                     </div>
                                                     <div class="topUserOrder__role label-medium">Thành Viên Vip</div>
                                                 </div>
@@ -679,7 +692,6 @@ foreach ($getCmt as $item) {
             </div>
         </div>
     </footer>
-    </div>
 
 
     <!----======== End Body DashBoard ======== -->

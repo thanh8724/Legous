@@ -31,6 +31,7 @@
     @import 'components/cartProduct.scss';
     @import 'components/summaryProduct.scss';
     // import theme
+    @import 'theme/darkMode.scss';
     @import 'theme/darkModeAdmin.scss';
     
     // import layout
@@ -54,6 +55,8 @@
     @import 'pages/mobileSearch.scss';
     @import 'pages/contact.scss';
     @import 'pages/admin_products.scss';
+    @import 'pages/admin_banner.scss';
+    @import 'pages/admin_coupon.scss';
 
 // import partials end
 

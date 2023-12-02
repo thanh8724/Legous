@@ -81,7 +81,7 @@ Validator.isRequired = (selector , message) => {
     return {
         selector,
         test (value) {
-            return value.trim() ? undefined : message || 'Vui lòng điền thông tin'
+            return value.trim() ? undefined : message || 'Vui lòng điền thông tin!'
         }
     }
 }
@@ -99,7 +99,7 @@ Validator.isPhone = (selector , message) => {
         selector,
         test (value) {
             const regex = /^(0[2|3|5|6|7|8|9])+([0-9]{8})$/;
-            return regex.test(value) ? undefined : message || 'Số điện thoại của bạn không hợp lệ!' 
+            return regex.test(value) ? undefined : message || 'Số điện thoại không hợp lệ!' 
         }
     }
 }
@@ -121,30 +121,5 @@ Validator.isConfirm = (selector , confirm , message) => {
 }
 
 Validator.isUsername = function (selector, message) {
-    return {
-        selector: selector,
-        async test(value) {
-            if (!value.trim()) {
-                return message || ' !';
-            }
-            
-            return new Promise(function (resolve, reject) {
-                $.ajax({
-                    url: checkEmailUrl,
-                    method: 'POST',
-                    data: { username: value },
-                    success: function (response) {
-                        if (response === 'exists') {
-                            resolve('Tên đăng nhập đã tồn tại trên hệ thống.');
-                        } else {
-                            resolve();
-                        }
-                    },
-                    error: function (xhr, status, error) {
-                        reject('Có lỗi xảy ra trong quá trình kiểm tra. Vui lòng thử lại.');
-                    }
-                });
-            });
-        },
-    };
+    
 };

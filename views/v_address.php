@@ -5,6 +5,10 @@
     $set_defaultButton = '';
      #code
     $id_user = $_SESSION['userLogin']['id_user'];
+    # get user name account
+    extract(checkAccount($id_user));
+    $name_userAccount = $username;
+
      $list_addressUser = get_address($id_user);
 
      # lấy ra địa chỉ được set là mặc định
@@ -14,21 +18,82 @@
          $id_addressDefault = $id;
          $is_addressDefault = $is_default;
      }
-     # xử lí khi thêm địa chỉ mới
+ 
+     $class_add = '';
+     $error_input = '';
+     $error_message = '';
+     #lưu trữ thông tin người dùng nhập
+     $name_value = '';
+     $phone_value = '';
+     $address_value = '';
+     $addressDetail_value = '';
+     # hiển thị thông báo của form message
+    $message_name = 'Khuyến khích sử dụng tên thật.';
+    $message_phone = 'Thông tin bắt buộc.';
+    $message_address = 'Thông tin bắt buộc.';
+    $message_addressDetail = 'Địa chỉ cụ thể giúp dễ dàng trong việc giao hàng.';
+    #xử lí thêm địa chỉ
+    $message_phoneError = '';
      if(isset($_POST['button_address'])) {
-         $name_user = $_POST['full_userName'];
-         $phone_user = $_POST['phoneUser'];
-         $address_user = $_POST['address'];
-         $address_detail = $_POST['address-detail'];
-         if(isset($_POST['set_defaultAddress'])) {
-             $address_default = 1;
-             un_addressDefault($id_addressDefault);
-         }else {
-             $address_default = 0;
-         }
-         add_address($name_user, $phone_user, $address_detail, $address_user, $address_default, $id_user);
-         header('location: ?mod=user&act=address');
-         exit;
+        if($_POST['full_userName'] != "" && $_POST['phoneUser'] != "" && $_POST['address'] != "" && $_POST['address-detail'] != "")  {
+            $name_user = $_POST['full_userName'];
+            $phone_user = $_POST['phoneUser'];
+            $address_user = $_POST['address'];
+            $address_detail = $_POST['address-detail'];
+            if(isset($_POST['set_defaultAddress'])) {
+                $address_default = 1;
+                un_addressDefault($id_addressDefault);
+            }else {
+                $address_default = 0;
+                $message_name = 'Vui lòng điền thông tin';
+            }
+            # kiểm tra số điện thoại có thỏa mãn điều kiện hay không
+            $phone = $_POST["phoneUser"];
+            $pattern =  "/^0[2|3|5|6|7|8|9][0-9]{8}$/";
+            if (preg_match($pattern, $phone)) {
+                $id_user = $_SESSION['userLogin']['id_user'];
+                add_address($name_user, $phone_user, $address_detail, $address_user, $address_default, $id_user);
+                header('location: ?mod=user&act=address');
+                exit;
+            } else {
+                $class_add = 'show';
+                $message_phoneError = 'Số điện thoại không hợp lệ.';
+            }
+        }
+        # kiểm tra xử lí khi điền form thiếu thông tin...
+        if($_POST['full_userName'] == "" && $_POST['phoneUser'] == "" && $_POST['address'] == "" && $_POST['address-detail'] == "") {
+            $class_add = 'show';
+            $error_message = 'error_formMessage';
+            $error_input = 'error_input';
+            $message_name = 'Chưa điền thông tin!';
+            $message_phone = 'Chưa điền thông tin!';
+            $message_address = 'Chưa điền thông tin!';
+            $message_addressDetail = 'Chưa điền thông tin!';
+        }else if($_POST['full_userName'] != ''){
+            $name_value = $_POST['full_userName'];
+            $class_add = 'show';
+            $error_message = 'error_formMessage';
+            $error_input = 'error_input';
+            $message_name = '';
+        }if($_POST['phoneUser'] != '') {
+            $phone_value = $_POST['phoneUser'];
+            $class_add = 'show';
+            $error_message = 'error_formMessage';
+            $error_input = 'error_input';
+            $message_phone = '';
+        }if($_POST['address'] != '') {
+            $address_value = $_POST['address'];
+            $class_add = 'show';
+            $error_message = 'error_formMessage';
+            $error_input = 'error_input';
+            $message_address = '';
+        }if($_POST['address-detail'] != '') {
+            $addressDetail_value = $_POST['address-detail'];
+            $class_add = 'show';
+            $error_message = 'error_formMessage';
+            $error_input = 'error_input';
+            $message_addressDetail = '';
+        }
      }
 
      # thay đổi địa chỉ được set default
@@ -60,8 +125,8 @@
                                                     <span>(+84) '.$phone.'</span>
                                                 </div>
                                                 <div class="form__address--left---rows-2">
-                                                    <span>'.$address_detail.'</span>
                                                     <span>'.$address.'</span>
+                                                    <span>'.$address_detail.'</span>
                                                 </div>
                                                 <div class="form__address--left---rows-3">
                                                     <div class="label__default rounded-8 label-large">
@@ -92,8 +157,8 @@
                                         <span>(+84) '.$phone.'</span>
                                     </div>
                                     <div class="form__address--left---rows-2">
-                                        <span>'.$address_detail.'</span>
                                         <span>'.$address.'</span>
+                                        <span>'.$address_detail.'</span>
                                     </div>
                                     <div class="form__address--left---rows-3">
                                         '.$address_default.'
@@ -115,20 +180,19 @@
                             <hr class="ouline-variant">';
         }
     }
-    
 ?>
 
 <main class="main__user">
     <div class="main__inner">
         <div class="main__inner--top">
             <div class="avatar__image">
-                <img srcset="upload/users/<?=$avatarImage_user?> 2x" alt="" class="avatar__image--user">
+                <img srcset="<?=$avatarImage_user?> 2x" alt="" class="avatar__image--user">
             </div>
             <div class="info__user">
                 <div class="info__user--top">
-                    <span class="user__name"><?=$username?></span>
+                    <span class="user__name"><?= $name_userAccount ?></span>
                     <span>/</span>
-                    <span>Tổng quan</span>
+                    <span>Địa chỉ</span>
                 </div>
                 <div class="info__user--bottom">
                     <span class="info__user--desc">
@@ -161,40 +225,40 @@
 
 
 <!-- form address -->
-<section class="form__address--container full" id="form_add-address">
+<section class="form__address--container full address__form <?=$class_add?>" id="form_add-address">
     <form action="" method="POST" class="form__address--content">
         <div class="form__address--content-rows1 flex">
             <!-- normal form group -->
             <div class="form__group without-title">
                 <!-- <span class="form__label"></span> -->
-                <input type="text" name="full_userName" class="form__input" placeholder=" ">
-                <label for="" class="label__place">Họ và tên</label>
-                <span class="form__message">Thông tin bắt buộc</span>
+                <input type="text" name="full_userName" class="form__input input--name form__inputAddress <?=$error_input?>" value="<?=$name_value?>" placeholder=" ">
+                <label for="" class="label__place <?=$error_message?>">Họ và tên</label>
+                <span class="form__message <?=$error_message?>"><?=$message_name?></span>
             </div>
             <!-- normal form group -->
             <div class="form__group without-title">
                 <!-- <span class="form__label"></span> -->
-                <input type="number" name="phoneUser" class="form__input" placeholder=" ">
-                <label for="" class="label__place">Số điện thoại</label>
-                <span class="form__message">thí is</span>
-            </div>
-        </div>
-        <div class="form__address--content-rows2">
-            <!-- normal form group -->
-            <div class="form__group without-title">
-                <!-- <span class="form__label"></span> -->
-                <input type="text" name="address" class="form__input" placeholder=" ">
-                <label for="" class="label__place">Tỉnh/Thành phố, Quận/Huyện, Phường/Xã</label>
-                <span class="form__message">.</span>
+                <input type="number" name="phoneUser" class="form__input input--phone form__inputAddress <?=$error_input?>" value="<?=$phone_value?>" placeholder=" ">
+                <label for="" class="label__place <?=$error_message?>">Số điện thoại</label>
+                <span class="form__message <?=$error_message?>"><?=$message_phone?><?=$message_phoneError?></span>
             </div>
         </div>
         <div class="form__address--content-rows2">
             <!-- normal form group -->
             <div class="form__group without-title">
                 <!-- <span class="form__label"></span> -->
-                <input type="text" name="address-detail" class="form__input" placeholder=" ">
-                <label for="" class="label__place">Địa chỉ cụ thể</label>
-                <span class="form__message"></span>
+                <input type="text" name="address" class="form__input input--address_top form__inputAddress <?=$error_input?>" value="<?=$address_value?>" placeholder=" ">
+                <label for="" class="label__place <?=$error_message?>">Tỉnh/Thành phố, Quận/Huyện, Phường/Xã</label>
+                <span class="form__message <?=$error_message?>"><?=$message_address?></span>
+            </div>
+        </div>
+        <div class="form__address--content-rows2">
+            <!-- normal form group -->
+            <div class="form__group without-title">
+                <!-- <span class="form__label"></span> -->
+                <input type="text" name="address-detail" class="form__input input--address_bottom form__inputAddress <?=$error_input?>" value="<?=$addressDetail_value?>" placeholder=" ">
+                <label for="" class="label__place <?=$error_message?>">Địa chỉ cụ thể</label>
+                <span class="form__message <?=$error_message?>"><?=$message_addressDetail?></span>
             </div>
         </div>
         <div class="form__address--content-rows3">
@@ -207,8 +271,33 @@
         <div class="form__address--content-rows5">
             <div class="form__group">
                 <button  name="back_address" class="label-large" id="">Trở lại</button>
-                <input type="submit" name="button_address" value="Lưu thông tin" class="label-large">
+                <input type="submit" name="button_address" value="Lưu thông tin" class="label-large add_address">
             </div>
         </div>
     </form>
 </section>
+<script src="./public/assets/resources/js/validator_ofNQT.js"></script>
+<script>
+    Validator({
+        formSelector: '.address__form',
+        formGroupSelector: '.form__group',
+        formMessage: '.form__message',
+        rules: [
+            Validator.isPhone('.input--phone'),
+            Validator.isRequired('.input--name'),
+            Validator.isRequired('.input--address_top'),
+            Validator.isRequired('.input--address_bottom'),
+        ]
+    })
+</script>
+<script>
+    var inputs = document.querySelectorAll(".form__inputAddress");
+    let phone =document.querySelector('.input--phone');
+    for (var i = 0; i < inputs.length; i++) {
+        if(inputs[i].parentElement.children[2].innerText === "") {
+            inputs[i].classList.remove("error_input");
+            inputs[i].parentElement.children[1].classList.remove('error_formMessage');
+            inputs[i].parentElement.children[2].classList.remove('error_message');
+        }
+    }
+</script>

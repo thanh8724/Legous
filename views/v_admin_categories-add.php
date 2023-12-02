@@ -3,10 +3,10 @@
     <div class="top">
         <i class="fas fa-angle-left sidebar-toggle"></i>
         <div class="search-box">
-            <!-- <form action="" method="post">
+            <form action="" method="post">
                 <i class="far fa-search"></i>
-                <input type="text" placeholder="Search here...">
-            </form> -->
+                <input type="text" placeholder="Tìm kiếm...">
+            </form>
         </div>
         <div class="info-user">
             <div class="notifiComment">
@@ -86,29 +86,25 @@
             </div>
         </div>
     </div>
-    <div class="flex-column p30 g30" style="align-self: stretch; align-items: flex-start;">
-        <div class="text">
-            <h1 class="label-large-prominent" style="font-size: 24px;
-            line-height: 32px;">Thêm Danh Mục</h1>
-        </div>
-        <!--DateTimelocal-->
-        <div class="flex-between width-full" style="gap: 8px;
-          align-items: center;">
-            <div class="flex g8">
-                <span class="label-large">Admin /</span><a href="#" class="label-large"
-                    style="text-decoration: none;">Danh Mục</a>
-            </div>
-            <!-- <div class="flex-center g8">
-                <span><i class="fa-solid fa-calendar-days"></i></span>
-                <input class="label-large-prominent" type="datetime-local" style="color: #625B71; border: none; font-size: 16px;
-              ">
-            </div> -->
-        </div>
-    </div>
+    
     <!----======== End Header DashBoard ======== -->
     
     <div class="containerAdmin_order-detail p30">
-        
+    <div class="localDashboard">
+            <div class="col-12 d-flex">
+                <div class="col-6">
+                    <div class="col-12">
+                        <h2>Thêm Danh Mục</h2>
+                    </div>
+                    <div class="col-12">
+                        <span class="label-large">Admin /</span><a href="?mod=admin&act=products&page=1" class="label-large" style="text-decoration: none;"> Danh Mục</a> / <a href="#!" class="label-large" style="text-decoration: none;"> Thêm Danh Mục</a>
+                    </div>
+                    <div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
         <form enctype="multipart/form-data" action="" method="POST">
             <div class="sliderDashboard_order-add-create sliderDashboard_order-detail rounded-4">
             <?=@$error?>
@@ -158,19 +154,18 @@
                                 </div>
                             </div>
                             <!-- Popup thông báo -->
-                            <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-                                <div class="modal-dialog modal-dialog-centered">
+                            <div style="background-color:rgba(128, 128, 128, 0.99);" class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                                <div  class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
                                     <div class="modal-header justify-content-center ">
                                         <h5 class="modal-title d-flex align-items-center"  id="staticBackdropLabel"><img src="./public/assets/media/images/logo.png" alt=""><p style="margin-left:10px; font-size:20px; color:#6750a4;">XÁC NHẬN</p></h5>
-                                        <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
                                     </div>
                                     <div class="modal-body text-center">
                                         <h3 class="text-danger">Bạn có muốn hủy quá trình cập nhật ?</h3>
                                     </div>
                                     <div class="modal-footer d-flex justify-content-between">
-                                        <button style="padding:12px 20px;" type="button" class="btn btn-danger" data-bs-dismiss="modal">Đóng</button>
-                                        <button style="padding:12px 20px;" type="button" class="btn btn-primary"><a style="color:white" href="?mod=admin&act=categories&page=1">Hủy</a></button>
+                                        <button style="padding:12px 20px;" type="button" class="btn btn-danger" data-bs-dismiss="modal">Tiếp Tục Cập Nhật</button>
+                                        <button style="padding:12px 20px;" type="button" class="btn btn-primary"><a style="color:white" href="?mod=admin&act=categories&page=1">Hủy Cập Nhật</a></button>
                                     </div>
                                     </div>
                                 </div>

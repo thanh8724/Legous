@@ -71,9 +71,10 @@ ob_start();
                             if ($role == 0) {
                                 $_SESSION['role'] = $role;
                                 $_SESSION['userLogin'] = $loginInfo;
-                                setcookie('accounts_user' . $_SESSION['userLogin']['id_user'],
-                                                                                $loginInfo['id_user'], 
-                                                                                (time() + (60 * 60 * 24 * 30)));
+                                // setcookie('accounts_user' . $_SESSION['userLogin']['id_user'],
+                                //                                                 $loginInfo['id_user'], 
+                                //                                                 (time() + (60 * 60 * 24 * 30)));
+                                setcookie('accounts_user'.$_SESSION['userLogin']['id_user'], $loginInfo['id_user'], (time() + (60 * 60 * 24 * 30)));
                                 header('Location: ?mod=page&act=home&idUser=' . $id);
                                 exit();
                             } else if ($role == 2023) {
