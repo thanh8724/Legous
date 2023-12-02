@@ -1462,7 +1462,6 @@ table th {
   grid-template-columns: repeat(auto-fit, minmax(min(16em, 100%), 1fr));
 }
 
-<<<<<<< HEAD
 .summary__product__name {
   width: 30rem;
   display: -webkit-box;
@@ -1473,10 +1472,11 @@ table th {
   word-break: break-word;
 }
 
-body.dark main {
-=======
+.darkMode {
+  background-color: #1c2339 !important;
+}
+
 body.dark #mainAdmin {
->>>>>>> 4a910ef2bb8d38d352126684d30efc505421f0f6
   background-color: #15192a;
   transition: 0.5s;
 }
@@ -1559,14 +1559,10 @@ html {
   scroll-behavior: smooth;
 }
 
-<<<<<<< HEAD
-main nav {
-=======
 #mainAdmin {
   background-color: #f7f7f7;
 }
 #mainAdmin nav {
->>>>>>> 4a910ef2bb8d38d352126684d30efc505421f0f6
   position: fixed;
   top: 0;
   left: 0;
