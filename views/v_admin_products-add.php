@@ -1,70 +1,62 @@
 <?php 
 
 if(isset($_POST['submit'])) {
-    if (empty($_POST["name"]) || empty($_POST["id_category"]) ||  empty($_POST["price"])  || empty($_FILES["file"]["name"]) || empty($_POST["qty"])) {
-        $_SESSION['loi'] = '<strong>Bạn cần điển đủ thông tin để tạo sản phẩm </strong>';
+    $name = $_POST['name'];
+    $id_category = $_POST['id_category'];
+    $description = $_POST['description'];
+    $price = $_POST['price'];
+    $img = $_FILES["file"]["name"];
+    $qty = $_POST['qty'];
+
+    if (empty($name) || empty($id_category) || empty($price) || empty($img) || empty($qty)) {
+        $_SESSION['loi'] = '<strong>Bạn cần điền đủ thông tin để tạo sản phẩm</strong>';
     } else {
-        $name = $_POST['name'];
-        $id_category = $_POST['id_category'];
-        $description = $_POST['description'];
-        $price = $_POST['price'];
-        $img = $_FILES["file"]["name"];
-        $qty = $_POST['qty'];
         $kq = product_checkName($name);
         if ($kq) {
             $_SESSION['loi'] = 'Không thể tạo trùng tên của sản phẩm <strong>' . $name . '</strong>';
         } else {
             product_add($name, $id_category, $description, $price, $img, $qty);
             $_SESSION['thongbao'] = 'Đã tạo thành công <strong>' . $name . '</strong>';
-            
         }
     }
+
     if (isset($_FILES['file'])) {   
-        //Thư mục chứa file upload
         $upload_dir = './public/assets/media/images/product/';
-        //Đường dẫn của file sau khi upload
         $upload_file = $upload_dir . $_FILES['file']['name'];
-        //Xử lý upload đúng file ảnh
         $type_allow = array('png', 'jpg', 'jpeg', 'gif');
-        //PATHINFO_EXTENSION lấy đuôi file
         $type = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
-        // echo $type;
+
         if(!in_array(strtolower($type), $type_allow)) {
             $error['type'] = "Chỉ được upload file có đuôi PNG, JPG, GIF, JPEG";
-        }
-    
-        #Upload file có kích thước cho phép (<20mb ~ 29.000.000BYTE)
-        $file_size = $_FILES['file']['size'];
-        if($file_size > 29000000) {
+        } else if ($_FILES['file']['size'] > 29000000) {
             $error['file_size'] = "Chỉ được upload file bé hơn 20MB";
-        }
-        #Kiểm tra trùng file trên hệ thống
-        if(file_exists($upload_file)) {
-            // $error['file_exists'] = "File đã tồn tại trên hệ thống";
-            // Xử lý đổi tên file tự động
-            #Tạo file mới
-            // TênFile.ĐuôiFile
-            $filename = pathinfo($_FILES["file"]["name"], PATHINFO_FILENAME);
-            $new_filename = $filename.'- Copy.';
-            $new_upload_file = $upload_dir.$new_filename.$type;
-            $k=1;
-            while(file_exists($new_upload_file)) {
-                $new_filename = $filename." - Copy({$k}).";
-                $k++;
-                $new_upload_file = $upload_dir.$new_filename.$type;
-            }
-            $upload_file = $new_upload_file;
-            if (move_uploaded_file($_FILES['file']['tmp_name'], $upload_file)) {
-                $image = $new_filename.$type;
-            } 
-        }else {
-            if (move_uploaded_file($_FILES['file']['tmp_name'], $upload_file)) {
+        } else {
+            if(file_exists($upload_file)) {
                 $filename = pathinfo($_FILES["file"]["name"], PATHINFO_FILENAME);
-                $image = $filename.$type;
-            } 
+                $new_filename = $filename.'- Copy.';
+                $new_upload_file = $upload_dir.$new_filename.$type;
+                $k=1;
+                while(file_exists($new_upload_file)) {
+                    $new_filename = $filename." - Copy({$k}).";
+                    $k++;
+                    $new_upload_file = $upload_dir.$new_filename.$type;
+                }
+                $upload_file = $new_upload_file;
+                if (move_uploaded_file($_FILES['file']['tmp_name'], $upload_file)) {
+                    $image = $new_filename.$type;
+                } 
+            } else {
+                if (move_uploaded_file($_FILES['file']['tmp_name'], $upload_file)) {
+                    $filename = pathinfo($_FILES["file"]["name"], PATHINFO_FILENAME);
+                    $image = $filename.$type;
+                } 
+            }
         }
     }
+    header("Location: ?mod=admin&act=products-add");
+    exit;
 }
+
 ?>
 <section class="dashboard">
     <!----======== Header DashBoard ======== -->
@@ -163,7 +155,7 @@ if(isset($_POST['submit'])) {
                         <h2>Thêm Sản Phẩm</h2>
                     </div>
                     <div class="col-12">
-                        <span class="label-large">Admin /</span><a href="?mod=admin&act=products&page=1" class="label-large" style="text-decoration: none;"> Sản Phẩm</a>
+                        <span class="label-large">Admin /</span><a href="?mod=admin&act=products&page=1" class="label-large" style="text-decoration: none;"> Sản Phẩm</a> / <a href="#!" class="label-large" style="text-decoration: none;"> Thêm Sản Phẩm</a>
                     </div>
                     <div>
 
@@ -200,14 +192,9 @@ if(isset($_POST['submit'])) {
                             <div class="custom-select">
                                 <!-- Dropdown -->
                                 <select id="id_category" name="id_category">
-                                    <option value="1">Ninja Go</option>
-                                    <option value="2">Naruto</option>
-                                    <option value="3">dragon ball</option>
-                                    <option value="4">Marvel & DC</option>
-                                    <option value="5">One Piece</option>
-                                    <option value="6">Car</option>
-                                    <option value="7">Gundam</option>
-                                    <option value="8">Kimetsu no Yaiba</option>
+                                    <?php foreach($getAllCategory as $item):?>
+                                    <option value="<?=$item['id']?>"><?=$item['name']?></option>
+                                    <?php endforeach;?>
                                 </select>
                             </div>
                         </div>
@@ -230,7 +217,7 @@ if(isset($_POST['submit'])) {
                         </div>
                         <div class="row">
                             <div class="rol-6 mt-3">
-                                <input style="color: #fff ;padding: 10px 15px; font-size: 14px; font-weight: 500;" class="btn btn-primary" type="submit" name="submit" value="Tạo Sản Phẩm">
+                                <input style="background-color:#6750a4;color: #fff ;padding: 10px 15px; font-size: 14px; font-weight: 500;" class="btn btn-primary" type="submit" name="submit" value="Tạo Sản Phẩm">
 
                             </div>
 
@@ -239,7 +226,7 @@ if(isset($_POST['submit'])) {
                     <div class="col-5 col-md">
                         <div class="right-order-add-create p30 d-flex justify-content-center flex-column ">
                             <div class="img_order-add-create rounded-4">
-                            <img id="previewImage" src="">
+                                <img id="previewImage" src="">
                             </div>
                             <hr>
                             <div style="width: 100%;" id="drop-area">
@@ -254,7 +241,7 @@ if(isset($_POST['submit'])) {
                             <div style="width: 100%;" id="deleteButtonImg" class="button_delete_img row">
                             <div class="col-8"></div>
                                     <div class="col-4 d-flex justify-content-between g12">
-                                        <button type="button " class="btn btn-primary p12">Cập nhật</button>
+                                        <button type="button " class="btn p12" style="background-color:#6750a4; color:#fff;">Cập nhật</button>
                                         <button type="button" id="deleteButtonAll p12" class="btn btn-danger">Xóa</button>
                                         <button type="button" class="btn box-shadow1 p12">Hủy</button>
                                     </div>
