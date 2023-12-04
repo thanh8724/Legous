@@ -512,10 +512,10 @@ if (isset($_POST['editComment'])) {
                                     </svg> <span>Chọn ảnh&hellip;</span></label>
 
                                 <div class="flex" style="align-items: center;">
-                                    <input type="text" name="inputComment" class="form__input comment__input"
+                                    <input type="text" name="inputComment" id="inputComment" class="form__input comment__input"
                                         placeholder="Comment">
                                     <button name="submitComment" value="submitComment" type="submit"
-                                        class="icon-btn send-comment__btn"><i class="fal fa-paper-plane"></i></button>
+                                        class="icon-btn send-comment__btn" id="submitComment"><i class="fal fa-paper-plane"></i></button>
                                 </div>
                             </form>
                             <?php

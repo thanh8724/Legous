@@ -186,7 +186,7 @@
     .header__search-box {
         width:100%;
         min-height: 100vh;
-        z-index: 1;
+        z-index: 10000;
         display: flex;
         padding: $site-padding-block $site-padding-inline;
         background: rgba($color: #000000, $alpha: .4);

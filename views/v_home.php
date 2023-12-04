@@ -86,7 +86,7 @@
     
     $topProductHtml = 
     <<<HTML
-        <div class="product product__spotlight">
+        <div class="product product__spotlight" data-id-product="$id">
             <a href="$linkToDetail" class="product__banner product__spotlight__banner banner-contain rounded-8 por"
                 style="background-image: url($img_path)">
                 <div class="product__overlay poa flex-center">
@@ -400,16 +400,16 @@
 
 <!-- header start -->
 <header class="header flex-full width-full flex-center pof">
-        <div class="header__inner flex-full flex-between por v-center">
-            <!-- header respon nav start -->
-            <ul class="header__nav header__nav-respon">
-                <li class="header__nav__item header__nav-respon__item">
-                    <button class="icon-btn open-respon-btn"><i class="fal fa-bars"></i></button>
-                </li>
-            </ul>
-            <!-- header respon nav end -->
-            <a href="?mod=page&act=home"><img src="./public/assets/media/images/logo.svg" alt="" class="logo"></a>
-            <ul class="header__nav flex g60">
+    <div class="header__inner flex-full flex-between por v-center">
+        <!-- header respon nav start -->
+        <ul class="header__nav header__nav-respon">
+            <li class="header__nav__item header__nav-respon__item">
+                <button class="icon-btn open-respon-btn"><i class="fal fa-bars"></i></button>
+            </li>
+        </ul>
+        <!-- header respon nav end -->
+        <a href="?mod=page&act=home"><img src="./public/assets/media/images/logo.svg" alt="" class="logo"></a>
+        <ul class="header__nav flex g60">
                 <li class="header__nav__item"><a href="?mod=page&act=home" class="header__nav__link">Trang chủ</a>
                 </li>
                 <li class="header__nav__item">
@@ -486,15 +486,15 @@
                 </ul>
             </div>
         </li>
-    </ul>
+        </ul>   
     <ul class="header__nav flex g30">
         <li class="header__nav__item flex-center">
             <button class="icon-btn open-search-box__btn rounded-full">
                 <i class="far fa-search"></i>
             </button>
         </li>
-        <li class="header__nav__item flex-center"><button class="icon-btn" data-elm-function=""><i
-                    class="far fa-shopping-cart"></i></button></li>
+        <li class="header__nav__item flex-center"><a href="?mod=cart&act=viewCart" class="icon-btn cart-btn"><i
+                    class="far fa-shopping-cart"></i></a></li>
         <li class="header__nav__item por flex-center">
             <?= $userWidgetHtml ?>
         </li>
@@ -503,11 +503,10 @@
     <!-- header respon nav start -->
     <ul class="header__nav header__nav-respon">
         <li class="header__nav__item header__nav-respon__item">
-            <button class="icon-btn open-respon-btn"><i class="fal fa-shopping-cart"></i></button>
+            <a href="?mod=cart&act=viewCart" class="icon-btn cart-btn"><i class="fal fa-shopping-cart"></i></a>
         </li>
     </ul>
     <!-- header respon nav end -->
-
 </div>
 
     <!-- header search box start -->
@@ -912,3 +911,13 @@
     </ul>
 </div>
 <!-- mobile bottom navbar end -->
+
+<!-- 
+<script>
+    $('product').forEach(item => {
+        item.click(() => {
+            const idProduct = item.attr('data-id-product');
+            alert(idProduct);
+        });
+    }) 
+</script> -->
