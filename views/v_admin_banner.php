@@ -261,9 +261,9 @@
 
           this.classList.add('active');
           bannerselect.classList.add('active');
+          
           if(index == 1 ){
             bannerselect.style.background = 'linear-gradient(110deg, #5E007E 14.03%, #A000D8 96.4%)';
-            
           }
           if(index == 2 ){
             $('#text-description').style.color = 'black';

@@ -1455,6 +1455,10 @@ table th {
   grid-template-columns: repeat(auto-fit, minmax(min(16em, 100%), 1fr));
 }
 
+.darkMode {
+  background-color: #1c2339 !important;
+}
+
 body.dark #mainAdmin {
   background-color: #15192a;
   transition: 0.5s;
