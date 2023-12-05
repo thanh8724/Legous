@@ -5,7 +5,7 @@
         <div class="search-box">
         <form action="?mod=admin&act=categories&page=<?=$page_nows?>&search_category" method="post">
           <i class="far fa-search"></i>
-          <input name="kyw_cg" type="text" placeholder="Tìm danh mục">
+          <input name="kyw_cg" type="text" placeholder="Tìm kiếm...">
           <button name="search_cg" type="submit"></button>
         </form>
         </div>

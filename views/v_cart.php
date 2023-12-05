@@ -16,13 +16,13 @@
 
     if (isset($_SESSION['cart']) && count($_SESSION['cart']) > 0 || $userCart) {
 
-        if (isset($_SESSION['userLogin']) && $_SESSION['userLogin']) {
-            $btnLink = "?mod=cart&act=checkout";
-            $btnText = 'Thanh toán ngay';
-        } else {
-            $btnText = 'Đăng nhập để thanh toán';
-            $btnLink = "?mod=page&act=login";
-        }
+        $btnLink = "?mod=cart&act=checkout";
+        $btnText = 'Tiếp tục';
+        // if (isset($_SESSION['userLogin']) && $_SESSION['userLogin']) {
+        // } else {
+        //     $btnText = 'Đăng nhập để thanh toán';
+        //     $btnLink = "?mod=page&act=login";
+        // }
 
         $cartProducts = [];
         if (!empty($userCart)) {
@@ -187,19 +187,6 @@
                     </div>
                 </form>
             </div>
-            <!-- summary shipping method start -->
-            <!-- <div class="title-medium fw-smb">Phương thức vận chuyển</div>
-            <div class="body-medium">Dựa trên phương thức vận chuyển mà bạn lựa chọn ở bước tiếp theo, chúng tôi sẽ tính
-                thêm khoản phí tương ứng vào đơn hàng của bạn.</div> -->
-            <!-- summary shipping method end -->
-            <!-- <div class="light-devider flex-full mt12 mb12" style="height: .1rem"></div> -->
-            <!-- summary payment method start -->
-            <!-- <div class="title-medium fw-smb">Phương thức thanh toán</div>
-            <div class="body-medium">Dựa trên phương thức thanh toán mà bạn lựa chọn ở bước tiếp theo, đơn hàng
-                sẽ được thanh toán nhanh nhất có thể dựa trên lựa chọn của bạn.</div> -->
-            <!-- summary payment method end -->
-
-            <!-- summary total start -->
             <div class="flex mt12 v-center g12">
                 <div class="title-medium">Thuế: </div>
                 <div class="title medium primary-text fw-bold">10%</div>
@@ -218,7 +205,7 @@
                     <?= formatVND($cartTotal + $tax) ?>
                 </div>
             </div>
-            <a href="<?= $btnLink ?>" class="btn primary-btn rounded-8 ttu summary-btn" style="background: black; color: white;">
+            <a href="<?= $btnLink ?>" class="btn primary-btn rounded-8 ttu summary-btn" id="summary-btn1" style="background: black; color: white;">
                 <i class="fal fa-arrow-right"></i>
                 <?= $btnText ?>
             </a>
@@ -235,7 +222,6 @@
         <div class="light-devider" style="width: 10rem; height: .4rem;"></div>
         <div class="label-large ttu">legous / giỏ hàng</div>
     </div>
-    
 </section> -->
 <!-- cart summary end -->
 
@@ -261,7 +247,7 @@
                 <?= formatVND($cartTotal + $tax) ?>
             </div>
         </div>
-        <a href="<?= $btnLink ?>" class="btn bar-btn rounded-8 ttu mt12 width-full summary-btn" style="background: black; color: white;">
+        <a href="<?= $btnLink ?>" class="btn bar-btn rounded-8 ttu mt12 width-full summary-btn" id="summary-btn1" style="background: black; color: white;">
             <i class="fal fa-arrow-right"></i>
             <?= $btnText ?>
         </a>
