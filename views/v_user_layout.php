@@ -60,15 +60,18 @@
                         <a href="?mod=user&act=general" class="header__nav__link header__subnav__link ttu">Thông tin tài khoản</a>
                     </li>
                     <li class="header__nav__item header__subnav__item">
+                        <a href="?mod=user&act=order-history" class="header__nav__link header__subnav__link ttu">lịch sử đơn hàng</a>
+                    </li>
+                    <li class="header__nav__item header__subnav__item">
                         <a href="?mod=user&act=logOut-account&id-account=$id" class="header__nav__link header__subnav__link ttu error60">Đăng xuất</a>
                     </li>
-                    <li class="" style="padding: 0.4rem 0.8rem;">
-                        <button id="dark-light__mode" onclick="dark_lightMod()">
+                    <!-- <li class="" style="padding: 0.4rem 0.8rem;">
+                        <button class="btn " id="dark-light__mode" onclick="dark_lightMod(this)">
                             <i class="fas fa-clouds-sun" id="icon_sun"></i>
                             <i class="fas fa-moon-cloud" id="icon_moon"></i>
-                            <span id="color__dark-light"></span>
+                            <span id="color__dark-light" class=""></span>
                         </button>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         HTML;

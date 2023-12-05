@@ -106,7 +106,6 @@
                         
                     }
                 break;
-
             case 'logOut-account':
                 include_once 'models/m_user.php';
                 // if(isset($_GET['id-account'])) {
