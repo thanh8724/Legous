@@ -96,9 +96,37 @@ if (isset($_GET['act'])) {
             $view_name = 'cart';
             break;
 
-        case 'checkout':
+        case 'checkout':        
+            include_once 'models/m_shipping.php';
+            include_once 'models/m_payment.php';
+            include_once 'models/m_address.php';
+            include_once 'models/m_bill.php';
+            include_once 'models/m_cart.php';
 
+            // redirect base on cart product
+            // nếu: guest -> session giỏ hàng trống -> trở về cart
+            // nếu: user -> nếu mảng giỏ hàng của user trống -> trở về cart
+            $cart = [];
+            if (isset($_SESSION['userLogin']) && is_array($_SESSION['userLogin'])) {
+                extract($_SESSION['userLogin']);
+                $cart = getCartByUserId($id_user);
+            } else if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
+                $cart = $_SESSION['cart'];
+            }
+            
             $view_name = 'checkout';
+            break;
+
+        case 'confirm':
+            include_once 'models/m_bill.php';
+            include_once 'models/m_cart.php';
+            include_once 'models/m_user.php';
+            include_once 'models/m_shipping.php';
+            include_once 'models/m_payment.php';
+
+            
+
+            $view_name = 'confirm';
             break;
         case 'deleteProduct':
             if (isset($_GET['idProduct'])) {

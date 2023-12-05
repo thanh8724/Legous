@@ -5,6 +5,8 @@ ob_start();
 require_once './models/m_user.php';
 require_once './models/m_comment.php';
 require_once './models/m_coupon.php';
+require_once './models/m_address.php';
+
 // Hiển thị dữ liệu thông qua view
 
 
@@ -133,12 +135,12 @@ if (isset($_GET['act'])) {
                 }
                 $perPage = 4;
                 $number_Page = ceil($count_Categoris / 4);
-                $page_nows = $_GET['page']; 
+                $page_nows = $_GET['page'];
 
                 $soTrang = ceil($count_Categoris / $perPage);
                 $startPage = max(1, $page_nows - 2);
                 $endPage = min($startPage + 5, $soTrang);
-    
+
                 if ($endPage - $startPage < 5) {
                     $startPage = max(1, $endPage - 5);
                 }
@@ -337,18 +339,18 @@ if (isset($_GET['act'])) {
         case 'products':
             include_once 'models/m_admin.php';
             include_once 'models/m_category.php';
-            
-            
+
+
             if (isset($_POST['page'])) {
                 // Chuyển từ phương thức POST sang GET
                 header("location: ?mod=admin&act=products&page=" . $_POST['page'] . "");
             } else {
                 $page = 1;
                 if (isset($_GET['page']) && is_numeric($_GET['page'])) {
-                $page = $_GET['page'];
-            } else {
-                header("location: ?mod=admin&act=products&page=1");
-            }
+                    $page = $_GET['page'];
+                } else {
+                    header("location: ?mod=admin&act=products&page=1");
+                }
             }
 
             $getproductAdmin = productAdmin($page);
@@ -383,8 +385,8 @@ if (isset($_GET['act'])) {
                     header("location: ?mod=admin&act=products-category-fil&id=1");
                 }
             }
-            
-          
+
+
             $productdetail = product_getById($_GET['id']);
             $getAllCategory = getCategories();
 
@@ -412,7 +414,7 @@ if (isset($_GET['act'])) {
             } else {
                 // Xử lý khi không có hoặc id không hợp lệ
                 echo "ID sản phẩm không hợp lệ";
-            }            
+            }
 
             break;
 
@@ -422,9 +424,9 @@ if (isset($_GET['act'])) {
                 $inputSearch = $_POST['keyword'];
                 header("location: index.php?mod=admin&act=products-search&page=1&kw=" . urlencode($inputSearch));
                 exit; // Kết thúc việc chuyển hướng
-            } 
-            
-            
+            }
+
+
             // Lấy dữ liệu
             $keyword = isset($_GET['kw']) ? $_GET['kw'] : ''; // Lấy từ khóa tìm kiếm từ URL
             $page = isset($_GET['page']) ? $_GET['page'] : 1;
@@ -433,24 +435,24 @@ if (isset($_GET['act'])) {
             $soTrang = ceil($totalResults / $perPage);
             $startPage = max(1, $page - 2);
             $endPage = min($startPage + 5, $soTrang);
-            
+
             if ($endPage - $startPage < 5) {
                 $startPage = max(1, $endPage - 5);
             }
-            
+
             $ketqua = productSearchAdmin($keyword, $page, $perPage);
             $getAllCategory = getCategories();
-            
+
             $view_name = 'admin_products-search';
             break;
 
         case 'products-category-fil';
             include_once 'models/m_category.php';
             include_once 'models/m_admin.php';
-            
+
             $getproductCategory = getproductbyCategory($_GET['id']);
             $getAllCategory = getCategories();
-        
+
             $view_name = 'admin_products-category-fil';
             break;
 
@@ -467,10 +469,12 @@ if (isset($_GET['act'])) {
             $id = $_GET['id'];
             editCmtStatus($id, 1);
             header("Location: ?mod=admin&act=comments");
+            break;
         case 'delCmt':
             $id = $_GET['id'];
             delCmt($id);
             header("Location: ?mod=admin&act=comments");
+            break;
         case 'coupon':
             $view_name = 'admin_coupon';
             break;
@@ -486,8 +490,17 @@ if (isset($_GET['act'])) {
             break;
 
         case 'banner':
-            
+
             $view_name = 'admin_banner';
+            break;
+        case 'address':
+            $view_name = 'admin_address';
+            break;
+        case 'address-edit':
+            $view_name = 'admin_address-edit';
+            break;
+        case 'address-add':
+            $view_name = 'admin_address-add';
             break;
         default:
             header("Location: ?mod=admin&act=home");

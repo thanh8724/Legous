@@ -1,242 +1,412 @@
-<!-- checkout title start -->
-<section class="container_cart-checkout section mt80 row">
-    <h1 class="text-68">ĐỊA CHỈ GIAO HÀNG</h1>
-    <hr>
-    <p><strong>LEGOUS / CART / CHECKOUT</strong></p>
-    <div class="content_cart-checkout row">
-        <div class="cart_check-out-left ">
-            <div class="cart_check-out-left-up box-shadow1">
-                <form class="p20" action="">
-                    <div>
-                        <label for="username">Tỉnh/Thành phố, Quận/Huyện, Phường/Xã <span
-                                style="color: red;">*</span></label>
-                        <input type="text" name="username" class="user__name--input"
-                            placeholder="Ex: 212B, Barker street, London   ">
-                    </div>
-                    <div>
-                        <label for="username">Địa chỉ cụ thể <span style="color: red;">*</span> </label>
-                        <input type="text" name="username" class="user__name--input"
-                            placeholder="Ex: 212B, Barker street, London">
-                    </div>
-                    <div>
-                        <label for="username">Email <span style="color: red;">*</span></label>
-                        <input type="text" name="username" class="user__name--input" placeholder="Ex: abc@gmail.com">
-                    </div>
-                    <div>
-                        <label for="username">Số điện thoại <span style="color: red;">*</span></label>
-                        <input type="text" name="username" class="user__name--input"
-                            placeholder="Số điện thoại của bạn">
-                    </div>
-                </form>
-            </div>
-            <div class="cart_check-out-left-down box-shadow1 p20">
-                <div class="bth_location-other flex">
-                    <input style="margin:0 10px 0 0;" type="checkbox" name="" id="showDivCheckbox">
-                    <label for="showDivCheckbox" style="user-select: none" class="diachi">Địa chỉ giao hàng khác với địa chỉ nhận hàng</label>
-                </div>
-                <div class="bth_location-other flex-column">
-                    <form action="" id="div_form_location_other" style="display: none;">
-                        <div>
-                            <label for="username">Tỉnh/Thành phố, Quận/Huyện, Phường/Xã <span
-                                    style="color: red;">*</span></label>
-                            <input type="text" name="username" class="user__name--input"
-                                placeholder="Ex: 212B, Barker street, London   ">
-                        </div>
-                        <div>
-                            <label for="username">Địa chỉ cụ thể <span style="color: red;">*</span> </label>
-                            <input type="text" name="username" class="user__name--input"
-                                placeholder="Ex: 212B, Barker street, London">
-                        </div>
-                        <div>
-                            <label for="username">Email <span style="color: red;">*</span></label>
-                            <input type="text" name="username" class="user__name--input"
-                                placeholder="Ex: abc@gmail.com">
-                        </div>
-                        <div>
-                            <label for="username">Số điện thoại <span style="color: red;">*</span></label>
-                            <input type="text" name="username" class="user__name--input"
-                                placeholder="Số điện thoại của bạn">
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div class="cart_check-out-right box-shadow1">
-            <div style="margin: 20px;">
-                <h2>Phương thức vận chuyển<span style="color: red;">*</span></h2>
-                <div class="cart_check-out-right-up  ">
+<?php
+/** render summary */
+$summaryHtml = '';
+$total = 0;
+$totalFormated = 0;
+$subTotal = 0;
 
-                    <label for="shipping-free" class="bth_location-other flex-between p20 box-shadow1 rounded-4">
-                        <div class="flex">
-                            <input class="custom-checkbox" type="checkbox" name="" id="shipping-free">
-                            <div class="between_location_order flex-column">
-                                <div>Miễn phí</div>
-                                <div>Dành cho đơn hàng có giá trị > <span>2.100.000</span> Đ</div>
+foreach ($cart as $item) {
+    extract($item);
+
+    $subTotal += $price * $qty;
+    $tax = $subTotal * 0.1;
+    $total = $subTotal + $tax;
+    $totalFormated = formatVND($subTotal + $tax);
+
+    $priceFormated = formatVND($price);
+    $summaryHtml .=
+        <<<HTML
+            <!-- single summary product start -->
+            <div class="summary__product flex v-center">
+                <div class="title-medium fw-smb summary__product__name">$name</div>
+                <span style="margin-left: 1rem">x $qty</span>
+                <div class="light-devider flex-full" style="margin-inline: 1rem; height: .1rem;"></div>
+                <div class="summary__product__price">$priceFormated</div>
+            </div>
+            <!-- single summary product end -->
+        HTML;
+}
+
+$disable = '';
+$total < 2100000 ? $disable = 'disabled' : '';
+
+/** render shipping methods */
+$shippingMethods = getShippingMethods();
+function renderShippingMethods($shippingMethods, $disable) {
+    $html = '';
+    if (isset($shippingMethods) && is_array($shippingMethods)) {
+        foreach ($shippingMethods as $shippingMethod) {
+            extract($shippingMethod);
+            $priceFormated = formatVND($price);
+
+            // Check if the shipping method is free and disable it if the total is less than 2100000
+            if ($price == 0 && $disable) {
+                $html .= <<<HTML
+                    <!-- single shipping method start -->
+                    <label class="addon-method shipping-method pi20 pb12 flex-between box-shadow1 rounded-8 disabled">
+                        <div class="flex g12">
+                            <input type="radio" disabled>
+                            <div class="shipping-method__info flex-column flex-between">
+                                <div class="title-medium fw-smb">$name</div>
+                                <div class="title-small">$description</div>
                             </div>
                         </div>
-                        <div><span>25.000</span> VND</div>
+                        <span class="label-large fw-smb">$priceFormated</span>
                     </label>
-                    <label for="shipping-normal" class="bth_location-other flex-between p20 box-shadow1 rounded-4">
-                        <div class="flex">
-                            <input class="custom-checkbox" type="checkbox" name="" id="shipping-normal">
-                            <div class="between_location_order flex-column">
-                                <div>Thông thường</div>
-                                <div>3 - 7 ngày (tùy đơn hàng)</div>
+                    <!-- single shipping method end -->
+                HTML;
+            } else {
+                $html .= <<<HTML
+                    <!-- single shipping method start -->
+                    <label for="shipping-$id" class="addon-method shipping-method pi20 pb12 flex-between box-shadow1 rounded-8">
+                        <div class="flex g12">
+                            <input type="radio" required name="shipping" value="$price" id="shipping-$id">
+                            <div class="shipping-method__info flex-column flex-between">
+                                <div class="title-medium fw-smb">$name</div>
+                                <div class="title-small">$description</div>
                             </div>
                         </div>
-                        <div><span>25.000</span> VND</div>
+                        <span class="label-large fw-smb">$priceFormated</span>
                     </label>
-                    <label for="shipping-fast" class="bth_location-other flex-between p20 box-shadow1 rounded-4">
-                        <div class="flex">
-                            <input class="custom-checkbox" type="checkbox" name="" id="shipping-fast">
-                            <div class="between_location_order flex-column">
-                                <div>Hỏa tốc</div>
-                                <div>1 - 3 ngày (tùy đơn hàng)</div>
-                            </div>
-                        </div>
-                        <div><span>50.000</span> VND</div>
-                    </label>
-
-                </div>
-
-            </div>
-            <div class="cart_check-out-right-down">
-                <div style="margin: 20px;">
-                    <h2>Phương thức thanh toán<span style="color: red;">*</span></h2>
-                    <label for="cash" class="bth_location-other flex-between p20 box-shadow1 rounded-4">
-                        <div class="flex">
-                            <input class="custom-checkbox1" type="checkbox" name="" id="cash">
-                            <div class="between_location_order flex-column">
-                                <div>Tiền mặt</div>
-                            </div>
-                        </div>
-                    </label>
-                    <label for="credit-card" class="bth_location-other flex-between p20 box-shadow1 rounded-4">
-                        <div class="flex">
-                            <input class="custom-checkbox1" type="checkbox" name="" id="credit-card">
-                            <div class="between_location_order flex-column">
-                                <div>Thẻ tín dụng</div>
-                            </div>
-                        </div>
-                    </label>
-                    <div class="bth_location-other flex-between p20 box-shadow1 rounded-4">
-                        <div class="flex">
-                            <input class="custom-checkbox1" type="checkbox" name="" id="">
-                            <div class="between_location_order flex-column">
-                                <div>Paypal</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bth_location-other flex-between p20 box-shadow1 rounded-4">
-                        <div class="flex">
-                            <input class="custom-checkbox1" type="checkbox" name="" id="">
-                            <div class="between_location_order flex-column">
-                                <div>Momo</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- <hr> -->
-    <!-- bill check out -->
-    <div class="bill-checkout flex" style="padding: 60px 0px 0 0;justify-content: space-between;height:338px ;">
-        <div class="bill-text-left flex-column g20">
-            <h1 class="text-68">TỔNG ĐƠN</h1>
-            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="4" viewBox="0 0 63 4" fill="none">
-                <path d="M1.99219 2H61.0007" stroke="black" stroke-opacity="0.2" stroke-width="4"
-                    stroke-linecap="round" />
-            </svg>
-            <span class="label-large fw-smb">GIỎ HÀNG</span>
-        </div>
-        <div class="bill-text-right flex-column" style="gap: 36px; width: 45%;">
-            <div class="tex-products flex-column g16">
-                <!-- text products -->
-                <div class="flex g16 flex_repo" style="justify-content: space-between;">
-                    <h1 class="title-medium">ProductName</h1>
-                    <div class="line flex-center">
-                        <div style=" background: #CAC4D0; border-radius: 8px;">
-                        </div>
-                    </div>
-                    <span class="title-medium">1.289.089 VNĐ</span>
-                </div>
-                <div class="flex g16 flex_repo" style="justify-content: space-between;">
-                    <h1 class="title-medium">ProductName</h1>
-                    <div class="line flex-center">
-                        <div style=" background: #CAC4D0; border-radius: 8px;">
-                        </div>
-                    </div>
-                    <span class="title-medium">1.289.089 VNĐ</span>
-                </div>
-                <div class="flex g16 flex_repo" style="justify-content: space-between;">
-                    <h1 class="title-medium">ProductName</h1>
-                    <div class="line flex-center">
-                        <div style=" background: #CAC4D0; border-radius: 8px;">
-                        </div>
-                    </div>
-                    <span class="title-medium">1.289.089 VNĐ</span>
-                </div>
-                <!-- text products end -->
-            </div>
-            <div class="line flex-center">
-                <div class="width-full" style="height: 2px; background: #CAC4D0; border-radius: 8px;">
-                </div>
-            </div>
-            <div class="flex g16 flex_repo" style="justify-content: space-between;">
-                <h1 class="title-medium" style="font-size: 18px;">Tổng tiền</h1>
-                <div class="line flex-center">
-                    <div style="background: #CAC4D0; border-radius: 8px;">
-                    </div>
-                </div>
-                <span class="toltal-money title-medium">9.999.999 VNĐ</span>
-            </div>
-
-            <button class="btn tonal-btn rounded-4"><i class="fa-solid fa-arrow-right"></i>Đặt hàng
-                ngay</button>
-        </div>
-    </div>
-    <!-- bill check out  end -->
-</section>
-<!-- checkout title end -->
-
-<script>
-    const showDivCheckbox = document.getElementById('showDivCheckbox');
-    const div_form_location_other = document.getElementById('div_form_location_other');
-
-    showDivCheckbox.addEventListener('change', function () {
-        if (this.checked) {
-            div_form_location_other.style.display = 'block';
-        } else {
-            div_form_location_other.style.display = 'none';
+                    <!-- single shipping method end -->
+                HTML;
+            }
         }
-    });
+    }
+    return $html;
+}
 
+/** render payment method */
+$paymentMethods = getPaymentMethods();
+function renderPaymentMethods($paymentMethods)
+{
+    $html = '';
+    if (isset($paymentMethods) && is_array($paymentMethods)) {
+        foreach ($paymentMethods as $paymentMethod) {
+            extract($paymentMethod);
+            $html .=
+                <<<HTML
+                    <!-- single payment method start -->
+                    <label for="payment-$id" class="addon-method payment-method pi20 pb12 flex-between box-shadow1 rounded-8">
+                        <div class="flex g12">
+                            <input type="radio" required value="$id" id="payment-$id" name="payment">
+                            <div class="payment-method__info flex-column flex-between">
+                                <div class="title-medium fw-smb">$name</div>
+                                <div class="title-small">$description</div>
+                            </div>
+                        </div>
+                    </label>
+                    <!-- single payment method end -->
+                HTML;
+        }
+    }
+    return $html;
+}
+
+/** render user address */
+$addressView = $addressDetailView = $emailView = $phoneView = "";
+if (isset($_SESSION['userLogin']) && is_array($_SESSION['userLogin'])) {
+    /** get user information */
+    $userLogin = $_SESSION['userLogin'];
+    extract($userLogin);
+    /** get user address */
+    $userAddress = getUserAddressByIdUser($id_user);
+
+    $addressView = $userAddress['address'];
+    $addressDetailView = $userAddress['address_detail'];
+    $emailView = $email;
+    $phoneView = $userAddress['phone'];
+}
+
+?>
+
+<!-- cart top bar start -->
+<div class="mobile-top__bar mobile-top__bar--shop p12 flex-center">
+    <div class="mobile-top__inner flex-full flex-between v-center g12">
+        <button class="icon-btn back-btn"><i class="fal fa-chevron-left"></i></button>
+        <!-- <form action="#" class="form mobile__search-form flex-full">
+            <div class="form__group width-full por">
+                <button class="icon-btn poa" style="top: 50%; transform: translateY(-50%)">
+                    <i class="fal fa-search"></i>
+                </button>
+                <input type="text" class="form__input rounded-100 width-full" style="padding-left: 4rem">
+            </div>
+        </form> -->
+        <!-- <button class="icon-btn trash-btn"><i class="fal fa-trash-alt"></i></button> -->
+
+        <!-- guest widget -->
+        <!-- <button class="icon-btn user-btn"><i class="fal fa-user"></i></button> -->
+
+        <!-- member widget -->
+        <div class="por member-widget">
+                <button class="icon-btn more-btn"><i class="far fa-ellipsis-h"></i></button>
+                <ul class="poa option__list oh p10 box-shadow1 rounded-8">
+                    <li class="option__item">
+                        <a href="#" class="option__link ttc">trang chủ</a>
+                    </li>
+                    <li class="option__item">
+                        <a href="#" class="option__link ttc">chia sẻ</a>
+                    </li>
+                    <li class="option__item">
+                        <a href="#" class="option__link ttc">tìm kiếm</a>
+                    </li>
+                    <li class="option__item">
+                        <a href="#" class="option__link ttc">tin nhắn</a>
+                    </li>
+                    <li class="option__item">
+                        <a href="#" class="option__link ttc">tài khoản của tôi</a>
+                    </li>
+                    <li class="option__item">
+                        <a href="#" class="option__link ttc">báo cáo</a>
+                    </li>
+                    <li class="option__item">
+                        <a href="#" class="option__link ttc">trợ giúp</a>
+                    </li>
+                    <li class="option__item">
+                        <a href="#" class="option__link ttc">phản hồi</a>
+                    </li>
+                </ul>
+            </div>
+    </div>
+</div>
+<!-- cart top bar end -->
+
+<form action="?mod=cart&act=checkout" method="post" class="checkout__form mt80">
+    <!-- checkout section start -->
+    <section class="checkout__section section">
+        <!-- checkout title start -->
+        <div class="flex-column g12 checkout__title">
+            <h1 class="text-46 ">ĐỊA CHỈ ĐẶT HÀNG</h1>
+            <div class="light-devider" style="height: .4rem; width: 15rem"></div>
+            <div class="label-large">LEGOUS / CART / CHECKOUT</div>
+        </div>
+        <!-- checkout title end -->
+
+        <!-- checkout main start -->
+        <main class="checkout__main mt30 auto-grid g20">
+            <!-- checkout form start -->
+            <div class="checkout__main--info">
+                <div class="form__group__wrapper flex-column g12 box-shadow1 p20 rounded-8">
+                    <div class="form__group">
+                        <div class="form__label label-large fw-smb">Tỉnh/Thành phố, Quận/Huyện, Phường/Xã <span
+                                class="error60">*</span></div>
+                        <input type="text" class="form__input address__input" name="address"
+                            value="<?= $addressView ?>">
+                        <div class="form__message"></div>
+                    </div>
+                    <div class="form__group">
+                        <div class="form__label label-large fw-smb">Địa chỉ cụ thể <span class="error60">*</span></div>
+                        <input type="text" class="form__input address-detail__input" name="address-detail"
+                            value="<?= $addressDetailView ?>">
+                        <div class="form__message"></div>
+                    </div>
+                    <div class="form__group">
+                        <div class="form__label label-large fw-smb">Email <span class="error60">*</span></div>
+                        <input type="text" class="form__input email__input" name="email" value="<?= $emailView ?>">
+                        <div class="form__message"></div>
+                    </div>
+                    <div class="form__group">
+                        <div class="form__label label-large fw-smb">Số điện thoại <span class="error60">*</span></div>
+                        <input type="text" class="form__input phone__input" name="phone" value="<?= $phoneView ?>">
+                        <div class="form__message"></div>
+                    </div>
+                </div>
+                <div class="flex-column g30 box-shadow1 p20 rounded-8 mt20">
+                    <div class="toggle-open-form flex v-center g8">
+                        <input type="checkbox" id="openRecipientForm" onclick="toggleRecipientForm()">
+                        <label for="openRecipientForm" class="label-large fw-smb" style="user-select: none;">Địa chỉ
+                            giao hàng khác với địa chỉ đặt hàng</label>
+                    </div>
+                    <div class="form__group__wrapper flex-column g20" id="recipient__form">
+                        <!-- render recipient form here -->
+                    </div>
+                </div>
+            </div>
+            <!-- checkout form end -->
+
+            <!-- checkout: shipping method and payment method start -->
+            <div class="checkout__main--addon">
+                <div class="shipping-method__wrapper p20 rounded-8 box-shadow1">
+                    <div class="title-medium fw-smb">Phương thức vận chuyển <span class="error60">*</span></div>
+                    <div class="shipping-methods flex-column g12 mt20">
+                        <?= renderShippingMethods($shippingMethods, $disable) ?>
+                    </div>
+                </div>
+                <div class="payment-method__wrapper mt20 p20 rounded-8 box-shadow1">
+                    <div class="title-medium fw-smb">Phương thức thanh toán <span class="error60">*</span></div>
+                    <div class="payment-methods flex-column g12 mt20">
+                        <?= renderPaymentMethods($paymentMethods) ?>
+                    </div>
+                </div>
+            </div>
+            <!-- checkout: shipping method and payment method end -->
+        </main>
+        <!-- checkout main end -->
+    </section>
+    <!-- checkout section end -->
+
+    <!-- checkout summary start -->
+    <section class="section checkout-summary auto-grid g30 desktop">
+        <!-- checkout summary title start -->
+        <div class="checkout-summary__title flex-column g12">
+            <div class="text-68">TỔNG ĐƠN</div>
+            <div class="light-devider" style="height: .4rem; width: 15rem"></div>
+            <div class="label-large">LEGOUS / CART / CHECKOUT</div>
+        </div>
+        <!-- checkout summary title end -->
+
+        <!-- checkout summary detail start -->
+        <div class="checkout-summary__detail flex-column g20">
+            <div class="summary__product__wrapper flex-column g12">
+                <?= $summaryHtml ?>
+            </div>
+
+            <!-- <div class="light-devider" style="height: .1rem;"></div> -->
+
+            <div class="body-medium fw-smb">Thuế: <span class="primary-text">10%</span></div>
+            <div class="body-medium fw-smb">Phí vận chuyển: <span class="primary-text shipping-fee"> Chưa có</span></div>
+
+            <div class="flex flex-between v-center">
+                <div class="title-large fw-smb">Tổng tiền</div>
+                <div class="light-devider flex-full" style="margin-inline: 1rem; height: .1rem;"></div>
+                <div class="summary__total primary-masking-text"><?= $totalFormated ?></div>
+            </div>
+            <button type="submit" class="rounded-8 primary-btn btn" style="background: black; color: white;"><i
+                    class="fal fa-arrow-right" style="color: white"></i> Đặt hàng ngay</button>
+        </div>
+        <!-- checkout summary detail end -->
+    </section>
+    <!-- checkout summary end -->
+
+    <!-- cart bottom bar start -->
+    <div class="cart__bottom-bar p10 mobile">
+        <div class="cart__bottom-bar__inner rounded-8 box-shadow5 p10">
+            <div class="flex-between">
+                <!-- <div class="flex g12 v-center">
+                    <input type="checkbox" id="checkAll">
+                    <label for="checkAll" class="title-medium fw-smb primary-text" style="user-select: none">Tất cả
+                        <span class="cart__amount"></span>
+                    </label>
+                </div> -->
+                <button class="text-btn fw-smb btn rounded-100">
+                    <i class="fal fa-arrow-right"></i>
+                    Thêm mã giả giá
+                </button>
+            </div>
+            <div class="flex v-center">
+                <div class="title-large fw-bold">Tổng tiền</div>
+                <div class="light-devider flex-full mi20" style="height: .1rem"></div>
+                <div class="body-large primary-masking-text summary__total"><?= $totalFormated ?></div>
+            </div>
+            <button type="submit" class="btn bar-btn rounded-8 ttu mt12 width-full summary-btn" id="summary-btn1"
+                style="background: black; color: white;">
+                <i class="fal fa-arrow-right" style="color: white"></i>
+                Đặt hàng ngay
+            </button>
+        </div>
+    </div>
+    <!-- cart bottom bar end -->
+</form>
+<script src="./public/assets/resources/js/validator.js"></script>
+<script>
+    function toggleRecipientForm() {
+        const recipientCheckbox = document.getElementById('openRecipientForm');
+
+        if (recipientCheckbox.checked) {
+            // Checkbox is checked, send a request to retrieve and render the form
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', './views/libs/renderRecipientForm.php', true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        // Request was successful, render the form
+                        const recipientFormContainer = document.getElementById('recipient__form');
+                        recipientFormContainer.innerHTML = xhr.responseText;
+                    } else {
+                        // Request encountered an error
+                        console.error('Request error:', xhr.status);
+                    }
+                }
+            };
+            xhr.send();
+        } else {
+            // Checkbox is unchecked, hide the form
+            const recipientFormContainer = document.getElementById('recipient__form');
+            recipientFormContainer.innerHTML = '';
+        }
+    }
 </script>
 <script>
-    const checkboxes = document.querySelectorAll('.custom-checkbox');
-    const checkboxes1 = document.querySelectorAll('.custom-checkbox1');
+    Validator({
+        formSelector: '.checkout__form',
+        formGroupSelector: '.form__group',
+        formMessage: '.form__message',
+        submitUrl: './views/libs/checkoutHandler.php',
+        redirectUrl: '?mod=cart&act=confirm',
 
-    checkboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', function () {
-            if (this.checked) {
-                checkboxes.forEach(otherCheckbox => {
-                    if (otherCheckbox !== this) {
-                        otherCheckbox.checked = false;
-                    }
-                });
-            }
-        });
-    });
-    checkboxes1.forEach(checkbox => {
-        checkbox.addEventListener('change', function () {
-            if (this.checked) {
-                checkboxes1.forEach(otherCheckbox => {
-                    if (otherCheckbox !== this) {
-                        otherCheckbox.checked = false;
-                    }
-                });
-            }
-        });
-    });
+        rules: [
+            /** user info validation */
+            Validator.isRequired('.address__input', 'Vui lòng điền địa chỉ của bạn'),
+            Validator.isRequired('.address-detail__input', 'Bạn có thể điền số nhà cụ thể hoặc mô tả địa chỉ của mình!'),
+            Validator.isRequired('.email__input', 'Vui lòng điền email của bạn'),
+            Validator.isEmail('.email__input'),
+            Validator.isRequired('.phone__input', 'Vui lòng điền số điện thoại của bạn'),
+            Validator.isPhone('.phone__input'),
+
+            /** recipient info validation */
+            Validator.isRequired('.recipient-name__input'),
+            Validator.isUsername('.recipient-name__input', 30),
+            Validator.isRequired('.recipient-phone__input'),
+            Validator.isPhone('.recipient-phone__input'),
+            Validator.isRequired('.recipient-address__input'),
+            Validator.isRequired('.recipient-address-detail__input'),
+        ]
+    })
 </script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Get the shipping method radio buttons
+        var shippingRadios = document.querySelectorAll('input[name="shipping"]');
+
+        // Add event listener to each shipping method radio button
+        shippingRadios.forEach(function (radio) {
+            radio.addEventListener("change", function () {
+                // Get the selected shipping price
+                var shippingPrice = this.value;
+
+                // Send an AJAX request to update the summary
+                updateSummary(shippingPrice);
+            });
+        });
+    });
+
+    function updateSummary(shippingPrice) {
+        // Send an AJAX request to update the summary
+        $.ajax({
+            url: "./views/libs/updateSummary.php",
+            method: "POST",
+            data: { shippingPrice: shippingPrice },
+            success: function (response) {
+                console.log(response.total);
+                // Parse the response and update the summary elements
+                document.querySelectorAll('.summary__total').forEach(item => {
+                    item.textContent = response.total;
+                });
+                document.querySelectorAll('.shipping-fee').forEach(item => {
+                    item.textContent = response.shippingFee;
+                });
+                
+            },
+            error: function (xhr, status, error) {
+                // Handle error
+                console.error(error);
+            }
+        });
+    }
+</script>
+
+<?php 
+    if (count($cart) <= 0) {
+        header("Location: ?mod=cart&act=viewCart");
+    }
+?>
