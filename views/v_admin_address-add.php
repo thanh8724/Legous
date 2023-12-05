@@ -42,10 +42,13 @@ if (@isset($_POST['btn_cancelled'])) {
     <div class="top">
         <i class="fas fa-angle-left sidebar-toggle"></i>
         <div class="search-box">
-            <form style="width: 100%;display:flex; justify-content: center;" action="" method="post">
-                <i class="far fa-search"></i>
-                <input type="text" placeholder="Tìm kiếm...">
-            </form>
+            <<<<<<< HEAD <form style="width: 100%;display:flex; justify-content: center;" action="" method="post">
+                =======
+                <form action="" method="post">
+                    >>>>>>> 7349aed1f16d2a9643a3c83f144b49ede2e2776f
+                    <i class="far fa-search"></i>
+                    <input type="text" placeholder="Tìm kiếm...">
+                </form>
         </div>
         <div class="info-user">
             <div class="notifiComment">

@@ -32,33 +32,41 @@ const app = {
         });
 
         /* header respon */
-        const openBtn = document.querySelector('.open-respon-btn');
-        const closeBtn = document.querySelector('.close-respon-btn');
+        const openBtns = document.querySelectorAll('.open-respon-btn');
+        const closeBtns = document.querySelectorAll('.close-respon-btn');
         const responNav = document.querySelector('.header__nav-respon-full');
         // console.log(openBtn, closeBtn, responNav)
         // openBtn.onclick = () => {
         //     console.log('this button is clicked', openBtn)
         // }
-        if (responNav && openBtn) {
-            openBtn.addEventListener('click', () => {
-                responNav.classList.toggle('open');
-            })
-            closeBtn.addEventListener('click', () => {
-                responNav.classList.toggle('open');
+        if (responNav && openBtns) {
+            openBtns.forEach(openBtn => {
+                openBtn.addEventListener('click', () => {
+                    responNav.classList.toggle('open');
+                })
+            });
+            closeBtns.forEach(closeBtn => {
+                closeBtn.addEventListener('click', () => {
+                    responNav.classList.toggle('open');
+                })
             })
         }
 
         /* search box */
-        const openSearchBox = document.querySelector('.open-search-box__btn');
-        const closeSearchBox = document.querySelector('.close-search-box__btn');
+        const openSearchBoxBtns = document.querySelectorAll('.open-search-box__btn');
+        const closeSearchBoxBtns = document.querySelectorAll('.close-search-box__btn');
         const searchBox = document.querySelector('.header__search-box');
 
-        if (openSearchBox && closeSearchBox && searchBox) {
-            openSearchBox.addEventListener('click', () => {
-                searchBox.classList.toggle('open');
-            })
-            closeSearchBox.addEventListener('click', () => {
-                searchBox.classList.toggle('open');
+        if (openSearchBoxBtns && closeSearchBoxBtns && searchBox) {
+            openSearchBoxBtns.forEach(openSearchBox => {
+                openSearchBox.addEventListener('click', () => {
+                    searchBox.classList.toggle('open');
+                })
+            });
+            closeSearchBoxBtns.forEach(closeSearchBox => {
+                closeSearchBox.addEventListener('click', () => {
+                    searchBox.classList.toggle('open');
+                })
             })
         }
 
@@ -270,7 +278,8 @@ const app = {
         const couponBtn = document.querySelector('.coupon__open--toggle-btn')
         const couponForm = document.querySelector('.coupon__form')
         if (couponBtn && couponForm) {
-            couponBtn.onclick = () => {
+            couponBtn.onclick = (e) => {
+                e.preventDefault();
                 couponForm.classList.toggle('active');
             }
         }
@@ -300,6 +309,20 @@ const app = {
                 checkAllCheckbox.checked = allChecked;
             });
         }
+
+        // || show / hide recipient form start
+        // const recipientCheckbox = document.getElementById('openRecipientForm')
+        // const recipientForm = document.getElementById('recipient__form');
+        // recipientForm.style.display = 'none';
+
+        // if (recipientCheckbox && recipientForm) {
+        //     recipientCheckbox.onchange = () => {
+        //         recipientCheckbox.checked ?
+        //             recipientForm.style.display = 'block' :
+        //             recipientForm.style.display = 'none';
+        //     }
+        // }
+        // || show / hide recipient form end
 
     },
     functionalHandler() {
@@ -560,4 +583,3 @@ const app = {
     }
 }
 app.start();
-// window.addEventListener('load', app.start());

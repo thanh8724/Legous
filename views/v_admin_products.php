@@ -111,11 +111,11 @@
         $getUser = getUserById($getID);
         if (!empty($getUser['img']) && $getUser != NULL) {
           ?>
-                <img style="" class="btnShowFeature" src="./upload/users/<?php echo $getUser['img'] ?>" alt="">
+                <img class="btnShowFeature" src="./upload/users/<?php echo $getUser['img'] ?>" alt="">
                 <?php
         } else {
           ?>
-                <img style="" class="btnShowFeature" src="./upload/users/avatar-none.png" alt="">
+                <img class="btnShowFeature" src="./upload/users/avatar-none.png" alt="">
                 <?php
         }
         ?>

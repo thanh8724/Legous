@@ -1,15 +1,15 @@
 <?php
 if (@$_POST['act_search']) {
-  $inputSearch = $_POST['act_search'];
-  $user_list = searchUser($inputSearch);
+    $inputSearch = $_POST['act_search'];
+    $user_list = searchUser($inputSearch);
 } elseif (isset($_GET['sort']) && $_GET['sort'] == 'old') {
-  $user_list = sortOldUser();
+    $user_list = sortOldUser();
 } elseif (isset($_GET['sort']) && $_GET['sort'] == 'atoz') {
-  $user_list = sortAToZUser();
+    $user_list = sortAToZUser();
 } elseif (isset($_GET['sort']) && $_GET['sort'] == 'ztoa') {
-  $user_list = sortZToAUser();
+    $user_list = sortZToAUser();
 } else {
-  $user_list = getUser();
+    $user_list = getUser();
 }
 ?>
 <section class="dashboard">
@@ -35,33 +35,33 @@ if (@$_POST['act_search']) {
                         $getUser = getUserById($item['id_user']);
                         $getProduct = getProductById($item['id_product']);
                         ?>
-                    <li>
-                        <div class="col-12 d-flex">
-                            <div class="col-2">
-                                <?php
+                        <li>
+                            <div class="col-12 d-flex">
+                                <div class="col-2">
+                                    <?php
                                     if ($getUser[0]['img'] == NULL || empty($getUser[0]['img'])) {
                                         ?>
-                                <img class="notifiAdminImg" src="./upload/users/avatar-none.png" alt="">
+                                        <img class="notifiAdminImg" src="./upload/users/avatar-none.png" alt="">
 
-                                <?php
+                                        <?php
                                     } else {
                                         ?>
-                                <img class="notifiAdminImg" src="./upload/users/<?php echo $getUser[0]['img'] ?>"
-                                    alt="">
-                                <?php
+                                        <img class="notifiAdminImg" src="./upload/users/<?php echo $getUser[0]['img'] ?>"
+                                            alt="">
+                                        <?php
                                     }
                                     ?>
+                                </div>
+                                <div class="col-10">
+                                    <p class="notifiAdminText body-small"><strong>
+                                            <?php echo $getUser[0]['fullname'] ?>
+                                        </strong><span> đã bình luận ở sản phẩm <strong><a href="">
+                                                    <?php echo $getProduct['name'] ?>
+                                                </a></strong></span></p>
+                                </div>
                             </div>
-                            <div class="col-10">
-                                <p class="notifiAdminText body-small"><strong>
-                                        <?php echo $getUser[0]['fullname'] ?>
-                                    </strong><span> đã bình luận ở sản phẩm <strong><a href="">
-                                                <?php echo $getProduct['name'] ?>
-                                            </a></strong></span></p>
-                            </div>
-                        </div>
-                    </li>
-                    <?php
+                        </li>
+                        <?php
                     }
                     ?>
                 </ul>
@@ -77,27 +77,27 @@ if (@$_POST['act_search']) {
 
                         $getUser = getUserById($item['id_user']);
                         ?>
-                    <li>
-                        <div class="col-12 d-flex">
-                            <div class="col-2">
-                                <?php
+                        <li>
+                            <div class="col-12 d-flex">
+                                <div class="col-2">
+                                    <?php
                                     if ($getUser[0]['img'] == NULL || empty($getUser[0]['img'])) {
                                         ?>
-                                <img class="notifiAdminImg" src="./upload/users/avatar-none.png" alt="">
+                                        <img class="notifiAdminImg" src="./upload/users/avatar-none.png" alt="">
 
-                                <?php
+                                        <?php
                                     } else {
                                         ?>
-                                <img class="notifiAdminImg" src="./upload/users/<?php echo $getUser[0]['img'] ?>"
-                                    alt="">
+                                        <img class="notifiAdminImg" src="./upload/users/<?php echo $getUser[0]['img'] ?>"
+                                            alt="">
 
-                                <?php
+                                        <?php
                                     }
                                     ?>
-                            </div>
-                            <div class="col-10">
-                                <p class="notifiAdminText body-small"><strong>
-                                        <?php
+                                </div>
+                                <div class="col-10">
+                                    <p class="notifiAdminText body-small"><strong>
+                                            <?php
                                             if ($getUser[0]['fullname'] == NULL && empty($getUser[0]['fullname'])) {
                                                 echo "User ẩn";
 
@@ -106,14 +106,14 @@ if (@$_POST['act_search']) {
 
                                             }
                                             ?>
-                                    </strong><span> vừa mua
-                                        một mô hình với mã đơn hàng <strong>
-                                            <?php echo $item['id'] ?>
-                                        </strong></span></p>
+                                        </strong><span> vừa mua
+                                            một mô hình với mã đơn hàng <strong>
+                                                <?php echo $item['id'] ?>
+                                            </strong></span></p>
+                                </div>
                             </div>
-                        </div>
-                    </li>
-                    <?php
+                        </li>
+                        <?php
                     }
                     ?>
 
@@ -125,12 +125,12 @@ if (@$_POST['act_search']) {
                 $getUser = getUserById($getID);
                 if (!empty($getUser['img']) && $getUser != NULL) {
                     ?>
-                <img style="" class="btnShowFeature" src="./upload/users/<?php echo $getUser['img'] ?>" alt="">
-                <?php
+                    <img style="" class="btnShowFeature" src="./upload/users/<?php echo $getUser['img'] ?>" alt="">
+                    <?php
                 } else {
                     ?>
-                <img style="" class="btnShowFeature" src="./upload/users/avatar-none.png" alt="">
-                <?php
+                    <img style="" class="btnShowFeature" src="./upload/users/avatar-none.png" alt="">
+                    <?php
                 }
                 ?>
                 <ul class="showFeatureAdminHeader box-shadow1">
@@ -201,49 +201,49 @@ if (@$_POST['act_search']) {
             <tbody>
                 <!-- Thêm các hàng dữ liệu vào đây -->
                 <?php
-        foreach ($user_list as $item) {
-          ?>
-                <tr>
-                    <td>
-                        <?php echo $item['id'] ?>
-                    </td>
-                    <td>
-                        <?php echo $item['fullname'] ?>
-                    </td>
-                    <?php
-            $upload_dir = './upload/users/';
-            //Đường dẫn của file sau khi upload
-            $upload_file = $upload_dir . $item['img'];
-            if (empty($item['img']) || $item['img'] == NULL || !file_exists($upload_file)) {
-              ?>
-                    <td><img style="width:50px; height: 50px; border-radius: 3px" src="./upload/users/anonyUser.png"
-                            alt=""></td>
-                    <?php
-            } else {
-              ?>
-                    <td><img style="width:50px; height: 50px; border-radius: 3px"
-                            src="./upload/users/<?php echo $item['img'] ?>" alt=""></td>
-                    <?php
-            }
-            ?>
+                foreach ($user_list as $item) {
+                    ?>
+                    <tr>
+                        <td>
+                            <?php echo $item['id'] ?>
+                        </td>
+                        <td>
+                            <?php echo $item['fullname'] ?>
+                        </td>
+                        <?php
+                        $upload_dir = './upload/users/';
+                        //Đường dẫn của file sau khi upload
+                        $upload_file = $upload_dir . $item['img'];
+                        if (empty($item['img']) || $item['img'] == NULL || !file_exists($upload_file)) {
+                            ?>
+                            <td><img style="width:50px; height: 50px; border-radius: 3px" src="./upload/users/anonyUser.png"
+                                    alt=""></td>
+                            <?php
+                        } else {
+                            ?>
+                            <td><img style="width:50px; height: 50px; border-radius: 3px"
+                                    src="./upload/users/<?php echo $item['img'] ?>" alt=""></td>
+                            <?php
+                        }
+                        ?>
 
-                    <td>
-                        <?php echo $item['username'] ?>
-                    </td>
-                    <td>
-                        <?php echo md5($item['id']) ?>
-                    </td>
-                    <td>
-                        <?php echo $item['email'] ?>
-                    </td>
-                    <td>
-                        <?php echo $item['phone'] ?>
-                    </td>
-                    <td><a href="?mod=admin&act=client-edit&id=<?php echo $item['id'] ?>">Xem chi tiết</a></td>
-                </tr>
-                <?php
-        }
-        ?>
+                        <td>
+                            <?php echo $item['username'] ?>
+                        </td>
+                        <td>
+                            <?php echo md5($item['id']) ?>
+                        </td>
+                        <td>
+                            <?php echo $item['email'] ?>
+                        </td>
+                        <td>
+                            <?php echo $item['phone'] ?>
+                        </td>
+                        <td><a href="?mod=admin&act=client-edit&id=<?php echo $item['id'] ?>">Xem chi tiết</a></td>
+                    </tr>
+                    <?php
+                }
+                ?>
 
             </tbody>
         </table>
@@ -264,7 +264,7 @@ if (@$_POST['act_search']) {
 
 </section>
 <script>
-if (window.innerWidth < 1300) {
-    document.querySelector('nav').classList.add("close");
-}
+    if (window.innerWidth < 1300) {
+        document.querySelector('nav').classList.add("close");
+    }
 </script>

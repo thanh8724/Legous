@@ -74,7 +74,7 @@
 
         rules: [
             Validator.isRequired('#username__input'),
-            Validator.isUsername('#username__input', 'Vui lòng điền tên đăng nhập' , './views/libs/usernameValidator.php'),
+            Validator.isUsernameAlreadyExist('#username__input', 'Vui lòng điền tên đăng nhập' , './views/libs/usernameValidator.php'),
             Validator.isRequired('.email--input' , 'Vui lòng nhập email của bạn.'),
             Validator.isEmail('.email--input'),
             Validator.isEmailAlreadyExist('.email--input' , 'Email này đã tồn tại trên hệ thống' , './views/libs/emailValidator.php'),

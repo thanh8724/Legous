@@ -112,16 +112,16 @@ if (isset($_GET['act'])) {
                 if (isset($_POST['kyw_cg'])) {
                     $get_kyw = $_POST['kyw_cg'];
                     header('Location: ?mod=admin&act=categories&page=1&search_category=' . urlencode($get_kyw));
-                    exit;
+                    exit; 
                 } else if (isset($_GET['search_category'])) {
                     $kyw_cg = $_GET['search_category'];
                     if (isset($_GET['sort'])) {
                         $sort = $_GET['sort'];
                         $get_Category = get_Categoris(($_GET['page'] - 1) * 4, 4, $kyw_cg, $sort);
                     } else {
-                        if (empty($kyw_cg)) {
+                        if(empty($kyw_cg)){
                             $get_Category = [];
-                        } else {
+                        }else{
                             $get_Category = get_Categoris(($_GET['page'] - 1) * 4, 4, $kyw_cg);
                         }
                     }

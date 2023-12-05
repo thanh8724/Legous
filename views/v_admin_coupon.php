@@ -22,33 +22,33 @@
                         $getUser = getUserById($item['id_user']);
                         $getProduct = getProductById($item['id_product']);
                         ?>
-                        <li>
-                            <div class="col-12 d-flex">
-                                <div class="col-2">
-                                    <?php
+                    <li>
+                        <div class="col-12 d-flex">
+                            <div class="col-2">
+                                <?php
                                     if ($getUser[0]['img'] == NULL || empty($getUser[0]['img'])) {
                                         ?>
-                                        <img class="notifiAdminImg" src="./upload/users/avatar-none.png" alt="">
+                                <img class="notifiAdminImg" src="./upload/users/avatar-none.png" alt="">
 
-                                        <?php
+                                <?php
                                     } else {
                                         ?>
-                                        <img class="notifiAdminImg" src="./upload/users/<?php echo $getUser[0]['img'] ?>"
-                                            alt="">
-                                        <?php
+                                <img class="notifiAdminImg" src="./upload/users/<?php echo $getUser[0]['img'] ?>"
+                                    alt="">
+                                <?php
                                     }
                                     ?>
-                                </div>
-                                <div class="col-10">
-                                    <p class="notifiAdminText body-small"><strong>
-                                            <?php echo $getUser[0]['fullname'] ?>
-                                        </strong><span> đã bình luận ở sản phẩm <strong><a href="">
-                                                    <?php echo $getProduct['name'] ?>
-                                                </a></strong></span></p>
-                                </div>
                             </div>
-                        </li>
-                        <?php
+                            <div class="col-10">
+                                <p class="notifiAdminText body-small"><strong>
+                                        <?php echo $getUser[0]['fullname'] ?>
+                                    </strong><span> đã bình luận ở sản phẩm <strong><a href="">
+                                                <?php echo $getProduct['name'] ?>
+                                            </a></strong></span></p>
+                            </div>
+                        </div>
+                    </li>
+                    <?php
                     }
                     ?>
                 </ul>
@@ -64,27 +64,27 @@
 
                         $getUser = getUserById($item['id_user']);
                         ?>
-                        <li>
-                            <div class="col-12 d-flex">
-                                <div class="col-2">
-                                    <?php
+                    <li>
+                        <div class="col-12 d-flex">
+                            <div class="col-2">
+                                <?php
                                     if ($getUser[0]['img'] == NULL || empty($getUser[0]['img'])) {
                                         ?>
-                                        <img class="notifiAdminImg" src="./upload/users/avatar-none.png" alt="">
+                                <img class="notifiAdminImg" src="./upload/users/avatar-none.png" alt="">
 
-                                        <?php
+                                <?php
                                     } else {
                                         ?>
-                                        <img class="notifiAdminImg" src="./upload/users/<?php echo $getUser[0]['img'] ?>"
-                                            alt="">
+                                <img class="notifiAdminImg" src="./upload/users/<?php echo $getUser[0]['img'] ?>"
+                                    alt="">
 
-                                        <?php
+                                <?php
                                     }
                                     ?>
-                                </div>
-                                <div class="col-10">
-                                    <p class="notifiAdminText body-small"><strong>
-                                            <?php
+                            </div>
+                            <div class="col-10">
+                                <p class="notifiAdminText body-small"><strong>
+                                        <?php
                                             if ($getUser[0]['fullname'] == NULL && empty($getUser[0]['fullname'])) {
                                                 echo "User ẩn";
 
@@ -93,14 +93,14 @@
 
                                             }
                                             ?>
-                                        </strong><span> vừa mua
-                                            một mô hình với mã đơn hàng <strong>
-                                                <?php echo $item['id'] ?>
-                                            </strong></span></p>
-                                </div>
+                                    </strong><span> vừa mua
+                                        một mô hình với mã đơn hàng <strong>
+                                            <?php echo $item['id'] ?>
+                                        </strong></span></p>
                             </div>
-                        </li>
-                        <?php
+                        </div>
+                    </li>
+                    <?php
                     }
                     ?>
 
@@ -112,12 +112,12 @@
                 $getUser = getUserById($getID);
                 if (!empty($getUser['img']) && $getUser != NULL) {
                     ?>
-                    <img style="" class="btnShowFeature" src="./upload/users/<?php echo $getUser['img'] ?>" alt="">
-                    <?php
+                <img class="btnShowFeature" src="./upload/users/<?php echo $getUser['img'] ?>" alt="">
+                <?php
                 } else {
                     ?>
-                    <img style="" class="btnShowFeature" src="./upload/users/avatar-none.png" alt="">
-                    <?php
+                <img class="btnShowFeature" src="./upload/users/avatar-none.png" alt="">
+                <?php
                 }
                 ?>
                 <ul class="showFeatureAdminHeader box-shadow1">
@@ -220,28 +220,28 @@
                     $getAllCoupon = getAllCoupon();
                     foreach ($getAllCoupon as $item) {
                         ?>
-                        <tr>
-                            <td>
-                                <?php echo $item['id'] ?>
-                            </td>
-                            <td>
-                                <?php echo $item['name'] ?>
-                            </td>
-                            <td>
-                                <?php echo $item['description'] ?>
-                            </td>
-                            <td>
-                                <?php echo $item['price'] ?>
-                            </td>
-                            <td>
-                                <?php echo $item['create_date'] ?>
-                            </td>
-                            <td>
-                                <?php echo $item['expired_date'] ?>
-                            </td>
-                            <td><a href="?mod=admin&act=createcoupon&editId=<?php echo $item['id'] ?>">Xem chi tiết</a></td>
-                        </tr>
-                        <?php
+                    <tr>
+                        <td>
+                            <?php echo $item['id'] ?>
+                        </td>
+                        <td>
+                            <?php echo $item['name'] ?>
+                        </td>
+                        <td>
+                            <?php echo $item['description'] ?>
+                        </td>
+                        <td>
+                            <?php echo $item['price'] ?>
+                        </td>
+                        <td>
+                            <?php echo $item['create_date'] ?>
+                        </td>
+                        <td>
+                            <?php echo $item['expired_date'] ?>
+                        </td>
+                        <td><a href="?mod=admin&act=createcoupon&editId=<?php echo $item['id'] ?>">Xem chi tiết</a></td>
+                    </tr>
+                    <?php
                     }
                     ?>
 
