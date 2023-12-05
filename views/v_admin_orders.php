@@ -240,67 +240,62 @@
             <td>12.289.090 đ</td>
             <td><a href="">Xem chi tiết</a></td>
           </tr> -->
-                <?php foreach ($get_Order as $value):?>
+                <?php foreach ($get_Order as $value): ?>
 
                 <?php
-                $getUser = getUserById($value['id_user']);
-                $getPayment = payment($value['id_user']);
-                $getProduct = getProductById($value['id_user']);
-                $getShipping = shipping($value['id_shipping']);
-            //number_format
-            $formatted_number = number_format($value['total'], 0, ',', '.');
-            $status_order = '';
-                if($value['status'] == 1){
-                  $status_order = '<td style="color:#00C58A;">Đang Chờ</td>';
-                }
-                elseif($value['status'] == 2){
-                  $status_order = '<td style="color:#707070;">Chờ Lấy Hàng</td>';
-                }
-                elseif($value['status'] == 3){
-                  $status_order = '<td style="color:#FF9900;">Đang Giao</td>';
-                }
-                elseif($value['status'] == 4){
-                  $status_order = '<td style="color:#B3261E;">Hoàn Đơn</td>';
-                }
-                elseif($value['status'] == 6){
-                  $status_order = '<td style="color:#B3261E;">Đã Hủy</td>';
-                }
-                elseif($value['status'] == 5){
-                  $status_order = '<td style="color:#00B3FF;">Đã Giao</td>';
-                }
-              ?>
+                    $getUser = getUserById($value['id_user']);
+                    $getPayment = payment($value['id_user']);
+                    $getProduct = getProductById($value['id_user']);
+                    $getShipping = shipping($value['id_shipping']);
+                    //number_format
+                    $formatted_number = number_format($value['total'], 0, ',', '.');
+                    $status_order = '';
+                    if ($value['status'] == 1) {
+                        $status_order = '<td style="color:#00C58A;">Đang Chờ</td>';
+                    } elseif ($value['status'] == 2) {
+                        $status_order = '<td style="color:#707070;">Chờ Lấy Hàng</td>';
+                    } elseif ($value['status'] == 3) {
+                        $status_order = '<td style="color:#FF9900;">Đang Giao</td>';
+                    } elseif ($value['status'] == 4) {
+                        $status_order = '<td style="color:#B3261E;">Hoàn Đơn</td>';
+                    } elseif ($value['status'] == 6) {
+                        $status_order = '<td style="color:#B3261E;">Đã Hủy</td>';
+                    } elseif ($value['status'] == 5) {
+                        $status_order = '<td style="color:#00B3FF;">Đã Giao</td>';
+                    }
+                    ?>
                 <?php
-              $bill_cl_st = '';
-                if($value['status'] == 6)
-                $bill_cl_st = 'style = "background-color: rgba(128, 128, 128, 0.233);"';
-                elseif($value['status'] == 5)
-                $bill_cl_st = 'style = "background-color:rgba(34,187,51, 0.3);"';
-              ?>
-                <tr <?=$bill_cl_st?>>
+                    $bill_cl_st = '';
+                    if ($value['status'] == 6)
+                        $bill_cl_st = 'style = "background-color: rgba(128, 128, 128, 0.233);"';
+                    elseif ($value['status'] == 5)
+                        $bill_cl_st = 'style = "background-color:rgba(34,187,51, 0.3);"';
+                    ?>
+                <tr <?= $bill_cl_st ?>>
                     <!-- <td style="text-align: start;">
                         <input type="checkbox" style="width: 18px; height: 18px;">
                         </input>
                     </td> -->
                     <td>
-                        <?=$value['id']?>
+                        <?= $value['id'] ?>
                     </td>
                     <td>
-                        <?=$getUser['fullname']?>
+                        <?= $getUser[0]['fullname'] ?>
                     </td>
                     <td>
-                        <?=$getPayment[0]['name']?>
+                        <?= $getPayment['name'] ?>
                     </td>
                     <td>
-                        <?=$value['create_date']?>
+                        <?= $value['create_date'] ?>
                     </td>
-                    <?=$status_order?>
+                    <?= $status_order ?>
                     <td>
-                        <?=$formatted_number?> đ
+                        <?= $formatted_number ?> đ
                     </td>
-                    <td><a href="?mod=admin&act=orders&id=<?=$value['id']?>">Xem chi tiết</a></td>
+                    <td><a href="?mod=admin&act=orders&id=<?= $value['id'] ?>">Xem chi tiết</a></td>
                 </tr>
-                <?php endforeach;?>
-                <?php if(@$_GET['id']):?>
+                <?php endforeach; ?>
+                <?php if (@$_GET['id']): ?>
                 <div style=" 
                 font-size: 16px;
                 display:block;
@@ -322,7 +317,7 @@
                         <a href="?mod=admin&act=orders" style="width:100%;"><span
                                 style="float: inline-end;font-size:20px; cursor: pointer;"
                                 class="close">&times;</span></a>
-                        <form action="?mod=admin&act=orders&id=<?=$_GET['id']?>" method="POST"
+                        <form action="?mod=admin&act=orders&id=<?= $_GET['id'] ?>" method="POST"
                             enctype="multipart/form-data">
                             <div class="row d-flex">
                                 <div class="col-6" style="overflow: auto; height:600px;">
@@ -330,39 +325,55 @@
                                     <div style="margin-bottom: 20px;">
                                         <hr>
                                         <?php
-                                ?>
+                                            ?>
                                         <h4>Tên Người Mua</h4>
-                                        <p><?=$name_user['fullname']?></p>
+                                        <p>
+                                            <?= $name_user['fullname'] ?>
+                                        </p>
                                     </div>
                                     <div style="margin-bottom: 20px;">
                                         <h4>Địa Chỉ Người Mua</h4>
-                                        <p><?=$getAddress['address']?></p>
+                                        <p>
+                                            <?= $getAddress['address'] ?>
+                                        </p>
                                     </div>
                                     <div style="margin-bottom: 20px;">
                                         <h4>Email</h4>
-                                        <p><?=$name_user['email']?></p>
+                                        <p>
+                                            <?= $name_user['email'] ?>
+                                        </p>
                                     </div>
                                     <div style="margin-bottom: 20px;">
                                         <h4>Số Điện Thoại</h4>
-                                        <p><?=$name_user['phone']?></p>
+                                        <p>
+                                            <?= $name_user['phone'] ?>
+                                        </p>
                                         <hr>
                                     </div>
                                     <h1 style="margin-bottom: 20px;">Người Nhận</h1>
                                     <div style="margin-bottom: 20px;">
                                         <h4>Tên Người Nhận</h4>
-                                        <p><?=$Id_bill[0]['name_recipient']?></p>
+                                        <p>
+                                            <?= $Id_bill[0]['name_recipient'] ?>
+                                        </p>
                                     </div>
                                     <div style="margin-bottom: 20px;">
                                         <h4>Địa Người Nhận</h4>
-                                        <p><?=$Id_bill[0]['address_recipient']?></p>
+                                        <p>
+                                            <?= $Id_bill[0]['address_recipient'] ?>
+                                        </p>
                                     </div>
                                     <div style="margin-bottom: 20px;">
                                         <h4>Email</h4>
-                                        <p><?=$Id_bill[0]['email_recipient']?></p>
+                                        <p>
+                                            <?= $Id_bill[0]['email_recipient'] ?>
+                                        </p>
                                     </div>
                                     <div style="margin-bottom: 20px;">
                                         <h4>Số Điện Thoại</h4>
-                                        <p><?=$Id_bill[0]['phone_recipient']?></p>
+                                        <p>
+                                            <?= $Id_bill[0]['phone_recipient'] ?>
+                                        </p>
                                     </div>
                                 </div>
                                 <div class="col-6">
@@ -371,20 +382,26 @@
                                         <hr>
                                         <div style="margin-bottom: 20px;">
                                             <h4>Tên Đơn Hàng - Danh Mục:</h4>
-                                            <?php foreach ($get_product_order as $value):?>
+                                            <?php foreach ($get_product_order as $value): ?>
                                             <?php
-                                      $category_bill = getCategoryById($value['category']);
-                                    ?>
+                                                    $category_bill = getCategoryById($value['category']);
+                                                    ?>
                                             <div class="d-flex">
-                                                <p><?=$value['product_name']?></p> -
-                                                <p><?=$category_bill['name']?></p>
+                                                <p>
+                                                    <?= $value['product_name'] ?>
+                                                </p> -
+                                                <p>
+                                                    <?= $category_bill['name'] ?>
+                                                </p>
                                             </div>
-                                            <?php endforeach;?>
+                                            <?php endforeach; ?>
                                         </div>
 
                                         <div style="margin-bottom: 20px;" class="d-flex align-items-center">
                                             <h4 style="margin:0 5px 0 0 ;">Cách Thức Giao Hàng:</h4>
-                                            <p> <?=$shipping[0]['name'] ?></p>
+                                            <p>
+                                                <?= $shipping[0]['name'] ?>
+                                            </p>
                                         </div>
                                         <div style="margin-bottom: 20px;" class="d-flex align-items-center">
                                             <h4 style="margin:0 5px 0 0 ;">Áp Dụng Mã Giảm Giá:</h4>
@@ -392,31 +409,41 @@
                                         </div>
                                         <div style="margin-bottom: 20px;" class="d-flex align-items-center">
                                             <h4 style="margin:0 5px 0 0 ;">Phương thức thanh toán:</h4>
-                                            <p><?=$payment[0]['name']?></p>
+                                            <p>
+                                                <?= $payment[0]['name'] ?>
+                                            </p>
                                         </div>
                                         <div style="margin-bottom: 20px;" class="d-flex align-items-center">
                                             <h4 style="margin:0 5px 0 0 ;">Ngày Đặt Hàng: </h4>
-                                            <p><?=$Id_bill[0]['create_date']?></p>
+                                            <p>
+                                                <?= $Id_bill[0]['create_date'] ?>
+                                            </p>
                                         </div>
                                         <?php
-                                  $tax = $Id_bill[0]['total'] * 0.1;
-                                  $total = $Id_bill[0]['total'] - $tax;
-                                  $formatted_number_id = number_format($total, 0, ',', '.');
-                                ?>
+                                            $tax = $Id_bill[0]['total'] * 0.1;
+                                            $total = $Id_bill[0]['total'] - $tax;
+                                            $formatted_number_id = number_format($total, 0, ',', '.');
+                                            ?>
                                         <div>
                                             <h4>Địa Chỉ Nhận hàng Hàng:</h4>
-                                            <p><?=$Id_bill[0]['address_recipient']?></p>
+                                            <p>
+                                                <?= $Id_bill[0]['address_recipient'] ?>
+                                            </p>
                                             <hr>
                                         </div>
                                         <div>
                                             <h5 style="margin:0 5px 0 0 ;">(Thuế
-                                                10%):-<?=number_format($tax, 0, ',', '.')?>đ</h5>
+                                                10%):-
+                                                <?= number_format($tax, 0, ',', '.') ?>đ
+                                            </h5>
                                         </div>
                                         <div class="d-flex align-items-center">
                                             <h4 style="margin:0 5px 0 0 ;">Tổng Đơn Hàng: </h4>
 
 
-                                            <p><?=$formatted_number_id?>đ</p>
+                                            <p>
+                                                <?= $formatted_number_id ?>đ
+                                            </p>
                                         </div>
                                         <div class="custom-select">
                                             <hr>
@@ -425,8 +452,8 @@
 
                                             <select id="id_category" name="change_status">
                                                 <?php
-                                              if($Id_bill[0]['status'] == 1){
-                                                echo'
+                                                    if ($Id_bill[0]['status'] == 1) {
+                                                        echo '
                                                 <option style="display:none;" value="1">Đang Chờ</option>
                                                 <option value="2">Chờ Lấy Hàng</option>
                                                 <option value="3">Đang Giao</option>
@@ -434,9 +461,8 @@
                                                 <option value="5">Đã Giao</option>
                                                 <option value="6">Hủy Đơn</option>
                                                 ';
-                                              }
-                                              elseif($Id_bill[0]['status'] == 2){
-                                                echo'
+                                                    } elseif ($Id_bill[0]['status'] == 2) {
+                                                        echo '
                                                 <option style="display:none;" value="2">Chờ Lấy Hàng</option>
                                                 <option value="3">Đang Giao</option>
                                                 <option value="4">Hoàn Đơn</option>
@@ -444,9 +470,8 @@
                                                 <option value="6">Hủy Đơn</option>
                                                 <option value="1">Đang Chờ</option>
                                                 ';
-                                              }
-                                              elseif($Id_bill[0]['status'] == 3){
-                                                echo'
+                                                    } elseif ($Id_bill[0]['status'] == 3) {
+                                                        echo '
                                                 <option style="display:none;" value="3">Đang Giao</option>
                                                 <option value="4">Hoàn Đơn</option>
                                                 <option value="5">Đã Giao</option>
@@ -454,9 +479,8 @@
                                                 <option style="display:none;" value="1">Đang Chờ</option>
                                                 <option style="display:none;" value="2">Chờ Lấy Hàng</option>
                                                 ';
-                                              }
-                                              elseif($Id_bill[0]['status'] == 4){
-                                                echo'
+                                                    } elseif ($Id_bill[0]['status'] == 4) {
+                                                        echo '
                                                 <option style="display:none;" value="4">Hoàn Đơn</option>
                                                 <option value="5">Đã Giao</option>
                                                 <option value="6">Hủy Đơn</option>
@@ -464,9 +488,8 @@
                                                 <option value="2">Chờ Lấy Hàng</option>
                                                 <option value="3">Đang Giao</option>
                                                 ';
-                                              }
-                                              elseif($Id_bill[0]['status'] == 5){
-                                                echo'
+                                                    } elseif ($Id_bill[0]['status'] == 5) {
+                                                        echo '
                                                 <option value="5">Đã Giao</option>
                                                 <option style="display:none;" value="6">Hủy Đơn</option>
                                                 <option style="display:none;" value="1">Đang Chờ</option>
@@ -474,9 +497,8 @@
                                                 <option style="display:none;" value="3">Đang Giao</option>
                                                 <option style="display:none;" value="4">Hoàn Đơn</option>
                                                 ';
-                                              }
-                                              elseif($Id_bill[0]['status'] == 6){
-                                                echo'
+                                                    } elseif ($Id_bill[0]['status'] == 6) {
+                                                        echo '
                                                 <option value="6">Hủy Đơn</option>
                                                 <option style="display:none;" value="1">Đang Chờ</option>
                                                 <option style="display:none;" value="2">Chờ Lấy Hàng</option>
@@ -484,8 +506,8 @@
                                                 <option style="display:none;" value="4">Hoàn Đơn</option>
                                                 <option style="display:none;" value="5">Đã Giao</option>
                                                 ';
-                                              }
-                                            ?>
+                                                    }
+                                                    ?>
                                             </select>
                                         </div>
                                     </div>
@@ -496,7 +518,7 @@
                         </form>
                     </div>
                 </div>
-                <?php endif;?>
+                <?php endif; ?>
 
             </tbody>
         </table>

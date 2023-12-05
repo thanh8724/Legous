@@ -80,8 +80,7 @@ if (isset($_GET['act'])) {
             # xóa địa chỉ
             if (isset($_GET['id-address']) && ($_GET['id-address']) > 0) {
                 $id_address = $_GET['id-address'];
-                // delete_address($id_address);
-                delete_address_byId($id_address);
+                delete_address($id_address);
                 header('location: ?mod=user&act=address');
             }
             break;

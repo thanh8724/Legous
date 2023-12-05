@@ -1462,7 +1462,16 @@ table th {
   grid-template-columns: repeat(auto-fit, minmax(min(16em, 100%), 1fr));
 }
 
-<<<<<<< HEAD
+.summary__product__name {
+  width: 30rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
+}
+
 .darkMode header {
   background-color: #1c2339 !important;
 }
@@ -1527,22 +1536,6 @@ table th {
   background-color: #0285c5 !important;
 }
 
-=======
-.summary__product__name {
-  width: 30rem;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  word-break: break-word;
-}
-
-.darkMode {
-  background-color: #1c2339 !important;
-}
-
->>>>>>> 433c206d1adc33720f9aff113e032b74b04f545a
 body.dark #mainAdmin {
   background-color: #15192a;
   transition: 0.5s;
@@ -1906,7 +1899,8 @@ html {
   display: block;
 }
 #mainAdmin .dashboard .top .info-user .imgUserAdmin img {
-  width: 60px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   margin: 10px;
 }
