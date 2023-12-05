@@ -56,7 +56,8 @@
     </div>
     <div class="navBarMobile">
         <div class="navBarMobile_item">
-            <div class="close-button" id="closeButton"> <!-- Add the close button here -->
+            <div class="close-button" id="closeButton">
+                <!-- Add the close button here -->
                 <i class="fas fa-times"></i>
             </div>
             <ul>
@@ -65,6 +66,7 @@
                 <li><a class="title-large" href="?mod=admin&act=categories">Danh Mục</a></li>
                 <li><a class="title-large" href="?mod=admin&act=orders">Đơn Hàng</a></li>
                 <li><a class="title-large" href="?mod=admin&act=client">Khách Hàng</a></li>
+                <li><a class="title-large" href="?mod=admin&act=address">Địa Chỉ</a></li>
                 <li><a class="title-large" href="?mod=admin&act=comments">Bình Luận</a></li>
                 <li><a class="title-large" href="?mod=admin&act=banner">Banner</a></li>
                 <li><a class="title-large" href="?mod=admin&act=coupon">Mã Giảm Giá</a></li>
@@ -73,7 +75,8 @@
         </div>
     </div>
     <div class="searchBarMobile">
-        <div class="close-button" id="closeButton1"> <!-- Add the close button here -->
+        <div class="close-button" id="closeButton1">
+            <!-- Add the close button here -->
             <i class="fas fa-times"></i>
 
         </div>
@@ -118,6 +121,10 @@
                     <li class="<?= (strpos($view_name, 'client')) ? 'active' : '' ?>"><a href="?mod=admin&act=client">
                             <i class="fal fa-user"></i>
                             <span class="link-name title-small">Khách Hàng</span>
+                        </a></li>
+                    <li class="<?= (strpos($view_name, 'address')) ? 'active' : '' ?>"><a href="?mod=admin&act=address">
+                            <i class="far fa-location"></i>
+                            <span class="link-name title-small">Địa chỉ</span>
                         </a></li>
                     <li class="<?= (strpos($view_name, 'comments')) ? 'active' : '' ?>"><a
                             href="?mod=admin&act=comments">
@@ -167,8 +174,8 @@
     <script src="./public/assets/resources/js/admin.js"></script>
     <!----======== Bootstrap ======== -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+        </script>
 
 
 

@@ -165,7 +165,7 @@ foreach ($productThumbnails as $item) {
 }
 if (isset($_POST['submitComment'])) {
     if (!empty($_POST['inputComment'])) {
-        $inputCmt = $_POST['inputComment'];
+        $inputCmt = htmlentities($_POST['inputComment']);
     }
     $getIdUser = $_SESSION['userLogin']['id_user'];
     $id_product = $_GET['idProduct'];
@@ -458,67 +458,67 @@ if (isset($_POST['editComment'])) {
                             $getIDProduct = $_GET['idProduct'];
                             if ($editCmtById[0]['id_user'] == $_SESSION['userLogin']['id_user']) {
                                 ?>
-                                <form enctype="multipart/form-data" action="" class="form comment__form" method="post">
-                                    <input type="file" name="file[]" id="file-1" class="inputfile inputfile-1"
-                                        data-multiple-caption="{count} đã chọn" multiple />
-                                    <label for="file-1"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17"
-                                            viewBox="0 0 20 17">
-                                            <path
-                                                d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z" />
-                                        </svg> <span>Chọn ảnh&hellip;</span></label>
+                    <form enctype="multipart/form-data" action="" class="form comment__form" method="post">
+                        <input type="file" name="file[]" id="file-1" class="inputfile inputfile-1"
+                            data-multiple-caption="{count} đã chọn" multiple />
+                        <label for="file-1"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17"
+                                viewBox="0 0 20 17">
+                                <path
+                                    d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z" />
+                            </svg> <span>Chọn ảnh&hellip;</span></label>
 
-                                    <div class="flex" style="align-items: center;">
-                                        <input type="text" name="inputEditComment" class="form__input comment__input"
-                                            placeholder="Comment" value="<?php if (!empty($editCmtById))
+                        <div class="flex" style="align-items: center;">
+                            <input type="text" name="inputEditComment" class="form__input comment__input"
+                                placeholder="Comment" value="<?php if (!empty($editCmtById))
                                                 print_r($editCmtById[0]['content']) ?>">
-                                            <button name="editComment" value="submitComment" type="submit"
-                                                class="icon-btn send-comment__btn"><i class="fal fa-paper-plane"></i></button>
-                                        </div>
-                                        <?php
+                            <button name="editComment" value="submitComment" type="submit"
+                                class="icon-btn send-comment__btn"><i class="fal fa-paper-plane"></i></button>
+                        </div>
+                        <?php
                                             if (!empty($imgImtById)) {
                                                 ?>
-                                        <div class="comment_media">
-                                            <?php
+                        <div class="comment_media">
+                            <?php
                                             foreach ($imgImtById as $item) {
                                                 ?>
-                                                <div class="comment_media_item">
-                                                    <img src="./upload/users/<?php echo $item['src'] ?>" alt="">
-                                                </div>
-                                                <?php
+                            <div class="comment_media_item">
+                                <img src="./upload/users/<?php echo $item['src'] ?>" alt="">
+                            </div>
+                            <?php
                                             }
                                             echo "</div>";
                                             }
                                             ?>
-                                        <?php
+                            <?php
                                         ?>
 
-                                </form>
-                                <?php
+                    </form>
+                    <?php
                             } else {
                                 header("Location: ?mod=page&act=productDetail&idProduct={$getIDProduct}")
 
                                     ?>
-                                <?php
+                    <?php
                             }
                         } else {
                             ?>
-                            <form enctype="multipart/form-data" action="" class="form comment__form" method="post">
-                                <input type="file" name="file[]" id="file-1" class="inputfile inputfile-1"
-                                    data-multiple-caption="{count} đã chọn" multiple />
-                                <label for="file-1"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17"
-                                        viewBox="0 0 20 17">
-                                        <path
-                                            d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z" />
-                                    </svg> <span>Chọn ảnh&hellip;</span></label>
+                    <form enctype="multipart/form-data" action="" class="form comment__form" method="post">
+                        <input type="file" name="file[]" id="file-1" class="inputfile inputfile-1"
+                            data-multiple-caption="{count} đã chọn" multiple />
+                        <label for="file-1"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17"
+                                viewBox="0 0 20 17">
+                                <path
+                                    d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z" />
+                            </svg> <span>Chọn ảnh&hellip;</span></label>
 
-                                <div class="flex" style="align-items: center;">
-                                    <input type="text" name="inputComment" class="form__input comment__input"
-                                        placeholder="Comment">
-                                    <button name="submitComment" value="submitComment" type="submit"
-                                        class="icon-btn send-comment__btn"><i class="fal fa-paper-plane"></i></button>
-                                </div>
-                            </form>
-                            <?php
+                        <div class="flex" style="align-items: center;">
+                            <input type="text" name="inputComment" class="form__input comment__input"
+                                placeholder="Comment">
+                            <button name="submitComment" value="submitComment" type="submit"
+                                class="icon-btn send-comment__btn"><i class="fal fa-paper-plane"></i></button>
+                        </div>
+                    </form>
+                    <?php
                         }
                     }
                     ?>
@@ -537,103 +537,103 @@ if (isset($_POST['editComment'])) {
                         $productImgCmt = getImgCommentById($idCmt);
                         if ($item['is_appear'] == 1) {
                             ?>
-                            <div class="comment__item mb30 p30">
-                                <div class="flex comment__user">
-                                    <div class="flex g12">
-                                        <div class="user__avt avt"><img src="./upload/users/<?php echo $getUserByID['img'] ?>"
-                                                alt="user 1" class="imgcover"></div>
-                                        <div class="flex-column flex-between">
-                                            <div class="user__name title-medium fw-smb">
-                                                <?php
+                    <div class="comment__item mb30 p30">
+                        <div class="flex comment__user">
+                            <div class="flex g12">
+                                <div class="user__avt avt"><img src="./upload/users/<?php echo $getUserByID['img'] ?>"
+                                        alt="user 1" class="imgcover"></div>
+                                <div class="flex-column flex-between">
+                                    <div class="user__name title-medium fw-smb">
+                                        <?php
                                                 if (!empty($getUserByID['fullname']) || $getUserByID['fullname'] != null) {
                                                     echo $getUserByID['fullname'];
                                                 } else {
                                                     echo "Người dùng ẩn danh";
                                                 }
                                                 ?>
-                                            </div>
-                                            <div class="user-comment__date title-small">
-                                                <?php echo $item['create_date'] ?>
-                                            </div>
-                                        </div>
                                     </div>
-                                    <?php
+                                    <div class="user-comment__date title-small">
+                                        <?php echo $item['create_date'] ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php
                                     if (isset($_SESSION['userLogin'])) {
                                         ?>
-                                        <div class="moreFeatureComment">
-                                            <ul class="ulDadMoreFeatureComment">
-                                                <li class="liDadMoreFeatureComment">
-                                                    <div class="ellipsisBtn">
-                                                        <i class="fas fa-ellipsis-v"></i>
-                                                    </div>
-                                                    <div class="divMoreFeatureComment box-shadow1">
-                                                        <ul class="ulSonMoreFeatureComment p10">
-                                                            <?php
+                            <div class="moreFeatureComment">
+                                <ul class="ulDadMoreFeatureComment">
+                                    <li class="liDadMoreFeatureComment">
+                                        <div class="ellipsisBtn">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </div>
+                                        <div class="divMoreFeatureComment box-shadow1">
+                                            <ul class="ulSonMoreFeatureComment p10">
+                                                <?php
                                                             if ($_SESSION['userLogin']['id_user'] == $item['id_user']) {
                                                                 ?>
-                                                                <li class="liSonMoreFeatureComment"><a
-                                                                        href="?mod=page&act=productDetail&idProduct=<?php echo $productId ?>&editCmt=<?php echo $item['id'] ?>">Chỉnh
-                                                                        Sửa</a></li>
-                                                                <li class="liSonMoreFeatureComment"><a
-                                                                        href="?mod=page&act=delCmt&reportId=<?php echo $item['id'] ?>&idProduct=<?php echo $productId ?>">Xóa</a>
-                                                                </li>
-                                                                <?php
+                                                <li class="liSonMoreFeatureComment"><a
+                                                        href="?mod=page&act=productDetail&idProduct=<?php echo $productId ?>&editCmt=<?php echo $item['id'] ?>">Chỉnh
+                                                        Sửa</a></li>
+                                                <li class="liSonMoreFeatureComment"><a
+                                                        href="?mod=page&act=delCmt&reportId=<?php echo $item['id'] ?>&idProduct=<?php echo $productId ?>">Xóa</a>
+                                                </li>
+                                                <?php
                                                             } else {
                                                                 ?>
-                                                                <li class="liSonMoreFeatureComment"><a
-                                                                        href="?mod=page&act=reportCmt&reportId=<?php echo $item['id'] ?>&reported=<?php echo $item['reported'] ?>&idProduct=<?php echo $productId ?>">Tố
-                                                                        Cáo</a></li>
-                                                                <?php
+                                                <li class="liSonMoreFeatureComment"><a
+                                                        href="?mod=page&act=reportCmt&reportId=<?php echo $item['id'] ?>&reported=<?php echo $item['reported'] ?>&idProduct=<?php echo $productId ?>">Tố
+                                                        Cáo</a></li>
+                                                <?php
                                                             }
                                                             ?>
 
 
-                                                            <!-- Note: Xóa ảnh cũ khi xóa comment -->
-                                                        </ul>
-                                                    </div>
-                                                </li>
+                                                <!-- Note: Xóa ảnh cũ khi xóa comment -->
                                             </ul>
                                         </div>
-                                        <?php
+                                    </li>
+                                </ul>
+                            </div>
+                            <?php
                                     }
                                     ?>
-                                </div>
-                                <div class="comment__content body-medium fw-normal mt12">
-                                    <?php echo $item['content'] ?>
-                                </div>
-                                <div class="comment_media">
-                                    <?php
+                        </div>
+                        <div class="comment__content body-medium fw-normal mt12">
+                            <?php echo $item['content'] ?>
+                        </div>
+                        <div class="comment_media">
+                            <?php
                                     if (!empty($productImgCmt)) {
                                         foreach ($productImgCmt as $result) {
                                             ?>
-                                            <div class="comment_media_item">
-                                                <img src="./upload/users/<?php echo $result['src'] ?>" alt="">
-                                            </div>
-                                            <?php
+                            <div class="comment_media_item">
+                                <img src="./upload/users/<?php echo $result['src'] ?>" alt="">
+                            </div>
+                            <?php
                                         }
                                     }
                                     ?>
-                                </div>
-                            </div>
-                            <?php
+                        </div>
+                    </div>
+                    <?php
                         } else {
                             ?>
-                            <div class="comment__item mb30 p30">
-                                <div class="flex g12 comment__user comment__hidden">
-                                    <div class="user__avt avt"><img src="./upload/users/anonyUser.png" alt="user 1"
-                                            class="imgcover"></div>
-                                    <div class="flex-column flex-between">
-                                        <div class="user__name title-medium fw-smb">
-                                            <p>Bình luận này đang vi phạm chính sách nên đã bị ẩn</p>
-                                        </div>
-                                        <div class="user-comment__date title-small">
-                                            <p>By Admin</p>
-                                        </div>
-                                    </div>
+                    <div class="comment__item mb30 p30">
+                        <div class="flex g12 comment__user comment__hidden">
+                            <div class="user__avt avt"><img src="./upload/users/anonyUser.png" alt="user 1"
+                                    class="imgcover"></div>
+                            <div class="flex-column flex-between">
+                                <div class="user__name title-medium fw-smb">
+                                    <p>Bình luận này đang vi phạm chính sách nên đã bị ẩn</p>
                                 </div>
-
+                                <div class="user-comment__date title-small">
+                                    <p>By Admin</p>
+                                </div>
                             </div>
-                            <?php
+                        </div>
+
+                    </div>
+                    <?php
                         }
                     }
                     ?>
@@ -752,47 +752,47 @@ if (isset($_POST['editComment'])) {
 
 
 <script>
-    'use strict';
-    ;
-    (function (document, window, index) {
-        var inputs = document.querySelectorAll('.inputfile');
-        Array.prototype.forEach.call(inputs, function (input) {
-            var label = input.nextElementSibling,
-                labelVal = label.innerHTML;
+'use strict';;
+(function(document, window, index) {
+    var inputs = document.querySelectorAll('.inputfile');
+    Array.prototype.forEach.call(inputs, function(input) {
+        var label = input.nextElementSibling,
+            labelVal = label.innerHTML;
 
-            input.addEventListener('change', function (e) {
-                var fileName = '';
-                if (this.files && this.files.length > 1)
-                    fileName = (this.getAttribute('data-multiple-caption') || '').replace('{count}', this.files.length);
-                else
-                    fileName = e.target.value.split('\\').pop();
+        input.addEventListener('change', function(e) {
+            var fileName = '';
+            if (this.files && this.files.length > 1)
+                fileName = (this.getAttribute('data-multiple-caption') || '').replace('{count}',
+                    this.files.length);
+            else
+                fileName = e.target.value.split('\\').pop();
 
-                if (fileName)
-                    label.querySelector('span').innerHTML = fileName;
-                else
-                    label.innerHTML = labelVal;
-            });
-
-            // Firefox bug fix
-            input.addEventListener('focus', function () {
-                input.classList.add('has-focus');
-            });
-            input.addEventListener('blur', function () {
-                input.classList.remove('has-focus');
-            });
+            if (fileName)
+                label.querySelector('span').innerHTML = fileName;
+            else
+                label.innerHTML = labelVal;
         });
-    }(document, window, 0));
 
-    if(document.querySelectorAll('.moreFeatureComment')) {
-        document.querySelectorAll('.moreFeatureComment').forEach(function(button) {
-    button.addEventListener('click', function() {
-        var divMoreFeatureComment = this.querySelector('.divMoreFeatureComment');
-        if (divMoreFeatureComment.style.display === 'none') {
-            divMoreFeatureComment.style.display = 'block';
-        } else {
-            divMoreFeatureComment.style.display = 'none';
-        }
+        // Firefox bug fix
+        input.addEventListener('focus', function() {
+            input.classList.add('has-focus');
+        });
+        input.addEventListener('blur', function() {
+            input.classList.remove('has-focus');
+        });
     });
-});
-    }
+}(document, window, 0));
+
+if (document.querySelectorAll('.moreFeatureComment')) {
+    document.querySelectorAll('.moreFeatureComment').forEach(function(button) {
+        button.addEventListener('click', function() {
+            var divMoreFeatureComment = this.querySelector('.divMoreFeatureComment');
+            if (divMoreFeatureComment.style.display === 'none') {
+                divMoreFeatureComment.style.display = 'block';
+            } else {
+                divMoreFeatureComment.style.display = 'none';
+            }
+        });
+    });
+}
 </script>
