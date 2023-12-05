@@ -1,14 +1,14 @@
-<section class="dashboard">
+    <section class="dashboard">
     <!----======== Header DashBoard ======== -->
     <div class="top">
         <i class="fas fa-angle-left sidebar-toggle"></i>
-        <form style="width: 100%;display:flex; justify-content: center;" action="" method="post">
-            <div class="search-box">
+        <div class="search-box">
+                <form style="width: 100%;display:flex; justify-content: center;" action="" method="post">
                 <input type="submit" value=""><i class="far fa-search"></i>
 
-                <input name="act_search" value="" type="text" placeholder="Search here...">
+                <input name="act_search" value="" type="text" placeholder="Tìm kiếm...">
+            </form>
             </div>
-        </form>
         <div class="info-user">
             <div class="notifiComment">
                 <i class="far fa-comment-alt btnShowFeature"></i>
@@ -18,7 +18,7 @@
                     arsort($getCmt);
                     $getCmt = array_slice($getCmt, 0, 6, true);
                     foreach ($getCmt as $item) {
-                       
+
                         $getUser = getUserById($item['id_user']);
                         $getProduct = getProductById($item['id_product']);
                         ?>
@@ -45,29 +45,33 @@
             <div class="notifiBell">
                 <i class="fal fa-bell btnShowFeature"></i>
                 <ul class="showFeatureAdminHeader box-shadow1">
-                <?php
+                    <?php
                     $getBill = getBill();
                     arsort($getBill);
                     $getBill = array_slice($getBill, 0, 6, true);
                     foreach ($getBill as $item) {
-                       
+
                         $getUser = getUserById($item['id_user']);
                         ?>
                         <li>
-                        <div class="col-12 d-flex">
-                            <div class="col-2">
-                                <img class="notifiAdminImg" src="./public/assets/media/images/users/profile.jpg" alt="">
+                            <div class="col-12 d-flex">
+                                <div class="col-2">
+                                    <img class="notifiAdminImg" src="./public/assets/media/images/users/profile.jpg" alt="">
+                                </div>
+                                <div class="col-10">
+                                    <p class="notifiAdminText body-small"><strong>
+                                            <?php echo $getUser['fullname'] ?>
+                                        </strong><span> vừa mua
+                                            một mô hình với mã đơn hàng <strong>
+                                                <?php echo $item['id'] ?>
+                                            </strong></span></p>
+                                </div>
                             </div>
-                            <div class="col-10">
-                                <p class="notifiAdminText body-small"><strong><?php echo $getUser['fullname']?></strong><span> vừa mua
-                                        một mô hình với mã đơn hàng <strong><?php echo $item['id']?></strong></span></p>
-                            </div>
-                        </div>
-                    </li>
+                        </li>
                         <?php
                     }
                     ?>
-                    
+
                 </ul>
             </div>
             <div class="imgUserAdmin">
@@ -107,10 +111,6 @@
     <div class="containerAdmin">
         <div class="width-full d-flex align-items-center justify-content-between">
             <div class="content-filter dropdown-center width-full d-flex align-items-center justify-content-between">
-                <button id="btn_addMore_admin" type="button"
-                    style="width:130px;height:45px;background-color:#6750a4;border-radius:10px"><a
-                        style="color: white; font-size: 12px; text-decoration: none; padding: 10px 5px;"
-                        href="?mod=admin&act=client-add">Thêm danh mục</a></button>
                 <button id="filter" class="flex-center g8" style="padding: 10px 16px;
                   border: 1px solid #79747E; border-radius: 100px;
                   margin-left: auto;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -131,10 +131,7 @@
         <table id="example1" class="content-table width-full">
             <thead>
                 <tr>
-                    <th style="text-align: start;">
-                        <input type="checkbox" style="width: 18px; height: 18px;">
-                        </input>
-                    </th>
+
                     <th>ID</th>
                     <th>Họ Và Tên</th>
                     <th>Email</th>
@@ -151,106 +148,101 @@
                         $getUserByID = getUserInfo($comment['id_user']);
                         foreach ($getUserByID as $item) {
                             ?>
-                            <?php 
-                                if($comment['reported'] > 0 && $comment['is_appear'] == 1) {
-                                    ?>
-                                    <tr class="reported" style="background: #f8d7da; border-color: #f5c6cb">
-                                <td style="text-align: start;">
-                                    <input type="checkbox" style="width: 18px; height: 18px;">
-                                    </input>
-                                </td>
-                                <td>
-                                    <?php echo $comment['id'] ?>
-                                </td>
-                                <td>
-                                    <?php echo $item['fullname'] ?>
-                                </td>
-                                <td>
-                                    <?php echo $item['email'] ?>
-                                </td>
-                                <td>
-                                    <?php echo $comment['reported'] ?>
-                                </td>
-                                <td style="width: 600px; max-width: 600px;">
-                                    <p>
-                                        <?php echo $comment['content'] ?>
-                                    </p>
-                                </td>
-                                <td>
-                                    <p>
-                                        <?php echo $comment['create_date']?>
-                                    </p>
-                                </td>
-                                <td><a href="?mod=admin&act=hiddenCmt&id=<?php echo $comment['id']?>">Ẩn</a> / <a href="?mod=admin&act=delCmt&id=<?php echo $comment['id']?>">Xóa</a></td>
-                            </tr>
-                                    <?php 
-                                }elseif($comment['is_appear'] == 0) {
-                                    ?>
-                                    <tr class="notAppear">
-                                <td style="text-align: start;">
-                                    <input type="checkbox" style="width: 18px; height: 18px;">
-                                    </input>
-                                </td>
-                                <td>
-                                    <?php echo $comment['id'] ?>
-                                </td>
-                                <td>
-                                    <?php echo $item['fullname'] ?>
-                                </td>
-                                <td>
-                                    <?php echo $item['email'] ?>
-                                </td>
-                                <td>
-                                    <?php echo $comment['reported'] ?>
-                                </td>
-                                <td style="width: 600px; max-width: 600px;">
-                                    <p>
-                                        <?php echo $comment['content'] ?>
-                                    </p>
-                                </td>
-                                <td>
-                                    <p>
-                                        <?php echo $comment['create_date']?>
-                                    </p>
-                                </td>
-                                <td><a href="?mod=admin&act=showCmt&id=<?php echo $comment['id']?>">Hiện</a> / <a href="?mod=admin&act=delCmt&id=<?php echo $comment['id']?>">Xóa</a></td>
-                            </tr>
-                                <?php 
-                                }else {
-                                    ?>
-                                    <tr>
-                                <td style="text-align: start;">
-                                    <input type="checkbox" style="width: 18px; height: 18px;">
-                                    </input>
-                                </td>
-                                <td>
-                                    <?php echo $comment['id'] ?>
-                                </td>
-                                <td>
-                                    <?php echo $item['fullname'] ?>
-                                </td>
-                                <td>
-                                    <?php echo $item['email'] ?>
-                                </td>
-                                <td>
-                                    <?php echo $comment['reported'] ?>
-                                </td>
-                                <td style="width: 600px; max-width: 600px;">
-                                    <p>
-                                        <?php echo $comment['content'] ?>
-                                    </p>
-                                </td>
-                                <td>
-                                    <p>
-                                        <?php echo $comment['create_date']?>
-                                    </p>
-                                </td>
-                                <td><a href="?mod=admin&act=hiddenCmt&id=<?php echo $comment['id']?>">Ẩn</a> / <a href="?mod=admin&act=delCmt&id=<?php echo $comment['id']?>">Xóa</a></td>
-                            </tr>
-                                    <?php 
-                                    
-                                }
-                                    ?>
+                            <?php
+                            if ($comment['reported'] > 0 && $comment['is_appear'] == 1) {
+                                ?>
+                                <tr class="reported" style="background: #f8d7da; border-color: #f5c6cb">
+                                    </td>
+                                    <td>
+                                        <?php echo $comment['id'] ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $item['fullname'] ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $item['email'] ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $comment['reported'] ?>
+                                    </td>
+                                    <td style="width: 500px; max-width: 500px;">
+                                        <p>
+                                            <?php echo $comment['content'] ?>
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <p>
+                                            <?php echo $comment['create_date'] ?>
+                                        </p>
+                                    </td>
+                                    <td><a href="?mod=admin&act=hiddenCmt&id=<?php echo $comment['id'] ?>">Ẩn</a> / <a
+                                            href="?mod=admin&act=delCmt&id=<?php echo $comment['id'] ?>">Xóa</a></td>
+                                </tr>
+                                <?php
+                            } elseif ($comment['is_appear'] == 0) {
+                                ?>
+                                <tr class="notAppear">
+                                    </td>
+                                    <td>
+                                        <?php echo $comment['id'] ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $item['fullname'] ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $item['email'] ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $comment['reported'] ?>
+                                    </td>
+                                    <td style="width: 500px; max-width: 500px;">
+                                        <p>
+                                            <?php echo $comment['content'] ?>
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <p>
+                                            <?php echo $comment['create_date'] ?>
+                                        </p>
+                                    </td>
+                                    <td><a href="?mod=admin&act=showCmt&id=<?php echo $comment['id'] ?>">Hiện</a> /
+                                        <a href="?mod=admin&act=delCmt&id=<?php echo $comment['id'] ?>">Xóa</a>
+                                    </td>
+                                </tr>
+                                <?php
+                            } else {
+                                ?>
+                                <tr>
+                                    </td>
+                                    <td>
+                                        <?php echo $comment['id'] ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $item['fullname'] ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $item['email'] ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $comment['reported'] ?>
+                                    </td>
+                                    <td style="width: 500px; max-width: 500px;">
+                                        <p>
+                                            <?php echo $comment['content'] ?>
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <p>
+                                            <?php echo $comment['create_date'] ?>
+                                        </p>
+                                    </td>
+                                    <td><a href="?mod=admin&act=hiddenCmt&id=<?php echo $comment['id'] ?>">Ẩn</a> / <a
+                                            href="?mod=admin&act=delCmt&id=<?php echo $comment['id'] ?>">Xóa</a></td>
+                                </tr>
+                                <?php
+
+                            }
+                            ?>
                             <?php
                         }
                     }

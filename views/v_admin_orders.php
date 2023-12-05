@@ -5,7 +5,7 @@
         <div class="search-box">
         <form action="" method="post">
             <i class="far fa-search"></i>
-            <input type="text" name="kyw_order" placeholder="Tìm đơn hàng...">
+            <input type="text" name="kyw_order" placeholder="Tìm kiếm...">
             <button type="submit" name="btn_search" ></button>
             </form>
             <!-- <form action="" method="post">
@@ -132,8 +132,8 @@
                     </svg>
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a href="?mod=admin&act=orders&filter=old">Mới Nhất</a></li>
-                    <li><a href="?mod=admin&act=orders&filter">Cũ Nhất</a></li>
+                    <li><a href="?mod=admin&act=orders&filter">Mới Nhất</a></li>
+                    <li><a href="?mod=admin&act=orders&filter=old">Cũ Nhất</a></li>
                     <li><a href="?mod=admin&act=orders&filter=status&status=1">Đang Chờ Xác Nhận</a></li>
                     <li><a href="?mod=admin&act=orders&filter=status&status=2">Đang Chờ Lấy Hàng</a></li>
                     <li><a href="?mod=admin&act=orders&filter=status&status=3">Đang Giao</a></li>

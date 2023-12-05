@@ -9,7 +9,7 @@
     extract(checkAccount($id_user));
     $name_userAccount = $username;
 
-     $list_addressUser = get_address($id_user);
+     $list_addressUser = getAllAddressByUser($id_user);
 
      # lấy ra địa chỉ được set là mặc định
      $id_addressDefault = 0;

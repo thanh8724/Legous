@@ -16,13 +16,13 @@ if (@$_POST['act_search']) {
   <!----======== Header DashBoard ======== -->
   <div class="top">
     <i class="fas fa-angle-left sidebar-toggle"></i>
-    <form style="width: 100%;display:flex; justify-content: center;" action="" method="post">
-      <div class="search-box">
+    <div class="search-box">
+        <form style="width: 100%;display:flex; justify-content: center;" action="" method="post">
         <input type="submit" value=""><i class="far fa-search"></i>
 
-        <input name="act_search" value="" type="text" placeholder="Search here...">
+        <input name="act_search" value="" type="text" placeholder="Tìm kiếm...">
+      </form>
       </div>
-    </form>
     <div class="info-user">
       <div class="notifiComment">
         <i class="far fa-comment-alt btnShowFeature"></i>
@@ -150,10 +150,6 @@ if (@$_POST['act_search']) {
     <table id="example1" class="content-table width-full">
       <thead>
         <tr>
-          <th style="text-align: start;">
-            <input type="checkbox" style="width: 18px; height: 18px;">
-            </input>
-          </th>
           <th>ID</th>
           <th>Họ Và Tên</th>
           <th>Ảnh</th>
@@ -170,10 +166,6 @@ if (@$_POST['act_search']) {
         foreach ($user_list as $item) {
           ?>
           <tr>
-            <td style="text-align: start;">
-              <input type="checkbox" style="width: 18px; height: 18px;">
-              </input>
-            </td>
             <td>
               <?php echo $item['id'] ?>
             </td>

@@ -4,8 +4,8 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
 .summary__main {
-  // background:$-white;
   border: .2rem solid $neutral90;
   .summary__product {
     &__name {
@@ -18,6 +18,48 @@
       word-break: break-word;
     }
   }
+  .quality {
+    display: flex;
+    gap: 23px;
+
+    input {
+      border: 1px solid $light-on-surface-variant;
+    }
+
+    #amount {
+      width: 40px;
+      text-align: center;
+      color: $-source-seed;
+      border-radius: 20px;
+      outline: none;
+    }
+
+    button {
+      width: 25px;
+      height: 25px;
+      outline: none;
+      background: none;
+      border-radius: 8px;
+
+      &:hover {
+        background-color: #ececec;
+      }
+    }
+    
+  }
+
+  .priceProduct {
+    span {
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 32px;
+    }
+  }
+
+  .btn-close {
+    margin-right: 20px;
+  }
+
   .coupon__form {
     display: none;
     .form__group {
@@ -37,13 +79,26 @@
     background: $-white;
   }
 }
+
+  // || Responsive 
 // || Responsive 
 /* Mobile: with < 740px */
 @media only screen and (max-width: 46.1875em){
+  
+}
+
+/* Tablet: width >= 740px and width < 1024px */
+@media only screen and (min-width: 46.25em) and (max-width: 63.9375em){
 
 }
 
 
+
+
+/* Mobile and Tablet: width < 1024px */
+@media only screen and (max-width: 63.9375em){
+
+}
 /* Tablet: width >= 740px and width < 1024px */
 @media only screen and (min-width: 46.25em) and (max-width: 63.9375em){
 
@@ -52,9 +107,6 @@
 @media only screen and (min-width: 46.25em) and (max-width: 63.9375em){
   
 }
-
-
-
 
 /* Mobile and Tablet: width < 1024px */
 @media only screen and (max-width: 63.9375em){

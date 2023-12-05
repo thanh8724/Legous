@@ -15,6 +15,11 @@ if (@isset($_POST['btn_update'])) {
             $error['email'] = "Email này đã được sử dụng";
         }
     }
+    if (!empty($_POST['mainaddress'])) {
+        $mainaddress = $_POST['mainaddress'];
+    } else {
+        $error['mainaddress'] = "Không được để trống địa chỉ mặc định";
+    }
     if (!empty($_POST['username'])) {
         $username = $_POST['username'];
     } else {
@@ -103,11 +108,13 @@ if (@isset($_POST['btn_update'])) {
             unlink($delete_file);
         }
 
+        update_addressmain($id, $mainaddress, $phone);
         editUserProfile($id, $fullname, $username, $password, $email, $image, $role, $bio, $phone);
         header("Location: ?mod=admin&act=client");
     } else {
         $error['upload'] = "Upload ảnh thất bại";
     }
+
 }
 if (@isset($_POST['btn_delete'])) {
     $id = $_GET['id'];
@@ -132,12 +139,20 @@ if (@isset($_POST['btn_delete'])) {
         }
         foreach (getCommentByIdUser($id) as $comment) {
             foreach (getAllCmtImg($comment['id']) as $item) {
-                
+
                 delImgByIdCmt($comment['id']);
             }
             delCmt($comment['id']);
         }
-
+        foreach (getAllAddressByUser($id) as $item) {
+            delete_address_byIduser($item['id_user']);
+        }
+        foreach (getAllCartByIdUser($id) as $item) {
+            delete_bill_fromCart($item['id_user']);
+        }
+        foreach (getAllBillByIdUser($id) as $item) {
+            delete_bill($item['id_user']);
+        }
         // Xóa user
         deleteUser($id);
         // Chuyển hướng người dùng
@@ -149,6 +164,7 @@ if (@isset($_POST['btn_delete'])) {
 if (@isset($_POST['btn_cancelled'])) {
     header("Location: ?mod=admin&act=client");
 }
+
 ?>
 <section class="dashboard">
     <!----======== Header DashBoard ======== -->
@@ -157,7 +173,7 @@ if (@isset($_POST['btn_cancelled'])) {
         <form style="width: 100%;display:flex; justify-content: center;" action="" method="post">
             <div class="search-box">
                 <i class="far fa-search"></i>
-                <input type="text" placeholder="Search here...">
+                <input type="text" placeholder="Tìm kiếm...">
             </div>
         </form>
         <div class="info-user">
@@ -314,6 +330,24 @@ if (@isset($_POST['btn_cancelled'])) {
                                     <?php
                                     if (isset($error['phone']) && !empty($error['phone']))
                                         echo "<p class='text-danger text-error title-medium'>{$error['phone']}</p>";
+                                    ?>
+                                </div>
+                                <?php
+                                $mainaddress = get_addressMainByIdUser((int) $_GET['id']);
+                                if (!empty($mainaddress)) {
+
+                                } else {
+                                    $mainaddress = "";
+                                }
+                                ?>
+                                <div class="left-order-add-create">
+                                    <h2>Địa chỉ mặc định</h2>
+                                    <input name="mainaddress" class="" type="text"
+                                        value="<?php echo $mainaddress[0]['address_detail'] ?>"
+                                        placeholder="Nhập địa chỉ mặc định" aria-label="default input example">
+                                    <?php
+                                    if (isset($error['mainaddress']) && !empty($error['mainaddress']))
+                                        echo "<p class='text-danger text-error title-medium'>{$error['mainaddress']}</p>";
                                     ?>
                                 </div>
                                 <div class="describe-order_detail">

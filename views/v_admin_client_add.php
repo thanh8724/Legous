@@ -120,7 +120,7 @@ if (@isset($_POST['btn_cancelled'])) {
         <div class="search-box">
             <form action="" method="post">
                 <i class="far fa-search"></i>
-                <input type="text" placeholder="Search here...">
+                <input type="text" placeholder="Tìm kiếm...">
             </form>
         </div>
         <div class="info-user">
