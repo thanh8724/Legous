@@ -105,18 +105,23 @@ if (isset($_GET['act'])) {
         case 'categories':
             include_once 'models/m_admin.php';
             if (isset($_GET['page'])) {
+                $page = intval($_GET['page']);
                 $count_Categoris = count_Categoris()['soluong'];
                 if (isset($_POST['kyw_cg'])) {
                     $get_kyw = $_POST['kyw_cg'];
                     header('Location: ?mod=admin&act=categories&page=1&search_category=' . urlencode($get_kyw));
-                    exit; // Đảm bảo chuyển hướng ngay lập tức sau khi gửi header
+                    exit; 
                 } else if (isset($_GET['search_category'])) {
                     $kyw_cg = $_GET['search_category'];
                     if (isset($_GET['sort'])) {
                         $sort = $_GET['sort'];
                         $get_Category = get_Categoris(($_GET['page'] - 1) * 4, 4, $kyw_cg, $sort);
                     } else {
-                        $get_Category = get_Categoris(($_GET['page'] - 1) * 4, 4, $kyw_cg);
+                        if(empty($kyw_cg)){
+                            $get_Category = [];
+                        }else{
+                            $get_Category = get_Categoris(($_GET['page'] - 1) * 4, 4, $kyw_cg);
+                        }
                     }
                 } else {
                     if (isset($_GET['sort'])) {
@@ -491,3 +496,4 @@ if (isset($_GET['act'])) {
     }
     include_once 'views/v_admin_layout.php';
 }
+?>

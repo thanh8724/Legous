@@ -2,12 +2,12 @@
   <!----======== Header DashBoard ======== -->
   <div class="top">
     <i class="fas fa-angle-left sidebar-toggle"></i>
-    <form action="?mod=admin&act=products-search" method="post" style="width: 100%;display:flex; justify-content: center;">
     <div class="search-box">
+      <form action="?mod=admin&act=products-search" method="post" style="width: 100%;display:flex; justify-content: center;">
             <input type="submit" value=""><i class="far fa-search"></i>
             <input name="keyword" value="" type="text" placeholder="Tìm kiếm...">
+          </form>
           </div>
-    </form>
     <div class="info-user">
             <div class="notifiComment">
                 <i class="far fa-comment-alt btnShowFeature"></i>
