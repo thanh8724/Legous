@@ -48,6 +48,7 @@
         $id = $_SESSION['userLogin']['id_user'];
         $user = getUserById($id);
         extract($user);
+
         $userWidgetHtml =
         <<<HTML
             <a href="#" class="user-widget flex flex-center g6">
