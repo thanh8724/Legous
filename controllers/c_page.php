@@ -230,7 +230,7 @@ if (isset($_GET['act'])) {
             include_once 'models/m_category.php';
             include_once 'models/m_img.php';
             include_once 'models/m_comment.php';
-
+            
             $view_name = 'productDetail';
 
 

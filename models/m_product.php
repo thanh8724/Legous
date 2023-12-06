@@ -11,6 +11,11 @@
         return pdo_query($sql);
     }
 
+    function getProductByQuery($query) {
+        $sql = "SELECT * FROM product WHERE name LIKE '%$query%' LIMIT 20";
+        return pdo_query($sql);
+    }
+
     function getProductById($idProduct) {
         $sql = "SELECT * FROM product WHERE id = $idProduct";
         return pdo_query_one($sql);
@@ -96,4 +101,47 @@
         return pdo_query($sql);
     }
     
+
+    function updateProductViewById($id, $view) {
+        $sql = "UPDATE product SET views = $view WHERE id = $id";
+        pdo_execute($sql);
+    }
+
+    function formatViewsNumber($views)
+    {
+        if ($views >= 1000000) {
+            // Convert to millions
+            $formattedViews = round($views / 1000000, 1) . 'm+';
+        } elseif ($views >= 1000) {
+            // Convert to thousands
+            $formattedViews = round($views / 1000, 1) . 'k+';
+        } else {
+            // No conversion needed
+            $formattedViews = $views . '+';
+        }
+
+        return $formattedViews;
+    }
+
+    function getProductWithLimitAndOffset($limit , $offset) {
+        $sql = "SELECT * FROM product LIMIT $limit OFFSET $offset";
+        return pdo_query($sql);
+    }
+    function getCategoryProductWithLimitAndOffset($limit , $offset , $idCategory) {
+        $sql = "SELECT * FROM product WHERE id_category = $idCategory LIMIT $limit OFFSET $offset";
+        return pdo_query($sql);
+    }
+    function getSearchProductWithLimitAndOffset($limit , $offset , $query) {
+        $sql = "SELECT * FROM product WHERE name LIKE '%$query%' LIMIT $limit OFFSET $offset";
+        return pdo_query($sql);
+    }
+
+    function getProductQtyById ($idProduct) {
+        $sql = "SELECT qty FROM product WHERE id = $idProduct";
+        return pdo_query_value($sql);
+    }
+    function updateProductQty($idProduct, $newQty) {
+        $sql = "UPDATE product SET qty = $newQty WHERE id = $idProduct";
+        pdo_execute($sql);
+    }
 ?>

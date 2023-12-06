@@ -1,30 +1,31 @@
 
 <script>
-    $(document).ready(function () {
-        $('.love-btn').click(function () {
-            var button = $(this);
-            var productId = button.data('product-id');
+    // love buttons handler
+$(document).ready(function () {
+    $('.love-btn').click(function () {
+        var button = $(this);
+        var productId = button.data('product-id');
 
-            // Disable the love button
-            button.prop('disabled', true);
+        // Disable the love button
+        button.prop('disabled', true);
 
-            // Make an AJAX request to update the love value
-            $.ajax({
-                url: './views/libs/update_love.php', // Replace with the correct path to your PHP script
-                method: 'POST', // HTTP method (GET, POST, etc.)
-                data: { product_id: productId }, // Data to send to the server, e.g., product ID
-                success: function (response) {
-                    // Handle the response from the server if needed
-                    console.log(response);
-                },
-                error: function (xhr, status, error) {
-                    console.error('Error:', error);
-                    // Enable the love button if there was an error
-                    button.prop('disabled', false);
-                }
-            });
+        // Make an AJAX request to update the love value
+        $.ajax({
+            url: './views/libs/update_love.php', // Replace with the correct path to your PHP script
+            method: 'POST', // HTTP method (GET, POST, etc.)
+            data: { product_id: productId }, // Data to send to the server, e.g., product ID
+            success: function (response) {
+                // Handle the response from the server if needed
+                console.log(response);
+            },
+            error: function (xhr, status, error) {
+                console.error('Error:', error);
+                // Enable the love button if there was an error
+                button.prop('disabled', false);
+            }
         });
     });
+});
 </script>
 
 <?php 
@@ -52,15 +53,33 @@
         $priceView = '<div class="product__info__price title-large fw-bold primary-text">' . formatVND($price) . '</div>';
     }
 
+    $loveBtnClass = '';
+    $loveBtnIcon = 'far fa-heart';
+    
+    if (isset($_SESSION['loveProducts']) && !empty($_SESSION['loveProducts']) && is_array($_SESSION['loveProducts'])) {
+        if (in_array($id, $_SESSION['loveProducts'])) {
+            $loveBtnClass = 'active';
+            $loveBtnIcon = 'fa fa-heart';
+        }
+        $loveBtn = '<button class="icon-btn love-btn toggle-btn ' . $loveBtnClass . '" data-product-id="' . $id . '"><i class="' . $loveBtnIcon . '"></i></button>';
+    } else {
+        $loveBtn =
+            <<<HTML
+                <button class="icon-btn love-btn toggle-btn" data-product-id="$id">
+                    <i class="fal fa-heart"></i>
+                </button>
+            HTML;
+    }
+
+    $views =  formatViewsNumber($views);
+
     $productBtn = '';
     if ($qty > 0) {
         $productBtn =
             <<<HTML
                 <div class="flex g12 in-stock__btn-set">
                     <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
-                    <button class="icon-btn love-btn toggle-btn" data-product-id="$id">
-                        <i class="fal fa-heart"></i>
-                    </button>
+                    $loveBtn
                     <form action="?mod=cart&act=addCart" method="post" class="flex-column g12">
                         <button type="submit" class="icon-btn">
                             <i class="fal fa-cart-plus"></i>
@@ -99,7 +118,7 @@
                 $salePriceView
             </a>
             <div class="product__info flex-between width-full">
-                <div class="product__info__view title-large">1,2m+ views</div>
+                <div class="product__info__view title-large">$views views</div>
                 <div class="product__info__rated flex g6 v-center body-medium">
                     4.4 <i class="fa fa-star start"></i>
                 </div>
@@ -153,15 +172,33 @@
                     $priceView = '<div class="product__info__price body-large primary-text fw-bold">' . formatVND($price) . '</div>';
                 }
 
+                $loveBtnClass = '';
+                $loveBtnIcon = 'far fa-heart';
+
+                if (isset($_SESSION['loveProducts']) && !empty($_SESSION['loveProducts']) && is_array($_SESSION['loveProducts'])) {
+                    if (in_array($id, $_SESSION['loveProducts'])) {
+                        $loveBtnClass = 'active';
+                        $loveBtnIcon = 'fa fa-heart';
+                    }
+                    $loveBtn = '<button class="icon-btn love-btn toggle-btn ' . $loveBtnClass . '" data-product-id="' . $id . '"><i class="' . $loveBtnIcon . '"></i></button>';
+                } else {
+                    $loveBtn =
+                        <<<HTML
+                            <button class="icon-btn love-btn toggle-btn" data-product-id="$id">
+                                <i class="fal fa-heart"></i>
+                            </button>
+                        HTML;
+                }
+
+                $views = formatViewsNumber($views);
+
                 $productBtn = '';
                 if ($qty > 0) {
                     $productBtn =
                         <<<HTML
                                     <div class="flex g12 in-stock__btn-set">
                                         <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
-                                        <button class="icon-btn love-btn toggle-btn" data-product-id="$id">
-                                            <i class="fal fa-heart"></i>
-                                        </button>
+                                        $loveBtn
                                         <form action="?mod=cart&act=addCart" method="post" class="flex-column g12">
                                             <button type="submit" class="icon-btn">
                                                 <i class="fal fa-cart-plus"></i>
@@ -203,7 +240,7 @@
                             $salePriceView
                         </a>
                         <div class="product__info flex-between width-full">
-                            <div class="product__info__view body-medium">1,2m+ views</div>
+                            <div class="product__info__view body-medium">$views views</div>
                             <div class="product__info__rated flex g6 v-center body-medium">
                                 4.4 <i class="fa fa-star start"></i>
                             </div>
@@ -271,15 +308,33 @@
                         $priceView = '<div class="product__info__price body-large primary-text fw-bold">' . formatVND($price) . '</div>';
                     }
 
+                    $loveBtnClass = '';
+                    $loveBtnIcon = 'far fa-heart';
+
+                    if (isset($_SESSION['loveProducts']) && !empty($_SESSION['loveProducts']) && is_array($_SESSION['loveProducts'])) {
+                        if (in_array($id, $_SESSION['loveProducts'])) {
+                            $loveBtnClass = 'active';
+                            $loveBtnIcon = 'fa fa-heart';
+                        }
+                        $loveBtn = '<button class="icon-btn love-btn toggle-btn ' . $loveBtnClass . '" data-product-id="' . $id . '"><i class="' . $loveBtnIcon . '"></i></button>';
+                    } else {
+                        $loveBtn =
+                            <<<HTML
+                                <button class="icon-btn love-btn toggle-btn" data-product-id="$id">
+                                    <i class="fal fa-heart"></i>
+                                </button>
+                            HTML;
+                    }
+
+                    $views =  formatViewsNumber($views);
+
                     $productBtn = '';
                     if ($qty > 0) {
                         $productBtn = 
                             <<<HTML
                                 <div class="flex g12 in-stock__btn-set">
                                     <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
-                                    <button class="icon-btn love-btn toggle-btn" data-product-id="$id">
-                                        <i class="fal fa-heart"></i>
-                                    </button>
+                                    $loveBtn
                                     <form action="?mod=cart&act=addCart" method="post" class="flex-column g12">
                                         <button type="submit" class="icon-btn">
                                             <i class="fal fa-cart-plus"></i>
@@ -323,7 +378,7 @@
                                 $salePriceView
                             </a>
                             <div class="product__info flex-between width-full">
-                                <div class="product__info__view body-medium">1,2m+ views</div>
+                                <div class="product__info__view body-medium">$views views</div>
                                 <div class="product__info__rated flex g6 v-center body-medium">
                                     4.4 <i class="fa fa-star start"></i>
                                 </div>
@@ -334,9 +389,9 @@
                 }
             } else {
                 $productsHtml = 
-                <<<HTML
-                    <h2 class="fw-smb text-38 tac ttu mt30 mb30 primary-text">Danh mục hiện đang cập nhật</h2>
-                HTML;
+                    <<<HTML
+                        <h2 class="fw-smb text-38 tac ttu mt30 mb30 primary-text">Danh mục hiện đang cập nhật</h2>
+                    HTML;
             }
             
             $panelsHtml .= 
@@ -413,33 +468,27 @@
                 <li class="header__nav__item"><a href="?mod=page&act=home" class="header__nav__link">Trang chủ</a>
                 </li>
                 <li class="header__nav__item">
-                    <a href="?mod=page&act=shop" class="header__nav__link">Cửa hàng</a>
+                    <a href="?mod=page&act=shop&page=1" class="header__nav__link">Cửa hàng</a>
                     <div class="header__subnav__wrapper header__mega-menu poa box-shadow1 rounded-8">
                         <div class="top p20 flex-column g12 mega-menu__item">
                             <div class="title-medium fw-bold">Cửa hàng</div>
-                            <span class="body-medium">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta consequuntur assumenda</span>
+                            <span class="body-medium">Khám phá các sản phẩm của Legous. Vào cửa hàng nào!</span>
                         </div>
                         <div class="content flex mega-menu__item">
                             <div class="product__wrapper p20">
                                 <!-- single product start -->
-                                <div class="title-large fw-bold primary-masking-text">Hot deal! Sale off 20%</div>
+                                <?php 
+                                $linkToDetail = "?mod=page&act=productDetail&idProduct=$specialProduct[id]";
+                                ?>
+                                <div class="title-large fw-bold primary-masking-text">Hot deal! Giảm giá sốc 20%</div>
                                 <div class="product mt12">
-                                    <a href="#" class="product__banner oh banner-cover rounded-8 por"
+                                    <a href="<?= $linkToDetail ?>" class="product__banner oh banner-cover rounded-8 por"
                                         style="background-image: url('<?= constant('PRODUCT_PATH') . $specialProduct['img'] ?>')">
                                 <div class="product__overlay poa flex-center">
-                                    <div class="flex g12 in-stock__btn-set">
-                                        <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
-                                        <button class="icon-btn love-btn"><i class="fa fa-heart"></i></button>
-                                        <button class="icon-btn"><i class="fal fa-shopping-cart"></i></button>
-                                    </div>
-                                    <!-- <div class="flex g12 sold-out__btn-set">
-                                                <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
-                                                <button class="icon-btn"><i class="fal fa-plus"></i></button>
-                                                <button class="icon-btn"><i class="fal fa-arrow-right"></i></button>
-                                            </div> -->
+                                    <?= $productBtn ?>
                                 </div>
                             </a>
-                            <a href="#" class="product__info">
+                            <a href="<?= $linkToDetail ?>" class="product__info">
                                 <div class="product__info__name title-medium fw-smb">
                                     <?= $specialProduct['name'] ?>
                                 </div>
@@ -448,7 +497,7 @@
                                 </div>
                             </a>
                             <div class="product__info flex-between width-full">
-                                <div class="product__info__view body-medium">1,2m+ views</div>
+                                <div class="product__info__view body-medium"><?= formatViewsNumber($specialProduct['views']) ?> views</div>
                                 <div class="product__info__rated flex g6 v-center body-medium">
                                     4.4 <i class="fa fa-star start"></i>
                                 </div>
@@ -808,6 +857,7 @@
     <?php 
         extract($upcommingProduct);
         $upCommingImgPath = constant('PRODUCT_PATH') . $img;
+        $linkToDetail = "?mod=page&act=productDetail&idProduct=$id";
     ?>
     <div class="auto-grid g30">
         <div class="banner-cover"
@@ -816,10 +866,8 @@
         <div class="flex-column g30 flex-full">
             <span class="text-46 fw-normal error60">COMING SOON!</span>
             <h2 class="text-68 fw-bold" style="text-wrap: balance;"><?= $name ?></h2>
-            <h4 class="display-small error60">Chỉ từ <?= formatVND($price) ?></h4>
-            <span class="body-large">Đây chắc hẳn là sản phẩm được rất nhiều fan của GOKU mong đợi. Sau một
-                khoảng thời gian rất lâu thì cuối cùng, vị anh hùng trái đất người Sayan của chúng ta đã sắp trở
-                lại với hình dạng SUPER SAYAN cực khủng. Nhanh tay đặt trước ngay!</span>
+            <h4 class="display-small error60">Giá:  <?= formatVND($price) ?></h4>
+            <span class="body-large"><?= $description ?></span>
             <form action="#" class="pre-order__form width-full flex-column g12" method="post">
                 <div class="form__group form__group without-title width-full">
                     <input class="form__input " type="text" name="email" class="" placeholder=" ">
@@ -833,7 +881,7 @@
                 </div>
                 <div class="row g20">
                     <button type="submit" class="btn primary-btn">Đặt trước ngay</button>
-                    <a href="#" class="btn rounded-100 elevated-btn">Xem chi tiết</a>
+                    <a href="<?= $linkToDetail ?>" class="btn rounded-100 elevated-btn">Xem chi tiết</a>
                 </div>
             </form>
         </div>
@@ -855,7 +903,7 @@
 
 <!-- mobile bottom navbar start -->
 <div class="home-bottom-navbar p10 flex-center pof width-full">
-    <ul class="width-full p12 rounded-8 box-shadow1 flex-between">
+    <ul class="width-full p12 rounded-8 box-shadow5 flex-between">
         <li class="bottom-navbar__item">
             <a href="#" class="bottom-navbar__link p10 rounded-8">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -911,13 +959,3 @@
     </ul>
 </div>
 <!-- mobile bottom navbar end -->
-
-<!-- 
-<script>
-    $('product').forEach(item => {
-        item.click(() => {
-            const idProduct = item.attr('data-id-product');
-            alert(idProduct);
-        });
-    }) 
-</script> -->

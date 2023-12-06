@@ -1,5 +1,5 @@
 <?php
-if (@$_POST['act_search']) {
+if(@$_POST['act_search']) {
     $inputSearch = $_POST['act_search'];
     $addressList = searchAddress($inputSearch);
 } else {
@@ -14,7 +14,7 @@ if (@$_POST['act_search']) {
         <div class="search-box">
             <form style="width: 100%;display:flex; justify-content: center;" action="" method="post">
                 <i class="far fa-search"></i>
-                <input type="text" placeholder="Tìm kiếm...">
+                <input name="act_search" type="text" placeholder="Tìm kiếm...">
             </form>
         </div>
         <div class="info-user">
@@ -25,7 +25,7 @@ if (@$_POST['act_search']) {
                     $getCmt = getAllComment();
                     arsort($getCmt);
                     $getCmt = array_slice($getCmt, 0, 6, true);
-                    foreach ($getCmt as $item) {
+                    foreach($getCmt as $item) {
 
                         $getUser = getUserById($item['id_user']);
                         $getProduct = getProductById($item['id_product']);
@@ -34,7 +34,7 @@ if (@$_POST['act_search']) {
                             <div class="col-12 d-flex">
                                 <div class="col-2">
                                     <?php
-                                    if ($getUser[0]['img'] == NULL || empty($getUser[0]['img'])) {
+                                    if($getUser[0]['img'] == NULL || empty($getUser[0]['img'])) {
                                         ?>
                                         <img class="notifiAdminImg" src="./upload/users/avatar-none.png" alt="">
 
@@ -68,7 +68,7 @@ if (@$_POST['act_search']) {
                     $getBill = getBill();
                     arsort($getBill);
                     $getBill = array_slice($getBill, 0, 6, true);
-                    foreach ($getBill as $item) {
+                    foreach($getBill as $item) {
 
                         $getUser = getUserById($item['id_user']);
                         ?>
@@ -76,7 +76,7 @@ if (@$_POST['act_search']) {
                             <div class="col-12 d-flex">
                                 <div class="col-2">
                                     <?php
-                                    if ($getUser[0]['img'] == NULL || empty($getUser[0]['img'])) {
+                                    if($getUser[0]['img'] == NULL || empty($getUser[0]['img'])) {
                                         ?>
                                         <img class="notifiAdminImg" src="./upload/users/avatar-none.png" alt="">
 
@@ -93,7 +93,7 @@ if (@$_POST['act_search']) {
                                 <div class="col-10">
                                     <p class="notifiAdminText body-small"><strong>
                                             <?php
-                                            if ($getUser[0]['fullname'] == NULL && empty($getUser[0]['fullname'])) {
+                                            if($getUser[0]['fullname'] == NULL && empty($getUser[0]['fullname'])) {
                                                 echo "User ẩn";
 
                                             } else {
@@ -118,7 +118,7 @@ if (@$_POST['act_search']) {
                 <?php
                 $getID = $_SESSION['admin']['id_user'];
                 $getUser = getUserById($getID);
-                if (!empty($getUser['img']) && $getUser != NULL) {
+                if(!empty($getUser['img']) && $getUser != NULL) {
                     ?>
                     <img style="" class="btnShowFeature" src="./upload/users/<?php echo $getUser['img'] ?>" alt="">
                     <?php
@@ -189,7 +189,7 @@ if (@$_POST['act_search']) {
             <tbody>
                 <!-- Thêm các hàng dữ liệu vào đây -->
                 <?php
-                foreach ($addressList as $item) {
+                foreach($addressList as $item) {
                     $userInfo = getUserById($item['id_user']);
                     ?>
                     <tr>

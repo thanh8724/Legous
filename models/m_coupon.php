@@ -3,7 +3,7 @@ include_once 'models/m_pdo.php';
 
 function addNewCoupon($code, $name, $discount, $expiredDate, $description, $datenow)
 {
-    pdo_execute("INSERT INTO coupon (`coupon_code`, `name`, `price`, `expired_date`, `description`,`create_date`) VALUES(?,?,?,?,?,?)", $code, $name, $discount, $expiredDate, $description, $datenow);
+    pdo_execute("INSERT INTO coupon (`coupon_code`, `name`, `discount`, `expired_date`, `description`,`create_date`) VALUES(?,?,?,?,?,?)", $code, $name, $discount, $expiredDate, $description, $datenow);
 }
 
 function getAllCoupon()
@@ -18,7 +18,7 @@ function getCouponById($id)
 
 function editCoupon($getEditID, $namecoupon, $discountpercent, $description, $expiredDate)
 {
-    pdo_execute("UPDATE coupon SET name = '$namecoupon', price = '$discountpercent', description = '$description', expired_date = '$expiredDate' WHERE id = {$getEditID}");
+    pdo_execute("UPDATE coupon SET name = '$namecoupon', discount = '$discountpercent', description = '$description', expired_date = '$expiredDate' WHERE id = {$getEditID}");
 }
 
 function delCoupon($id)

@@ -6,8 +6,11 @@ include_once 'models/m_pdo.php';
             $sql .= " LIMIT ".$start.",".$limit;
         }
         if($kyw!=""){
-            $sql = "AND LIKE '%".$kyw."%'";
+            $sql .= "AND LIKE '%".$kyw."%'";
         }
+        // if($asc == 1){
+        //     $sql .= "ORDER BY id ASC";
+        // }
         return pdo_query($sql);
     }
 

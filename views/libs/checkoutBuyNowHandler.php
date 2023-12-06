@@ -1,28 +1,37 @@
 <?php
-    session_start();
-    ob_start();
+session_start();
+ob_start();
 
 
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        /** bill infomation */
-        $address_user = $_POST['address'];
-        $address_detail_user = $_POST['address-detail'];
-        $email_user = $_POST['email'];
-        $phone_user = $_POST['phone'];
-        $id_shipping = $_POST['shipping'];
-        $id_payment = $_POST['payment'];
-        $address_recipient = $_POST['recipient-address'] || $address_user;
-        $address_detail_recipient = $_POST['recipient-address-detail'] || $address_detail_user;
-        $name_recipient = $_POST['recipient-name'] || '';
-        $phone_recipient = $_POST['recipient-phone'] || $phone_user;
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    /** bill infomation */
+    $address_user = $_POST['address'];
+    $address_detail_user = $_POST['address-detail'];
+    $email_user = $_POST['email'];
+    $phone_user = $_POST['phone'];
+    $id_shipping = $_POST['shipping'];
+    $id_payment = $_POST['payment'];
+    $address_recipient = $_POST['recipient-address'];
+    $address_detail_recipient = $_POST['recipient-address-detail'];
+    $name_recipient = $_POST['recipient-name'];
+    $phone_recipient = $_POST['recipient-phone'];
 
-        $total = 0;
+    $total = 0;
 
+    if (isset($_SESSION['checkoutProduct']) && is_array($_SESSION['checkoutProduct'])) {
+        $checkoutProduct = $_SESSION['checkoutProduct'];
+        extract($checkoutProduct);
+        $subTotal = $price * $qty;
+        $tax = $subTotal * 0.1;
+        $productQty = getProductQtyById($id_product);
+        $newQty = $productQty - $qty;
+        
+        $shipping = getShippingMethodByPrice($id_shipping)['price'];
+        
+        $total = $subTotal + $tax + $shipping;
         if (isset($_SESSION['userLogin'])) {
             /** lây id user insert vào bill, trả lại Id bill */
             extract($_SESSION['userLogin']);
-            $userCart = getCartByUserId($id_user);
-            $total = totalBill($userCart);
 
             if (empty($name_recipient)) {
                 $name_recipient = getUserInfo($id)[0]['username'];
@@ -30,20 +39,13 @@
 
             $idBill = insertBill($id_user, $id_shipping, $id_payment, $email_user, $phone_user, $address_user, $address_detail_user, $name_recipient, $phone_recipient, $address_recipient, $address_detail_recipient, $total);
             $_SESSION['idBill'] = $idBill;
-            
-            /** update số lượng của sản phẩm */
-            foreach ($userCart as $product) {
-                extract($product);
-                $totalCost = $price * $qty;
-                $productQty = getProductQtyById($id_product);
-                $newQty = $productQty - $qty;
-                updateProductQty($id_product, $newQty);
-            }
-            /** update id_bill của những sản phẩm trong bảng cart có id_user bằng với id_user trong userLogin */
+            /** lấy id bill vừa tạo, insert sản phẩm muốn mua ngay vào bảng giỏ hàng */
+            insertCartWithIdBill($idBill, $id_user, $id_product, $name, $price, $img, $qty, $subTotal);
+            /** update số lượng của sản phẩm vừa mua */
+            updateProductQty($id_product, $newQty);
 
-            updateIdBillInCart($id_user, $idBill);
-            if (isset($_SESSION['cart'])) {
-                unset($_SESSION['cart']);
+            if (isset($_SESSION['checkoutProduct'])) {
+                unset($_SESSION['checkoutProduct']);
             }
             header("Location: ?mod=cart&act=confirm");
             exit();
@@ -53,29 +55,29 @@
             $randomPassword = generateRandomPassword(8);
             $id_user = insertUser($randomUsername, $email_user, $randomPassword);
             /** tạo đơn hàng -> trả về idBill */
-            $cart = $_SESSION['cart'];
-            $total = totalBill($cart);
             $idBill = insertBill($id_user, $id_shipping, $id_payment, $email_user, $phone_user, $address_user, $address_detail_user, $name_recipient, $phone_recipient, $address_recipient, $address_detail_recipient, $total);
             $_SESSION['idBill'] = $idBill;
 
             /** lấy idBill insert sản phẩm trong giỏ hàng vào db */
-            foreach ($cart as $product) {
-                extract($product);
-                $totalCost = $price * $qty;
-                $productQty = getProductQtyById($id_product);
-                $newQty = $productQty - $qty;
-                updateProductQty($id_product, $newQty);
-                insertCartWithIdBill($idBill, $id_user, $id_product, $name, $price, $img, $qty, $totalCost);
-            }
-            unset($_SESSION['cart']);
+            insertCartWithIdBill($idBill, $id_user, $id_product, $name, $price, $img, $qty, $subTotal);
+
+            /** update số lượng của sản phẩm vừa mua */
+            updateProductQty($id_product, $newQty);
+            
+            unset($_SESSION['checkoutProduct']);
             header("Location: ?mod=cart&act=confirm");
             exit();
         }
+    } else {
+        header("Location: ?mod=page&act=home");
     }
+}
 
-function getProductQtyById($idProduct) {
+
+function getProductQtyById($idProduct)
+{
     $sql = "SELECT qty FROM product WHERE id = $idProduct";
-    return pdo_query_value($sql);   
+    return pdo_query_value($sql);
 }
 
 function updateProductQty($idProduct, $newQty)
@@ -83,7 +85,12 @@ function updateProductQty($idProduct, $newQty)
     $sql = "UPDATE product SET qty = $newQty WHERE id = $idProduct";
     pdo_execute($sql);
 }
-    
+
+function getShippingMethodByPrice($price)
+{
+    $sql = "SELECT * FROM shipping WHERE price = $price";
+    return pdo_query_one($sql);
+}
 function getUserInfo($id)
 {
     return pdo_query("SELECT * FROM user WHERE id = {$id}");
@@ -103,7 +110,7 @@ function insertUser($username, $email, $password)
     $userId = pdo_execute($sql, $username, $email, $password);
     return $userId; // Return the last inserted ID
 }
-    
+
 function generateRandomUsername($length)
 {
     $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
@@ -129,7 +136,7 @@ function generateRandomPassword($length)
 
     return $password;
 }
-    
+
 function getCartByUserId($idUser)
 {
     $sql = "SELECT * FROM cart WHERE id_user = $idUser";

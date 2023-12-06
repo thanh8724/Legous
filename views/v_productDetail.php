@@ -1,16 +1,24 @@
 <?php
-if (isset($_GET['idProduct']) && $_GET['idProduct']) {
+
+ob_start();
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+if (isset($_GET['idProduct']) && $_GET['idProduct'] != 0) {
     $idProduct = $_GET['idProduct'];
     $product = getProductById($idProduct);
     $productThumbnails = getThumbnailsById($idProduct);
+    $view = rand(10, 100);
+    updateProductViewById($idProduct, $view);
     // print_r($productThumbnails);
     extract($product);
+
+    $priceFormated = formatVND($price);
 
     $btnsHtml = '';
     $btnsHtmlMobile = '';
     $btnText = '';
 
-    if ($qty > 0) {
+    if($qty > 0) {
         $btnText = 'MUA NGAY';
         $btnsHtml .=
             <<<HTML
@@ -20,12 +28,26 @@ if (isset($_GET['idProduct']) && $_GET['idProduct']) {
                         <input type="hidden" name="price" value="$price">
                         <input type="hidden" name="img" value="$img">
                         <input type="hidden" name="id" value="$idProduct">
-                        <input type="hidden" name="qty" id="data-qty" value="1">
+                        <input type="hidden" name="qty" class="data-qty" value="1">
                     </form>
-                    <button class="btn primary-btn rounded-100"><i class="fal fa-arrow-right"></i>MUA NGAY</button>
+                    <form action="?mod=cart&act=buyNow" method="post" class="flex-column g12">
+                        <button class="btn primary-btn rounded-100" type="submit"><i class="fal fa-arrow-right"></i>MUA NGAY</button>
+                        <input type="hidden" name="name" value="$name">
+                        <input type="hidden" name="price" value="$price">
+                        <input type="hidden" name="img" value="$img">
+                        <input type="hidden" name="id" value="$idProduct">
+                        <input type="hidden" name="qty" class="data-qty" value="1">
+                    </form>
                 HTML;
         $btnsHtmlMobile .=
             <<<HTML
+                <div class="flex-between">
+                    <div class="flex-column flex-between">
+                        <h4 class="title-large fw-black">
+                            $priceFormated
+                        </h4>
+                        <a href="" class="add-coupon-btn primary-text label-large fw-black">Thêm phiếu giảm giá</a>
+                    </div>
                     <form action="?mod=cart&act=addCart" method="post" class="flex-column g12">
                         <button class="product__btn flex-center por">
                             <i class="far fa-cart-plus" style="
@@ -35,15 +57,26 @@ if (isset($_GET['idProduct']) && $_GET['idProduct']) {
                             transform: translate(-50%,-50%);
                             color: black;
                             z-index: 1"></i>
-                            <input class="icon-btn fab box-shadow1" name="addCart" type="submit" value="">
+                            <input class="icon-btn fab" name="addCart" type="submit" value="">
                         </button>
                         <input type="hidden" name="name" value="$name">
                         <input type="hidden" name="price" value="$price">
                         <input type="hidden" name="img" value="$img">
                         <input type="hidden" name="id" value="$idProduct">
-                        <input type="hidden" name="qty" id="data-qty" value="1">
+                        <input type="hidden" name="qty" class="data-qty" value="1">
                     </form>
-                HTML;
+                </div>
+                <form action="?mod=cart&act=buyNow" method="post" class="flex-column g12">
+                    <button type="submit" class="btn primary-btn rounded-8"><i class="fal fa-arrow-right"></i>
+                        $btnText
+                    </button>
+                    <input type="hidden" name="name" value="$name">
+                    <input type="hidden" name="price" value="$price">
+                    <input type="hidden" name="img" value="$img">
+                    <input type="hidden" name="id" value="$idProduct">
+                    <input type="hidden" name="qty" class="data-qty" value="1">
+                </form>
+            HTML;
         ;
     } else {
         $btnText = 'ĐẶT TRƯỚC';
@@ -51,7 +84,45 @@ if (isset($_GET['idProduct']) && $_GET['idProduct']) {
             <<<HTML
                 <button class="btn primary-btn rounded-100">$btnText</button>
             HTML;
-        $btnsHtmlMobile .= '';
+        $btnsHtmlMobile = 
+            <<<HTML
+                <div class="flex-between">
+                    <div class="flex-column flex-between">
+                        <h4 class="title-large fw-black">
+                            $priceFormated
+                        </h4>
+                        <a href="" class="add-coupon-btn primary-text label-large fw-black">Thêm phiếu giảm giá</a>
+                    </div>
+                    <form action="?mod=cart&act=addCart" method="post" class="flex-column g12">
+                        <button class="product__btn flex-center por" disabled>
+                            <i class="far fa-cart-plus" style="
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%,-50%);
+                            color: black;
+                            z-index: 1"></i>
+                            <input class="icon-btn fab" name="addCart" type="submit" value="">
+                        </button>
+                        <input type="hidden" name="name" value="$name">
+                        <input type="hidden" name="price" value="$price">
+                        <input type="hidden" name="img" value="$img">
+                        <input type="hidden" name="id" value="$idProduct">
+                        <input type="hidden" name="qty" class="data-qty" value="1">
+                    </form>
+                </div>
+                <form action="?mod=cart&act=buyNow" method="post" class="flex-column g12">
+                    <button type="submit" class="btn primary-btn rounded-8"><i class="fal fa-arrow-right"></i>
+                        $btnText
+                    </button>
+                    <input type="hidden" name="name" value="$name">
+                    <input type="hidden" name="price" value="$price">
+                    <input type="hidden" name="img" value="$img">
+                    <input type="hidden" name="id" value="$idProduct">
+                    <input type="hidden" name="qty" class="data-qty" value="1">
+                </form>
+            HTML;
+        ;
     }
 
 
@@ -59,68 +130,108 @@ if (isset($_GET['idProduct']) && $_GET['idProduct']) {
     $relatedProducts = getRelatedProduct($idCategory, 12);
     $randomProducts = getProducts(12);
 
-    function renderCarouselProduct($products)
-    {
+    function renderCarouselProduct($products) {
         shuffle($products);
         $productsHtml = '';
 
-        foreach ($products as $product) {
+        foreach($products as $product) {
             extract($product);
-            $imgPath = constant('PRODUCT_PATH') . $img;
+            $imgPath = constant('PRODUCT_PATH').$img;
             $linkToDetail = "?mod=page&act=productDetail&idProduct=$id";
 
             $priceView = '';
             $salePriceView = '';
-            $loveBtn = '<button class="icon-btn love-btn toggle-btn" data-product-id="' . $id . '"><i class="fal fa-heart"></i></button>';
+            $loveBtn = '<button class="icon-btn love-btn toggle-btn" data-product-id="'.$id.'"><i class="fal fa-heart"></i></button>';
 
-            if (isset($price) && $price > 0) {
-                $priceView = '<div class="product__info__price body-medium">' . formatVND($price) . '</div>';
+            if(isset($price) && $price > 0) {
+                $priceView = '<div class="product__info__price body-medium">'.formatVND($price).'</div>';
             } else {
                 $priceView = '<div class="product__info__price body-medium">Đang cập nhật</div>';
             }
 
-            if (isset($promotion) and $promotion > 0) {
+            if(isset($promotion) and $promotion > 0) {
                 $salePrice = $price - $price * $promotion / 100;
-                $salePriceView = '<div class="product__info__sale-price body-medium">' . formatVND($salePrice) . '</div>';
-                $priceView = '<del class="product__info__price body-small">' . formatVND($price) . '</del>';
+                $salePriceView = '<div class="product__info__sale-price body-medium">'.formatVND($salePrice).'</div>';
+                $priceView = '<del class="product__info__price body-small">'.formatVND($price).'</del>';
             } else {
                 $salePriceView = '';
-                $priceView = '<div class="product__info__price body-medium">' . formatVND($price) . '</div>';
+                $priceView = '<div class="product__info__price body-medium">'.formatVND($price).'</div>';
+            }
+
+            $loveBtnClass = '';
+            $loveBtnIcon = 'far fa-heart';
+
+            if (isset($_SESSION['loveProducts']) && !empty($_SESSION['loveProducts']) && is_array($_SESSION['loveProducts'])) {
+                if (in_array($id, $_SESSION['loveProducts'])) {
+                    $loveBtnClass = 'active';
+                    $loveBtnIcon = 'fa fa-heart';
+                }
+                $loveBtn = '<button class="icon-btn love-btn toggle-btn ' . $loveBtnClass . '" data-product-id="' . $id . '"><i class="' . $loveBtnIcon . '"></i></button>';
+            } else {
+                $loveBtn =
+                    <<<HTML
+                                <button class="icon-btn love-btn toggle-btn" data-product-id="$id">
+                                    <i class="fal fa-heart"></i>
+                                </button>
+                            HTML;
+            }
+
+            $views = formatViewsNumber($views);
+
+            $productBtn = '';
+            if ($qty > 0) {
+                $productBtn =
+                    <<<HTML
+                        <div class="flex g12 in-stock__btn-set">
+                            <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
+                            $loveBtn
+                            <form action="?mod=cart&act=addCart" method="post" class="flex-column g12">
+                                <button type="submit" class="icon-btn">
+                                    <i class="fal fa-cart-plus"></i>
+                                </button>
+                                <input type="hidden" name="name" value="$name">
+                                <input type="hidden" name="price" value="$price">
+                                <input type="hidden" name="img" value="$img">
+                                <input type="hidden" name="id" value="$id">
+                                <input type="hidden" name="qty" class="data-qty" value="1">
+                            </form>
+                        </div>
+                    HTML;
+            } else {
+                $productBtn =
+                    <<<HTML
+                        <div class="flex g12 sold-out__btn-set">
+                            <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
+                            <button class="icon-btn"><i class="fal fa-plus"></i></button>
+                            <button class="icon-btn"><i class="fal fa-arrow-right"></i></button>
+                        </div>
+                    HTML;
             }
 
             $productsHtml .=
                 <<<HTML
-                            <!-- single product start -->
-                            <div class="product product__carousel">
-                                <a href="$linkToDetail" class="product__banner oh banner-contain rounded-8 por"
-                                    style="background-image: url($imgPath)">
-                                    <div class="product__overlay poa flex-center">
-                                        <div class="flex g12 in-stock__btn-set">
-                                            <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
-                                            $loveBtn
-                                            <button class="icon-btn"><i class="fal fa-shopping-cart"></i></button>
-                                        </div>
-                                        <!-- <div class="flex g12 sold-out__btn-set">
-                                                    <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
-                                                    <button class="icon-btn"><i class="fal fa-plus"></i></button>
-                                                    <button class="icon-btn"><i class="fal fa-arrow-right"></i></button>
-                                                </div> -->
-                                    </div>
-                                </a>
-                                <a href="#" class="product__info">
-                                    <div class="product__info__name title-medium fw-smb">$name</div>
-                                    $priceView
-                                    $salePriceView
-                                </a>
-                                <div class="product__info flex-between width-full">
-                                    <div class="product__info__view body-medium">1,2m+ views</div>
-                                    <div class="product__info__rated flex g6 v-center body-medium">
-                                        4.4 <i class="fa fa-star start"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- single product end -->
-                        HTML;
+                <!-- single product start -->
+                <div class="product product__carousel">
+                    <a href="$linkToDetail" class="product__banner oh banner-contain rounded-8 por"
+                        style="background-image: url($imgPath)">
+                        <div class="product__overlay poa flex-center">
+                            $productBtn
+                        </div>
+                    </a>
+                    <a href="#" class="product__info">
+                        <div class="product__info__name title-medium fw-smb">$name</div>
+                        $priceView
+                        $salePriceView
+                    </a>
+                    <div class="product__info flex-between width-full">
+                        <div class="product__info__view body-medium">$views views</div>
+                        <div class="product__info__rated flex g6 v-center body-medium">
+                            4.4 <i class="fa fa-star start"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- single product end -->
+            HTML;
         }
         return $productsHtml;
     }
@@ -128,7 +239,7 @@ if (isset($_GET['idProduct']) && $_GET['idProduct']) {
     /** comment render */
     $comments = getProductCommentByProductId($idProduct);
     $commentHtml = '';
-    foreach ($comments as $item) {
+    foreach($comments as $item) {
         $commentHtml .=
             <<<HTML
                     <!-- single comment start -->
@@ -153,9 +264,9 @@ if (isset($_GET['idProduct']) && $_GET['idProduct']) {
 }
 /** render gallery thumbnails */
 $galleryThumbnailsHtml = '';
-foreach ($productThumbnails as $item) {
+foreach($productThumbnails as $item) {
     extract($item);
-    $imgPath = constant('PRODUCT_PATH') . $src;
+    $imgPath = constant('PRODUCT_PATH').$src;
     $galleryThumbnailsHtml .=
         <<<HTML
             <div class="gallery__thumbnails__item">
@@ -163,8 +274,8 @@ foreach ($productThumbnails as $item) {
             </div>
         HTML;
 }
-if (isset($_POST['submitComment'])) {
-    if (!empty($_POST['inputComment'])) {
+if(isset($_POST['submitComment'])) {
+    if(!empty($_POST['inputComment'])) {
         $inputCmt = htmlentities($_POST['inputComment']);
     }
     $getIdUser = $_SESSION['userLogin']['id_user'];
@@ -174,58 +285,58 @@ if (isset($_POST['submitComment'])) {
     date_default_timezone_set('Asia/Ho_Chi_Minh');
     $now = date("Y-m-d H:i:s");
     $idCmt = insertComment($getIdUser, $id_product, $getUsername, $getEmail, $inputCmt, $now);
-    if (isset($_FILES['file'])) {
+    if(isset($_FILES['file'])) {
         //Thư mục chứa file upload
         $upload_dir = './upload/users/';
 
         //Xử lý upload đúng file ảnh
         $type_allow = array('png', 'jpg', 'jpeg', 'gif');
 
-        foreach ($_FILES['file']['name'] as $key => $value) {
+        foreach($_FILES['file']['name'] as $key => $value) {
             //Đường dẫn của file sau khi upload
-            $upload_file = $upload_dir . $_FILES['file']['name'][$key];
+            $upload_file = $upload_dir.$_FILES['file']['name'][$key];
 
             //PATHINFO_EXTENSION lấy đuôi file
             $type = pathinfo($_FILES['file']['name'][$key], PATHINFO_EXTENSION);
 
-            if (!in_array(strtolower($type), $type_allow)) {
+            if(!in_array(strtolower($type), $type_allow)) {
                 $error['type'] = "Chỉ được upload file có đuôi PNG, JPG, GIF, JPEG";
             }
 
             #Upload file có kích thước cho phép (<20mb ~ 29.000.000BYTE)
             $file_size = $_FILES['file']['size'][$key];
-            if ($file_size > 29000000) {
+            if($file_size > 29000000) {
                 $error['file_size'] = "Chỉ được upload file bé hơn 20MB";
             }
             $filename = pathinfo($_FILES["file"]["name"][$key], PATHINFO_FILENAME);
 
             #Kiểm tra trùng file trên hệ thống
-            if (file_exists($upload_file)) {
+            if(file_exists($upload_file)) {
                 // Xử lý đổi tên file tự động
 
                 #Tạo file mới
                 // TênFile.ĐuôiFile
-                $new_filename = $filename . '- Copy.';
-                $new_upload_file = $upload_dir . $new_filename . $type;
+                $new_filename = $filename.'- Copy.';
+                $new_upload_file = $upload_dir.$new_filename.$type;
                 $k = 1;
-                while (file_exists($new_upload_file)) {
-                    $new_filename = $filename . " - Copy({$k}).";
+                while(file_exists($new_upload_file)) {
+                    $new_filename = $filename." - Copy({$k}).";
                     $k++;
-                    $new_upload_file = $upload_dir . $new_filename . $type;
+                    $new_upload_file = $upload_dir.$new_filename.$type;
                 }
                 $upload_file = $new_upload_file;
-                if (empty($error)) {
-                    if (move_uploaded_file($_FILES['file']['tmp_name'][$key], $upload_file)) {
-                        $image = $new_filename . $type;
+                if(empty($error)) {
+                    if(move_uploaded_file($_FILES['file']['tmp_name'][$key], $upload_file)) {
+                        $image = $new_filename.$type;
                         addImgCmt($idCmt, $image);
                     } else {
                         echo "Upload file thất bại";
                     }
                 }
             } else {
-                if (empty($error)) {
-                    if (move_uploaded_file($_FILES['file']['tmp_name'][$key], $upload_file)) {
-                        $image = $filename . '.' . $type;
+                if(empty($error)) {
+                    if(move_uploaded_file($_FILES['file']['tmp_name'][$key], $upload_file)) {
+                        $image = $filename.'.'.$type;
                         addImgCmt($idCmt, $image);
                     } else {
                         echo "Upload file thất bại";
@@ -237,71 +348,71 @@ if (isset($_POST['submitComment'])) {
     header("Location: ?mod=page&act=productDetail&idProduct={$id_product}");
 }
 
-if (isset($_POST['editComment'])) {
-    if (!empty($_POST['inputEditComment'])) {
+if(isset($_POST['editComment'])) {
+    if(!empty($_POST['inputEditComment'])) {
         $inputEditCmt = $_POST['inputEditComment'];
     } else {
         $error['inputEditCmt'] = "Bình luận này không được để trống";
         exit();
     }
     $id_product = $_GET['idProduct'];
-    $getIDCmt = (int) $_GET['editCmt'];
+    $getIDCmt = (int)$_GET['editCmt'];
     $getAllCmtImg = getImgCommentById($getIDCmt);
 
     editCommentById($getIDCmt, $inputEditCmt);
-    foreach ($getAllCmtImg as $item) {
+    foreach($getAllCmtImg as $item) {
         $delete_dir = "./upload/users/{$item['src']}";
-        if (file_exists($delete_dir)) {
+        if(file_exists($delete_dir)) {
             unlink($delete_dir);
         }
         delImgByIdCmt($getIDCmt);
     }
-    if (isset($_FILES['file']) && !empty($_FILES['file'])) {
+    if(isset($_FILES['file']) && !empty($_FILES['file'])) {
         //Thư mục chứa file upload
         $upload_dir = './upload/users/';
         //Xử lý upload đúng file ảnh
         $type_allow = array('png', 'jpg', 'jpeg', 'gif');
 
-        foreach ($_FILES['file']['name'] as $key => $value) {
+        foreach($_FILES['file']['name'] as $key => $value) {
             //Đường dẫn của file sau khi upload
-            $upload_file = $upload_dir . $_FILES['file']['name'][$key];
+            $upload_file = $upload_dir.$_FILES['file']['name'][$key];
             //PATHINFO_EXTENSION lấy đuôi file
             $type = pathinfo($_FILES['file']['name'][$key], PATHINFO_EXTENSION);
 
-            if (!in_array(strtolower($type), $type_allow)) {
+            if(!in_array(strtolower($type), $type_allow)) {
                 $error['type'] = "Chỉ được upload file có đuôi PNG, JPG, GIF, JPEG";
             }
 
             #Upload file có kích thước cho phép (<20mb ~ 29.000.000BYTE)
             $file_size = $_FILES['file']['size'][$key];
 
-            if ($file_size > 29000000) {
+            if($file_size > 29000000) {
                 $error['file_size'] = "Chỉ được upload file bé hơn 20MB";
             }
 
             $filename = pathinfo($_FILES["file"]["name"][$key], PATHINFO_FILENAME);
 
             #Kiểm tra trùng file trên hệ thống
-            if (file_exists($upload_file)) {
+            if(file_exists($upload_file)) {
                 // Xử lý đổi tên file tự động
 
                 #Tạo file mới
                 // TênFile.ĐuôiFile
-                $new_filename = $filename . '- Copy';
-                $new_upload_file = $upload_dir . $new_filename . $type;
+                $new_filename = $filename.'- Copy';
+                $new_upload_file = $upload_dir.$new_filename.$type;
                 $k = 1;
 
-                while (file_exists($new_upload_file)) {
-                    $new_filename = $filename . " - Copy({$k})";
+                while(file_exists($new_upload_file)) {
+                    $new_filename = $filename." - Copy({$k})";
                     $k++;
-                    $new_upload_file = $upload_dir . $new_filename . $type;
+                    $new_upload_file = $upload_dir.$new_filename.$type;
                 }
                 $filename = $new_filename;
                 $upload_file = $new_upload_file;
             }
-            if (empty($error)) {
-                if (move_uploaded_file($_FILES['file']['tmp_name'][$key], $upload_file)) {
-                    $image = $filename . '.' . $type;
+            if(empty($error)) {
+                if(move_uploaded_file($_FILES['file']['tmp_name'][$key], $upload_file)) {
+                    $image = $filename.'.'.$type;
                     addImgCmt($getIDCmt, $image);
                 } else {
                     echo "Upload file thất bại";
@@ -317,10 +428,10 @@ if (isset($_POST['editComment'])) {
 <div class="mobile-top__bar mobile-top__bar--shop p12 flex-center">
     <div class="mobile-top__inner flex-full flex-between v-center g12">
         <button class="icon-btn back-btn"><i class="fal fa-chevron-left"></i></button>
-        <form action="#" class="form mobile__search-form flex-full">
+        <form action="?mod=page&act=search" method="get" class="form mobile__search-form flex-full">
             <div class="form__group width-full por">
                 <i class="fal fa-search poa" style="left: 2rem; top: 30%; transform: translate(-50%)"></i>
-                <input type="text" class="form__input rounded-100 width-full" style="padding-left: 4rem">
+                <input type="text" name="query" class="form__input rounded-100 width-full" style="padding-left: 4rem">
             </div>
         </form>
         <button class="icon-btn cart-btn"><i class="fal fa-shopping-cart"></i></button>
@@ -363,7 +474,7 @@ if (isset($_POST['editComment'])) {
 <!-- shop mobile top navigation bar end -->
 
 <!-- product overview start -->
-<main class="section single-product__main auto-grid g30 mt80">
+<main class="section single-product__main auto-grid g30 mt80" style="display: grid !important">
     <div class="product__gallery mobile">
         <div class="gallery__spotlight">
             <img src="./public/assets/media/images/product/<?= $img ?>" alt="" class="img-cover">
@@ -372,7 +483,7 @@ if (isset($_POST['editComment'])) {
             <?= $galleryThumbnailsHtml ?>
         </div>
     </div>
-    <div class="product__gallery por desktop">
+    <div class="product__gallery por desktop" style="place-items: center">
         <div class="gallery__spotlight flex-center">
             <img src="./public/assets/media/images/product/<?= $img ?>" alt="" class="img-contain">
         </div>
@@ -389,7 +500,7 @@ if (isset($_POST['editComment'])) {
             <button class="icon-btn love-btn toggle-btn mobile transparent"><i class="fal fa-heart"></i></button>
         </div>
         <div class="flex-between v-center">
-            <span class="text-38 fw-normal" style="font-family: inherit;">
+            <span class="text-38 fw-normal primary-text" style="font-family: inherit;">
                 <?= formatVND($price) ?>
             </span>
             <span class="label-medium">
@@ -428,10 +539,10 @@ if (isset($_POST['editComment'])) {
             </div>
         </div>
         <div class="panels">
-            <div class="panel__item active">
+            <div class="panel__item body-large active">
                 <?= $short_detail ?>
             </div>
-            <div class="panel__item">
+            <div class="panel__item body-large">
                 <?= $description ?>
             </div>
             <div class="panel__item comment__panel">
@@ -441,8 +552,8 @@ if (isset($_POST['editComment'])) {
                         $productId = $_GET['idProduct'];
                         $productCmt = getProductCommentByProductId($productId);
                         $i = 0;
-                        foreach ($productCmt as $item) {
-                            if ($item['id_product'] == $productId) {
+                        foreach($productCmt as $item) {
+                            if($item['id_product'] == $productId) {
                                 $i++;
                             }
                         }
@@ -450,13 +561,13 @@ if (isset($_POST['editComment'])) {
                         <?php echo $i ?> comments
                     </div>
                     <?php
-                    if (isset($_SESSION['userLogin'])) {
-                        if (isset($_GET['editCmt'])) {
+                    if(isset($_SESSION['userLogin'])) {
+                        if(isset($_GET['editCmt'])) {
                             $getIDCmt = $_GET['editCmt'];
                             $editCmtById = getCommentById($getIDCmt);
                             $imgImtById = getImgCommentById($_GET['editCmt']);
                             $getIDProduct = $_GET['idProduct'];
-                            if ($editCmtById[0]['id_user'] == $_SESSION['userLogin']['id_user']) {
+                            if($editCmtById[0]['id_user'] == $_SESSION['userLogin']['id_user']) {
                                 ?>
                     <form enctype="multipart/form-data" action="" class="form comment__form" method="post">
                         <input type="file" name="file[]" id="file-1" class="inputfile inputfile-1"
@@ -469,17 +580,17 @@ if (isset($_POST['editComment'])) {
 
                         <div class="flex" style="align-items: center;">
                             <input type="text" name="inputEditComment" class="form__input comment__input"
-                                placeholder="Comment" value="<?php if (!empty($editCmtById))
+                                placeholder="Comment" value="<?php if(!empty($editCmtById))
                                                 print_r($editCmtById[0]['content']) ?>">
                             <button name="editComment" value="submitComment" type="submit"
                                 class="icon-btn send-comment__btn"><i class="fal fa-paper-plane"></i></button>
                         </div>
                         <?php
-                                            if (!empty($imgImtById)) {
+                                            if(!empty($imgImtById)) {
                                                 ?>
                         <div class="comment_media">
                             <?php
-                                            foreach ($imgImtById as $item) {
+                                            foreach($imgImtById as $item) {
                                                 ?>
                             <div class="comment_media_item">
                                 <img src="./upload/users/<?php echo $item['src'] ?>" alt="">
@@ -532,11 +643,11 @@ if (isset($_POST['editComment'])) {
 
                     $productId = $_GET['idProduct'];
                     $productCmt = getProductCommentByProductId($productId);
-                    foreach ($productCmt as $item) {
+                    foreach($productCmt as $item) {
                         $getUserByID = getUserById($item['id_user']);
                         $idCmt = $item['id'];
                         $productImgCmt = getImgCommentById($idCmt);
-                        if ($item['is_appear'] == 1) {
+                        if($item['is_appear'] == 1) {
                             ?>
                     <div class="comment__item mb30 p30">
                         <div class="flex comment__user">
@@ -547,7 +658,7 @@ if (isset($_POST['editComment'])) {
                                 <div class="flex-column flex-between">
                                     <div class="user__name title-medium fw-smb">
                                         <?php
-                                                if (!empty($getUserByID[0]['fullname']) || $getUserByID[0]['fullname'] != null) {
+                                                if(!empty($getUserByID[0]['fullname']) || $getUserByID[0]['fullname'] != null) {
                                                     echo $getUserByID[0]['fullname'];
                                                 } else {
                                                     echo "Người dùng ẩn danh";
@@ -560,7 +671,7 @@ if (isset($_POST['editComment'])) {
                                 </div>
                             </div>
                             <?php
-                                    if (isset($_SESSION['userLogin'])) {
+                                    if(isset($_SESSION['userLogin'])) {
                                         ?>
                             <div class="moreFeatureComment">
                                 <ul class="ulDadMoreFeatureComment">
@@ -571,7 +682,7 @@ if (isset($_POST['editComment'])) {
                                         <div class="divMoreFeatureComment box-shadow1">
                                             <ul class="ulSonMoreFeatureComment p10">
                                                 <?php
-                                                            if ($_SESSION['userLogin']['id_user'] == $item['id_user']) {
+                                                            if($_SESSION['userLogin']['id_user'] == $item['id_user']) {
                                                                 ?>
                                                 <li class="liSonMoreFeatureComment"><a
                                                         href="?mod=page&act=productDetail&idProduct=<?php echo $productId ?>&editCmt=<?php echo $item['id'] ?>">Chỉnh
@@ -605,8 +716,8 @@ if (isset($_POST['editComment'])) {
                         </div>
                         <div class="comment_media">
                             <?php
-                                    if (!empty($productImgCmt)) {
-                                        foreach ($productImgCmt as $result) {
+                                    if(!empty($productImgCmt)) {
+                                        foreach($productImgCmt as $result) {
                                             ?>
                             <div class="comment_media_item">
                                 <img src="./upload/users/<?php echo $result['src'] ?>" alt="">
@@ -643,40 +754,68 @@ if (isset($_POST['editComment'])) {
                 </div>
             </div>
             <div class="panel__item">
-                <div class="bill-info__panel auto-grid g20">
-                    <div class="bill-info__box p20 rounded-8 box-shadow1 flex-column g12">
-                        <h4 class="box__title title-medium fw-smb">Người nhận</h4>
-                        <div class="box__content flex-column g12">
-                            <h4 class="title-large">Hồ Duy Hoàng Giang</h4>
-                            <p class="body-medium">Sđt: 0934630736</p>
-                            <p class="body-medium">Email: giang@gmail.com</p>
-                            <p class="body-medium">Địa chỉ: 212B, Baker street, London</p>
-                        </div>
-                    </div>
-                    <div class="bill-info__box p20 rounded-8 box-shadow1 flex-column g12">
-                        <h4 class="box__title title-medium fw-smb">Người đặt</h4>
-                        <div class="box__content flex-column g12">
-                            <h4 class="title-large">Hồ Duy Hoàng Giang</h4>
-                            <p class="body-medium">Sđt: 0934630736</p>
-                            <p class="body-medium">Email: giang@gmail.com</p>
-                            <p class="body-medium">Địa chỉ: 212B, Baker street, London</p>
-                        </div>
-                    </div>
-                    <div class="bill-info__box p20 rounded-8 box-shadow1 flex-column g12">
-                        <h4 class="box__title title-medium fw-smb">Phương thức thanh toán</h4>
-                        <div class="box__content flex-column g12">
-                            <p class="body-medium">Tiền mặt</p>
-                            <label for="#" class="body-small default-label">Mặc định</label>
-                        </div>
-                    </div>
-                    <div class="bill-info__box p20 rounded-8 box-shadow1 flex-column g12">
-                        <h4 class="box__title title-medium fw-smb">Phương thức vận chuyển</h4>
-                        <div class="box__content flex-column g12">
-                            <p class="body-medium">Thông thường (25k / 3 - 5 ngày)</p>
-                            <label for="#" class="body-small default-label">Mặc định</label>
-                        </div>
-                    </div>
-                </div>
+                <?php 
+                    if(isset($_SESSION['userLogin']) && is_array($_SESSION['userLogin'])) {
+                        $idUser = $_SESSION['userLogin']['id_user'];
+                        $userAddress = getUserAddressByIdUser($idUser);
+                        if (isset($userAddress) && !empty($userAddress)) {
+                            extract($userAddress);
+                            echo
+                                <<<HTML
+                                    <div class="bill-info__panel auto-grid g20">
+                                        <div class="bill-info__box p20 rounded-8 box-shadow1 flex-column g12">
+                                            <h4 class="box__title title-medium fw-smb">Người nhận</h4>
+                                            <div class="box__content flex-column g12">
+                                                <h4 class="title-large">$username</h4>
+                                                <p class="body-medium">Sđt: $phone</p>
+                                                <p class="body-medium">Email: $_SESSION[userLogin][email]</p>
+                                                <p class="body-medium">Địa chỉ: $address</p>
+                                                <p class="body-medium">Địa chỉ cụ thể: $address_detail</p>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="bill-info__box p20 rounded-8 box-shadow1 flex-column g12">
+                                            <h4 class="box__title title-medium fw-smb">Người đặt</h4>
+                                            <div class="box__content flex-column g12">
+                                                <h4 class="title-large">Hồ Duy Hoàng Giang</h4>
+                                                <p class="body-medium">Sđt: 0934630736</p>
+                                                <p class="body-medium">Email: giang@gmail.com</p>
+                                                <p class="body-medium">Địa chỉ: 212B, Baker street, London</p>
+                                            </div>
+                                        </div> -->
+                                        <div class="bill-info__box p20 rounded-8 box-shadow1 flex-column g12">
+                                            <h4 class="box__title title-medium fw-smb">Phương thức thanh toán</h4>
+                                            <div class="box__content flex-column g12">
+                                                <p class="body-medium">Tiền mặt</p>
+                                                <label for="#" class="body-small default-label">Mặc định</label>
+                                            </div>
+                                        </div>
+                                        <div class="bill-info__box p20 rounded-8 box-shadow1 flex-column g12">
+                                            <h4 class="box__title title-medium fw-smb">Phương thức vận chuyển</h4>
+                                            <div class="box__content flex-column g12">
+                                                <p class="body-medium">Thông thường (25k / 3 - 5 ngày)</p>
+                                                <label for="#" class="body-small default-label">Mặc định</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                HTML;
+                        } else {
+                            echo 
+                                <<<HTML
+                                    <h2 class="fw-smb headline-medium tac ttu mt30 mb30 primary-text">Chưa có thông tin</h2>
+                                    <a href="?mod=user&act=address" class="btn primary-btn elevated-btn rounded-100">Thêm địa chỉ</a>
+                                HTML;
+                        }
+                    } else {
+                        echo
+                            <<<HTML
+                                <h2 class="fw-smb headline-medium tac ttu mt30 mb30 primary-text">Chưa có thông tin</h2>
+                                <div class="row g12 flex-center">
+                                    <a href="?mod=page&act=login" class="btn primary-btn elevated-btn rounded-100">Tạo tài khoản ngay</a>
+                                    <a href="?mod=page&act=login#login-section" class="btn primary-btn rounded-100">Đăng nhập</a>
+                                </div>
+                            HTML;
+                    }
+                ?>
             </div>
         </div>
     </div>
@@ -733,26 +872,11 @@ if (isset($_POST['editComment'])) {
 
 <!-- single product bottom nav bar start -->
 <div class="p10 flex-center single-product__bottom-bar mobile">
-    <div class="bottom-bar__inner flex-full p10 flex-column g12 rounded-12 box-shadow1">
-        <div class="flex-between">
-            <div class="flex-column flex-between">
-                <h4 class="title-large fw-black">
-                    <?= formatVND($price) ?>
-                </h4>
-                <a href="" class="add-coupon-btn primary-text label-large fw-black">Thêm phiếu giảm giá</a>
-            </div>
-            <?= $btnsHtmlMobile ?>
-        </div>
-        <button class="btn primary-btn rounded-8"><i class="fal fa-arrow-right"></i>
-            <?= !empty($btnText) ? $btnText : 'Mua ngay' ?>
-        </button>
+    <div class="bottom-bar__inner flex-full p10 flex-column g12 rounded-12 box-shadow5">
+        <?= $btnsHtmlMobile ?>
     </div>
 </div>
 <!-- single product bottom nav bar end -->
-
-
-
-
 <script>
 'use strict';;
 (function(document, window, index) {

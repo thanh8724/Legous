@@ -103,17 +103,13 @@ if (isset($_GET['act'])) {
             include_once 'models/m_bill.php';
             include_once 'models/m_cart.php';
 
-            // redirect base on cart product
-            // nếu: guest -> session giỏ hàng trống -> trở về cart
-            // nếu: user -> nếu mảng giỏ hàng của user trống -> trở về cart
             $cart = [];
             if (isset($_SESSION['userLogin']) && is_array($_SESSION['userLogin'])) {
                 extract($_SESSION['userLogin']);
                 $cart = getCartByUserId($id_user);
             } else if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
                 $cart = $_SESSION['cart'];
-            }
-            
+            } 
             $view_name = 'checkout';
             break;
 
@@ -123,10 +119,36 @@ if (isset($_GET['act'])) {
             include_once 'models/m_user.php';
             include_once 'models/m_shipping.php';
             include_once 'models/m_payment.php';
-
             
-
             $view_name = 'confirm';
+            break;
+        case 'buyNow':
+            include_once 'models/m_bill.php';
+            include_once 'models/m_cart.php';
+            include_once 'models/m_user.php';
+            include_once 'models/m_shipping.php';
+            include_once 'models/m_payment.php';
+            include_once 'models/m_address.php';
+            
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                /** buy now - checkout product */
+                $product_name = $_POST['name'];
+                $product_price = $_POST['price'];
+                $product_img = $_POST['img'];
+                $product_qty = $_POST['qty'];
+                $product_id = $_POST['id'];
+                $product_totalCost = $product_price * $product_qty;
+
+                $checkoutProduct = [
+                    'name' => $product_name,
+                    'price' => $product_price,
+                    'img' => $product_img,
+                    'qty' => $product_qty,
+                    'id_product' => $product_id
+                ];
+                $_SESSION['checkoutProduct'] = $checkoutProduct;
+            }
+            $view_name = 'checkoutBuyNow';
             break;
         case 'deleteProduct':
             if (isset($_GET['idProduct'])) {

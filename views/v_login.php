@@ -1,34 +1,36 @@
 <main class="main__login-register">
     <section id="register-section" class="oh por section create-account__section banner-cover flex-center g60"
-        style="background-image: url('./public/assets/media/images/banners/banner-login-1.svg')">
-        <form action="?mod=page&act=register" method="post" id="register__form" class="form register__form flex-column g30">
-            <div class="form__title">
-                Chào mừng đến với LEGOUS <br>
-                Tạo tài khoản ngay!
+        style="background-image: url('./public/assets/media/images/banners/konoha-from-naruto.jpg')">
+        <div class="flex rounded-8 oh" style="background: white;">
+            <form action="?mod=page&act=register" method="post" id="register__form" class="form register__form flex-column g20 col-2" style="min-width: 33rem">
+                <div class="form__title">
+                    Chào mừng đến với LEGOUS <br>
+                    Tạo tài khoản ngay!
+                </div>
+                <div class="form__group without-title">
+                    <!-- <label for="username">Tên đăng nhập</label> -->
+                    <input type="text" name="username" id="username__input" class="form__input user__name--input" placeholder=" ">
+                    <label for="" class="label__place">Tên đăng nhập</label>
+                    <span class="form__message label-medium"></span>
+                </div>
+                <div class="form__group without-title">
+                    <!-- <label for="username">Email</label> -->
+                    <input type="text" name="email" id="email__input" class="form__input email--input" placeholder=" ">
+                    <label for="" class="label__place">Email</label>
+                    <span class="form__message label-medium" id="email-validation-status"></span>
+                </div>
+                <div class="form__group without-title">
+                    <!-- <label for="username">Mật khẩu</label> -->
+                    <input type="text" name="password" class="form__input password--input" placeholder=" ">
+                    <label for="" class="label__place">Mật khẩu</label>
+                    <span class="form__message label-medium"></span>
+                </div>
+                <input class="btn form__btn" type="submit" name="register" value="TẠO TÀI KHOẢN" style="border:none; color: white">
+                <div class="label-large">Bạn đã có tài khoản? <a href="#login-section" class="click">Đăng nhập ngay!</a></div>
+            </form>
+            <div class="banner-cover login__banner desktop flex-full col-2"
+                style="aspect-ratio: 1;z-index: 999;background-image: url('./public/assets/media/images/banners/konoha-from-naruto.jpg'); min-width: 32rem">
             </div>
-            <div class="form__group without-title">
-                <!-- <label for="username">Tên đăng nhập</label> -->
-                <input type="text" name="username" id="username__input" class="form__input user__name--input" placeholder=" ">
-                <label for="" class="label__place">Tên đăng nhập</label>
-                <span class="form__message label-medium"></span>
-            </div>
-            <div class="form__group without-title">
-                <!-- <label for="username">Email</label> -->
-                <input type="text" name="email" id="email__input" class="form__input email--input" placeholder=" ">
-                <label for="" class="label__place">Email</label>
-                <span class="form__message label-medium" id="email-validation-status"></span>
-            </div>
-            <div class="form__group without-title">
-                <!-- <label for="username">Mật khẩu</label> -->
-                <input type="text" name="password" class="form__input password--input" placeholder=" ">
-                <label for="" class="label__place">Mật khẩu</label>
-                <span class="form__message label-medium"></span>
-            </div>
-            <input class="btn form__btn" type="submit" name="register" value="TẠO TÀI KHOẢN" style="border:none; color: white">            
-            <div class="label-large">Bạn đã có tài khoản? <a href="#login-section" class="click">Đăng nhập ngay!</a></div>
-        </form>
-        <div class="banner-contain login__banner flex-full"
-            style="aspect-ratio: 1;z-index: 999;max-width: 50rem;background-image: url('./public/assets/media/images/banners/image\ 4.svg');">
         </div>
     </section>
 

@@ -28,7 +28,7 @@
                 <div class="header__subnav__wrapper header__mega-menu poa box-shadow1 rounded-8">
                     <div class="top p20 flex-column g12 mega-menu__item">
                         <div class="title-medium fw-bold">Cửa hàng</div>
-                        <span class="body-medium">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta consequuntur assumenda</span>
+                        <span class="body-medium">Khám phá các sản phẩm của Legous. Vào cửa hàng nào!</span>
                     </div>
                     <div class="content flex mega-menu__item">
                         <div class="product__wrapper p20">
