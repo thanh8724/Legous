@@ -46,13 +46,13 @@
     $userWidgetHtml = '';
     if (isset($_SESSION['userLogin']) && !empty($_SESSION['userLogin'])) {
         $id = $_SESSION['userLogin']['id_user'];
-        $user = getUserById($id);
+        $user = getUserById($id)[0];
         extract($user);
         $userWidgetHtml =
         <<<HTML
             <a href="#" class="user-widget flex flex-center g6">
                 <i class="fal fa-user user-widget__icon"></i>
-                <div class="username">$username</div>
+                <div class="username">$user[username]</div>
             </a>
             <div class="flex-between header__subnav__wrapper poa box-shadow1 p20 rounded-8" style="top: 100%; left: 0;">
                 <ul class="header__subnav flex-full flex-column g6">
@@ -60,15 +60,18 @@
                         <a href="?mod=user&act=general" class="header__nav__link header__subnav__link ttu">Thông tin tài khoản</a>
                     </li>
                     <li class="header__nav__item header__subnav__item">
+                        <a href="?mod=user&act=order-history" class="header__nav__link header__subnav__link ttu">lịch sử đơn hàng</a>
+                    </li>
+                    <li class="header__nav__item header__subnav__item">
                         <a href="?mod=user&act=logOut-account&id-account=$id" class="header__nav__link header__subnav__link ttu error60">Đăng xuất</a>
                     </li>
-                    <li class="" style="padding: 0.4rem 0.8rem;">
-                        <button id="dark-light__mode" onclick="dark_lightMod()">
+                    <!-- <li class="" style="padding: 0.4rem 0.8rem;">
+                        <button class="btn " id="dark-light__mode" onclick="dark_lightMod(this)">
                             <i class="fas fa-clouds-sun" id="icon_sun"></i>
                             <i class="fas fa-moon-cloud" id="icon_moon"></i>
-                            <span id="color__dark-light"></span>
+                            <span id="color__dark-light" class=""></span>
                         </button>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         HTML;

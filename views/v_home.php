@@ -468,7 +468,7 @@ $(document).ready(function () {
                 <li class="header__nav__item"><a href="?mod=page&act=home" class="header__nav__link">Trang chủ</a>
                 </li>
                 <li class="header__nav__item">
-                    <a href="?mod=page&act=shop" class="header__nav__link">Cửa hàng</a>
+                    <a href="?mod=page&act=shop&page=1" class="header__nav__link">Cửa hàng</a>
                     <div class="header__subnav__wrapper header__mega-menu poa box-shadow1 rounded-8">
                         <div class="top p20 flex-column g12 mega-menu__item">
                             <div class="title-medium fw-bold">Cửa hàng</div>

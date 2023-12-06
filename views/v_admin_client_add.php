@@ -118,7 +118,7 @@ if (@isset($_POST['btn_cancelled'])) {
     <div class="top">
         <i class="fas fa-angle-left sidebar-toggle"></i>
         <div class="search-box">
-            <form action="" method="post">
+            <form style="width: 100%;display:flex; justify-content: center;" action="" method="post">
                 <i class="far fa-search"></i>
                 <input type="text" placeholder="Tìm kiếm...">
             </form>
@@ -139,11 +139,23 @@ if (@isset($_POST['btn_cancelled'])) {
                     <li>
                         <div class="col-12 d-flex">
                             <div class="col-2">
-                                <img class="notifiAdminImg" src="./upload/users/<?php echo $getUser['img'] ?>" alt="">
+                                <?php
+                                    if ($getUser[0]['img'] == NULL || empty($getUser[0]['img'])) {
+                                        ?>
+                                <img class="notifiAdminImg" src="./upload/users/avatar-none.png" alt="">
+
+                                <?php
+                                    } else {
+                                        ?>
+                                <img class="notifiAdminImg" src="./upload/users/<?php echo $getUser[0]['img'] ?>"
+                                    alt="">
+                                <?php
+                                    }
+                                    ?>
                             </div>
                             <div class="col-10">
                                 <p class="notifiAdminText body-small"><strong>
-                                        <?php echo $getUser['fullname'] ?>
+                                        <?php echo $getUser[0]['fullname'] ?>
                                     </strong><span> đã bình luận ở sản phẩm <strong><a href="">
                                                 <?php echo $getProduct['name'] ?>
                                             </a></strong></span></p>
@@ -169,11 +181,32 @@ if (@isset($_POST['btn_cancelled'])) {
                     <li>
                         <div class="col-12 d-flex">
                             <div class="col-2">
-                                <img class="notifiAdminImg" srcupload/users/profile.jpg" alt="">
+                                <?php
+                                    if ($getUser[0]['img'] == NULL || empty($getUser[0]['img'])) {
+                                        ?>
+                                <img class="notifiAdminImg" src="./upload/users/avatar-none.png" alt="">
+
+                                <?php
+                                    } else {
+                                        ?>
+                                <img class="notifiAdminImg" src="./upload/users/<?php echo $getUser[0]['img'] ?>"
+                                    alt="">
+
+                                <?php
+                                    }
+                                    ?>
                             </div>
                             <div class="col-10">
                                 <p class="notifiAdminText body-small"><strong>
-                                        <?php echo $getUser['fullname'] ?>
+                                        <?php
+                                            if ($getUser[0]['fullname'] == NULL && empty($getUser[0]['fullname'])) {
+                                                echo "User ẩn";
+
+                                            } else {
+                                                echo $getUser[0]['fullname'];
+
+                                            }
+                                            ?>
                                     </strong><span> vừa mua
                                         một mô hình với mã đơn hàng <strong>
                                             <?php echo $item['id'] ?>
@@ -191,8 +224,16 @@ if (@isset($_POST['btn_cancelled'])) {
                 <?php
                 $getID = $_SESSION['admin']['id_user'];
                 $getUser = getUserById($getID);
-                ?>
+                if (!empty($getUser['img']) && $getUser != NULL) {
+                    ?>
                 <img style="" class="btnShowFeature" src="./upload/users/<?php echo $getUser['img'] ?>" alt="">
+                <?php
+                } else {
+                    ?>
+                <img style="" class="btnShowFeature" src="./upload/users/avatar-none.png" alt="">
+                <?php
+                }
+                ?>
                 <ul class="showFeatureAdminHeader box-shadow1">
 
                     <li><a class="body-small" href="#statisticalChart">Thống kê đơn hàng</a></li>
@@ -260,7 +301,7 @@ if (@isset($_POST['btn_cancelled'])) {
                             <h2>Email</h2>
                             <input name="email" class="" type="email" placeholder="Email"
                                 aria-label="default input example">
-                                <?php
+                            <?php
                                     if (isset($error['email']) && !empty($error['email']))
                                         echo "<p class='text-danger text-error title-medium'>{$error['email']}</p>";
                                     ?>
@@ -269,7 +310,7 @@ if (@isset($_POST['btn_cancelled'])) {
                             <h2>Số điện thoại</h2>
                             <input name="phone" class="" type="number" placeholder="Nhập Số Điện Thoại"
                                 aria-label="default input example">
-                                <?php
+                            <?php
                                     if (isset($error['phone']) && !empty($error['phone']))
                                         echo "<p class='text-danger text-error title-medium'>{$error['phone']}</p>";
                                     ?>
@@ -278,7 +319,7 @@ if (@isset($_POST['btn_cancelled'])) {
                             <h2>Địa Chỉ</h2>
                             <input name="address" class="" type="text" placeholder="Nhập Địa chỉ"
                                 aria-label="default input example">
-                                <?php
+                            <?php
                                     if (isset($error['address']) && !empty($error['address']))
                                         echo "<p class='text-danger text-error title-medium'>{$error['address']}</p>";
                                     ?>
@@ -287,7 +328,7 @@ if (@isset($_POST['btn_cancelled'])) {
                             <h2>Mô Tả</h2>
                             <textarea name="bio" id="" cols="30" rows="10"
                                 placeholder="Nhập mô tả người dùng"></textarea>
-                                <?php
+                            <?php
                                     if (isset($error['bio']) && !empty($error['bio']))
                                         echo "<p class='text-danger text-error title-medium'>{$error['bio']}</p>";
                                     ?>

@@ -68,7 +68,7 @@ if (isset($_POST['createCouponSubmit'])) {
 }
 if (isset($_POST['editCouponsubmit'])) {
     $error = [];
-    $getEditID = (int)$_GET['editId'];
+    $getEditID = (int) $_GET['editId'];
     if (isset($_POST['namecoupon']) && !empty($_POST['namecoupon'])) {
         $namecoupon = $_POST['namecoupon'];
     } else {
@@ -102,12 +102,12 @@ if (isset($_POST['editCouponsubmit'])) {
 
     <div class="top">
         <i class="fas fa-angle-left sidebar-toggle"></i>
-        <form style="width: 100%;display:flex; justify-content: center;" action="" method="post">
-            <div class="search-box">
+        <div class="search-box">
+            <form style="width: 100%;display:flex; justify-content: center;" action="" method="post">
                 <i class="far fa-search"></i>
                 <input type="text" placeholder="Tìm kiếm...">
-            </div>
-        </form>
+            </form>
+        </div>
         <div class="info-user">
             <div class="notifiComment">
                 <i class="far fa-comment-alt btnShowFeature"></i>
@@ -125,20 +125,22 @@ if (isset($_POST['editCouponsubmit'])) {
                             <div class="col-12 d-flex">
                                 <div class="col-2">
                                     <?php
-                                    if ($getUser['img'] == NULL && !empty($getUser['img'])) {
+                                    if ($getUser[0]['img'] == NULL || empty($getUser[0]['img'])) {
                                         ?>
-                                        <img class="notifiAdminImg" src="./upload/users/<?php echo $getUser['img'] ?>" alt="">
+                                        <img class="notifiAdminImg" src="./upload/users/avatar-none.png" alt="">
+
                                         <?php
                                     } else {
                                         ?>
-                                        <img class="notifiAdminImg" src="./upload/users/avatar-none.png" alt="">
+                                        <img class="notifiAdminImg" src="./upload/users/<?php echo $getUser[0]['img'] ?>"
+                                            alt="">
                                         <?php
                                     }
                                     ?>
                                 </div>
                                 <div class="col-10">
                                     <p class="notifiAdminText body-small"><strong>
-                                            <?php echo $getUser['fullname'] ?>
+                                            <?php echo $getUser[0]['fullname'] ?>
                                         </strong><span> đã bình luận ở sản phẩm <strong><a href="">
                                                     <?php echo $getProduct['name'] ?>
                                                 </a></strong></span></p>
@@ -165,20 +167,31 @@ if (isset($_POST['editCouponsubmit'])) {
                             <div class="col-12 d-flex">
                                 <div class="col-2">
                                     <?php
-                                    if ($getUser['img'] == NULL && !empty($getUser['img'])) {
+                                    if ($getUser[0]['img'] == NULL || empty($getUser[0]['img'])) {
                                         ?>
-                                        <img class="notifiAdminImg" src="./upload/users/<?php echo $item['img'] ?>" alt="">
+                                        <img class="notifiAdminImg" src="./upload/users/avatar-none.png" alt="">
+
                                         <?php
                                     } else {
                                         ?>
-                                        <img class="notifiAdminImg" src="./upload/users/avatar-none.png" alt="">
+                                        <img class="notifiAdminImg" src="./upload/users/<?php echo $getUser[0]['img'] ?>"
+                                            alt="">
+
                                         <?php
                                     }
                                     ?>
                                 </div>
                                 <div class="col-10">
                                     <p class="notifiAdminText body-small"><strong>
-                                            <?php echo $getUser['fullname'] ?>
+                                            <?php
+                                            if ($getUser[0]['fullname'] == NULL && empty($getUser[0]['fullname'])) {
+                                                echo "User ẩn";
+
+                                            } else {
+                                                echo $getUser[0]['fullname'];
+
+                                            }
+                                            ?>
                                         </strong><span> vừa mua
                                             một mô hình với mã đơn hàng <strong>
                                                 <?php echo $item['id'] ?>
@@ -227,7 +240,7 @@ if (isset($_POST['editCouponsubmit'])) {
         <div class="flex-column p30 g30" style="align-self: stretch; align-items: flex-start;">
             <div class="text">
                 <h1 class="label-large-prominent" style="font-size: 24px;
-                        line-height: 32px;">Bảng Điều Khiển</h1>
+                        line-height: 32px;">Tạo Mã Giảm Giá</h1>
             </div>
             <!--DateTimelocal-->
             <div class="flex-between width-full" style="gap: 8px;
@@ -249,14 +262,14 @@ if (isset($_POST['editCouponsubmit'])) {
                         $getCouponById = getCouponById($_GET['editId']);
                         ?>
                         <form action="" method="post">
-                        <div class="col-12 d-flex createCoupon_items">
+                            <div class="col-12 d-flex createCoupon_items">
                                 <div class="col-12 infoCoupon" style="margin-left: unset">
                                     <div class="col-12">
                                         <label for="namecoupon" class="label-large">Mô Tả</label>
                                     </div>
                                     <div class="col-12">
                                         <input class="body-large" type="text" name="namecoupon" id="namecoupon"
-                                            placeholder="Tên Mã" value="<?php echo $getCouponById[0]['name']?>">
+                                            placeholder="Tên Mã" value="<?php echo $getCouponById[0]['name'] ?>">
                                     </div>
                                 </div>
                             </div>
@@ -267,12 +280,14 @@ if (isset($_POST['editCouponsubmit'])) {
                                     </div>
                                     <div class="col-12">
                                         <input class="body-large" type="text" name="discountpercent" id="discountpercent"
-                                            placeholder="VD 10" value="<?php echo $getCouponById[0]['discount']?>">
+                                            placeholder="VD 10" value="<?php echo $getCouponById[0]['price'] ?>">
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="col-12">
-                                        <label for="expiredDateEdit" class="label-large">Ngày Hết Hạn: <?php echo $getCouponById[0]['expired_date']?></label>
+                                        <label for="expiredDateEdit" class="label-large">Ngày Hết Hạn:
+                                            <?php echo $getCouponById[0]['expired_date'] ?>
+                                        </label>
                                     </div>
                                     <div class="col-12">
                                         <input class="body-large" type="date" name="expiredDateEdit" id="expiredDateEdit"
@@ -287,14 +302,14 @@ if (isset($_POST['editCouponsubmit'])) {
                                     </div>
                                     <div class="col-12">
                                         <input class="body-large" type="text" name="description" id="description"
-                                            placeholder="Mô Tả ngắn" value="<?php echo $getCouponById[0]['description']?>">
+                                            placeholder="Mô Tả ngắn" value="<?php echo $getCouponById[0]['description'] ?>">
                                     </div>
                                 </div>
                             </div>
                             <input type="submit" value="Chỉnh sửa" name="editCouponsubmit"
                                 class="editCouponsubmit label-large createCouponSubmit">
                         </form>
-                    <?php
+                        <?php
                     } else {
                         ?>
                         <form action="" method="post">
@@ -352,7 +367,7 @@ if (isset($_POST['editCouponsubmit'])) {
                             <input type="submit" value="Tạo Ngay" name="createCouponSubmit"
                                 class="createCouponSubmit label-large">
                         </form>
-                    <?php
+                        <?php
                     }
                     ?>
                 </div>
@@ -378,7 +393,7 @@ if (isset($_POST['editCouponsubmit'])) {
                                     <div class="col-10 d-flex justify-content-between">
                                         <div class="col-3">
                                             <h2 class="saleListCoupon title-medium">
-                                                <?php echo $item['discount'] ?>
+                                                <?php echo $item['price'] ?>
                                             </h2>
                                         </div>
                                         <div class="col-9">
@@ -404,8 +419,12 @@ if (isset($_POST['editCouponsubmit'])) {
                                             <li><i class="fas fa-ellipsis-v"></i>
                                                 <div class="hiddenFeatureCoupon">
                                                     <ul>
-                                                        <li class="title-small"><a href="?mod=admin&act=createcoupon&editId=<?php echo $item['id']?>">Sửa</a></li>
-                                                        <li class="title-small"><a href="?mod=admin&act=delcoupon&editId=<?php echo $item['id']?>">Xóa</a></li>
+                                                        <li class="title-small"><a
+                                                                href="?mod=admin&act=createcoupon&editId=<?php echo $item['id'] ?>">Sửa</a>
+                                                        </li>
+                                                        <li class="title-small"><a
+                                                                href="?mod=admin&act=delcoupon&editId=<?php echo $item['id'] ?>">Xóa</a>
+                                                        </li>
                                                     </ul>
                                                 </div>
                                             </li>

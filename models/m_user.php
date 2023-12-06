@@ -25,14 +25,12 @@ function get_userBy_email_password($email_user, $password_user)
 function getUserById($idUser)
 {
     $sql = "SELECT * FROM user WHERE id = $idUser";
-    return pdo_query_one($sql);
+    return pdo_query($sql);
 }
-function getAddress()
+function getUserByEmail($email)
 {
-    $sql = "SELECT * FROM address";
-    return pdo_query_one($sql);
+    return pdo_query_one("SELECT * FROM user where email = '$email'");
 }
-
 // chỉnh sửa thông tin người dùng từ mã tài khoản
 function update_userName_email($new_username, $new_email, $id_user)
 {
@@ -56,11 +54,7 @@ function get_imgAvatar($id_user)
 # edit profile end
 
 
-# address start
-function get_address($id_user)
-{
-    return pdo_query("SELECT * FROM address WHERE id_user = ?", $id_user);
-}
+
 
 function insertUser($username, $email, $password)
 {
@@ -129,60 +123,6 @@ function searchUser($inputSearch)
 {
     return pdo_query("SELECT * FROM user WHERE fullname LIKE '%$inputSearch%' OR username LIKE '%$inputSearch%' OR email LIKE '%$inputSearch%' or phone LIKE '%$inputSearch%'");
 }
-function getAllAddressByUser($id)
-{
-    return pdo_query("SELECT * FROM address WHERE id_user = {$id}");
-}
-function get_addressByid($id_address)
-{
-    $sql = "SELECT * FROM address WHERE id = '$id_address'";
-    return pdo_query($sql);
-}
-function get_addressMainByIdUser($id)
-{
-    return pdo_query("SELECT * FROM address WHERE id_user = '$id' AND is_default = 1");
-}
-function get_addressByIdUser($id)
-{
-    return pdo_query("SELECT * FROM address WHERE id_user = {$id} AND is_default = 0");
-}
-function check_addressDefault()
-{
-    $sql = "SELECT * FROM address WHERE is_default = '1'";
-    return pdo_query($sql);
-}
-
-function add_address($name_user, $phone_user, $address_detail, $address_user, $address_default, $id_user)
-{
-    pdo_execute("INSERT INTO address (`id_user`,`username`,`address`,`address_detail`,`phone`,`is_default`) VALUES(?,?,?,?,?,?)", $id_user, $name_user, $address_user, $address_detail, $phone_user, $address_default);
-}
-
-function un_addressDefault($is_addressDefault)
-{
-    pdo_execute("UPDATE address SET is_default = 0 WHERE id = " . $is_addressDefault);
-}
-
-function set_defaultAddress($id_address)
-{
-    pdo_execute("UPDATE address SET is_default = 1 WHERE id = " . $id_address);
-}
-
-function upadate_address($name_user, $phone_user, $address_detail, $address_user, $address_default, $id_address)
-{
-    pdo_execute("UPDATE address SET username = ?, address=?, address_detail=?, phone = ?, is_default = ?  WHERE id = ?", $name_user, $address_user, $address_detail, $phone_user, $address_default, $id_address);
-}
-function update_addressmain($id_user, $text, $phone)
-{
-    pdo_execute("UPDATE address SET address_detail = '$text', phone = '$phone' where id_user = {$id_user} AND is_default = 1");
-}
-function delete_address($id_address)
-{
-    pdo_execute("DELETE FROM address WHERE id = ?", $id_address);
-}
-function delete_address_byIduser($id_user)
-{
-    pdo_execute("DELETE FROM address WHERE id_user = ?", $id_user);
-}
 
 
 # password
@@ -194,43 +134,24 @@ function update_password($new_password, $id_user)
 {
     pdo_execute("UPDATE user SET password = ? WHERE id = ?", $new_password, $id_user);
 }
-
 #order
-function get_order($id_order)
-{
-    return pdo_query("SELECT * FROM bill WHERE id = ? ", $id_order);
-}
+
 function get_namePayment($id_payment)
 {
     return pdo_query_value("SELECT name FROM payment WHERE id = ?", $id_payment);
 }
 function get_nameShipping($id_shipping)
 {
-    return pdo_query_value("SELECT name FROM shipping WHERE id = ?", $id_shipping);
+    return pdo_query_value("SELECT name FROM shipping WHERE price = ?", $id_shipping);
 }
 function get_fullname($id_user)
 {
     return pdo_query_value("SELECT fullname FROM user WHERE id = ?", $id_user);
 }
-function get_product_order($id_order)
-{
-    return pdo_query("SELECT * FROM cart WHERE id_bill = ?", $id_order);
-}
-function get_orderHistory($id_user, $current_page, $itemsPage)
-{
-    $startItem = ($current_page - 1) * $itemsPage;
-    $query = "SELECT * FROM bill WHERE id_user = $id_user ORDER BY id DESC LIMIT $startItem, $itemsPage";
-    return pdo_query($query);
-}
-
-function get_total_orders($id_user)
-{
-    return pdo_query_value("SELECT COUNT(*) FROM bill WHERE id_user = ?", $id_user);
-}
 
 function get_priceShipping($id_shipping)
 {
-    return pdo_query_value("SELECT price FROM shipping WHERE id = ?", $id_shipping);
+    return pdo_query_value("SELECT price FROM shipping WHERE price = ?", $id_shipping);
 }
 function get_priceCoupon($id_coupon)
 {
@@ -242,36 +163,13 @@ function get_id_comments($id_user)
 {
     return pdo_query("SELECT id FROM comment WHERE id_user = ?", $id_user);
 }
-function get_allBill($id_user)
-{
-    return pdo_query("SELECT * FROM bill WHERE id_user = ?", $id_user);
-}
-function get_id_bill_cart($id_bill)
-{
-    return pdo_query("SELECT id FROM cart WHERE id_bill = ?", $id_bill);
-}
-function getAllBillByIdUser($id)
-{
-    return pdo_query("SELECT * FROM bill WHERE id_user = ?", $id);
 
-}
 function getAllCartByIdUser($id)
 {
     return pdo_query("SELECT * FROM cart WHERE id_user = ?", $id);
 
 }
-function get_id_bill($id_user)
-{
-    return pdo_query("SELECT id FROM bill WHERE id_user = ?", $id_user);
-}
-function delete_bill_fromCart($id_user)
-{
-    pdo_execute("DELETE FROM cart WHERE id_user = {$id_user}");
-}
-function delete_bill($id_user)
-{
-    pdo_execute("DELETE FROM bill WHERE id_user = {$id_user}");
-}
+
 function delete_blogComnent_byIduser($id_user)
 {
     pdo_execute("DELETE FROM blog_comment WHERE id_user = {$id_user}");
@@ -288,14 +186,7 @@ function delete_acccount($id_user)
 {
     pdo_execute("DELETE FROM user WHERE id = ?", $id_user);
 }
-function getBill()
-{
-    return pdo_query("SELECT * FROM bill");
-}
-function getBillByID($id)
-{
-    return pdo_query("SELECT * FROM bill WHERE id = {$id}");
-}
+
 
 function editUserProfile($id, $fullname, $username, $password, $email, $image, $role, $bio, $phone)
 {
