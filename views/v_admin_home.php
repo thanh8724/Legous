@@ -8,21 +8,21 @@ $totalSales = 0;
 $totalUser = 0;
 $totalCmt = 0;
 $totalQuan = 0;
-foreach ($getTotalBill as $item) {
-    if ($item['status'] == 4) {
+foreach($getTotalBill as $item) {
+    if($item['status'] == 4) {
         $totalBill += $item['total'];
     }
 }
-foreach ($getProduct as $item) {
+foreach($getProduct as $item) {
     $totalSales += $item['purchases'];
 }
-foreach ($getProduct as $item) {
+foreach($getProduct as $item) {
     $totalQuan += $item['qty'];
 }
-foreach ($getUser as $item) {
+foreach($getUser as $item) {
     $totalUser++;
 }
-foreach ($getCmt as $item) {
+foreach($getCmt as $item) {
     $totalCmt++;
 }
 
@@ -35,7 +35,7 @@ foreach ($getCmt as $item) {
         <div class="search-box">
             <form style="width: 100%;display:flex; justify-content: center;" action="" method="post">
                 <i class="far fa-search"></i>
-                <input type="text" placeholder="Tìm kiếm...">
+                <input type="text" placeholder="Tìm kiếm..." disabled="disabled">
             </form>
         </div>
         <div class="info-user">
@@ -46,7 +46,7 @@ foreach ($getCmt as $item) {
                     $getCmt = getAllComment();
                     arsort($getCmt);
                     $getCmt = array_slice($getCmt, 0, 6, true);
-                    foreach ($getCmt as $item) {
+                    foreach($getCmt as $item) {
 
                         $getUser = getUserById($item['id_user']);
                         $getProduct = getProductById($item['id_product']);
@@ -55,7 +55,7 @@ foreach ($getCmt as $item) {
                             <div class="col-12 d-flex">
                                 <div class="col-2">
                                     <?php
-                                    if ($getUser[0]['img'] == NULL || empty($getUser[0]['img'])) {
+                                    if($getUser[0]['img'] == NULL || empty($getUser[0]['img'])) {
                                         ?>
                                         <img class="notifiAdminImg" src="./upload/users/avatar-none.png" alt="">
 
@@ -89,7 +89,7 @@ foreach ($getCmt as $item) {
                     $getBill = getBill();
                     arsort($getBill);
                     $getBill = array_slice($getBill, 0, 6, true);
-                    foreach ($getBill as $item) {
+                    foreach($getBill as $item) {
 
                         $getUser = getUserById($item['id_user']);
                         ?>
@@ -97,7 +97,7 @@ foreach ($getCmt as $item) {
                             <div class="col-12 d-flex">
                                 <div class="col-2">
                                     <?php
-                                    if ($getUser[0]['img'] == NULL || empty($getUser[0]['img'])) {
+                                    if($getUser[0]['img'] == NULL || empty($getUser[0]['img'])) {
                                         ?>
                                         <img class="notifiAdminImg" src="./upload/users/avatar-none.png" alt="">
 
@@ -114,7 +114,7 @@ foreach ($getCmt as $item) {
                                 <div class="col-10">
                                     <p class="notifiAdminText body-small"><strong>
                                             <?php
-                                            if ($getUser[0]['fullname'] == NULL && empty($getUser[0]['fullname'])) {
+                                            if($getUser[0]['fullname'] == NULL && empty($getUser[0]['fullname'])) {
                                                 echo "User ẩn";
 
                                             } else {
@@ -139,7 +139,7 @@ foreach ($getCmt as $item) {
                 <?php
                 $getID = $_SESSION['admin']['id_user'];
                 $getUser = getUserById($getID);
-                if (!empty($getUser['img']) && $getUser != NULL) {
+                if(!empty($getUser['img']) && $getUser != NULL) {
                     ?>
                     <img style="" class="btnShowFeature" src="./upload/users/<?php echo $getUser['img'] ?>" alt="">
                     <?php
@@ -382,9 +382,9 @@ foreach ($getCmt as $item) {
                                 $totalByUser = array();
                                 $orderCountByUser = array();
 
-                                foreach ($bill as $item) {
-                                    if ($item['status'] == 5) {
-                                        if (!isset($totalByUser[$item['id_user']])) {
+                                foreach($bill as $item) {
+                                    if($item['status'] == 5) {
+                                        if(!isset($totalByUser[$item['id_user']])) {
                                             $totalByUser[$item['id_user']] = 0;
                                             $orderCountByUser[$item['id_user']] = 0;
                                         }
@@ -398,7 +398,7 @@ foreach ($getCmt as $item) {
                                 // Lấy 6 phần tử đầu tiên
                                 $totalByUser = array_slice($totalByUser, 0, 5, true);
 
-                                foreach ($totalByUser as $userId => $total) {
+                                foreach($totalByUser as $userId => $total) {
 
                                     $user = getUserById($userId);
                                     ?>
@@ -409,8 +409,8 @@ foreach ($getCmt as $item) {
                                                     <?php
                                                     $upload_dir = './upload/users/';
                                                     //Đường dẫn của file sau khi upload
-                                                    $upload_file = $upload_dir . $user[0]['img'];
-                                                    if (empty($user[0]['img']) || $user[0]['img'] == NULL || !file_exists($upload_file)) {
+                                                    $upload_file = $upload_dir.$user[0]['img'];
+                                                    if(empty($user[0]['img']) || $user[0]['img'] == NULL || !file_exists($upload_file)) {
                                                         ?>
                                                         <img src="./upload/users/avatar-none.png" alt="">
                                                         <?php
@@ -423,7 +423,7 @@ foreach ($getCmt as $item) {
                                                 </div>
                                                 <div class="topUserOrder__info">
                                                     <div class="topUserOrder__name body-large">
-                                                        <?php if ($user[0]['fullname'] == NULL && !empty($user[0]['fullname'])) {
+                                                        <?php if($user[0]['fullname'] == NULL && !empty($user[0]['fullname'])) {
                                                             echo $user[0]['username'];
                                                         } else {
                                                             echo $user[0]['fullname'];
@@ -463,62 +463,59 @@ foreach ($getCmt as $item) {
                 <table>
                     <tr>
                         <th class="label-large tableLargeItems">Order ID</th>
-                        <th class="label-large">Sản Phẩm</th>
-                        <th class="label-large">Ngày Đặt</th>
                         <th class="label-large">Tên Khách Hàng</th>
+                        <th class="label-large">Ngày Đặt</th>
+                        <th class="label-large">Sản Phẩm</th>
                         <th class="label-large">Trạng Thái</th>
                         <th class="label-large">Tổng</th>
-                        <th class="label-large">Khác</th>
                     </tr>
                     <?php
-                    $getAllCart = getAllCart();
-                    foreach ($getAllCart as $item) {
+                    $getAllCart = getNew10Cart();
+                    foreach($getAllCart as $item) {
                         $getAllBill = getBillByID($item['id_bill']);
                         $getIdUser = getUserById($getAllBill[0]['id_user']);
                         $getIdProduct = getProductById($item['id_product']);
                         ?>
                         <tr>
-                            <td class="label-large tableLargeItems">
+                            <td class="label-large tableLargeItems" style="text-align:center;">
                                 <?php echo $item['id'] ?>
-                            </td>
-                            <td class="label-large">
-                                <?php echo $getIdProduct['name'] ?>
-                            </td>
-
-                            <td class="label-large">
-                                <?php echo $getAllBill[0]['create_date'] ?>
                             </td>
                             <td class="label-large">
                                 <?php echo $getIdUser[0]['fullname'] ?>
                             </td>
-
+                            <td class="label-large">
+                                <?php echo $getAllBill[0]['create_date'] ?>
+                            </td>
+                            <td class="label-large label-large__product" style="width: 350px; max-width: 350px;">
+                                <?php echo $getIdProduct['name'] ?>
+                            </td>
                             <?php
-                            if ($getAllBill[0]['status'] == 6) {
+                            if($getAllBill[0]['status'] == 6) {
                                 ?>
                                 <td class="label-large tableLargeItems" style="justify-content: center;"><span
                                         class="dotTable red"></span>Đã Hủy</td>
                                 <?php
-                            } elseif ($getAllBill[0]['status'] == 5) {
+                            } elseif($getAllBill[0]['status'] == 5) {
                                 ?>
                                 <td class="label-large tableLargeItems" style="justify-content: center;"><span
                                         class="dotTable green"></span>Đã Giao</td>
                                 <?php
-                            } elseif ($getAllBill[0]['status'] == 4) {
+                            } elseif($getAllBill[0]['status'] == 4) {
                                 ?>
                                 <td class="label-large tableLargeItems" style="justify-content: center;"><span
                                         class="dotTable orange"></span>Hoàn đơn</td>
                                 <?php
-                            } elseif ($getAllBill[0]['status'] == 3) {
+                            } elseif($getAllBill[0]['status'] == 3) {
                                 ?>
                                 <td class="label-large tableLargeItems" style="justify-content: center;"><span
                                         class="dotTable blue"></span>Đang giao hàng</td>
                                 <?php
-                            } elseif ($getAllBill[0]['status'] == 2) {
+                            } elseif($getAllBill[0]['status'] == 2) {
                                 ?>
                                 <td class="label-large tableLargeItems" style="justify-content: center;"><span
                                         class="dotTable black"></span>Chờ Lấy Hàng</td>
                                 <?php
-                            } elseif ($getAllBill[0]['status'] == 1) {
+                            } else {
                                 ?>
                                 <td class="label-large tableLargeItems" style="justify-content: center;"><span
                                         class="dotTable gray"></span>Chờ Xác Nhận</td>
@@ -528,7 +525,6 @@ foreach ($getCmt as $item) {
                             <td class="label-large">
                                 <?php echo number_format($item['total_cost'], 0, ',') ?>VNĐ
                             </td>
-                            <td class="label-large"><button><i class="far fa-ellipsis-h"></i></button></td>
                         </tr>
                         <?php
 
@@ -622,8 +618,8 @@ foreach ($getCmt as $item) {
                                     $totalByProduct = array();
                                     $orderCountByUser = array();
 
-                                    foreach ($products as $item) {
-                                        if (!isset($totalByProduct[$item['id']])) {
+                                    foreach($products as $item) {
+                                        if(!isset($totalByProduct[$item['id']])) {
                                             $totalByProduct[$item['id']] = 0;
                                             $orderCountByUser[$item['id']] = 0;
                                         }
@@ -637,7 +633,7 @@ foreach ($getCmt as $item) {
                                     // Lấy 6 phần tử đầu tiên
                                     $totalByProduct = array_slice($totalByProduct, 0, 6, true);
 
-                                    foreach ($totalByProduct as $productId => $total) {
+                                    foreach($totalByProduct as $productId => $total) {
                                         $product = getProductById($productId);
                                         ?>
                                         <div class="ordertopProduct_item">
