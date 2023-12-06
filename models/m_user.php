@@ -25,7 +25,7 @@ function get_userBy_email_password($email_user, $password_user)
 function getUserById($idUser)
 {
     $sql = "SELECT * FROM user WHERE id = $idUser";
-    return pdo_query_one($sql);
+    return pdo_query($sql);
 }
 function getUserByEmail($email)
 {
