@@ -140,13 +140,7 @@
       <div class="flex g8">
         <span class="label-large">Admin /</span><a href="?mod=admin&act=products&page=1" class="label-large" style="text-decoration: none;">Sản Phẩm</a>
       </div>
-      <div class="flex-center g8">
-        <span><i class="fa-solid fa-calendar-days"></i></span>
-        <input class="label-large-prominent" type="datetime-local" style="color: #625B71; border: none; font-size: 16px;
-                ">
-
-      </div>
-
+     
         </div>
 
     </div>

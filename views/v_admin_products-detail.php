@@ -1,11 +1,11 @@
 <?php
 $idProduct = $_GET['id'];
-$idProduct = $_GET['id'];
 if (isset($_POST['submit'])) {
     $name = $_POST['name'];
     $id_category = $_POST['id_category'];
     $description = $_POST['description'];
     $price = $_POST['price'];
+    $img = $_FILES["file"]["name"];
     $qty = $_POST['qty'];
 
     // Kiểm tra xem người dùng đã chọn file ảnh mới hay chưa
@@ -26,19 +26,17 @@ if (isset($_POST['submit'])) {
             $error['file_size'] = "Chỉ được upload file bé hơn 20MB";
         } else {
             if (move_uploaded_file($_FILES['file']['tmp_name'], $upload_file)) {
-                $image = $_FILES['file']['name'];
+                $img = $_FILES['file']['name'];
             }
         }
+    } else {
+        // Nếu người dùng không chọn file ảnh mới, giữ nguyên ảnh cũ
+        $img = $productdetail['img'];
     }
 
     // Tiến hành cập nhật sản phẩm
-    $kq = product_checkName($name);
-    if ($kq) {
-        $_SESSION['loi'] = 'Đã có tên sản phẩm này <strong>' . $name . '</strong>';
-    } else {
-        product_edit($idProduct, $name, $id_category, $description, $price, $img, $qty);
-        $_SESSION['thongbao'] = 'Đã Chỉnh sửa thành công <strong>' . $name . '</strong>';
-    }
+    product_edit($idProduct, $name, $id_category, $description, $price, $img, $qty);
+    $_SESSION['thongbao'] = 'Đã Chỉnh sửa thành công <strong>' . $name . '</strong>';
 
     // Tải lại trang cập nhật sản phẩm
     header("Location: ?mod=admin&act=products-detail&id=$idProduct");
@@ -272,7 +270,7 @@ if (isset($_POST['submit'])) {
                             <div style="width: 100%;" id="drop-area">
                                 <label class="title-medium">Kéo thả ảnh ở đây</label>
                                 <br>
-                                <input type="file" id="fileInput" name="file">
+                                <input type="file" id="fileInput" name="file" value="<?= $productdetail['img'] ?>">
                             </div>
 
                             <div style="width: 100%;" id="demo" class="demo .box-shadow1">

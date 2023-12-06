@@ -374,7 +374,6 @@ if (isset($_GET['act'])) {
             include_once 'models/m_category.php';
 
             // lấy dữ liệu
-
             if (isset($_POST['id'])) {
                 // Chuyển từ phương thức POST sang GET
                 header("location: ?mod=admin&act=products-category-fil&id=" . $_POST['id'] . "");

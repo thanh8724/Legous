@@ -24,29 +24,19 @@ function getCartByUserId($idUser)
   $sql = "SELECT * FROM cart WHERE id_user = $idUser";
   return pdo_query($sql);
 }
-=======
-  function insertCartWithIdBill ($idBill, $idUser, $id_product, $name, $price, $img, $qty, $totalCost) {
-    $sql = "INSERT INTO 
+function insertCartWithIdBill($idBill, $idUser, $id_product, $name, $price, $img, $qty, $totalCost)
+{
+  $sql = "INSERT INTO 
               cart (id_bill, id_user, id_product, name, price, img, qty, total_cost) 
             VALUES 
               ('$idBill', '$idUser', '$id_product', '$name', '$price', '$img', '$qty', '$totalCost') ";
-    pdo_execute($sql);
-  }
-
-  function removeCartProduct ($idUser, $idProduct) {
-    $sql = "DELETE FROM cart WHERE id_user = $idUser AND id_product = $idProduct";
-    pdo_execute($sql);
-  }
-
-  function getCartByUserId ($idUser) {
-    $sql = "SELECT * FROM cart WHERE id_user = $idUser";
-    return pdo_query($sql);
-  }
-  function getCartByIdBill ($idBill) {
-    $sql = "SELECT * FROM cart WHERE id_bill = $idBill";
-    return pdo_query($sql);
-  }
->>>>>>> d816c470ac88f3d3bb6f0fc75719efb86426d5ff
+  pdo_execute($sql);
+}
+function getCartByIdBill($idBill)
+{
+  $sql = "SELECT * FROM cart WHERE id_bill = $idBill";
+  return pdo_query($sql);
+}
 
 function getProductFromDatabaseCart($user_id, $id_product)
 {
@@ -115,14 +105,10 @@ function delete_bill($id_user)
 {
   pdo_execute("DELETE FROM bill WHERE id_user = {$id_user}");
 }
-=======
-    pdo_execute($sql);
-  }
-
-  function updateIdBillInCart ($id_user, $id_bill) {
-    $sql = "UPDATE cart
+function updateIdBillInCart($id_user, $id_bill)
+{
+  $sql = "UPDATE cart
             SET id_bill = $id_bill 
             WHERE id_user = $id_user";
-  }
->>>>>>> d816c470ac88f3d3bb6f0fc75719efb86426d5ff
+}
 ?>
