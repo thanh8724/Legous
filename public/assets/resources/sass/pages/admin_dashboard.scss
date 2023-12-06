@@ -234,8 +234,7 @@
                     a {
                       text-decoration: none;
                       color: $-black;
-                    text-align: center;
-
+                      text-align: center;
                     }
                   }
                 }
@@ -298,6 +297,9 @@
             margin: 15px 0;
           }
           table {
+            .label-large__product {
+              text-align: left;
+            }
             tbody {
               border: transparent !important;
               color: $-black;
@@ -325,6 +327,7 @@
               .tableLargeItems {
                 display: flex;
                 align-items: center;
+                justify-content: center;
                 input {
                   margin-right: 10px;
                 }
@@ -333,6 +336,7 @@
                 }
               }
             }
+
             .dotTable {
               width: 8px;
               height: 8px;
@@ -345,12 +349,14 @@
               }
               &.blue {
                 background-color: $-blue;
-              } 
+              }
               &.red {
                 background-color: $light-error;
-              }&.black {
+              }
+              &.black {
                 background-color: $-black;
-              }&.gray {
+              }
+              &.gray {
                 background-color: $-gray;
               }
             }
@@ -400,8 +406,7 @@
                 a {
                   text-decoration: none;
                   color: $-black;
-                text-align: center;
-
+                  text-align: center;
                 }
               }
             }
@@ -410,8 +415,6 @@
             background-color: $-white;
             border-radius: 10px;
             .vitsitOverview_item {
-              
-
               .weekyChart {
                 display: flex;
                 justify-content: center;
@@ -480,7 +483,8 @@
                         background-color: #6750a4;
                         box-shadow: 10px;
                         border-radius: 10px;
-                      }.lineLoading7 {
+                      }
+                      .lineLoading7 {
                         display: block;
                         position: absolute;
                         width: 75%;
@@ -491,7 +495,6 @@
                       }
                     }
                   }
-                  
                 }
               }
               .sevenDayOfWeek {
@@ -556,92 +559,94 @@
         color: $secondary60;
       }
     }
-    ul{
+    ul {
       display: flex;
       justify-content: end;
-      li{
+      li {
         color: $secondary60;
         margin: 0 15px;
         list-style: none;
-        a{
+        a {
           text-decoration: none;
-         color: $secondary60;
-
+          color: $secondary60;
         }
       }
     }
-    }
+  }
 }
 
-*{
+* {
   // border: 1px solid black;
 }
 
-
-
-
-
-@media only screen and (max-width: 46.1875em){
+@media only screen and (max-width: 46.1875em) {
   #example1_wrapper {
     overflow-x: scroll;
   }
   main,
   #adminDashboard {
-          nav{
-              display: none !important;
-          }
-      .p30{
-          padding: 15px;
+    nav {
+      display: none !important;
+    }
+    .p30 {
+      padding: 15px;
+    }
+    .dashboard {
+      width: 100% !important;
+      left: 0 !important;
+      .top {
+        display: none;
       }
-      .dashboard {
-          width: 100% !important;
-          left: 0 !important;
-          .top {
-              display: none;
-          }
-          .statisticalChart {
-            .statisticalChartItems {
-              .customerOrderStatistics {
-                .orderStatistics {
-                  margin: 0;
-                }
-              }
+      .statisticalChart {
+        .statisticalChartItems {
+          .customerOrderStatistics {
+            .orderStatistics {
+              margin: 0;
             }
           }
-          .recentOrder {
-            .recentOrder_items {
-              overflow-x: scroll;
-            }
-          }
-          .containerAdmin {
-            #example1_wrapper {
-              overflow-x: scroll;
-            }
-          }
+        }
       }
+      .recentOrder {
+        .recentOrder_items {
+          overflow-x: scroll;
+        }
+      }
+      .containerAdmin {
+        #example1_wrapper {
+          overflow-x: scroll;
+        }
+      }
+    }
   }
-  
+
   .owl-carousel {
-      .owl-item {
-          width: unset !important;
+    .owl-item {
+      width: unset !important;
+    }
+    .owl-dots {
+      .owl-dot {
+        padding: 5px 30px !important;
+        box-shadow: unset;
       }
-      .owl-dots {
-          .owl-dot {
-              padding: 5px 30px !important;
-              box-shadow: unset;
-          }
-      }
+    }
   }
 }
 /* Tablet: width >= 740px and width < 1024px */
-@media only screen and (min-width: 46.25em) and (max-width: 63.9375em){
-  
+@media only screen and (min-width: 46.25em) and (max-width: 63.9375em) {
 }
 /* Mobile and Tablet: width < 1024px */
-@media only screen and (max-width: 63.9375em){
-  
+@media only screen and (max-width: 63.9375em) {
 }
-/* PC: width >= 1024px */
-@media only screen and (min-width: 64em){
+@media only screen and (max-width: 815px) {
+  .containerAdmin {
+    width: 100% !important;
+    margin: unset !important;
+    #example1_wrapper {
+      overflow-x: scroll;
+    }
+  }
+}
 
+/* PC: width >= 1024px */
+@media only screen and (min-width: 64em) {
 }

@@ -18,7 +18,7 @@ if (isset($_GET['idProduct']) && $_GET['idProduct'] != 0) {
     $btnsHtmlMobile = '';
     $btnText = '';
 
-    if ($qty > 0) {
+    if($qty > 0) {
         $btnText = 'MUA NGAY';
         $btnsHtml .=
             <<<HTML
@@ -130,33 +130,32 @@ if (isset($_GET['idProduct']) && $_GET['idProduct'] != 0) {
     $relatedProducts = getRelatedProduct($idCategory, 12);
     $randomProducts = getProducts(12);
 
-    function renderCarouselProduct($products)
-    {
+    function renderCarouselProduct($products) {
         shuffle($products);
         $productsHtml = '';
 
-        foreach ($products as $product) {
+        foreach($products as $product) {
             extract($product);
-            $imgPath = constant('PRODUCT_PATH') . $img;
+            $imgPath = constant('PRODUCT_PATH').$img;
             $linkToDetail = "?mod=page&act=productDetail&idProduct=$id";
 
             $priceView = '';
             $salePriceView = '';
-            $loveBtn = '<button class="icon-btn love-btn toggle-btn" data-product-id="' . $id . '"><i class="fal fa-heart"></i></button>';
+            $loveBtn = '<button class="icon-btn love-btn toggle-btn" data-product-id="'.$id.'"><i class="fal fa-heart"></i></button>';
 
-            if (isset($price) && $price > 0) {
-                $priceView = '<div class="product__info__price body-medium">' . formatVND($price) . '</div>';
+            if(isset($price) && $price > 0) {
+                $priceView = '<div class="product__info__price body-medium">'.formatVND($price).'</div>';
             } else {
                 $priceView = '<div class="product__info__price body-medium">Đang cập nhật</div>';
             }
 
-            if (isset($promotion) and $promotion > 0) {
+            if(isset($promotion) and $promotion > 0) {
                 $salePrice = $price - $price * $promotion / 100;
-                $salePriceView = '<div class="product__info__sale-price body-medium">' . formatVND($salePrice) . '</div>';
-                $priceView = '<del class="product__info__price body-small">' . formatVND($price) . '</del>';
+                $salePriceView = '<div class="product__info__sale-price body-medium">'.formatVND($salePrice).'</div>';
+                $priceView = '<del class="product__info__price body-small">'.formatVND($price).'</del>';
             } else {
                 $salePriceView = '';
-                $priceView = '<div class="product__info__price body-medium">' . formatVND($price) . '</div>';
+                $priceView = '<div class="product__info__price body-medium">'.formatVND($price).'</div>';
             }
 
             $loveBtnClass = '';
@@ -240,7 +239,7 @@ if (isset($_GET['idProduct']) && $_GET['idProduct'] != 0) {
     /** comment render */
     $comments = getProductCommentByProductId($idProduct);
     $commentHtml = '';
-    foreach ($comments as $item) {
+    foreach($comments as $item) {
         $commentHtml .=
             <<<HTML
                     <!-- single comment start -->
@@ -265,9 +264,9 @@ if (isset($_GET['idProduct']) && $_GET['idProduct'] != 0) {
 }
 /** render gallery thumbnails */
 $galleryThumbnailsHtml = '';
-foreach ($productThumbnails as $item) {
+foreach($productThumbnails as $item) {
     extract($item);
-    $imgPath = constant('PRODUCT_PATH') . $src;
+    $imgPath = constant('PRODUCT_PATH').$src;
     $galleryThumbnailsHtml .=
         <<<HTML
             <div class="gallery__thumbnails__item">
@@ -275,8 +274,8 @@ foreach ($productThumbnails as $item) {
             </div>
         HTML;
 }
-if (isset($_POST['submitComment'])) {
-    if (!empty($_POST['inputComment'])) {
+if(isset($_POST['submitComment'])) {
+    if(!empty($_POST['inputComment'])) {
         $inputCmt = htmlentities($_POST['inputComment']);
     }
     $getIdUser = $_SESSION['userLogin']['id_user'];
@@ -286,58 +285,58 @@ if (isset($_POST['submitComment'])) {
     date_default_timezone_set('Asia/Ho_Chi_Minh');
     $now = date("Y-m-d H:i:s");
     $idCmt = insertComment($getIdUser, $id_product, $getUsername, $getEmail, $inputCmt, $now);
-    if (isset($_FILES['file'])) {
+    if(isset($_FILES['file'])) {
         //Thư mục chứa file upload
         $upload_dir = './upload/users/';
 
         //Xử lý upload đúng file ảnh
         $type_allow = array('png', 'jpg', 'jpeg', 'gif');
 
-        foreach ($_FILES['file']['name'] as $key => $value) {
+        foreach($_FILES['file']['name'] as $key => $value) {
             //Đường dẫn của file sau khi upload
-            $upload_file = $upload_dir . $_FILES['file']['name'][$key];
+            $upload_file = $upload_dir.$_FILES['file']['name'][$key];
 
             //PATHINFO_EXTENSION lấy đuôi file
             $type = pathinfo($_FILES['file']['name'][$key], PATHINFO_EXTENSION);
 
-            if (!in_array(strtolower($type), $type_allow)) {
+            if(!in_array(strtolower($type), $type_allow)) {
                 $error['type'] = "Chỉ được upload file có đuôi PNG, JPG, GIF, JPEG";
             }
 
             #Upload file có kích thước cho phép (<20mb ~ 29.000.000BYTE)
             $file_size = $_FILES['file']['size'][$key];
-            if ($file_size > 29000000) {
+            if($file_size > 29000000) {
                 $error['file_size'] = "Chỉ được upload file bé hơn 20MB";
             }
             $filename = pathinfo($_FILES["file"]["name"][$key], PATHINFO_FILENAME);
 
             #Kiểm tra trùng file trên hệ thống
-            if (file_exists($upload_file)) {
+            if(file_exists($upload_file)) {
                 // Xử lý đổi tên file tự động
 
                 #Tạo file mới
                 // TênFile.ĐuôiFile
-                $new_filename = $filename . '- Copy.';
-                $new_upload_file = $upload_dir . $new_filename . $type;
+                $new_filename = $filename.'- Copy.';
+                $new_upload_file = $upload_dir.$new_filename.$type;
                 $k = 1;
-                while (file_exists($new_upload_file)) {
-                    $new_filename = $filename . " - Copy({$k}).";
+                while(file_exists($new_upload_file)) {
+                    $new_filename = $filename." - Copy({$k}).";
                     $k++;
-                    $new_upload_file = $upload_dir . $new_filename . $type;
+                    $new_upload_file = $upload_dir.$new_filename.$type;
                 }
                 $upload_file = $new_upload_file;
-                if (empty($error)) {
-                    if (move_uploaded_file($_FILES['file']['tmp_name'][$key], $upload_file)) {
-                        $image = $new_filename . $type;
+                if(empty($error)) {
+                    if(move_uploaded_file($_FILES['file']['tmp_name'][$key], $upload_file)) {
+                        $image = $new_filename.$type;
                         addImgCmt($idCmt, $image);
                     } else {
                         echo "Upload file thất bại";
                     }
                 }
             } else {
-                if (empty($error)) {
-                    if (move_uploaded_file($_FILES['file']['tmp_name'][$key], $upload_file)) {
-                        $image = $filename . '.' . $type;
+                if(empty($error)) {
+                    if(move_uploaded_file($_FILES['file']['tmp_name'][$key], $upload_file)) {
+                        $image = $filename.'.'.$type;
                         addImgCmt($idCmt, $image);
                     } else {
                         echo "Upload file thất bại";
@@ -349,71 +348,71 @@ if (isset($_POST['submitComment'])) {
     header("Location: ?mod=page&act=productDetail&idProduct={$id_product}");
 }
 
-if (isset($_POST['editComment'])) {
-    if (!empty($_POST['inputEditComment'])) {
+if(isset($_POST['editComment'])) {
+    if(!empty($_POST['inputEditComment'])) {
         $inputEditCmt = $_POST['inputEditComment'];
     } else {
         $error['inputEditCmt'] = "Bình luận này không được để trống";
         exit();
     }
     $id_product = $_GET['idProduct'];
-    $getIDCmt = (int) $_GET['editCmt'];
+    $getIDCmt = (int)$_GET['editCmt'];
     $getAllCmtImg = getImgCommentById($getIDCmt);
 
     editCommentById($getIDCmt, $inputEditCmt);
-    foreach ($getAllCmtImg as $item) {
+    foreach($getAllCmtImg as $item) {
         $delete_dir = "./upload/users/{$item['src']}";
-        if (file_exists($delete_dir)) {
+        if(file_exists($delete_dir)) {
             unlink($delete_dir);
         }
         delImgByIdCmt($getIDCmt);
     }
-    if (isset($_FILES['file']) && !empty($_FILES['file'])) {
+    if(isset($_FILES['file']) && !empty($_FILES['file'])) {
         //Thư mục chứa file upload
         $upload_dir = './upload/users/';
         //Xử lý upload đúng file ảnh
         $type_allow = array('png', 'jpg', 'jpeg', 'gif');
 
-        foreach ($_FILES['file']['name'] as $key => $value) {
+        foreach($_FILES['file']['name'] as $key => $value) {
             //Đường dẫn của file sau khi upload
-            $upload_file = $upload_dir . $_FILES['file']['name'][$key];
+            $upload_file = $upload_dir.$_FILES['file']['name'][$key];
             //PATHINFO_EXTENSION lấy đuôi file
             $type = pathinfo($_FILES['file']['name'][$key], PATHINFO_EXTENSION);
 
-            if (!in_array(strtolower($type), $type_allow)) {
+            if(!in_array(strtolower($type), $type_allow)) {
                 $error['type'] = "Chỉ được upload file có đuôi PNG, JPG, GIF, JPEG";
             }
 
             #Upload file có kích thước cho phép (<20mb ~ 29.000.000BYTE)
             $file_size = $_FILES['file']['size'][$key];
 
-            if ($file_size > 29000000) {
+            if($file_size > 29000000) {
                 $error['file_size'] = "Chỉ được upload file bé hơn 20MB";
             }
 
             $filename = pathinfo($_FILES["file"]["name"][$key], PATHINFO_FILENAME);
 
             #Kiểm tra trùng file trên hệ thống
-            if (file_exists($upload_file)) {
+            if(file_exists($upload_file)) {
                 // Xử lý đổi tên file tự động
 
                 #Tạo file mới
                 // TênFile.ĐuôiFile
-                $new_filename = $filename . '- Copy';
-                $new_upload_file = $upload_dir . $new_filename . $type;
+                $new_filename = $filename.'- Copy';
+                $new_upload_file = $upload_dir.$new_filename.$type;
                 $k = 1;
 
-                while (file_exists($new_upload_file)) {
-                    $new_filename = $filename . " - Copy({$k})";
+                while(file_exists($new_upload_file)) {
+                    $new_filename = $filename." - Copy({$k})";
                     $k++;
-                    $new_upload_file = $upload_dir . $new_filename . $type;
+                    $new_upload_file = $upload_dir.$new_filename.$type;
                 }
                 $filename = $new_filename;
                 $upload_file = $new_upload_file;
             }
-            if (empty($error)) {
-                if (move_uploaded_file($_FILES['file']['tmp_name'][$key], $upload_file)) {
-                    $image = $filename . '.' . $type;
+            if(empty($error)) {
+                if(move_uploaded_file($_FILES['file']['tmp_name'][$key], $upload_file)) {
+                    $image = $filename.'.'.$type;
                     addImgCmt($getIDCmt, $image);
                 } else {
                     echo "Upload file thất bại";
@@ -553,8 +552,8 @@ if (isset($_POST['editComment'])) {
                         $productId = $_GET['idProduct'];
                         $productCmt = getProductCommentByProductId($productId);
                         $i = 0;
-                        foreach ($productCmt as $item) {
-                            if ($item['id_product'] == $productId) {
+                        foreach($productCmt as $item) {
+                            if($item['id_product'] == $productId) {
                                 $i++;
                             }
                         }
@@ -562,13 +561,13 @@ if (isset($_POST['editComment'])) {
                         <?php echo $i ?> comments
                     </div>
                     <?php
-                    if (isset($_SESSION['userLogin'])) {
-                        if (isset($_GET['editCmt'])) {
+                    if(isset($_SESSION['userLogin'])) {
+                        if(isset($_GET['editCmt'])) {
                             $getIDCmt = $_GET['editCmt'];
                             $editCmtById = getCommentById($getIDCmt);
                             $imgImtById = getImgCommentById($_GET['editCmt']);
                             $getIDProduct = $_GET['idProduct'];
-                            if ($editCmtById[0]['id_user'] == $_SESSION['userLogin']['id_user']) {
+                            if($editCmtById[0]['id_user'] == $_SESSION['userLogin']['id_user']) {
                                 ?>
                     <form enctype="multipart/form-data" action="" class="form comment__form" method="post">
                         <input type="file" name="file[]" id="file-1" class="inputfile inputfile-1"
@@ -581,17 +580,17 @@ if (isset($_POST['editComment'])) {
 
                         <div class="flex" style="align-items: center;">
                             <input type="text" name="inputEditComment" class="form__input comment__input"
-                                placeholder="Comment" value="<?php if (!empty($editCmtById))
+                                placeholder="Comment" value="<?php if(!empty($editCmtById))
                                                 print_r($editCmtById[0]['content']) ?>">
                             <button name="editComment" value="submitComment" type="submit"
                                 class="icon-btn send-comment__btn"><i class="fal fa-paper-plane"></i></button>
                         </div>
                         <?php
-                                            if (!empty($imgImtById)) {
+                                            if(!empty($imgImtById)) {
                                                 ?>
                         <div class="comment_media">
                             <?php
-                                            foreach ($imgImtById as $item) {
+                                            foreach($imgImtById as $item) {
                                                 ?>
                             <div class="comment_media_item">
                                 <img src="./upload/users/<?php echo $item['src'] ?>" alt="">
@@ -644,11 +643,11 @@ if (isset($_POST['editComment'])) {
 
                     $productId = $_GET['idProduct'];
                     $productCmt = getProductCommentByProductId($productId);
-                    foreach ($productCmt as $item) {
+                    foreach($productCmt as $item) {
                         $getUserByID = getUserById($item['id_user']);
                         $idCmt = $item['id'];
                         $productImgCmt = getImgCommentById($idCmt);
-                        if ($item['is_appear'] == 1) {
+                        if($item['is_appear'] == 1) {
                             ?>
                     <div class="comment__item mb30 p30">
                         <div class="flex comment__user">
@@ -659,7 +658,7 @@ if (isset($_POST['editComment'])) {
                                 <div class="flex-column flex-between">
                                     <div class="user__name title-medium fw-smb">
                                         <?php
-                                                if (!empty($getUserByID[0]['fullname']) || $getUserByID[0]['fullname'] != null) {
+                                                if(!empty($getUserByID[0]['fullname']) || $getUserByID[0]['fullname'] != null) {
                                                     echo $getUserByID[0]['fullname'];
                                                 } else {
                                                     echo "Người dùng ẩn danh";
@@ -672,7 +671,7 @@ if (isset($_POST['editComment'])) {
                                 </div>
                             </div>
                             <?php
-                                    if (isset($_SESSION['userLogin'])) {
+                                    if(isset($_SESSION['userLogin'])) {
                                         ?>
                             <div class="moreFeatureComment">
                                 <ul class="ulDadMoreFeatureComment">
@@ -683,7 +682,7 @@ if (isset($_POST['editComment'])) {
                                         <div class="divMoreFeatureComment box-shadow1">
                                             <ul class="ulSonMoreFeatureComment p10">
                                                 <?php
-                                                            if ($_SESSION['userLogin']['id_user'] == $item['id_user']) {
+                                                            if($_SESSION['userLogin']['id_user'] == $item['id_user']) {
                                                                 ?>
                                                 <li class="liSonMoreFeatureComment"><a
                                                         href="?mod=page&act=productDetail&idProduct=<?php echo $productId ?>&editCmt=<?php echo $item['id'] ?>">Chỉnh
@@ -717,8 +716,8 @@ if (isset($_POST['editComment'])) {
                         </div>
                         <div class="comment_media">
                             <?php
-                                    if (!empty($productImgCmt)) {
-                                        foreach ($productImgCmt as $result) {
+                                    if(!empty($productImgCmt)) {
+                                        foreach($productImgCmt as $result) {
                                             ?>
                             <div class="comment_media_item">
                                 <img src="./upload/users/<?php echo $result['src'] ?>" alt="">
