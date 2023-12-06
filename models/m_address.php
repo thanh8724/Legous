@@ -66,7 +66,7 @@ function update_addressmain($id_user, $text, $phone)
 {
     pdo_execute("UPDATE address SET address_detail = '$text', phone = '$phone' where id_user = {$id_user} AND is_default = 1");
 }
-function delete_address_byId($id_address)
+function delete_address($id_address)
 {
     pdo_execute("DELETE FROM address WHERE id = ?", $id_address);
 }
@@ -78,8 +78,8 @@ function updateAddresById($id, $phone, $role, $address, $detailedAddress)
 {
     pdo_execute("UPDATE address SET phone = '$phone', is_default = {$role}, address = '$address', address_detail = '$detailedAddress' WHERE id = '$id'");
 }
-function getUserAddressByIdUser($id_user) {
-    $sql = "SELECT * FROM address WHERE id_user = {$id_user} AND is_default = 1";
-    return pdo_query_one($sql);
+function searchAddress($inputSearch)
+{
+    return pdo_query("SELECT * FROM address WHERE phone LIKE '%$inputSearch%' OR address LIKE '%$inputSearch%' OR address_detail LIKE '%$inputSearch%'");
 }
 ?>

@@ -63,8 +63,10 @@ if(isset($_POST['submit'])) {
     <div class="top">
         <i class="fas fa-angle-left sidebar-toggle"></i>
         <div class="search-box">
-            <i class="far fa-search"></i>
-            <input type="text" placeholder="Tìm kiếm...">
+            <form style="width: 100%;display:flex; justify-content: center;" action="" method="post">
+                <i class="far fa-search"></i>
+                <input type="text" placeholder="Tìm kiếm...">
+            </form>
         </div>
         <div class="info-user">
             <div class="notifiComment">
@@ -75,26 +77,37 @@ if(isset($_POST['submit'])) {
                     arsort($getCmt);
                     $getCmt = array_slice($getCmt, 0, 6, true);
                     foreach ($getCmt as $item) {
-                       
+
                         $getUser = getUserById($item['id_user']);
                         $getProduct = getProductById($item['id_product']);
                         ?>
-                        <li>
-                            <div class="col-12 d-flex">
-                                <div class="col-2">
-                                    <img class="notifiAdminImg"
-                                        src="./public/assets/media/images/users/<?php echo $getUser['img'] ?>" alt="">
-                                </div>
-                                <div class="col-10">
-                                    <p class="notifiAdminText body-small"><strong>
-                                            <?php echo $getUser['fullname'] ?>
-                                        </strong><span> đã bình luận ở sản phẩm <strong><a href="">
-                                                    <?php echo $getProduct['name'] ?>
-                                                </a></strong></span></p>
-                                </div>
+                    <li>
+                        <div class="col-12 d-flex">
+                            <div class="col-2">
+                                <?php
+                                    if ($getUser[0]['img'] == NULL || empty($getUser[0]['img'])) {
+                                        ?>
+                                <img class="notifiAdminImg" src="./upload/users/avatar-none.png" alt="">
+
+                                <?php
+                                    } else {
+                                        ?>
+                                <img class="notifiAdminImg" src="./upload/users/<?php echo $getUser[0]['img'] ?>"
+                                    alt="">
+                                <?php
+                                    }
+                                    ?>
                             </div>
-                        </li>
-                        <?php
+                            <div class="col-10">
+                                <p class="notifiAdminText body-small"><strong>
+                                        <?php echo $getUser[0]['fullname'] ?>
+                                    </strong><span> đã bình luận ở sản phẩm <strong><a href="">
+                                                <?php echo $getProduct['name'] ?>
+                                            </a></strong></span></p>
+                            </div>
+                        </div>
+                    </li>
+                    <?php
                     }
                     ?>
                 </ul>
@@ -102,38 +115,70 @@ if(isset($_POST['submit'])) {
             <div class="notifiBell">
                 <i class="fal fa-bell btnShowFeature"></i>
                 <ul class="showFeatureAdminHeader box-shadow1">
-                <?php
+                    <?php
                     $getBill = getBill();
                     arsort($getBill);
                     $getBill = array_slice($getBill, 0, 6, true);
                     foreach ($getBill as $item) {
-                       
+
                         $getUser = getUserById($item['id_user']);
                         ?>
-                        <li>
+                    <li>
                         <div class="col-12 d-flex">
                             <div class="col-2">
-                                <img class="notifiAdminImg" src="./public/assets/media/images/users/profile.jpg" alt="">
+                                <?php
+                                    if ($getUser[0]['img'] == NULL || empty($getUser[0]['img'])) {
+                                        ?>
+                                <img class="notifiAdminImg" src="./upload/users/avatar-none.png" alt="">
+
+                                <?php
+                                    } else {
+                                        ?>
+                                <img class="notifiAdminImg" src="./upload/users/<?php echo $getUser[0]['img'] ?>"
+                                    alt="">
+
+                                <?php
+                                    }
+                                    ?>
                             </div>
                             <div class="col-10">
-                                <p class="notifiAdminText body-small"><strong><?php echo $getUser['fullname']?></strong><span> vừa mua
-                                        một mô hình với mã đơn hàng <strong><?php echo $item['id']?></strong></span></p>
+                                <p class="notifiAdminText body-small"><strong>
+                                        <?php
+                                            if ($getUser[0]['fullname'] == NULL && empty($getUser[0]['fullname'])) {
+                                                echo "User ẩn";
+
+                                            } else {
+                                                echo $getUser[0]['fullname'];
+
+                                            }
+                                            ?>
+                                    </strong><span> vừa mua
+                                        một mô hình với mã đơn hàng <strong>
+                                            <?php echo $item['id'] ?>
+                                        </strong></span></p>
                             </div>
                         </div>
                     </li>
-                        <?php
+                    <?php
                     }
                     ?>
-                    
+
                 </ul>
             </div>
             <div class="imgUserAdmin">
                 <?php
                 $getID = $_SESSION['admin']['id_user'];
                 $getUser = getUserById($getID);
+                if (!empty($getUser['img']) && $getUser != NULL) {
+                    ?>
+                <img style="" class="btnShowFeature" src="./upload/users/<?php echo $getUser['img'] ?>" alt="">
+                <?php
+                } else {
+                    ?>
+                <img style="" class="btnShowFeature" src="./upload/users/avatar-none.png" alt="">
+                <?php
+                }
                 ?>
-                <img style="" class="btnShowFeature"
-                    src="./public/assets/media/images/users/<?php echo $getUser['img'] ?>" alt="">
                 <ul class="showFeatureAdminHeader box-shadow1">
 
                     <li><a class="body-small" href="#statisticalChart">Thống kê đơn hàng</a></li>
@@ -155,7 +200,9 @@ if(isset($_POST['submit'])) {
                         <h2>Thêm Sản Phẩm</h2>
                     </div>
                     <div class="col-12">
-                        <span class="label-large">Admin /</span><a href="?mod=admin&act=products&page=1" class="label-large" style="text-decoration: none;"> Sản Phẩm</a> / <a href="#!" class="label-large" style="text-decoration: none;"> Thêm Sản Phẩm</a>
+                        <span class="label-large">Admin /</span><a href="?mod=admin&act=products&page=1"
+                            class="label-large" style="text-decoration: none;"> Sản Phẩm</a> / <a href="#!"
+                            class="label-large" style="text-decoration: none;"> Thêm Sản Phẩm</a>
                     </div>
                     <div>
 
@@ -165,13 +212,13 @@ if(isset($_POST['submit'])) {
         </div>
 
         <div class="sliderDashboard_order-add-create sliderDashboard_order-detail rounded-4">
-            
-                <?php if (isset($_SESSION['thongbao'])) : ?>
-                    <div class="alert alert-success" role="alert"><?= $_SESSION['thongbao'] ?></div>
-                <?php endif;
+
+            <?php if (isset($_SESSION['thongbao'])) : ?>
+            <div class="alert alert-success" role="alert"><?= $_SESSION['thongbao'] ?></div>
+            <?php endif;
                 unset($_SESSION['thongbao']) ?>
             <?php if (isset($_SESSION['loi'])) : ?>
-                <div class="alert alert-danger" role="alert"><?= $_SESSION['loi'] ?></div>
+            <div class="alert alert-danger" role="alert"><?= $_SESSION['loi'] ?></div>
             <?php endif;
             unset($_SESSION['loi']) ?>
 
@@ -180,12 +227,14 @@ if(isset($_POST['submit'])) {
                     <div class="col-7">
                         <div class="left-order-add-create">
                             <label class="title-medium">Tên Sản Phẩm</label>
-                            <input type="text" name="name" placeholder="Nhập tên sản phẩm" aria-label="default input example">
+                            <input type="text" name="name" placeholder="Nhập tên sản phẩm"
+                                aria-label="default input example">
                         </div>
                         <div class="describe-order_detail">
                             <label class="title-medium">Mô Tả</label>
-                            <textarea name="description" id="tiny" cols="30" rows="10" placeholder="Nhập mô tả sản phẩm"></textarea>
-                            
+                            <textarea name="description" id="tiny" cols="30" rows="10"
+                                placeholder="Nhập mô tả sản phẩm"></textarea>
+
                         </div>
                         <div class="Dropdowns_categogy">
                             <label class="title-medium">Danh mục</label>
@@ -201,14 +250,15 @@ if(isset($_POST['submit'])) {
                         <div class="row">
                             <div class="col-12" style="margin-bottom: 30px;">
                                 <label class="title-medium">Sản phẩm còn lại</label>
-                                <input  type="text" name="qty" placeholder="1000" aria-label="default input example">
+                                <input type="text" name="qty" placeholder="1000" aria-label="default input example">
                             </div>
 
                         </div>
                         <div class="row">
                             <div class="col-6">
                                 <label class="title-medium">Giá</label>
-                                <input  type="text" id="price" name="price" placeholder="Nhập giá tiền" aria-label="default input example">
+                                <input type="text" id="price" name="price" placeholder="Nhập giá tiền"
+                                    aria-label="default input example">
                             </div>
                             <div class="col-6">
                                 <label class="title-medium">Giá khuyến mãi</label>
@@ -217,7 +267,9 @@ if(isset($_POST['submit'])) {
                         </div>
                         <div class="row">
                             <div class="rol-6 mt-3">
-                                <input style="background-color:#6750a4;color: #fff ;padding: 10px 15px; font-size: 14px; font-weight: 500;" class="btn btn-primary" type="submit" name="submit" value="Tạo Sản Phẩm">
+                                <input
+                                    style="background-color:#6750a4;color: #fff ;padding: 10px 15px; font-size: 14px; font-weight: 500;"
+                                    class="btn btn-primary" type="submit" name="submit" value="Tạo Sản Phẩm">
 
                             </div>
 
@@ -239,15 +291,16 @@ if(isset($_POST['submit'])) {
 
                             </div>
                             <div style="width: 100%;" id="deleteButtonImg" class="button_delete_img row">
-                            <div class="col-8"></div>
-                                    <div class="col-4 d-flex justify-content-between g12">
-                                        <button type="button " class="btn p12" style="background-color:#6750a4; color:#fff;">Cập nhật</button>
-                                        <button type="button" id="deleteButtonAll p12" class="btn btn-danger">Xóa</button>
-                                        <button type="button" class="btn box-shadow1 p12">Hủy</button>
-                                    </div>
+                                <div class="col-8"></div>
+                                <div class="col-4 d-flex justify-content-between g12">
+                                    <button type="button " class="btn p12"
+                                        style="background-color:#6750a4; color:#fff;">Cập nhật</button>
+                                    <button type="button" id="deleteButtonAll p12" class="btn btn-danger">Xóa</button>
+                                    <button type="button" class="btn box-shadow1 p12">Hủy</button>
+                                </div>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
             </form>
@@ -260,18 +313,18 @@ if(isset($_POST['submit'])) {
 
 </section>
 <script>
-  document.getElementById('fileInput').addEventListener('change', function() {
+document.getElementById('fileInput').addEventListener('change', function() {
     var file = this.files[0];
     if (file) {
-      var reader = new FileReader();
-      reader.onload = function(e) {
-        document.getElementById('previewImage').setAttribute('src', e.target.result);
-      }
-      reader.readAsDataURL(file);
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById('previewImage').setAttribute('src', e.target.result);
+        }
+        reader.readAsDataURL(file);
     }
-  });
-  tinymce.init({
-  selector: 'textarea',  // change this value according to your HTML
-  menubar: 'file edit view'
+});
+tinymce.init({
+    selector: 'textarea', // change this value according to your HTML
+    menubar: 'file edit view'
 });
 </script>
