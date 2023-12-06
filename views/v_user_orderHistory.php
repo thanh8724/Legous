@@ -20,7 +20,7 @@
             extract($item);
             $getHTML = "";
             if($status == 1){
-                $getHTML = '<span style="color: gray;" class="label-large-prominent">Chờ xác nhận</span>';
+                $getHTML = '<span class="label-large-prominent canceled">Đã hủy</span>';
             }elseif($status == 2){
                 $getHTML = '<span style="color: black;" class="label-large-prominent pending">Chờ lấy hàng</span>';
             }elseif($status == 3){
@@ -31,7 +31,7 @@
                 $getHTML = '<span class="label-large-prominent  pending">Đã giao hàng</span>';
             }
             else{
-                $getHTML = '<span class="label-large-prominent canceled">Đã hủy</span>';
+                $getHTML = '<span style="color: gray;" class="label-large-prominent">Chờ xác nhận</span>';
             }
             $name_payment = get_namePayment($id_payment);
             $tbody_html .=' <tr>

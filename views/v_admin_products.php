@@ -13,30 +13,30 @@
                 <i class="far fa-comment-alt btnShowFeature"></i>
                 <ul class="showFeatureAdminHeader box-shadow1">
                     <?php
-          $getCmt = getAllComment();
-          arsort($getCmt);
-          $getCmt = array_slice($getCmt, 0, 6, true);
-          foreach ($getCmt as $item) {
+                    $getCmt = getAllComment();
+                    arsort($getCmt);
+                    $getCmt = array_slice($getCmt, 0, 6, true);
+                    foreach($getCmt as $item) {
 
-            $getUser = getUserById($item['id_user']);
-            $getProduct = getProductById($item['id_product']);
-            ?>
+                        $getUser = getUserById($item['id_user']);
+                        $getProduct = getProductById($item['id_product']);
+                        ?>
                     <li>
                         <div class="col-12 d-flex">
                             <div class="col-2">
                                 <?php
-                  if ($getUser[0]['img'] == NULL || empty($getUser[0]['img'])) {
-                    ?>
+                                    if($getUser[0]['img'] == NULL || empty($getUser[0]['img'])) {
+                                        ?>
                                 <img class="notifiAdminImg" src="./upload/users/avatar-none.png" alt="">
 
                                 <?php
-                  } else {
-                    ?>
+                                    } else {
+                                        ?>
                                 <img class="notifiAdminImg" src="./upload/users/<?php echo $getUser[0]['img'] ?>"
                                     alt="">
                                 <?php
-                  }
-                  ?>
+                                    }
+                                    ?>
                             </div>
                             <div class="col-10">
                                 <p class="notifiAdminText body-small"><strong>
@@ -48,50 +48,50 @@
                         </div>
                     </li>
                     <?php
-          }
-          ?>
+                    }
+                    ?>
                 </ul>
             </div>
             <div class="notifiBell">
                 <i class="fal fa-bell btnShowFeature"></i>
                 <ul class="showFeatureAdminHeader box-shadow1">
                     <?php
-          $getBill = getBill();
-          arsort($getBill);
-          $getBill = array_slice($getBill, 0, 6, true);
-          foreach ($getBill as $item) {
+                    $getBill = getBill();
+                    arsort($getBill);
+                    $getBill = array_slice($getBill, 0, 6, true);
+                    foreach($getBill as $item) {
 
-            $getUser = getUserById($item['id_user']);
-            ?>
+                        $getUser = getUserById($item['id_user']);
+                        ?>
                     <li>
                         <div class="col-12 d-flex">
                             <div class="col-2">
                                 <?php
-                  if ($getUser[0]['img'] == NULL || empty($getUser[0]['img'])) {
-                    ?>
+                                    if($getUser[0]['img'] == NULL || empty($getUser[0]['img'])) {
+                                        ?>
                                 <img class="notifiAdminImg" src="./upload/users/avatar-none.png" alt="">
 
                                 <?php
-                  } else {
-                    ?>
+                                    } else {
+                                        ?>
                                 <img class="notifiAdminImg" src="./upload/users/<?php echo $getUser[0]['img'] ?>"
                                     alt="">
 
                                 <?php
-                  }
-                  ?>
+                                    }
+                                    ?>
                             </div>
                             <div class="col-10">
                                 <p class="notifiAdminText body-small"><strong>
                                         <?php
-                      if ($getUser[0]['fullname'] == NULL && empty($getUser[0]['fullname'])) {
-                        echo "User ẩn";
+                                            if($getUser[0]['fullname'] == NULL && empty($getUser[0]['fullname'])) {
+                                                echo "User ẩn";
 
-                      } else {
-                        echo $getUser[0]['fullname'];
+                                            } else {
+                                                echo $getUser[0]['fullname'];
 
-                      }
-                      ?>
+                                            }
+                                            ?>
                                     </strong><span> vừa mua
                                         một mô hình với mã đơn hàng <strong>
                                             <?php echo $item['id'] ?>
@@ -100,25 +100,25 @@
                         </div>
                     </li>
                     <?php
-          }
-          ?>
+                    }
+                    ?>
 
                 </ul>
             </div>
             <div class="imgUserAdmin">
                 <?php
-        $getID = $_SESSION['admin']['id_user'];
-        $getUser = getUserById($getID);
-        if (!empty($getUser['img']) && $getUser != NULL) {
-          ?>
+                $getID = $_SESSION['admin']['id_user'];
+                $getUser = getUserById($getID);
+                if(!empty($getUser['img']) && $getUser != NULL) {
+                    ?>
                 <img class="btnShowFeature" src="./upload/users/<?php echo $getUser['img'] ?>" alt="">
                 <?php
-        } else {
-          ?>
+                } else {
+                    ?>
                 <img class="btnShowFeature" src="./upload/users/avatar-none.png" alt="">
                 <?php
-        }
-        ?>
+                }
+                ?>
                 <ul class="showFeatureAdminHeader box-shadow1">
 
                     <li><a class="body-small" href="#statisticalChart">Thống kê đơn hàng</a></li>
@@ -137,10 +137,10 @@
         <!--DateTimelocal-->
         <div class="flex-between width-full" style="gap: 8px;
             align-items: center;">
-      <div class="flex g8">
-        <span class="label-large">Admin /</span><a href="?mod=admin&act=products&page=1" class="label-large" style="text-decoration: none;">Sản Phẩm</a>
-      </div>
-     
+            <div class="flex g8">
+                <span class="label-large">Admin /</span><a href="?mod=admin&act=products&page=1" class="label-large"
+                    style="text-decoration: none;">Sản Phẩm</a>
+            </div>
         </div>
 
     </div>
@@ -164,23 +164,27 @@
                     </svg>
                 </button>
                 <ul class="dropdown-menu">
-                    <?php foreach($getAllCategory as $item):?>
-                    <li><a href="?mod=admin&act=products-category-fil&id=<?=$item['id']?>"><?=$item['name']?></a></li>
-                    <?php endforeach;?>
+                    <?php foreach($getAllCategory as $item): ?>
+                    <li><a href="?mod=admin&act=products-category-fil&id=<?= $item['id'] ?>">
+                            <?= $item['name'] ?>
+                        </a></li>
+                    <?php endforeach; ?>
                 </ul>
 
             </div>
-            <?php if (isset($_SESSION['thongbao'])) : ?>
-            <div class="alert alert-success" role="alert"><?= $_SESSION['thongbao'] ?></div>
+            <?php if(isset($_SESSION['thongbao'])): ?>
+            <div class="alert alert-success" role="alert">
+                <?= $_SESSION['thongbao'] ?>
+            </div>
             <?php endif;
-      unset($_SESSION['thongbao']) ?>
+            unset($_SESSION['thongbao']) ?>
 
         </div>
         <div class="container-products width-full flex" style="flex-wrap: wrap; gap: 45px">
             <!--Cart-->
 
 
-            <?php foreach ($getproductAdmin as $item) : ?>
+            <?php foreach($getproductAdmin as $item): ?>
             <div class="cart trans-bounce flex-column p20" style="
                   border-radius: 12px;
                   border: 1px #DED8E1;
@@ -201,10 +205,16 @@
                           -webkit-box-orient: vertical;
                           overflow: hidden;
                           text-overflow: ellipsis;
-                          word-break: break-word;"><?= $item['name'] ?></h1>
+                          word-break: break-word;">
+                                <?= $item['name'] ?>
+                            </h1>
 
-                            <p class="body-medium">Danh Mục: <?= $item['category_name'] ?></p>
-                            <span class="title-medium"><?= number_format($item['price']) ?> VNĐ</span>
+                            <p class="body-medium">Danh Mục:
+                                <?= $item['category_name'] ?>
+                            </p>
+                            <span class="title-medium">
+                                <?= number_format($item['price']) ?> VNĐ
+                            </span>
 
                         </div>
                         <div class="options">
@@ -215,9 +225,9 @@
                                     <li><a class="dropdown-item label-large"
                                             href="?mod=admin&act=products-detail&id=<?= $item['id'] ?>">Xem Chi Tiết</a>
                                     </li>
-                                    <li><a href="?mod=admin&act=products-delete&page=<?=$page?>&id=<?= $item['id'] ?>"
+                                    <li><a href="?mod=admin&act=products-delete&page=<?= $page ?>&id=<?= $item['id'] ?>"
                                             class="dropdown-item label-large" style="cursor: pointer;"
-                                            onclick="deleteProduct(<?=$item['id'] ?>)">Xóa</a></li>
+                                            onclick="deleteProduct(<?= $item['id'] ?>)">Xóa</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -231,7 +241,9 @@
                         -webkit-box-orient: vertical;
                         overflow: hidden;
                         text-overflow: ellipsis;
-                        word-break: break-word;"><?=$item['description']?></p>
+                        word-break: break-word;">
+                                <?= $item['description'] ?>
+                            </p>
                         </div>
                     </div>
                     <!--INFO sales Qty -->
@@ -243,8 +255,9 @@
                             </div>
                             <div class="index flex-center" style="gap: 4px;">
                                 <i class="fa-solid fa-arrow-up" style="color: #00C58A;"></i>
-                                <span class="fw-smb label-large-prominent"
-                                    style="color: #00C58A;"><?= $item['purchases'] ?></span>
+                                <span class="fw-smb label-large-prominent" style="color: #00C58A;">
+                                    <?= $item['purchases'] ?>
+                                </span>
                             </div>
                         </div>
                         <div class="flex-between">
@@ -258,8 +271,9 @@
                               align-self: stretch;"></span>
 
                                 </div>
-                                <span class="fw-smb label-large-prominent"
-                                    style="color: #00C58A;"><?= $item['qty'] ?></span>
+                                <span class="fw-smb label-large-prominent" style="color: #00C58A;">
+                                    <?= $item['qty'] ?>
+                                </span>
                             </div>
                         </div>
 
@@ -272,24 +286,26 @@
 
 
         </div>
-        <?php if ($page > $soTrang || $page < 1): ?>
+        <?php if($page > $soTrang || $page < 1): ?>
         <h1 class='flex-center flex-full mt-5'>Trang này không tồn tại</h1>
-        <?php elseif ($totalProducts > 0 && $soTrang > 1): ?>
-        <ul id="paging" class="pagination flex g16 mt30">
-            <?php if ($page > 1): ?>
+        <?php elseif($totalProducts > 0 && $soTrang > 1): ?>
+        <ul id="paging" class="pagination flex py-5 mt30 mb-0">
+            <?php if($page > 1): ?>
             <li class="pagination__item">
                 <a href="?mod=admin&act=products&page=<?= $page - 1 ?>" class="btn body-small pagination__link"><i
                         class="fal fa-arrow-left" style="margin-right: .6rem"></i>Previous</a>
             </li>
             <?php endif; ?>
 
-            <?php for ($i = $startPage; $i <= $endPage; $i++): ?>
+            <?php for($i = $startPage; $i <= $endPage; $i++): ?>
             <li class="pagination__item <?= ($page == $i) ? 'active' : '' ?>">
-                <a href="?mod=admin&act=products&page=<?= $i ?>" class="btn body-small pagination__link"><?= $i ?></a>
+                <a href="?mod=admin&act=products&page=<?= $i ?>" class="btn body-small pagination__link">
+                    <?= $i ?>
+                </a>
             </li>
             <?php endfor; ?>
 
-            <?php if ($page < $soTrang): ?>
+            <?php if($page < $soTrang): ?>
             <li class="pagination__item">
                 <a href="?mod=admin&act=products&page=<?= $page + 1 ?>" class="btn body-small pagination__link">Next<i
                         class="fal fa-arrow-right" style="margin-left: .6rem"></i></a>

@@ -179,7 +179,7 @@
 } 
 
 .primary-masking-text {
-    background: linear-gradient(88deg, rgba(66, 0, 255, 0.60) 24.54%, #6A00F2 66.17%, rgba(255, 40, 169, 0.40) 117.27%);
+    background: -webkit-linear-gradient(60deg, #ff79ea, #A93CFF, #6791FF);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

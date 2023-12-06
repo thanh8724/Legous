@@ -5,7 +5,7 @@
         <div class="search-box">
             <form style="width: 100%;display:flex; justify-content: center;" action="" method="post">
                 <i class="far fa-search"></i>
-                <input type="text" placeholder="Tìm kiếm...">
+                <input type="text" placeholder="Tìm kiếm..." disabled="disabled">
             </form>
         </div>
         <div class="info-user">
@@ -16,38 +16,38 @@
                     $getCmt = getAllComment();
                     arsort($getCmt);
                     $getCmt = array_slice($getCmt, 0, 6, true);
-                    foreach ($getCmt as $item) {
+                    foreach($getCmt as $item) {
 
                         $getUser = getUserById($item['id_user']);
                         $getProduct = getProductById($item['id_product']);
                         ?>
-                    <li>
-                        <div class="col-12 d-flex">
-                            <div class="col-2">
-                                <?php
-                                    if ($getUser[0]['img'] == NULL || empty($getUser[0]['img'])) {
+                        <li>
+                            <div class="col-12 d-flex">
+                                <div class="col-2">
+                                    <?php
+                                    if($getUser[0]['img'] == NULL || empty($getUser[0]['img'])) {
                                         ?>
-                                <img class="notifiAdminImg" src="./upload/users/avatar-none.png" alt="">
+                                        <img class="notifiAdminImg" src="./upload/users/avatar-none.png" alt="">
 
-                                <?php
+                                        <?php
                                     } else {
                                         ?>
-                                <img class="notifiAdminImg" src="./upload/users/<?php echo $getUser[0]['img'] ?>"
-                                    alt="">
-                                <?php
+                                        <img class="notifiAdminImg" src="./upload/users/<?php echo $getUser[0]['img'] ?>"
+                                            alt="">
+                                        <?php
                                     }
                                     ?>
+                                </div>
+                                <div class="col-10">
+                                    <p class="notifiAdminText body-small"><strong>
+                                            <?php echo $getUser[0]['fullname'] ?>
+                                        </strong><span> đã bình luận ở sản phẩm <strong><a href="">
+                                                    <?php echo $getProduct['name'] ?>
+                                                </a></strong></span></p>
+                                </div>
                             </div>
-                            <div class="col-10">
-                                <p class="notifiAdminText body-small"><strong>
-                                        <?php echo $getUser[0]['fullname'] ?>
-                                    </strong><span> đã bình luận ở sản phẩm <strong><a href="">
-                                                <?php echo $getProduct['name'] ?>
-                                            </a></strong></span></p>
-                            </div>
-                        </div>
-                    </li>
-                    <?php
+                        </li>
+                        <?php
                     }
                     ?>
                 </ul>
@@ -59,32 +59,32 @@
                     $getBill = getBill();
                     arsort($getBill);
                     $getBill = array_slice($getBill, 0, 6, true);
-                    foreach ($getBill as $item) {
+                    foreach($getBill as $item) {
 
                         $getUser = getUserById($item['id_user']);
                         ?>
-                    <li>
-                        <div class="col-12 d-flex">
-                            <div class="col-2">
-                                <?php
-                                    if ($getUser[0]['img'] == NULL || empty($getUser[0]['img'])) {
+                        <li>
+                            <div class="col-12 d-flex">
+                                <div class="col-2">
+                                    <?php
+                                    if($getUser[0]['img'] == NULL || empty($getUser[0]['img'])) {
                                         ?>
-                                <img class="notifiAdminImg" src="./upload/users/avatar-none.png" alt="">
+                                        <img class="notifiAdminImg" src="./upload/users/avatar-none.png" alt="">
 
-                                <?php
+                                        <?php
                                     } else {
                                         ?>
-                                <img class="notifiAdminImg" src="./upload/users/<?php echo $getUser[0]['img'] ?>"
-                                    alt="">
+                                        <img class="notifiAdminImg" src="./upload/users/<?php echo $getUser[0]['img'] ?>"
+                                            alt="">
 
-                                <?php
+                                        <?php
                                     }
                                     ?>
-                            </div>
-                            <div class="col-10">
-                                <p class="notifiAdminText body-small"><strong>
-                                        <?php
-                                            if ($getUser[0]['fullname'] == NULL && empty($getUser[0]['fullname'])) {
+                                </div>
+                                <div class="col-10">
+                                    <p class="notifiAdminText body-small"><strong>
+                                            <?php
+                                            if($getUser[0]['fullname'] == NULL && empty($getUser[0]['fullname'])) {
                                                 echo "User ẩn";
 
                                             } else {
@@ -92,14 +92,14 @@
 
                                             }
                                             ?>
-                                    </strong><span> vừa mua
-                                        một mô hình với mã đơn hàng <strong>
-                                            <?php echo $item['id'] ?>
-                                        </strong></span></p>
+                                        </strong><span> vừa mua
+                                            một mô hình với mã đơn hàng <strong>
+                                                <?php echo $item['id'] ?>
+                                            </strong></span></p>
+                                </div>
                             </div>
-                        </div>
-                    </li>
-                    <?php
+                        </li>
+                        <?php
                     }
                     ?>
 
@@ -109,14 +109,14 @@
                 <?php
                 $getID = $_SESSION['admin']['id_user'];
                 $getUser = getUserById($getID);
-                if (!empty($getUser['img']) && $getUser != NULL) {
+                if(!empty($getUser['img']) && $getUser != NULL) {
                     ?>
-                <img style="" class="btnShowFeature" src="./upload/users/<?php echo $getUser['img'] ?>" alt="">
-                <?php
+                    <img style="" class="btnShowFeature" src="./upload/users/<?php echo $getUser['img'] ?>" alt="">
+                    <?php
                 } else {
                     ?>
-                <img style="" class="btnShowFeature" src="./upload/users/avatar-none.png" alt="">
-                <?php
+                    <img style="" class="btnShowFeature" src="./upload/users/avatar-none.png" alt="">
+                    <?php
                 }
                 ?>
                 <ul class="showFeatureAdminHeader box-shadow1">
@@ -307,39 +307,39 @@
 
 </section>
 <script>
-const $ = document.querySelector.bind(document)
-const $$ = document.querySelectorAll.bind(document)
+    const $ = document.querySelector.bind(document)
+    const $$ = document.querySelectorAll.bind(document)
 
-const imgbanners = $$('#img_banner');
-const banners = $$('#banner');
-const option = $$('.options_banner');
+    const imgbanners = $$('#img_banner');
+    const banners = $$('#banner');
+    const option = $$('.options_banner');
 
-imgbanners.forEach((img, index) => {
-    const bannerselect = banners[index];
-    img.onclick = function() {
-        $('.img_banner_admin-options.active').classList.remove('active');
-        $('.banner_admin.active').classList.remove('active');
+    imgbanners.forEach((img, index) => {
+        const bannerselect = banners[index];
+        img.onclick = function () {
+            $('.img_banner_admin-options.active').classList.remove('active');
+            $('.banner_admin.active').classList.remove('active');
 
 
-          this.classList.add('active');
-          bannerselect.classList.add('active');
-          if(index == 1 ){
+        this.classList.add('active');
+        bannerselect.classList.add('active');
+        if (index == 1) {
             bannerselect.style.background = 'linear-gradient(110deg, #5E007E 14.03%, #A000D8 96.4%)';
-            
-          }
-          if(index == 2 ){
+
+        }
+        if (index == 2) {
             $('#text-description').style.color = 'black';
             $('#textmainproduct').style.color = '#5E007E';
             bannerselect.style.background = 'white';
 
-        }
-    };
-});
+            }
+        };
+    });
 
-option.forEach((options) => {
-    options.onclick = function() {
-        $('.options_banner.active').classList.remove('active');
-        this.classList.add('active');
-    }
-});
+    option.forEach((options) => {
+        options.onclick = function () {
+            $('.options_banner.active').classList.remove('active');
+            this.classList.add('active');
+        }
+    });
 </script>

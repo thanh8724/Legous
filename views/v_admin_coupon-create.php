@@ -121,33 +121,33 @@ if (isset($_POST['editCouponsubmit'])) {
                         $getUser = getUserById($item['id_user']);
                         $getProduct = getProductById($item['id_product']);
                         ?>
-                        <li>
-                            <div class="col-12 d-flex">
-                                <div class="col-2">
-                                    <?php
+                    <li>
+                        <div class="col-12 d-flex">
+                            <div class="col-2">
+                                <?php
                                     if ($getUser[0]['img'] == NULL || empty($getUser[0]['img'])) {
                                         ?>
-                                        <img class="notifiAdminImg" src="./upload/users/avatar-none.png" alt="">
+                                <img class="notifiAdminImg" src="./upload/users/avatar-none.png" alt="">
 
-                                        <?php
+                                <?php
                                     } else {
                                         ?>
-                                        <img class="notifiAdminImg" src="./upload/users/<?php echo $getUser[0]['img'] ?>"
-                                            alt="">
-                                        <?php
+                                <img class="notifiAdminImg" src="./upload/users/<?php echo $getUser[0]['img'] ?>"
+                                    alt="">
+                                <?php
                                     }
                                     ?>
-                                </div>
-                                <div class="col-10">
-                                    <p class="notifiAdminText body-small"><strong>
-                                            <?php echo $getUser[0]['fullname'] ?>
-                                        </strong><span> đã bình luận ở sản phẩm <strong><a href="">
-                                                    <?php echo $getProduct['name'] ?>
-                                                </a></strong></span></p>
-                                </div>
                             </div>
-                        </li>
-                        <?php
+                            <div class="col-10">
+                                <p class="notifiAdminText body-small"><strong>
+                                        <?php echo $getUser[0]['fullname'] ?>
+                                    </strong><span> đã bình luận ở sản phẩm <strong><a href="">
+                                                <?php echo $getProduct['name'] ?>
+                                            </a></strong></span></p>
+                            </div>
+                        </div>
+                    </li>
+                    <?php
                     }
                     ?>
                 </ul>
@@ -163,27 +163,27 @@ if (isset($_POST['editCouponsubmit'])) {
 
                         $getUser = getUserById($item['id_user']);
                         ?>
-                        <li>
-                            <div class="col-12 d-flex">
-                                <div class="col-2">
-                                    <?php
+                    <li>
+                        <div class="col-12 d-flex">
+                            <div class="col-2">
+                                <?php
                                     if ($getUser[0]['img'] == NULL || empty($getUser[0]['img'])) {
                                         ?>
-                                        <img class="notifiAdminImg" src="./upload/users/avatar-none.png" alt="">
+                                <img class="notifiAdminImg" src="./upload/users/avatar-none.png" alt="">
 
-                                        <?php
+                                <?php
                                     } else {
                                         ?>
-                                        <img class="notifiAdminImg" src="./upload/users/<?php echo $getUser[0]['img'] ?>"
-                                            alt="">
+                                <img class="notifiAdminImg" src="./upload/users/<?php echo $getUser[0]['img'] ?>"
+                                    alt="">
 
-                                        <?php
+                                <?php
                                     }
                                     ?>
-                                </div>
-                                <div class="col-10">
-                                    <p class="notifiAdminText body-small"><strong>
-                                            <?php
+                            </div>
+                            <div class="col-10">
+                                <p class="notifiAdminText body-small"><strong>
+                                        <?php
                                             if ($getUser[0]['fullname'] == NULL && empty($getUser[0]['fullname'])) {
                                                 echo "User ẩn";
 
@@ -192,14 +192,14 @@ if (isset($_POST['editCouponsubmit'])) {
 
                                             }
                                             ?>
-                                        </strong><span> vừa mua
-                                            một mô hình với mã đơn hàng <strong>
-                                                <?php echo $item['id'] ?>
-                                            </strong></span></p>
-                                </div>
+                                    </strong><span> vừa mua
+                                        một mô hình với mã đơn hàng <strong>
+                                            <?php echo $item['id'] ?>
+                                        </strong></span></p>
                             </div>
-                        </li>
-                        <?php
+                        </div>
+                    </li>
+                    <?php
                     }
                     ?>
 
@@ -211,12 +211,12 @@ if (isset($_POST['editCouponsubmit'])) {
                 $getUser = getUserById($getID);
                 if (!empty($getUser['img']) && $getUser != NULL) {
                     ?>
-                    <img style="" class="btnShowFeature" src="./upload/users/<?php echo $getUser['img'] ?>" alt="">
-                    <?php
+                <img style="" class="btnShowFeature" src="./upload/users/<?php echo $getUser['img'] ?>" alt="">
+                <?php
                 } else {
                     ?>
-                    <img style="" class="btnShowFeature" src="./upload/users/avatar-none.png" alt="">
-                    <?php
+                <img style="" class="btnShowFeature" src="./upload/users/avatar-none.png" alt="">
+                <?php
                 }
                 ?>
                 <ul class="showFeatureAdminHeader box-shadow1">
@@ -261,113 +261,113 @@ if (isset($_POST['editCouponsubmit'])) {
                     if (isset($_GET['editId'])) {
                         $getCouponById = getCouponById($_GET['editId']);
                         ?>
-                        <form action="" method="post">
-                            <div class="col-12 d-flex createCoupon_items">
-                                <div class="col-12 infoCoupon" style="margin-left: unset">
-                                    <div class="col-12">
-                                        <label for="namecoupon" class="label-large">Mô Tả</label>
-                                    </div>
-                                    <div class="col-12">
-                                        <input class="body-large" type="text" name="namecoupon" id="namecoupon"
-                                            placeholder="Tên Mã" value="<?php echo $getCouponById[0]['name'] ?>">
-                                    </div>
+                    <form action="" method="post">
+                        <div class="col-12 d-flex createCoupon_items">
+                            <div class="col-12 infoCoupon" style="margin-left: unset">
+                                <div class="col-12">
+                                    <label for="namecoupon" class="label-large">Mô Tả</label>
+                                </div>
+                                <div class="col-12">
+                                    <input class="body-large" type="text" name="namecoupon" id="namecoupon"
+                                        placeholder="Tên Mã" value="<?php echo $getCouponById[0]['name'] ?>">
                                 </div>
                             </div>
-                            <div class="col-12 d-flex createCoupon_items">
-                                <div class="col-6">
-                                    <div class="col-12">
-                                        <label for="discountpercent" class="label-large">Mức Giảm (%)</label>
-                                    </div>
-                                    <div class="col-12">
-                                        <input class="body-large" type="text" name="discountpercent" id="discountpercent"
-                                            placeholder="VD 10" value="<?php echo $getCouponById[0]['price'] ?>">
-                                    </div>
+                        </div>
+                        <div class="col-12 d-flex createCoupon_items">
+                            <div class="col-6">
+                                <div class="col-12">
+                                    <label for="discountpercent" class="label-large">Mức Giảm (%)</label>
                                 </div>
-                                <div class="col-6">
-                                    <div class="col-12">
-                                        <label for="expiredDateEdit" class="label-large">Ngày Hết Hạn:
-                                            <?php echo $getCouponById[0]['expired_date'] ?>
-                                        </label>
-                                    </div>
-                                    <div class="col-12">
-                                        <input class="body-large" type="date" name="expiredDateEdit" id="expiredDateEdit"
-                                            placeholder="Ngày Hết Hạn">
-                                    </div>
+                                <div class="col-12">
+                                    <input class="body-large" type="text" name="discountpercent" id="discountpercent"
+                                        placeholder="VD 10" value="<?php echo $getCouponById[0]['price'] ?>">
                                 </div>
                             </div>
-                            <div class="col-12 d-flex createCoupon_items">
-                                <div class="col-12 infoCoupon" style="margin-left: unset">
-                                    <div class="col-12">
-                                        <label for="description" class="label-large">Mô Tả</label>
-                                    </div>
-                                    <div class="col-12">
-                                        <input class="body-large" type="text" name="description" id="description"
-                                            placeholder="Mô Tả ngắn" value="<?php echo $getCouponById[0]['description'] ?>">
-                                    </div>
+                            <div class="col-6">
+                                <div class="col-12">
+                                    <label for="expiredDateEdit" class="label-large">Ngày Hết Hạn:
+                                        <?php echo $getCouponById[0]['expired_date'] ?>
+                                    </label>
+                                </div>
+                                <div class="col-12">
+                                    <input class="body-large" type="date" name="expiredDateEdit" id="expiredDateEdit"
+                                        placeholder="Ngày Hết Hạn">
                                 </div>
                             </div>
-                            <input type="submit" value="Chỉnh sửa" name="editCouponsubmit"
-                                class="editCouponsubmit label-large createCouponSubmit">
-                        </form>
-                        <?php
+                        </div>
+                        <div class="col-12 d-flex createCoupon_items">
+                            <div class="col-12 infoCoupon" style="margin-left: unset">
+                                <div class="col-12">
+                                    <label for="description" class="label-large">Mô Tả</label>
+                                </div>
+                                <div class="col-12">
+                                    <input class="body-large" type="text" name="description" id="description"
+                                        placeholder="Mô Tả ngắn" value="<?php echo $getCouponById[0]['description'] ?>">
+                                </div>
+                            </div>
+                        </div>
+                        <input type="submit" value="Chỉnh sửa" name="editCouponsubmit"
+                            class="editCouponsubmit label-large createCouponSubmit">
+                    </form>
+                    <?php
                     } else {
                         ?>
-                        <form action="" method="post">
-                            <div class="col-12 d-flex createCoupon_items">
-                                <div class="col-6">
-                                    <div class="col-12">
-                                        <label for="namecoupon" class="label-large">Tên Mã</label>
-                                    </div>
-                                    <div class="col-12">
-                                        <input class="body-large" type="text" name="namecoupon" id="namecoupon"
-                                            placeholder="Tên Mã">
-                                    </div>
+                    <form action="" method="post">
+                        <div class="col-12 d-flex createCoupon_items">
+                            <div class="col-6">
+                                <div class="col-12">
+                                    <label for="namecoupon" class="label-large">Tên Mã</label>
                                 </div>
-                                <div class="col-6">
-                                    <div class="col-12">
-                                        <label for="qtycoupon" class="label-large">Số Lượng Mã</label>
-                                    </div>
-                                    <div class="col-12">
-                                        <input class="body-large" type="text" name="qtycoupon" id="qtycoupon"
-                                            placeholder="Số Lượng Mã">
-                                    </div>
+                                <div class="col-12">
+                                    <input class="body-large" type="text" name="namecoupon" id="namecoupon"
+                                        placeholder="Tên Mã">
                                 </div>
                             </div>
-                            <div class="col-12 d-flex createCoupon_items">
-                                <div class="col-6">
-                                    <div class="col-12">
-                                        <label for="discountpercent" class="label-large">Mức Giảm (%)</label>
-                                    </div>
-                                    <div class="col-12">
-                                        <input class="body-large" type="text" name="discountpercent" id="discountpercent"
-                                            placeholder="VD 10">
-                                    </div>
+                            <div class="col-6">
+                                <div class="col-12">
+                                    <label for="qtycoupon" class="label-large">Số Lượng Mã</label>
                                 </div>
-                                <div class="col-6">
-                                    <div class="col-12">
-                                        <label for="expiredDate" class="label-large">Ngày Hết Hạn</label>
-                                    </div>
-                                    <div class="col-12">
-                                        <input class="body-large" type="date" name="expiredDate" id="expiredDate"
-                                            placeholder="Ngày Hết Hạn">
-                                    </div>
+                                <div class="col-12">
+                                    <input class="body-large" type="text" name="qtycoupon" id="qtycoupon"
+                                        placeholder="Số Lượng Mã">
                                 </div>
                             </div>
-                            <div class="col-12 d-flex createCoupon_items">
-                                <div class="col-12 infoCoupon" style="margin-left: unset">
-                                    <div class="col-12">
-                                        <label for="description" class="label-large">Mô Tả</label>
-                                    </div>
-                                    <div class="col-12">
-                                        <input class="body-large" type="text" name="description" id="description"
-                                            placeholder="Mô Tả ngắn">
-                                    </div>
+                        </div>
+                        <div class="col-12 d-flex createCoupon_items">
+                            <div class="col-6">
+                                <div class="col-12">
+                                    <label for="discountpercent" class="label-large">Mức Giảm (%)</label>
+                                </div>
+                                <div class="col-12">
+                                    <input class="body-large" type="text" name="discountpercent" id="discountpercent"
+                                        placeholder="VD 10">
                                 </div>
                             </div>
-                            <input type="submit" value="Tạo Ngay" name="createCouponSubmit"
-                                class="createCouponSubmit label-large">
-                        </form>
-                        <?php
+                            <div class="col-6">
+                                <div class="col-12">
+                                    <label for="expiredDate" class="label-large">Ngày Hết Hạn</label>
+                                </div>
+                                <div class="col-12">
+                                    <input class="body-large" type="date" name="expiredDate" id="expiredDate"
+                                        placeholder="Ngày Hết Hạn">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 d-flex createCoupon_items">
+                            <div class="col-12 infoCoupon" style="margin-left: unset">
+                                <div class="col-12">
+                                    <label for="description" class="label-large">Mô Tả</label>
+                                </div>
+                                <div class="col-12">
+                                    <input class="body-large" type="text" name="description" id="description"
+                                        placeholder="Mô Tả ngắn">
+                                </div>
+                            </div>
+                        </div>
+                        <input type="submit" value="Tạo Ngay" name="createCouponSubmit"
+                            class="createCouponSubmit label-large">
+                    </form>
+                    <?php
                     }
                     ?>
                 </div>
@@ -388,51 +388,51 @@ if (isset($_POST['editCouponsubmit'])) {
                         $getAllCoupon = getAllCoupon();
                         foreach ($getAllCoupon as $item) {
                             ?>
-                            <div class="listCoupon_items p10">
-                                <div class="col-12 d-flex">
-                                    <div class="col-10 d-flex justify-content-between">
-                                        <div class="col-3">
-                                            <h2 class="saleListCoupon title-medium">
-                                                <?php echo $item['price'] ?>
-                                            </h2>
-                                        </div>
-                                        <div class="col-9">
-                                            <div class="col-12">
-                                                <h1 class="titleSaleListCoupon title-medium">
-                                                    <?php echo $item['name'] ?>
-                                                </h1>
-                                            </div>
-                                            <div class="col-12">
-                                                <p class="infoSaleListCoupon body-small">
-                                                    <?php echo $item['description'] ?>
-                                                </p>
-                                            </div>
-                                            <div class="col-12 d-flex justify-content-end">
-                                                <p class="timeLeft body-large">Ngày hết hạn:
-                                                    <?php echo $item['expired_date'] ?>
-                                                </p>
-                                            </div>
-                                        </div>
+                        <div class="listCoupon_items p10">
+                            <div class="col-12 d-flex">
+                                <div class="col-10 d-flex justify-content-between">
+                                    <div class="col-3">
+                                        <h2 class="saleListCoupon title-medium">
+                                            <?php echo $item['discount'] ?>
+                                        </h2>
                                     </div>
-                                    <div class="col-2 buttonShowFeatureCoupon d-flex justify-content-end">
-                                        <ul>
-                                            <li><i class="fas fa-ellipsis-v"></i>
-                                                <div class="hiddenFeatureCoupon">
-                                                    <ul>
-                                                        <li class="title-small"><a
-                                                                href="?mod=admin&act=createcoupon&editId=<?php echo $item['id'] ?>">Sửa</a>
-                                                        </li>
-                                                        <li class="title-small"><a
-                                                                href="?mod=admin&act=delcoupon&editId=<?php echo $item['id'] ?>">Xóa</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </li>
-                                        </ul>
+                                    <div class="col-9">
+                                        <div class="col-12">
+                                            <h1 class="titleSaleListCoupon title-medium">
+                                                <?php echo $item['name'] ?>
+                                            </h1>
+                                        </div>
+                                        <div class="col-12">
+                                            <p class="infoSaleListCoupon body-small">
+                                                <?php echo $item['description'] ?>
+                                            </p>
+                                        </div>
+                                        <div class="col-12 d-flex justify-content-end">
+                                            <p class="timeLeft body-large">Ngày hết hạn:
+                                                <?php echo $item['expired_date'] ?>
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
+                                <div class="col-2 buttonShowFeatureCoupon d-flex justify-content-end">
+                                    <ul>
+                                        <li><i class="fas fa-ellipsis-v"></i>
+                                            <div class="hiddenFeatureCoupon">
+                                                <ul>
+                                                    <li class="title-small"><a
+                                                            href="?mod=admin&act=createcoupon&editId=<?php echo $item['id'] ?>">Sửa</a>
+                                                    </li>
+                                                    <li class="title-small"><a
+                                                            href="?mod=admin&act=delcoupon&editId=<?php echo $item['id'] ?>">Xóa</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
-                            <?php
+                        </div>
+                        <?php
                         }
                         ?>
                     </div>
@@ -444,14 +444,14 @@ if (isset($_POST['editCouponsubmit'])) {
 
 </section>
 <script>
-    document.querySelectorAll('.buttonShowFeatureCoupon').forEach(function (button) {
-        button.addEventListener('click', function () {
-            var hiddenFeatureCoupon = this.querySelector('.hiddenFeatureCoupon');
-            if (hiddenFeatureCoupon.style.display === 'none') {
-                hiddenFeatureCoupon.style.display = 'block';
-            } else {
-                hiddenFeatureCoupon.style.display = 'none';
-            }
-        });
+document.querySelectorAll('.buttonShowFeatureCoupon').forEach(function(button) {
+    button.addEventListener('click', function() {
+        var hiddenFeatureCoupon = this.querySelector('.hiddenFeatureCoupon');
+        if (hiddenFeatureCoupon.style.display === 'none') {
+            hiddenFeatureCoupon.style.display = 'block';
+        } else {
+            hiddenFeatureCoupon.style.display = 'none';
+        }
     });
+});
 </script>

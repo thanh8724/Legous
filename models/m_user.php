@@ -142,7 +142,7 @@ function get_namePayment($id_payment)
 }
 function get_nameShipping($id_shipping)
 {
-    return pdo_query_value("SELECT name FROM shipping WHERE id = ?", $id_shipping);
+    return pdo_query_value("SELECT name FROM shipping WHERE price = ?", $id_shipping);
 }
 function get_fullname($id_user)
 {
@@ -152,7 +152,7 @@ function get_fullname($id_user)
 
 function get_priceShipping($id_shipping)
 {
-    return pdo_query_value("SELECT price FROM shipping WHERE id = ?", $id_shipping);
+    return pdo_query_value("SELECT price FROM shipping WHERE price = ?", $id_shipping);
 }
 function get_priceCoupon($id_coupon)
 {

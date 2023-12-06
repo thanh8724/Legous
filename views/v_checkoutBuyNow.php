@@ -9,34 +9,33 @@ $subTotal = 0;
 //     print_r($_SESSION['cart']);
 // }
 
-foreach ($cart as $item) {
-    extract($item);
+extract($checkoutProduct);
 
-    $subTotal += $price * $qty;
-    $tax = $subTotal * 0.1;
-    $total = $subTotal + $tax;
-    $totalFormated = formatVND($subTotal + $tax);
+$subTotal += $price * $qty;
+$tax = $subTotal * 0.1;
+$total = $subTotal + $tax;
+$totalFormated = formatVND($subTotal + $tax);
 
-    $priceFormated = formatVND($price);
-    $summaryHtml .=
-        <<<HTML
-            <!-- single summary product start -->
-            <div class="summary__product flex v-center">
-                <div class="title-medium fw-smb summary__product__name">$name</div>
-                <span style="margin-left: 1rem">x $qty</span>
-                <div class="light-devider flex-full" style="margin-inline: 1rem; height: .1rem;"></div>
-                <div class="summary__product__price">$priceFormated</div>
-            </div>
-            <!-- single summary product end -->
-        HTML;
-}
+$priceFormated = formatVND($price);
+$summaryHtml =
+    <<<HTML
+        <!-- single summary product start -->
+        <div class="summary__product flex v-center">
+            <div class="title-medium fw-smb summary__product__name">$name</div>
+            <span style="margin-left: .1rem; width: max-content">x $qty</span>
+            <div class="light-devider flex-full" style="margin-inline: 1rem; height: .1rem;"></div>
+            <div class="summary__product__price" style="width: max-content;">$priceFormated</div>
+        </div>
+        <!-- single summary product end -->
+    HTML;
 
 $disable = '';
 $total < 2100000 ? $disable = 'disabled' : '';
 
 /** render shipping methods */
 $shippingMethods = getShippingMethods();
-function renderShippingMethods($shippingMethods, $disable) {
+function renderShippingMethods($shippingMethods, $disable)
+{
     $html = '';
     if (isset($shippingMethods) && is_array($shippingMethods)) {
         foreach ($shippingMethods as $shippingMethod) {
@@ -116,7 +115,7 @@ if (isset($_SESSION['userLogin']) && is_array($_SESSION['userLogin'])) {
     /** get user address */
     $userAddress = getUserAddressByIdUser($id_user);
 
-    if (isset($userAddress)) {
+    if (isset($userAddress) && is_array($userAddress)) {
         $addressView = $userAddress['address'];
         $addressDetailView = $userAddress['address_detail'];
         $emailView = $email;
@@ -144,34 +143,34 @@ if (isset($_SESSION['userLogin']) && is_array($_SESSION['userLogin'])) {
 
         <!-- member widget -->
         <div class="por member-widget">
-                <button class="icon-btn more-btn"><i class="far fa-ellipsis-h"></i></button>
-                <ul class="poa option__list oh p10 box-shadow1 rounded-8">
-                    <li class="option__item">
-                        <a href="#" class="option__link ttc">trang chủ</a>
-                    </li>
-                    <li class="option__item">
-                        <a href="#" class="option__link ttc">chia sẻ</a>
-                    </li>
-                    <li class="option__item">
-                        <a href="#" class="option__link ttc">tìm kiếm</a>
-                    </li>
-                    <li class="option__item">
-                        <a href="#" class="option__link ttc">tin nhắn</a>
-                    </li>
-                    <li class="option__item">
-                        <a href="#" class="option__link ttc">tài khoản của tôi</a>
-                    </li>
-                    <li class="option__item">
-                        <a href="#" class="option__link ttc">báo cáo</a>
-                    </li>
-                    <li class="option__item">
-                        <a href="#" class="option__link ttc">trợ giúp</a>
-                    </li>
-                    <li class="option__item">
-                        <a href="#" class="option__link ttc">phản hồi</a>
-                    </li>
-                </ul>
-            </div>
+            <button class="icon-btn more-btn"><i class="far fa-ellipsis-h"></i></button>
+            <ul class="poa option__list oh p10 box-shadow1 rounded-8">
+                <li class="option__item">
+                    <a href="#" class="option__link ttc">trang chủ</a>
+                </li>
+                <li class="option__item">
+                    <a href="#" class="option__link ttc">chia sẻ</a>
+                </li>
+                <li class="option__item">
+                    <a href="#" class="option__link ttc">tìm kiếm</a>
+                </li>
+                <li class="option__item">
+                    <a href="#" class="option__link ttc">tin nhắn</a>
+                </li>
+                <li class="option__item">
+                    <a href="#" class="option__link ttc">tài khoản của tôi</a>
+                </li>
+                <li class="option__item">
+                    <a href="#" class="option__link ttc">báo cáo</a>
+                </li>
+                <li class="option__item">
+                    <a href="#" class="option__link ttc">trợ giúp</a>
+                </li>
+                <li class="option__item">
+                    <a href="#" class="option__link ttc">phản hồi</a>
+                </li>
+            </ul>
+        </div>
     </div>
 </div>
 <!-- cart top bar end -->
@@ -187,100 +186,129 @@ if (isset($_SESSION['userLogin']) && is_array($_SESSION['userLogin'])) {
         </div>
         <!-- checkout title end -->
 
-        <!-- checkout main start -->
-        <main class="checkout__main mt30 auto-grid g20">
-            <!-- checkout form start -->
-            <div class="checkout__main--info">
-                <div class="form__group__wrapper flex-column g12 box-shadow1 p20 rounded-8">
-                    <div class="form__group">
-                        <div class="form__label label-large fw-smb">Tỉnh/Thành phố, Quận/Huyện, Phường/Xã <span
-                                class="error60">*</span></div>
-                        <input type="text" class="form__input address__input" name="address"
-                            value="<?= $addressView ?>">
-                        <div class="form__message"></div>
+        <div class="auto-grid g20 mt30">
+            <!-- checkout main start -->
+            <main class="checkout__main" style="grid-column: span 2">
+                <!-- checkout form start -->
+                <div class="checkout__main--info">
+                    <div class="form__group__wrapper flex-column g12 box-shadow1 p20 rounded-8">
+                        <div class="form__group">
+                            <div class="form__label label-large fw-smb">Tỉnh/Thành phố, Quận/Huyện, Phường/Xã <span
+                                    class="error60">*</span></div>
+                            <input type="text" class="form__input address__input" name="address"
+                                value="<?= $addressView ?>">
+                            <div class="form__message"></div>
+                        </div>
+                        <div class="form__group">
+                            <div class="form__label label-large fw-smb">Địa chỉ cụ thể <span class="error60">*</span></div>
+                            <input type="text" class="form__input address-detail__input" name="address-detail"
+                                value="<?= $addressDetailView ?>">
+                            <div class="form__message"></div>
+                        </div>
+                        <div class="form__group">
+                            <div class="form__label label-large fw-smb">Email <span class="error60">*</span></div>
+                            <input type="text" class="form__input email__input" name="email" value="<?= $emailView ?>">
+                            <div class="form__message"></div>
+                        </div>
+                        <div class="form__group">
+                            <div class="form__label label-large fw-smb">Số điện thoại <span class="error60">*</span></div>
+                            <input type="text" class="form__input phone__input" name="phone" value="<?= $phoneView ?>">
+                            <div class="form__message"></div>
+                        </div>
                     </div>
-                    <div class="form__group">
-                        <div class="form__label label-large fw-smb">Địa chỉ cụ thể <span class="error60">*</span></div>
-                        <input type="text" class="form__input address-detail__input" name="address-detail"
-                            value="<?= $addressDetailView ?>">
-                        <div class="form__message"></div>
-                    </div>
-                    <div class="form__group">
-                        <div class="form__label label-large fw-smb">Email <span class="error60">*</span></div>
-                        <input type="text" class="form__input email__input" name="email" value="<?= $emailView ?>">
-                        <div class="form__message"></div>
-                    </div>
-                    <div class="form__group">
-                        <div class="form__label label-large fw-smb">Số điện thoại <span class="error60">*</span></div>
-                        <input type="text" class="form__input phone__input" name="phone" value="<?= $phoneView ?>">
-                        <div class="form__message"></div>
+                    <div class="flex-column g30 box-shadow1 p20 rounded-8 mt20">
+                        <div class="toggle-open-form flex v-center g8">
+                            <input type="checkbox" id="openRecipientForm" onclick="toggleRecipientForm()">
+                            <label for="openRecipientForm" class="label-large fw-smb" style="user-select: none;">Địa chỉ
+                                giao hàng khác với địa chỉ đặt hàng</label>
+                        </div>
+                        <div class="form__group__wrapper flex-column g20" id="recipient__form">
+                            <!-- render recipient form here -->
+                        </div>
                     </div>
                 </div>
-                <div class="flex-column g30 box-shadow1 p20 rounded-8 mt20">
-                    <div class="toggle-open-form flex v-center g8">
-                        <input type="checkbox" id="openRecipientForm" onclick="toggleRecipientForm()">
-                        <label for="openRecipientForm" class="label-large fw-smb" style="user-select: none;">Địa chỉ
-                            giao hàng khác với địa chỉ đặt hàng</label>
+                <!-- checkout form end -->
+                <!-- checkout: shipping method and payment method start -->
+                <div class="checkout__main--addon">
+                    <div class="shipping-method__wrapper p20 rounded-8 box-shadow1">
+                        <div class="title-medium fw-smb">Phương thức vận chuyển <span class="error60">*</span></div>
+                        <div class="shipping-methods flex-column g12 mt20">
+                            <?= renderShippingMethods($shippingMethods, $disable) ?>
+                        </div>
                     </div>
-                    <div class="form__group__wrapper flex-column g20" id="recipient__form">
-                        <!-- render recipient form here -->
+                    <div class="payment-method__wrapper mt20 p20 rounded-8 box-shadow1">
+                        <div class="title-medium fw-smb">Phương thức thanh toán <span class="error60">*</span></div>
+                        <div class="payment-methods flex-column g12 mt20">
+                            <?= renderPaymentMethods($paymentMethods) ?>
+                        </div>
                     </div>
+                </div>
+                <!-- checkout: shipping method and payment method end -->
+            </main>
+            <!-- checkout main end -->
+            <!-- checkout summary detail start -->
+            <div class="block">
+                <div class="checkout-summary__detail desktop flex-column g20 p20 rounded-8 box-shadow1">
+                    <div class="summary__product__wrapper flex-column g12">
+                        <?= $summaryHtml ?>
+                    </div>
+                
+                    <!-- <div class="light-devider" style="height: .1rem;"></div> -->
+                
+                    <div class="body-medium fw-smb">Thuế: <span class="primary-text">10%</span></div>
+                    <div class="body-medium fw-smb">Phí vận chuyển: <span class="primary-text shipping-fee"> Chưa có</span>
+                    </div>
+                
+                    <div class="flex flex-between v-center">
+                        <div class="title-large fw-smb">Tổng tiền</div>
+                        <div class="light-devider flex-full" style="margin-inline: 1rem; height: .1rem;"></div>
+                        <div class="summary__total primary-masking-text">
+                            <?= $totalFormated ?>
+                        </div>
+                    </div>
+                    <button type="submit" class="rounded-8 primary-btn btn" style="background: black; color: white;"><i
+                            class="fal fa-arrow-right" style="color: white"></i> Đặt hàng ngay</button>
                 </div>
             </div>
-            <!-- checkout form end -->
-
-            <!-- checkout: shipping method and payment method start -->
-            <div class="checkout__main--addon">
-                <div class="shipping-method__wrapper p20 rounded-8 box-shadow1">
-                    <div class="title-medium fw-smb">Phương thức vận chuyển <span class="error60">*</span></div>
-                    <div class="shipping-methods flex-column g12 mt20">
-                        <?= renderShippingMethods($shippingMethods, $disable) ?>
-                    </div>
-                </div>
-                <div class="payment-method__wrapper mt20 p20 rounded-8 box-shadow1">
-                    <div class="title-medium fw-smb">Phương thức thanh toán <span class="error60">*</span></div>
-                    <div class="payment-methods flex-column g12 mt20">
-                        <?= renderPaymentMethods($paymentMethods) ?>
-                    </div>
-                </div>
-            </div>
-            <!-- checkout: shipping method and payment method end -->
-        </main>
-        <!-- checkout main end -->
+            <!-- checkout summary detail end -->
+        </div>
     </section>
     <!-- checkout section end -->
 
     <!-- checkout summary start -->
-    <section class="section checkout-summary auto-grid g30 desktop">
+    <!-- <section class="section checkout-summary auto-grid g30 desktop"> -->
         <!-- checkout summary title start -->
-        <div class="checkout-summary__title flex-column g12">
+        <!-- <div class="checkout-summary__title flex-column g12">
             <div class="text-68">TỔNG ĐƠN</div>
             <div class="light-devider" style="height: .4rem; width: 15rem"></div>
             <div class="label-large">LEGOUS / CART / CHECKOUT</div>
-        </div>
+        </div> -->
         <!-- checkout summary title end -->
 
         <!-- checkout summary detail start -->
-        <div class="checkout-summary__detail flex-column g20">
+        <!-- <div class="checkout-summary__detail flex-column g20">
             <div class="summary__product__wrapper flex-column g12">
-                <?= $summaryHtml ?>
-            </div>
+            
+            </div> -->
 
             <!-- <div class="light-devider" style="height: .1rem;"></div> -->
 
-            <div class="body-medium fw-smb">Thuế: <span class="primary-text">10%</span></div>
-            <div class="body-medium fw-smb">Phí vận chuyển: <span class="primary-text shipping-fee"> Chưa có</span></div>
+            <!-- <div class="body-medium fw-smb">Thuế: <span class="primary-text">10%</span></div>
+            <div class="body-medium fw-smb">Phí vận chuyển: <span class="primary-text shipping-fee"> Chưa có</span>
+            </div>
 
             <div class="flex flex-between v-center">
                 <div class="title-large fw-smb">Tổng tiền</div>
                 <div class="light-devider flex-full" style="margin-inline: 1rem; height: .1rem;"></div>
-                <div class="summary__total primary-masking-text"><?= $totalFormated ?></div>
+                <div class="summary__total primary-masking-text">
+                    <?= $totalFormated ?>
+                </div>
             </div>
             <button type="submit" class="rounded-8 primary-btn btn" style="background: black; color: white;"><i
                     class="fal fa-arrow-right" style="color: white"></i> Đặt hàng ngay</button>
-        </div>
+        </div> -->
         <!-- checkout summary detail end -->
-    </section>
+    <!-- </section> -->
     <!-- checkout summary end -->
 
     <!-- cart bottom bar start -->
@@ -301,7 +329,9 @@ if (isset($_SESSION['userLogin']) && is_array($_SESSION['userLogin'])) {
             <div class="flex v-center">
                 <div class="title-large fw-bold">Tổng tiền</div>
                 <div class="light-devider flex-full mi20" style="height: .1rem"></div>
-                <div class="body-large primary-masking-text summary__total"><?= $totalFormated ?></div>
+                <div class="body-large primary-masking-text summary__total">
+                    <?= $totalFormated ?>
+                </div>
             </div>
             <button type="submit" class="btn bar-btn rounded-8 ttu mt12 width-full summary-btn" id="summary-btn1"
                 style="background: black; color: white;">
@@ -346,7 +376,7 @@ if (isset($_SESSION['userLogin']) && is_array($_SESSION['userLogin'])) {
         formSelector: '.checkout__form',
         formGroupSelector: '.form__group',
         formMessage: '.form__message',
-        submitUrl: './views/libs/checkoutHandler.php',
+        submitUrl: './views/libs/checkoutBuyNowHandler.php',
         redirectUrl: '?mod=cart&act=confirm',
 
         rules: [
@@ -388,7 +418,7 @@ if (isset($_SESSION['userLogin']) && is_array($_SESSION['userLogin'])) {
     function updateSummary(shippingPrice) {
         // Send an AJAX request to update the summary
         $.ajax({
-            url: "./views/libs/updateSummary.php",
+            url: "./views/libs/updateBuyNowSummary.php",
             method: "POST",
             data: { shippingPrice: shippingPrice },
             success: function (response) {
@@ -400,7 +430,7 @@ if (isset($_SESSION['userLogin']) && is_array($_SESSION['userLogin'])) {
                 document.querySelectorAll('.shipping-fee').forEach(item => {
                     item.textContent = response.shippingFee;
                 });
-                
+
             },
             error: function (xhr, status, error) {
                 // Handle error

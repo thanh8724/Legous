@@ -1,27 +1,67 @@
 <?php
-
+    ob_start();
+    
     if (isset($_SESSION['idBill'])) {
         $idBill = $_SESSION['idBill'];
+        echo $idBill;
 
         /** get bill information */
         $billInfo = getBillInfoById($idBill);
         extract($billInfo);
         // print_r($billInfo);
 
-        
         $user = getUserById($id_user);
         $username = $user['username'];
+
+        $createTimestamp = strtotime($billInfo['create_date']);
+        $billCreateDate = date('d-m-Y', $createTimestamp);
+        $createTime = date('H:i:s', $createTimestamp);
+
+        $estimatedDeliveryTimestamp = strtotime($billCreateDate . ' +7 days');
+        $estimatedDeliveryDate = date('d-m-Y', $estimatedDeliveryTimestamp);
         
-        if (empty($name_recipient)) {
-            $name_recipient = $username;
-        } else if (empty($email_recipient)) {
-            $email_recipient = $email_user;
-        } else if (empty($address_recipient)) {
-            $address_recipient = $address_user;
-        } else if (empty($address_detail_recipient)) {
-            $address_detail_recipient = $address_detail_user;
-        } else if (empty($phone_recipient)) {
-            $phone_recipient = $phone_user;
+        $billInfoHtml = '';
+        if ($billInfo['address_recipient'] !== '') {
+            $billInfoHtml = 
+                <<<HTML
+                    <div class="col-12 width-full flex mb20 recipientOrderUser">
+                        <div class="col-6 width-full">
+                            <div class="detailOrder_items">
+                                <h3 class="title-medium">Người Nhận</h3>
+                                <h2 class="title-large">Tên:  $name_recipient </h2>
+                                <h4 class="body-medium">SĐT: <span> $phone_recipient </span></h4>
+                                <h4 class="body-medium">Địa Chỉ: <span> $address_recipient </span></h4>
+                                <h4 class="body-medium">Địa Chỉ Cụ Thể: <span> $address_detail_recipient </span></h4>
+                            </div>
+                        </div>
+                        <div class="col-6 width-full">
+                            <div class="detailOrder_items">
+                                <h3 class="title-medium">Người Đặt</h3>
+                                <h2 class="title-large">Tên: $username </h2>
+                                <h4 class="body-medium">SĐT: <span>  $phone_user </span></h4>
+                                <h4 class="body-medium">Email: <span> $email_user </span></h4>
+                                <h4 class="body-medium">Địa Chỉ: <span> $address_user </span></h4>
+                                <h4 class="body-medium">Địa Chỉ Cụ Thể: <span> $address_detail_user </span></h4>
+                            </div>
+                        </div>
+                    </div>
+                HTML;
+        } else {
+            $billInfoHtml =
+            <<<HTML
+                <div class="col-12 width-full flex mb20 recipientOrderUser">
+                    <div class="col-6 width-full">
+                        <div class="detailOrder_items">
+                            <h3 class="title-medium">Thông tin</h3>
+                            <h2 class="title-large">Tên: $username </h2>
+                            <h4 class="body-medium">SĐT: <span>  $phone_user </span></h4>
+                            <h4 class="body-medium">Email: <span> $email_user </span></h4>
+                            <h4 class="body-medium">Địa Chỉ: <span> $address_user </span></h4>
+                            <h4 class="body-medium">Địa Chỉ Cụ Thể: <span> $address_detail_user </span></h4>
+                        </div>
+                    </div>
+                </div>
+            HTML;
         }
 
         $cart = getCartByIdBill($idBill);
@@ -98,8 +138,8 @@
         </div>
     </div>
 
-    <!-- End Confirm HEADING Text -->
 
+    <!-- End Confirm HEADING Text -->
     <div class="detailOrders">
         <div class="col-12 width-full detailerOrders_top mb30">
             <h2 class="title-medium mb12">Chi Tiết Đơn Hàng</h2>
@@ -108,28 +148,8 @@
         <div class="col-12 width-full d-block d-sm-block d-md-block flex detailerOrders_bottom mt30 row-lg">
             <div class="col-xxl-6 col-sm-12 col-md-12 col-lg-12 detailOrders-left width-full"
                 style="padding: 30px 30px 30px 0;">
-                <div class="col-12 width-full flex mb20 recipientOrderUser">
-                    <div class="col-6 width-full">
-                        <div class="detailOrder_items">
-                            <h3 class="title-medium">Người Nhận</h3>
-                            <h2 class="title-large"><?= $name_recipient ?></h2>
-                            <h4 class="body-medium">SĐT: <span> <?= $phone_recipient ?></span></h4>
-                            <h4 class="body-medium">Email: <span><?= $email_recipient ?></span></h4>
-                            <h4 class="body-medium">Địa Chỉ: <span><?= $address_recipient ?></span></h4>
-                            <h4 class="body-medium">Địa Chỉ Cụ Thể: <span><?= $address_detail_recipient ?></span></h4>
-                        </div>
-                    </div>
-                    <div class="col-6 width-full">
-                        <div class="detailOrder_items">
-                            <h3 class="title-medium">Người Đặt</h3>
-                            <h2 class="title-large"><?= $username ?></h2>
-                            <h4 class="body-medium">SĐT: <span> <?= $phone_user ?></span></h4>
-                            <h4 class="body-medium">Email: <span><?= $email_user ?></span></h4>
-                            <h4 class="body-medium">Địa Chỉ: <span><?= $address_user ?></span></h4>
-                            <h4 class="body-medium">Địa Chỉ Cụ Thể: <span><?= $address_detail_user ?></span></h4>
-                        </div>
-                    </div>
-                </div>
+                <!-- bill infomation -->
+                <?= $billInfoHtml ?>
                 <div class="col-12 width-full flex mb20 shippingMethodUser">
                     <div class="col-6 width-full">
                         <div class="detailOrder_items">
@@ -149,14 +169,14 @@
                     <div class="col-6 width-full">
                         <div class="detailOrder_items">
                             <h3 class="title-medium">Thời gian đặt hàng</h3>
-                            <h4 class="body-medium">Ngày: <span>26 / 10 / 2023</span></h4>
-                            <h4 class="body-medium">Giờ: <span>15 : 29 : 30</span></h4>
+                            <h4 class="body-medium">Ngày: <span><?= $billCreateDate ?></span></h4>
+                            <h4 class="body-medium">Thời gian: <span><?= $createTime ?></span></h4>
                         </div>
                     </div>
                     <div class="col-6 width-full">
                         <div class="detailOrder_items">
                             <h3 class="title-medium">Thời gian giao hàng dự kiến</h3>
-                            <h4 class="body-medium">Ngày: <span>30 / 10 / 2023</span></h4>
+                            <h4 class="body-medium">Ngày: <span><?= $estimatedDeliveryDate ?></span></h4>
                         </div>
                     </div>
                 </div>
@@ -172,7 +192,7 @@
                             <p class="body-large">Tổng Tiền</p>
                         </div>
                         <div class="col-6 col-lg-4 lineAmmoutConfirm width-full"></div>
-                        <div class="col-2 col-lg-4 totalAmount headline-small flex j-end">9.999.999 VNĐ</div>
+                        <div class="col-2 col-lg-4 totalAmount headline-small flex j-end"><?= formatVND($total) ?></div>
                     </div>
                     <div class="col-12 width-full">
                         <p class="label-medium">Đơn hàng sẽ được giao đến tay bạn trong thời gian sớm nhất. Trong lúc
