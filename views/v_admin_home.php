@@ -475,7 +475,7 @@ foreach ($getCmt as $item) {
                             <?php echo $getAllBill[0]['create_date'] ?>
                         </td>
                         <td class="label-large">
-                            <?php echo $getIdUser['fullname'] ?>
+                            <?php echo $getIdUser['fullname']  ?>
                         </td>
                         <?php
                             if ($getAllBill[0]['status'] == 6) {
@@ -516,7 +516,6 @@ foreach ($getCmt as $item) {
                         <td class="label-large"><button><i class="far fa-ellipsis-h"></i></button></td>
                     </tr>
                     <?php
-
                     }
                     ?>
                 </table>

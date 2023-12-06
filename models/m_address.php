@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
 include_once 'm_pdo.php';
 # address start
@@ -79,12 +78,8 @@ function updateAddresById($id, $phone, $role, $address, $detailedAddress)
 {
     pdo_execute("UPDATE address SET phone = '$phone', is_default = {$role}, address = '$address', address_detail = '$detailedAddress' WHERE id = '$id'");
 }
-
-=======
-<?php 
-    function getUserAddressByIdUser($idUser) {
-        $sql = "SELECT * FROM address WHERE id_user = $idUser AND is_default = 1";
-        return pdo_query_one($sql);
-    }
->>>>>>> d816c470ac88f3d3bb6f0fc75719efb86426d5ff
+function searchAddress($inputSearch)
+{
+    return pdo_query("SELECT * FROM address WHERE phone LIKE '%$inputSearch%' OR address LIKE '%$inputSearch%' OR address_detail LIKE '%$inputSearch%'");
+}
 ?>

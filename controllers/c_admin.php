@@ -6,6 +6,7 @@ require_once './models/m_user.php';
 require_once './models/m_comment.php';
 require_once './models/m_coupon.php';
 require_once './models/m_address.php';
+require_once './models/m_bill.php';
 
 // Hiển thị dữ liệu thông qua view
 
