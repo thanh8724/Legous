@@ -246,7 +246,7 @@ a {
 }
 
 .primary-masking-text {
-  background: linear-gradient(88deg, rgba(66, 0, 255, 0.6) 24.54%, #6A00F2 66.17%, rgba(255, 40, 169, 0.4) 117.27%);
+  background: -webkit-linear-gradient(60deg, #ff79ea, #A93CFF, #6791FF);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -592,6 +592,14 @@ a {
 .product__info__rated .start {
   color: rgb(255, 153, 0);
 }
+.product__info__name {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
+}
 .product__spotlight__banner {
   width: 100%;
   aspect-ratio: 1;
@@ -734,10 +742,6 @@ a {
   color: #ffffff;
 }
 
-.love-btn {
-  background: #F62682;
-  color: #ffffff;
-}
 .love-btn:hover {
   opacity: 0.8;
   background: #F62682;

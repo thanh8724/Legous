@@ -237,7 +237,7 @@ const app = {
         // || quantity input start
         const [...qtyInput] = document.querySelectorAll('.qty__input')
         if (qtyInput) {
-            const dataQty = document.querySelector("#data-qty");
+            const dataQty = document.querySelectorAll(".data-qty");
             qtyInput.forEach((input, index) => {
                 const minusBtn = input.parentElement.querySelector('.minus-btn')
                 const plusBtn = input.parentElement.querySelector('.plus-btn')
@@ -251,7 +251,9 @@ const app = {
                     }
                     // this.calculatorCheck(cartProduct, input, index)
                     if (dataQty) {
-                        document.querySelector("#data-qty").value = input.value;
+                        dataQty.forEach(item => {
+                            item.value = input.value;
+                        });
                     }
                 }
                 plusBtn.onclick = e => {
@@ -263,7 +265,9 @@ const app = {
                     // this.calculatorCheck(cartProduct, input, index)
                     // || product quatity handler
                     if (dataQty) {
-                        document.querySelector("#data-qty").value = input.value;
+                        dataQty.forEach(item => {
+                            item.value = input.value;
+                        });
                     }
                 }
                 input.oninput = () => {
@@ -486,14 +490,16 @@ const app = {
                     } else if (filterParam === 'filterCategory') {
                         const cateIds = filterValue.split(',');
                         const categories = [
-                            'Ninja Go',
                             'Naruto',
-                            'dragon ball',
-                            'Marvel & DC',
-                            'One Piece',
-                            'Car',
-                            'Gundam',
-                            'Kimetsu no Yaiba'
+                        	'Dragon Ball',
+                        	'Jujustsu Kaisen',
+                        	'Kimetsu no Yaiba',
+                        	'Gundam',
+                        	'Genshin Impact',
+                        	'One Piece',
+                        	'Thẻ bài',
+                        	'Lego Xe',
+                        	'Lego',
                         ];
                         const categoryNames = cateIds.map((id) => categories[id - 1]);
                         return `Danh mục: ${categoryNames.join(', ')}`;

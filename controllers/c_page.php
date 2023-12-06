@@ -179,9 +179,6 @@ ob_start();
             $view_name = 'general';
             break;
 
-            // case 'filter':
-            //     include_once 'models/m_product.php';
-            //     include_once 'models/m_category.php';
             case 'shop':
                 include_once 'models/m_product.php';
                 include_once 'models/m_category.php';
@@ -223,11 +220,17 @@ ob_start();
             include_once 'models/m_category.php';
             include_once 'models/m_img.php';
             include_once 'models/m_comment.php';
-
+            
             $view_name = 'productDetail';
-
-                
-                break;
+            break;
+        case 'search':
+            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                $query = $_GET['query'];
+                $searchProducts = getProductByQuery($query);
+            }
+            
+            $view_name = 'search';
+            break;
             default:
                 
                 break;

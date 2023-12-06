@@ -1,3 +1,33 @@
+<script>
+    // love buttons handler
+    $(document).ready(function () {
+        $('.love-btn').click(function () {
+            var button = $(this);
+            var productId = button.data('product-id');
+
+            // Disable the love button
+            button.prop('disabled', true);
+
+            // Make an AJAX request to update the love value
+            $.ajax({
+                url: './views/libs/update_love.php', // Replace with the correct path to your PHP script
+                method: 'POST', // HTTP method (GET, POST, etc.)
+                data: { product_id: productId }, // Data to send to the server, e.g., product ID
+                success: function (response) {
+                    // Handle the response from the server if needed
+                    console.log(response);
+                },
+                error: function (xhr, status, error) {
+                    console.error('Error:', error);
+                    // Enable the love button if there was an error
+                    button.prop('disabled', false);
+                }
+            });
+        });
+    });
+</script>
+
+
 <?php
 
 /** render feature products */
@@ -50,6 +80,46 @@ foreach ($featureProducts as $item) {
 
 /** render regular product */
 $productHtml = '';
+
+// Number of products per page
+$productsPerPage = 20;
+
+// Current page number
+$page = isset($_GET['page']) ? $_GET['page'] : 1;
+
+// Calculate the offset for the SQL query
+$offset = ($page - 1) * $productsPerPage;
+
+// Fetch products from the database with LIMIT and OFFSET
+$categoryProducts = getCategoryProductWithLimitAndOffset($productsPerPage, $offset, $idCategory);
+
+// Fetch total number of products from the database
+$totalProducts = count(getProductsByCategoryId($idCategory));
+
+// Calculate the total number of pages
+$totalPages = ceil($totalProducts / $productsPerPage);
+
+// pagination render 
+$paginationHtml = '';
+for ($i = 1; $i <= $totalPages; $i++) {
+    $linkToPage = "?mod=page&act=category&idCategory=$idCategory&page=$i";
+        $active = '';
+    if ($page == $i) {
+        $active = 'active';
+    }
+    $paginationHtml .=
+        <<<HTML
+            <li class="pagination__item $active"><a href="$linkToPage" class="pagination__link">$i</a></li>
+        HTML;
+}
+$nextPage = $page + 1;
+
+if ($nextPage >= $totalPages) {
+    $linkToNextPage = "";
+} else {
+    $linkToNextPage = "?mod=page&act=category&idCategory=$idCategory&page=$nextPage";
+}
+
 foreach ($categoryProducts as $item) {
     extract($item);
     $imgPath = constant('PRODUCT_PATH') . $img;
@@ -73,15 +143,31 @@ foreach ($categoryProducts as $item) {
         $priceView = '<div class="product__info__price body-large primary-text fw-bold">' . formatVND($price) . '</div>';
     }
 
+    $loveBtnClass = '';
+    $loveBtnIcon = 'far fa-heart';
+
+    if (isset($_SESSION['loveProducts']) && !empty($_SESSION['loveProducts']) && is_array($_SESSION['loveProducts'])) {
+        if (in_array($id, $_SESSION['loveProducts'])) {
+            $loveBtnClass = 'active';
+            $loveBtnIcon = 'fa fa-heart';
+        }
+        $loveBtn = '<button class="icon-btn love-btn toggle-btn ' . $loveBtnClass . '" data-product-id="' . $id . '"><i class="' . $loveBtnIcon . '"></i></button>';
+    } else {
+        $loveBtn =
+            <<<HTML
+                <button class="icon-btn love-btn toggle-btn" data-product-id="$id">
+                    <i class="fal fa-heart"></i>
+                </button>
+            HTML;
+    }
+
     $productBtn = '';
     if ($qty > 0) {
         $productBtn =
             <<<HTML
                 <div class="flex g12 in-stock__btn-set">
                     <button class="icon-btn"><i class="fal fa-share-alt"></i></button>
-                    <button class="icon-btn love-btn toggle-btn" data-product-id="$id">
-                        <i class="fal fa-heart"></i>
-                    </button>
+                    $loveBtn
                     <form action="?mod=cart&act=addCart" method="post" class="flex-column g12">
                         <button type="submit" class="icon-btn">
                             <i class="fal fa-cart-plus"></i>
@@ -105,6 +191,8 @@ foreach ($categoryProducts as $item) {
             HTML;
     }
 
+    $views = formatViewsNumber($views);
+    
     $productHtml .=
         <<<HTML
             <!-- single product start -->
@@ -121,7 +209,7 @@ foreach ($categoryProducts as $item) {
                     $priceView
                 </a>
                 <div class="product__info flex-between width-full">
-                    <div class="product__info__view body-medium">1,2m+ views</div>
+                    <div class="product__info__view body-medium">$views views</div>
                     <div class="product__info__rated flex g6 v-center body-medium">
                         4.4 <i class="fa fa-star start"></i>
                     </div>
@@ -379,11 +467,8 @@ foreach ($categories as $item) {
         <?= $productHtml ?>
     </div>
     <ul class="pagination flex g16 mt30">
-        <li class="pagination__item active"><a href="#" class="pagination__link">1</a></li>
-        <li class="pagination__item"><a href="#" class="pagination__link">2</a></li>
-        <li class="pagination__item"><a href="#" class="pagination__link">3</a></li>
-        <li class="pagination__item"><a href="#" class="pagination__link">4</a></li>
-        <li class="btn text-btn rounded-100"><a href="#" class="pagination__link"><i class="fal fa-arrow-right"
+        <?= $paginationHtml ?>
+        <li class="btn text-btn rounded-100"><a href="<?= $linkToNextPage ?>" class="pagination__link"><i class="fal fa-arrow-right"
                     style="margin-right: .6rem"></i>Next</a></li>
     </ul>
 </main>

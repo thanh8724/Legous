@@ -134,11 +134,11 @@
                     <li class="header__nav__item"><a href="?mod=page&act=home" class="header__nav__link">Trang chủ</a>
                     </li>
                     <li class="header__nav__item">
-                        <a href="?mod=page&act=shop" class="header__nav__link">Cửa hàng</a>
+                        <a href="?mod=page&act=shop&page=1" class="header__nav__link">Cửa hàng</a>
                         <div class="header__subnav__wrapper header__mega-menu poa box-shadow1 rounded-8">
                             <div class="top p20 flex-column g12 mega-menu__item">
                                 <div class="title-medium fw-bold">Cửa hàng</div>
-                                <span class="body-medium">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta consequuntur assumenda</span>
+                                <span class="body-medium">Khám phá các sản phẩm của Legous. Vào cửa hàng nào!</span>
                             </div>
                             <div class="content flex mega-menu__item">
                                 <div class="product__wrapper p20">
@@ -165,7 +165,7 @@
                                             <div class="product__info__price body-medium"><?= formatVND($specialProduct['price']) ?></div>
                                         </a>
                                         <div class="product__info flex-between width-full">
-                                            <div class="product__info__view body-medium">1,2m+ views</div>
+                                            <div class="product__info__view body-medium"><?= formatViewsNumber($specialProduct['price']) ?> views</div>
                                             <div class="product__info__rated flex g6 v-center body-medium">
                                                 4.4 <i class="fa fa-star start"></i>
                                             </div>
@@ -235,10 +235,10 @@
                 <button class="icon-btn close-search-box__btn" style="align-self: flex-end;">
                     <i class="fal fa-times"></i>
                 </button>
-                <form action="" class="form search__form">
+                <form action="?mod=page&act=search" class="form search__form" method="get">
                     <div class="form__group flex-center por">
-                        <input type="text" class="form__input search__form__input" placeholder="Nhập tên sản phẩm">
-                        <button class="icon-btn search__form__btn"><i class="far fa-search"></i></button>
+                        <input type="text" name="query" class="form__input search__form__input" placeholder="Nhập tên sản phẩm">
+                        <button type="submit" class="icon-btn search__form__btn"><i class="far fa-search"></i></button>
                     </div>
                 </form>
                 <div class="search__product__wrapper mia flex-column g16" style="overflow-y: auto; width: 50vw; height: 50rem">
