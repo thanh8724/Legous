@@ -191,7 +191,7 @@
                         <span class="form__label">Tên đăng nhập</span>
                         <input type="text" name="username" class="form__input username--input" placeholder="<?=$checkUses['username']?>">
                         <!-- <label for="" class="label__place">Tên đăng nhập</label> -->
-                        <span class="form__message"></span>
+                        <span class="form__message"><?=$message_username?></span>
                     </div>
                     <div class="form__group">
                         <span class="form__label">Email</span>
