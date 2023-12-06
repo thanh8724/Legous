@@ -59,6 +59,7 @@ if (isset($_GET['act'])) {
 
         case 'address':
             include_once 'models/m_user.php';
+            include_once 'models/m_address.php';
             // hiển thị dữ liệu
             $view_name = 'address';
             #add class
@@ -68,11 +69,13 @@ if (isset($_GET['act'])) {
 
         case 'edit-address':
             include_once 'models/m_user.php';
+            include_once 'models/m_address.php';
             $view_name = 'form-editAddress';
             break;
 
         case 'delete-address':
             include_once 'models/m_user.php';
+            include_once 'models/m_address.php';
             $view_name = 'form-editAddress';
             # xóa địa chỉ
             if (isset($_GET['id-address']) && ($_GET['id-address']) > 0) {
@@ -141,6 +144,7 @@ if (isset($_GET['act'])) {
 
         case 'delete-account':
             include_once 'models/m_user.php';
+            include_once 'models/m_address.php';
             $view_name = 'user-deleteAccount';
             #add class
             $active__deleteAccount = 'menu__active';

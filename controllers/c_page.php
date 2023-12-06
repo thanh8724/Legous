@@ -60,6 +60,8 @@ if (isset($_GET['act'])) {
                                 $qty = $product['qty'];
                                 $totalCost = $price * $qty;
 
+                                // Call a function to insert the product into the cart table
+                                insertCart($id, $productId, $name, $price, $img, $qty, $totalCost);
                                 // redirect
                                 
                                 header('Location: ?mod=cart&act=viewCart');

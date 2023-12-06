@@ -24,10 +24,13 @@ function get_userBy_email_password($email_user, $password_user)
 
 function getUserById($idUser)
 {
-    $sql = "SELECT * FROM user WHERE id = {$idUser}";
+    $sql = "SELECT * FROM user WHERE id = $idUser";
     return pdo_query($sql);
 }
-
+function getUserByEmail($email)
+{
+    return pdo_query_one("SELECT * FROM user where email = '$email'");
+}
 // chỉnh sửa thông tin người dùng từ mã tài khoản
 function update_userName_email($new_username, $new_email, $id_user)
 {
@@ -49,6 +52,9 @@ function get_imgAvatar($id_user)
     return pdo_query_one("SELECT img FROM user WHERE id = ?", $id_user);
 }
 # edit profile end
+
+
+
 
 function insertUser($username, $email, $password)
 {
