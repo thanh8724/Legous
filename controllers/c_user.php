@@ -78,6 +78,7 @@ if (isset($_GET['act'])) {
             include_once 'models/m_address.php';
             $view_name = 'form-editAddress';
             # xóa địa chỉ
+            $id_user = $_SESSION['userLogin']['id_user'];
             if (isset($_GET['id-address']) && ($_GET['id-address']) > 0) {
                 $id_address = $_GET['id-address'];
                 delete_address($id_address);
