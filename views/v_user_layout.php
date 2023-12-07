@@ -46,7 +46,7 @@ $specialProduct = getSpecialProduct();
 $userWidgetHtml = '';
 if(isset($_SESSION['userLogin']) && !empty($_SESSION['userLogin'])) {
     $id = $_SESSION['userLogin']['id_user'];
-    $user = getUserById($id);
+    $user = getUserById($id)[0];
     extract($user);
     $userWidgetHtml =
         <<<HTML
