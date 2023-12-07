@@ -699,8 +699,6 @@ if(isset($_POST['editComment'])) {
                                                 <?php
                                                             }
                                                             ?>
-
-
                                                 <!-- Note: Xóa ảnh cũ khi xóa comment -->
                                             </ul>
                                         </div>

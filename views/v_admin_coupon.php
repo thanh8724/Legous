@@ -207,6 +207,7 @@
                     <tr>
                         <th>Mã</th>
                         <th>Tên Mã</th>
+                        <th>Mã Giảm Giá</th>
                         <th>Mô Tả</th>
                         <th>Mức Giảm</th>
                         <th>Ngày Tạo</th>
@@ -226,6 +227,9 @@
                             </td>
                             <td>
                                 <?php echo $item['name'] ?>
+                            </td>
+                            <td>
+                                <?php echo $item['coupon_code'] ?>
                             </td>
                             <td>
                                 <?php echo $item['description'] ?>
