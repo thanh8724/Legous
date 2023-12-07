@@ -274,7 +274,7 @@ a {
 }
 
 .primary-text {
-  color: #6750a4;
+  color: #6750a4 !important;
 }
 
 .header {
@@ -1160,6 +1160,14 @@ table th {
 
 .filter-bar--respon {
   display: none !important;
+}
+
+.filter-toggle__list--mobile {
+  flex-wrap: wrap !important;
+}
+.filter-toggle__list--mobile .filter-toggle__list-item {
+  flex-shrink: 0;
+  width: fit-content;
 }
 
 .filter__list {
@@ -4957,9 +4965,6 @@ table tbody tr td a {
   -webkit-text-fill-color: transparent;
 }
 
-.summary__main {
-  border: 0.2rem solid #e6e0e9;
-}
 .summary__main .summary__product__name {
   width: 30rem;
   display: -webkit-box;
@@ -4968,38 +4973,6 @@ table tbody tr td a {
   overflow: hidden;
   text-overflow: ellipsis;
   word-break: break-word;
-}
-.summary__main .quality {
-  display: flex;
-  gap: 23px;
-}
-.summary__main .quality input {
-  border: 1px solid #49454f;
-}
-.summary__main .quality #amount {
-  width: 40px;
-  text-align: center;
-  color: #6750a4;
-  border-radius: 20px;
-  outline: none;
-}
-.summary__main .quality button {
-  width: 25px;
-  height: 25px;
-  outline: none;
-  background: none;
-  border-radius: 8px;
-}
-.summary__main .quality button:hover {
-  background-color: #ececec;
-}
-.summary__main .priceProduct span {
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 32px;
-}
-.summary__main .btn-close {
-  margin-right: 20px;
 }
 .summary__main .coupon__form {
   display: none;
@@ -5016,6 +4989,7 @@ table tbody tr td a {
   right: 0;
   left: 0;
   bottom: 0;
+  z-index: 1000000;
 }
 .cart__bottom-bar__inner {
   background: #ffffff;
@@ -5684,6 +5658,7 @@ table tbody tr td a {
   aspect-ratio: 1;
   border-radius: 0.8rem;
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 .main__contact {
