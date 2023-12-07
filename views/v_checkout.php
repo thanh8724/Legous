@@ -114,7 +114,7 @@ if (isset($_SESSION['userLogin']) && is_array($_SESSION['userLogin'])) {
     $userLogin = $_SESSION['userLogin'];
     extract($userLogin);
     /** get user address */
-    $userAddress = getUserAddressByIdUser($id_user);
+    $userAddress = get_addressByIdUser($id_user);
 
     if (isset($userAddress)) {
         $addressView = $userAddress['address'];

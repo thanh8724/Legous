@@ -450,7 +450,7 @@ if(isset($_POST['editComment'])) {
                     <a href="#" class="option__link ttc">chia sẻ</a>
                 </li>
                 <li class="option__item">
-                    <a href="#" class="option__link ttc">tìm kiếm</a>
+                    <a href="?mod=page&act=search" class="option__link ttc">tìm kiếm</a>
                 </li>
                 <li class="option__item">
                     <a href="#" class="option__link ttc">tin nhắn</a>
@@ -757,7 +757,7 @@ if(isset($_POST['editComment'])) {
                 <?php 
                     if(isset($_SESSION['userLogin']) && is_array($_SESSION['userLogin'])) {
                         $idUser = $_SESSION['userLogin']['id_user'];
-                        $userAddress = getUserAddressByIdUser($idUser);
+                        $userAddress = get_addressByIdUser($idUser);
                         if (isset($userAddress) && !empty($userAddress)) {
                             extract($userAddress);
                             echo

@@ -5,10 +5,6 @@ $total = 0;
 $totalFormated = 0;
 $subTotal = 0;
 
-// if (isset($_SESSION['cart'])) {
-//     print_r($_SESSION['cart']);
-// }
-
 extract($checkoutProduct);
 
 $subTotal += $price * $qty;
@@ -113,9 +109,10 @@ if (isset($_SESSION['userLogin']) && is_array($_SESSION['userLogin'])) {
     $userLogin = $_SESSION['userLogin'];
     extract($userLogin);
     /** get user address */
-    $userAddress = getUserAddressByIdUser($id_user);
+    $userAddress = get_addressByIdUser($id_user);
+    // print_r($userAddress);
 
-    if (isset($userAddress) && is_array($userAddress)) {
+    if (isset($userAddress) && is_array($userAddress) && !empty($userAddress)) {
         $addressView = $userAddress['address'];
         $addressDetailView = $userAddress['address_detail'];
         $emailView = $email;
@@ -301,7 +298,6 @@ if (isset($_SESSION['userLogin']) && is_array($_SESSION['userLogin'])) {
                 <div class="title-large fw-smb">Tổng tiền</div>
                 <div class="light-devider flex-full" style="margin-inline: 1rem; height: .1rem;"></div>
                 <div class="summary__total primary-masking-text">
-                    <?= $totalFormated ?>
                 </div>
             </div>
             <button type="submit" class="rounded-8 primary-btn btn" style="background: black; color: white;"><i
@@ -377,6 +373,7 @@ if (isset($_SESSION['userLogin']) && is_array($_SESSION['userLogin'])) {
         formGroupSelector: '.form__group',
         formMessage: '.form__message',
         submitUrl: './views/libs/checkoutBuyNowHandler.php',
+        // redirectUrl: './views/libs/checkoutBuyNowHandler.php',
         redirectUrl: '?mod=cart&act=confirm',
 
         rules: [

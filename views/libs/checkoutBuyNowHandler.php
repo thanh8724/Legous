@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             extract($_SESSION['userLogin']);
 
             if (empty($name_recipient)) {
-                $name_recipient = getUserInfo($id)[0]['username'];
+                $name_recipient = getUserInfo($id_user)[0]['username'];
             }
 
             $idBill = insertBill($id_user, $id_shipping, $id_payment, $email_user, $phone_user, $address_user, $address_detail_user, $name_recipient, $phone_recipient, $address_recipient, $address_detail_recipient, $total);
@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if (isset($_SESSION['checkoutProduct'])) {
                 unset($_SESSION['checkoutProduct']);
             }
-            header("Location: ?mod=cart&act=confirm");
+            // header("Location: ?mod=cart&act=confirm");
             exit();
         } else {
             /** tạo account cho khách hàng, generate ngẫu nhiên tên đăng nhập và mật khẩu, insert vào database */
@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             updateProductQty($id_product, $newQty);
             
             unset($_SESSION['checkoutProduct']);
-            header("Location: ?mod=cart&act=confirm");
+            // header("Location: ?mod=cart&act=confirm"); 
             exit();
         }
     } else {

@@ -246,26 +246,7 @@
                 </form>
                 <div class="search__product__wrapper mia flex-column g16" style="overflow-y: auto; width: 50vw; height: 50rem">
                     <!-- single search product start -->
-                    <!-- <div class="search__product flex-between p20 rounded-8 width-full">
-                        <div class="flex g12">
-                            <div class="search__product__banner">
-                                <img src="./public/assets/media/images/product/v944cyfrwt851.webp" alt="">
-                            </div>
-                            <div class="search__product__info flex-column flex-between">
-                                <a href="" class="search__product__name title-large underline">Itachi - Susano
-                                    Ribcage</a>
-                                <div class="search__product__price title-medium">2.344.900 VND</div>
-                            </div>
-                        </div>
-                        <div class="flex-between flex-column a-end">
-                            <button class="icon-btn delete-search-product__btn"><i class="fal fa-times"></i></button>
-                            <div class="flex g12">
-                                <button class="icon-btn"><i class="fal fa-share"></i></button>
-                                <button class="icon-btn love-btn toggle-btn"><i class="fal fa-heart"></i></button>
-                                <button class="icon-btn"><i class="fal fa-shopping-cart"></i></button>
-                            </div>
-                        </div>
-                    </div> -->
+                    
                     <!-- single search product end -->
                 </div>
             </div>
@@ -280,16 +261,16 @@
                 <button class="icon-btn close-respon-btn"><i class="fal fa-times"></i></button>
             </li>
             <li class="header__nav-respon-full__item flex-between">
-                <a href="#" class="header__nav-respon-full__link">Trang chủ</a>
+                <a href="?mod=page&act=home" class="header__nav-respon-full__link">Trang chủ</a>
             </li>
             <li class="header__nav-respon-full__item flex-between">
-                <a href="#" class="header__nav-respon-full__link">cửa hàng</a>
+                <a href="?mod=page&act=shop&page=1" class="header__nav-respon-full__link">cửa hàng</a>
             </li>
             <li class="header__nav-respon-full__item flex-between">
-                <a href="#" class="header__nav-respon-full__link">liên hệ</a>
+                <a href="?mod=page&act=contact" class="header__nav-respon-full__link">liên hệ</a>
             </li>
             <li class="header__nav-respon-full__item flex-between">
-                <a href="#" class="header__nav-respon-full__link">tài khoản</a>
+                <a href="?mod=user&act=general" class="header__nav-respon-full__link">tài khoản</a>
             </li>
         </ul>
         <!-- header respon fullscreen nav end -->

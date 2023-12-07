@@ -1467,7 +1467,7 @@ table th {
 }
 
 .summary__product__name {
-  width: 30rem;
+  width: 20rem;
   display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
