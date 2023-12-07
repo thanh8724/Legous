@@ -195,12 +195,12 @@
             unset($_SESSION['thongbao']) ?>
 
         </div>
-        <div class="container-products width-full flex" style="flex-wrap: wrap; gap: 45px">
+        <div class="container-products width-full flex" style="flex-wrap: wrap; gap: 45px; margin-top: 25px;">
             <!--Cart-->
 
 
-            <?php foreach ($getproductAdmin as $item): ?>
-                <div class="cart trans-bounce flex-column p20" style="
+            <?php foreach($getproductAdmin as $item): ?>
+            <div class="cart trans-bounce flex-column p20" style="
                   border-radius: 12px;
                   border: 1px #DED8E1;
                   background:  #FFF;   

@@ -499,69 +499,63 @@ foreach ($getCmt as $item) {
                         <th class="label-large">Tổng</th>
                     </tr>
                     <?php
-                                        $getAllCart = getNew10Cart();
-                                        foreach ($getAllCart as $item) {
-                                            $getAllBill = getBillByID($item['id_bill']);
-                                            $getIdUser = getUserById($getAllBill[0]['id_user']);
-                                            $getIdProduct = getProductById($item['id_product']);
-                                            ?>
-                    <tr>
-                        <td class="label-large tableLargeItems" style="text-align:center;">
-                            <?php echo $item['id'] ?>
-                        </td>
-                        <td class="label-large">
-                            <?php echo $getIdUser[0]['fullname'] ?>
-                        </td>
-                        <td class="label-large">
-                            <?php echo $getAllBill[0]['create_date'] ?>
-                        </td>
-                        <td class="label-large label-large__product" style="width: 350px; max-width: 350px;">
-                            <?php echo $getIdProduct['name'] ?>
-                        </td>
+                    $getAllCart = getNew10Cart();
+                    foreach($getAllCart as $item) {
+                        $getAllBill = getBillByID($item['id_bill']);
+                        $getIdUser = getUserById($getAllBill[0]['id_user']);
+                        $getIdProduct = getProductById($item['id_product']);
+                        ?>
+                        <tr>
+                            <td class="label-large tableLargeItems" style="text-align:center;">
+                                <?php echo $item['id'] ?>
+                            </td>
+                            <td class="label-large">
+                                <?php echo $getIdUser[0]['fullname'] ?>
+                            </td>
+                            <td class="label-large">
+                                <?php echo $getAllBill[0]['create_date'] ?>
+                            </td>
+                            <td class="label-large label-large__product" style="width: 350px; max-width: 350px;">
+                                <?php echo $getIdProduct['name'] ?>
+                            </td>
+                            <?php
+                            if($getAllBill[0]['status'] == 6) {
+                                ?>
+                                <td class="label-large tableLargeItems" style="justify-content: center;"><span
+                                        class="dotTable red"></span>Đã Hủy</td>
+                                <?php
+                            } elseif($getAllBill[0]['status'] == 5) {
+                                ?>
+                                <td class="label-large tableLargeItems" style="justify-content: center;"><span
+                                        class="dotTable green"></span>Đã Giao</td>
+                                <?php
+                            } elseif($getAllBill[0]['status'] == 4) {
+                                ?>
+                                <td class="label-large tableLargeItems" style="justify-content: center;"><span
+                                        class="dotTable orange"></span>Hoàn đơn</td>
+                                <?php
+                            } elseif($getAllBill[0]['status'] == 3) {
+                                ?>
+                                <td class="label-large tableLargeItems" style="justify-content: center;"><span
+                                        class="dotTable blue"></span>Đang giao hàng</td>
+                                <?php
+                            } elseif($getAllBill[0]['status'] == 2) {
+                                ?>
+                                <td class="label-large tableLargeItems" style="justify-content: center;"><span
+                                        class="dotTable black"></span>Chờ Lấy Hàng</td>
+                                <?php
+                            } else {
+                                ?>
+                                <td class="label-large tableLargeItems" style="justify-content: center;"><span
+                                        class="dotTable gray"></span>Chờ Xác Nhận</td>
+                                <?php
+                            }
+                            ?>
+                            <td class="label-large">
+                                <?php echo number_format($item['total_cost'], 0, ',') ?>VNĐ
+                            </td>
+                        </tr>
                         <?php
-                                                if ($getAllBill[0]['status'] == 6) {
-                                                    ?>
-                        <td class="label-large tableLargeItems" style="justify-content: center;">
-                            <span class="dotTable red"></span>Đã Hủy
-                        </td>
-                        <?php
-                                                } elseif ($getAllBill[0]['status'] == 5) {
-                                                    ?>
-                        <td class="label-large tableLargeItems" style="justify-content: center;">
-                            <span class="dotTable green"></span>Đã Giao
-                        </td>
-                        <?php
-                                                } elseif ($getAllBill[0]['status'] == 4) {
-                                                    ?>
-                        <td class="label-large tableLargeItems" style="justify-content: center;">
-                            <span class="dotTable orange"></span>Hoàn đơn
-                        </td>
-                        <?php
-                                                } elseif ($getAllBill[0]['status'] == 3) {
-                                                    ?>
-                        <td class="label-large tableLargeItems" style="justify-content: center;">
-                            <span class="dotTable blue"></span>Đang giao hàng
-                        </td>
-                        <?php
-                                                } elseif ($getAllBill[0]['status'] == 2) {
-                                                    ?>
-                        <td class="label-large tableLargeItems" style="justify-content: center;">
-                            <span class="dotTable black"></span>Chờ Lấy Hàng
-                        </td>
-                        <?php
-                                                } else {
-                                                    ?>
-                        <td class="label-large tableLargeItems" style="justify-content: center;">
-                            <span class="dotTable gray"></span>Chờ Xác Nhận
-                        </td>
-                        <?php
-                                                }
-                                                ?>
-                        <td class="label-large">
-                            <?php echo number_format($item['total_cost'], 0, ',') ?>VNĐ
-                        </td>
-                    </tr>
-                    <?php
 
                                         }
                                         ?>
