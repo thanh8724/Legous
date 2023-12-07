@@ -8,35 +8,35 @@ $totalSales = 0;
 $totalUser = 0;
 $totalCmt = 0;
 $totalQuan = 0;
-foreach ($getTotalBill as $item) {
-    if ($item['status'] == 4) {
+foreach($getTotalBill as $item) {
+    if($item['status'] == 4) {
         $totalBill += $item['total'];
     }
 }
-foreach ($getProduct as $item) {
+foreach($getProduct as $item) {
     $totalSales += $item['purchases'];
 }
-foreach ($getProduct as $item) {
+foreach($getProduct as $item) {
     $totalQuan += $item['qty'];
 }
-foreach ($getUser as $item) {
+foreach($getUser as $item) {
     $totalUser++;
 }
-foreach ($getCmt as $item) {
+foreach($getCmt as $item) {
     $totalCmt++;
 }
-if (isset($_POST['createCouponSubmit'])) {
+if(isset($_POST['createCouponSubmit'])) {
     $error = [];
     $qtyTotal = [];
-    if (isset($_POST['namecoupon']) && !empty($_POST['namecoupon'])) {
+    if(isset($_POST['namecoupon']) && !empty($_POST['namecoupon'])) {
         $namecoupon = $_POST['namecoupon'];
     } else {
         $error['namecoupon'] = "Không được để trống Tên Coupon";
     }
 
-    if (isset($_POST['qtycoupon']) && !empty($_POST['qtycoupon'])) {
+    if(isset($_POST['qtycoupon']) && !empty($_POST['qtycoupon'])) {
         $qtycoupon = $_POST['qtycoupon'];
-        for ($i = 0; $i < $qtycoupon; $i++) {
+        for($i = 0; $i < $qtycoupon; $i++) {
             $randomString = bin2hex(random_bytes(5)); // Tạo chuỗi ngẫu nhiên gồm 10 ký tự
             array_push($qtyTotal, $randomString);
         }
@@ -44,50 +44,50 @@ if (isset($_POST['createCouponSubmit'])) {
         $error['qtycoupon'] = "Không được để trống số lượng";
     }
 
-    if (isset($_POST['discountpercent']) && !empty($_POST['discountpercent'])) {
+    if(isset($_POST['discountpercent']) && !empty($_POST['discountpercent'])) {
         $discountpercent = $_POST['discountpercent'];
     } else {
         $error['discountpercent'] = "Không được để trống Mức Giảm Giá";
     }
 
-    if (isset($_POST['expiredDate']) && !empty($_POST['expiredDate'])) {
+    if(isset($_POST['expiredDate']) && !empty($_POST['expiredDate'])) {
         $expiredDate = $_POST['expiredDate'];
     } else {
         $error['expiredDate'] = "Không được để trống Ngày Hết Hạn";
     }
 
-    if (isset($_POST['description']) && !empty($_POST['description'])) {
+    if(isset($_POST['description']) && !empty($_POST['description'])) {
         $description = $_POST['description'];
     } else {
         $error['description'] = "Không được để trống Mô Tả";
     }
-    foreach ($qtyTotal as $item) {
+    foreach($qtyTotal as $item) {
         addNewCoupon(strtoupper($item), $namecoupon, $discountpercent, $expiredDate, $description, date("Y-m-d"));
     }
     header("Location: ?mod=admin&act=createcoupon");
 }
-if (isset($_POST['editCouponsubmit'])) {
+if(isset($_POST['editCouponsubmit'])) {
     $error = [];
-    $getEditID = (int) $_GET['editId'];
-    if (isset($_POST['namecoupon']) && !empty($_POST['namecoupon'])) {
+    $getEditID = (int)$_GET['editId'];
+    if(isset($_POST['namecoupon']) && !empty($_POST['namecoupon'])) {
         $namecoupon = $_POST['namecoupon'];
     } else {
         $error['namecoupon'] = "Không được để trống Tên Coupon";
     }
 
-    if (isset($_POST['discountpercent']) && !empty($_POST['discountpercent'])) {
+    if(isset($_POST['discountpercent']) && !empty($_POST['discountpercent'])) {
         $discountpercent = $_POST['discountpercent'];
     } else {
         $error['discountpercent'] = "Không được để trống Mức Giảm Giá";
     }
 
-    if (isset($_POST['expiredDateEdit']) && !empty($_POST['expiredDateEdit'])) {
+    if(isset($_POST['expiredDateEdit']) && !empty($_POST['expiredDateEdit'])) {
         $expiredDateEdit = $_POST['expiredDateEdit'];
     } else {
         $error['expiredDateEdit'] = "Không được để trống Ngày Hết Hạn";
     }
 
-    if (isset($_POST['description']) && !empty($_POST['description'])) {
+    if(isset($_POST['description']) && !empty($_POST['description'])) {
         $description = $_POST['description'];
     } else {
         $error['description'] = "Không được để trống Mô Tả";
@@ -116,7 +116,7 @@ if (isset($_POST['editCouponsubmit'])) {
                     $getCmt = getAllComment();
                     arsort($getCmt);
                     $getCmt = array_slice($getCmt, 0, 6, true);
-                    foreach ($getCmt as $item) {
+                    foreach($getCmt as $item) {
 
                         $getUser = getUserById($item['id_user']);
                         $getProduct = getProductById($item['id_product']);
@@ -125,7 +125,7 @@ if (isset($_POST['editCouponsubmit'])) {
                         <div class="col-12 d-flex">
                             <div class="col-2">
                                 <?php
-                                    if ($getUser[0]['img'] == NULL || empty($getUser[0]['img'])) {
+                                    if($getUser[0]['img'] == NULL || empty($getUser[0]['img'])) {
                                         ?>
                                 <img class="notifiAdminImg" src="./upload/users/avatar-none.png" alt="">
 
@@ -159,7 +159,7 @@ if (isset($_POST['editCouponsubmit'])) {
                     $getBill = getBill();
                     arsort($getBill);
                     $getBill = array_slice($getBill, 0, 6, true);
-                    foreach ($getBill as $item) {
+                    foreach($getBill as $item) {
 
                         $getUser = getUserById($item['id_user']);
                         ?>
@@ -167,7 +167,7 @@ if (isset($_POST['editCouponsubmit'])) {
                         <div class="col-12 d-flex">
                             <div class="col-2">
                                 <?php
-                                    if ($getUser[0]['img'] == NULL || empty($getUser[0]['img'])) {
+                                    if($getUser[0]['img'] == NULL || empty($getUser[0]['img'])) {
                                         ?>
                                 <img class="notifiAdminImg" src="./upload/users/avatar-none.png" alt="">
 
@@ -184,7 +184,7 @@ if (isset($_POST['editCouponsubmit'])) {
                             <div class="col-10">
                                 <p class="notifiAdminText body-small"><strong>
                                         <?php
-                                            if ($getUser[0]['fullname'] == NULL && empty($getUser[0]['fullname'])) {
+                                            if($getUser[0]['fullname'] == NULL && empty($getUser[0]['fullname'])) {
                                                 echo "User ẩn";
 
                                             } else {
@@ -209,7 +209,7 @@ if (isset($_POST['editCouponsubmit'])) {
                 <?php
                 $getID = $_SESSION['admin']['id_user'];
                 $getUser = getUserById($getID);
-                if (!empty($getUser['img']) && $getUser != NULL) {
+                if(!empty($getUser['img']) && $getUser != NULL) {
                     ?>
                 <img style="" class="btnShowFeature" src="./upload/users/<?php echo $getUser['img'] ?>" alt="">
                 <?php
@@ -247,8 +247,9 @@ if (isset($_POST['editCouponsubmit'])) {
                         align-items: center;">
                 <div class="flex g8">
                     <span class="label-large">Admin /</span><a href="?mod=admin&act=coupon" class="label-large"
-                        style="text-decoration: none;">Mã Giảm Giá</a> / <a class="label-large"
-                        href="?mod=admin&act=createcoupon" style="text-decoration: none">Tạo Mã Giảm Giá</a>
+                        style="text-decoration: none;">Mã Giảm Giá</a> <span class="label-large">/</span> <a
+                        class="label-large" href="?mod=admin&act=createcoupon" style="text-decoration: none">Tạo Mã Giảm
+                        Giá</a>
                 </div>
 
             </div>
@@ -258,7 +259,7 @@ if (isset($_POST['editCouponsubmit'])) {
             <div class="col-12 d-block d-xxl-flex d-xl-flex createCoupon my-5">
                 <div class="box-shadow1 col-12 col-xxl-7 col-xl-7 createCoupon_left p30">
                     <?php
-                    if (isset($_GET['editId'])) {
+                    if(isset($_GET['editId'])) {
                         $getCouponById = getCouponById($_GET['editId']);
                         ?>
                     <form action="" method="post">
@@ -280,7 +281,7 @@ if (isset($_POST['editCouponsubmit'])) {
                                 </div>
                                 <div class="col-12">
                                     <input class="body-large" type="text" name="discountpercent" id="discountpercent"
-                                        placeholder="VD 10" value="<?php echo $getCouponById[0]['price'] ?>">
+                                        placeholder="VD 10" value="<?php echo $getCouponById[0]['discount'] ?>">
                                 </div>
                             </div>
                             <div class="col-6">
@@ -386,7 +387,7 @@ if (isset($_POST['editCouponsubmit'])) {
                     <div class="listCoupon_item">
                         <?php
                         $getAllCoupon = getAllCoupon();
-                        foreach ($getAllCoupon as $item) {
+                        foreach($getAllCoupon as $item) {
                             ?>
                         <div class="listCoupon_items p10">
                             <div class="col-12 d-flex">
@@ -404,9 +405,10 @@ if (isset($_POST['editCouponsubmit'])) {
                                         </div>
                                         <div class="col-12">
                                             <p class="infoSaleListCoupon body-small">
-                                                <?php echo $item['description'] ?>
+                                                Mã Coupon: <?php echo $item['coupon_code'] ?>
                                             </p>
                                         </div>
+
                                         <div class="col-12 d-flex justify-content-end">
                                             <p class="timeLeft body-large">Ngày hết hạn:
                                                 <?php echo $item['expired_date'] ?>

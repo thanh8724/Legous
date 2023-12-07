@@ -1544,6 +1544,9 @@ body.dark #mainAdmin {
   background-color: #15192a;
   transition: 0.5s;
 }
+body.dark #mainAdmin .manageCoupon_itemsText .col-12 span {
+  color: black !important;
+}
 body.dark #mainAdmin #paging .pagination__item a {
   color: #ffffff !important;
 }

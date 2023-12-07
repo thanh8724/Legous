@@ -1,6 +1,13 @@
 body {
   &.dark {
     #mainAdmin {
+      .manageCoupon_itemsText {
+        .col-12 {
+          span {
+            color: black !important;
+          }
+        }
+      }
       #paging {
         .pagination__item {
           a {
