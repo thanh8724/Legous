@@ -359,7 +359,9 @@ if (isset($_GET['act'])) {
             $getAllCategory = getCategories();
             $perPage = 9;
             $soTrang = ceil($totalProducts / $perPage);
+            // giá trị hiện tại trang trừ đi -2 nhưng nhỏ hơn 1
             $startPage = max(1, $page - 2);
+            // kết thúc phạm vi trang, số lượt hiển thị trang là 5, nhưng không lớn hơn tổng số trang
             $endPage = min($startPage + 5, $soTrang);
 
             if ($endPage - $startPage < 5) {
