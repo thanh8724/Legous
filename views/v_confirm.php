@@ -3,14 +3,13 @@
     
     if (isset($_SESSION['idBill'])) {
         $idBill = $_SESSION['idBill'];
-        echo $idBill;
 
         /** get bill information */
         $billInfo = getBillInfoById($idBill);
         extract($billInfo);
         // print_r($billInfo);
 
-        $user = getUserById($id_user);
+        $user = getUserById($id_user)[0];
         $username = $user['username'];
 
         $createTimestamp = strtotime($billInfo['create_date']);

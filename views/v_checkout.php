@@ -114,13 +114,13 @@ if (isset($_SESSION['userLogin']) && is_array($_SESSION['userLogin'])) {
     $userLogin = $_SESSION['userLogin'];
     extract($userLogin);
     /** get user address */
-    $userAddress = getUserAddressByIdUser($id_user);
+    $userAddress = get_addressByIdUser($id_user);
 
-    if (isset($userAddress)) {
-        $addressView = $userAddress['address'];
-        $addressDetailView = $userAddress['address_detail'];
+    if (isset($userAddress) && !empty($userAddress)) {
+        $addressView = $userAddress[0]['address'];
+        $addressDetailView = $userAddress[0]['address_detail'];
         $emailView = $email;
-        $phoneView = $userAddress['phone'];
+        $phoneView = $userAddress[0]['phone'];
     }
 }
 ?>
