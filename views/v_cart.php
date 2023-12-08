@@ -9,10 +9,6 @@
     $btnText = "";
     $userCart = [];
 
-    if (isset($_SESSION['cart'])) {
-        print_r($_SESSION['cart']);
-    }
-
     if (isset($_SESSION['userLogin'])) {
         extract($_SESSION['userLogin']);
         $userCart = getCartByUserId ($id_user);
@@ -176,7 +172,7 @@
             <?= $cartHtml ?>
         </div>
         <div class="block">
-            <div class="summary__main desktop rounded-8 p20 flex-column g12">
+            <div class="summary__main desktop rounded-8 p20 flex-column g12 box-shadow1">
                 <div class="block">
                     <div class="flex flex-between v-center">
                         <div class="title-medium fw-smb">Ưu đãi</div>
