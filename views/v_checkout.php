@@ -114,8 +114,6 @@ if (isset($_SESSION['userLogin']) && is_array($_SESSION['userLogin'])) {
     $userLogin = $_SESSION['userLogin'];
     extract($userLogin);
     /** get user address */
-    $userAddress = get_addressByIdUser($id_user);
-    // print_r($userAddress);
     $userAddress = getDefaultAddressByIdUser($id_user);
 
     if (isset($userAddress) && !empty($userAddress)) {
@@ -389,8 +387,6 @@ if (isset($_SESSION['userLogin']) && is_array($_SESSION['userLogin'])) {
         formGroupSelector: '.form__group',
         formMessage: '.form__message',
         submitUrl: './views/libs/checkoutHandler.php',
-        redirectUrl: './views/libs/checkoutHandler.php',
-        // redirectUrl: '?mod=cart&act=confirm',
         // redirectUrl: './views/libs/checkoutHandler.php',
         redirectUrl: '?mod=cart&act=confirm',
 
