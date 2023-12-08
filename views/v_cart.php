@@ -9,6 +9,10 @@
     $btnText = "";
     $userCart = [];
 
+    if (isset($_SESSION['cart'])) {
+        print_r($_SESSION['cart']);
+    }
+
     if (isset($_SESSION['userLogin'])) {
         extract($_SESSION['userLogin']);
         $userCart = getCartByUserId ($id_user);
